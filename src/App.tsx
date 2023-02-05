@@ -1,13 +1,14 @@
 import { FC, Suspense } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Route, Routes } from 'react-router-dom'
+import classNames from '../helpers/classNames/classNames'
 import LazyAboutPage from './pages/AboutPage/AboutPage.lazy'
 import LazyMainPage from './pages/MainPage/MainPage.lazy'
 import useTheme from './theme/useTheme'
 
 const App: FC = () => {
     const { theme, toggleTheme } = useTheme()
-    return <div className={`app ${theme}`}>
+    return <div className={classNames('app', {}, [theme])}>
         <button onClick={toggleTheme}>
             Toggle theme
         </button>
