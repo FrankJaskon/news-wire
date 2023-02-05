@@ -1,10 +1,10 @@
 import { FC, Suspense } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Route, Routes } from 'react-router-dom'
-import classNames from '../helpers/classNames/classNames'
-import LazyAboutPage from './pages/AboutPage/AboutPage.lazy'
-import LazyMainPage from './pages/MainPage/MainPage.lazy'
-import useTheme from './theme/useTheme'
+import { AboutPage } from 'pages/AboutPage'
+import { MainPage } from 'pages/MainPage'
+import useTheme from 'shared/config/theme/useTheme'
+import classNames from 'shared/lib/classNames/classNames'
 
 const App: FC = () => {
     const { theme, toggleTheme } = useTheme()
@@ -16,8 +16,8 @@ const App: FC = () => {
         <NavLink to='/'>Main page</NavLink>
         <Suspense fallback={<div>Loading</div>}>
             <Routes>
-                <Route path='/about' element={<LazyAboutPage />} />
-                <Route path='/' element={<LazyMainPage />} />
+                <Route path='/about' element={<AboutPage />} />
+                <Route path='/' element={<MainPage />} />
             </Routes>
         </Suspense>
     </div>
