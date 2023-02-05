@@ -29,7 +29,6 @@ const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
         ],
     }
 
-
     return [
         typeScriptLoader,
         styleLoader,
