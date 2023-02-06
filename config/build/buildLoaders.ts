@@ -4,13 +4,26 @@ import { BuildOptions } from './types/config'
 
 const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
 
-    const typeScriptLoader =  {
+    const typeScriptLoader: webpack.RuleSetRule =  {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
     }
 
-    const styleLoader = {
+    const svgLoader: webpack.RuleSetRule = {
+        test: /\.svg$/,
+        type: 'asset/resource',
+        generator: {
+            filename: options.paths.assets.svg,
+        }
+    }
+
+    const imgLoader: webpack.RuleSetRule = {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+    }
+
+    const styleLoader: webpack.RuleSetRule = {
         test: /\.s[ac]ss$/i,
         use: [
             options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -32,6 +45,8 @@ const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     return [
         typeScriptLoader,
         styleLoader,
+        imgLoader,
+        svgLoader
     ]
 }
 

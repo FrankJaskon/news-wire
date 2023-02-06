@@ -1,10 +1,16 @@
 export type BuildMode = 'production' | 'development'
 
+export interface AssetPaths {
+    svg: string,
+    images: string,
+}
+
 export interface BuildPaths {
     entry: string
     output: string
     html: string
     src: string
+    assets: AssetPaths
 }
 
 export interface BuildEnv {

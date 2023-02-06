@@ -1,9 +1,12 @@
 import { createContext } from 'react'
+import { ValueOf } from 'shared/config/types/types'
 
-export enum Theme {
-    LIGHT = 'light',
-    DARK = 'dark',
-}
+export const appThemes = {
+    LIGHT: 'light',
+    DARK : 'dark',
+} as const
+
+export type Theme = ValueOf<typeof appThemes>
 
 export interface ThemeContextProps {
     theme: Theme,

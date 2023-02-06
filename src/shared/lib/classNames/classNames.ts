@@ -1,9 +1,9 @@
 type Mods = Record<string, boolean | string>
 
-const classNames = (cls: string, mods: Mods, extra: string[]): string => {
+const classNames = (cls: string, mods: Mods = {}, extra: string[] = []): string => {
     return [
         cls,
-        ...extra,
+        ...extra.filter(Boolean),
         ...Object.entries(mods)
             .filter(([key, value]) => value)
             .map(([key, value]) => key)

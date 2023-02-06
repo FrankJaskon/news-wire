@@ -13,8 +13,10 @@ const buildWebpackConfig = (options: BuildOptions): webpack.Configuration => {
         output: {
             filename: '[name].[contenthash].js',
             path: paths.output,
-            clean: true
+            clean: true,
+            assetModuleFilename: options.paths.assets.images,
         },
+
         module: {
             rules: buildLoaders(options)
         },
