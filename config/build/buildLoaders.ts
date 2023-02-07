@@ -12,10 +12,7 @@ const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
 
     const svgLoader: webpack.RuleSetRule = {
         test: /\.svg$/,
-        type: 'asset/resource',
-        generator: {
-            filename: options.paths.assets.svg,
-        }
+        use: ['@svgr/webpack'],
     }
 
     const imgLoader: webpack.RuleSetRule = {

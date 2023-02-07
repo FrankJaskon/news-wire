@@ -19,7 +19,7 @@ export const AppButton: FC<AppButtonProps> = (props) => {
     const { className, children, variant = ButtonStyleInterface.PRIMARY, ...otherProps } = props
 
     return <button
-        className={classNames(cls.ThemeToggler, {}, [className, cls[variant]])}
+        className={classNames(cls.AppButton, {}, [className, cls[variant]])}
         {...otherProps}>
             {children}
     </button>

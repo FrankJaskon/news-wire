@@ -6,17 +6,13 @@ declare module '*.scss' {
     export = classNames;
 }
 
-declare module '*.svg' {
-  import * as React from 'react';
-
-  export const ReactComponent: React.FunctionComponent<React.SVGProps<
-    SVGSVGElement
-  > & { title?: string }>;
-
-  const src: string;
-  export default src;
+declare module "*.svg" {
+    const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+    export default content;
 }
 
 declare module "*.png";
 declare module "*.jpg";
 declare module "*.jpeg";
+
+declare const __iS_DEV__: boolean;

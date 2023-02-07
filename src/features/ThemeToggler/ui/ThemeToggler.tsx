@@ -20,6 +20,6 @@ export const ThemeToggler: FC<ThemeTogglerProps> = (props) => {
         onClick={toggleTheme}
         className={classNames(cls.toggler, {}, [className])}
         {...otherProps}>
-        {theme === appThemes.DARK ? <img src={DarkIcon}/> : <img src={LightIcon}/>}
+        {theme === appThemes.DARK ? <DarkIcon /> : <LightIcon />}
     </AppButton>
 }

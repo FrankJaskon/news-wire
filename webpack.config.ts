@@ -8,7 +8,7 @@ export default ( env: BuildEnv ) => {
 		entry: path.resolve(__dirname, 'src', 'index.tsx'),
 		output: path.resolve(__dirname, 'dist'),
 		html: path.resolve(__dirname, 'public', 'index.html'),
-		src: path.resolve(__dirname, 'src'),
+		src: path.resolve(__dirname, 'src' ),
 		assets: {
 			svg: path.join('icons', '[name].[contenthash][ext]'),
 			images: path.join('images', '[name].[contenthash][ext]'),

@@ -1,0 +1,27 @@
+.SideBar {
+    height: calc(100vh - var(--navbar-height));
+    width: var(--sidebar-weight);
+
+    background-color: var(--inverted-bg-color);
+
+    position: relative;
+    transition: width .1s linear;
+}
+
+.collapsed {
+    width: var(--sidebar-weight-collapsed);
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ms20 {
+    margin-left: 20px;
+}
