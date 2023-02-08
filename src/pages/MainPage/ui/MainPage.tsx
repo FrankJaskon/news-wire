@@ -5,7 +5,8 @@ const MainPage: FC = () => {
 	const { t } = useTranslation('main')
 	return <div>
 		<h1>{t('page-title')}</h1>
-		{t('page-subtitle')} </div>
+		{t('page-subtitle')}
+	</div>
 }
 
 export default MainPage

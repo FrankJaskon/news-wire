@@ -7,9 +7,10 @@
     "start": "webpack serve --env port=3000",
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production",
-    "eslint:check": "eslint . --ext=.jsx,.js,.tsx,.ts",
-    "eslint:check:fix": "eslint . --ext=.jsx,.js,.tsx,.ts --fix"
-
+    "eslint": "eslint . --ext=.jsx,.js,.tsx,.ts",
+    "eslint:fix": "eslint . --ext=.jsx,.js,.tsx,.ts --fix",
+    "lint:scss": "npx stylelint \"**/*.scss\"",
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "@typescript-eslint/parser": "^5.12.1",
     "css-loader": "^6.6.0",
     "eslint": "^8.10.0",
+    "eslint-plugin-i18next": "^5.1.2",
     "eslint-plugin-react": "^7.29.2",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.3",
@@ -33,6 +35,8 @@
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
+    "stylelint": "^14.5.3",
+    "stylelint-config-standard-scss": "^3.0.0",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5",

@@ -6,7 +6,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:i18next/recommended"
     ],
     "overrides": [
     ],
@@ -22,7 +23,8 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "i18next"
     ],
     "rules": {
         "indent": [
@@ -41,6 +43,7 @@
             "error",
             "never"
         ],
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "i18next/no-literal-string": ["error", {"markupOnly": true}]
     }
 }
