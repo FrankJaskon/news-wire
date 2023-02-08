@@ -16,8 +16,8 @@ export const Navbar: FC<NavbarProps> = (props) => {
     return <div className={classNames(cls.Navbar, {}, [className])}>
         <div className={cls.links}>
             <img src={userIcon} />
-            <AppLink to='/about' variant='inverted'>{t('About us')}</AppLink>
-            <AppLink to='/' variant='inverted'>{t('Main page')}</AppLink>
+            <AppLink to='/about' variant='inverted'>{t('navbar.link.about')}</AppLink>
+            <AppLink to='/' variant='inverted'>{t('navbar.link.main')}</AppLink>
         </div>
     </div>
 }

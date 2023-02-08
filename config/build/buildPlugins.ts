@@ -1,5 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BuildOptions } from './types/config'
 
@@ -14,8 +15,10 @@ const buildPlugins = ({paths, isDev}: BuildOptions): webpack.WebpackPluginInstan
 		}),
 		new webpack.DefinePlugin({
 			__iS_DEV__: JSON.stringify(isDev)
-		})
-	]
+		}),
+		isDev && new ReactRefreshWebpackPlugin(),
+		isDev && new webpack.HotModuleReplacementPlugin()
+	].filter(Boolean)
 }
 
 export default buildPlugins

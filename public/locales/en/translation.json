@@ -1,5 +1,11 @@
 {
-  "About us": "About us",
-  "Main page": "Main page",
-  "language": "English"
+  "language-toggler": {
+    "language": "English"
+  },
+  "navbar": {
+    "link": {
+      "about": "About us",
+      "main": "Main page"
+    }
+  }
 }

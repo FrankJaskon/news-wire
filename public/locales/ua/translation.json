@@ -1,5 +1,11 @@
 {
-  "About us": "Про нас",
-  "Main page": "Головна",
-  "language": "Українська"
+  "language-toggler": {
+    "language": "Українська"
+  },
+  "navbar": {
+    "link": {
+      "about": "Про нас",
+      "main": "Головна"
+    }
+  }
 }

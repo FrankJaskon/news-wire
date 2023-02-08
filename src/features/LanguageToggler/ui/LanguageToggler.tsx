@@ -24,6 +24,6 @@ export const LanguageToggler: FC<LanguageTogglerProps> = (props) => {
         onClick={toggleLanguage}
         className={classNames(cls.toggler, {}, [className])}
         {...otherProps}>
-        {t('language')}
+        {t('language-toggler.language')}
     </AppButton>
 }
