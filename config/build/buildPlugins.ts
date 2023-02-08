@@ -5,7 +5,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BuildOptions } from './types/config'
 
 const buildPlugins = ({paths, isDev}: BuildOptions): webpack.WebpackPluginInstance[] => {
-    return [
+	return [
 		new HtmlWebpackPlugin({
 			template: paths.html,
 		}),

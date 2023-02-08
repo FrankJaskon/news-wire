@@ -2,7 +2,7 @@ import webpack from 'webpack'
 import { BuildOptions } from './types/config'
 
 const buildResolves = (options: BuildOptions): webpack.ResolveOptions => {
-    return {
+	return {
 		extensions: ['.tsx', '.ts', '.js'],
 		modules: [options.paths.src, 'node_modules'],
 		preferAbsolute: true,

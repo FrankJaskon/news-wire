@@ -9,18 +9,18 @@ interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const ButtonStyleInterface = {
-    PRIMARY: 'primary',
-    CLEAR: 'clear',
+	PRIMARY: 'primary',
+	CLEAR: 'clear',
 } as const
 
 export type ButtonStyleInterfaceType = ValueOf<typeof ButtonStyleInterface>
 
 export const AppButton: FC<AppButtonProps> = (props) => {
-    const { className, children, variant = ButtonStyleInterface.PRIMARY, ...otherProps } = props
+	const { className, children, variant = ButtonStyleInterface.PRIMARY, ...otherProps } = props
 
-    return <button
-        className={classNames(cls.AppButton, {}, [className, cls[variant]])}
-        {...otherProps}>
-            {children}
-    </button>
+	return <button
+		className={classNames(cls.AppButton, {}, [className, cls[variant]])}
+		{...otherProps}>
+		{children}
+	</button>
 }

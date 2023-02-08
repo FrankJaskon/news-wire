@@ -3,5 +3,14 @@
     "i18n-ally.defaultNamespace": "translation",
     "i18n-ally.sourceLanguage": "english",
     "i18n-ally.namespace": true,
-    "i18n-ally.pathMatcher": "{locale}/{namespaces}.json"
-  }
+    "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+  ],
+  "eslint.enable": true,
+  "eslint.run": "onSave",
+  "eslint.workingDirectories": [{ "mode": "auto" }]
+}

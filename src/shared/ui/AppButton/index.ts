@@ -1,1 +1,4 @@
-export { AppButton } from './ui/AppButton'
+export {
+	AppButton,
+	ButtonStyleInterfaceType
+} from './ui/AppButton'

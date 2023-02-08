@@ -10,14 +10,14 @@ interface NavbarProps {
 }
 
 export const Navbar: FC<NavbarProps> = (props) => {
-    const { className } = props
-    const { t } = useTranslation()
+	const { className } = props
+	const { t } = useTranslation()
 
-    return <div className={classNames(cls.Navbar, {}, [className])}>
-        <div className={cls.links}>
-            <img src={userIcon} />
-            <AppLink to='/about' variant='inverted'>{t('navbar.link.about')}</AppLink>
-            <AppLink to='/' variant='inverted'>{t('navbar.link.main')}</AppLink>
-        </div>
-    </div>
+	return <div className={classNames(cls.Navbar, {}, [className])}>
+		<div className={cls.links}>
+			<img src={userIcon} />
+			<AppLink to='/about' variant='inverted'>{t('navbar.link.about')}</AppLink>
+			<AppLink to='/' variant='inverted'>{t('navbar.link.main')}</AppLink>
+		</div>
+	</div>
 }
