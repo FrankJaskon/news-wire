@@ -2,6 +2,13 @@
 	"extends": "stylelint-config-standard-scss",
 	"rules": {
 		"indentation": "tab",
-		"selector-class-pattern": null
+		"selector-class-pattern": null,
+		"rule-empty-line-before": [
+			"always",
+			{
+				"except": ["first-nested"],
+				"ignore": ["inside-block"]
+			}
+		]
 	}
 }
