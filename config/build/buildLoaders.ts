@@ -20,6 +20,20 @@ const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
 		type: 'asset/resource',
 	}
 
+	const babelLoader: webpack.RuleSetRule = {
+		test: /\.(js|ts|tsx|jsx)$/,
+		exclude: /node_modules/,
+		use: {
+			loader: 'babel-loader',
+			options: {
+				presets: [
+					'@babel/preset-typescript',
+					['@babel/preset-env', { targets: 'defaults' }]
+				]
+			}
+		}
+	}
+
 	const styleLoader: webpack.RuleSetRule = {
 		test: /\.s[ac]ss$/i,
 		use: [
@@ -40,6 +54,7 @@ const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
 	}
 
 	return [
+		babelLoader,
 		typeScriptLoader,
 		styleLoader,
 		imgLoader,

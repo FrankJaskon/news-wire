@@ -5,7 +5,8 @@ import ThemeContext, {
 	ThemeContextProps
 } from 'shared/config/theme/ThemeContext'
 
-const defaultTheme: Theme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || appThemes.LIGHT
+const defaultTheme: Theme = localStorage
+	.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || appThemes.LIGHT
 
 export const ThemeProvider: FC = ({children}) => {
 	const [theme, setTheme] = useState<Theme>(defaultTheme)
