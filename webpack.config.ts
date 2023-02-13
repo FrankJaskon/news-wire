@@ -12,8 +12,10 @@ export default ( env: BuildEnv ) => {
 		assets: {
 			svg: path.join('icons', '[name].[contenthash][ext]'),
 			images: path.join('images', '[name].[contenthash][ext]'),
-		}
+		},
 	}
+
+	const analyzed: boolean = env.analyzed || false
 
 	const mode: BuildMode = env.mode || 'development'
 
@@ -25,7 +27,8 @@ export default ( env: BuildEnv ) => {
 		mode,
 		paths,
 		isDev,
-		port: PORT
+		port: PORT,
+		analyzed
 	})
 
 	return config
