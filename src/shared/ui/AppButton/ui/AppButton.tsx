@@ -19,6 +19,7 @@ export const AppButton: FC<AppButtonProps> = (props) => {
 	const { className, children, variant = ButtonStyleInterface.PRIMARY, ...otherProps } = props
 
 	return <button
+		data-testid='btn'
 		className={classNames(cls.AppButton, {}, [className, cls[variant]])}
 		{...otherProps}>
 		{children}

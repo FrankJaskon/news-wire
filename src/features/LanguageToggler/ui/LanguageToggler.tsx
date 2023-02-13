@@ -14,11 +14,12 @@ export const LanguageToggler: FC<LanguageTogglerProps> = (props) => {
 
 	const isEn = i18n.language === 'en'
 
-	const toggleLanguage = () => {
-		i18n.changeLanguage(isEn ? 'ua' : 'en')
+	const toggleLanguage = async () => {
+		await i18n.changeLanguage(isEn ? 'ua' : 'en')
 	}
 
 	return <AppButton
+		data-testid='language-toggler'
 		onClick={toggleLanguage}
 		className={classNames('', {}, [className])}
 		{...otherProps}>

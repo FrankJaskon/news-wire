@@ -3,14 +3,14 @@ import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
 import { LanguageToggler } from 'features/LanguageToggler'
 import { ThemeToggler } from 'features/ThemeToggler'
-import cls from './SideBar.module.scss'
+import cls from './Sidebar.module.scss'
 import { useTranslation } from 'react-i18next'
 
-interface SideBarProps {
+interface SidebarProps {
     className?: string
 }
 
-export const SideBar: FC<SideBarProps> = (props) => {
+export const Sidebar: FC<SidebarProps> = (props) => {
 	const { className } = props
 	const { t } = useTranslation()
 	const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
@@ -19,8 +19,11 @@ export const SideBar: FC<SideBarProps> = (props) => {
 		setIsCollapsed(prev => !prev)
 	}
 
-	return <div className={classNames(cls.SideBar, { [cls.collapsed]: isCollapsed }, [className])}>
+	return <div
+		data-testid='sidebar'
+		className={classNames(cls.SideBar, { [cls.collapsed]: isCollapsed }, [className])}>
 		<AppButton
+			data-testid='sidebar-toggler'
 			className={cls.toggler}
 			onClick={toggleSidebar}>
 			{t('toggler')}
