@@ -9,5 +9,9 @@
     }
   },
   "toggler": "X",
-  "not-found": "Page not found"
+  "not-found": "Page not found",
+  "error-page": {
+    "reload": "Reload",
+    "something-went-wrong": "Uuuups. Something went wrong."
+  }
 }

@@ -1,1 +1,0 @@
-@import"./reset.scss";@import"./themes/normal.scss";@import"./themes/dark.scss";@import"./variables/global.scss";.App{font:var(--font-m);background-color:var(--bg-color);color:var(--primary-color);min-height:100vh}.page-wrapper{display:flex}.page-content{flex-grow:1}/*# sourceMappingURL=index.css.map */

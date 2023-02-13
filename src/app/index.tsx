@@ -7,6 +7,7 @@ import { SideBar } from 'widgets/SideBar'
 
 const App: FC = () => {
 	const { theme } = useTheme()
+
 	return <Suspense fallback=''>
 		<div className={classNames('App', {}, [theme])}>
 			<Navbar />

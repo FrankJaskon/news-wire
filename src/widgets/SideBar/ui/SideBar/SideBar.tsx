@@ -19,7 +19,7 @@ export const SideBar: FC<SideBarProps> = (props) => {
 		setIsCollapsed(prev => !prev)
 	}
 
-	return <div className={classNames(cls.SideBar, {[cls.collapsed]: isCollapsed}, [className])}>
+	return <div className={classNames(cls.SideBar, { [cls.collapsed]: isCollapsed }, [className])}>
 		<AppButton
 			className={cls.toggler}
 			onClick={toggleSidebar}>
@@ -27,7 +27,12 @@ export const SideBar: FC<SideBarProps> = (props) => {
 		</AppButton>
 		<div className={cls.buttonGroup}>
 			<ThemeToggler variant='clear' />
-			<LanguageToggler variant='clear' className={cls.ms20} />
+			<LanguageToggler
+				variant='clear'
+				className={classNames(
+					cls.LanguageToggler,
+					{ [cls.collapsed]: isCollapsed },
+					[cls.ms20])} />
 		</div>
 	</div>
 }
