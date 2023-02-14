@@ -12,5 +12,10 @@
   ],
   "eslint.enable": true,
   "eslint.run": "onSave",
-  "eslint.workingDirectories": [{ "mode": "auto" }]
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "npm.packageManager": "npm"
 }

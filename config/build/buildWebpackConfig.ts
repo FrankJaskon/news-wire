@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import buildDevServer from './buildDevServer'
-import buildLoaders from './buildLoaders'
+import buildLoaders from './Loaders/buildLoaders'
 import buildPlugins from './buildPlugins'
 import buildResolves from './buildResolves'
 import { BuildOptions } from './types/config'

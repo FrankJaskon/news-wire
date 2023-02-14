@@ -29,9 +29,8 @@ export const Sidebar: FC<SidebarProps> = (props) => {
 			{t('toggler')}
 		</AppButton>
 		<div className={cls.buttonGroup}>
-			<ThemeToggler variant='clear' />
+			<ThemeToggler />
 			<LanguageToggler
-				variant='clear'
 				className={classNames(
 					cls.LanguageToggler,
 					{ [cls.collapsed]: isCollapsed },

@@ -1,9 +1,26 @@
 .AppButton {
 	cursor: pointer;
+	margin: 0 3px;
+	padding: 3px 11px;
+	color: var(--primary-color);
+	border-radius: var(--border-radius);
+}
+
+.primary {
+	border: none;
+	background-color: var(--primary-color);
+	color: var(--light-primary-color);
 }
 
 .clear {
+	padding: 0;
+	border-radius: none;
 	border: none;
 	outline: none;
+	background: none;
+}
+
+.outline {
+	border: 1px solid;
 	background: none;
 }

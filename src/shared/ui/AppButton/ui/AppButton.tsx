@@ -11,6 +11,7 @@ interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const ButtonStyleInterface = {
 	PRIMARY: 'primary',
 	CLEAR: 'clear',
+	OUTLINE: 'outline'
 } as const
 
 export type ButtonStyleInterfaceType = ValueOf<typeof ButtonStyleInterface>

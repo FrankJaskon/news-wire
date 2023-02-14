@@ -11,6 +11,12 @@
         "plugin:i18next/recommended"
     ],
     "overrides": [
+        {
+            "files": ["*.test.ts", "*.test.tsx", "*.stories.ts", "*.stories.tsx"],
+            "rules": {
+                "i18next/no-literal-string": "off"
+            }
+        }
     ],
     "settings": {
         "react": {
@@ -59,6 +65,7 @@
         "object-curly-spacing": ["error", "always", {
             "arraysInObjects": false,
             "objectsInObjects": false
-        }]
+        }],
+        "react/display-name": "off"
     }
 }

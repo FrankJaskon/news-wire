@@ -1,4 +1,4 @@
 export {
 	AppButton,
-	ButtonStyleInterfaceType
+	ButtonStyleInterface
 } from './ui/AppButton'
