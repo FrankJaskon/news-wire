@@ -8,8 +8,9 @@ import { BuildOptions } from './types/config'
 const buildPlugins = ({
 	paths,
 	isDev,
-	analyzed }: BuildOptions): webpack.WebpackPluginInstance[] => {
-	return [
+	analyzed
+}: BuildOptions): webpack.WebpackPluginInstance[] => {
+	const plugins: webpack.WebpackPluginInstance[] = [
 		new HtmlWebpackPlugin({
 			template: paths.html,
 		}),
@@ -19,12 +20,18 @@ const buildPlugins = ({
 		}),
 		new webpack.DefinePlugin({
 			__iS_DEV__: JSON.stringify(isDev)
-		}),
-		isDev && new ReactRefreshWebpackPlugin(),
-		analyzed && new BundleAnalyzerPlugin({
-			openAnalyzer: true
 		})
-	].filter(Boolean)
+	]
+	if (isDev) {
+		plugins.push(new ReactRefreshWebpackPlugin())
+	}
+	if (analyzed) {
+		plugins.push(new BundleAnalyzerPlugin({
+			openAnalyzer: true
+		}))
+	}
+
+	return plugins
 }
 
 export default buildPlugins

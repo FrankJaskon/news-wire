@@ -17,5 +17,6 @@
       "mode": "auto"
     }
   ],
-  "npm.packageManager": "npm"
+  "npm.packageManager": "npm",
+  "files.eol": "\n"
 }

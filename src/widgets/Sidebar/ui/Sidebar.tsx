@@ -3,8 +3,8 @@ import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
 import { LanguageToggler } from 'features/LanguageToggler'
 import { ThemeToggler } from 'features/ThemeToggler'
-import cls from './Sidebar.module.scss'
 import { useTranslation } from 'react-i18next'
+import cls from './Sidebar.module.scss'
 
 interface SidebarProps {
     className?: string
@@ -21,7 +21,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
 
 	return <div
 		data-testid='sidebar'
-		className={classNames(cls.SideBar, { [cls.collapsed]: isCollapsed }, [className])}>
+		className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}>
 		<AppButton
 			data-testid='sidebar-toggler'
 			className={cls.toggler}
