@@ -18,5 +18,5 @@
     }
   ],
   "npm.packageManager": "npm",
-  "files.eol": "\n"
+  "files.eol": "\r\n"
 }

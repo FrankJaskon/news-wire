@@ -5,23 +5,43 @@ import cls from './AppButton.module.scss'
 
 interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string,
-    variant?: ButtonStyleInterfaceType
+    variant?: ButtonVariantType
+	size?: ButtonSizeType
+	shape?: ButtonShapeType
 }
 
-export const ButtonStyleInterface = {
+export const ButtonVariant = {
 	PRIMARY: 'primary',
-	CLEAR: 'clear',
+	CUSTOM: 'custom',
 	OUTLINE: 'outline'
 } as const
 
-export type ButtonStyleInterfaceType = ValueOf<typeof ButtonStyleInterface>
+export const ButtonSize = {
+	M: 'm',
+	L: 'l',
+	XL: 'xl'
+} as const
+
+export const ButtonShape = {
+	SQUARE: 'square',
+} as const
+
+export type ButtonVariantType = ValueOf<typeof ButtonVariant>
+export type ButtonSizeType = ValueOf<typeof ButtonSize>
+export type ButtonShapeType = ValueOf<typeof ButtonShape>
 
 export const AppButton: FC<AppButtonProps> = (props) => {
-	const { className, children, variant = ButtonStyleInterface.PRIMARY, ...otherProps } = props
+	const {
+		className,
+		children,
+		variant = ButtonVariant.PRIMARY,
+		shape,
+		size = ButtonSize.M,
+		...otherProps } = props
 
 	return <button
 		data-testid='btn'
-		className={classNames(cls.AppButton, {}, [className, cls[variant]])}
+		className={classNames(cls.AppButton, {}, [className, cls[variant], cls[size], cls[shape]])}
 		{...otherProps}>
 		{children}
 	</button>

@@ -7,8 +7,8 @@ jobs:
   pipeline:
     strategy:
       matrix:
-        os: [ macos-latest ]
-        node: [ 18.14.x ]
+        os: [ windows-latest ]
+        node: [ 16.x ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setup Node.js environment
@@ -21,13 +21,16 @@ jobs:
         run: npm ci
       - name: Production build
         run: npm run build:prod
+        if: always()
       - name: Check by eslint
         run: npm run eslint
+        if: always()
       - name: Check by style lint
         run: npm run lint:scss
+        if: always()
       - name: Run unit tests
         run: npm run test:unit
-      - name: Run storybook build
-        run: npm run storybook:build
+        if: always()
       - name: Run screenshot testing
-        run: npm run test:ui:ci:macos
+        run: npm run test:ui:ci
+        if: always()

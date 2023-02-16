@@ -3,6 +3,7 @@
 	"rules": {
 		"indentation": "tab",
 		"selector-class-pattern": null,
+		"number-leading-zero": "never",
 		"rule-empty-line-before": [
 			"always",
 			{

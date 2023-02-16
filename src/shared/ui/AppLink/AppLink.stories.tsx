@@ -42,15 +42,15 @@ UnderlinedDark.args = {
 }
 UnderlinedDark.decorators = [ThemeDecorator(appThemes.DARK)]
 
-export const Inverted: Story = Template.bind({})
-Inverted.args = {
+export const Secondary: Story = Template.bind({})
+Secondary.args = {
 	children: 'Click',
-	variant: AppLinkTheme.INVERTED,
+	variant: AppLinkTheme.SECONDARY,
 }
 
-export const InvertedDark: Story = Template.bind({})
-InvertedDark.args = {
+export const SecondaryDark: Story = Template.bind({})
+SecondaryDark.args = {
 	children: 'Click',
-	variant: AppLinkTheme.INVERTED,
+	variant: AppLinkTheme.SECONDARY,
 }
-InvertedDark.decorators = [ThemeDecorator(appThemes.DARK)]
+SecondaryDark.decorators = [ThemeDecorator(appThemes.DARK)]

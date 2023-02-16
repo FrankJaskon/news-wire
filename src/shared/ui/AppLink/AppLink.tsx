@@ -7,7 +7,7 @@ import cls from './AppLink.module.scss'
 
 export const AppLinkTheme = {
 	PRIMARY: 'primary',
-	INVERTED: 'inverted',
+	SECONDARY: 'secondary',
 	UNDERLINED: 'underlined',
 } as const
 
@@ -23,7 +23,7 @@ export const AppLink: FC<AppLinkProps> = (props) => {
 		to,
 		children,
 		className,
-		variant = AppLinkTheme.PRIMARY,
+		variant = AppLinkTheme.SECONDARY,
 		...otherProps } = props
 
 	return <Link

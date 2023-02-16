@@ -13,7 +13,7 @@ const config: StorybookConfig = {
 	'framework': '@storybook/react',
 	'core': {
 		'builder': '@storybook/builder-webpack5'
-	}
+	},
 }
 
 module.exports = config

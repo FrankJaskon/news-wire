@@ -1,6 +1,7 @@
 {
   "language-toggler": {
-    "language": "Українська"
+    "language": "Українська",
+    "language-short": "Укр"
   },
   "navbar": {
     "link": {
@@ -8,7 +9,6 @@
       "main": "Головна"
     }
   },
-  "toggler": "X",
   "not-found": "Сторінку не знайдено",
   "error-page": {
     "reload": "Оновити сторінку",

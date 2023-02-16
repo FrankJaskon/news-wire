@@ -5,11 +5,12 @@ import { AppButton } from 'shared/ui/AppButton'
 
 interface LanguageTogglerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string,
+	short?: boolean
 }
 
 export const LanguageToggler: FC<LanguageTogglerProps> = (props) => {
 	const { t, i18n } = useTranslation()
-	const { className, ...otherProps } = props
+	const { className, short, ...otherProps } = props
 
 	const isEn = i18n.language === 'en'
 
@@ -18,11 +19,11 @@ export const LanguageToggler: FC<LanguageTogglerProps> = (props) => {
 	}
 
 	return <AppButton
-		variant='clear'
+		variant='custom'
 		data-testid='language-toggler'
 		onClick={toggleLanguage}
 		className={classNames('', {}, [className])}
 		{...otherProps}>
-		{t('language-toggler.language')}
+		{short ? t('language-toggler.language-short') : t('language-toggler.language')}
 	</AppButton>
 }

@@ -1,6 +1,7 @@
 {
   "language-toggler": {
-    "language": "English"
+    "language": "English",
+    "language-short": "En"
   },
   "navbar": {
     "link": {
@@ -8,7 +9,6 @@
       "main": "Main page"
     }
   },
-  "toggler": "X",
   "not-found": "Page not found",
   "error-page": {
     "reload": "Reload",

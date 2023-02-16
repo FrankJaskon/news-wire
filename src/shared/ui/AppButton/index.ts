@@ -1,4 +1,6 @@
 export {
 	AppButton,
-	ButtonStyleInterface
+	ButtonVariant,
+	ButtonShape,
+	ButtonSize
 } from './ui/AppButton'

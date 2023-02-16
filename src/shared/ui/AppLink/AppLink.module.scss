@@ -1,16 +1,12 @@
 .AppLink {
 	text-decoration: none;
-	color: var(--primary-color);
-}
-
-.primary {
-	color: var(--primary-color);
-}
-
-.inverted {
-	color: var(--secondary-color);
-}
-
-.underlined {
-	text-decoration: underline;
+	&.primary {
+		color: var(--primary-color);
+	}
+	&.secondary {
+		color: var(--secondary-color);
+	}
+	&.underlined {
+		text-decoration: underline;
+	}
 }

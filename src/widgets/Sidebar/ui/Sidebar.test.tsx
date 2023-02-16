@@ -1,15 +1,20 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { renderWithTranslation } from 'shared/lib/tests/renderWithTranslation/renderWithTranslation'
+import {
+	MockTranslation
+} from 'shared/config/tests/MockTranslation/MockTranslation'
+import {
+	MockBrowserRouter
+} from 'shared/config/tests/MockBrowserRouter/MockBrowserRouter'
 import { Sidebar } from './Sidebar'
 
 describe('Sidebar', () => {
 	test('Render', () => {
-		render(<Sidebar />)
+		render(MockBrowserRouter(MockTranslation(<Sidebar />)))
 		expect(screen.getByTestId('sidebar')).toBeInTheDocument()
 		screen.debug()
 	})
 	test('Test toggler', () => {
-		renderWithTranslation(<Sidebar />)
+		render(MockBrowserRouter(MockTranslation(<Sidebar />)))
 		expect(screen.getByTestId('sidebar')).toBeInTheDocument()
 
 		const toggler = screen.getByTestId('sidebar-toggler')

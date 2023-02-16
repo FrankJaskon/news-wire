@@ -16,10 +16,12 @@ export const ThemeToggler: FC<ThemeTogglerProps> = (props) => {
 	const { theme, toggleTheme } = useTheme()
 
 	return  <AppButton
-		variant='clear'
+		variant='custom'
 		onClick={toggleTheme}
 		className={classNames(cls.ThemeToggler, {}, [className])}
 		{...otherProps}>
-		{theme === appThemes.DARK ? <DarkIcon /> : <LightIcon />}
+		{theme === appThemes.DARK
+			? <DarkIcon className={cls.svg} />
+			: <LightIcon className={cls.svg} />}
 	</AppButton>
 }

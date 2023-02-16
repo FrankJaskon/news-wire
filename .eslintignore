@@ -1,3 +1,4 @@
 dist/
 node_modules/
 storybook-static/
+generate-visual-json-report.js

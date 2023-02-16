@@ -7,8 +7,8 @@ describe('AppButton', () => {
 		expect(screen.getByTestId('btn')).toBeInTheDocument()
 	})
 	test('Test variant', () => {
-		render(<AppButton variant='clear'>+</AppButton>)
-		expect(screen.getByTestId('btn')).toHaveClass('clear')
+		render(<AppButton variant='custom'>+</AppButton>)
+		expect(screen.getByTestId('btn')).toHaveClass('custom')
 		screen.debug()
 	})
 })

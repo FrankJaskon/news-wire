@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
 import { appThemes } from 'shared/config/theme/ThemeContext'
-import { AppButton, ButtonStyleInterface } from './AppButton'
+import { AppButton, ButtonShape, ButtonSize, ButtonVariant } from './AppButton'
 
 export default {
 	title: 'shared/AppButton',
@@ -13,41 +13,99 @@ export default {
 
 const Template: ComponentStory<typeof AppButton> = (args) => <AppButton {...args} />
 
-export const Primary: Story = Template.bind({})
-Primary.args = {
+export const Button: Story = Template.bind({})
+Button.args = {
 	children: 'Click',
-	variant: ButtonStyleInterface.PRIMARY,
 }
 
-export const PrimaryDark: Story = Template.bind({})
-PrimaryDark.args = {
+export const ButtonDark: Story = Template.bind({})
+ButtonDark.args = {
 	children: 'Click',
-	variant: ButtonStyleInterface.PRIMARY,
 }
-PrimaryDark.decorators = [ThemeDecorator(appThemes.DARK)]
+ButtonDark.decorators = [ThemeDecorator(appThemes.DARK)]
 
-export const Clear: Story = Template.bind({})
-Clear.args = {
+export const ButtonL: Story = Template.bind({})
+ButtonL.args = {
 	children: 'Click',
-	variant: ButtonStyleInterface.CLEAR,
+	size: ButtonSize.L
 }
 
-export const ClearDark: Story = Template.bind({})
-ClearDark.args = {
+export const ButtonXL: Story = Template.bind({})
+ButtonXL.args = {
 	children: 'Click',
-	variant: ButtonStyleInterface.CLEAR,
+	size: ButtonSize.XL
 }
-ClearDark.decorators = [ThemeDecorator(appThemes.DARK)]
+
+export const Square: Story = Template.bind({})
+Square.args = {
+	children: '>',
+	shape: ButtonShape.SQUARE
+}
+
+export const SquareDark: Story = Template.bind({})
+SquareDark.args = {
+	children: '>',
+	shape: ButtonShape.SQUARE
+}
+SquareDark.decorators = [ThemeDecorator(appThemes.DARK)]
+
+export const SquareL: Story = Template.bind({})
+SquareL.args = {
+	children: '>',
+	shape: ButtonShape.SQUARE,
+	size: ButtonSize.L
+}
+
+export const SquareXL: Story = Template.bind({})
+SquareXL.args = {
+	children: '>',
+	shape: ButtonShape.SQUARE,
+	size: ButtonSize.XL
+}
+
+export const Custom: Story = Template.bind({})
+Custom.args = {
+	children: 'Click',
+	variant: ButtonVariant.CUSTOM,
+}
+
+export const CustomDark: Story = Template.bind({})
+CustomDark.args = {
+	children: 'Click',
+	variant: ButtonVariant.CUSTOM,
+}
+CustomDark.decorators = [ThemeDecorator(appThemes.DARK)]
 
 export const Outline: Story = Template.bind({})
 Outline.args = {
 	children: 'Click',
-	variant: ButtonStyleInterface.OUTLINE,
+	variant: ButtonVariant.OUTLINE,
 }
 
 export const OutlineDark: Story = Template.bind({})
 OutlineDark.args = {
 	children: 'Click',
-	variant: ButtonStyleInterface.OUTLINE,
+	variant: ButtonVariant.OUTLINE,
 }
 OutlineDark.decorators = [ThemeDecorator(appThemes.DARK)]
+
+export const OutlineSquare: Story = Template.bind({})
+OutlineSquare.args = {
+	children: '>',
+	variant: ButtonVariant.OUTLINE,
+	shape: ButtonShape.SQUARE
+}
+
+export const OutlineL: Story = Template.bind({})
+OutlineL.args = {
+	children: 'Click',
+	variant: ButtonVariant.OUTLINE,
+	size: ButtonSize.L
+}
+
+export const OutlineXL: Story = Template.bind({})
+OutlineXL.args = {
+	children: 'Click',
+	variant: ButtonVariant.OUTLINE,
+	size: ButtonSize.XL
+}

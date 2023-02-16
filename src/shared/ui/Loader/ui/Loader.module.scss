@@ -13,8 +13,9 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	border: 5px solid var(--bg-color);
-	border-color: var(--dark-bg-color) var(--dark-bg-color) var(--bg-color) var(--bg-color);
+	border: 5px solid var(--primary-color);
+
+	/* border-color: var(--primary-color) var(--primary-color) var(--primary-color) var(--primary-color); */
 	border-radius: 50%;
 	box-sizing: border-box;
 	animation: rotate 3s ease-in-out infinite;
