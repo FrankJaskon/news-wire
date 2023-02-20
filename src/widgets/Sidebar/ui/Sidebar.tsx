@@ -30,13 +30,13 @@ export const Sidebar: FC<SidebarProps> = (props) => {
 				className={cls.item}
 				to='/'>
 				<HomeIcon className={cls.icon}/>
-				<span>{t('navbar.link.main')}</span>
+				<span>{t('sidebar.link.main')}</span>
 			</AppLink>
 			<AppLink
 				className={cls.item}
 				to='/about'>
 				<AboutIcon className={cls.icon}/>
-				<span>{t('navbar.link.about')}</span>
+				<span>{t('sidebar.link.about')}</span>
 			</AppLink>
 		</div>
 		<AppButton

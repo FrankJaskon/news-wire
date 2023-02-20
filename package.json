@@ -19,7 +19,7 @@
     "test:ui:ci:macos": "brew install graphicsmagick && npx loki --requireReference update --reactUri file:./storybook-static",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
-    "test:ua:report": "npm run test:ui:json npm run test:ua:html",
+    "test:ua:report": "npm run test:ui:json && npm run test:ui:html",
     "storybook": "start-storybook -p 6006 -c \"./config/storybook\""
   },
   "author": "",
@@ -55,6 +55,7 @@
     "eslint": "^8.10.0",
     "eslint-plugin-i18next": "^5.1.2",
     "eslint-plugin-react": "^7.29.2",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",

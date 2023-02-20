@@ -4,6 +4,9 @@
     "language-short": "Укр"
   },
   "navbar": {
+    "login": "Увійти"
+  },
+  "sidebar": {
     "link": {
       "about": "Про нас",
       "main": "Головна"

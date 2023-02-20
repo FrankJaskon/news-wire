@@ -4,6 +4,9 @@
     "language-short": "En"
   },
   "navbar": {
+    "login": "Log in"
+  },
+  "sidebar": {
     "link": {
       "about": "About us",
       "main": "Main page"

@@ -3,10 +3,13 @@
 @import url("./themes/dark.scss");
 @import url("./variables/global.scss");
 
-.App {
+body {
 	font: var(--font-m);
 	background-color: var(--bg-color);
 	color: var(--primary-color);
+}
+
+.App {
 	height: 100vh;
 	min-height: 100vh;
 }

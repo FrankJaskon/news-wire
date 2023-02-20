@@ -1,6 +1,15 @@
 .Navbar {
+	padding: 0 20px;
 	display: flex;
 	align-items: center;
 	height: var(--navbar-height);
 	background-color: var(--block-primary-color);
+}
+
+.linksGroup {
+	margin-left: auto;
+}
+
+.link {
+	color: var(--block-secondary-color);
 }
