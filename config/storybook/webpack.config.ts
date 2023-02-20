@@ -17,6 +17,8 @@ const config = ({ config }: { config: webpack.Configuration }): webpack.Configur
 		src: path.resolve(__dirname, '..', '..', 'src')
 	}
 
+	// LOADERS
+
 	if ( config.module?.rules ) {
 		config.module.rules = config.module.rules.map((rule) => {
 			if (/svg/.test((rule as RuleSetRule ).test as string)) {
@@ -29,9 +31,19 @@ const config = ({ config }: { config: webpack.Configuration }): webpack.Configur
 		config.module.rules.push(imgLoader())
 	}
 
+	// RESOLVES
+
 	if ( config.resolve ) {
 		config.resolve?.modules?.push(paths.src)
 		config.resolve?.extensions?.push('.ts, .tsx')
+	}
+
+	// PLUGINS
+
+	if ( config.plugins ) {
+		config.plugins?.push(new webpack.DefinePlugin({
+			__iS_DEV__: true
+		}))
 	}
 
 	return config

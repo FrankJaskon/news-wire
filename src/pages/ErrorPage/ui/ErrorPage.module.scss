@@ -4,8 +4,8 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background-color: #15202b;
-	color: #ff8c00;
+	background-color: var(--bg-color);
+	color: var(--primary-color);
 }
 
 .mt20 {

@@ -1,44 +1,25 @@
 import { Story } from '@storybook/react'
 import { ThemeProvider } from 'app/providers/ThemeProvider'
-import { FC, ReactNode, useEffect } from 'react'
-import { appThemes, Theme } from 'shared/config/theme/ThemeContext'
+import { FC, ReactNode } from 'react'
+import { Theme } from 'shared/config/theme/ThemeContext'
 import useTheme from 'shared/config/theme/useTheme'
-import classNames from 'shared/lib/classNames/classNames'
 
-interface AppProps {
+interface WithUseThemeProps {
 	children: ReactNode
-	manualTheme?: Theme
 }
 
-const App: FC<AppProps> = (props) => {
-	const { children, manualTheme } = props
-	const { theme, toggleTheme } = useTheme()
-
-	useEffect(() => {
-		if (manualTheme && manualTheme !== theme) {
-			toggleTheme()
-		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
-
-	useEffect(() => {
-		const body = document.querySelector('body')
-		body.classList.remove(appThemes.LIGHT, appThemes.DARK)
-		body.classList.add(theme)
-
-
-	}, [theme])
-
-	return <div className={classNames('App', {}, [])}>
+const WithUseTheme: FC<WithUseThemeProps> = ({ children }) => {
+	const { toggleTheme } = useTheme()
+	return <>
 		{children}
-	</div>
+	</>
 }
 
-export const ThemeDecorator = (theme: Theme | undefined = undefined) => (
+export const ThemeDecorator = (theme: Theme) => (
 	(StoryComponent: Story) => (
-		<ThemeProvider>
-			<App manualTheme={theme}>
+		<ThemeProvider initialTheme={theme}>
+			<WithUseTheme>
 				<StoryComponent />
-			</App>
+			</WithUseTheme>
 		</ThemeProvider>
 	))
