@@ -16,5 +16,12 @@
   "error-page": {
     "reload": "Reload",
     "something-went-wrong": "Uuuups. Something went wrong."
+  },
+  "login": {
+    "header": "Production project",
+    "login": "Login",
+    "password": "Password",
+    "log-in": "Log in",
+    "new-account": "Create new account"
   }
 }

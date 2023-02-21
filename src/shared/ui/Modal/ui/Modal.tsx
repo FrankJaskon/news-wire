@@ -8,6 +8,7 @@ interface ModalProps {
 	children?: ReactNode
 	isOpen?: boolean
 	onClose?: () => void
+	lazy?: boolean
 }
 
 const ANIMATION_DELAY = 200
@@ -17,19 +18,45 @@ export const Modal: FC<ModalProps> = (props) => {
 		className,
 		isOpen,
 		onClose,
-		children
+		children,
+		lazy
 	} = props
 
+	const [isMounted, setIsMounted] = useState<boolean>(false)
+	const [isMouseDown, setIsMouseDown] = useState(false)
 	const [isClosing, setIsClosing] = useState<boolean>(false)
 	const timerRef = useRef<ReturnType<typeof setTimeout>>()
+	const overlayRef = useRef<HTMLDivElement>()
+	const contentRef = useRef<HTMLDivElement>()
 
-	const onContentClick = (event: MouseEvent<HTMLDivElement>) => {
-		event.stopPropagation()
+	const mods: Record<string, boolean> = {
+		[cls.open]: isOpen,
+		[cls.closed]: isClosing,
+	} as const
+
+	const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+		if (isMouseDown) return
+		if (e.target === overlayRef.current) {
+			setIsMouseDown(true)
+		}
+	}
+
+	const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
+		if (!isMouseDown) return
+		if (e.target === overlayRef.current) {
+			setIsMouseDown(false)
+			closeHandler()
+		}
+	}
+
+	const handleClickOnOverlay = (e: MouseEvent<HTMLDivElement>) => {
+		if (e.target === overlayRef.current) {
+			e.preventDefault()
+		}
 	}
 
 	const closeHandler = useCallback(() => {
 		if (onClose) {
-			console.log(onClose)
 			setIsClosing(true)
 			timerRef.current = setTimeout(() => {
 				onClose()
@@ -44,10 +71,11 @@ export const Modal: FC<ModalProps> = (props) => {
 		}
 	}, [closeHandler])
 
-	const mods: Record<string, boolean> = {
-		[cls.open]: isOpen,
-		[cls.closed]: isClosing
-	} as const
+	useEffect(() => {
+		if (isOpen) {
+			setIsMounted(true)
+		}
+	}, [isOpen])
 
 	useEffect(() => {
 		if (isOpen) {
@@ -60,14 +88,25 @@ export const Modal: FC<ModalProps> = (props) => {
 		}
 	}, [isOpen, onPressEscape])
 
+	if (lazy && !isMounted) {
+		return null
+	}
+
 	return <Portal>
-		<div className={classNames(cls.Modal, mods, [className])}>
+		<div
+			className={classNames(cls.Modal, mods, [className])}
+			onMouseDown={handleMouseDown}
+			onMouseUp={handleMouseUp}
+		>
 			<div
-				onClick={closeHandler}
-				className={cls.overlay}>
+				onMouseDown={handleClickOnOverlay}
+				ref={overlayRef}
+				className={cls.overlay}
+			>
 				<div
+					ref={contentRef}
 					className={cls.content}
-					onClick={onContentClick}>
+				>
 					{children}
 				</div>
 			</div>

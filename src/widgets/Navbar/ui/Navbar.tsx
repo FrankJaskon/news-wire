@@ -1,3 +1,4 @@
+import { LoginModal } from 'features/AuthByUsername'
 import { FC, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/classNames'
@@ -29,8 +30,8 @@ export const Navbar: FC<NavbarProps> = (props) => {
 				variant='custom'
 				onClick={openModal}>{t('navbar.login')}</AppButton>
 		</div>
-		<Modal
+		<LoginModal
 			isOpen={isAuthModal}
-			onClose={closeModal}>+</Modal>
+			onClose={closeModal} />
 	</div>
 }

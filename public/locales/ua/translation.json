@@ -16,5 +16,12 @@
   "error-page": {
     "reload": "Оновити сторінку",
     "something-went-wrong": "Щось трапилось. Непередбачена помилка."
+  },
+  "login": {
+    "header": "Production project",
+    "login": "Логін",
+    "password": "Пароль",
+    "log-in": "Увійти",
+    "new-account": "Створити аккаунт"
   }
 }

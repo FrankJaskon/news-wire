@@ -13,9 +13,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--overlay-bg-color);
+	background-color: #0000;
 	height: 100%;
 	width: 100%;
+	transition: background-color .2s linear;
 }
 
 .content {
@@ -36,11 +37,17 @@
 		transform: scale(1);
 		opacity: 1;
 	}
+	.overlay {
+		background-color: var(--overlay-bg-color);
+	}
 }
 
 .closed {
 	.content {
 		transform: scale(.2);
 		opacity: .2;
+	}
+	.overlay {
+		background-color: #0000;
 	}
 }
