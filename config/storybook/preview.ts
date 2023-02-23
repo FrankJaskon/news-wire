@@ -3,7 +3,6 @@ import { appThemes } from '../../src/shared/config/theme/ThemeContext'
 import { RouteDecorator } from '../../src/shared/config/storybook/decorators/RouteDecorator'
 import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator'
 import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecotator'
-import { StoreDecorator } from '../../src/shared/config/storybook/decorators/StoreDecorator'
 import i18n from './i18next'
 
 export const parameters = {
@@ -23,7 +22,6 @@ export const parameters = {
 	layout: 'fullscreen'
 }
 
-addDecorator(StoreDecorator)
 addDecorator(StyleDecorator)
 addDecorator(RouteDecorator)
 addDecorator(ThemeDecorator(appThemes.LIGHT))

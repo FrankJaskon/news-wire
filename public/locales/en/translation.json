@@ -4,7 +4,8 @@
     "language-short": "En"
   },
   "navbar": {
-    "login": "Log in"
+    "login": "Log in",
+    "logout": "Log out"
   },
   "sidebar": {
     "link": {
@@ -23,5 +24,14 @@
     "password": "Password",
     "log-in": "Log in",
     "new-account": "Create new account"
+  },
+  "error": {
+    "login": {
+      "incorrect-data": "Login or password is wrong",
+      "unexpected-error": "An error occurred while logging in",
+      "gateway": "Gateway Timeout. No response from server",
+      "bad-request": "Bad request"
+    }
   }
 }
+

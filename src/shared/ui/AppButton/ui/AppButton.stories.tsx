@@ -18,6 +18,12 @@ Button.args = {
 	children: 'Click',
 }
 
+export const ButtonDisabled: Story = Template.bind({})
+ButtonDisabled.args = {
+	children: 'Click',
+	disabled: true
+}
+
 export const ButtonDark: Story = Template.bind({})
 ButtonDark.args = {
 	children: 'Click',

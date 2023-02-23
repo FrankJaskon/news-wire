@@ -8,6 +8,7 @@ interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ButtonVariantType
 	size?: ButtonSizeType
 	shape?: ButtonShapeType
+	disabled?: boolean
 }
 
 export const ButtonVariant = {
@@ -37,11 +38,22 @@ export const AppButton: FC<AppButtonProps> = (props) => {
 		variant = ButtonVariant.PRIMARY,
 		shape,
 		size = ButtonSize.M,
+		disabled,
 		...otherProps } = props
 
 	return <button
 		data-testid='btn'
-		className={classNames(cls.AppButton, {}, [className, cls[variant], cls[size], cls[shape]])}
+		className={classNames(
+			cls.AppButton,
+			{
+				[cls.disabled]: disabled
+			},
+			[
+				className,
+				cls[variant],
+				cls[size],
+				cls[shape]
+			])}
 		{...otherProps}>
 		{children}
 	</button>

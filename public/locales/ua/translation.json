@@ -4,7 +4,8 @@
     "language-short": "Укр"
   },
   "navbar": {
-    "login": "Увійти"
+    "login": "Увійти",
+    "logout": "Вийти"
   },
   "sidebar": {
     "link": {
@@ -23,5 +24,13 @@
     "password": "Пароль",
     "log-in": "Увійти",
     "new-account": "Створити аккаунт"
+  },
+  "error": {
+    "login": {
+      "incorrect-data": "Невірний логін або пароль",
+      "unexpected-error": "Трапилась помилка",
+      "gateway": "Упс. Сервер не відповідає",
+      "bad-request": "Невірний запрос"
+    }
   }
 }

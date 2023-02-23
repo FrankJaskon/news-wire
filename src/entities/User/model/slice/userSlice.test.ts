@@ -1,10 +1,14 @@
-import { DeepPartial } from '@reduxjs/toolkit'
 import { UserScheme } from '../types/UserScheme'
-import { userActions, userReducer } from './userSlice'
+import { userReducer } from './userSlice'
 
 describe('counter reducer', () => {
-	const initialState: DeepPartial<UserScheme> = {}
-	it('should handle initial state', () => {
+	const initialState: UserScheme = {
+		authData: {
+			id: 0,
+			username: ''
+		}
+	}
+	it('should handle initialState', () => {
 		expect(userReducer(undefined, { type: 'unknown' })).toEqual(initialState)
 	})
 })

@@ -1,10 +1,20 @@
-import { FC, Suspense } from 'react'
+import { FC, Suspense, useEffect } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { Navbar } from 'widgets/Navbar'
 import { AppRouter } from 'app/providers/router'
 import { Sidebar } from 'widgets/Sidebar'
+import { useDispatch } from 'react-redux'
+import { userActions } from 'entities/User'
+import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
 
 const App: FC = () => {
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		const initialAuthData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)) || {}
+		dispatch(userActions.setAuthData(initialAuthData))
+	}, [dispatch])
+
 	return <Suspense fallback=''>
 		<div className={classNames('App', {}, [])}>
 			<Navbar />

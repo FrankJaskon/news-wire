@@ -1,19 +1,24 @@
+import { User, userActions } from 'entities/User'
+import { getUserAuthData } from 'entities/User'
 import { LoginModal } from 'features/AuthByUsername'
 import { FC, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
-import { Modal } from 'shared/ui/Modal'
 import cls from './Navbar.module.scss'
 
 interface NavbarProps {
-    className?: string
+	className?: string
 }
 
 export const Navbar: FC<NavbarProps> = (props) => {
 	const { className } = props
 	const { t } = useTranslation()
 	const [isAuthModal, setIsAuthModal] = useState<boolean>(false)
+	const authData: User = useSelector(getUserAuthData)
+	const dispatch = useDispatch()
 
 	const openModal = useCallback(() => {
 		setIsAuthModal(true)
@@ -23,12 +28,32 @@ export const Navbar: FC<NavbarProps> = (props) => {
 		setIsAuthModal(false)
 	}, [])
 
+	const onLogout = useCallback(() => {
+		localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY)
+		dispatch(userActions.removeAuthData())
+	}, [dispatch])
+
+	if (authData.username) {
+		return <div className={classNames(cls.Navbar, {}, [className])}>
+			<div className={cls.linksGroup}>
+				<AppButton
+					className={cls.link}
+					variant='custom'
+					onClick={onLogout}>
+					{t('navbar.logout')}
+				</AppButton>
+			</div>
+		</div>
+	}
+
 	return <div className={classNames(cls.Navbar, {}, [className])}>
 		<div className={cls.linksGroup}>
 			<AppButton
 				className={cls.link}
 				variant='custom'
-				onClick={openModal}>{t('navbar.login')}</AppButton>
+				onClick={openModal}>
+				{t('navbar.login')}
+			</AppButton>
 		</div>
 		<LoginModal
 			isOpen={isAuthModal}

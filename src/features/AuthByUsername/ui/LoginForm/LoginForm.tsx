@@ -1,11 +1,19 @@
-import { FC, useState } from 'react'
+import { FC, FormEvent, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+import { getLoginLogin } from '../../model/selectors/getLoginUsername/getLoginUsername'
+import { getPassword } from '../../model/selectors/getPassword/getPassword'
+import { loginActions } from '../../model/slice/loginSlice'
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
+import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading'
+import { getError } from '../../model/selectors/getError/getError'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { AppInput } from 'shared/ui/Form/AppInput'
 import { AppLabel } from 'shared/ui/Form/Label'
 import cls from './LoginForm.module.scss'
+import { Text } from 'shared/ui/Text'
 
 interface LoginFormProps {
 	className?: string
@@ -13,17 +21,40 @@ interface LoginFormProps {
 
 export const LoginForm: FC<LoginFormProps> = (props) => {
 	const { className } = props
+	const dispatch = useDispatch()
 	const { t } = useTranslation()
-	const [login, setLogin] = useState<string>()
-	const [password, setPassword] = useState<string>()
+	const loginError = useSelector(getError)
+	const loginValue = useSelector(getLoginLogin)
+	const passwordValue = useSelector(getPassword)
+	const loginIsLoading = useSelector(getIsLoading)
+
+	const onChangeLogin = useCallback((value: string) => {
+		dispatch(loginActions.setLogin(value))
+	}, [dispatch])
+
+	const onChangePassword = useCallback((value: string) => {
+		dispatch(loginActions.setPassword(value))
+	}, [dispatch])
+
+	const onSubmitForm = useCallback((e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		const formData = new FormData(e.currentTarget)
+		const usernameValue = formData.get('email') as string
+		const passwordValue = formData.get('password') as string
+		dispatch(loginByUsername({
+			username: usernameValue,
+			password: passwordValue
+		}))
+	}, [dispatch])
 
 	return <form
 		className={classNames(cls.LoginForm, {}, [className])}
 		action='/login'
 		method='POST'
+		onSubmit={onSubmitForm}
 		data-testid='login-form'>
 
-		<h2 className={cls.loginHeading}>{t('login.header')}</h2>
+		<Text title={t('login.header')} />
 
 		<div className={cls.formGroup}>
 			<AppLabel
@@ -34,8 +65,8 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
 			<AppInput
 				data-testid='login-input'
 				className={cls.formControl}
-				value={login}
-				onChange={setLogin}
+				value={loginValue}
+				onChange={onChangeLogin}
 				type='text'
 				id='email'
 				name='email'
@@ -51,17 +82,19 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
 			</AppLabel>
 			<AppInput
 				data-testid='password-input'
-				value={password}
-				onChange={setPassword}
+				value={passwordValue}
+				onChange={onChangePassword}
 				className={cls.formControl}
 				type='password'
 				id='password'
 				name='password'
 				placeholder={t('login.password')}
 				required />
+			{loginError && <Text variant='error' content={loginError} />}
 		</div>
 
 		<AppButton
+			disabled={loginIsLoading}
 			data-testid='submit-button'
 			type='submit'>
 			{t('login.log-in')}
