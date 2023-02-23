@@ -1,14 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { User, userActions } from 'entities/User'
+import { LoginErrors } from 'shared/config/errorResponse/errorResponse'
 import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
-
-const LoginErrors = {
-	GATEWAY: 'Gateway Timeout. No response from server',
-	INCORRECT_DATA: 'Login or password is wrong',
-	BAD_REQUEST: 'Bad request',
-	UNEXPECTED: 'An error occurred while logging in'
-} as const
 
 interface LoginProps {
 	username: string,

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import {
 	MockTranslation
 } from 'shared/config/tests/MockTranslation/MockTranslation'
@@ -6,15 +6,23 @@ import {
 	MockBrowserRouter
 } from 'shared/config/tests/MockBrowserRouter/MockBrowserRouter'
 import { Sidebar } from './Sidebar'
+import { MockFunction, RenderWithMocks } from 'shared/config/tests/RenderWithMocks/RenderWithMocks'
 
 describe('Sidebar', () => {
+	const mocks: MockFunction[] = [MockBrowserRouter(), MockTranslation]
 	test('Render', () => {
-		render(MockBrowserRouter(MockTranslation(<Sidebar />)))
+		RenderWithMocks(
+			<Sidebar />,
+			mocks
+		)
 		expect(screen.getByTestId('sidebar')).toBeInTheDocument()
 		screen.debug()
 	})
 	test('Test toggler', () => {
-		render(MockBrowserRouter(MockTranslation(<Sidebar />)))
+		RenderWithMocks(
+			<Sidebar />,
+			mocks
+		)
 		expect(screen.getByTestId('sidebar')).toBeInTheDocument()
 
 		const toggler = screen.getByTestId('sidebar-toggler')

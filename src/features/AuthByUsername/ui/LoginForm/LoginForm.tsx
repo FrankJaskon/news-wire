@@ -14,6 +14,7 @@ import { AppInput } from 'shared/ui/Form/AppInput'
 import { AppLabel } from 'shared/ui/Form/Label'
 import cls from './LoginForm.module.scss'
 import { Text } from 'shared/ui/Text'
+import { translateErrorOrFalse } from 'shared/config/errorResponse/errorResponse'
 
 interface LoginFormProps {
 	className?: string
@@ -27,6 +28,8 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
 	const loginValue = useSelector(getLoginLogin)
 	const passwordValue = useSelector(getPassword)
 	const loginIsLoading = useSelector(getIsLoading)
+
+	const loginErrorWithTranslation = translateErrorOrFalse(loginError)
 
 	const onChangeLogin = useCallback((value: string) => {
 		dispatch(loginActions.setLogin(value))
@@ -90,7 +93,9 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
 				name='password'
 				placeholder={t('login.password')}
 				required />
-			{loginError && <Text variant='error' content={loginError} />}
+			{loginError && <Text
+				variant='error'
+				content={loginErrorWithTranslation ? t(`${loginErrorWithTranslation}`) : loginError} />}
 		</div>
 
 		<AppButton

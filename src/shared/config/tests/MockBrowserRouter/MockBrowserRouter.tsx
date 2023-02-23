@@ -1,7 +1,9 @@
 import { ReactNode } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 
-export const MockBrowserRouter = (component: ReactNode, path = '/') => {
+type MockBrowserRouterType = (path?: string) => (component: ReactNode) => ReactNode
+
+export const MockBrowserRouter: MockBrowserRouterType = ( path = '/') => (component: ReactNode) => {
 	return <MemoryRouter initialEntries={[path]}>
 		{ component }
 	</MemoryRouter>

@@ -1,31 +1,26 @@
-import { render, screen } from '@testing-library/react'
-import { Suspense } from 'react'
+import { screen } from '@testing-library/react'
 import { MockBrowserRouter } from 'shared/config/tests/MockBrowserRouter/MockBrowserRouter'
 import { MockStore } from 'shared/config/tests/MockStore/MockStore'
 import { MockTranslation } from 'shared/config/tests/MockTranslation/MockTranslation'
+import { MockFunction, RenderWithMocks } from 'shared/config/tests/RenderWithMocks/RenderWithMocks'
 import { LoginModal } from './LoginModal'
 
 describe('LoginModal', () => {
+	const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore()]
 	it('renders the LoginForm when isOpen is true', () => {
-		render(
-			MockTranslation(
-				MockBrowserRouter(
-					MockStore(<LoginModal isOpen onClose={() => ({})} />, {}))))
+		RenderWithMocks(
+			<LoginModal isOpen onClose={() => ({})} />,
+			mocks
+		)
+
 		expect(screen.getByTestId('login-form')).toBeInTheDocument()
 		screen.debug()
 	})
 
 	it('does not render the LoginForm when isOpen is false', () => {
-		render(
-			<Suspense fallback=''>
-				{MockTranslation(
-					MockBrowserRouter(
-						MockStore(
-							<LoginModal isOpen={false} onClose={() => ({})} />, {}
-						)
-					)
-				)}
-			</Suspense>
+		RenderWithMocks(
+			<LoginModal isOpen={false} onClose={() => ({})} />,
+			mocks
 		)
 		expect(screen.queryByTestId('login-form')).not.toBeInTheDocument()
 		screen.debug()
