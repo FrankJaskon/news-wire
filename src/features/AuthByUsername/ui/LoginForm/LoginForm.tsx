@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { getLoginLogin } from '../../model/selectors/getLoginUsername/getLoginUsername'
 import { getPassword } from '../../model/selectors/getPassword/getPassword'
-import { loginActions } from '../../model/slice/loginSlice'
+import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading'
 import { getError } from '../../model/selectors/getError/getError'
@@ -15,12 +15,17 @@ import { AppLabel } from 'shared/ui/Form/Label'
 import cls from './LoginForm.module.scss'
 import { Text } from 'shared/ui/Text'
 import { translateErrorOrFalse } from 'shared/config/errorResponse/errorResponse'
+import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 
-interface LoginFormProps {
+export interface LoginFormProps {
 	className?: string
 }
 
-export const LoginForm: FC<LoginFormProps> = (props) => {
+const reducers: ReducerList = {
+	login: loginReducer
+}
+
+const LoginForm: FC<LoginFormProps> = (props) => {
 	const { className } = props
 	const dispatch = useDispatch()
 	const { t } = useTranslation()
@@ -50,68 +55,74 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
 		}))
 	}, [dispatch])
 
-	return <form
-		className={classNames(cls.LoginForm, {}, [className])}
-		action='/login'
-		method='POST'
-		onSubmit={onSubmitForm}
-		data-testid='login-form'>
+	return <LazyReducerLoader
+		reducers={reducers}
+		removeAfterUnmount>
+		<form
+			className={classNames(cls.LoginForm, {}, [className])}
+			action='/login'
+			method='POST'
+			onSubmit={onSubmitForm}
+			data-testid='login-form'>
 
-		<Text title={t('login.header')} />
+			<Text title={t('login.header')} />
 
-		<div className={cls.formGroup}>
-			<AppLabel
-				variant='srOnly'
-				htmlFor='email'>
-				{t('login.login')}
-			</AppLabel>
-			<AppInput
-				data-testid='login-input'
-				className={cls.formControl}
-				value={loginValue}
-				onChange={onChangeLogin}
-				type='text'
-				id='email'
-				name='email'
-				placeholder={t('login.login')}
-				required />
-		</div>
+			<div className={cls.formGroup}>
+				<AppLabel
+					variant='srOnly'
+					htmlFor='email'>
+					{t('login.login')}
+				</AppLabel>
+				<AppInput
+					data-testid='login-input'
+					className={cls.formControl}
+					value={loginValue}
+					onChange={onChangeLogin}
+					type='text'
+					id='email'
+					name='email'
+					placeholder={t('login.login')}
+					required />
+			</div>
 
-		<div className={cls.formGroup}>
-			<AppLabel
-				variant='srOnly'
-				htmlFor='password'>
-				{t('login.password')}
-			</AppLabel>
-			<AppInput
-				data-testid='password-input'
-				value={passwordValue}
-				onChange={onChangePassword}
-				className={cls.formControl}
-				type='password'
-				id='password'
-				name='password'
-				placeholder={t('login.password')}
-				required />
-			{loginError && <Text
-				variant='error'
-				content={loginErrorWithTranslation ? t(`${loginErrorWithTranslation}`) : loginError} />}
-		</div>
+			<div className={cls.formGroup}>
+				<AppLabel
+					variant='srOnly'
+					htmlFor='password'>
+					{t('login.password')}
+				</AppLabel>
+				<AppInput
+					data-testid='password-input'
+					value={passwordValue}
+					onChange={onChangePassword}
+					className={cls.formControl}
+					type='password'
+					id='password'
+					name='password'
+					placeholder={t('login.password')}
+					required />
+				{loginError && <Text
+					variant='error'
+					content={loginErrorWithTranslation ? t(`${loginErrorWithTranslation}`) : loginError} />}
+			</div>
 
-		<AppButton
-			disabled={loginIsLoading}
-			data-testid='submit-button'
-			type='submit'>
-			{t('login.log-in')}
-		</AppButton>
+			<AppButton
+				disabled={loginIsLoading}
+				data-testid='submit-button'
+				type='submit'>
+				{t('login.log-in')}
+			</AppButton>
 
-		<div className={cls.loginLinks}>
-			<AppLink
-				data-testid='singup-link'
-				to='#'
-				variant='primary'>
-				{t('login.new-account')}
-			</AppLink>
-		</div>
-	</form>
+			<div className={cls.loginLinks}>
+				<AppLink
+					data-testid='singup-link'
+					to='#'
+					variant='primary'>
+					{t('login.new-account')}
+				</AppLink>
+			</div>
+		</form>
+	</LazyReducerLoader>
 }
+
+export default LoginForm

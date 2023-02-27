@@ -3,7 +3,7 @@ import { MockBrowserRouter } from 'shared/config/tests/MockBrowserRouter/MockBro
 import { MockStore } from 'shared/config/tests/MockStore/MockStore'
 import { MockTranslation } from 'shared/config/tests/MockTranslation/MockTranslation'
 import { MockFunction, RenderWithMocks } from 'shared/config/tests/RenderWithMocks/RenderWithMocks'
-import { LoginForm } from './LoginForm'
+import LoginForm from './LoginForm'
 
 describe('LoginForm', () => {
 	const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore()]

@@ -14,7 +14,7 @@ describe('getError', () => {
 		}
 		expect(getError(initialState as StateSchema)).toBe('Error text')
 	})
-	test('Should return undefined', () => {
+	test('Should return empty string', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			login: {
 				username: 'username@',
@@ -22,6 +22,6 @@ describe('getError', () => {
 				isLoading: true
 			}
 		}
-		expect(getError(initialState as StateSchema)).toBe(undefined)
+		expect(getError(initialState as StateSchema)).toBe('')
 	})
 })

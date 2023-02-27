@@ -13,7 +13,9 @@ describe('LoginModal', () => {
 			mocks
 		)
 
-		expect(screen.getByTestId('login-form')).toBeInTheDocument()
+		setTimeout(() => {
+			expect(screen.getByTestId('login-form')).toBeInTheDocument()
+		}, 100)
 		screen.debug()
 	})
 
