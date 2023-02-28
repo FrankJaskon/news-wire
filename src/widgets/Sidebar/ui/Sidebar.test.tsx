@@ -16,7 +16,6 @@ describe('Sidebar', () => {
 			mocks
 		)
 		expect(screen.getByTestId('sidebar')).toBeInTheDocument()
-		screen.debug()
 	})
 	test('Test toggler', () => {
 		RenderWithMocks(
@@ -30,6 +29,5 @@ describe('Sidebar', () => {
 		expect(screen.getByTestId('sidebar')).toHaveClass('collapsed')
 		fireEvent.click(toggler)
 		expect(screen.getByTestId('sidebar')).not.toHaveClass('collapsed')
-		screen.debug()
 	})
 })

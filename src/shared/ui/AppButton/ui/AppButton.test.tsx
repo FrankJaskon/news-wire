@@ -9,6 +9,5 @@ describe('AppButton', () => {
 	test('Test variant', () => {
 		render(<AppButton variant='custom'>+</AppButton>)
 		expect(screen.getByTestId('btn')).toHaveClass('custom')
-		screen.debug()
 	})
 })

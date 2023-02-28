@@ -16,7 +16,6 @@ describe('LoginModal', () => {
 		setTimeout(() => {
 			expect(screen.getByTestId('login-form')).toBeInTheDocument()
 		}, 100)
-		screen.debug()
 	})
 
 	it('does not render the LoginForm when isOpen is false', () => {
@@ -25,6 +24,5 @@ describe('LoginModal', () => {
 			mocks
 		)
 		expect(screen.queryByTestId('login-form')).not.toBeInTheDocument()
-		screen.debug()
 	})
 })

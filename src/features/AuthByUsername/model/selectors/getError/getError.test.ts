@@ -6,9 +6,6 @@ describe('getError', () => {
 	test('Should return error', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			login: {
-				username: 'username@',
-				password: 'test',
-				isLoading: false,
 				error: 'Error text'
 			}
 		}
@@ -16,11 +13,7 @@ describe('getError', () => {
 	})
 	test('Should return empty string', () => {
 		const initialState: DeepPartial<StateSchema> = {
-			login: {
-				username: 'username@',
-				password: 'test',
-				isLoading: true
-			}
+			login: {}
 		}
 		expect(getError(initialState as StateSchema)).toBe('')
 	})

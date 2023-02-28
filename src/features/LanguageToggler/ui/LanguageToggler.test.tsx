@@ -8,6 +8,5 @@ describe('LanguageToggler', () => {
 	test('Render', () => {
 		RenderWithMocks(<LanguageToggler />, mocks)
 		expect(screen.getByTestId('language-toggler')).toBeInTheDocument()
-		screen.debug()
 	})
 })

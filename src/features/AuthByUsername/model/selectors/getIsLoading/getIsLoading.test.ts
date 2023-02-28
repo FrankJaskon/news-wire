@@ -4,20 +4,24 @@ import { getIsLoading } from './getIsLoading'
 
 describe('getLoginLogin', () => {
 	test('Should return false', () => {
-		const initialState: DeepPartial<StateSchema> = {
-			login: {
-				username: 'username@',
-				password: 'test',
-				isLoading: false
+		{
+			const initialState: DeepPartial<StateSchema> = {
+				login: {
+					isLoading: false
+				}
 			}
+			expect(getIsLoading(initialState as StateSchema)).toBe(false)
 		}
-		expect(getIsLoading(initialState as StateSchema)).toBe(false)
+		{
+			const initialState: DeepPartial<StateSchema> = {
+				login: {}
+			}
+			expect(getIsLoading(initialState as StateSchema)).toBe(false)
+		}
 	})
 	test('IsLoading value should be the same as in initialState', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			login: {
-				username: 'username@',
-				password: 'test',
 				isLoading: true
 			}
 		}
