@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import useTheme from 'shared/config/theme/useTheme'
 import classNames from 'shared/lib/classNames/classNames'
 import LightIcon from 'shared/assets/icons/light-theme.svg'
@@ -11,7 +11,7 @@ interface ThemeTogglerProps extends React.ButtonHTMLAttributes<HTMLButtonElement
     className?: string,
 }
 
-export const ThemeToggler: FC<ThemeTogglerProps> = (props) => {
+export const ThemeToggler: FC<ThemeTogglerProps> = memo((props: ThemeTogglerProps) => {
 	const { className, ...otherProps } = props
 	const { theme, toggleTheme } = useTheme()
 
@@ -24,4 +24,4 @@ export const ThemeToggler: FC<ThemeTogglerProps> = (props) => {
 			? <DarkIcon className={cls.svg} />
 			: <LightIcon className={cls.svg} />}
 	</AppButton>
-}
+})

@@ -1,17 +1,24 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
 import { appThemes } from 'shared/config/theme/ThemeContext'
-import { Sidebar } from './Sidebar'
+import { sidebarLinks } from 'widgets/Sidebar/model/links'
+import { SidebarLink } from './SidebarLink'
+import sidebarCls from '../Sidebar.module.scss'
 
 export default {
-	title: 'widgets/Sidebar/Sidebar',
-	component: Sidebar,
+	title: 'widgets/Sidebar/SidebarLink',
+	component: SidebarLink,
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-} as ComponentMeta<typeof Sidebar>
+	args: {
+		item: sidebarLinks[0]
+	}
+} as ComponentMeta<typeof SidebarLink>
 
-const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />
+const Template: ComponentStory<typeof SidebarLink> = (args) => <div className={sidebarCls.Sidebar}>
+	<SidebarLink {...args} />
+</div>
 
 export const Basic: Story = Template.bind({})
 

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { LinkProps } from 'react-router-dom'
 import { ValueOf } from 'shared/config/types/types'
@@ -18,7 +18,7 @@ interface AppLinkProps extends LinkProps {
     variant?: AppLinkThemeType
 }
 
-export const AppLink: FC<AppLinkProps> = (props) => {
+export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
 	const {
 		to,
 		children,
@@ -32,4 +32,4 @@ export const AppLink: FC<AppLinkProps> = (props) => {
 		{...otherProps}>
 		{ children }
 	</Link>
-}
+})

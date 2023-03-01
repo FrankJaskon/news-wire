@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { ValueOf } from 'shared/config/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './Text.module.scss'
@@ -27,7 +27,7 @@ export const TextSize = {
 export type TextVariantType = ValueOf<typeof TextVariant>
 export type TextSizeType = ValueOf<typeof TextSize>
 
-export const Text: FC<TextProps> = (props) => {
+export const Text: FC<TextProps> = memo((props: TextProps) => {
 	const {
 		className,
 		title,
@@ -45,4 +45,4 @@ export const Text: FC<TextProps> = (props) => {
 			data-testid='text-content'
 			className={cls.content}>{content}</p>}
 	</div>
-}
+})

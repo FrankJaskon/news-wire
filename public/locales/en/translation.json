@@ -10,7 +10,8 @@
   "sidebar": {
     "link": {
       "about": "About us",
-      "main": "Main page"
+      "main": "Main page",
+      "profile": "Profile"
     }
   },
   "not-found": "Page not found",

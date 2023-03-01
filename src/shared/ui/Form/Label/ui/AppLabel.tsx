@@ -1,4 +1,4 @@
-import { FC, LabelHTMLAttributes, ReactNode } from 'react'
+import { FC, LabelHTMLAttributes, memo, ReactNode } from 'react'
 import { ValueOf } from 'shared/config/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './AppLabel.module.scss'
@@ -16,7 +16,7 @@ interface AppLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	variant?: LabelVariantType
 }
 
-export const AppLabel: FC<AppLabelProps> = (props) => {
+export const AppLabel: FC<AppLabelProps> = memo((props: AppLabelProps) => {
 	const {
 		className,
 		htmlFor,
@@ -31,4 +31,4 @@ export const AppLabel: FC<AppLabelProps> = (props) => {
 		{...extraProps}>
 		{children}
 	</label>
-}
+})

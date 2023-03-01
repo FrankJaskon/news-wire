@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
@@ -8,7 +8,7 @@ interface LanguageTogglerProps extends React.ButtonHTMLAttributes<HTMLButtonElem
 	short?: boolean
 }
 
-export const LanguageToggler: FC<LanguageTogglerProps> = (props) => {
+export const LanguageToggler: FC<LanguageTogglerProps> = memo((props: LanguageTogglerProps) => {
 	const { t, i18n } = useTranslation()
 	const { className, short, ...otherProps } = props
 
@@ -26,4 +26,4 @@ export const LanguageToggler: FC<LanguageTogglerProps> = (props) => {
 		{...otherProps}>
 		{short ? t('language-toggler.language-short') : t('language-toggler.language')}
 	</AppButton>
-}
+})

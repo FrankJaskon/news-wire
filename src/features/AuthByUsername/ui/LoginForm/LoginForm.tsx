@@ -1,6 +1,5 @@
-import { FC, FormEvent, useCallback } from 'react'
+import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useDispatch, useSelector } from 'react-redux'
 import { getLoginLogin } from '../../model/selectors/getLoginUsername/getLoginUsername'
 import { getPassword } from '../../model/selectors/getPassword/getPassword'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
@@ -16,21 +15,27 @@ import cls from './LoginForm.module.scss'
 import { Text } from 'shared/ui/Text'
 import { translateErrorOrFalse } from 'shared/config/errorResponse/errorResponse'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
+import { useSelector } from 'react-redux'
 
 export interface LoginFormProps {
 	className?: string
+	onSuccess: () => void
 }
 
 const reducers: ReducerList = {
 	login: loginReducer
 }
 
-const LoginForm: FC<LoginFormProps> = (props) => {
-	const { className } = props
-	const dispatch = useDispatch()
+const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
+	const {
+		className,
+		onSuccess
+	} = props
+	const dispatch = useAppDispatch()
 	const { t } = useTranslation()
 	const loginError = useSelector(getError)
-	const loginValue = useSelector(getLoginLogin)
+	const usernameValue = useSelector(getLoginLogin)
 	const passwordValue = useSelector(getPassword)
 	const loginIsLoading = useSelector(getIsLoading)
 
@@ -44,16 +49,15 @@ const LoginForm: FC<LoginFormProps> = (props) => {
 		dispatch(loginActions.setPassword(value))
 	}, [dispatch])
 
-	const onSubmitForm = useCallback((e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-		const formData = new FormData(e.currentTarget)
-		const usernameValue = formData.get('email') as string
-		const passwordValue = formData.get('password') as string
-		dispatch(loginByUsername({
+	const onSubmitForm = useCallback(async () => {
+		const result = await dispatch(loginByUsername({
 			username: usernameValue,
 			password: passwordValue
 		}))
-	}, [dispatch])
+		if (result.meta.requestStatus === 'fulfilled') {
+			onSuccess()
+		}
+	}, [dispatch, usernameValue, passwordValue, onSuccess])
 
 	return <LazyReducerLoader
 		reducers={reducers}
@@ -62,7 +66,6 @@ const LoginForm: FC<LoginFormProps> = (props) => {
 			className={classNames(cls.LoginForm, {}, [className])}
 			action='/login'
 			method='POST'
-			onSubmit={onSubmitForm}
 			data-testid='login-form'>
 
 			<Text title={t('login.header')} />
@@ -76,7 +79,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
 				<AppInput
 					data-testid='login-input'
 					className={cls.formControl}
-					value={loginValue}
+					value={usernameValue}
 					onChange={onChangeLogin}
 					type='text'
 					id='email'
@@ -109,7 +112,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
 			<AppButton
 				disabled={loginIsLoading}
 				data-testid='submit-button'
-				type='submit'>
+				onClick={onSubmitForm}>
 				{t('login.log-in')}
 			</AppButton>
 
@@ -123,6 +126,6 @@ const LoginForm: FC<LoginFormProps> = (props) => {
 			</div>
 		</form>
 	</LazyReducerLoader>
-}
+})
 
 export default LoginForm

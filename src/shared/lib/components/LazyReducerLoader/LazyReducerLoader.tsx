@@ -7,6 +7,8 @@ export type ReducerList = {
 	[name in StateSchemaKey]?: Reducer
 }
 
+type ReducerListItem = [StateSchemaKey, Reducer]
+
 interface LazyReducerLoaderProps {
 	children: ReactNode
 	reducers: ReducerList
@@ -23,16 +25,18 @@ export const LazyReducerLoader: FC<LazyReducerLoaderProps> = (props) => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		Object.entries(reducers).forEach(([name, reducer]) => {
+		Object.entries(reducers).forEach(([name, reducer]: ReducerListItem) => {
 			dispatch({ type: `@INIT ${name} reducer` })
-			store.reducerManager.add('login', reducer)
-			return () => {
-				if (removeAfterUnmount) {
-					dispatch({ type: `@REMOVE ${name} reducer` })
-					store.reducerManager.remove('login')
-				}
-			}
+			store.reducerManager.add(name, reducer)
 		})
+		return () => {
+			if (removeAfterUnmount) {
+				Object.entries(reducers).forEach(([name]: ReducerListItem) => {
+					dispatch({ type: `@REMOVE ${name} reducer` })
+					store.reducerManager.remove(name)
+				})
+			}
+		}
 	// eslint-disable-next-line
 	}, [])
 

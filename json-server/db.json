@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "firstname": "Roman",
+    "lastname": "Savko",
+    "age": 27,
+    "currency": "UAH",
+    "country": "Ukraine",
+    "city": "Kyiv",
+    "username": "admin",
+    "avatar": "https://hornews.com/upload/images/blank-avatar.jpg"
+  }
 }

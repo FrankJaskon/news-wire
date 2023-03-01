@@ -1,7 +1,7 @@
 import { User, userActions } from 'entities/User'
 import { getUserAuthData } from 'entities/User'
 import { LoginModal } from 'features/AuthByUsername'
-import { FC, useCallback, useState } from 'react'
+import { FC, memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
@@ -13,7 +13,7 @@ interface NavbarProps {
 	className?: string
 }
 
-export const Navbar: FC<NavbarProps> = (props) => {
+export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 	const { className } = props
 	const { t } = useTranslation()
 	const [isAuthModal, setIsAuthModal] = useState<boolean>(false)
@@ -59,4 +59,4 @@ export const Navbar: FC<NavbarProps> = (props) => {
 			isOpen={isAuthModal}
 			onClose={closeModal} />
 	</div>
-}
+})

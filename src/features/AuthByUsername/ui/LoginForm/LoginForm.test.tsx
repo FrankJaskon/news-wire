@@ -9,7 +9,7 @@ describe('LoginForm', () => {
 	const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore()]
 	it('should render correctly', () => {
 		RenderWithMocks(
-			<LoginForm />,
+			<LoginForm onSuccess={() => {}} />,
 			mocks
 		)
 

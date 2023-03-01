@@ -1,9 +1,13 @@
 import { Action, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
+import { ProfileScheme } from 'entities/Profile'
 import { UserScheme } from 'entities/User'
 import { LoginScheme } from 'features/AuthByUsername'
 
 export interface StateSchema {
 	user: UserScheme
+
+	// Async reducers
+	profile?: ProfileScheme
 	login?: LoginScheme
 }
 

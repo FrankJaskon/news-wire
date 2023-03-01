@@ -1,21 +1,18 @@
-import { FC, useState } from 'react'
+import { FC, memo, useState } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
 import { LanguageToggler } from 'features/LanguageToggler'
 import { ThemeToggler } from 'features/ThemeToggler'
-import { useTranslation } from 'react-i18next'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
-import HomeIcon from 'shared/assets/icons/home.svg'
-import AboutIcon from 'shared/assets/icons/about.svg'
 import cls from './Sidebar.module.scss'
+import { sidebarLinks } from '../model/links'
+import { SidebarLink } from './SidebarLink/SidebarLink'
 
 interface SidebarProps {
     className?: string
 }
 
-export const Sidebar: FC<SidebarProps> = (props) => {
+export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 	const { className } = props
-	const { t } = useTranslation()
 	const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
 
 	const toggleSidebar = () => {
@@ -26,18 +23,13 @@ export const Sidebar: FC<SidebarProps> = (props) => {
 		data-testid='sidebar'
 		className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}>
 		<div className={cls.menu}>
-			<AppLink
-				className={cls.item}
-				to='/'>
-				<HomeIcon className={cls.icon}/>
-				<span>{t('sidebar.link.main')}</span>
-			</AppLink>
-			<AppLink
-				className={cls.item}
-				to='/about'>
-				<AboutIcon className={cls.icon}/>
-				<span>{t('sidebar.link.about')}</span>
-			</AppLink>
+			{
+				sidebarLinks.map((item) => <SidebarLink
+					key={item.path}
+					item={item}
+					collapsed={isCollapsed}
+				/> )
+			}
 		</div>
 		<AppButton
 			data-testid='sidebar-toggler'
@@ -58,4 +50,4 @@ export const Sidebar: FC<SidebarProps> = (props) => {
 			/>
 		</div>
 	</div>
-}
+})

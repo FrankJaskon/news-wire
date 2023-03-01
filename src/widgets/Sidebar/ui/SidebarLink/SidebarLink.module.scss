@@ -1,0 +1,28 @@
+.AppLink {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+	&:first-of-type {
+		margin-top: 0;
+	}
+	.icon {
+		min-height: 24px;
+		min-width: 24px;
+		height: 24px;
+		width: 24px;
+		margin-right: 10px;
+		fill: var(--block-secondary-color);
+	}
+	span {
+		display: block;
+		white-space: nowrap;
+		transition: .2s opacity, .2s width;
+	}
+}
+
+.AppLink.collapsed {
+	span {
+		opacity: 0;
+		width: 0;
+	}
+}
