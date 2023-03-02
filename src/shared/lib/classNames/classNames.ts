@@ -1,6 +1,6 @@
 type Mods = Record<string, boolean | string>
 
-const classNames = (cls: string, mods: Mods = {}, extra: string[] = []): string => {
+const classNames = (cls: string, mods: Mods = {}, extra: Array<string | undefined> = []): string => {
 	return [
 		cls,
 		...extra.filter(Boolean),

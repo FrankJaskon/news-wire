@@ -1,4 +1,4 @@
-import { profileReducer } from 'entities/Profile'
+import { ProfileCard, profileReducer } from 'entities/Profile'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/classNames'
@@ -19,8 +19,7 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 
 	return <LazyReducerLoader removeAfterUnmount reducers={reducers}>
 		<div className={classNames(cls.ProfilePage, {}, [className])}>
-			<h1>{t('page-title')}</h1>
-			<p>{t('page-subtitle')}</p>
+			<ProfileCard />
 		</div>
 	</LazyReducerLoader>
 }

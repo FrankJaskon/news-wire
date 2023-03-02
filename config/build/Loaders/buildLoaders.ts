@@ -8,7 +8,12 @@ const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
 
 	const typeScriptLoader: webpack.RuleSetRule =  {
 		test: /\.tsx?$/,
-		use: 'ts-loader',
+		use: {
+			loader: 'ts-loader',
+			options: {
+				transpileOnly: true,
+			}
+		},
 		exclude: /node_modules/,
 	}
 
