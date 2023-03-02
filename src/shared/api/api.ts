@@ -2,8 +2,8 @@ import axios from 'axios'
 import { LoginErrors } from 'shared/config/errorResponse/errorResponse'
 import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
 
-export const instance = axios.create({
-	baseURL: 'http://localhost:8000',
+export const $api = axios.create({
+	baseURL: __API_URL__,
 })
 
 class CustomError {
@@ -23,7 +23,7 @@ class CustomError {
 	}
 }
 
-instance.interceptors.request.use(
+$api.interceptors.request.use(
 	(config) => {
 		const accessToken = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
 
@@ -38,7 +38,7 @@ instance.interceptors.request.use(
 	}
 )
 
-instance.interceptors.response.use(
+$api.interceptors.response.use(
 	(response) => response,
 	(error) => {
 		if (error.response) {

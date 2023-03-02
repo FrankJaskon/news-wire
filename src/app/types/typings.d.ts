@@ -16,3 +16,4 @@ declare module '*.jpg'
 declare module '*.jpeg'
 
 declare const __iS_DEV__: boolean
+declare const __API_URL__: string

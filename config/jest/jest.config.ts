@@ -48,7 +48,8 @@ export default {
 	},
 	// A set of global variables that need to be available in all test environments
 	globals: {
-		__iS_DEV__: true
+		__iS_DEV__: true,
+		__API_URL__: 'http//localhost:8000'
 	},
 	// All imported modules in your tests should be mocked automatically
 	// automock: false,

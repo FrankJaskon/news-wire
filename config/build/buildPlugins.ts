@@ -8,6 +8,7 @@ import { BuildOptions } from './types/config'
 const buildPlugins = ({
 	paths,
 	isDev,
+	apiUrl,
 	analyzed
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
 	const plugins: webpack.WebpackPluginInstance[] = [
@@ -19,7 +20,8 @@ const buildPlugins = ({
 			filename: 'css/[name].[contenthash:8].css',
 		}),
 		new webpack.DefinePlugin({
-			__iS_DEV__: JSON.stringify(isDev)
+			__iS_DEV__: JSON.stringify(isDev),
+			__API_URL__: JSON.stringify(apiUrl)
 		})
 	]
 	if (isDev) {

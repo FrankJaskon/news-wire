@@ -2,7 +2,7 @@ import { Country, Currency } from 'shared/const/common'
 import { Profile, ProfileScheme } from '../types/ProfileScheme'
 import { profileReducer } from './profileSlice'
 
-describe('counter reducer', () => {
+describe('Profile reducer', () => {
 	const initialData: Profile = {
 		firstname: '',
 		lastname: '',
@@ -16,7 +16,8 @@ describe('counter reducer', () => {
 
 	const initialState: ProfileScheme = {
 		data: initialData,
-		isLoading: false
+		isLoading: false,
+		error: undefined
 	}
 	it('should handle initialState', () => {
 		expect(profileReducer(undefined, { type: 'unknown' })).toEqual(initialState)

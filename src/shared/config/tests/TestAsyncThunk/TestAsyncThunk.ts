@@ -1,5 +1,6 @@
 import { AsyncThunkAction } from '@reduxjs/toolkit'
 import { StateSchema } from 'app/providers/StoreProvider'
+import { $api } from 'shared/api/api'
 
 type ActionCreatorType<Returned, ThunkArg, ThunkApiConfig> =
 	(arg: ThunkArg) => AsyncThunkAction<Returned, ThunkArg, ThunkApiConfig>
@@ -19,7 +20,7 @@ export class TestAsyncThunk<Returned, ThunkArg, ThunkApiConfig> {
 	async callThunk(arg: ThunkArg) {
 		const action = this.actionCreator(arg)
 		// @ts-ignore
-		const result = await action(this.dispatch, this.getState, undefined)
+		const result = await action(this.dispatch, this.getState, { api: $api })
 		return result
 	}
 }
