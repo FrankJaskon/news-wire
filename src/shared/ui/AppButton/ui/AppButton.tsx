@@ -41,22 +41,24 @@ export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 		size = ButtonSize.M,
 		disabled,
 		type = 'button',
-		...otherProps } = props
+		...otherProps
+	} = props
+
+	const mods = {
+		[cls.disabled]: disabled
+	}
+
+	const extra = [
+		className,
+		cls[variant],
+		cls[size],
+		shape && cls[shape]
+	]
 
 	return <button
 		data-testid='btn'
 		type={type}
-		className={classNames(
-			cls.AppButton,
-			{
-				[cls.disabled]: disabled
-			},
-			[
-				className,
-				cls[variant],
-				cls[size],
-				cls[shape]
-			])}
+		className={classNames(cls.AppButton, mods, extra)}
 		{...otherProps}>
 		{children}
 	</button>

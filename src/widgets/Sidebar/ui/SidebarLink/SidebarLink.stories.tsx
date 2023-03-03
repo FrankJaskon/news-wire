@@ -3,6 +3,7 @@ import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotato
 import { appThemes } from 'shared/config/theme/ThemeContext'
 import { sidebarLinks } from 'widgets/Sidebar/model/links'
 import { SidebarLink } from './SidebarLink'
+import type { SidebarLinkProps } from './SidebarLink'
 import sidebarCls from '../Sidebar.module.scss'
 
 export default {
@@ -20,7 +21,10 @@ const Template: ComponentStory<typeof SidebarLink> = (args) => <div className={s
 	<SidebarLink {...args} />
 </div>
 
-export const Basic: Story = Template.bind({})
+export const Basic: Story<SidebarLinkProps> = Template.bind({})
+Basic.args = {
+	collapsed: false
+}
 
-export const DarkTheme: Story = Template.bind({})
+export const DarkTheme: Story<SidebarLinkProps> = Template.bind({})
 DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]

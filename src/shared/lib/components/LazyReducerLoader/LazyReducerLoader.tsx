@@ -11,7 +11,9 @@ type ReducerListItem = [StateSchemaKey, Reducer]
 
 interface LazyReducerLoaderProps {
 	children: ReactNode
-	reducers: ReducerList
+	reducers: {
+		[name in keyof StateSchemaKey]?: Reducer
+	}
 	removeAfterUnmount?: boolean
 }
 
@@ -25,15 +27,15 @@ export const LazyReducerLoader: FC<LazyReducerLoaderProps> = (props) => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		Object.entries(reducers).forEach(([name, reducer]: ReducerListItem) => {
-			dispatch({ type: `@INIT ${name} reducer` })
-			store.reducerManager.add(name, reducer)
+		Object.entries(reducers).forEach(([name, reducer]) => {
+			store.reducerManager.add(name as StateSchemaKey, reducer as Reducer)
+			dispatch({ type: `@INIT ${name as StateSchemaKey} reducer` })
 		})
 		return () => {
 			if (removeAfterUnmount) {
-				Object.entries(reducers).forEach(([name]: ReducerListItem) => {
-					dispatch({ type: `@REMOVE ${name} reducer` })
-					store.reducerManager.remove(name)
+				Object.entries(reducers).forEach(([name]) => {
+					store.reducerManager.remove(name as StateSchemaKey)
+					dispatch({ type: `@REMOVE ${name as StateSchemaKey} reducer` })
 				})
 			}
 		}

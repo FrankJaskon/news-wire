@@ -1,4 +1,3 @@
-import { DeepPartial } from '@reduxjs/toolkit'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { ReactNode } from 'react'
 

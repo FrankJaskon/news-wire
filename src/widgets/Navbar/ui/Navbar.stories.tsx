@@ -24,7 +24,8 @@ export const Authorize: Story = Template.bind({})
 Authorize.decorators = [StoreDecorator({
 	user: {
 		authData: {
-			username: 'Test'
+			id: 0,
+			username: 'Test',
 		}
 	}
 })]

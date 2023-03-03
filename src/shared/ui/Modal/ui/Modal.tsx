@@ -1,5 +1,6 @@
 import { FC, MouseEvent, ReactNode, useState, useRef, useEffect, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
+import type { Mods } from 'shared/lib/classNames/classNames'
 import { Portal } from 'shared/ui/Portal'
 import cls from './Modal.module.scss'
 
@@ -26,10 +27,10 @@ export const Modal: FC<ModalProps> = (props) => {
 	const [isMouseDown, setIsMouseDown] = useState(false)
 	const [isClosing, setIsClosing] = useState<boolean>(false)
 	const timerRef = useRef<ReturnType<typeof setTimeout>>()
-	const overlayRef = useRef<HTMLDivElement>()
-	const contentRef = useRef<HTMLDivElement>()
+	const overlayRef = useRef<HTMLDivElement | null>(null)
+	const contentRef = useRef<HTMLDivElement | null>(null)
 
-	const mods: Record<string, boolean> = {
+	const mods: Mods = {
 		[cls.open]: isOpen,
 		[cls.closed]: isClosing,
 	} as const

@@ -1,4 +1,9 @@
 {
     "page-title": "Profile page",
-    "page-subtitle": "Some text"
+    "page-subtitle": "Some text",
+    "edit-btn": "Edit",
+    "input": {
+        "firstname": "Your first name",
+        "secondname": "Your second name"
+    }
 }

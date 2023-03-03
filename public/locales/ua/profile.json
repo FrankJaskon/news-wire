@@ -1,4 +1,9 @@
 {
 	"page-title": "Сторінка користувача",
-	"page-subtitle": "Деякий текст"
+	"page-subtitle": "Деякий текст",
+    "edit-btn": "Редагувати",
+	"input": {
+        "firstname": "Ваше ім'я",
+        "secondname": "Ваша фамілія"
+    }
   }

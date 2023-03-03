@@ -1,4 +1,4 @@
-import { Action, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
+import { CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
 import { AxiosInstance } from 'axios'
 import { ProfileScheme } from 'entities/Profile'
 import { UserScheme } from 'entities/User'
@@ -21,14 +21,14 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 
 export interface ReducerManager {
 	getReducerMap: () => ReducersMapObject<StateSchema>;
-	reduce: (state: StateSchema, action: Action) => CombinedState<StateSchema>;
+	reduce: Reducer<CombinedState<StateSchema>>;
 	add: (key: StateSchemaKey, reducer: Reducer) => void;
 	remove: (key: StateSchemaKey) => void;
 }
 
 export interface ExtraArgumentType {
 	api: AxiosInstance
-	navigate: (to: To, options?: NavigateOptions) => void
+	navigate?: (to: To, options?: NavigateOptions) => void
 }
 
 export interface ThunkApiConfigType<T> {

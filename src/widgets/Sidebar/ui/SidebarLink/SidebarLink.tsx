@@ -5,7 +5,7 @@ import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { Item } from '../../model/links'
 import cls from './SidebarLink.module.scss'
 
-interface SidebarLinkProps {
+export interface SidebarLinkProps {
 	item: Item
 	collapsed: boolean
 }

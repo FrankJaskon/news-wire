@@ -11,8 +11,12 @@ const App: FC = () => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		const initialAuthData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)) || {}
-		dispatch(userActions.setAuthData(initialAuthData))
+		const data = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
+		if (data) {
+			const initialAuthData = JSON.parse(data)
+			dispatch(userActions.setAuthData(initialAuthData))
+		}
+
 	}, [dispatch])
 
 	return <Suspense fallback=''>

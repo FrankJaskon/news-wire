@@ -3,7 +3,7 @@ export {
 	profileReducer
 } from './model/slice/profileSlice'
 
-export {
+export type {
 	Profile,
 	ProfileScheme
 } from './model/types/ProfileScheme'

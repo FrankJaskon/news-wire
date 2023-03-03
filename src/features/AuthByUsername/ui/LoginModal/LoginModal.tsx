@@ -3,7 +3,7 @@ import { Loader } from 'shared/ui/Loader'
 import { Modal } from 'shared/ui/Modal'
 import { LazyLoginForm as LoginForm } from '../LoginForm/LoginForm.lazy'
 
-interface LoginModalProps {
+export interface LoginModalProps {
 	isOpen: boolean
 	onClose: () => void
 }

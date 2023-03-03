@@ -8,8 +8,8 @@ export const createReducerManager = (initialReducers: ReducersMapObject<StateSch
 
 	return {
 		getReducerMap: () => reducers,
-		reduce: (state: StateSchema, action: Action) => {
-			if (keysToRemove.length > 0) {
+		reduce: (state: StateSchema | undefined, action: Action) => {
+			if (keysToRemove.length > 0 && state) {
 				state = { ...state }
 				for (const key of keysToRemove) {
 					delete state[key]

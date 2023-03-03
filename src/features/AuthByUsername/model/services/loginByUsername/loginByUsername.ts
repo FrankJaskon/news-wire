@@ -23,11 +23,11 @@ export const loginByUsername = createAsyncThunk<User, LoginProps, ThunkApiConfig
 
 			dispatch(userActions.setAuthData(response.data))
 			localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(response.data))
-			extra.navigate(routePaths.about)
+			extra.navigate?.(routePaths.about)
 
 			return response.data
-		} catch (error) {
-			if (error.status === 403) {
+		} catch (error: any) {
+			if (error?.status === 403) {
 				return rejectWithValue(LoginErrors.INCORRECT_DATA)
 			}
 			return rejectWithValue(LoginErrors.UNEXPECTED)

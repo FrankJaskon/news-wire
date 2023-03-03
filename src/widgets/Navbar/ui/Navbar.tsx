@@ -17,7 +17,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 	const { className } = props
 	const { t } = useTranslation()
 	const [isAuthModal, setIsAuthModal] = useState<boolean>(false)
-	const authData: User = useSelector(getUserAuthData)
+	const authData: User | undefined = useSelector(getUserAuthData)
 	const dispatch = useDispatch()
 
 	const openModal = useCallback(() => {
@@ -33,7 +33,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 		dispatch(userActions.removeAuthData())
 	}, [dispatch])
 
-	if (authData.username) {
+	if (authData) {
 		return <div className={classNames(cls.Navbar, {}, [className])}>
 			<div className={cls.linksGroup}>
 				<AppButton

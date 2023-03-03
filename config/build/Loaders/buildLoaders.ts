@@ -10,9 +10,9 @@ const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
 		test: /\.tsx?$/,
 		use: {
 			loader: 'ts-loader',
-			options: {
-				transpileOnly: true,
-			}
+			// options: {
+			// 	transpileOnly: true,
+			// }
 		},
 		exclude: /node_modules/,
 	}

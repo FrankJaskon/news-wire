@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
 import { appThemes } from 'shared/config/theme/ThemeContext'
-import { LoginModal } from './LoginModal'
+import { LoginModal, LoginModalProps } from './LoginModal'
 
 export default {
 	title: 'features/Login/LoginModal',
@@ -12,13 +12,13 @@ export default {
 
 const Template: ComponentStory<typeof LoginModal> = (args) => <LoginModal {...args} />
 
-export const Basic: Story = Template.bind({})
+export const Basic: Story<LoginModalProps> = Template.bind({})
 Basic.args = {
 	isOpen: true
 }
 Basic.decorators = [StoreDecorator()]
 
-export const DarkTheme: Story = Template.bind({})
+export const DarkTheme: Story<LoginModalProps> = Template.bind({})
 DarkTheme.args = {
 	isOpen: true
 }

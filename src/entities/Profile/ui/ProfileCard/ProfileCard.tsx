@@ -17,7 +17,7 @@ interface ProfileCardProps {
 
 export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	const { className } = props
-	const { t } = useTranslation()
+	const { t } = useTranslation('profile')
 	const dispatch = useAppDispatch()
 	const data = useSelector(getProfileData)
 	const error = useSelector(getError)
@@ -28,8 +28,8 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	}, [dispatch])
 
 	return <div className={classNames(cls.ProfileCard, {}, [className])}>
-		<AppInput value={data?.firstname} placeholder={'Your first name'} />
-		<AppInput value={data?.lastname} placeholder={'Your second name'} />
-		<AppButton className={cls.editBtn}>Edit</AppButton>
+		<AppInput value={data?.firstname || ''} placeholder={t('input.firstname')} />
+		<AppInput value={data?.lastname || ''} placeholder={t('input.secondname')} />
+		<AppButton className={cls.editBtn}>{t('edit-btn')}</AppButton>
 	</div>
 }

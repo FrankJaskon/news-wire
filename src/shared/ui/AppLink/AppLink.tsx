@@ -13,14 +13,15 @@ export const AppLinkTheme = {
 
 export type AppLinkThemeType = ValueOf<typeof AppLinkTheme>
 
-interface AppLinkProps extends LinkProps {
-    className?: string
+export type AppLinkProps = Omit<LinkProps, 'to'> & {
+	className?: string
     variant?: AppLinkThemeType
+	to?: string
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
 	const {
-		to,
+		to = '#',
 		children,
 		className,
 		variant = AppLinkTheme.SECONDARY,
