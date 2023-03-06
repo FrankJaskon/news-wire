@@ -9,7 +9,7 @@ export default {
 	component: LoginForm,
 	argTypes: {},
 	args: {
-		onSuccess: () => {}
+		onSuccess: () => { }
 	}
 } as ComponentMeta<typeof LoginForm>
 
@@ -19,10 +19,14 @@ export const Basic: Story<LoginFormProps> = Template.bind({})
 Basic.args = {
 
 }
-Basic.decorators = [StoreDecorator()]
+Basic.decorators = [StoreDecorator({
+	login: { username: '123', password: 'asd' },
+})]
 
 export const DarkTheme: Story<LoginFormProps> = Template.bind({})
 DarkTheme.args = {
 
 }
-DarkTheme.decorators = [StoreDecorator(), ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [StoreDecorator({
+	login: { username: '123', password: 'asd' },
+}), ThemeDecorator(appThemes.DARK)]

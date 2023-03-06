@@ -3,11 +3,12 @@ import { ValueOf } from 'shared/config/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './AppLabel.module.scss'
 
-const labelVariant = {
+const LabelVariant = {
+	PRIMARY: 'primary',
 	SR_ONLY: 'srOnly'
 } as const
 
-type LabelVariantType = ValueOf<typeof labelVariant>
+type LabelVariantType = ValueOf<typeof LabelVariant>
 
 interface AppLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	className?: string
@@ -21,7 +22,7 @@ export const AppLabel: FC<AppLabelProps> = memo((props: AppLabelProps) => {
 		className,
 		htmlFor,
 		children,
-		variant = labelVariant.SR_ONLY,
+		variant = LabelVariant.PRIMARY,
 		...extraProps
 	} = props
 

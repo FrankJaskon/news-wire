@@ -32,6 +32,7 @@ export interface ExtraArgumentType {
 }
 
 export interface ThunkApiConfigType<T> {
+	state: StateSchema
 	rejectWithValue: T
 	extra: ExtraArgumentType
 }

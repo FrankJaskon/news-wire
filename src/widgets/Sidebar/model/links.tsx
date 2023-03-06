@@ -6,6 +6,7 @@ export interface Item {
 	path: string
 	Icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>
 	text: string
+	authOnly?: boolean
 }
 
 export const sidebarLinks = [
@@ -22,6 +23,7 @@ export const sidebarLinks = [
 	{
 		path: '/profile',
 		text: 'sidebar.link.profile',
-		Icon: ProfileIcon
+		Icon: ProfileIcon,
+		authOnly: true
 	},
 ] as const

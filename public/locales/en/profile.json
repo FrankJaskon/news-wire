@@ -1,9 +1,24 @@
 {
     "page-title": "Profile page",
     "page-subtitle": "Some text",
-    "edit-btn": "Edit",
-    "input": {
-        "firstname": "Your first name",
-        "secondname": "Your second name"
+    "card": {
+        "header": {
+            "title": "Profile",
+            "edit-btn": "Edit",
+            "close-btn": "Cancel",
+            "save-btn": "Save"
+        },
+        "input": {
+            "firstname": "First name",
+            "secondname": "Second name",
+            "age": "Age",
+            "city": "City",
+            "username": "Username",
+            "avatar": "Avatar"
+        },
+        "error": {
+            "name": "There is some error",
+            "refresh-page": "Try to refresh page please"
+        }
     }
 }

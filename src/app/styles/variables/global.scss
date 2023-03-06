@@ -15,11 +15,10 @@
 	--font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
 
 	/* SIZE */
-	--page-height: calc(100vh - var(--navbar-height) - 2 * var(--content-page-paddings));
+	--page-height: calc(100vh - var(--navbar-height));
 	--navbar-height: 50px;
-	--sidebar-weight: 300px;
+	--sidebar-weight: 256px;
 	--sidebar-weight-collapsed: 80px;
-	--content-page-paddings: 20px;
 
 	/* COLORS */
 	--red-color: #f22;

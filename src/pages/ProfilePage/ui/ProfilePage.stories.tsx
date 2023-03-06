@@ -16,10 +16,10 @@ export const Basic: Story = Template.bind({})
 Basic.args = {
 
 }
-Basic.decorators = [StoreDecorator()]
+Basic.decorators = [StoreDecorator({})]
 
 export const DarkTheme: Story = Template.bind({})
 DarkTheme.args = {
 
 }
-DarkTheme.decorators = [StoreDecorator(), ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [StoreDecorator({}), ThemeDecorator(appThemes.DARK)]

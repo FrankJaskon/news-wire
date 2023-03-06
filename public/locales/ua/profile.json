@@ -1,9 +1,24 @@
 {
 	"page-title": "Сторінка користувача",
 	"page-subtitle": "Деякий текст",
-    "edit-btn": "Редагувати",
-	"input": {
-        "firstname": "Ваше ім'я",
-        "secondname": "Ваша фамілія"
+    "card": {
+        "header": {
+            "title": "Профіль",
+            "edit-btn": "Редагувати",
+            "close-btn": "Відмінити",
+            "save-btn": "Зберегти"
+        },
+        "input": {
+            "firstname": "Ім'я",
+            "secondname": "Фамілія",
+            "age": "Вік",
+            "city": "Місто",
+            "username": "Ім'я користувача",
+            "avatar": "Аватар"
+        },
+        "error": {
+            "name": "Трапилась помилка",
+            "refresh-page": "Спробуйте перезавантажити сторінку"
+        }
     }
-  }
+}

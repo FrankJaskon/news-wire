@@ -42,8 +42,8 @@ const config = ({ config }: { config: webpack.Configuration }): webpack.Configur
 
 	if ( config.plugins ) {
 		config.plugins?.push(new webpack.DefinePlugin({
-			__iS_DEV__: true,
-			__API_URL__: 'http//localhost:8000'
+			__iS_DEV__: JSON.stringify(true),
+			__API_URL__: JSON.stringify('http://localhost:8000/')
 		}))
 	}
 

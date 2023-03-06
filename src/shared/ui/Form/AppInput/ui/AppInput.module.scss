@@ -1,9 +1,33 @@
 .AppInput {
 	width: 100%;
-	padding: 12px 20px;
 	margin: 8px 0;
 	box-sizing: border-box;
+	font-size: 16px;
+}
+
+.readonly {
+	opacity: .7;
+}
+
+.primary {
+	padding: 12px 20px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
-	font-size: 16px;
+}
+
+.clear {
+	padding-top: 6px;
+	padding-bottom: 8px;
+	margin: 0;
+	border: none;
+	background: none;
+	outline: none;
+}
+
+.primary-color {
+	color: var(--primary-color);
+}
+
+.secondary-color {
+	color: var(--secondary-color);
 }

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { LoginErrors } from 'shared/config/errorResponse/errorResponse'
-import { routePaths } from 'shared/config/routePaths/routPaths'
+// import { routePaths } from 'shared/config/routePaths/routPaths'
 import { Profile } from '../../types/ProfileScheme'
 
 export const fetchProfileData = createAsyncThunk<Profile, void, ThunkApiConfigType<string>>(
@@ -9,7 +9,7 @@ export const fetchProfileData = createAsyncThunk<Profile, void, ThunkApiConfigTy
 	async (_, thunkAPI) => {
 		const { extra, rejectWithValue } = thunkAPI
 		try {
-			const response = await extra.api.get<Profile>(routePaths.profile)
+			const response = await extra.api.get<Profile>('/profile')
 
 			return response.data
 		} catch (error: any) {

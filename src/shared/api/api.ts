@@ -1,9 +1,12 @@
 import axios from 'axios'
-import { LoginErrors } from 'shared/config/errorResponse/errorResponse'
-import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
+// import { LoginErrors } from 'shared/config/errorResponse/errorResponse'
+// import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
 
 export const $api = axios.create({
 	baseURL: __API_URL__,
+	headers: {
+		Authorization: `Bearer ${'token'}`
+	}
 })
 
 // export class CustomError {

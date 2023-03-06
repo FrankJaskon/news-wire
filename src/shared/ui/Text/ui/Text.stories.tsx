@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
 import { appThemes } from 'shared/config/theme/ThemeContext'
-import { Text, TextVariant } from './Text'
+import { Text, TextAlign, TextVariant } from './Text'
 
 export default {
 	title: 'shared/Text',
@@ -23,6 +23,34 @@ PrimaryDark.args = {
 	content: 'Test test test test test test',
 }
 PrimaryDark.decorators = [ThemeDecorator(appThemes.DARK)]
+
+export const PrimaryStart: Story = Template.bind({})
+PrimaryStart.args = {
+	title: 'Test',
+	content: 'Test test test test test test',
+	align: TextAlign.START
+}
+
+export const PrimaryEnd: Story = Template.bind({})
+PrimaryEnd.args = {
+	title: 'Test',
+	content: 'Test test test test test test',
+	align: TextAlign.END
+}
+
+export const PrimaryCenter: Story = Template.bind({})
+PrimaryCenter.args = {
+	title: 'Test',
+	content: 'Test test test test test test',
+	align: TextAlign.CENTER
+}
+
+export const PrimaryJustify: Story = Template.bind({})
+PrimaryJustify.args = {
+	title: 'Test',
+	content: 'Test test test test test test',
+	align: TextAlign.JUSTIFY
+}
 
 export const OnlyTitle: Story = Template.bind({})
 OnlyTitle.args = {

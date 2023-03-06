@@ -35,7 +35,7 @@ export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 			data-testid='sidebar-toggler'
 			className={cls.toggler}
 			variant='primary'
-			size='xl'
+			size='l'
 			shape='square'
 			onClick={toggleSidebar}>
 			{isCollapsed ? '>' : '<'}

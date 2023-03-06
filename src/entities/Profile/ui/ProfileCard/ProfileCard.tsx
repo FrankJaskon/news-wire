@@ -1,35 +1,220 @@
-import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ProfileCard.module.scss'
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
-import { useSelector } from 'react-redux'
-import { getError } from '../../model/selectors/getError/getError'
-import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading'
-import { getProfileData } from 'entities/Profile/model/selectors/getProfileData/getProfileData'
 import { AppInput } from 'shared/ui/Form/AppInput'
-import { AppButton } from 'shared/ui/AppButton'
+import { Profile } from '../../model/types/ProfileScheme'
+import { Loader } from 'shared/ui/Loader'
+import { Text } from 'shared/ui/Text'
+import { AppLabel } from 'shared/ui/Form/Label'
+import { FormControl } from 'shared/ui/Form/FormControl'
+import { Avatar } from 'shared/ui/Avatar'
+import { CurrencySelect, CurrencyType } from 'entities/Currency'
+import { CountrySelect, CountryType } from 'entities/Country'
 
 interface ProfileCardProps {
 	className?: string
+	data?: Profile
+	isLoading?: boolean | undefined
+	error?: string | undefined
+	readonly?: boolean
+	updateFirstname?: (value: string) => void
+	updateLastname?: (value: string) => void
+	updateAge?: (value: string) => void
+	updateCity?: (value: string) => void
+	updateUsername?: (value: string) => void
+	updateAvatar?: (value: string) => void
+	updateCurrency?: (value: CurrencyType) => void
+	updateCountry?: (value: CountryType) => void
 }
 
 export const ProfileCard: FC<ProfileCardProps> = (props) => {
-	const { className } = props
+	const {
+		data,
+		isLoading,
+		error,
+		className,
+		readonly = true,
+		updateFirstname,
+		updateLastname,
+		updateAge,
+		updateCountry,
+		updateCity,
+		updateUsername,
+		updateAvatar,
+		updateCurrency
+	} = props
+
 	const { t } = useTranslation('profile')
-	const dispatch = useAppDispatch()
-	const data = useSelector(getProfileData)
-	const error = useSelector(getError)
-	const isLoading = useSelector(getIsLoading)
 
-	useEffect(() => {
-		dispatch(fetchProfileData())
-	}, [dispatch])
+	if (isLoading) {
+		return <div className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
+			<Loader />
+		</div>
+	}
 
-	return <div className={classNames(cls.ProfileCard, {}, [className])}>
-		<AppInput value={data?.firstname || ''} placeholder={t('input.firstname')} />
-		<AppInput value={data?.lastname || ''} placeholder={t('input.secondname')} />
-		<AppButton className={cls.editBtn}>{t('edit-btn')}</AppButton>
+	if (error) {
+		return <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+			<Text
+				variant='error'
+				align='center'
+				title={t('card.error.name')}
+				content={t('card.error.refresh-page')}
+			/>
+		</div>
+	}
+
+	const mods = {
+		[cls.editing]: !readonly
+	}
+
+	const highlightedFiledMod = {
+		[cls.highlighted]: !readonly
+	}
+
+	return <div className={classNames(cls.ProfileCard, mods, [className])}>
+		<div className={cls.wrapper}>
+			<div className={cls.avatarWrapper}>
+				<Avatar
+					src={data?.avatar}
+					size={150}
+					variant='circle'
+				/>
+			</div>
+			<div className={cls.inner}>
+				<FormControl
+					variant='underlined'
+				>
+					<AppLabel
+						variant='primary'
+						htmlFor='firstname'
+					>
+						{t('card.input.firstname')}
+					</AppLabel>
+					<AppInput
+						className={classNames('', highlightedFiledMod)}
+						color='secondary-color'
+						id='firstname'
+						variant='clear'
+						onChange={updateFirstname}
+						value={data?.firstname || ''}
+						readonly={readonly}
+					/>
+				</FormControl>
+				<FormControl
+					variant='underlined'
+				>
+					<AppLabel
+						variant='primary'
+						htmlFor='firstname'
+					>
+						{t('card.input.secondname')}
+					</AppLabel>
+					<AppInput
+						className={classNames('', highlightedFiledMod)}
+						color='secondary-color'
+						id='lastname'
+						variant='clear'
+						onChange={updateLastname}
+						value={data?.lastname || ''}
+						readonly={readonly}
+					/>
+				</FormControl>
+			</div>
+		</div>
+		<FormControl
+			variant='underlined'
+		>
+			<AppLabel
+				variant='primary'
+				htmlFor='user-age'
+			>
+				{t('card.input.age')}
+			</AppLabel>
+			<AppInput
+				className={classNames('', highlightedFiledMod)}
+				color='secondary-color'
+				id='user-age'
+				variant='clear'
+				onChange={updateAge}
+				value={data?.age || 0}
+				readonly={readonly}
+			/>
+		</FormControl>
+		<FormControl
+			variant='underlined'
+		>
+			<CountrySelect
+				value={data?.country}
+				onChange={updateCountry}
+				readonly={readonly}
+			/>
+		</FormControl>
+		<FormControl
+			variant='underlined'
+		>
+			<AppLabel
+				variant='primary'
+				htmlFor='user-city'
+			>
+				{t('card.input.city')}
+			</AppLabel>
+			<AppInput
+				className={classNames('', highlightedFiledMod)}
+				color='secondary-color'
+				id='user-city'
+				variant='clear'
+				onChange={updateCity}
+				value={data?.city || ''}
+				readonly={readonly}
+			/>
+		</FormControl>
+		<FormControl
+			variant='underlined'
+		>
+			<AppLabel
+				variant='primary'
+				htmlFor='user-username'
+			>
+				{t('card.input.username')}
+			</AppLabel>
+			<AppInput
+				className={classNames('', highlightedFiledMod)}
+				color='secondary-color'
+				id='user-username'
+				variant='clear'
+				onChange={updateUsername}
+				value={data?.username || ''}
+				readonly={readonly}
+			/>
+		</FormControl>
+		<FormControl
+			variant='underlined'
+		>
+			<CurrencySelect
+				value={data?.currency}
+				onChange={updateCurrency}
+				readonly={readonly}
+			/>
+		</FormControl>
+		<FormControl
+			variant='underlined'
+		>
+			<AppLabel
+				variant='primary'
+				htmlFor='user-avatar'
+			>
+				{t('card.input.avatar')}
+			</AppLabel>
+			<AppInput
+				className={classNames('', highlightedFiledMod)}
+				color='secondary-color'
+				id='user-avatar'
+				variant='clear'
+				onChange={updateAvatar}
+				value={data?.avatar || ''}
+				readonly={readonly}
+			/>
+		</FormControl>
 	</div>
 }

@@ -7,40 +7,37 @@ export type ReducerList = {
 	[name in StateSchemaKey]?: Reducer
 }
 
-type ReducerListItem = [StateSchemaKey, Reducer]
-
 interface LazyReducerLoaderProps {
-	children: ReactNode
-	reducers: {
-		[name in keyof StateSchemaKey]?: Reducer
-	}
+	reducers: ReducerList
 	removeAfterUnmount?: boolean
+	children: ReactNode
 }
 
 export const LazyReducerLoader: FC<LazyReducerLoaderProps> = (props) => {
 	const {
 		children,
 		reducers,
-		removeAfterUnmount = false
+		removeAfterUnmount,
 	} = props
+
 	const store = useStore() as ReduxStoreWithManager
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		Object.entries(reducers).forEach(([name, reducer]) => {
-			store.reducerManager.add(name as StateSchemaKey, reducer as Reducer)
-			dispatch({ type: `@INIT ${name as StateSchemaKey} reducer` })
+			store.reducerManager.add(name as StateSchemaKey, reducer)
+			dispatch({ type: `@INIT ${name } reducer` })
 		})
 		return () => {
 			if (removeAfterUnmount) {
 				Object.entries(reducers).forEach(([name]) => {
 					store.reducerManager.remove(name as StateSchemaKey)
-					dispatch({ type: `@REMOVE ${name as StateSchemaKey} reducer` })
+					dispatch({ type: `@DESTROY ${name} reducer` })
 				})
 			}
 		}
 	// eslint-disable-next-line
-	}, [])
+	}, [dispatch])
 
 	return <>
 		{children}

@@ -33,6 +33,8 @@
       "gateway": "Gateway Timeout. No response from server",
       "bad-request": "Bad request"
     }
-  }
+  },
+  "choose-currency": "Currency",
+  "choose-country": "Country"
 }
 

@@ -16,10 +16,10 @@ export const Basic: Story<LoginModalProps> = Template.bind({})
 Basic.args = {
 	isOpen: true
 }
-Basic.decorators = [StoreDecorator()]
+Basic.decorators = [StoreDecorator({})]
 
 export const DarkTheme: Story<LoginModalProps> = Template.bind({})
 DarkTheme.args = {
 	isOpen: true
 }
-DarkTheme.decorators = [StoreDecorator(), ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [StoreDecorator({}), ThemeDecorator(appThemes.DARK)]

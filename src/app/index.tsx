@@ -16,11 +16,10 @@ const App: FC = () => {
 			const initialAuthData = JSON.parse(data)
 			dispatch(userActions.setAuthData(initialAuthData))
 		}
-
 	}, [dispatch])
 
-	return <Suspense fallback=''>
-		<div className={classNames('App', {}, [])}>
+	return <div className={classNames('App', {}, [])}>
+		<Suspense fallback=''>
 			<Navbar />
 			<div className='page-wrapper'>
 				<Sidebar />
@@ -28,8 +27,8 @@ const App: FC = () => {
 					<AppRouter />
 				</div>
 			</div>
-		</div>
-	</Suspense>
+		</Suspense>
+	</div>
 }
 
 export default App

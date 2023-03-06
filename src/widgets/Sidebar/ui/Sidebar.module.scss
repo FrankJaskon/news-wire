@@ -27,8 +27,11 @@
 		color: var(--light-color);
 	}
 	.toggler {
+		background-color: var(--block-primary-lighter);
+		border-top-right-radius: var(--border-radius);
+		border-bottom-right-radius: var(--border-radius);
 		position: absolute;
-		right: -40px;
+		right: -33px;
 		bottom: 20px;
 	}
 	&.collapsed {

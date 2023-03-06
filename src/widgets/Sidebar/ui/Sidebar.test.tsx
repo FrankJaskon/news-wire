@@ -7,9 +7,10 @@ import {
 } from 'shared/config/tests/MockBrowserRouter/MockBrowserRouter'
 import { Sidebar } from './Sidebar'
 import { MockFunction, RenderWithMocks } from 'shared/config/tests/RenderWithMocks/RenderWithMocks'
+import { MockStore } from 'shared/config/tests/MockStore/MockStore'
 
 describe('Sidebar', () => {
-	const mocks: MockFunction[] = [MockBrowserRouter(), MockTranslation]
+	const mocks: MockFunction[] = [MockBrowserRouter(), MockStore(), MockTranslation]
 	test('Render', () => {
 		RenderWithMocks(
 			<Sidebar />,

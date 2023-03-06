@@ -1,0 +1,10 @@
+.Avatar {
+	height: 100px;
+	width: 100px;
+	object-fit: cover;
+	border-radius: var(--border-radius);
+}
+
+.circle {
+	border-radius: 50%;
+}

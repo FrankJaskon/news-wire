@@ -15,10 +15,10 @@ export default {
 const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />
 
 export const Unauthorize: Story = Template.bind({})
-Unauthorize.decorators = [StoreDecorator()]
+Unauthorize.decorators = [StoreDecorator({})]
 
 export const UnauthorizeDark: Story = Template.bind({})
-UnauthorizeDark.decorators = [StoreDecorator(), ThemeDecorator(appThemes.DARK)]
+UnauthorizeDark.decorators = [StoreDecorator({}), ThemeDecorator(appThemes.DARK)]
 
 export const Authorize: Story = Template.bind({})
 Authorize.decorators = [StoreDecorator({

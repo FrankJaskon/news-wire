@@ -68,7 +68,10 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 			method='POST'
 			data-testid='login-form'>
 
-			<Text title={t('login.header')} />
+			<Text
+				align='center'
+				title={t('login.header')}
+			/>
 
 			<div className={cls.formGroup}>
 				<AppLabel

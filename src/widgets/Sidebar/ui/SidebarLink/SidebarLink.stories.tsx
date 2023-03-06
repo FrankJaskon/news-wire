@@ -5,6 +5,7 @@ import { sidebarLinks } from 'widgets/Sidebar/model/links'
 import { SidebarLink } from './SidebarLink'
 import type { SidebarLinkProps } from './SidebarLink'
 import sidebarCls from '../Sidebar.module.scss'
+import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 
 export default {
 	title: 'widgets/Sidebar/SidebarLink',
@@ -14,7 +15,8 @@ export default {
 	},
 	args: {
 		item: sidebarLinks[0]
-	}
+	},
+	decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof SidebarLink>
 
 const Template: ComponentStory<typeof SidebarLink> = (args) => <div className={sidebarCls.Sidebar}>

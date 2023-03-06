@@ -33,5 +33,7 @@
       "gateway": "Упс. Сервер не відповідає",
       "bad-request": "Невірний запрос"
     }
-  }
+  },
+  "choose-currency": "Валюта",
+  "choose-country": "Країна"
 }

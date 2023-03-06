@@ -12,6 +12,10 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:i18next/recommended"
     ],
+    "globals": {
+        "__IS_DEV__": true,
+        "__API_URL__": true
+    },
     "overrides": [
         {
             "files": ["*.test.ts", "*.test.tsx", "*.stories.ts", "*.stories.tsx"],

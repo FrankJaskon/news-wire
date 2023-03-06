@@ -1,8 +1,19 @@
 import { Story } from '@storybook/react'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
+import { profileReducer } from 'entities/Profile'
+import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
+import type { ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 
-export const StoreDecorator = (state: DeepPartial<StateSchema> = {}) => (StoryComponent: Story) => (
-	<StoreProvider initialState={state as StateSchema}>
+const defaultAsyncReducers: ReducerList = {
+	login: loginReducer,
+	profile: profileReducer,
+}
+
+export const StoreDecorator = (
+	state: DeepPartial<StateSchema>,
+	asyncReducers?: ReducerList,
+) => (StoryComponent: Story) => (
+	<StoreProvider initialState={state as StateSchema} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
 		<StoryComponent />
 	</StoreProvider>
 )

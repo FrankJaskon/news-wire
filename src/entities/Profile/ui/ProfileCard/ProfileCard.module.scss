@@ -1,13 +1,35 @@
 .ProfileCard {
-	display: flex;
-	flex-direction: column;
-	max-width: 400px;
 	padding: 20px;
-	border: solid 2px var(--primary-color);
-	border-radius: var(--border-radius);
+	.highlighted {
+		background-color: var(--highlighted-color);
+	}
 }
 
-.editBtn {
-	margin-top: 20px;
-	margin-left: auto;
+.editing {
+	border: solid 2px var(--primary-color);
+}
+
+.loading,
+.error {
+	min-height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.avatarWrapper {
+	display: flex;
+	justify-content: center;
+	order: 2;
+	margin-left: 40px;
+}
+
+.wrapper {
+	display: flex;
+	width: 100%;
+}
+
+.inner {
+	width: 100%;
 }
