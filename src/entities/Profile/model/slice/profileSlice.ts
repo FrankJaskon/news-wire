@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
-import { Profile, ProfileScheme } from '../types/ProfileScheme'
+import { Profile, ProfileScheme, ValidateProfileErrorType } from '../types/ProfileScheme'
 
 const initialState: ProfileScheme = {
 	data: undefined,
 	form: undefined,
 	isLoading: false,
-	error: undefined,
-	readonly: true
+	readonly: true,
+	validateError: undefined,
+	loadingError: undefined
 }
 
 export const profileSlice = createSlice({
@@ -23,6 +24,7 @@ export const profileSlice = createSlice({
 		},
 		cancelEdit: (state) => {
 			state.readonly = true
+			state.validateError = undefined
 			state.form = state.data
 		},
 		setReadonly: (state, action: PayloadAction<boolean>) => {
@@ -32,7 +34,7 @@ export const profileSlice = createSlice({
 	extraReducers: (builder) => {
 		// fetchProfileData
 		builder.addCase(fetchProfileData.pending, (state) => {
-			state.error = undefined
+			state.loadingError = undefined
 			state.isLoading = true
 		})
 		builder.addCase(fetchProfileData.fulfilled, (state, { payload }) => {
@@ -42,11 +44,11 @@ export const profileSlice = createSlice({
 		})
 		builder.addCase(fetchProfileData.rejected, (state, action) => {
 			state.isLoading = false
-			state.error = action.payload as string || undefined
+			state.loadingError = action.payload as ValidateProfileErrorType
 		})
 		// updateProfileData
 		builder.addCase(updateProfileData.pending, (state) => {
-			state.error = undefined
+			state.validateError = undefined
 			state.isLoading = true
 		})
 		builder.addCase(updateProfileData.fulfilled, (state, { payload }) => {
@@ -56,8 +58,9 @@ export const profileSlice = createSlice({
 			state.readonly = true
 		})
 		builder.addCase(updateProfileData.rejected, (state, action) => {
+			console.log(action.payload)
 			state.isLoading = false
-			state.error = action.payload as string || undefined
+			state.validateError = action.payload as ValidateProfileErrorType[]
 		})
 	},
 })

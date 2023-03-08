@@ -5,7 +5,12 @@ export {
 
 export type {
 	Profile,
-	ProfileScheme
+	ProfileScheme,
+	ValidateProfileErrorType
+} from './model/types/ProfileScheme'
+
+export {
+	ValidateProfileError
 } from './model/types/ProfileScheme'
 
 export {
@@ -25,8 +30,12 @@ export {
 } from './model/selectors/getIsLoading/getIsLoading'
 
 export {
-	getError
-} from './model/selectors/getError/getError'
+	getValidateError
+} from './model/selectors/getValidateError/getValidateError'
+
+export {
+	getLoadingError
+} from './model/selectors/getLoadingError/getLoadingError'
 
 export {
 	getReadonly

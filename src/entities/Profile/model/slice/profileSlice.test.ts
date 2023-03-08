@@ -6,7 +6,7 @@ describe('Profile reducer', () => {
 		data: undefined,
 		form: undefined,
 		isLoading: false,
-		error: undefined,
+		validateError: undefined,
 		readonly: true
 	}
 	it('should handle initialState', () => {

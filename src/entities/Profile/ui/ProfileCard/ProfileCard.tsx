@@ -15,9 +15,9 @@ import { CountrySelect, CountryType } from 'entities/Country'
 interface ProfileCardProps {
 	className?: string
 	data?: Profile
-	isLoading?: boolean | undefined
-	error?: string | undefined
+	isLoading?: boolean
 	readonly?: boolean
+	error?: string
 	updateFirstname?: (value: string) => void
 	updateLastname?: (value: string) => void
 	updateAge?: (value: string) => void
@@ -47,20 +47,15 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 
 	const { t } = useTranslation('profile')
 
-	if (isLoading) {
-		return <div className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
-			<Loader />
+	if (error) {
+		return <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+			<Text variant='error' content={error} />
 		</div>
 	}
 
-	if (error) {
-		return <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
-			<Text
-				variant='error'
-				align='center'
-				title={t('card.error.name')}
-				content={t('card.error.refresh-page')}
-			/>
+	if (isLoading) {
+		return <div className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
+			<Loader />
 		</div>
 	}
 

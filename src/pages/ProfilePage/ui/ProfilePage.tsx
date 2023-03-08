@@ -3,18 +3,22 @@ import { CurrencyType } from 'entities/Currency'
 import {
 	fetchProfileData,
 	getIsLoading,
+	getLoadingError,
 	getProfileForm,
 	getReadonly,
 	profileActions,
 	ProfileCard,
-	profileReducer
+	profileReducer,
+	ValidateProfileError
 } from 'entities/Profile'
-import { getError } from 'entities/Profile/model/selectors/getError/getError'
+import { getValidateError } from 'entities/Profile/model/selectors/getValidateError/getValidateError'
 import { FC, useCallback, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from 'shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { Text } from 'shared/ui/Text'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 
 interface ProfilePageProps {
@@ -30,8 +34,22 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 	const dispatch = useAppDispatch()
 	const formData = useSelector(getProfileForm)
 	const isLoading = useSelector(getIsLoading)
-	const error = useSelector(getError)
+	const validateError = useSelector(getValidateError)
+	const loadingError = useSelector(getLoadingError)
 	const readonly = useSelector(getReadonly)
+	const { t } = useTranslation('profile')
+
+	const ValidateErrorTranslation = {
+		[ValidateProfileError.INCORRECT_AGE]: t('error.age'),
+		[ValidateProfileError.INCORRECT_AVATAR]: t('error.avatar'),
+		[ValidateProfileError.INCORRECT_DATA]: t('error.incorrect-data'),
+		[ValidateProfileError.INCORRECT_FIRSTNAME]: t('error.firstname'),
+		[ValidateProfileError.INCORRECT_LASTNAME]: t('error.lastname'),
+		[ValidateProfileError.INCORRECT_USERNAME]: t('error.username'),
+		[ValidateProfileError.INCORRECT_CITY]: t('error.city'),
+		[ValidateProfileError.NO_DATA]: t('error.empty'),
+		[ValidateProfileError.SERVER_ERROR]: t('error.server-error'),
+	}
 
 	useEffect(() => {
 		dispatch(fetchProfileData())
@@ -74,11 +92,18 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 			<ProfilePageHeader
 				readonly={readonly}
 			/>
+			{validateError.length > 0 && validateError.map(err => (
+				<Text
+					key={err}
+					variant='error'
+					content={ValidateErrorTranslation[err]}
+				/>
+			))}
 			<ProfileCard
 				data={formData}
 				isLoading={isLoading}
-				error={error}
 				readonly={readonly}
+				error={loadingError && ValidateErrorTranslation[loadingError]}
 				updateFirstname={onChangeFirstname}
 				updateLastname={onChangeLastname}
 				updateAge={onChangeAge}
