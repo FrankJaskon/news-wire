@@ -9,7 +9,8 @@ const buildPlugins = ({
 	paths,
 	isDev,
 	apiUrl,
-	analyzed
+	analyzed,
+	project
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
 	const plugins: webpack.WebpackPluginInstance[] = [
 		new HtmlWebpackPlugin({
@@ -21,7 +22,8 @@ const buildPlugins = ({
 		}),
 		new webpack.DefinePlugin({
 			__iS_DEV__: JSON.stringify(isDev),
-			__API_URL__: JSON.stringify(apiUrl)
+			__API_URL__: JSON.stringify(apiUrl),
+			__PROJECT__: JSON.stringify(project)
 		})
 	]
 	if (isDev) {

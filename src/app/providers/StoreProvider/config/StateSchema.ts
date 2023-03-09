@@ -1,8 +1,8 @@
 import { CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
 import { AxiosInstance } from 'axios'
-import { ProfileScheme } from 'entities/Profile'
 import { UserScheme } from 'entities/User'
 import { LoginScheme } from 'features/AuthByUsername'
+import { ProfileScheme } from 'pages/ProfilePage'
 import { NavigateOptions, To } from 'react-router-dom'
 
 export interface StateSchema {
@@ -33,6 +33,6 @@ export interface ExtraArgumentType {
 
 export interface ThunkApiConfigType<T> {
 	state: StateSchema
-	rejectWithValue: T
+	rejectValue: T
 	extra: ExtraArgumentType
 }

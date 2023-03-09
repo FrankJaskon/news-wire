@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ProfileCard.module.scss'
 import { AppInput } from 'shared/ui/Form/AppInput'
-import { Profile } from '../../model/types/ProfileScheme'
 import { Loader } from 'shared/ui/Loader'
 import { Text } from 'shared/ui/Text'
 import { AppLabel } from 'shared/ui/Form/Label'
@@ -11,8 +10,9 @@ import { FormControl } from 'shared/ui/Form/FormControl'
 import { Avatar } from 'shared/ui/Avatar'
 import { CurrencySelect, CurrencyType } from 'entities/Currency'
 import { CountrySelect, CountryType } from 'entities/Country'
+import type { Profile } from 'pages/ProfilePage'
 
-interface ProfileCardProps {
+export interface ProfileCardProps {
 	className?: string
 	data?: Profile
 	isLoading?: boolean
@@ -132,7 +132,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 				id='user-age'
 				variant='clear'
 				onChange={updateAge}
-				value={data?.age || 0}
+				value={data?.age}
 				readonly={readonly}
 			/>
 		</FormControl>

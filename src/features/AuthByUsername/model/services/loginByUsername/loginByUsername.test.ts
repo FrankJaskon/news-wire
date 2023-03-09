@@ -8,7 +8,6 @@ describe('loginByUsername', () => {
 		username: 'username@',
 	}
 	test('Correct request', async () => {
-		// @ts-ignore
 		const thunk = new TestAsyncThunk(loginByUsername)
 		thunk.api.post.mockReturnValue(Promise.resolve({
 			data: responseData
@@ -25,7 +24,6 @@ describe('loginByUsername', () => {
 		expect(result.payload).toEqual(responseData)
 	})
 	test('Incorrect request', async () => {
-		// @ts-ignore
 		const thunk = new TestAsyncThunk(loginByUsername)
 		thunk.api.post.mockRejectedValue(Promise.resolve({
 			status: 403

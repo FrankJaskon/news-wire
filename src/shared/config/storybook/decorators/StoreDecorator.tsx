@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { profileReducer } from 'entities/Profile'
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
+import { profileReducer } from 'pages/ProfilePage'
 import type { ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 
 const defaultAsyncReducers: ReducerList = {

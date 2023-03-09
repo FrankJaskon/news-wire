@@ -8,18 +8,12 @@ export default {
 	title: 'pages/ProfilePage',
 	component: ProfilePage,
 	argTypes: {},
+	decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof ProfilePage>
 
 const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />
 
 export const Basic: Story = Template.bind({})
-Basic.args = {
-
-}
-Basic.decorators = [StoreDecorator({})]
 
 export const DarkTheme: Story = Template.bind({})
-DarkTheme.args = {
-
-}
-DarkTheme.decorators = [StoreDecorator({}), ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]

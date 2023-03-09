@@ -1,10 +1,11 @@
-import { profileActions, updateProfileData } from 'entities/Profile'
 import { FC, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
 import { Text } from 'shared/ui/Text'
+import { profileActions } from '../../model/slice/profileSlice'
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import cls from '../ProfilePage.module.scss'
 
 interface ProfilePageHeaderProps {

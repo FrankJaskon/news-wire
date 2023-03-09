@@ -1,17 +1,6 @@
 import { CountryType } from 'entities/Country'
 import { CurrencyType } from 'entities/Currency'
-import {
-	fetchProfileData,
-	getIsLoading,
-	getLoadingError,
-	getProfileForm,
-	getReadonly,
-	profileActions,
-	ProfileCard,
-	profileReducer,
-	ValidateProfileError
-} from 'entities/Profile'
-import { getValidateError } from 'entities/Profile/model/selectors/getValidateError/getValidateError'
+import { ProfileCard } from 'entities/Profile'
 import { FC, useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
@@ -19,6 +8,14 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from 'shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { Text } from 'shared/ui/Text'
+import { getIsLoading } from '../model/selectors/getIsLoading/getIsLoading'
+import { getLoadingError } from '../model/selectors/getLoadingError/getLoadingError'
+import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm'
+import { getReadonly } from '../model/selectors/getReadonly/getReadonly'
+import { getValidateError } from '../model/selectors/getValidateError/getValidateError'
+import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData'
+import { profileActions, profileReducer } from '../model/slice/profileSlice'
+import { ValidateProfileError, ValidateProfileErrorType } from '../model/types/ProfileScheme'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 
 interface ProfilePageProps {
@@ -52,7 +49,9 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 	}
 
 	useEffect(() => {
-		dispatch(fetchProfileData())
+		if (__PROJECT__ !== 'storybook') {
+			dispatch(fetchProfileData())
+		}
 	}, [dispatch])
 
 	const onChangeFirstname = useCallback((value?: string) => {
@@ -92,11 +91,11 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 			<ProfilePageHeader
 				readonly={readonly}
 			/>
-			{validateError.length > 0 && validateError.map(err => (
+			{validateError && validateError?.map((err: ValidateProfileErrorType) => (
 				<Text
 					key={err}
 					variant='error'
-					content={ValidateErrorTranslation[err]}
+					content={validateError && ValidateErrorTranslation[err]}
 				/>
 			))}
 			<ProfileCard

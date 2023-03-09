@@ -17,6 +17,7 @@ declare module '*.jpeg'
 
 declare const __iS_DEV__: boolean
 declare const __API_URL__: string
+declare const __PROJECT__: 'frontend' | 'storybook' | 'jest'
 
 type DeepPartial<T> = T extends object ? {
   [P in keyof T]?: DeepPartial<T[P]>

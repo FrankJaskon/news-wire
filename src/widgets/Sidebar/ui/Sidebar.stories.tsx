@@ -17,5 +17,8 @@ const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />
 
 export const Basic: Story = Template.bind({})
 
+export const SidebarAuthorization: Story = Template.bind({})
+SidebarAuthorization.decorators = [StoreDecorator({ user: { authData: {}}})]
+
 export const DarkTheme: Story = Template.bind({})
 DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]

@@ -43,7 +43,8 @@ const config = ({ config }: { config: webpack.Configuration }): webpack.Configur
 	if ( config.plugins ) {
 		config.plugins?.push(new webpack.DefinePlugin({
 			__iS_DEV__: JSON.stringify(true),
-			__API_URL__: JSON.stringify('http://localhost:8000/')
+			__API_URL__: JSON.stringify(''),
+			__PROJECT__: JSON.stringify('storybook')
 		}))
 	}
 
