@@ -8,6 +8,7 @@ export default {
 	title: 'features/Login/LoginModal',
 	component: LoginModal,
 	argTypes: {},
+	decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof LoginModal>
 
 const Template: ComponentStory<typeof LoginModal> = (args) => <LoginModal {...args} />
@@ -16,10 +17,15 @@ export const Basic: Story<LoginModalProps> = Template.bind({})
 Basic.args = {
 	isOpen: true
 }
-Basic.decorators = [StoreDecorator({})]
 
 export const DarkTheme: Story<LoginModalProps> = Template.bind({})
 DarkTheme.args = {
 	isOpen: true
 }
-DarkTheme.decorators = [StoreDecorator({}), ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]
+
+export const PurpleTheme: Story<LoginModalProps> = Template.bind({})
+PurpleTheme.args = {
+	isOpen: true
+}
+PurpleTheme.decorators = [ThemeDecorator(appThemes.PURPLE)]

@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
 import { Text, TextAlign, TextVariant } from './Text'
 
 export default {
@@ -22,7 +21,14 @@ PrimaryDark.args = {
 	title: 'Test',
 	content: 'Test test test test test test',
 }
-PrimaryDark.decorators = [ThemeDecorator(appThemes.DARK)]
+PrimaryDark.decorators = [ThemeDecorator('dark')]
+
+export const PrimaryPurple: Story = Template.bind({})
+PrimaryPurple.args = {
+	title: 'Test',
+	content: 'Test test test test test test',
+}
+PrimaryPurple.decorators = [ThemeDecorator('purple')]
 
 export const PrimaryStart: Story = Template.bind({})
 PrimaryStart.args = {
@@ -61,7 +67,13 @@ export const OnlyTitleDark: Story = Template.bind({})
 OnlyTitleDark.args = {
 	title: 'Test',
 }
-OnlyTitleDark.decorators = [ThemeDecorator(appThemes.DARK)]
+OnlyTitleDark.decorators = [ThemeDecorator('dark')]
+
+export const OnlyTitlePurple: Story = Template.bind({})
+OnlyTitlePurple.args = {
+	title: 'Test',
+}
+OnlyTitlePurple.decorators = [ThemeDecorator('purple')]
 
 export const OnlyContent: Story = Template.bind({})
 OnlyContent.args = {
@@ -72,7 +84,13 @@ export const OnlyContentDark: Story = Template.bind({})
 OnlyContentDark.args = {
 	content: 'Test test test test test test',
 }
-OnlyContentDark.decorators = [ThemeDecorator(appThemes.DARK)]
+OnlyContentDark.decorators = [ThemeDecorator('dark')]
+
+export const OnlyContentPurple: Story = Template.bind({})
+OnlyContentPurple.args = {
+	content: 'Test test test test test test',
+}
+OnlyContentPurple.decorators = [ThemeDecorator('purple')]
 
 export const Error: Story = Template.bind({})
 Error.args = {
@@ -87,4 +105,12 @@ ErrorDark.args = {
 	content: 'Test test test test test test',
 	variant: TextVariant.ERROR
 }
-ErrorDark.decorators = [ThemeDecorator(appThemes.DARK)]
+ErrorDark.decorators = [ThemeDecorator('dark')]
+
+export const ErrorPurple: Story = Template.bind({})
+ErrorPurple.args = {
+	title: 'Test',
+	content: 'Test test test test test test',
+	variant: TextVariant.ERROR
+}
+ErrorPurple.decorators = [ThemeDecorator('purple')]

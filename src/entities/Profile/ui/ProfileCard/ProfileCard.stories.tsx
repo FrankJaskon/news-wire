@@ -36,6 +36,12 @@ DarkTheme.args = {
 }
 DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]
 
+export const PurpleTheme: Story<ProfileCardProps> = Template.bind({})
+PurpleTheme.args = {
+	data: profileData
+}
+PurpleTheme.decorators = [ThemeDecorator(appThemes.PURPLE)]
+
 export const Error: Story<ProfileCardProps> = Template.bind({})
 Error.args = {
 	error: 'Some error text'

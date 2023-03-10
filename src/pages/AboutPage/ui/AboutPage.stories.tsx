@@ -23,3 +23,8 @@ export const DarkTheme: Story = Template.bind({})
 DarkTheme.args = {
 }
 DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]
+
+export const PurpleTheme: Story = Template.bind({})
+PurpleTheme.args = {
+}
+PurpleTheme.decorators = [ThemeDecorator(appThemes.PURPLE)]

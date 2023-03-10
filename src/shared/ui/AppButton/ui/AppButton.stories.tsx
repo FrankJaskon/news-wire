@@ -6,9 +6,7 @@ import { AppButton, ButtonShape, ButtonSize, ButtonVariant } from './AppButton'
 export default {
 	title: 'shared/AppButton',
 	component: AppButton,
-	argTypes: {
-		backgroundColor: { control: 'color' },
-	},
+	argTypes: {},
 } as ComponentMeta<typeof AppButton>
 
 const Template: ComponentStory<typeof AppButton> = (args) => <AppButton {...args} />
@@ -18,17 +16,23 @@ Button.args = {
 	children: 'Click',
 }
 
-export const ButtonDisabled: Story = Template.bind({})
-ButtonDisabled.args = {
-	children: 'Click',
-	disabled: true
-}
-
 export const ButtonDark: Story = Template.bind({})
 ButtonDark.args = {
 	children: 'Click',
 }
 ButtonDark.decorators = [ThemeDecorator(appThemes.DARK)]
+
+export const ButtonPurple: Story = Template.bind({})
+ButtonPurple.args = {
+	children: 'Click',
+}
+ButtonPurple.decorators = [ThemeDecorator(appThemes.PURPLE)]
+
+export const ButtonDisabled: Story = Template.bind({})
+ButtonDisabled.args = {
+	children: 'Click',
+	disabled: true
+}
 
 export const ButtonL: Story = Template.bind({})
 ButtonL.args = {

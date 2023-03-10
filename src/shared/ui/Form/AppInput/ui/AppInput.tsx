@@ -3,7 +3,7 @@ import { ValueOf } from 'shared/config/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './AppInput.module.scss'
 
-interface AppInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'> {
+export interface AppInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'> {
 	value?: string | number
 	onChange?: (value: string) => void
 	readonly?: boolean

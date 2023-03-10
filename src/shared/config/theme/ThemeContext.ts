@@ -4,6 +4,7 @@ import { ValueOf } from 'shared/config/types/types'
 export const appThemes = {
 	LIGHT: 'light',
 	DARK : 'dark',
+	PURPLE: 'purple'
 } as const
 
 export type Theme = ValueOf<typeof appThemes>

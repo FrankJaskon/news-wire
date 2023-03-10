@@ -17,3 +17,6 @@ export const Basic: Story = Template.bind({})
 
 export const DarkTheme: Story = Template.bind({})
 DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]
+
+export const PurpleTheme: Story = Template.bind({})
+PurpleTheme.decorators = [ThemeDecorator(appThemes.PURPLE)]

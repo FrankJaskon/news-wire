@@ -3,14 +3,14 @@ import { ValueOf } from 'shared/config/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './AppLabel.module.scss'
 
-const LabelVariant = {
+export const LabelVariant = {
 	PRIMARY: 'primary',
 	SR_ONLY: 'srOnly'
 } as const
 
 type LabelVariantType = ValueOf<typeof LabelVariant>
 
-interface AppLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+export interface AppLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	className?: string
 	htmlFor: string
 	children: ReactNode,

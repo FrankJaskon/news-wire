@@ -7,10 +7,9 @@ import App from './index'
 export default {
 	title: 'app/App',
 	component: App,
-	argTypes: {
-		backgroundColor: { control: 'color' },
-	},
-	args: {}
+	argTypes: {},
+	args: {},
+	decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof App>
 
 const Template: ComponentStory<typeof App> = (args) => <App {...args} />
@@ -18,9 +17,13 @@ const Template: ComponentStory<typeof App> = (args) => <App {...args} />
 export const Basic: Story = Template.bind({})
 Basic.args = {
 }
-Basic.decorators = [StoreDecorator({})]
 
 export const DarkTheme: Story = Template.bind({})
 DarkTheme.args = {
 }
-DarkTheme.decorators = [StoreDecorator({}), ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]
+
+export const PurpleTheme: Story = Template.bind({})
+PurpleTheme.args = {
+}
+PurpleTheme.decorators = [ThemeDecorator(appThemes.PURPLE)]

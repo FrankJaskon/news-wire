@@ -49,7 +49,11 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 
 	if (error) {
 		return <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
-			<Text variant='error' content={error} />
+			<Text
+				variant='error'
+				content={error}
+				size='size-l'
+			/>
 		</div>
 	}
 

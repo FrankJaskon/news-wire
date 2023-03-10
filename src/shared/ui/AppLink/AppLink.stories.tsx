@@ -27,6 +27,13 @@ PrimaryDark.args = {
 }
 PrimaryDark.decorators = [ThemeDecorator(appThemes.DARK)]
 
+export const PrimaryPurple: Story<AppLinkProps> = Template.bind({})
+PrimaryPurple.args = {
+	children: 'Click',
+	variant: AppLinkTheme.PRIMARY,
+}
+PrimaryPurple.decorators = [ThemeDecorator(appThemes.PURPLE)]
+
 export const Underlined: Story<AppLinkProps> = Template.bind({})
 Underlined.args = {
 	children: 'Click',

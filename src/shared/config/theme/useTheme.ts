@@ -12,7 +12,20 @@ const useTheme = (): UseThemeResult => {
 	document.body.className = theme
 
 	const toggleTheme = () => {
-		const newTheme = theme === 'light' ? appThemes.DARK : appThemes.LIGHT
+		let newTheme: Theme
+		switch (theme) {
+		case appThemes.LIGHT:
+			newTheme = appThemes.DARK
+			break
+		case appThemes.DARK:
+			newTheme = appThemes.PURPLE
+			break
+		case appThemes.PURPLE:
+			newTheme = appThemes.LIGHT
+			break
+		default:
+			newTheme = appThemes.LIGHT
+		}
 		setTheme(newTheme)
 		document.body.className = theme
 		localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)

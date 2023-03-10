@@ -1,11 +1,45 @@
 .title {
-	font: var(--font-l);
 	color: var(--primary-color);
 }
 
 .content {
-	font: var(--font-m);
 	color: var(--secondary-color);
+}
+
+.size-s {
+	.title {
+		font: var(--font-m);
+	}
+	.content {
+		font: var(--font-s);
+	}
+}
+
+.size-m {
+	.title {
+		font: var(--font-l);
+	}
+	.content {
+		font: var(--font-m);
+	}
+}
+
+.size-l {
+	.title {
+		font: var(--font-xl);
+	}
+	.content {
+		font: var(--font-l);
+	}
+}
+
+.size-xl {
+	.title {
+		font: var(--font-xl);
+	}
+	.content {
+		font: var(--font-xl);
+	}
 }
 
 .error {

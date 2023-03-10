@@ -19,10 +19,10 @@ export const TextVariant = {
 } as const
 
 export const TextSize = {
-	S: 's',
-	M: 'm',
-	L: 'l',
-	XL: 'xl'
+	S: 'size-s',
+	M: 'size-m',
+	L: 'size-l',
+	XL: 'size-xl'
 } as const
 
 export const TextAlign = {
@@ -43,12 +43,20 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		title,
 		content,
 		variant = TextVariant.PRIMARY,
-		align = TextAlign.START
+		align = TextAlign.START,
+		size = TextSize.M
 	} = props
+
+	const extra = [
+		className,
+		cls[variant],
+		cls[align],
+		cls[size]
+	]
 
 	return <div
 		data-testid='text-block'
-		className={classNames(cls.Text, {}, [className, cls[variant], cls[align]])}>
+		className={classNames(cls.Text, {}, extra)}>
 		{title && <p
 			data-testid='text-title'
 			className={cls.title}>{title}</p>}
