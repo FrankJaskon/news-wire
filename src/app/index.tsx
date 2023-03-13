@@ -3,12 +3,13 @@ import classNames from 'shared/lib/classNames/classNames'
 import { Navbar } from 'widgets/Navbar'
 import { AppRouter } from 'app/providers/router'
 import { Sidebar } from 'widgets/Sidebar'
-import { useDispatch } from 'react-redux'
-import { userActions } from 'entities/User'
+import { useDispatch, useSelector } from 'react-redux'
+import { getInitializedUser, userActions } from 'entities/User'
 import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
 
 const App: FC = () => {
 	const dispatch = useDispatch()
+	const isInitialized = useSelector(getInitializedUser)
 
 	useEffect(() => {
 		const data = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
@@ -24,7 +25,7 @@ const App: FC = () => {
 			<div className='page-wrapper'>
 				<Sidebar />
 				<div className='page-content'>
-					<AppRouter />
+					{isInitialized && <AppRouter />}
 				</div>
 			</div>
 		</Suspense>

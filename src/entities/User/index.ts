@@ -8,8 +8,8 @@ export {
 } from './model/selectors/getUserAuthData/getUserAuthData'
 
 export {
-	getIsAuth
-} from './model/selectors/getIsAuth/getIsAuth'
+	getInitializedUser
+} from './model/selectors/getInitializedUser/getInitializedUser'
 
 export type {
 	User,

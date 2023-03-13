@@ -1,4 +1,4 @@
-import { getIsAuth } from 'entities/User'
+import { getUserAuthData } from 'entities/User'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
@@ -15,7 +15,7 @@ export interface SidebarLinkProps {
 export const SidebarLink: FC<SidebarLinkProps> = (props) => {
 	const { item: { path, Icon, text, authOnly }, collapsed } = props
 	const { t } = useTranslation()
-	const isAuth = useSelector(getIsAuth)
+	const isAuth = Boolean(useSelector(getUserAuthData))
 
 	if (authOnly && !isAuth ) {
 		return null

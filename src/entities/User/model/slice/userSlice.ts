@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User, UserScheme } from '../types/UserScheme'
 
 const initialState: UserScheme = {
-	authData: undefined
+	authData: undefined,
+	_initialized: false
 }
 
 export const userSlice = createSlice({
@@ -11,6 +12,7 @@ export const userSlice = createSlice({
 	reducers: {
 		setAuthData: (state, action: PayloadAction<User>) => {
 			state.authData = action.payload
+			state._initialized = true
 		},
 		removeAuthData: (state) => {
 			state.authData = initialState.authData
@@ -18,5 +20,5 @@ export const userSlice = createSlice({
 	},
 })
 
-export const { actions:userActions } = userSlice
+export const { actions: userActions } = userSlice
 export const { reducer: userReducer } = userSlice
