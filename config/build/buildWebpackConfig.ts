@@ -15,6 +15,7 @@ const buildWebpackConfig = (options: BuildOptions): webpack.Configuration => {
 			path: paths.output,
 			clean: true,
 			assetModuleFilename: options.paths.assets.images,
+			publicPath: '/'
 		},
 
 		module: {

@@ -1,5 +1,5 @@
 body.light {
-	--bg-color: #eee;
+	--bg-color: #f5f5f5;
 	--primary-color: #ff8c00;
 	--secondary-color: #111;
 	--block-primary-color: #ff8c00;
@@ -7,5 +7,9 @@ body.light {
 	--block-secondary-color: #eee;
 	--light-color: #fff;
 	--overlay-bg-color: rgba(0 0 0 / 80%);
-	--highlighted-color: rgba(0 0 0 / 10%);
+	--highlighted-color: rgba(0 0 0 / 4%);
+
+	/* skeleton */
+	--skeleton-color: #fff;
+	--skeleton-shadow: rgba(0 0 0 / 20%);
 }

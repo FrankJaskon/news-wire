@@ -1,0 +1,53 @@
+.ArticleDetails {
+	height: 100%;
+}
+
+.error {
+	min-height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.loading {
+	height: 100%;
+}
+
+.avatar {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	max-width: 500px;
+	max-height: 200px;
+	border-radius: var(--border-radius);
+}
+
+.title {
+	margin-bottom: 15px;
+}
+
+.subtitle {
+	margin-bottom: 30px;
+}
+
+.contentBlock {
+	margin-bottom: 30px;
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+.icon {
+	margin-right: 10px;
+}
+
+.featureWrapper {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.featureWrapperLast {
+	margin-top: 0;
+}

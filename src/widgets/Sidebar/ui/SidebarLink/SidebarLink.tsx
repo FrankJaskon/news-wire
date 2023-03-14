@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import classNames from 'shared/lib/classNames/classNames'
+import { AppIcon } from 'shared/ui/AppIcon'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { Item } from '../../model/links'
 import cls from './SidebarLink.module.scss'
@@ -22,9 +23,13 @@ export const SidebarLink: FC<SidebarLinkProps> = (props) => {
 	}
 
 	return <AppLink
-		className={classNames(cls.AppLink, { [cls.collapsed]: collapsed })}
+		className={classNames(cls.SidebarLink, { [cls.collapsed]: collapsed })}
 		to={path}>
-		<Icon className={cls.icon} />
+		<AppIcon
+			Svg={Icon}
+			variant='contrast-color'
+			className={cls.icon}
+		/>
 		<span>{t(`${text}`)}</span>
 	</AppLink>
 }

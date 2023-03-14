@@ -15,7 +15,7 @@ interface TextProps {
 
 export const TextVariant = {
 	PRIMARY: 'primary',
-	ERROR: 'error'
+	ERROR: 'error',
 } as const
 
 export const TextSize = {

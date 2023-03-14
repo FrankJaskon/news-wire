@@ -1,5 +1,6 @@
 export {
 	AppButton,
+	// constants
 	ButtonVariant,
 	ButtonShape,
 	ButtonSize

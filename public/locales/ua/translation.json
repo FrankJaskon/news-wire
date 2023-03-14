@@ -11,9 +11,13 @@
     "link": {
       "about": "Про нас",
       "main": "Головна",
-      "profile": "Профіль"
+      "profile": "Профіль",
+      "articles": "Статті"
     }
   },
+  "copy-code": "Копіювати код",
+  "copy-successful": "Зроблено!",
+  "copy-error": "Помилка",
   "not-found": "Сторінку не знайдено",
   "error-page": {
     "reload": "Оновити сторінку",

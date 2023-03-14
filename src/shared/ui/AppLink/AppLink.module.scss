@@ -1,5 +1,8 @@
 .AppLink {
 	text-decoration: none;
+	box-shadow: 0 0 0 0 var(--overlay-bg-color);
+	border-radius: var(--border-radius);
+	transition: color .2s, background-color .2s, box-shadow .2s;
 	&.primary {
 		color: var(--primary-color);
 	}
@@ -8,5 +11,8 @@
 	}
 	&.underlined {
 		text-decoration: underline;
+	}
+	&:hover {
+		box-shadow: 0 0 5px 0 var(--overlay-bg-color);
 	}
 }

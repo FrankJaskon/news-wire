@@ -1,17 +1,26 @@
 .ProfileCard {
-	padding: 20px;
 	.highlighted {
+		padding-left: 10px;
 		background-color: var(--highlighted-color);
 	}
 }
 
 .editing {
-	border: solid 2px var(--primary-color);
+	padding: 10px 20px;
+	border: solid 2px var(--skeleton-shadow);
+	border-radius: var(--border-radius);
+}
+
+.error {
+	min-height: 150px;
+}
+
+.loading {
+	height: 100%;
 }
 
 .loading,
 .error {
-	min-height: 150px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

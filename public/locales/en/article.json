@@ -1,0 +1,12 @@
+{
+	"details": {
+		"error": {
+			"article-not-found": "The article has not been found"
+		}
+	},
+	"error": {
+        "incorrect-data": "Data is incorrect",
+        "empty": "Form must not be empty",
+        "server-error": "Something went wrong. Try later please"
+    }
+}

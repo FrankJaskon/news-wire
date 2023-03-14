@@ -10,12 +10,16 @@
 	--font-size-l: 24px;
 	--font-line-l: 32px;
 	--font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
-	--font-size-xl: 32px;
-	--font-line-xl: 40px;
+	--font-size-xl: 34px;
+	--font-line-xl: 42px;
 	--font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+	--font-size-xxl: 52px;
+	--font-line-xxl: 60px;
+	--font-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-main);
 
 	/* SIZE */
 	--page-height: calc(100vh - var(--navbar-height));
+	--page-content-height: calc(100vh - var(--navbar-height) - 2 * 20px);
 	--navbar-height: 50px;
 	--sidebar-weight: 256px;
 	--sidebar-weight-collapsed: 80px;
@@ -23,7 +27,7 @@
 	/* COLORS */
 	--red-color: #f22;
 	--red-color-lighter: #ff4e4e;
-	--disabled-color: #ccc;
+	--disabled-color: #a2a2a2;
 
 	/* STYLE */
 	--border-radius: 5px;

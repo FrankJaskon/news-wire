@@ -4,6 +4,11 @@
 	color: var(--secondary-color);
 	padding: .25rem 1rem;
 	border-radius: var(--border-radius);
+	box-shadow: 0 0 0 0 var(--overlay-bg-color);
+	transition: color .2s, background-color .2s, box-shadow .2s;
+	&:hover {
+		box-shadow: 0 0 5px 0 var(--overlay-bg-color);
+	}
 }
 
 .primary {
@@ -12,7 +17,6 @@
 }
 
 .custom {
-	padding: 0;
 	border: none;
 	outline: none;
 	background: none;

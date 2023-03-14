@@ -1,11 +1,10 @@
 import { CountryType } from 'entities/Country'
 import { CurrencyType } from 'entities/Currency'
 import { ProfileCard } from 'entities/Profile'
-import { FC, useCallback, useEffect } from 'react'
+import { FC, useCallback, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
-import classNames from 'shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { Text } from 'shared/ui/Text'
 import { getIsLoading } from '../model/selectors/getIsLoading/getIsLoading'
@@ -18,16 +17,11 @@ import { profileActions, profileReducer } from '../model/slice/profileSlice'
 import { ValidateProfileError, ValidateProfileErrorType } from '../model/types/ProfileScheme'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 
-interface ProfilePageProps {
-	className?: string
-}
-
 const reducers: ReducerList = {
 	profile: profileReducer
 }
 
-const ProfilePage: FC<ProfilePageProps> = (props) => {
-	const { className } = props
+const ProfilePage: FC = () => {
 	const dispatch = useAppDispatch()
 	const formData = useSelector(getProfileForm)
 	const isLoading = useSelector(getIsLoading)
@@ -36,7 +30,7 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 	const readonly = useSelector(getReadonly)
 	const { t } = useTranslation('profile')
 
-	const ValidateErrorTranslation = {
+	const ValidateErrorTranslation = useMemo(() => ({
 		[ValidateProfileError.INCORRECT_AGE]: t('error.age'),
 		[ValidateProfileError.INCORRECT_AVATAR]: t('error.avatar'),
 		[ValidateProfileError.INCORRECT_DATA]: t('error.incorrect-data'),
@@ -46,7 +40,7 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 		[ValidateProfileError.INCORRECT_CITY]: t('error.city'),
 		[ValidateProfileError.NO_DATA]: t('error.empty'),
 		[ValidateProfileError.SERVER_ERROR]: t('error.server-error'),
-	}
+	}), [t])
 
 	useEffect(() => {
 		if (__PROJECT__ !== 'storybook') {
@@ -87,10 +81,10 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 	}, [dispatch])
 
 	return <LazyReducerLoader reducers={reducers} removeAfterUnmount>
-		<div className={classNames('', {}, [className])}>
-			<ProfilePageHeader
+		<>
+			{(!loadingError && !isLoading) && <ProfilePageHeader
 				readonly={readonly}
-			/>
+			/>}
 			{validateError && validateError?.map((err: ValidateProfileErrorType) => (
 				<Text
 					key={err}
@@ -112,7 +106,7 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
 				updateCurrency={onChangeCurrency}
 				updateCountry={onChangeCountry}
 			/>
-		</div>
+		</>
 	</LazyReducerLoader>
 }
 

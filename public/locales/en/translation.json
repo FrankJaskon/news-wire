@@ -11,9 +11,13 @@
     "link": {
       "about": "About us",
       "main": "Main page",
-      "profile": "Profile"
+      "profile": "Profile",
+      "articles": "Articles"
     }
   },
+  "copy-code": "Copy code",
+  "copy-successful": "Copied!",
+  "copy-error": "Some error",
   "not-found": "Page not found",
   "error-page": {
     "reload": "Reload",

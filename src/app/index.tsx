@@ -13,10 +13,8 @@ const App: FC = () => {
 
 	useEffect(() => {
 		const data = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
-		if (data) {
-			const initialAuthData = JSON.parse(data)
-			dispatch(userActions.setAuthData(initialAuthData))
-		}
+		const initialAuthData = data && JSON.parse(data)
+		dispatch(userActions.setAuthData(initialAuthData))
 	}, [dispatch])
 
 	return <div className={classNames('App', {}, [])}>

@@ -4,6 +4,8 @@ export const AppRoutes = {
 	MAIN: 'main',
 	ABOUT: 'about',
 	PROFILE: 'profile',
+	ARTICLES: 'articles',
+	ARTICLES_DETAILS: 'articles_details',
 
 	// last
 	NOT_FOUND: 'not_found'
@@ -15,6 +17,8 @@ export const routePaths: Record<AppRoutesTypes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.ABOUT]: '/about',
 	[AppRoutes.PROFILE]: '/profile',
+	[AppRoutes.ARTICLES]: '/articles',
+	[AppRoutes.ARTICLES_DETAILS]: '/articles/', // + 'id'
 
 	// last
 	[AppRoutes.NOT_FOUND]: '*'

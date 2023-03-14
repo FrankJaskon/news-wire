@@ -1,4 +1,6 @@
 import { AboutPage } from 'pages/AboutPage'
+import { ArticleDetailsPage } from 'pages/ArticleDetailsPage'
+import { ArticlesPage } from 'pages/ArticlesPage'
 import { MainPage } from 'pages/MainPage'
 import { NotFound } from 'pages/NotFound'
 import { ProfilePage } from 'pages/ProfilePage'
@@ -21,6 +23,16 @@ export const routerConfig: AuthRouteProps[] = [
 	{
 		path: routePaths.profile,
 		element: <ProfilePage />,
+		authOnly: true
+	},
+	{
+		path: routePaths.articles,
+		element: <ArticlesPage />,
+		authOnly: true
+	},
+	{
+		path: `${routePaths.articles_details}:id`,
+		element: <ArticleDetailsPage />,
 		authOnly: true
 	},
 

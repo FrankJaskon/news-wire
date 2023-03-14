@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
 import { appThemes } from 'shared/config/theme/ThemeContext'
-import { AppInput, AppInputProps, InputVariant } from './AppInput'
+import { AppInput, AppInputProps, InputColor, InputVariant } from './AppInput'
 
 export default {
 	title: 'shared/Form/AppInput',
@@ -34,12 +34,12 @@ Clear.args = {
 
 export const BasicPrimary: Story<AppInputProps> = Template.bind({})
 BasicPrimary.args = {
-	color: 'primary-color'
+	color: InputColor.PRIMARY
 }
 
 export const BasicSecondary: Story<AppInputProps> = Template.bind({})
 BasicSecondary.args = {
-	color: 'secondary-color'
+	color: InputColor.SECONDARY
 }
 
 export const BasicReadonly: Story<AppInputProps> = Template.bind({})

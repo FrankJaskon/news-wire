@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ProfileCard.module.scss'
@@ -11,6 +11,7 @@ import { Avatar } from 'shared/ui/Avatar'
 import { CurrencySelect, CurrencyType } from 'entities/Currency'
 import { CountrySelect, CountryType } from 'entities/Country'
 import type { Profile } from 'pages/ProfilePage'
+import { PageLoader } from 'widgets/PageLoader'
 
 export interface ProfileCardProps {
 	className?: string
@@ -59,17 +60,15 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 
 	if (isLoading) {
 		return <div className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
-			<Loader />
+			<PageLoader />
 		</div>
 	}
 
-	const mods = {
-		[cls.editing]: !readonly
-	}
+	const mods = { [cls.editing]: !readonly }
 
-	const highlightedFiledMod = {
-		[cls.highlighted]: !readonly
-	}
+	const highlightedFiledMod = { [cls.highlighted]: !readonly }
+
+	const formControlVariant = readonly ? 'underlined' : 'primary'
 
 	return <div className={classNames(cls.ProfileCard, mods, [className])}>
 		<div className={cls.wrapper}>
@@ -82,7 +81,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			</div>
 			<div className={cls.inner}>
 				<FormControl
-					variant='underlined'
+					variant={formControlVariant}
 				>
 					<AppLabel
 						variant='primary'
@@ -101,7 +100,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 					/>
 				</FormControl>
 				<FormControl
-					variant='underlined'
+					variant={formControlVariant}
 				>
 					<AppLabel
 						variant='primary'
@@ -122,7 +121,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			</div>
 		</div>
 		<FormControl
-			variant='underlined'
+			variant={formControlVariant}
 		>
 			<AppLabel
 				variant='primary'
@@ -141,7 +140,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			/>
 		</FormControl>
 		<FormControl
-			variant='underlined'
+			variant={formControlVariant}
 		>
 			<CountrySelect
 				value={data?.country}
@@ -150,7 +149,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			/>
 		</FormControl>
 		<FormControl
-			variant='underlined'
+			variant={formControlVariant}
 		>
 			<AppLabel
 				variant='primary'
@@ -169,7 +168,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			/>
 		</FormControl>
 		<FormControl
-			variant='underlined'
+			variant={formControlVariant}
 		>
 			<AppLabel
 				variant='primary'
@@ -188,7 +187,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			/>
 		</FormControl>
 		<FormControl
-			variant='underlined'
+			variant={formControlVariant}
 		>
 			<CurrencySelect
 				value={data?.currency}
@@ -197,7 +196,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			/>
 		</FormControl>
 		<FormControl
-			variant='underlined'
+			variant={formControlVariant}
 		>
 			<AppLabel
 				variant='primary'

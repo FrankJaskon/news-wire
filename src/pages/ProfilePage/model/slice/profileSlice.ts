@@ -6,7 +6,7 @@ import { Profile, ProfileScheme, ValidateProfileErrorType } from '../types/Profi
 const initialState: ProfileScheme = {
 	data: undefined,
 	form: undefined,
-	isLoading: false,
+	isLoading: true,
 	readonly: true,
 	validateError: undefined,
 	loadingError: undefined

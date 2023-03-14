@@ -3,6 +3,7 @@
 	margin: 8px 0;
 	box-sizing: border-box;
 	font-size: 16px;
+	border-radius: var(--border-radius);
 }
 
 .readonly {
@@ -12,7 +13,6 @@
 .primary {
 	padding: 12px 20px;
 	border: 1px solid #ccc;
-	border-radius: 4px;
 }
 
 .clear {
