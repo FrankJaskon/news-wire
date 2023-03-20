@@ -1,30 +1,26 @@
 import { ArticleDetails } from 'entities/Article'
-import { fetchArticleById } from '../../model/services/fetchArticleById'
-import { FC, memo, ReactNode, useEffect, useMemo } from 'react'
+import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useParams } from 'react-router-dom'
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleDetailsPage.module.scss'
 import { Text } from 'shared/ui/Text'
-import { useSelector } from 'react-redux'
-import {
-	getArticleDetailsData,
-	getArticleDetailsError,
-	getArticleDetailsIsLoading,
-	getArticleDetailsReadonly
-} from '../../model/selectors/articleDetailsSelectors'
+import { CommentsList } from 'entities/Comment'
+import { useParams } from 'react-router-dom'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
-import { ValidateArticleDetailsError } from '../../model/types/ArticleDetailsScheme'
+import { articleDetailsCommentsReducer, getArticleDetailsComments } from '../../model/slice/articleDetailsCommentsSlice'
+import { useSelector } from 'react-redux'
+import { getIsLoading, getError } from '../../model/selectors/comments'
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
+import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 
 export interface ArticleDetailsPageProps {
 	className ?: string
 }
 
 const reducers: ReducerList = {
-	articleDetails: articleDetailsReducer
-} as const
+	articleDetailsComments: articleDetailsCommentsReducer
+}
 
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 	const {
@@ -32,43 +28,32 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 	} = props
 
 	const { t } = useTranslation('article')
-	const dispatch = useAppDispatch()
 	const id = Number(useParams().id)
-	const article = useSelector(getArticleDetailsData)
-	const isLoading = useSelector(getArticleDetailsIsLoading)
-	const error = useSelector(getArticleDetailsError)
-	const readonly = useSelector(getArticleDetailsReadonly)
+	const comments = useSelector(getArticleDetailsComments.selectAll)
+	const isLoading = useSelector(getIsLoading)
+	const error = useSelector(getError)
+	const dispatch = useAppDispatch()
 
-	const ValidateArticleDetailsErrorTranslation = useMemo(() => ({
-		[ValidateArticleDetailsError.NO_DATA]: t('error.empty'),
-		[ValidateArticleDetailsError.SERVER_ERROR]: t('error.server-error'),
-	}), [t])
-
-	useEffect(() => {
-		if (__PROJECT__ !== 'storybook') {
-			dispatch(fetchArticleById(Number(id)))
-		}
-	}, [dispatch, id])
-
-	let content: ReactNode
+	useInitialEffect(() => dispatch(fetchCommentsByArticleId(Number(id))))
 
 	if (!id && __PROJECT__ !== 'storybook') {
-		content = <Text variant='error' content={t('details.error.article-not-found')} />
-	} else {
-		content = <ArticleDetails
-			isLoading={isLoading}
-			article={article}
-			error={error && ValidateArticleDetailsErrorTranslation[error]}
-			readonly={readonly}
-		/>
+		<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+			<Text variant='error' content={t('details.error.article-not-found')} />
+		</div>
 	}
 
 	return <LazyReducerLoader
-		removeAfterUnmount
 		reducers={reducers}
+		removeAfterUnmount
 	>
 		<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-			{content}
+			<ArticleDetails id={id} />
+			<Text title={t('comment-title')} />
+			<CommentsList
+				comments={comments}
+				isLoading={isLoading}
+				error={error}
+			/>
 		</div>
 	</LazyReducerLoader>
 }

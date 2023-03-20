@@ -5,7 +5,7 @@ import {
 	ArticleType,
 	ValidateArticleDetailsError,
 	ValidateArticleDetailsErrorType
-} from '../types/ArticleDetailsScheme'
+} from '../../types/ArticleDetailsScheme'
 
 export const fetchArticleById = createAsyncThunk<
 	ArticleType,

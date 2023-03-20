@@ -16,14 +16,16 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://teleprogramma.pro/sites/default/files/nodes/node_436422_1653684561.jpg"
     },
     {
       "id": 2,
       "username": "user",
       "password": "123",
-      "role": "USER"
-    }
+      "role": "USER",
+      "avatar": "https://teleprogramma.pro/sites/default/files/nodes/node_436422_1653684561.jpg"
+  }
   ],
   "profile": {
     "firstname": "Roman",

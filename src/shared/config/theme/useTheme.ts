@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import ThemeContext, { LOCAL_STORAGE_THEME_KEY, appThemes, Theme } from './ThemeContext'
+import ThemeContext, { LOCAL_STORAGE_THEME_KEY, AppThemes, Theme } from './ThemeContext'
 
 interface UseThemeResult {
 	theme: Theme,
@@ -14,17 +14,17 @@ const useTheme = (): UseThemeResult => {
 	const toggleTheme = () => {
 		let newTheme: Theme
 		switch (theme) {
-		case appThemes.LIGHT:
-			newTheme = appThemes.DARK
+		case AppThemes.LIGHT:
+			newTheme = AppThemes.DARK
 			break
-		case appThemes.DARK:
-			newTheme = appThemes.PURPLE
+		case AppThemes.DARK:
+			newTheme = AppThemes.PURPLE
 			break
-		case appThemes.PURPLE:
-			newTheme = appThemes.LIGHT
+		case AppThemes.PURPLE:
+			newTheme = AppThemes.LIGHT
 			break
 		default:
-			newTheme = appThemes.LIGHT
+			newTheme = AppThemes.LIGHT
 		}
 		setTheme(newTheme)
 		document.body.className = theme

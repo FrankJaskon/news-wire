@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
+import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { PageLoader } from './PageLoader'
 
 export default {
@@ -19,9 +19,9 @@ Basic.args = {
 export const DarkTheme: Story = Template.bind({})
 DarkTheme.args = {
 }
-DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: Story = Template.bind({})
 PurpleTheme.args = {
 }
-PurpleTheme.decorators = [ThemeDecorator(appThemes.PURPLE)]
+PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

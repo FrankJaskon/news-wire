@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { Skeleton } from './Skeleton'
 import type { SkeletonProps } from './Skeleton'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
+import { AppThemes } from 'shared/config/theme/ThemeContext'
 
 export default {
 	title: 'shared/Skeleton',
@@ -19,12 +19,12 @@ Basic.args = {
 export const BasicDark: Story<SkeletonProps> = Template.bind({})
 BasicDark.args = {
 }
-BasicDark.decorators = [ThemeDecorator(appThemes.DARK)]
+BasicDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const BasicPurple: Story<SkeletonProps> = Template.bind({})
 BasicPurple.args = {
 }
-BasicPurple.decorators = [ThemeDecorator(appThemes.PURPLE)]
+BasicPurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
 export const Circle: Story<SkeletonProps> = Template.bind({})
 Circle.args = {
@@ -39,7 +39,7 @@ CircleDark.args = {
 	width: 100,
 	height: 100
 }
-CircleDark.decorators = [ThemeDecorator(appThemes.DARK)]
+CircleDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const CirclePurple: Story<SkeletonProps> = Template.bind({})
 CirclePurple.args = {
@@ -47,4 +47,4 @@ CirclePurple.args = {
 	width: 100,
 	height: 100
 }
-CirclePurple.decorators = [ThemeDecorator(appThemes.PURPLE)]
+CirclePurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]

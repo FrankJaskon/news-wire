@@ -1,13 +1,13 @@
 import { createContext } from 'react'
 import { ValueOf } from 'shared/config/types/types'
 
-export const appThemes = {
+export const AppThemes = {
 	LIGHT: 'light',
 	DARK : 'dark',
 	PURPLE: 'purple'
 } as const
 
-export type Theme = ValueOf<typeof appThemes>
+export type Theme = ValueOf<typeof AppThemes>
 
 export interface ThemeContextProps {
 	theme: Theme,

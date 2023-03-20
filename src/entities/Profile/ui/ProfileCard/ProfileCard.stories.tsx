@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { Profile } from 'pages/ProfilePage'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
+import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { ProfileCard, ProfileCardProps } from './ProfileCard'
 
 export default {
@@ -34,13 +34,13 @@ export const DarkTheme: Story<ProfileCardProps> = Template.bind({})
 DarkTheme.args = {
 	data: profileData
 }
-DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: Story<ProfileCardProps> = Template.bind({})
 PurpleTheme.args = {
 	data: profileData
 }
-PurpleTheme.decorators = [ThemeDecorator(appThemes.PURPLE)]
+PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
 export const Error: Story<ProfileCardProps> = Template.bind({})
 Error.args = {

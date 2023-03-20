@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
+import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { Sidebar } from './Sidebar'
 
 export default {
@@ -21,7 +21,7 @@ export const SidebarAuthorized: Story = Template.bind({})
 SidebarAuthorized.decorators = [StoreDecorator({ user: { authData: {}}})]
 
 export const DarkTheme: Story = Template.bind({})
-DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: Story = Template.bind({})
-PurpleTheme.decorators = [ThemeDecorator(appThemes.PURPLE)]
+PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

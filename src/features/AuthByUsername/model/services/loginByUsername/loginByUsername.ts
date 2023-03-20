@@ -27,7 +27,7 @@ export const loginByUsername = createAsyncThunk<User, LoginProps, ThunkApiConfig
 
 			return response.data
 		} catch (error: any) {
-			if (error?.status === 403) {
+			if (error?.response?.status === 403) {
 				return rejectWithValue(LoginErrors.INCORRECT_DATA)
 			}
 			return rejectWithValue(LoginErrors.UNEXPECTED)

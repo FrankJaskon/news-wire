@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
+import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { AppLabel, AppLabelProps } from './AppLabel'
 
 export default {
@@ -21,9 +21,9 @@ Basic.args = {
 export const BasicDark: Story<AppLabelProps> = Template.bind({})
 BasicDark.args = {
 }
-BasicDark.decorators = [ThemeDecorator(appThemes.DARK)]
+BasicDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const BasicPurple: Story<AppLabelProps> = Template.bind({})
 BasicPurple.args = {
 }
-BasicPurple.decorators = [ThemeDecorator(appThemes.PURPLE)]
+BasicPurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]

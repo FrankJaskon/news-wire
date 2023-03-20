@@ -1,3 +1,4 @@
+import { CommentType } from 'entities/Comment'
 import { ValueOf } from 'shared/config/types/types'
 
 export interface ArticleDetailsScheme {
@@ -5,6 +6,7 @@ export interface ArticleDetailsScheme {
 	error?: ValidateArticleDetailsErrorType
 	isLoading?: boolean
 	readonly: boolean
+	comments?: CommentType[]
 }
 
 export const ValidateArticleDetailsError = {

@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
+import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { Navbar } from './Navbar'
 
 export default {
@@ -16,10 +16,10 @@ const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />
 export const Unauthorize: Story = Template.bind({})
 
 export const UnauthorizeDark: Story = Template.bind({})
-UnauthorizeDark.decorators = [ThemeDecorator(appThemes.DARK)]
+UnauthorizeDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const UnauthorizePurple: Story = Template.bind({})
-UnauthorizePurple.decorators = [ThemeDecorator(appThemes.PURPLE)]
+UnauthorizePurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
 export const Authorize: Story = Template.bind({})
 Authorize.decorators = [StoreDecorator({

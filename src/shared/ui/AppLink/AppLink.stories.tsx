@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
+import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { AppLink, AppLinkTheme } from './AppLink'
 import type { AppLinkProps } from './AppLink'
 
@@ -25,14 +25,14 @@ PrimaryDark.args = {
 	children: 'Click',
 	variant: AppLinkTheme.PRIMARY,
 }
-PrimaryDark.decorators = [ThemeDecorator(appThemes.DARK)]
+PrimaryDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PrimaryPurple: Story<AppLinkProps> = Template.bind({})
 PrimaryPurple.args = {
 	children: 'Click',
 	variant: AppLinkTheme.PRIMARY,
 }
-PrimaryPurple.decorators = [ThemeDecorator(appThemes.PURPLE)]
+PrimaryPurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
 export const Underlined: Story<AppLinkProps> = Template.bind({})
 Underlined.args = {
@@ -45,7 +45,7 @@ UnderlinedDark.args = {
 	children: 'Click',
 	variant: AppLinkTheme.UNDERLINED,
 }
-UnderlinedDark.decorators = [ThemeDecorator(appThemes.DARK)]
+UnderlinedDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const Secondary: Story<AppLinkProps> = Template.bind({})
 Secondary.args = {
@@ -58,4 +58,4 @@ SecondaryDark.args = {
 	children: 'Click',
 	variant: AppLinkTheme.SECONDARY,
 }
-SecondaryDark.decorators = [ThemeDecorator(appThemes.DARK)]
+SecondaryDark.decorators = [ThemeDecorator(AppThemes.DARK)]

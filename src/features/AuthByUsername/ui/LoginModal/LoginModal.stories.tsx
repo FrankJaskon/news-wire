@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
+import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { LoginModal, LoginModalProps } from './LoginModal'
 
 export default {
@@ -22,10 +22,10 @@ export const DarkTheme: Story<LoginModalProps> = Template.bind({})
 DarkTheme.args = {
 	isOpen: true
 }
-DarkTheme.decorators = [ThemeDecorator(appThemes.DARK)]
+DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: Story<LoginModalProps> = Template.bind({})
 PurpleTheme.args = {
 	isOpen: true
 }
-PurpleTheme.decorators = [ThemeDecorator(appThemes.PURPLE)]
+PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
-import { appThemes } from 'shared/config/theme/ThemeContext'
+import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { AppButton, ButtonShape, ButtonSize, ButtonVariant } from './AppButton'
 
 export default {
@@ -20,13 +20,13 @@ export const ButtonDark: Story = Template.bind({})
 ButtonDark.args = {
 	children: 'Click',
 }
-ButtonDark.decorators = [ThemeDecorator(appThemes.DARK)]
+ButtonDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const ButtonPurple: Story = Template.bind({})
 ButtonPurple.args = {
 	children: 'Click',
 }
-ButtonPurple.decorators = [ThemeDecorator(appThemes.PURPLE)]
+ButtonPurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
 export const ButtonDisabled: Story = Template.bind({})
 ButtonDisabled.args = {
@@ -57,7 +57,7 @@ SquareDark.args = {
 	children: '>',
 	shape: ButtonShape.SQUARE
 }
-SquareDark.decorators = [ThemeDecorator(appThemes.DARK)]
+SquareDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const SquareL: Story = Template.bind({})
 SquareL.args = {
@@ -84,7 +84,7 @@ CustomDark.args = {
 	children: 'Click',
 	variant: ButtonVariant.CUSTOM,
 }
-CustomDark.decorators = [ThemeDecorator(appThemes.DARK)]
+CustomDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const Outline: Story = Template.bind({})
 Outline.args = {
@@ -97,7 +97,7 @@ OutlineDark.args = {
 	children: 'Click',
 	variant: ButtonVariant.OUTLINE,
 }
-OutlineDark.decorators = [ThemeDecorator(appThemes.DARK)]
+OutlineDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const OutlineSquare: Story = Template.bind({})
 OutlineSquare.args = {

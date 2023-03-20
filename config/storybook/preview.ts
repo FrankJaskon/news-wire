@@ -1,5 +1,5 @@
 import { addDecorator } from '@storybook/react'
-import { appThemes } from '../../src/shared/config/theme/ThemeContext'
+import { AppThemes } from '../../src/shared/config/theme/ThemeContext'
 import { RouteDecorator } from '../../src/shared/config/storybook/decorators/RouteDecorator'
 import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator'
 import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecotator'
@@ -24,4 +24,4 @@ export const parameters = {
 
 addDecorator(StyleDecorator)
 addDecorator(RouteDecorator)
-addDecorator(ThemeDecorator(appThemes.LIGHT))
+addDecorator(ThemeDecorator(AppThemes.LIGHT))

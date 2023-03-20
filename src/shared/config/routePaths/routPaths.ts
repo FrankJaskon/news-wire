@@ -6,6 +6,7 @@ export const AppRoutes = {
 	PROFILE: 'profile',
 	ARTICLES: 'articles',
 	ARTICLES_DETAILS: 'articles_details',
+	ARTICLES_DETAILS_COMMENTS: 'articles_details_comments',
 
 	// last
 	NOT_FOUND: 'not_found'
@@ -19,6 +20,7 @@ export const routePaths: Record<AppRoutesTypes, string> = {
 	[AppRoutes.PROFILE]: '/profile',
 	[AppRoutes.ARTICLES]: '/articles',
 	[AppRoutes.ARTICLES_DETAILS]: '/articles/', // + 'id'
+	[AppRoutes.ARTICLES_DETAILS_COMMENTS]: '/comments/', // path to GET COMMENTS
 
 	// last
 	[AppRoutes.NOT_FOUND]: '*'

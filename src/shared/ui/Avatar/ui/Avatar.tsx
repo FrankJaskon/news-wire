@@ -6,7 +6,7 @@ import defaultUser from 'shared/assets/icons/default-user.png'
 
 export interface AvatarProps {
 	className?: string
-	variant?: AvatarVariant
+	variant?: AvatarVariantType
 	src?: string
 	alt?: string
 	size?: number
@@ -18,7 +18,7 @@ export const AvatarVariant = {
 	SQUARE: 'square'
 } as const
 
-export type AvatarVariant = ValueOf<typeof AvatarVariant>
+export type AvatarVariantType = ValueOf<typeof AvatarVariant>
 
 export const Avatar: FC<AvatarProps> = (props) => {
 	const {

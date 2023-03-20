@@ -9,6 +9,7 @@
 .size-s {
 	.title {
 		font: var(--font-m);
+		font-weight: 700;
 	}
 	.content {
 		font: var(--font-s);
@@ -18,6 +19,7 @@
 .size-m {
 	.title {
 		font: var(--font-l);
+		font-weight: 700;
 	}
 	.content {
 		font: var(--font-m);
@@ -27,6 +29,7 @@
 .size-l {
 	.title {
 		font: var(--font-xl);
+		font-weight: 700;
 	}
 	.content {
 		font: var(--font-l);
@@ -36,6 +39,7 @@
 .size-xl {
 	.title {
 		font: var(--font-xxl);
+		font-weight: 700;
 	}
 	.content {
 		font: var(--font-xl);
@@ -45,6 +49,7 @@
 .error {
 	.title {
 		color: var(--red-color);
+		font-weight: 700;
 	}
 	.content {
 		color: var(--red-color-lighter);
