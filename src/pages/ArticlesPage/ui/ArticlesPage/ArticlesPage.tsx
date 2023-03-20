@@ -14,7 +14,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 
 	return (
 		<div className={classNames(cls.ArticlesPage, {}, [className])}>
-			ArticlesPage
+			+
 		</div>
 	)
 }

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from 'react'
+import { FC, ReactNode } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { Skeleton } from 'shared/ui/Skeleton'
 import { Text } from 'shared/ui/Text'
@@ -79,7 +79,7 @@ export const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
 			<Skeleton width={100} height={22} className={cls.feature} />
 			<Skeleton width={100} height={22} className={classNames(cls.feature, {}, [cls.featureLast])} />
 			<Skeleton height={250} className={cls.contentBlock} />
-			<Skeleton height={250} className={classNames(cls.contentBlock, {}, [cls.contentBlockLast])} />
+			<Skeleton height={250} className={classNames(cls.contentBlock)} />
 		</div>
 	} else if (error) {
 		content = <div className={classNames(cls.ArticleDetails, {}, [className, cls.error])}>

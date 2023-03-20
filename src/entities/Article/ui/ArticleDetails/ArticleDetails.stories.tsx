@@ -91,3 +91,4 @@ Basic.decorators = [StoreDecorator({
 
 
 export const Loading: Story<ArticleDetailsProps> = Template.bind({})
+Loading.decorators = [StoreDecorator({ articleDetails: { isLoading: true }})]

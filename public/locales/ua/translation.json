@@ -39,5 +39,12 @@
     }
   },
   "choose-currency": "Валюта",
-  "choose-country": "Країна"
+  "choose-country": "Країна",
+  "new-comment": {
+    "btn": {
+      "submit": "Відправити",
+      "cancel": "Відмінити"
+    },
+    "label": "Введить свій коментар"
+  }
 }

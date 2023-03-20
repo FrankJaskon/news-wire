@@ -1,1 +1,4 @@
-export { FormControl } from './ui/FormControl'
+export {
+	FormControl,
+	FormControlVariant
+} from './ui/FormControl'

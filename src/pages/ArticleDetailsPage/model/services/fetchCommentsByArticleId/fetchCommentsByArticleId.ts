@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { CommentType } from 'entities/Comment'
-import { routePaths } from 'shared/config/routePaths/routPaths'
 
 export const fetchCommentsByArticleId = createAsyncThunk<
 	CommentType[],
@@ -17,7 +16,7 @@ export const fetchCommentsByArticleId = createAsyncThunk<
 		}
 		try {
 			const response = await extra.api.get<CommentType[]>(
-				routePaths.articles_details_comments, { params: {
+				'/comments', { params: {
 					articleId,
 					_expand: 'user'
 				}})

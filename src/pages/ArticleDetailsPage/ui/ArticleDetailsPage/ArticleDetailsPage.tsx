@@ -1,5 +1,5 @@
 import { ArticleDetails } from 'entities/Article'
-import { FC, memo } from 'react'
+import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleDetailsPage.module.scss'
@@ -13,13 +13,15 @@ import { getIsLoading, getError } from '../../model/selectors/comments'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import { AddNewComment } from 'features/AddNewComment'
+import { createNewCommentForArticle } from '../../model/services/createNewCommentForArticle/createNewCommentForArticle'
 
 export interface ArticleDetailsPageProps {
 	className ?: string
 }
 
 const reducers: ReducerList = {
-	articleDetailsComments: articleDetailsCommentsReducer
+	articleDetailsComments: articleDetailsCommentsReducer,
 }
 
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
@@ -42,13 +44,17 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 		</div>
 	}
 
+	const onCreateNewComment = useCallback((value: string) => {
+		dispatch(createNewCommentForArticle(value))
+	}, [dispatch])
+
 	return <LazyReducerLoader
 		reducers={reducers}
-		removeAfterUnmount
 	>
 		<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
 			<ArticleDetails id={id} />
 			<Text title={t('comment-title')} />
+			<AddNewComment handleSubmit={onCreateNewComment} />
 			<CommentsList
 				comments={comments}
 				isLoading={isLoading}

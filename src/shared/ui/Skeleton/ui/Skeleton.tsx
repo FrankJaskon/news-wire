@@ -9,7 +9,7 @@ export interface SkeletonProps {
 	borderRadius?: string
 }
 
-export const Skeleton: FC<SkeletonProps> = (props) => {
+export const Skeleton: FC<SkeletonProps> = memo((props: SkeletonProps) => {
 	const {
 		className,
 		borderRadius,
@@ -29,4 +29,4 @@ export const Skeleton: FC<SkeletonProps> = (props) => {
 			className={classNames(cls.Skeleton, {}, [className])}
 		/>
 	)
-}
+})

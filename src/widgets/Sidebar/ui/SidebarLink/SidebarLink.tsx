@@ -2,6 +2,7 @@ import { getUserAuthData } from 'entities/User'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import { routePaths } from 'shared/config/routePaths/routPaths'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppIcon } from 'shared/ui/AppIcon'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
@@ -14,9 +15,20 @@ export interface SidebarLinkProps {
 }
 
 export const SidebarLink: FC<SidebarLinkProps> = (props) => {
-	const { item: { path, Icon, text, authOnly }, collapsed } = props
+	const {
+		item: {
+			path,
+			Icon,
+			text,
+			authOnly
+		},
+		collapsed
+	} = props
+
 	const { t } = useTranslation()
-	const isAuth = Boolean(useSelector(getUserAuthData))
+	const userData = useSelector(getUserAuthData)
+	const isAuth = Boolean(userData)
+	const newPath = path === routePaths.profile ? `${path}${userData?.id || ''}` : path
 
 	if (authOnly && !isAuth ) {
 		return null
@@ -24,7 +36,7 @@ export const SidebarLink: FC<SidebarLinkProps> = (props) => {
 
 	return <AppLink
 		className={classNames(cls.SidebarLink, { [cls.collapsed]: collapsed })}
-		to={path}>
+		to={newPath}>
 		<AppIcon
 			Svg={Icon}
 			variant='contrast-color'

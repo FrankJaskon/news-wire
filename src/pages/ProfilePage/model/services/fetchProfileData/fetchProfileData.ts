@@ -4,12 +4,12 @@ import { routePaths } from 'shared/config/routePaths/routPaths'
 import { ValidateProfileError } from '../../types/ProfileScheme'
 import type { Profile, ValidateProfileErrorType } from '../../types/ProfileScheme'
 
-export const fetchProfileData = createAsyncThunk<Profile, void, ThunkApiConfigType<ValidateProfileErrorType>>(
+export const fetchProfileData = createAsyncThunk<Profile, number, ThunkApiConfigType<ValidateProfileErrorType>>(
 	'profile/fetchProfileData',
-	async (_, thunkAPI) => {
+	async (userId, thunkAPI) => {
 		const { extra, rejectWithValue } = thunkAPI
 		try {
-			const response = await extra.api.get<Profile>(routePaths.profile)
+			const response = await extra.api.get<Profile>(`${routePaths.profile}${userId}`)
 
 			return response.data
 		} catch (error: any) {

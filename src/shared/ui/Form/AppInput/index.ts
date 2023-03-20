@@ -1,1 +1,4 @@
-export { AppInput } from './ui/AppInput'
+export {
+	AppInput,
+	InputVariant
+} from './ui/AppInput'

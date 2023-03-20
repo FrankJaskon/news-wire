@@ -12,7 +12,7 @@ const initialState: ProfileScheme = {
 	loadingError: undefined
 }
 
-export const profileSlice = createSlice({
+const profileSlice = createSlice({
 	name: 'profile',
 	initialState,
 	reducers: {

@@ -14,7 +14,6 @@ const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => < ArticleD
 
 export const Basic: Story<ArticleDetailsPageProps> = Template.bind({})
 Basic.args = {
-
 }
 Basic.decorators = [StoreDecorator({
 	articleDetails: {
@@ -91,3 +90,8 @@ Basic.decorators = [StoreDecorator({
 		}
 	}
 })]
+
+export const Loading: Story<ArticleDetailsPageProps> = Template.bind({})
+Loading.args = {
+}
+Loading.decorators = [StoreDecorator({ articleDetails: { isLoading: true }})]

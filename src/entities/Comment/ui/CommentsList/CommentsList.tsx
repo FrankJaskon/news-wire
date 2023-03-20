@@ -38,6 +38,14 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 		</div>
 	}
 
+	if (isLoading) {
+		return <div className={classNames(cls.CommentsList, {}, [className])}>
+			<CommentCard isLoading />
+			<CommentCard isLoading />
+			<CommentCard isLoading />
+		</div>
+	}
+
 	return (
 		<div className={classNames(cls.CommentsList, {}, [className])}>
 			{comments?.length

@@ -9,9 +9,10 @@ describe('Profile reducer', () => {
 	const initialState: ProfileScheme = {
 		data: undefined,
 		form: undefined,
-		isLoading: false,
+		isLoading: true,
+		readonly: true,
 		validateError: undefined,
-		readonly: true
+		loadingError: undefined
 	}
 	const data: Profile = {
 		age: 12,
@@ -31,8 +32,12 @@ describe('Profile reducer', () => {
 			initialState as ProfileScheme,
 			profileActions.setReadonly(false)
 		)).toEqual({
-			isLoading: false,
+			isLoading: true,
 			readonly: false,
+			data: undefined,
+			form: undefined,
+			loadingError: undefined,
+			validateError: undefined
 		})
 	})
 	test('should update profile form data', () => {
@@ -42,13 +47,14 @@ describe('Profile reducer', () => {
 		)).toEqual({
 			form: data,
 			data: undefined,
-			isLoading: false,
+			isLoading: true,
 			readonly: true,
 			validateError: undefined
 		})
 	})
 	test('should set up field form is equal to field data', () => {
 		const form: Profile = {
+			id: 1,
 			age: 14,
 			city: 'TestTest',
 			firstname: 'TestTest',
@@ -111,7 +117,7 @@ describe('Profile reducer', () => {
 		// fetchProfileData
 		expect(profileReducer(
 			initialState as ProfileScheme,
-			fetchProfileData.fulfilled(data, '')
+			fetchProfileData.fulfilled(data, '', 1)
 		)).toEqual({
 			isLoading: false,
 			readonly: true,
@@ -134,7 +140,7 @@ describe('Profile reducer', () => {
 		// updateProfileData
 		expect(profileReducer(
 			initialState as ProfileScheme,
-			updateProfileData.fulfilled(newData, '')
+			updateProfileData.fulfilled(newData, '', undefined)
 		)).toEqual({
 			isLoading: false,
 			readonly: true,
@@ -151,7 +157,7 @@ describe('Profile reducer', () => {
 		// fetchProfileData
 		expect(profileReducer(
 			initialState as ProfileScheme,
-			fetchProfileData.rejected(new Error(), '', undefined, ValidateProfileError.SERVER_ERROR)
+			fetchProfileData.rejected(new Error(), '', 1, ValidateProfileError.SERVER_ERROR)
 		)).toEqual({
 			isLoading: false,
 			readonly: true,
@@ -171,7 +177,7 @@ describe('Profile reducer', () => {
 		)).toEqual({
 			isLoading: false,
 			readonly: true,
-			validateError: [ValidateProfileError.SERVER_ERROR],
+			validateError: [ValidateProfileError.SERVER_ERROR]
 		})
 	})
 })

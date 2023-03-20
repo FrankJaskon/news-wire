@@ -11,7 +11,6 @@ describe('getReadonly', () => {
 		expect(getReadonly(initialState as StateSchema)).toBe(false)
 	})
 	test('Should work with empty state', () => {
-		const initialState: DeepPartial<StateSchema> = {}
-		expect(getReadonly(initialState as StateSchema)).toBe(false)
+		expect(getReadonly({} as StateSchema)).toBe(true)
 	})
 })

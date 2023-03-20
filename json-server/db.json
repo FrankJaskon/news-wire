@@ -24,19 +24,33 @@
       "username": "user",
       "password": "123",
       "role": "USER",
-      "avatar": "https://teleprogramma.pro/sites/default/files/nodes/node_436422_1653684561.jpg"
-  }
+      "avatar": "https://kinowar.com/wp-content/uploads/2019/01/%D0%92%D1%83%D0%B4%D0%B8-%D0%A5%D0%B0%D1%80%D1%80%D0%B5%D0%BB%D1%8C%D1%81%D0%BE%D0%BD-%D0%9D%D0%B0%D1%81%D1%82%D0%BE%D1%8F%D1%89%D0%B8%D0%B9-%D0%B4%D0%B5%D1%82%D0%B5%D0%BA%D1%82%D0%B8%D0%B2-1.jpg"
+    }
   ],
-  "profile": {
-    "firstname": "Roman",
-    "lastname": "Savko",
-    "age": 27,
-    "currency": "UAH",
-    "country": "Ukraine",
-    "city": "Kyiv",
-    "username": "admin",
-    "avatar": "https://teleprogramma.pro/sites/default/files/nodes/node_436422_1653684561.jpg"
-  },
+  "profile": [
+    {
+      "id": 1,
+      "firstname": "Roman",
+      "lastname": "Savko",
+      "age": 27,
+      "currency": "UAH",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "username": "admin",
+      "avatar": "https://teleprogramma.pro/sites/default/files/nodes/node_436422_1653684561.jpg"
+    },
+    {
+      "id": 2,
+      "firstname": "Somebody dasf",
+      "lastname": "Else",
+      "age": 10,
+      "currency": "USD",
+      "country": "USA",
+      "city": "New York",
+      "username": "unique",
+      "avatar": "https://kinowar.com/wp-content/uploads/2019/01/%D0%92%D1%83%D0%B4%D0%B8-%D0%A5%D0%B0%D1%80%D1%80%D0%B5%D0%BB%D1%8C%D1%81%D0%BE%D0%BD-%D0%9D%D0%B0%D1%81%D1%82%D0%BE%D1%8F%D1%89%D0%B8%D0%B9-%D0%B4%D0%B5%D1%82%D0%B5%D0%BA%D1%82%D0%B8%D0%B2-1.jpg"
+    }
+  ],
   "articles": [
     {
       "id": 1,
@@ -128,6 +142,12 @@
       "text": "some comment 3",
       "articleId": 1,
       "userId": 1
+    },
+    {
+      "userId": 2,
+      "articleId": 1,
+      "text": "New comment",
+      "id": 4
     }
   ]
 }

@@ -3,8 +3,11 @@
 	padding: 10px 15px;
 }
 
-.avatar {
+.avatarWrapper {
+	height: 50px;
+	width: 50px;
 	margin-right: 15px;
+	border-radius: 50%;
 }
 
 .contentWrapper {
@@ -13,4 +16,8 @@
 
 .userName {
 	margin-bottom: 10px;
+}
+
+.ms10 {
+	margin-left: 10px;
 }

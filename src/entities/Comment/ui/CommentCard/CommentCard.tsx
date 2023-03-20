@@ -5,6 +5,8 @@ import cls from './CommentCard.module.scss'
 import { Skeleton } from 'shared/ui/Skeleton'
 import { Text, TextSize } from 'shared/ui/Text'
 import { Avatar, AvatarVariant } from 'shared/ui/Avatar'
+import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { routePaths } from 'shared/config/routePaths/routPaths'
 
 export interface CommentCardProps {
 	className?: string
@@ -27,7 +29,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 				borderRadius='50%'
 				className={cls.avatar}
 			/>
-			<div className={cls.contentWrapper}>
+			<div className={classNames(cls.contentWrapper, {}, [cls.ms10])}>
 				<Skeleton
 					height={20}
 					width={80}
@@ -41,19 +43,30 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 		</div>
 	}
 
+	if (!comment) {
+		return null
+	}
+
 	return (
 		<div className={classNames(cls.CommentCard, {}, [className])}>
-			<Avatar
-				size={50}
-				src={comment?.user?.avatar}
-				variant={AvatarVariant.CIRCLE}
-				className={cls.avatar}
-			/>
-			<div className={cls.contentWrapper}>
-				<Text
-					title={comment?.user.username}
-					size={TextSize.S}
+			<AppLink
+				className={cls.avatarWrapper}
+				to={`${routePaths.profile}${Number(comment?.user.id)}`}
+			>
+				<Avatar
+					size={50}
+					src={comment?.user?.avatar}
+					variant={AvatarVariant.CIRCLE}
+					className={cls.avatar}
 				/>
+			</AppLink>
+			<div className={cls.contentWrapper}>
+				<AppLink to={`${routePaths.profile}${Number(comment?.user.id)}`}>
+					<Text
+						title={comment?.user.username}
+						size={TextSize.S}
+					/>
+				</AppLink>
 				<Text content={comment?.text} />
 			</div>
 		</div>

@@ -2,6 +2,7 @@ import { CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@redux
 import { AxiosInstance } from 'axios'
 import { ArticleDetailsScheme } from 'entities/Article'
 import { UserScheme } from 'entities/User'
+import { AddNewCommentScheme } from 'features/AddNewComment'
 import { LoginScheme } from 'features/AuthByUsername'
 import { ArticleDetailsCommentsScheme } from 'pages/ArticleDetailsPage'
 import { ProfileScheme } from 'pages/ProfilePage'
@@ -15,6 +16,7 @@ export interface StateSchema {
 	login?: LoginScheme
 	articleDetails?: ArticleDetailsScheme
 	articleDetailsComments?: ArticleDetailsCommentsScheme
+	addNewComment?: AddNewCommentScheme
 }
 
 export type StateSchemaKey = keyof StateSchema

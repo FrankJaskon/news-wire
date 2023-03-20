@@ -5,3 +5,7 @@ export {
 export type {
 	ArticleDetailsCommentsScheme
 } from './model/types/articleDetailsCommentsScheme'
+
+export {
+	articleDetailsCommentsReducer
+} from './model/slice/articleDetailsCommentsSlice'

@@ -11,6 +11,7 @@ describe('updateProfileData', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
 				form: {
+					id: 1,
 					age: 12,
 					city: 'Test',
 					firstname: 'Test',
@@ -43,6 +44,7 @@ describe('updateProfileData', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
 				form: {
+					id: 4,
 					age: 12,
 					city: 'Test',
 					firstname: 'Test',

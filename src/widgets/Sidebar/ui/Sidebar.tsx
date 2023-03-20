@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react'
+import { FC, memo, useMemo, useState } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
 import { LanguageToggler } from 'features/LanguageToggler'
@@ -19,17 +19,23 @@ export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 		setIsCollapsed(prev => !prev)
 	}
 
+	const renderLinks = useMemo(() => {
+		return (
+			sidebarLinks.map((item) => {
+				return <SidebarLink
+					key={item.path}
+					item={item}
+					collapsed={isCollapsed}
+				/>
+			})
+		)
+	}, [isCollapsed])
+
 	return <div
 		data-testid='sidebar'
 		className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}>
 		<div className={cls.menu}>
-			{
-				sidebarLinks.map((item) => <SidebarLink
-					key={item.path}
-					item={item}
-					collapsed={isCollapsed}
-				/> )
-			}
+			{renderLinks}
 		</div>
 		<AppButton
 			data-testid='sidebar-toggler'

@@ -16,6 +16,10 @@ export const fetchArticleById = createAsyncThunk<
 	async (id, thunkAPI) => {
 		const { extra, rejectWithValue } = thunkAPI
 		try {
+			if (!id) {
+				return rejectWithValue(ValidateArticleDetailsError.NO_DATA)
+			}
+
 			const response = await extra.api.get<ArticleType>(routePaths.articles_details + id)
 
 			return response.data

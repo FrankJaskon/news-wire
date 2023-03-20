@@ -10,6 +10,7 @@ interface WithUseThemeProps {
 
 const WithUseTheme: FC<WithUseThemeProps> = ({ children }) => {
 	const { toggleTheme } = useTheme()
+
 	return <>
 		{children}
 	</>

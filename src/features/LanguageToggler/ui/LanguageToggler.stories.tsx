@@ -6,9 +6,7 @@ import { LanguageToggler } from './LanguageToggler'
 export default {
 	title: 'features/LanguageToggler',
 	component: LanguageToggler,
-	argTypes: {
-		backgroundColor: { control: 'color' },
-	},
+	argTypes: {},
 	args: {}
 } as ComponentMeta<typeof LanguageToggler>
 

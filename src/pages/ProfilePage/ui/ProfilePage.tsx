@@ -1,10 +1,12 @@
 import { CountryType } from 'entities/Country'
 import { CurrencyType } from 'entities/Currency'
 import { ProfileCard } from 'entities/Profile'
-import { FC, useCallback, useEffect, useMemo } from 'react'
+import { FC, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
+import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { Text } from 'shared/ui/Text'
 import { getIsLoading } from '../model/selectors/getIsLoading/getIsLoading'
@@ -28,6 +30,7 @@ const ProfilePage: FC = () => {
 	const validateError = useSelector(getValidateError)
 	const loadingError = useSelector(getLoadingError)
 	const readonly = useSelector(getReadonly)
+	const { id } = useParams()
 	const { t } = useTranslation('profile')
 
 	const ValidateErrorTranslation = useMemo(() => ({
@@ -42,11 +45,11 @@ const ProfilePage: FC = () => {
 		[ValidateProfileError.SERVER_ERROR]: t('error.server-error'),
 	}), [t])
 
-	useEffect(() => {
-		if (__PROJECT__ !== 'storybook') {
-			dispatch(fetchProfileData())
+	useInitialEffect(() => {
+		if (id) {
+			dispatch(fetchProfileData(Number(id)))
 		}
-	}, [dispatch])
+	})
 
 	const onChangeFirstname = useCallback((value?: string) => {
 		dispatch(profileActions.updateProfileData({ firstname: value || '' }))

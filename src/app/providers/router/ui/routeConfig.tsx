@@ -21,7 +21,7 @@ export const routerConfig: AuthRouteProps[] = [
 		element: <AboutPage />
 	},
 	{
-		path: routePaths.profile,
+		path: `${routePaths.profile}:id`,
 		element: <ProfilePage />,
 		authOnly: true
 	},

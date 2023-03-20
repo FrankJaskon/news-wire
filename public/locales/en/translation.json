@@ -1,7 +1,7 @@
 {
   "language-toggler": {
     "language": "English",
-    "language-short": "En"
+    "language-short": "Eng"
   },
   "navbar": {
     "login": "Log in",
@@ -39,6 +39,13 @@
     }
   },
   "choose-currency": "Currency",
-  "choose-country": "Country"
+  "choose-country": "Country",
+  "new-comment": {
+    "btn": {
+      "submit": "Submit",
+      "cancel": "Cancel"
+    },
+    "label": "Enter your comment"
+  }
 }
 
