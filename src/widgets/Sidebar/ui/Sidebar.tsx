@@ -4,8 +4,9 @@ import { AppButton } from 'shared/ui/AppButton'
 import { LanguageToggler } from 'features/LanguageToggler'
 import { ThemeToggler } from 'features/ThemeToggler'
 import cls from './Sidebar.module.scss'
-import { sidebarLinks } from '../model/links'
 import { SidebarLink } from './SidebarLink/SidebarLink'
+import { useSelector } from 'react-redux'
+import { getSidebarItem } from '../model/selectors/getSidebarItem'
 
 interface SidebarProps {
     className?: string
@@ -14,6 +15,7 @@ interface SidebarProps {
 export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 	const { className } = props
 	const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
+	const sidebarLinks = useSelector(getSidebarItem)
 
 	const toggleSidebar = () => {
 		setIsCollapsed(prev => !prev)
@@ -29,7 +31,7 @@ export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 				/>
 			})
 		)
-	}, [isCollapsed])
+	}, [isCollapsed, sidebarLinks])
 
 	return <div
 		data-testid='sidebar'

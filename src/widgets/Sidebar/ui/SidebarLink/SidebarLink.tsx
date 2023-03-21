@@ -6,11 +6,11 @@ import { routePaths } from 'shared/config/routePaths/routPaths'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppIcon } from 'shared/ui/AppIcon'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
-import { Item } from '../../model/links'
+import { SidebarItemType } from '../../model/types/sidebarTypes'
 import cls from './SidebarLink.module.scss'
 
 export interface SidebarLinkProps {
-	item: Item
+	item: SidebarItemType
 	collapsed: boolean
 }
 
