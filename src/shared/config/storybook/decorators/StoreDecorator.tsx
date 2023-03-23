@@ -4,6 +4,7 @@ import { articleDetailsReducer } from 'entities/Article'
 import { addNewCommentReducer } from 'features/AddNewComment'
 import { loginReducer } from 'features/AuthByUsername'
 import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage'
+import { articlesPageReducer } from 'pages/ArticlesPage'
 import { profileReducer } from 'pages/ProfilePage'
 import type { ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 
@@ -12,7 +13,8 @@ const defaultAsyncReducers: ReducerList = {
 	profile: profileReducer,
 	articleDetails: articleDetailsReducer,
 	articleDetailsComments: articleDetailsCommentsReducer,
-	addNewComment: addNewCommentReducer
+	addNewComment: addNewCommentReducer,
+	articlesPage: articlesPageReducer
 }
 
 export const StoreDecorator = (

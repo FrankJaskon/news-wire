@@ -25,7 +25,7 @@ export const createNewCommentForArticle = createAsyncThunk<CommentType, string, 
 					text: comment
 				})
 
-			thunkAPI.dispatch(fetchCommentsByArticleId())
+			thunkAPI.dispatch(fetchCommentsByArticleId(articleDetails.id))
 
 			return response.data
 		} catch (error: any) {

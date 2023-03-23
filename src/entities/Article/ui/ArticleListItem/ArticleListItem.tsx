@@ -2,7 +2,6 @@ import { ArticleType, BlockType, TextBlockType } from '../../model/types/Article
 import { FC, useCallback, useMemo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleListItem.module.scss'
-import { ViewVariant, ViewVariantType } from '../ArticleList/ArticleList'
 import { Text } from 'shared/ui/Text'
 import ViewsIcon from 'shared/assets/icons/views.svg'
 import { AppIcon } from 'shared/ui/AppIcon'
@@ -15,6 +14,7 @@ import { useTranslation } from 'react-i18next'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
+import { ViewVariant, ViewVariantType } from '../ArticleList/ArticleList'
 
 export interface ArticleListItemProps {
 	className?: string

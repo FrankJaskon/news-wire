@@ -1,90 +1,24 @@
-import { ArticleList, ArticleType } from 'entities/Article'
+import { ArticleList, ViewVariant, ViewVariantType } from 'entities/Article'
+import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice'
 import { FC, memo, useState } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
+import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { AppButton } from 'shared/ui/AppButton'
 import cls from './ArticlesPage.module.scss'
+import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList'
+import { useSelector } from 'react-redux'
+import { getError, getIsLoading, getView } from '../../model/selectors/articlesPageSelector'
+import { ViewToggler } from 'features/ViewToggler'
+import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from 'shared/const/localstorage'
 
 export interface ArticlesPageProps {
 	className?: string
 }
 
-const article: ArticleType = {
-	id: 1,
-	user: {
-		id: 1,
-		username: 'admin',
-		avatar: 'https://teleprogramma.pro/sites/default/files/nodes/node_436422_1653684561.jpg'
-	},
-	title: 'Javascript news, Що нового у JS у 2022 році?',
-	subtitle: 'Що нового у JS у 2022 році?',
-	img: 'https://pbs.twimg.com/media/FMukdWraQAMAuxa.jpg',
-	views: 1022,
-	createdAt: '26.02.2022',
-	type: [
-		'IT',
-		'ECONOMIC',
-		'SCIENCE'
-	],
-	blocks: [
-		{
-			id: 1,
-			type: 'TEXT',
-			title: 'Заголовок цього блоку',
-			paragraphs: [
-				'Програма, яку традиційно називають \'Hello, world!\', дуже проста. Вона виводить кудись фразу \'Hello, world!\', або подібне, засобами деякої мови.',
-				'JavaScript - це мова, програми якою можна виконувати в різних середовищах. У нашому випадку йдеться про браузери і серверну платформу Node.js. Якщо досі ви не написали ні стрічки коду на JS і читаєте цей текст у браузері на стаціонарному комп\'ютері це означає, що ви буквально за кілька секунд від своєї першої JavaScript-програми.',
-				'Існують інші способи запуску JS-коду в браузері. Так, якщо говорити про звичайне використання програм на JavaScript, вони завантажуються в браузер для забезпечення роботи веб-сторінок. Зазвичай код оформлюють у вигляді окремих файлів з розширенням .js, які підключають до веб -Сторінок, але програмний код можна включати і безпосередньо в код сторінки.Все це робиться за допомогою тега <script>.Коли браузер виявляє такий код, він виконує його.Деталі про тег script можна подивитися на сайті w3school.com. приклад, що демонструє роботу з веб-сторінками JavaScript, наведений на цьому ресурсі. Цей приклад можна запустити і засобами цього ресурсу (шукайте кнопку Try it Yourself), але ми надійдемо трохи інакше. , і додамо до нього наступний код:'
-			]
-		},
-		{
-			id: 4,
-			type: 'CODE',
-			code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id=\'hello\'></p>\n\n    <script>\n      document.getElementById(\'hello\').innerHTML = \'Hello, world!\';\n    </script>\n  </body>\n</html>;'
-		},
-		{
-			id: 5,
-			type: 'TEXT',
-			title: 'Заголовок цього блоку',
-			paragraphs: [
-				'Програма, яку традиційно називають \'Hello, world!\', дуже проста. Вона виводить кудись фразу \'Hello, world!\', або подібне, засобами деякої мови.',
-				'Існують інші способи запуску JS-коду в браузері. Так, якщо говорити про звичайне використання програм на JavaScript, вони завантажуються в браузер для забезпечення роботи веб-сторінок. Зазвичай код оформлюють у вигляді окремих файлів з розширенням .js, які підключають до веб -Сторінок, але програмний код можна включати і безпосередньо в код сторінки.Все це робиться за допомогою тега <script>.Коли браузер виявляє такий код, він виконує його.Деталі про тег script можна подивитися на сайті w3school.com. приклад, що демонструє роботу з веб-сторінками JavaScript, наведений на цьому ресурсі. Цей приклад можна запустити і засобами цього ресурсу (шукайте кнопку Try it Yourself), але ми надійдемо трохи інакше. , і додамо до нього наступний код:'
-			]
-		},
-		{
-			id: 2,
-			type: 'IMAGE',
-			src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
-			title: 'Рисунок 1 - скріншот сайту'
-		},
-		{
-			id: 3,
-			type: 'CODE',
-			code: 'const path = require(\'path\');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, \'db.json\'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);'
-		},
-		{
-			id: 7,
-			type: 'TEXT',
-			title: 'Заголовок цього блоку',
-			paragraphs: [
-				'JavaScript - це мова програмування, на якій можна виконувати програми в різних середовищах. У нашому випадку мова йде про браузери та серверну платформу Node.js. Якщо до цього часу ви не писали ні рядка коду на JS та читаєте цей текст в браузері на стаціонарному комп\'ютері, це означає, що ви буквально за декілька секунд від своєї першої JavaScript-програми.',
-				'Існують і інші способи запуску JS-коду в браузері. Наприклад, якщо говорити про звичайне використання програм на JavaScript, вони завантажуються в браузер для забезпечення роботи веб-сторінок. Зазвичай код оформляють у вигляді окремих файлів з розширенням .js, які підключають до веб-сторінок, але програмний код можна включати і безпосередньо в код сторінки. Все це робиться за допомогою тегу <script>. Коли браузер виявляє такий код, він виконує його. Деталі про тег script можна переглянути на сайті w3school.com. Зокрема, розглянемо приклад, що демонструє роботу з веб-сторінкою за допомогою JavaScript, наведений на цьому ресурсі. Цей приклад можна запустити за допомогою цього ресурсу (шукайте кнопку Try it Yourself), але ми зробимо це трохи інакше. А саме, створимо в якомусь текстовому редакторі (наприклад - в VS Code або в Notepad++) новий файл, який назвемо hello.html, та додамо до нього наступний код:'
-			]
-		},
-		{
-			id: 8,
-			type: 'IMAGE',
-			src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
-			title: 'Рисунок 1 - скріншот сайту'
-		},
-		{
-			id: 9,
-			type: 'TEXT',
-			title: 'Заголовок цього блоку',
-			paragraphs: [
-				'JavaScript - це мова програмування, на якій можна виконувати програми в різних середовищах. У нашому випадку мова йде про браузери та серверну платформу Node.js. Якщо до цього часу ви не писали ні рядка коду на JS та читаєте цей текст в браузері на стаціонарному комп\'ютері, це означає, що ви буквально за декілька секунд від своєї першої JavaScript-програми.'
-			]
-		}
-	]
+const reducers: ReducerList = {
+	articlesPage: articlesPageReducer
 }
 
 const ArticlesPage: FC<ArticlesPageProps> = (props) => {
@@ -92,19 +26,41 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 		className
 	} = props
 
-	const [view, setView] = useState<'grid' | 'list'>('grid')
+	const dispatch = useAppDispatch()
+	const articles = useSelector(getArticles.selectAll)
+	const isLoading = useSelector(getIsLoading)
+	const view = useSelector(getView)
+	const error = useSelector(getError)
 
-	return (
+	useInitialEffect(() => {
+		dispatch(fetchArticlesList())
+		dispatch(articlesPageActions.setView(
+			localStorage.getItem(VIEW_ARTICLES_LOCAL_STORAGE_KEY) as ViewVariantType || ViewVariant.GRID))
+	})
+
+	const changeView = (value: ViewVariantType) => {
+		if (view !== value) {
+			dispatch(articlesPageActions.setView(value))
+			localStorage.setItem(VIEW_ARTICLES_LOCAL_STORAGE_KEY, value)
+		}
+	}
+
+	return <LazyReducerLoader reducers={reducers}>
 		<div className={classNames(cls.ArticlesPage, {}, [className])}>
-			<AppButton onClick={() => setView(view === 'grid' ? 'list' : 'grid')}>
-				+ -
-			</AppButton>
-			<ArticleList isLoading={false} view={view} articles={new Array(16).fill(0).map((item, index) => ({
-				...article, id: index
-			}))
-			} />
+			<div className={cls.header}>
+				<div>+</div>
+				<ViewToggler
+					activeView={view}
+					onToggle={changeView}
+				/>
+			</div>
+			<ArticleList
+				articles={articles}
+				view={view}
+				isLoading={isLoading}
+			/>
 		</div>
-	)
+	</LazyReducerLoader>
 }
 
 export default memo(ArticlesPage)

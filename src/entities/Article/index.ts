@@ -21,3 +21,7 @@ export {
 	ArticleList,
 	ViewVariant
 } from './ui/ArticleList/ArticleList'
+
+export type {
+	ViewVariantType
+} from './ui/ArticleList/ArticleList'

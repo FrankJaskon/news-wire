@@ -2,8 +2,8 @@ import { ArticleType } from '../../model/types/ArticleDetailsScheme'
 import { FC, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleList.module.scss'
-import { ValueOf } from 'shared/config/types/types'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
+import { ValueOf } from 'shared/config/types/types'
 
 export interface ArticleListProps {
 	className?: string

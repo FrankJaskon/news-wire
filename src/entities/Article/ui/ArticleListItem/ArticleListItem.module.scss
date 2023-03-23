@@ -1,7 +1,8 @@
 .grid {
 	&.ArticleListItem {
 		width: 230px;
-		transition: transform .2s;
+		opacity: 1;
+		transition: opacity .2s;
 	}
 	.imgWrapper {
 		display: block;
@@ -29,7 +30,7 @@
 	}
 
 	&:hover {
-		transform: scale(1.01);
+		opacity: .95;
 		.date {
 			display: block;
 		}
@@ -62,7 +63,6 @@
 	.link:hover {
 		box-shadow: none;
 	}
-
 }
 
 .list {
@@ -92,7 +92,7 @@
 	}
 
 	.textContent {
-		max-height: 300px;
+		max-height: 200px;
 		text-overflow: ellipsis;
 		overflow-y: hidden;
 	}
