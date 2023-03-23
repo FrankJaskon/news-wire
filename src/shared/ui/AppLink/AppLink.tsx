@@ -5,17 +5,17 @@ import { ValueOf } from 'shared/config/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './AppLink.module.scss'
 
-export const AppLinkTheme = {
+export const AppLinkVariant = {
 	PRIMARY: 'primary',
 	SECONDARY: 'secondary',
 	UNDERLINED: 'underlined',
 } as const
 
-export type AppLinkThemeType = ValueOf<typeof AppLinkTheme>
+export type AppLinkVariantType = ValueOf<typeof AppLinkVariant>
 
 export type AppLinkProps = Omit<LinkProps, 'to'> & {
 	className?: string
-    variant?: AppLinkThemeType
+    variant?: AppLinkVariantType
 	to?: string
 }
 
@@ -24,7 +24,7 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
 		to = '#',
 		children,
 		className,
-		variant = AppLinkTheme.SECONDARY,
+		variant = AppLinkVariant.SECONDARY,
 		...otherProps } = props
 
 	return <Link

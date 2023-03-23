@@ -9,5 +9,7 @@
         "empty": "Form must not be empty",
         "server-error": "Something went wrong. Try later please"
     },
-	"comment-title": "Comments"
+	"comment-title": "Comments",
+	"read-more-btn": "Read more",
+	"back-to-list-btn": "back to list"
 }

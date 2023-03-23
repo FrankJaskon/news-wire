@@ -6,7 +6,7 @@ import { Skeleton } from 'shared/ui/Skeleton'
 import { Text, TextSize } from 'shared/ui/Text'
 import { Avatar, AvatarVariant } from 'shared/ui/Avatar'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
-import { routePaths } from 'shared/config/routePaths/routPaths'
+import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 
 export interface CommentCardProps {
 	className?: string
@@ -51,7 +51,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 		<div className={classNames(cls.CommentCard, {}, [className])}>
 			<AppLink
 				className={cls.avatarWrapper}
-				to={`${routePaths.profile}${Number(comment?.user.id)}`}
+				to={`${RoutePaths.profile}${Number(comment?.user.id)}`}
 			>
 				<Avatar
 					size={50}
@@ -61,7 +61,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 				/>
 			</AppLink>
 			<div className={cls.contentWrapper}>
-				<AppLink to={`${routePaths.profile}${Number(comment?.user.id)}`}>
+				<AppLink to={`${RoutePaths.profile}${Number(comment?.user.id)}`}>
 					<Text
 						title={comment?.user.username}
 						size={TextSize.S}

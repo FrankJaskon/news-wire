@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from 'app/providers/StoreProvider'
-import { routePaths } from 'shared/config/routePaths/routPaths'
+import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { ValidateProfileError } from '../../types/ProfileScheme'
 import type { Profile, ValidateProfileErrorType } from '../../types/ProfileScheme'
 
@@ -9,7 +9,7 @@ export const fetchProfileData = createAsyncThunk<Profile, number, ThunkApiConfig
 	async (userId, thunkAPI) => {
 		const { extra, rejectWithValue } = thunkAPI
 		try {
-			const response = await extra.api.get<Profile>(`${routePaths.profile}${userId}`)
+			const response = await extra.api.get<Profile>(`${RoutePaths.profile}${userId}`)
 
 			return response.data
 		} catch (error: any) {

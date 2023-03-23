@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { CommentCard } from './CommentCard'
 import type { CommentCardProps } from './CommentCard'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
+import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from 'shared/config/theme/ThemeContext'
 
 export default {

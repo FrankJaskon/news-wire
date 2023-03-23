@@ -3,12 +3,15 @@ import { ValueOf } from 'shared/config/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './AppInput.module.scss'
 
-export interface AppInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'> {
+export interface AppInputProps extends Omit<
+	InputHTMLAttributes<HTMLInputElement>,
+	'value' | 'onChange' | 'readOnly'
+> {
 	value?: string | number
 	onChange?: (value: string) => void
 	readonly?: boolean
 	variant?: InputVariantType
-	color?: InputColorType
+	colorVariant?: InputColorType
 }
 
 export const InputVariant = {
@@ -28,7 +31,7 @@ export const AppInput: FC<AppInputProps> = memo((props: AppInputProps) => {
 	const {
 		className,
 		variant = InputVariant.PRIMARY,
-		color,
+		colorVariant,
 		value,
 		onChange,
 		readonly = false,
@@ -46,7 +49,7 @@ export const AppInput: FC<AppInputProps> = memo((props: AppInputProps) => {
 	const extra = [
 		className,
 		cls[variant],
-		color && cls[color]
+		colorVariant && cls[colorVariant]
 	]
 
 	return <input

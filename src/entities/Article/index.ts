@@ -16,3 +16,8 @@ export type {
 	ArticleType,
 	ArticleBlockType
 } from './model/types/ArticleDetailsScheme'
+
+export {
+	ArticleList,
+	ViewVariant
+} from './ui/ArticleList/ArticleList'

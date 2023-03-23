@@ -5,7 +5,7 @@ import { MainPage } from 'pages/MainPage'
 import { NotFound } from 'pages/NotFound'
 import { ProfilePage } from 'pages/ProfilePage'
 import { RouteProps } from 'react-router-dom'
-import { routePaths } from 'shared/config/routePaths/routPaths'
+import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 
 export type AuthRouteProps = RouteProps & {
 	authOnly?: boolean
@@ -13,32 +13,32 @@ export type AuthRouteProps = RouteProps & {
 
 export const routerConfig: AuthRouteProps[] = [
 	{
-		path: routePaths.main,
+		path: RoutePaths.main,
 		element: <MainPage />
 	},
 	{
-		path: routePaths.about,
+		path: RoutePaths.about,
 		element: <AboutPage />
 	},
 	{
-		path: `${routePaths.profile}:id`,
+		path: `${RoutePaths.profile}:id`,
 		element: <ProfilePage />,
 		authOnly: true
 	},
 	{
-		path: routePaths.articles,
+		path: RoutePaths.articles,
 		element: <ArticlesPage />,
 		authOnly: true
 	},
 	{
-		path: `${routePaths.articles_details}:id`,
+		path: `${RoutePaths.articles_details}:id`,
 		element: <ArticleDetailsPage />,
 		authOnly: true
 	},
 
 	// last
 	{
-		path: routePaths.not_found,
+		path: RoutePaths.not_found,
 		element: <NotFound />
 	}
 ]

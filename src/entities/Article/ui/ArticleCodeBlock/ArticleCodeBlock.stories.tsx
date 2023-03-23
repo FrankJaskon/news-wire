@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecotator'
+import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { ArticleCodeBlock, ArticleCodeBlockProps } from './ArticleCodeBlock'
 
 export default {
-	title: 'entities/ArticleDetails/ArticleCodeBlock',
+	title: 'entities/Article/ArticleCodeBlock',
 	component: ArticleCodeBlock,
 	argTypes: {},
 	args: {

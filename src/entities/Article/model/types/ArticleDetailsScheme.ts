@@ -1,4 +1,5 @@
 import { CommentType } from 'entities/Comment'
+import { User } from 'entities/User'
 import { ValueOf } from 'shared/config/types/types'
 
 export interface ArticleDetailsScheme {
@@ -56,6 +57,7 @@ export type ArticleBlockType = TextBlockType | CodeBlockType | ImageBlockType
 
 export interface ArticleType {
 	id: number
+	user: User
 	title: string
 	subtitle: string
 	img: string

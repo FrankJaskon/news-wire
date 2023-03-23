@@ -22,7 +22,8 @@
             "files": ["*.test.ts", "*.test.tsx", "*.stories.ts", "*.stories.tsx"],
             "rules": {
                 "i18next/no-literal-string": "off",
-                "@typescript-eslint/no-empty-function": "warn"
+                "@typescript-eslint/no-empty-function": "warn",
+                "max-len": "off"
             }
         }
     ],

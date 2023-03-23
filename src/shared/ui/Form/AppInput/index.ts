@@ -1,4 +1,5 @@
 export {
 	AppInput,
-	InputVariant
+	InputVariant,
+	InputColor
 } from './ui/AppInput'

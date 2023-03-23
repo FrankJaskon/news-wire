@@ -2,7 +2,7 @@ import { getUserAuthData } from 'entities/User'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
-import { routePaths } from 'shared/config/routePaths/routPaths'
+import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 
 export interface RequireAuthProps {
 	children: JSX.Element
@@ -15,7 +15,7 @@ export const RequireAuth: FC<RequireAuthProps> = (props) => {
 
 	if (!authData) {
 		return <Navigate
-			to={routePaths.main}
+			to={RoutePaths.main}
 			replace
 			state={{ from: location }}
 		/>

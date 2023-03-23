@@ -13,7 +13,7 @@ export const AppRoutes = {
 
 export type AppRoutesTypes = ValueOf<typeof AppRoutes>
 
-export const routePaths: Record<AppRoutesTypes, string> = {
+export const RoutePaths: Record<AppRoutesTypes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.ABOUT]: '/about',
 	[AppRoutes.PROFILE]: '/profile/', // + 'id'

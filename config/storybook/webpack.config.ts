@@ -34,8 +34,11 @@ const config = ({ config }: { config: webpack.Configuration }): webpack.Configur
 	// RESOLVES
 
 	if ( config.resolve ) {
-		config.resolve?.modules?.push(paths.src)
-		config.resolve?.extensions?.push('.ts, .tsx')
+		config.resolve.modules = [paths.src, 'node_modules']
+		config.resolve.preferAbsolute = true
+		config.resolve.extensions = ['.tsx', '.ts', '.js']
+		config.resolve.mainFiles = ['index']
+		config.resolve.alias = {}
 	}
 
 	// PLUGINS

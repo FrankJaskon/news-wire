@@ -3,7 +3,7 @@ import ArticlesPage from './ArticlesPage'
 import type { ArticlesPageProps } from './ArticlesPage'
 
 export default {
-	title: 'shared/ArticlesPage',
+	title: 'pages/ArticlesPage',
 	component: ArticlesPage,
 	argTypes: {},
 } as ComponentMeta<typeof ArticlesPage>

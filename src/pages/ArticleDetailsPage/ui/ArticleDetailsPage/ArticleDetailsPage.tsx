@@ -15,6 +15,8 @@ import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { AddNewComment } from 'features/AddNewComment'
 import { createNewCommentForArticle } from '../../model/services/createNewCommentForArticle/createNewCommentForArticle'
+import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink'
+import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 
 export interface ArticleDetailsPageProps {
 	className ?: string
@@ -52,6 +54,13 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 		reducers={reducers}
 	>
 		<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+			<AppLink
+				variant={AppLinkVariant.PRIMARY}
+				className={cls.backBtn}
+				to={RoutePaths.articles}
+			>
+				{'< ' + t('back-to-list-btn')}
+			</AppLink>
 			<ArticleDetails id={id} />
 			<Text title={t('comment-title')} />
 			<AddNewComment handleSubmit={onCreateNewComment} />
