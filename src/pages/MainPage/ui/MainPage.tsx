@@ -1,13 +1,14 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { PageWrapper } from 'widgets/PageWrapper'
 
 const MainPage: FC = memo(() => {
 	const { t } = useTranslation('main')
 
-	return <div>
+	return <PageWrapper>
 		<h1>{t('page-title')}</h1>
 		{t('page-subtitle')}
-	</div>
+	</PageWrapper>
 })
 
 export default MainPage

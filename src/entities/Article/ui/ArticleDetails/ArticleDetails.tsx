@@ -72,7 +72,7 @@ export const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
 	useInitialEffect(() => dispatch(fetchArticleById(Number(id))))
 
 	if (isLoading) {
-		content = <div className={classNames(cls.ArticleDetails, {}, [className, cls.loading])}>
+		content = <div className={classNames(cls.ArticleDetails, {}, [className])}>
 			<Skeleton width={500} height={200} className={cls.avatar} />
 			<Skeleton width={700} height={34} className={cls.title} />
 			<Skeleton width={400} height={24} className={cls.subtitle} />

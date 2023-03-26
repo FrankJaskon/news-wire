@@ -5,6 +5,7 @@ import {
 } from '@reduxjs/toolkit'
 import { StateSchema } from 'app/providers/StoreProvider'
 import { ArticleType, ViewVariant, ViewVariantType } from 'entities/Article'
+import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from 'shared/const/localstorage'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
 import { ArticlesPageScheme } from '../types/articlesPageScheme'
 
@@ -21,11 +22,21 @@ const articlesPageSlice = createSlice({
 		ids: [],
 		error: undefined,
 		isLoading: true,
-		view: ViewVariant.GRID
+		view: ViewVariant.GRID,
+		page: 1,
+		limit: 10,
+		hasMore: true
 	}),
 	reducers: {
 		setView: (state: ArticlesPageScheme, action: PayloadAction<ViewVariantType>) => {
 			state.view = action.payload
+			localStorage.setItem(VIEW_ARTICLES_LOCAL_STORAGE_KEY, action.payload)
+		},
+		setPage: (state: ArticlesPageScheme, action: PayloadAction<number>) => {
+			state.page = action.payload
+		},
+		setLimit: (state: ArticlesPageScheme, action: PayloadAction<number>) => {
+			state.limit = action.payload
 		}
 	},
 	extraReducers: (builder) => {
@@ -36,7 +47,8 @@ const articlesPageSlice = createSlice({
 		})
 		builder.addCase(fetchArticlesList.fulfilled, (state, { payload }) => {
 			state.isLoading = false
-			articlesPageAdapter.setAll(state, payload)
+			articlesPageAdapter.addMany(state, payload)
+			state.hasMore = payload.length > 0
 		})
 		builder.addCase(fetchArticlesList.rejected, (state, action) => {
 			state.isLoading = false

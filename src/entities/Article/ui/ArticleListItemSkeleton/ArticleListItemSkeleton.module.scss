@@ -1,6 +1,5 @@
 .list {
 	&.ArticleListItem {
-		margin-bottom: 40px;
 		&:last-of-type {
 			margin-bottom: 0;
 		}
@@ -56,6 +55,7 @@
 }
 
 .grid {
+	width: 230px;
 	.infoWrapper {
 		display: flex;
 		justify-content: space-between;

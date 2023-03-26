@@ -1,5 +1,5 @@
 import { ReducersMapObject } from '@reduxjs/toolkit'
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, useMemo } from 'react'
 import { Provider } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { StateSchema } from '../config/StateSchema'
@@ -20,11 +20,12 @@ export const StoreProvider: FC<StoreProviderProps> = (props) => {
 
 	const navigate = useNavigate()
 
-	const store = createReduxStore(
+	const store = useMemo(() => createReduxStore(
 		initialState as StateSchema,
 		asyncReducers as ReducersMapObject<StateSchema>,
 		navigate
-	)
+		// eslint-disable-next-line
+	), [])
 
 	return <Provider store={store}>
 		{children}

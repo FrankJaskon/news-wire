@@ -85,34 +85,19 @@ export default {
 	title: 'entities/Article/ArticleListItem',
 	component: ArticleListItem,
 	argTypes: {},
+	args: {
+		article
+	}
 } as ComponentMeta<typeof ArticleListItem>
 
 const Template: ComponentStory<typeof ArticleListItem> = (args) => < ArticleListItem { ...args } />
 
 export const BasicGrid: Story<ArticleListItemProps> = Template.bind({})
 BasicGrid.args = {
-	article,
-	isLoading: false,
 	view: ViewVariant.GRID
 }
 
 export const BasicList: Story<ArticleListItemProps> = Template.bind({})
 BasicGrid.args = {
-	article,
-	isLoading: false,
-	view: ViewVariant.LIST
-}
-
-export const LoadingGrid: Story<ArticleListItemProps> = Template.bind({})
-LoadingGrid.args = {
-	article,
-	isLoading: true,
-	view: ViewVariant.GRID
-}
-
-export const LoadingList: Story<ArticleListItemProps> = Template.bind({})
-LoadingList.args = {
-	article,
-	isLoading: true,
 	view: ViewVariant.LIST
 }

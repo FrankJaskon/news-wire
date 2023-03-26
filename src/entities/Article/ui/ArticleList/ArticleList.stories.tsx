@@ -106,14 +106,12 @@ List.args = {
 
 export const LoadingGrid: Story<ArticleListProps> = Template.bind({})
 LoadingGrid.args = {
-	articles: articles,
 	isLoading: true,
 	view: ViewVariant.GRID
 }
 
 export const LoadingList: Story<ArticleListProps> = Template.bind({})
 LoadingList.args = {
-	articles: articles,
 	isLoading: true,
 	view: ViewVariant.LIST
 }

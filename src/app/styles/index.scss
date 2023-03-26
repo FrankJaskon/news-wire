@@ -16,14 +16,6 @@ body {
 	min-height: 100vh;
 }
 
-.page-wrapper {
+.content-wrapper {
 	display: flex;
-}
-
-.page-content {
-	height: var(--page-height);
-	overflow-y: auto;
-	width: 100%;
-	flex-grow: 1;
-	padding: 20px 20px 20px 40px;
 }

@@ -1,5 +1,5 @@
 import { ArticleType, BlockType, TextBlockType } from '../../model/types/ArticleDetailsScheme'
-import { FC, useCallback, useMemo } from 'react'
+import { FC, memo, useCallback, useMemo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleListItem.module.scss'
 import { Text } from 'shared/ui/Text'
@@ -13,22 +13,19 @@ import { AppButton } from 'shared/ui/AppButton'
 import { useTranslation } from 'react-i18next'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
-import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
 import { ViewVariant, ViewVariantType } from '../ArticleList/ArticleList'
 
 export interface ArticleListItemProps {
 	className?: string
 	article?: ArticleType
 	view?: ViewVariantType
-	isLoading?: boolean
 }
 
-export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
+export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleListItemProps) => {
 	const {
 		className,
 		article,
 		view,
-		isLoading
 	} = props
 
 	const navigate = useNavigate()
@@ -55,12 +52,6 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
 	const handleClick = useCallback(() => {
 		navigate(String(article?.id))
 	}, [navigate, article?.id])
-
-	if (isLoading) {
-		return <div className={classNames(cls.ArticleListItem, {}, [className, view && cls[view]])}>
-			<ArticleListItemSkeleton view={view} />
-		</div>
-	}
 
 	if (view === ViewVariant.GRID) {
 		return (
@@ -142,4 +133,4 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
 			</div>
 		</AppCard>
 	)
-}
+})

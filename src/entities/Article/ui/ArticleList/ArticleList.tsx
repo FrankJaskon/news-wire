@@ -1,15 +1,17 @@
 import { ArticleType } from '../../model/types/ArticleDetailsScheme'
-import { FC, useCallback } from 'react'
+import { FC, memo, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleList.module.scss'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ValueOf } from 'shared/config/types/types'
+import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
 
 export interface ArticleListProps {
 	className?: string
 	articles: ArticleType[]
 	isLoading?: boolean
 	view?: ViewVariantType
+	limit?: number
 }
 
 export const ViewVariant = {
@@ -19,12 +21,13 @@ export const ViewVariant = {
 
 export type ViewVariantType = ValueOf<typeof ViewVariant>
 
-export const ArticleList: FC<ArticleListProps> = (props) => {
+export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) => {
 	const {
 		className,
 		articles,
 		view = ViewVariant.GRID,
-		isLoading
+		isLoading,
+		limit = view === ViewVariant.GRID ? 9 : 3
 	} = props
 
 	const renderArticle = useCallback((article: ArticleType) => (
@@ -32,31 +35,24 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
 			key={article.id}
 			article={article}
 			view={view}
-			isLoading={isLoading}
 		/>
-	), [isLoading, view])
+	), [view])
 
 	const getSkeletons = useCallback((view: ViewVariantType) => {
-		return new Array(view === ViewVariant.GRID ? 9 : 3)
-			.fill(0).map((item, index) => <ArticleListItem
+		return new Array(limit)
+			.fill(0).map((_, index) => <ArticleListItemSkeleton
 				key={index}
 				view={view}
-				isLoading={isLoading}
 			/>)
-	}, [isLoading])
-
-	if (isLoading) {
-		return <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-			{getSkeletons(view)}
-		</div>
-	}
+	}, [limit])
 
 	return (
 		<div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-			{articles.length > 0
+			{articles && articles.length > 0
 				? articles.map(renderArticle)
 				: null
 			}
+			{isLoading && getSkeletons(view)}
 		</div>
 	)
-}
+})

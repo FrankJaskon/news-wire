@@ -9,6 +9,7 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { Text } from 'shared/ui/Text'
+import { PageWrapper } from 'widgets/PageWrapper'
 import { getIsLoading } from '../model/selectors/getIsLoading/getIsLoading'
 import { getLoadingError } from '../model/selectors/getLoadingError/getLoadingError'
 import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm'
@@ -84,7 +85,7 @@ const ProfilePage: FC = () => {
 	}, [dispatch])
 
 	return <LazyReducerLoader reducers={reducers} removeAfterUnmount>
-		<>
+		<PageWrapper>
 			{(!loadingError && !isLoading) && <ProfilePageHeader
 				readonly={readonly}
 			/>}
@@ -109,7 +110,7 @@ const ProfilePage: FC = () => {
 				updateCurrency={onChangeCurrency}
 				updateCountry={onChangeCountry}
 			/>
-		</>
+		</PageWrapper>
 	</LazyReducerLoader>
 }
 

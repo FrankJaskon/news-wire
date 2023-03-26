@@ -1,5 +1,5 @@
 import { getUserAuthData } from 'entities/User'
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
@@ -14,7 +14,7 @@ export interface SidebarLinkProps {
 	collapsed: boolean
 }
 
-export const SidebarLink: FC<SidebarLinkProps> = (props) => {
+export const SidebarLink: FC<SidebarLinkProps> = memo((props: SidebarLinkProps) => {
 	const {
 		item: {
 			path,
@@ -44,4 +44,4 @@ export const SidebarLink: FC<SidebarLinkProps> = (props) => {
 		/>
 		<span>{t(`${text}`)}</span>
 	</AppLink>
-}
+})

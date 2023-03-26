@@ -7,8 +7,6 @@ import ProfileIcon from 'shared/assets/icons/profile.svg'
 import ArticlesIcon from 'shared/assets/icons/articles.svg'
 import { SidebarItemType } from '../types/sidebarTypes'
 
-
-
 export const getSidebarItem = createSelector(
 	getUserAuthData,
 	(authData) => {
@@ -24,7 +22,6 @@ export const getSidebarItem = createSelector(
 				Icon: AboutIcon
 			}
 		]
-
 		if (authData) {
 			sidebarLinks.push({
 				path: RoutePaths.profile + authData?.id,

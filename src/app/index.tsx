@@ -1,33 +1,38 @@
-import { FC, Suspense, useEffect } from 'react'
+import { FC, Suspense } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { Navbar } from 'widgets/Navbar'
 import { AppRouter } from 'app/providers/router'
 import { Sidebar } from 'widgets/Sidebar'
-import { useDispatch, useSelector } from 'react-redux'
-import { getInitializedUser, userActions } from 'entities/User'
-import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { getInitializedUser, getUserAuthData, userActions } from 'entities/User'
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 
 const App: FC = () => {
-	const dispatch = useDispatch()
-	const isInitialized = useSelector(getInitializedUser)
-
-	useEffect(() => {
-		const data = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
-		const initialAuthData = data && JSON.parse(data)
-		dispatch(userActions.setAuthData(initialAuthData))
-	}, [dispatch])
+	const { isInitialized } = useAuthDataInitialization()
 
 	return <div className={classNames('App', {}, [])}>
 		<Suspense fallback=''>
 			<Navbar />
-			<div className='page-wrapper'>
+			<div className='content-wrapper'>
 				<Sidebar />
-				<div className='page-content'>
-					{isInitialized && <AppRouter />}
-				</div>
+				{isInitialized && <AppRouter />}
 			</div>
 		</Suspense>
 	</div>
 }
 
 export default App
+
+const useAuthDataInitialization = () => {
+	const dispatch = useAppDispatch()
+	const isInitialized = useSelector(getInitializedUser)
+	const authData = useSelector(getUserAuthData)
+
+	useEffect(() => {
+		if (isInitialized) return
+		dispatch(userActions.setAuthData())
+	}, [dispatch, isInitialized])
+
+	return { isInitialized, authData }
+}

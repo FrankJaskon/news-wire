@@ -8,7 +8,11 @@ export default {
 	title: 'pages/ProfilePage',
 	component: ProfilePage,
 	argTypes: {},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({
+		profile: {
+			isLoading: false
+		}
+	})]
 } as ComponentMeta<typeof ProfilePage>
 
 const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />

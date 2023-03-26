@@ -17,6 +17,7 @@ import { AddNewComment } from 'features/AddNewComment'
 import { createNewCommentForArticle } from '../../model/services/createNewCommentForArticle/createNewCommentForArticle'
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
+import { PageWrapper } from 'widgets/PageWrapper'
 
 export interface ArticleDetailsPageProps {
 	className ?: string
@@ -53,7 +54,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 	return <LazyReducerLoader
 		reducers={reducers}
 	>
-		<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+		<PageWrapper className={classNames(cls.ArticleDetailsPage, {}, [className])}>
 			<AppLink
 				variant={AppLinkVariant.PRIMARY}
 				className={cls.backBtn}
@@ -69,7 +70,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 				isLoading={isLoading}
 				error={error}
 			/>
-		</div>
+		</PageWrapper>
 	</LazyReducerLoader>
 }
 

@@ -33,7 +33,7 @@ export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 		)
 	}, [isCollapsed, sidebarLinks])
 
-	return <div
+	return <menu
 		data-testid='sidebar'
 		className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}>
 		<div className={cls.menu}>
@@ -57,5 +57,5 @@ export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 				short={isCollapsed}
 			/>
 		</div>
-	</div>
+	</menu>
 })
