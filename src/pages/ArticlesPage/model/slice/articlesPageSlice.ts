@@ -25,7 +25,8 @@ const articlesPageSlice = createSlice({
 		view: ViewVariant.GRID,
 		page: 1,
 		limit: 10,
-		hasMore: true
+		hasMore: true,
+		_initialized: false
 	}),
 	reducers: {
 		setView: (state: ArticlesPageScheme, action: PayloadAction<ViewVariantType>) => {
@@ -37,6 +38,14 @@ const articlesPageSlice = createSlice({
 		},
 		setLimit: (state: ArticlesPageScheme, action: PayloadAction<number>) => {
 			state.limit = action.payload
+		},
+		setInitializedValues: (state: ArticlesPageScheme) => {
+			const initialView = localStorage.getItem(
+				VIEW_ARTICLES_LOCAL_STORAGE_KEY) as ViewVariantType || ViewVariant.GRID
+			const initialLimit = initialView === ViewVariant.GRID ? 9 : 4
+			state.view = initialView
+			state.limit = initialLimit
+			state._initialized = true
 		}
 	},
 	extraReducers: (builder) => {

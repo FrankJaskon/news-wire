@@ -14,6 +14,10 @@ export const LoginModal: FC<LoginModalProps> = memo((props: LoginModalProps) => 
 		onClose
 	} = props
 
+	if (!isOpen) {
+		return null
+	}
+
 	return <Modal
 		isOpen={isOpen}
 		onClose={onClose}

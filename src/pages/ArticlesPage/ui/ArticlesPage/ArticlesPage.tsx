@@ -1,25 +1,24 @@
-import { ArticleList, ViewVariant, ViewVariantType } from 'entities/Article'
+import { ArticleList, ViewVariantType } from 'entities/Article'
 import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice'
-import { FC, memo, useCallback } from 'react'
+import { FC, memo, ReactNode, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import cls from './ArticlesPage.module.scss'
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList'
 import { useSelector } from 'react-redux'
 import {
 	getError,
-	getHasMore,
 	getIsLoading,
 	getLimit,
-	getPage,
 	getView
 } from '../../model/selectors/articlesPageSelector'
 import { ViewToggler } from 'features/ViewToggler'
-import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from 'shared/const/localstorage'
 import { PageWrapper } from 'widgets/PageWrapper'
-import { setInitializedValues } from '../../model/services/setInitializedValues/setInitializedValues'
+import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage'
+import { Text, TextVariant } from 'shared/ui/Text'
+import { useTranslation } from 'react-i18next'
+import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage'
 
 export interface ArticlesPageProps {
 	className?: string
@@ -34,25 +33,21 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 		className
 	} = props
 
+	const { t } = useTranslation('article')
 	const dispatch = useAppDispatch()
 	const articles = useSelector(getArticles.selectAll)
 	const isLoading = useSelector(getIsLoading)
 	const view = useSelector(getView)
-	const page = useSelector(getPage)
 	const limit = useSelector(getLimit)
-	const hasMore = useSelector(getHasMore)
 	const error = useSelector(getError)
 
 	useInitialEffect(() => {
-		dispatch(setInitializedValues())
+		dispatch(initArticlesPage())
 	})
 
 	const onLoadNextPart = useCallback(() => {
-		if (hasMore && !isLoading) {
-			dispatch(articlesPageActions.setPage(page + 1))
-			dispatch(fetchArticlesList())
-		}
-	}, [dispatch, page, hasMore, isLoading])
+		dispatch(fetchNextArticlesPage())
+	}, [dispatch])
 
 	const changeView = useCallback((value: ViewVariantType) => {
 		if (view !== value) {
@@ -60,24 +55,40 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 		}
 	}, [dispatch, view])
 
-	return <LazyReducerLoader reducers={reducers}>
+	let content: ReactNode = <>
+		<div className={cls.header}>
+			<div>+</div>
+			<ViewToggler
+				activeView={view}
+				onToggle={changeView}
+			/>
+		</div>
+		<ArticleList
+			articles={articles}
+			view={view}
+			isLoading={isLoading}
+			limit={limit}
+		/>
+	</>
+
+	if (error) {
+		content = <div className={cls.errorWrapper}>
+			<Text
+				variant={TextVariant.ERROR}
+				content={t('error.server-error')}
+			/>
+		</div>
+	}
+
+	return <LazyReducerLoader
+		reducers={reducers}
+		removeAfterUnmount={false}
+	>
 		<PageWrapper
 			className={classNames(cls.ArticlesPage, {}, [className])}
 			onScrollEnd={onLoadNextPart}
 		>
-			<div className={cls.header}>
-				<div>+</div>
-				<ViewToggler
-					activeView={view}
-					onToggle={changeView}
-				/>
-			</div>
-			<ArticleList
-				articles={articles}
-				view={view}
-				isLoading={isLoading}
-				limit={limit}
-			/>
+			{content}
 		</PageWrapper>
 	</LazyReducerLoader>
 }

@@ -1,4 +1,4 @@
-import { User, userActions } from 'entities/User'
+import { userActions } from 'entities/User'
 import { getUserAuthData } from 'entities/User'
 import { LoginModal } from 'features/AuthByUsername'
 import { FC, memo, useCallback, useState } from 'react'

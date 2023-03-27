@@ -1,0 +1,1 @@
+@import"./reset.scss";@import"./themes/normal.scss";@import"./themes/dark.scss";@import"./themes/purple.scss";@import"./variables/global.scss";body{font:var(--font-m);background-color:var(--bg-color);color:var(--primary-color);transition:background-color .4s}.App{height:100vh;min-height:100vh}.content-wrapper{display:flex}/*# sourceMappingURL=index.css.map */

@@ -7,7 +7,6 @@ import { LoginScheme } from 'features/AuthByUsername'
 import { ArticleDetailsCommentsScheme } from 'pages/ArticleDetailsPage'
 import { ArticlesPageScheme } from 'pages/ArticlesPage'
 import { ProfileScheme } from 'pages/ProfilePage'
-import { NavigateOptions, To } from 'react-router-dom'
 
 export interface StateSchema {
 	user: UserScheme
@@ -28,15 +27,14 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 }
 
 export interface ReducerManager {
-	getReducerMap: () => ReducersMapObject<StateSchema>;
-	reduce: Reducer<CombinedState<StateSchema>>;
-	add: (key: StateSchemaKey, reducer: Reducer) => void;
-	remove: (key: StateSchemaKey) => void;
+	getReducerMap: () => ReducersMapObject<StateSchema>
+	reduce: Reducer<CombinedState<StateSchema>>
+	add: (key: StateSchemaKey, reducer: Reducer) => void
+	remove: (key: StateSchemaKey) => void
 }
 
 export interface ExtraArgumentType {
 	api: AxiosInstance
-	navigate?: (to: To, options?: NavigateOptions) => void
 }
 
 export interface ThunkApiConfigType<T> {

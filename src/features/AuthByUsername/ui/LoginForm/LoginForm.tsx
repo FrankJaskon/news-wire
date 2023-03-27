@@ -59,9 +59,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		}
 	}, [dispatch, usernameValue, passwordValue, onSuccess])
 
-	return <LazyReducerLoader
-		reducers={reducers}
-		removeAfterUnmount>
+	return <LazyReducerLoader reducers={reducers}>
 		<form
 			className={classNames(cls.LoginForm, {}, [className])}
 			action='/login'

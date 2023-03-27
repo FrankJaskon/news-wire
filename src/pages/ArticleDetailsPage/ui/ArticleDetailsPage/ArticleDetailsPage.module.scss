@@ -1,4 +1,11 @@
+.ArticleDetailsPage {
+	position: relative;
+}
+
 .backBtn {
 	padding: 5px;
+	position: sticky;
+	top: 0;
+	background-color: var(--highlighted-color);
 	text-transform: uppercase;
 }

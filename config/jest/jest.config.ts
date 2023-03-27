@@ -44,7 +44,8 @@ export default {
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
 	moduleNameMapper: {
 		'\\.(scss)$': 'identity-obj-proxy',
-		'\\.svg$': path.resolve(__dirname, 'svgJestMapper.tsx')
+		'\\.svg$': path.resolve(__dirname, 'svgJestMapper.tsx'),
+		'\\.(png|jpg|jpeg|gif)$': path.resolve(__dirname, 'imgJestMapper.ts')
 	},
 	// A set of global variables that need to be available in all test environments
 	globals: {
