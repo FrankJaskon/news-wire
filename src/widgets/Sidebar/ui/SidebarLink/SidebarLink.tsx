@@ -28,7 +28,7 @@ export const SidebarLink: FC<SidebarLinkProps> = memo((props: SidebarLinkProps) 
 	const { t } = useTranslation()
 	const authData = useSelector(getUserAuthData)
 	const isAuth = Boolean(authData)
-	const newPath = path === RoutePaths.profile ? `${path}${authData?.id || ''}` : path
+	const newPath = path === RoutePaths.profile ? `${path}${authData?.id ?? ''}` : path
 
 	if (authOnly && !isAuth ) {
 		return null

@@ -7,10 +7,11 @@ import { LoginScheme } from 'features/AuthByUsername'
 import { ArticleDetailsCommentsScheme } from 'pages/ArticleDetailsPage'
 import { ArticlesPageScheme } from 'pages/ArticlesPage'
 import { ProfileScheme } from 'pages/ProfilePage'
+import { PageScrollScheme } from 'widgets/PageWrapper'
 
 export interface StateSchema {
 	user: UserScheme
-
+	pageScroll: PageScrollScheme
 	// Async reducers
 	profile?: ProfileScheme
 	login?: LoginScheme

@@ -14,11 +14,11 @@ import {
 	getView
 } from '../../model/selectors/articlesPageSelector'
 import { ViewToggler } from 'features/ViewToggler'
-import { PageWrapper } from 'widgets/PageWrapper'
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 import { Text, TextVariant } from 'shared/ui/Text'
 import { useTranslation } from 'react-i18next'
 import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage'
+import { PageWrapper } from 'widgets/PageWrapper'
 
 export interface ArticlesPageProps {
 	className?: string

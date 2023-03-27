@@ -61,7 +61,7 @@ const ProfilePage: FC = () => {
 	}, [dispatch])
 
 	const onChangeAge = useCallback((value?: string) => {
-		dispatch(profileActions.updateProfileData({ age: Number(value) || 0 }))
+		dispatch(profileActions.updateProfileData({ age: Number(value) ?? 0 }))
 	}, [dispatch])
 
 	const onChangeCity = useCallback((value?: string) => {
@@ -69,7 +69,7 @@ const ProfilePage: FC = () => {
 	}, [dispatch])
 
 	const onChangeUsername = useCallback((value?: string) => {
-		dispatch(profileActions.updateProfileData({ username: value || '' }))
+		dispatch(profileActions.updateProfileData({ username: value ?? '' }))
 	}, [dispatch])
 
 	const onChangeAvatar = useCallback((value?: string) => {

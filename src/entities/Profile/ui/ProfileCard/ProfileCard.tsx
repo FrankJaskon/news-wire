@@ -181,7 +181,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 				id='user-username'
 				variant={InputVariant.CLEAR}
 				onChange={updateUsername}
-				value={data?.username || ''}
+				value={data?.username ?? ''}
 				readonly={readonly}
 			/>
 		</FormControl>
