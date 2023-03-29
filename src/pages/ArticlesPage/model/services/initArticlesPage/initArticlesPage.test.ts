@@ -14,7 +14,7 @@ describe('initArticlesPage', () => {
 			} as DeepPartial<StateSchema>
 		})
 
-		const result = await thunk.callThunk()
+		const result = await thunk.callThunk({} as URLSearchParams)
 
 		expect(thunk.dispatch).toHaveBeenCalledTimes(4)
 		expect(result.meta.requestStatus).toBe('fulfilled')
@@ -28,7 +28,7 @@ describe('initArticlesPage', () => {
 			} as DeepPartial<StateSchema>
 		})
 
-		const result = await thunk.callThunk()
+		const result = await thunk.callThunk({} as URLSearchParams)
 
 		expect(thunk.dispatch).toHaveBeenCalledTimes(2)
 		expect(result.meta.requestStatus).toBe('fulfilled')

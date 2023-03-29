@@ -67,6 +67,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 			data-testid='login-form'>
 
 			<Text
+				className={cls.title}
 				align='center'
 				title={t('login.header')}
 			/>

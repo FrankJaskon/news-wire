@@ -1,6 +1,6 @@
 import type { CountryType } from 'entities/Country'
 import type { CurrencyType } from 'entities/Currency'
-import { ValueOf } from 'shared/config/types/types'
+import { ValueOf } from 'shared/types/types'
 
 export const ValidateProfileError = {
 	INCORRECT_FIRSTNAME: 'INCORRECT_FIRSTNAME',

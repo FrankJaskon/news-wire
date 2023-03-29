@@ -1,6 +1,6 @@
 import { CommentType } from 'entities/Comment'
 import { User } from 'entities/User'
-import { ValueOf } from 'shared/config/types/types'
+import { ValueOf } from 'shared/types/types'
 
 export interface ArticleDetailsScheme {
 	data?: ArticleType

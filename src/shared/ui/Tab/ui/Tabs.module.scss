@@ -1,0 +1,15 @@
+.Tabs {
+	cursor: pointer;
+	display: flex;
+	gap: 10px;
+}
+
+.tab {
+	padding: 8px 12px;
+	text-transform: lowercase;
+}
+
+.active {
+	background-color: var(--primary-color);
+	color: var(--light-color);
+}

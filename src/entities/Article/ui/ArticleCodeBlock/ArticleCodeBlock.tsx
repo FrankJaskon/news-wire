@@ -1,6 +1,6 @@
 import { FC, memo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ValueOf } from 'shared/config/types/types'
+import { ValueOf } from 'shared/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
 import cls from './ArticleCodeBlock.module.scss'

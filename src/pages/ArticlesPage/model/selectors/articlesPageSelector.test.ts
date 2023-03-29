@@ -1,5 +1,7 @@
 import { StateSchema } from 'app/providers/StoreProvider'
 import { ViewVariant } from 'entities/Article'
+import { ArticlesSortVariant } from 'features/ArticlesSortSelector'
+import { SortOrder } from 'shared/types/types'
 import {
 	getIsLoading,
 	getView,
@@ -7,7 +9,10 @@ import {
 	getLimit,
 	getHasMore,
 	getError,
-	geInitialized
+	geInitialized,
+	getSearch,
+	getOrder,
+	getSort,
 } from './articlesPageSelector'
 
 describe('articlesPageSelector', () => {
@@ -80,5 +85,35 @@ describe('articlesPageSelector', () => {
 				_initialized: true
 			}
 		} as StateSchema)).toBe(true)
+	})
+	test('getSearch has to work with empty state', () => {
+		expect(getSearch({} as StateSchema)).toBe('')
+	})
+	test('getSearch should return data', () => {
+		expect(getSearch({
+			articlesPage: {
+				search: 'some text'
+			}
+		} as StateSchema)).toBe('some text')
+	})
+	test('getOrder has to work with empty state', () => {
+		expect(getOrder({} as StateSchema)).toBe(undefined)
+	})
+	test('getOrder should return data', () => {
+		expect(getOrder({
+			articlesPage: {
+				order: SortOrder.DOWN_UP
+			}
+		} as StateSchema)).toBe(SortOrder.DOWN_UP)
+	})
+	test('getSort has to work with empty state', () => {
+		expect(getSort({} as StateSchema)).toBe(undefined)
+	})
+	test('getSort should return data', () => {
+		expect(getSort({
+			articlesPage: {
+				sort: ArticlesSortVariant.TITLE
+			}
+		} as StateSchema)).toBe(ArticlesSortVariant.TITLE)
 	})
 })

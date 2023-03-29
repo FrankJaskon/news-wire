@@ -139,6 +139,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			/>
 		</FormControl>
 		<FormControl
+			className={cls.pb8}
 			variant={formControlVariant}
 		>
 			<CountrySelect
@@ -186,6 +187,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			/>
 		</FormControl>
 		<FormControl
+			className={cls.pb8}
 			variant={formControlVariant}
 		>
 			<CurrencySelect

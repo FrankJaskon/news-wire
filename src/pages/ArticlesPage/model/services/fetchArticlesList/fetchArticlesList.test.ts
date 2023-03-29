@@ -15,7 +15,7 @@ describe('fetchArticlesList', () => {
 		thunk.api.get.mockReturnValue(Promise.resolve({
 			data: responseData
 		}))
-		const result = await thunk.callThunk()
+		const result = await thunk.callThunk({})
 
 		expect(thunk.api.get).toHaveBeenCalled()
 		expect(result.meta.requestStatus).toBe('fulfilled')
@@ -24,7 +24,7 @@ describe('fetchArticlesList', () => {
 	test('Incorrect request', async () => {
 		const thunk = new TestAsyncThunk(fetchArticlesList)
 		thunk.api.get.mockRejectedValue(Promise.resolve())
-		const result = await thunk.callThunk()
+		const result = await thunk.callThunk({})
 
 		expect(thunk.api.get).toHaveBeenCalled()
 		expect(result.meta.requestStatus).toBe('rejected')

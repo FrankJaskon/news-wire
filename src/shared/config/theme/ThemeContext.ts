@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { ValueOf } from 'shared/config/types/types'
+import { ValueOf } from 'shared/types/types'
 
 export const AppThemes = {
 	LIGHT: 'light',

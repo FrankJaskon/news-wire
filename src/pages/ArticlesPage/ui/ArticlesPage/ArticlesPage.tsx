@@ -1,5 +1,5 @@
-import { ArticleList, ViewVariantType } from 'entities/Article'
-import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice'
+import { ArticleList } from 'entities/Article'
+import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice'
 import { FC, memo, ReactNode, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
@@ -13,12 +13,13 @@ import {
 	getLimit,
 	getView
 } from '../../model/selectors/articlesPageSelector'
-import { ViewToggler } from 'features/ViewToggler'
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage'
-import { Text, TextVariant } from 'shared/ui/Text'
+import { Text, TextSize, TextVariant } from 'shared/ui/Text'
 import { useTranslation } from 'react-i18next'
 import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage'
 import { PageWrapper } from 'widgets/PageWrapper'
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
+import { useSearchParams } from 'react-router-dom'
 
 export interface ArticlesPageProps {
 	className?: string
@@ -35,6 +36,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 
 	const { t } = useTranslation('article')
 	const dispatch = useAppDispatch()
+	const [searchParams] = useSearchParams()
 	const articles = useSelector(getArticles.selectAll)
 	const isLoading = useSelector(getIsLoading)
 	const view = useSelector(getView)
@@ -42,40 +44,35 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 	const error = useSelector(getError)
 
 	useInitialEffect(() => {
-		dispatch(initArticlesPage())
+		dispatch(initArticlesPage(searchParams))
 	})
 
 	const onLoadNextPart = useCallback(() => {
 		dispatch(fetchNextArticlesPage())
 	}, [dispatch])
 
-	const changeView = useCallback((value: ViewVariantType) => {
-		if (view !== value) {
-			dispatch(articlesPageActions.setView(value))
-		}
-	}, [dispatch, view])
-
-	let content: ReactNode = <>
-		<div className={cls.header}>
-			<div>+</div>
-			<ViewToggler
-				activeView={view}
-				onToggle={changeView}
-			/>
-		</div>
-		<ArticleList
-			articles={articles}
-			view={view}
-			isLoading={isLoading}
-			limit={limit}
-		/>
-	</>
+	let content: ReactNode = <ArticleList
+		articles={articles}
+		view={view}
+		isLoading={isLoading}
+		limit={limit}
+	/>
 
 	if (error) {
-		content = <div className={cls.errorWrapper}>
+		content = <div className={cls.warningWrapper}>
 			<Text
 				variant={TextVariant.ERROR}
+				size={TextSize.L}
 				content={t('error.server-error')}
+			/>
+		</div>
+	}
+
+	if (!isLoading && !articles.length && !error) {
+		content = <div className={cls.warningWrapper}>
+			<Text
+				size={TextSize.L}
+				content={t('empty-articles-list')}
 			/>
 		</div>
 	}
@@ -87,7 +84,9 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 		<PageWrapper
 			className={classNames(cls.ArticlesPage, {}, [className])}
 			onScrollEnd={onLoadNextPart}
+			watchedScroll={true}
 		>
+			<ArticlesPageFilters />
 			{content}
 		</PageWrapper>
 	</LazyReducerLoader>

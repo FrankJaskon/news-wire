@@ -3,7 +3,7 @@ import { FC, memo, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleList.module.scss'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
-import { ValueOf } from 'shared/config/types/types'
+import { ValueOf } from 'shared/types/types'
 import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
 
 export interface ArticleListProps {

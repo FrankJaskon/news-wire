@@ -1,4 +1,4 @@
-import { ValueOf } from 'shared/config/types/types'
+import { ValueOf } from 'shared/types/types'
 
 export const Country = {
 	UKRAINE: 'Ukraine',

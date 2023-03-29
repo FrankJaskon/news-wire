@@ -14,13 +14,15 @@ export interface PageWrapperProps {
 	className?: string
 	children: ReactNode
 	onScrollEnd?: () => void
+	watchedScroll?: boolean
 }
 
 export const PageWrapper: FC<PageWrapperProps> = (props) => {
 	const {
 		className,
 		children,
-		onScrollEnd
+		onScrollEnd,
+		watchedScroll = false
 	} = props
 	const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
 	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
@@ -35,21 +37,25 @@ export const PageWrapper: FC<PageWrapperProps> = (props) => {
 	})
 
 	useEffect(() => {
-		wrapperRef.current.scrollTop = scrollPosition
-	}, [scrollPosition])
+		if (watchedScroll) {
+			wrapperRef.current.scrollTop = scrollPosition
+		}
+	}, [watchedScroll, scrollPosition])
 
 	const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
-		dispatch(pageScrollActions.setScrollPosition({ path: pathname, position: e.currentTarget.scrollTop }))
-	}, 500)
+		if (watchedScroll) {
+			dispatch(pageScrollActions.setScrollPosition({ path: pathname, position: e.currentTarget.scrollTop }))
+		}
+	}, 300)
 
 	return (
 		<section
 			ref={wrapperRef}
 			className={classNames(cls.PageWrapper, {}, [className])}
-			onScroll={onScroll}
+			onScroll={watchedScroll ? onScroll : undefined}
 		>
 			{children}
-			<div ref={triggerRef} />
+			{onScrollEnd && <div ref={triggerRef} />}
 		</section>
 	)
 }

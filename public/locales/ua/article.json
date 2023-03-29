@@ -11,5 +11,22 @@
     },
 	"comment-title": "Коментарі",
 	"read-more-btn": "Читати далі",
-	"back-to-list-btn": "назад до перечню"
+	"back-to-list-btn": "назад до перечню",
+	"search-input-placeholder": "Шукати...",
+	"sort-by": {
+		"views": "За переглядами",
+		"createdAt": "По даті",
+		"title": "За назвою"
+	},
+	"order": {
+		"asc": "За зростанням",
+		"desc": "За зменшенням"
+	},
+	"filter": {
+		"ALL": "Усі",
+		"IT": "Інформаційні технології",
+		"SCIENCE": "Наука",
+		"ECONOMIC": "Економіка"
+	},
+	"empty-articles-list": "Статті не знайдено"
 }

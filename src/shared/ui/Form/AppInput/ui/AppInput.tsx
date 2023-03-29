@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, InputHTMLAttributes, memo } from 'react'
-import { ValueOf } from 'shared/config/types/types'
+import { ValueOf } from 'shared/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './AppInput.module.scss'
 

@@ -11,5 +11,22 @@
     },
 	"comment-title": "Comments",
 	"read-more-btn": "Read more",
-	"back-to-list-btn": "back to list"
+	"back-to-list-btn": "back to list",
+	"search-input-placeholder": "Search...",
+	"sort-by": {
+		"views": "Views",
+		"createdAt": "Date",
+		"title": "Title"
+	},
+	"order": {
+		"asc": "Ascending",
+		"desc": "Descending"
+	},
+	"filter": {
+		"ALL": "All",
+		"IT": "Information Technology",
+		"SCIENCE": "Science",
+		"ECONOMIC": "Economic"
+	},
+	"empty-articles-list": "Articles have not been found"
 }

@@ -20,7 +20,7 @@ export const fetchNextArticlesPage = createAsyncThunk<
 
 			if (hasMore && !isLoading) {
 				thunkAPI.dispatch(articlesPageActions.setPage(page + 1))
-				thunkAPI.dispatch(fetchArticlesList())
+				thunkAPI.dispatch(fetchArticlesList({}))
 			}
 		} catch (error: any) {
 			return rejectWithValue('error')

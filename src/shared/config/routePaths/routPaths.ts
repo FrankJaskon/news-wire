@@ -1,4 +1,4 @@
-import { ValueOf } from '../types/types'
+import { ValueOf } from '../../types/types'
 
 export const AppRoutes = {
 	MAIN: 'main',
