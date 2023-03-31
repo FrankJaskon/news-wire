@@ -1,6 +1,6 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
 
 export const getIsLoading = (state: StateSchema) => (
-	state?.articleDetailsComments?.isLoading !== undefined ? state?.articleDetailsComments?.isLoading : true
+	state?.articleDetailsPage?.comments?.isLoading ?? true
 )
-export const getError = (state: StateSchema) => state?.articleDetailsComments?.error
+export const getError = (state: StateSchema) => state?.articleDetailsPage?.comments?.error

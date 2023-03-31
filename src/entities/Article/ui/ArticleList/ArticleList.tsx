@@ -1,5 +1,5 @@
 import { ArticleType } from '../../model/types/ArticleDetailsScheme'
-import { FC, memo, useCallback } from 'react'
+import { FC, HTMLAttributeAnchorTarget, memo, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleList.module.scss'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
@@ -12,6 +12,7 @@ export interface ArticleListProps {
 	isLoading?: boolean
 	view?: ViewVariantType
 	limit?: number
+	target?: HTMLAttributeAnchorTarget
 }
 
 export const ViewVariant = {
@@ -27,7 +28,8 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 		articles,
 		view = ViewVariant.GRID,
 		isLoading,
-		limit = view === ViewVariant.GRID ? 9 : 3
+		limit = view === ViewVariant.GRID ? 9 : 3,
+		target
 	} = props
 
 	const renderArticle = useCallback((article: ArticleType) => (
@@ -35,8 +37,9 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 			key={article.id}
 			article={article}
 			view={view}
+			target={target}
 		/>
-	), [view])
+	), [view, target])
 
 	const getSkeletons = useCallback((view: ViewVariantType) => {
 		return new Array(limit)

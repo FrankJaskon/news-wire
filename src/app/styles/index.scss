@@ -4,6 +4,25 @@
 @import url("./themes/purple.scss");
 @import url("./variables/global.scss");
 
+* {
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE 10+ */
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--block-primary-lighter);
+	border-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar-track {
+	background-color: var(--background-color);
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
 body {
 	font: var(--font-m);
 	background-color: var(--bg-color);

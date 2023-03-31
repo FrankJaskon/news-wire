@@ -10,8 +10,12 @@
         "server-error": "Something went wrong. Try later please"
     },
 	"comment-title": "Comments",
+	"edit-title": "Editing the article",
+	"create-title": "Creating new article",
+	"recommendations-title": "Recommendations",
 	"read-more-btn": "Read more",
-	"back-to-list-btn": "back to list",
+	"back-to-list-btn": "Back to list",
+	"edit-article-btn": "Edit",
 	"search-input-placeholder": "Search...",
 	"sort-by": {
 		"views": "Views",

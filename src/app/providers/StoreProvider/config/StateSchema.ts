@@ -4,7 +4,7 @@ import { ArticleDetailsScheme } from 'entities/Article'
 import { UserScheme } from 'entities/User'
 import { AddNewCommentScheme } from 'features/AddNewComment'
 import { LoginScheme } from 'features/AuthByUsername'
-import { ArticleDetailsCommentsScheme } from 'pages/ArticleDetailsPage'
+import { ArticleDetailsPageScheme } from 'pages/ArticleDetailsPage'
 import { ArticlesPageScheme } from 'pages/ArticlesPage'
 import { ProfileScheme } from 'pages/ProfilePage'
 import { PageScrollScheme } from 'widgets/PageWrapper'
@@ -16,7 +16,7 @@ export interface StateSchema {
 	profile?: ProfileScheme
 	login?: LoginScheme
 	articleDetails?: ArticleDetailsScheme
-	articleDetailsComments?: ArticleDetailsCommentsScheme
+	articleDetailsPage?: ArticleDetailsPageScheme
 	addNewComment?: AddNewCommentScheme
 	articlesPage?: ArticlesPageScheme
 }

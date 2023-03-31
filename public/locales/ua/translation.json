@@ -5,7 +5,8 @@
   },
   "navbar": {
     "login": "Увійти",
-    "logout": "Вийти"
+    "logout": "Вийти",
+    "create-article": "Створити статтю"
   },
   "sidebar": {
     "link": {

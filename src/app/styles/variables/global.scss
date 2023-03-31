@@ -21,8 +21,8 @@
 	--page-height: calc(100vh - var(--navbar-height));
 	--page-content-height: calc(100vh - var(--navbar-height) - 2 * 20px);
 	--navbar-height: 50px;
-	--sidebar-weight: 256px;
-	--sidebar-weight-collapsed: 80px;
+	--sidebar-width: 256px;
+	--sidebar-width-collapsed: 80px;
 
 	/* COLORS */
 	--red-color: #f22;
@@ -33,5 +33,6 @@
 	--border-radius: 5px;
 
 	/* Z-INDEX */
+	--fixed-content-z-index: 5;
 	--modal-z-index: 10;
 }

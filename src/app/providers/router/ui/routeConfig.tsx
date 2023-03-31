@@ -1,6 +1,7 @@
 import { AboutPage } from 'pages/AboutPage'
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage'
 import { ArticlesPage } from 'pages/ArticlesPage'
+import { EditArticlePage } from 'pages/EditArticlePage'
 import { MainPage } from 'pages/MainPage'
 import { NotFound } from 'pages/NotFound'
 import { ProfilePage } from 'pages/ProfilePage'
@@ -33,6 +34,16 @@ export const routerConfig: AuthRouteProps[] = [
 	{
 		path: `${RoutePaths.articles_details}:id`,
 		element: <ArticleDetailsPage />,
+		authOnly: true
+	},
+	{
+		path: RoutePaths.articles_details_edit,
+		element: <EditArticlePage />,
+		authOnly: true
+	},
+	{
+		path: RoutePaths.articles_details_new,
+		element: <EditArticlePage />,
 		authOnly: true
 	},
 

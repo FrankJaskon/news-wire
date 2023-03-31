@@ -3,9 +3,9 @@ export {
 } from './ui/ArticleDetailsPage/ArticleDetailsPage.lazy'
 
 export type {
-	ArticleDetailsCommentsScheme
-} from './model/types/articleDetailsCommentsScheme'
+	ArticleDetailsPageScheme
+} from './model/types'
 
 export {
-	articleDetailsCommentsReducer
-} from './model/slice/articleDetailsCommentsSlice'
+	articleDetailsPageReducer
+} from './model/slice'

@@ -1,11 +1,7 @@
-.ArticleDetailsPage {
-	position: relative;
-}
-
-.backBtn {
-	padding: 5px;
-	position: sticky;
-	top: 0;
-	background-color: var(--highlighted-color);
-	text-transform: uppercase;
+.recommendations {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	grid-auto-flow: column;
+	overflow-x: auto;
 }

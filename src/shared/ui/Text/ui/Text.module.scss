@@ -1,11 +1,3 @@
-.title {
-	color: var(--primary-color);
-}
-
-.content {
-	color: var(--secondary-color);
-}
-
 .size-s {
 	.title {
 		font: var(--font-m);
@@ -54,6 +46,18 @@
 	.content {
 		color: var(--red-color-lighter);
 	}
+}
+
+.primary-color {
+	color: var(--primary-color);
+}
+
+.secondary-color {
+	color: var(--secondary-color);
+}
+
+.light-color {
+	color: var(--light-color);
 }
 
 .start {

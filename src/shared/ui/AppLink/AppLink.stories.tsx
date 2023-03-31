@@ -59,3 +59,16 @@ SecondaryDark.args = {
 	variant: AppLinkVariant.SECONDARY,
 }
 SecondaryDark.decorators = [ThemeDecorator(AppThemes.DARK)]
+
+export const ButtonVariant: Story<AppLinkProps> = Template.bind({})
+ButtonVariant.args = {
+	children: 'Click',
+	variant: AppLinkVariant.PRIMARY_BUTTON,
+}
+
+export const DarkButtonVariant: Story<AppLinkProps> = Template.bind({})
+DarkButtonVariant.args = {
+	children: 'Click',
+	variant: AppLinkVariant.PRIMARY_BUTTON,
+}
+DarkButtonVariant.decorators = [ThemeDecorator(AppThemes.DARK)]

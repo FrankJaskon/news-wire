@@ -1,5 +1,5 @@
 import { ArticleType, BlockType, TextBlockType } from '../../model/types/ArticleDetailsScheme'
-import { FC, memo, useCallback, useMemo } from 'react'
+import { FC, HTMLAttributeAnchorTarget, memo, useCallback, useMemo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleListItem.module.scss'
 import { Text } from 'shared/ui/Text'
@@ -19,6 +19,7 @@ export interface ArticleListItemProps {
 	className?: string
 	article?: ArticleType
 	view?: ViewVariantType
+	target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleListItemProps) => {
@@ -26,6 +27,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 		className,
 		article,
 		view,
+		target
 	} = props
 
 	const navigate = useNavigate()
@@ -60,7 +62,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 			>
 				<AppLink
 					className={classNames(cls.imgWrapper, {}, [cls.link])}
-					to={String(article?.id)}
+					to={RoutePaths.articles_details + article?.id}
+					target={target}
 				>
 					<img
 						className={cls.img}

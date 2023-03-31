@@ -10,8 +10,12 @@
         "server-error": "Упс. Щось трапилось. Півторіть запит пізніше"
     },
 	"comment-title": "Коментарі",
+	"edit-title": "Редагування статті",
+	"create-title": "Створення нової статті",
+	"recommendations-title": "Рекомендовані статті",
 	"read-more-btn": "Читати далі",
-	"back-to-list-btn": "назад до перечню",
+	"back-to-list-btn": "Назад до перечню",
+	"edit-article-btn": "Редагувати",
 	"search-input-placeholder": "Шукати...",
 	"sort-by": {
 		"views": "За переглядами",

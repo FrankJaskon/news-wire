@@ -1,5 +1,4 @@
 .Navbar {
-	padding: 0 20px;
 	display: flex;
 	align-items: center;
 	height: var(--navbar-height);
@@ -9,8 +8,21 @@
 
 .linksGroup {
 	margin-left: auto;
+	padding-right: 10px;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	.link {
+		color: var(--block-secondary-color);
+	}
 }
 
-.link {
-	color: var(--block-secondary-color);
+.logo {
+	padding-left: 20px;
+	color: var(--light-color);
+	width: var(--sidebar-width);
+}
+
+.login {
+	margin-left: auto;
 }
