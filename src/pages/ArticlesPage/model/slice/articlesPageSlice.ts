@@ -10,7 +10,7 @@ import { ArticlesTypes, ArticlesTypesType } from 'features/ArticleTypeTabs'
 import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from 'shared/const/localstorage'
 import { SortOrder, SortOrderType } from 'shared/types/types'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
-import { ArticlesPageScheme } from '../types/articlesPageScheme'
+import { ArticlesPageScheme } from '../types/ArticlesPageScheme'
 
 const articlesPageAdapter = createEntityAdapter<ArticleType>({})
 

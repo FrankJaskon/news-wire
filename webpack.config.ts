@@ -1,10 +1,10 @@
 import path from 'path'
 import webpack from 'webpack'
-import { BuildEnv, BuildMode } from './config/build/types/config'
+import { BuildEnv, BuildMode, BuildPaths } from './config/build/types/config'
 import buildWebpackConfig from './config/build/buildWebpackConfig'
 
 export default ( env: BuildEnv ) => {
-	const paths = {
+	const paths: BuildPaths = {
 		entry: path.resolve(__dirname, 'src', 'index.tsx'),
 		output: path.resolve(__dirname, 'dist'),
 		html: path.resolve(__dirname, 'public', 'index.html'),
@@ -13,6 +13,8 @@ export default ( env: BuildEnv ) => {
 			svg: path.join('icons', '[name].[contenthash][ext]'),
 			images: path.join('images', '[name].[contenthash][ext]'),
 		},
+		locales: path.resolve(__dirname, 'public', 'locales'),
+		buildLocales: path.resolve(__dirname, 'dist', 'locales')
 	}
 
 	const analyzed: boolean = env.analyzed || false

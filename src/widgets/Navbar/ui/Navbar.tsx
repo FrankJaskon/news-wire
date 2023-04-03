@@ -77,7 +77,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 			<Text
 				className={cls.logo}
 				title='News wire'
-				titleColor={TextColor.LIGHT}
+				titleHue={TextColor.LIGHT}
 			/>
 		</AppLink>
 		{content}

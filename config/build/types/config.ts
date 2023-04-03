@@ -11,6 +11,8 @@ export interface BuildPaths {
     html: string
     src: string
     assets: AssetPaths
+    locales: string
+    buildLocales: string
 }
 
 export interface BuildEnv {

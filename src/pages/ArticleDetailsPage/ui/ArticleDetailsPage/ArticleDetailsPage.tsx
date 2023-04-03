@@ -15,13 +15,10 @@ import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { AddNewComment } from 'features/AddNewComment'
 import { createNewCommentForArticle } from '../../model/services/createNewCommentForArticle/createNewCommentForArticle'
-import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink'
-import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { PageWrapper } from 'widgets/PageWrapper'
 import {
-	articleDetailsPageRecommendationsReducer,
 	getArticleRecommendations
-} from '../../model/slice/ArticleDetailsPageRecommendationsSlice'
+} from '../../model/slice/articleDetailsPageRecommendationsSlice'
 import {
 	getArticlePageRecommendationsError,
 	getArticlePageRecommendationsIsLoading

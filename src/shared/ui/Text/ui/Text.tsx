@@ -11,8 +11,8 @@ interface TextProps {
 	variant?: TextVariantType
 	size?: TextSizeType
 	align?: TextAlignType
-	titleColor?: TextColorType
-	contentColor?: TextColorType
+	titleHue?: TextColorType
+	contentHue?: TextColorType
 }
 
 export const TextVariant = {
@@ -32,7 +32,6 @@ export const TextAlign = {
 	START: 'start',
 	END: 'end',
 	JUSTIFY: 'justify'
-
 } as const
 
 export const TextColor = {
@@ -55,8 +54,8 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		variant = TextVariant.PRIMARY,
 		align = TextAlign.START,
 		size = TextSize.M,
-		titleColor = TextColor.PRIMARY,
-		contentColor = TextColor.SECONDARY
+		titleHue = TextColor.PRIMARY,
+		contentHue = TextColor.SECONDARY
 	} = props
 
 	const extra = [
@@ -71,12 +70,12 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		className={classNames(cls.Text, {}, extra)}>
 		{title && <p
 			data-testid='text-title'
-			className={classNames(cls.title, {}, [cls[titleColor]])}>
+			className={classNames(cls.title, {}, [cls[titleHue]])}>
 			{title}
 		</p>}
 		{content && <p
 			data-testid='text-content'
-			className={classNames(cls.content, {}, [cls[contentColor]])}>
+			className={classNames(cls.content, {}, [cls[contentHue]])}>
 			{content}
 		</p>}
 	</div>

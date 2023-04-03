@@ -4,7 +4,7 @@ export {
 
 export type {
 	ArticlesPageScheme,
-} from './model/types/articlesPageScheme'
+} from './model/types/ArticlesPageScheme'
 
 export {
 	articlesPageReducer,
