@@ -2,13 +2,14 @@
 	display: flex;
 	align-items: center;
 	height: var(--navbar-height);
+	padding-left: 10px;
+	padding-right: 10px;
 	background-color: var(--block-primary-color);
 	transition: background-color .2s;
 }
 
 .linksGroup {
 	margin-left: auto;
-	padding-right: 10px;
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
@@ -17,12 +18,11 @@
 	}
 }
 
-.logo {
-	padding-left: 20px;
-	color: var(--light-color);
-	width: var(--sidebar-width);
-}
-
 .login {
 	margin-left: auto;
+}
+
+.logo {
+	padding: 0 5px;
+	white-space: nowrap;
 }

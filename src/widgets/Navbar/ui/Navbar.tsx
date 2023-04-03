@@ -4,13 +4,13 @@ import { LoginModal } from 'features/AuthByUsername'
 import { FC, memo, ReactNode, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton, ButtonVariant } from 'shared/ui/AppButton'
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink'
 import { Text, TextColor } from 'shared/ui/Text'
 import cls from './Navbar.module.scss'
+import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 
 interface NavbarProps {
 	className?: string
@@ -72,7 +72,6 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 	return <header className={classNames(cls.Navbar, {}, [className])}>
 		<AppLink
 			to={RoutePaths.main}
-			className={cls.link}
 		>
 			<Text
 				className={cls.logo}

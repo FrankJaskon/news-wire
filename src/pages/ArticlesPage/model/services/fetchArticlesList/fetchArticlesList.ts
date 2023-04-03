@@ -2,8 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { ArticleType } from 'entities/Article'
 import { ArticlesTypes } from 'features/ArticleTypeTabs'
-import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { getFilter, getLimit, getOrder, getPage, getSearch, getSort } from '../../selectors/articlesPageSelector'
+import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 
 export interface FetchArticlesListProps {
 	replace?: boolean
@@ -37,7 +37,6 @@ export const fetchArticlesList = createAsyncThunk<
 						type: filter === ArticlesTypes.ALL ? undefined : filter
 					}
 				})
-
 			return response.data
 		} catch (error: any) {
 			return rejectWithValue('error')

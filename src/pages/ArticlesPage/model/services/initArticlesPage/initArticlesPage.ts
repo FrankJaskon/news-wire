@@ -34,7 +34,10 @@ export const initArticlesPage = createAsyncThunk<
 				params.type && thunkAPI.dispatch(articlesPageActions.setFilter(params.type as ArticlesTypesType))
 
 				thunkAPI.dispatch(articlesPageActions.setInitializedValues())
-				thunkAPI.dispatch(fetchArticlesList({}))
+				const response = await thunkAPI.dispatch(fetchArticlesList({}))
+				if (response.meta.requestStatus === 'rejected') {
+					return rejectWithValue('error')
+				}
 			}
 		} catch (error: any) {
 			return rejectWithValue('error')

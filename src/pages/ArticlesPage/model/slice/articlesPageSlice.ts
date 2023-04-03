@@ -11,6 +11,8 @@ import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from 'shared/const/localstorage'
 import { SortOrder, SortOrderType } from 'shared/types/types'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
 import { ArticlesPageScheme } from '../types/ArticlesPageScheme'
+import { fetchNextArticlesPage } from '../services/fetchNextArticlesPage/fetchNextArticlesPage'
+import { initArticlesPage } from '../services/initArticlesPage/initArticlesPage'
 
 const articlesPageAdapter = createEntityAdapter<ArticleType>({})
 
@@ -91,6 +93,21 @@ const articlesPageSlice = createSlice({
 		builder.addCase(fetchArticlesList.rejected, (state, action) => {
 			state.isLoading = false
 			state.error = action.payload
+		})
+		// // fetchNextArticlesPage
+		// builder.addCase(fetchNextArticlesPage.pending, (state) => {
+		// 	state.isLoading = true
+		// })
+		// builder.addCase(fetchNextArticlesPage.rejected, (state, action) => {
+		// 	state.isLoading = false
+		// 	state.error = action.payload
+		// })
+		// // initArticlesPage
+		// builder.addCase(initArticlesPage.pending, (state) => {
+		// 	state.isLoading = true
+		// })
+		builder.addCase(initArticlesPage.rejected, (state) => {
+			state._initialized = false
 		})
 	}
 })

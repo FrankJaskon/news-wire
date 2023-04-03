@@ -1,6 +1,6 @@
 import { ArticleList } from 'entities/Article'
 import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice'
-import { FC, memo, ReactNode, useCallback } from 'react'
+import { FC, memo, ReactNode, useCallback, useMemo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import cls from './ArticlesPage.module.scss'

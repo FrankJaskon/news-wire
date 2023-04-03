@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from 'app/providers/StoreProvider'
-import { getHasMore, getIsLoading, getPage } from '../../selectors/articlesPageSelector'
+import { getHasMore, getIsLoading, getPage, getError } from '../../selectors/articlesPageSelector'
 import { articlesPageActions } from '../../slice/articlesPageSlice'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 
@@ -14,13 +14,17 @@ export const fetchNextArticlesPage = createAsyncThunk<
 		const { extra, rejectWithValue, getState } = thunkAPI
 
 		try {
+			const error = getError(getState())
 			const hasMore = getHasMore(getState())
 			const page = getPage(getState())
 			const isLoading = getIsLoading(getState())
 
-			if (hasMore && !isLoading) {
+			if (hasMore && !isLoading && !error) {
 				thunkAPI.dispatch(articlesPageActions.setPage(page + 1))
-				thunkAPI.dispatch(fetchArticlesList({}))
+				const response = await thunkAPI.dispatch(fetchArticlesList({}))
+				if (response.meta.requestStatus === 'rejected') {
+					return rejectWithValue('error')
+				}
 			}
 		} catch (error: any) {
 			return rejectWithValue('error')

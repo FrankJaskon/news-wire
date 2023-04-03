@@ -20,7 +20,11 @@
 }
 
 .content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	min-height: 300px;
+	min-width: 300px;
 	max-width: 60%;
 	padding: 20px;
 	background-color: var(--bg-color);
