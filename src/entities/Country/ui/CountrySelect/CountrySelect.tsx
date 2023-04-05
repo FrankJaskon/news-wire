@@ -1,13 +1,9 @@
 import { Country, CountryType } from '../../model/types/CountryScheme'
-import { FC, memo, useCallback } from 'react'
+import { FC, memo, useCallback, useMemo } from 'react'
 import { AppLabel } from 'shared/ui/Form/Label'
 import { Select, SelectOption } from 'shared/ui/Select'
 import { useTranslation } from 'react-i18next'
-
-const countryOptionList: SelectOption[] = [
-	{ label: Country.UKRAINE, value: Country.UKRAINE },
-	{ label: Country.USA, value: Country.USA },
-]
+import { VStack } from 'shared/ui/Stack'
 
 interface CountrySelectProps {
 	value?: CountryType
@@ -16,19 +12,35 @@ interface CountrySelectProps {
 }
 
 export const CountrySelect: FC<CountrySelectProps> = memo((props: CountrySelectProps) => {
-	const { value, onChange, readonly } = props
+	const {
+		value,
+		onChange,
+		readonly
+	} = props
+
 	const { t } = useTranslation()
 
-	const handleOnChange = useCallback((value: string) => {
-		onChange?.(value as CountryType)
+
+	const countryOptionList: SelectOption[] = useMemo(() => Object.values(Country).map(item => (
+		{ label: t(`country.${item}`), value: item }
+	)), [t])
+
+	const selected = useMemo(() => countryOptionList.find((item) => item.value === value),
+		[value, countryOptionList])
+
+	const handleOnChange = useCallback((value: SelectOption) => {
+		onChange?.(value.value as CountryType)
 	}, [onChange])
 
-	return <Select
-		Label={<AppLabel htmlFor='country-select'>{t('choose-country')}</AppLabel>}
-		name={'country-select'}
-		onChange={handleOnChange}
-		value={value}
-		options={countryOptionList}
-		readonly={readonly}
-	/>
+	return <VStack>
+		<AppLabel htmlFor='country-select'>{t('choose-country')}</AppLabel>
+		<Select
+			name={'country-select'}
+			onChange={handleOnChange}
+			value={selected}
+			options={countryOptionList}
+			readonly={readonly}
+		/>
+	</VStack>
+
 })

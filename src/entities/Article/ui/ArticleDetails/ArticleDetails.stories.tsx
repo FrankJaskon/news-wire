@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ArticleDetails } from './ArticleDetails'
 import type { ArticleDetailsProps } from './ArticleDetails'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
-import { ArticleDetailsScheme } from '../../model/types/ArticleDetailsScheme'
+import { ArticleDetailsScheme, ValidateArticleDetailsErrorType } from '../../model/types/ArticleDetailsScheme'
 
 const articleDetailsState: ArticleDetailsScheme = {
 	data: {
@@ -16,7 +16,7 @@ const articleDetailsState: ArticleDetailsScheme = {
 		type: [
 			'IT'
 		],
-		user: {
+		profile: {
 			id: 1,
 			username: 'test user'
 		},
@@ -96,6 +96,14 @@ const Template: ComponentStory<typeof ArticleDetails> = (args) => < ArticleDetai
 export const Basic: Story<ArticleDetailsProps> = Template.bind({})
 Basic.decorators = [StoreDecorator({
 	articleDetails: articleDetailsState
+})]
+
+export const Error: Story<ArticleDetailsProps> = Template.bind({})
+Error.decorators = [StoreDecorator({
+	articleDetails: {
+		error: 'Error' as ValidateArticleDetailsErrorType,
+		isLoading: false
+	}
 })]
 
 

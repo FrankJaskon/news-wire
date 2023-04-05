@@ -2,14 +2,14 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { NotFound } from './NotFound'
+import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 
 export default {
 	title: 'pages/NotFound',
 	component: NotFound,
-	argTypes: {
-		backgroundColor: { control: 'color' },
-	},
-	args: {}
+	argTypes: {},
+	args: {},
+	decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof NotFound>
 
 const Template: ComponentStory<typeof NotFound> = (args) => <NotFound {...args} />

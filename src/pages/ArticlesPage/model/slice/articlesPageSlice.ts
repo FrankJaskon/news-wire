@@ -36,7 +36,6 @@ const articlesPageSlice = createSlice({
 		order: SortOrder.UP_DOWN,
 		sort: ArticlesSortVariant.DATE,
 		filter: ArticlesTypes.ALL
-
 	}),
 	reducers: {
 		setView: (state: ArticlesPageScheme, action: PayloadAction<ViewVariantType>) => {

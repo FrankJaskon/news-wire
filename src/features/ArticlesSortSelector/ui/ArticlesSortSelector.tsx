@@ -32,26 +32,30 @@ export const ArticlesSortSelector: FC<ArticlesSortSelectorProps> = memo((props: 
 		{ label: t(`sort-by.${sort}`), value: sort }
 	)), [t])
 
-	const handleChangeSort = useCallback((sort: string) => {
-		onChangeSort?.(sort as ArticlesSortVariantType)
-	}, [onChangeSort])
+	const selectedOrder = useMemo(() => orderOptionList.find((item) => item.value === order),
+		[order, orderOptionList])
 
-	const handleChangeOrder = useCallback((order: string) => {
-		onChangeOrder?.(order as SortOrderType)
+	const selectedSort = useMemo(() => sortingOptionList.find((item) => item.value === sort),
+		[sort, sortingOptionList])
+
+	const handleChangeOrder = useCallback((value: SelectOption) => {
+		onChangeOrder?.(value.value as SortOrderType)
 	}, [onChangeOrder])
+
+	const handleChangeSort = useCallback((value: SelectOption) => {
+		onChangeSort?.(value.value as ArticlesSortVariantType)
+	}, [onChangeSort])
 
 	return <div className={classNames(cls.ArticlesSortSelector, {}, [className])}>
 		<Select
-			className={cls.select}
-			value={sort}
+			value={selectedSort}
 			onChange={handleChangeSort}
 			options={sortingOptionList}
 			name='sort-select'
 			readonly={false}
 		/>
 		<Select
-			className={cls.select}
-			value={order}
+			value={selectedOrder}
 			onChange={handleChangeOrder}
 			options={orderOptionList}
 			name='order-select'

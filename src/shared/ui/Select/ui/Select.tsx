@@ -1,6 +1,11 @@
-import { ChangeEvent, FC, memo, ReactNode, useCallback, useMemo } from 'react'
+import { FC, Fragment, memo } from 'react'
+import { Listbox } from '@headlessui/react'
+import ExpandIcon from 'shared/assets/icons/expand.svg'
+import CheckMark from 'shared/assets/icons/checkmark.svg'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './Select.module.scss'
+import { AppIcon, AppIconSize, AppIconVariant } from 'shared/ui/AppIcon'
+import { HStack } from 'shared/ui/Stack'
 
 export interface SelectOption {
 	value: string
@@ -10,51 +15,81 @@ export interface SelectOption {
 export interface SelectProps {
 	className?: string
 	name?: string
-	Label?: ReactNode
-	options?: SelectOption[]
-	value?: string
-	onChange?: (value: string) => void
+	options: SelectOption[]
+	value?: SelectOption
+	onChange?: (value: SelectOption) => void
 	readonly?: boolean
+	placeholder?: string
 }
 
-export const Select: FC<SelectProps> = memo(({
-	className,
-	name,
-	Label,
-	options,
-	value,
-	onChange,
-	readonly = true
-}: SelectProps) => {
+export const Select: FC<SelectProps> = memo((props: SelectProps) => {
+	const {
+		className,
+		options,
+		value,
+		onChange,
+		name,
+		readonly,
+		placeholder
+	} = props
 
-	const handleOnChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-		onChange?.(e.target.value)
-	}, [onChange])
-
-	const optionsList = useMemo(() => {
-		return options?.map((optionItem) => (
-			<option
-				key={optionItem.value}
-				value={optionItem.value}
+	return <div className={classNames(cls.Select, {}, [className])}>
+		<Listbox
+			value={value || {}}
+			onChange={onChange}
+			name={name}
+			disabled={readonly}
+		>
+			<Listbox.Button
+				className={classNames(cls.button, {
+					[cls.disabled]: readonly
+				})}
 			>
-				{optionItem.label}
-			</option>
-		))
-	}, [options])
-
-	return (
-		<div className={classNames(cls.Select, {}, [className])}>
-			{Label}
-			<select
-				disabled={readonly}
-				className={classNames(cls.selectItem)}
-				id={name}
-				name={name}
-				value={value}
-				onChange={handleOnChange}
+				<HStack
+					justify='between'
+					align='center'
+					gap='gap8'
+				>
+					{value?.label || placeholder}
+					<AppIcon
+						Svg={ExpandIcon}
+						size={AppIconSize.SMALL}
+					/>
+				</HStack>
+			</Listbox.Button>
+			<Listbox.Options
+				className={cls.options}
 			>
-				{optionsList}
-			</select>
-		</div>
-	)
+				{options.map((item) => (
+					<Listbox.Option
+						key={item.value}
+						value={item}
+						as={Fragment}
+					>
+						{({ active, selected }) => <li className={classNames(
+							cls.item,
+							{
+								[cls.active]: active,
+							},
+							[])
+						}>
+							<HStack
+								justify='between'
+								align='center'
+								gap='gap8'
+							>
+								{item.label}
+								{selected && <AppIcon
+									variant={active ? AppIconVariant.CONTRAST : AppIconVariant.PRIMARY}
+									Svg={CheckMark}
+									size={AppIconSize.SMALL}
+								/>}
+							</HStack>
+						</li>
+						}
+					</Listbox.Option>
+				))}
+			</Listbox.Options>
+		</Listbox>
+	</div>
 })

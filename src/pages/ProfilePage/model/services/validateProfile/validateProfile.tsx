@@ -35,7 +35,8 @@ export const validateProfile = (profile?: Profile) => {
 		error.push(ValidateProfileError.INCORRECT_USERNAME)
 	}
 	{
-		const nameRegex = /^http/i
+		const nameRegex = /^(http|^data:image)/i
+		console.log(nameRegex)
 		if (avatar && !nameRegex.test(avatar)) {
 			error.push(ValidateProfileError.INCORRECT_AVATAR)
 		}

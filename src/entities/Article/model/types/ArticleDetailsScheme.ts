@@ -57,7 +57,7 @@ export type ArticleBlockType = TextBlockType | CodeBlockType | ImageBlockType
 
 export interface ArticleType {
 	id: number
-	user: User
+	profile: User
 	title: string
 	subtitle: string
 	img: string

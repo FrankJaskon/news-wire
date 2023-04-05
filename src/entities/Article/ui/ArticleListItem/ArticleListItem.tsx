@@ -8,12 +8,13 @@ import { AppIcon } from 'shared/ui/AppIcon'
 import { useNavigate } from 'react-router-dom'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { AppCard } from 'shared/ui/AppCard'
-import { Avatar, AvatarVariant } from 'shared/ui/Avatar'
+import { Avatar } from 'shared/ui/Avatar'
 import { AppButton } from 'shared/ui/AppButton'
 import { useTranslation } from 'react-i18next'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { ViewVariant, ViewVariantType } from '../ArticleList/ArticleList'
+import { HStack, VStack } from 'shared/ui/Stack'
 
 export interface ArticleListItemProps {
 	className?: string
@@ -60,30 +61,34 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 			<AppCard
 				className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
 			>
-				<AppLink
-					className={classNames(cls.imgWrapper, {}, [cls.link])}
-					to={RoutePaths.articles_details + article?.id}
-					target={target}
+				<VStack
+					gap='gap4'
 				>
-					<img
-						className={cls.img}
-						src={article?.img}
-						alt={article?.title}
-					/>
-					<Text
-						className={cls.date}
-						content={article?.createdAt}
-					/>
-				</AppLink>
-				<div>
-					<div className={cls.infoWrapper}>
+					<AppLink
+						className={classNames(cls.imgWrapper, {}, [cls.link])}
+						to={RoutePaths.articles_details + article?.id}
+						target={target}
+					>
+						<img
+							className={cls.img}
+							src={article?.img}
+							alt={article?.title}
+						/>
+						<Text
+							className={cls.date}
+							content={article?.createdAt}
+						/>
+					</AppLink>
+					<HStack
+						justify='between'
+					>
 						{ArticleTypes}
 						{Views}
-					</div>
+					</HStack>
 					<AppLink to={String(article?.id)}>
 						{ArticleTitle}
 					</AppLink>
-				</div>
+				</VStack>
 			</AppCard>
 		)
 	}
@@ -92,48 +97,66 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 
 	return (
 		<AppCard className={classNames(cls.ArticleListItem, {}, [className, view && cls[view]])}>
-			<div className={cls.header}>
-				<AppLink
-					className={classNames(cls.userInfo, {}, [cls.link])}
-					to={RoutePaths.profile + article?.user.id}
+			<VStack
+				gap='gap8'
+			>
+				<HStack
+					justify='between'
 				>
-					<Avatar
-						variant={AvatarVariant.CIRCLE}
-						size={40}
-						src={article?.user?.avatar}
-						className={cls.avatar}
+					<AppLink
+						className={classNames(cls.userInfo, {}, [cls.link])}
+						to={RoutePaths.profiles + article?.profile.id}
+					>
+						<HStack
+							gap='gap8'
+						>
+							<Avatar
+								size={40}
+								src={article?.profile?.avatar}
+								className={cls.avatar}
+							/>
+							<Text
+								title={article?.profile?.username}
+								titleElement='div'
+							/>
+						</HStack>
+					</AppLink>
+					<Text content={article?.createdAt} />
+				</HStack>
+				<VStack
+					gap='gap4'
+				>
+					<AppLink
+						className={cls.link}
+						to={String(article?.id)}
+					>
+						{ArticleTitle}
+					</AppLink>
+					{ArticleTypes}
+				</VStack>
+				<AppLink
+					className={cls.link}
+					to={String(article?.id)}
+				>
+					<img
+						className={cls.img}
+						src={article?.img}
+						alt={article?.title}
 					/>
-					<Text title={article?.user?.username} />
 				</AppLink>
-				<Text content={article?.createdAt} />
-			</div>
-			<AppLink
-				className={cls.link}
-				to={String(article?.id)}
-			>
-				{ArticleTitle}
-			</AppLink>
-			{ArticleTypes}
-			<AppLink
-				className={cls.link}
-				to={String(article?.id)}
-			>
-				<img
-					className={cls.img}
-					src={article?.img}
-					alt={article?.title}
+				<ArticleTextBlock
+					className={cls.textContent}
+					{...textBlockProps}
 				/>
-			</AppLink>
-			<ArticleTextBlock
-				className={cls.textContent}
-				{...textBlockProps}
-			/>
-			<div className={cls.footer}>
-				<AppButton onClick={handleClick}>
-					{t('read-more-btn')}
-				</AppButton>
-				{Views}
-			</div>
+				<HStack
+					justify='between'
+				>
+					<AppButton onClick={handleClick}>
+						{t('read-more-btn')}
+					</AppButton>
+					{Views}
+				</HStack>
+			</VStack>
 		</AppCard>
 	)
 })

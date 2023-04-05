@@ -5,5 +5,5 @@ import { getUserAuthData } from 'entities/User'
 export const getIfCanEdit = createSelector(
 	getUserAuthData,
 	getArticleDetailsData,
-	(authData, articleData) => authData?.id === articleData?.user.id
+	(authData, articleData) => authData?.id === articleData?.profile.id
 )

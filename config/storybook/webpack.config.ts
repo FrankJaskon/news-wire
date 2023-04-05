@@ -14,7 +14,9 @@ const config = ({ config }: { config: webpack.Configuration }): webpack.Configur
 		entry: '',
 		html: '',
 		output: '',
-		src: path.resolve(__dirname, '..', '..', 'src')
+		src: path.resolve(__dirname, '..', '..', 'src'),
+		buildLocales: '',
+		locales: ''
 	}
 
 	// LOADERS

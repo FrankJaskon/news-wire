@@ -1,3 +1,13 @@
+.title {
+	cursor: pointer;
+	& > * {
+		width: 100%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+}
+
 .grid {
 	&.ArticleListItem {
 		width: 230px;
@@ -5,8 +15,8 @@
 		transition: opacity .2s;
 	}
 	.imgWrapper {
-		display: block;
 		cursor: pointer;
+		display: block;
 		height: 200px;
 		width: 200px;
 		position: relative;
@@ -36,24 +46,9 @@
 		}
 	}
 
-	.infoWrapper {
-		display: flex;
-		justify-content: space-between;
-	}
-
 	.types {
-		p {
+		& > * {
 			width: 100px;
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-		}
-	}
-
-	.title {
-		cursor: pointer;
-		p {
-			width: 100%;
 			overflow: hidden;
 			white-space: nowrap;
 			text-overflow: ellipsis;
@@ -66,40 +61,17 @@
 }
 
 .list {
-	.header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.userInfo {
-		display: flex;
-	}
-
-	.avatar {
-		margin-right: 10px;
-	}
-
-	.title {
-		margin-top: 10px;
-	}
-
 	.img {
 		display: block;
 		height: 200px;
-		margin-top: 20px;
 		width: 100%;
 		object-fit: cover;
 	}
 
 	.textContent {
-		max-height: 190px;
+		max-height: 180px;
 		text-overflow: ellipsis;
 		overflow-y: hidden;
-	}
-
-	.footer {
-		display: flex;
-		justify-content: space-between;
 	}
 
 	.link:hover {

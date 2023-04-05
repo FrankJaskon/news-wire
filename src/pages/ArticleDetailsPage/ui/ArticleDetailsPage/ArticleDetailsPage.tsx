@@ -28,6 +28,7 @@ import {
 } from '../../model/services/fetchArticlesRecommendations/fetchArticlesRecommendations'
 import { articleDetailsPageReducer } from '../../model/slice'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
+import { VStack } from 'shared/ui/Stack'
 
 export interface ArticleDetailsPageProps {
 	className ?: string
@@ -49,7 +50,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 	const isRecommendationsLoading = useSelector(getArticlePageRecommendationsIsLoading)
 	const isRecommendationsError = useSelector(getArticlePageRecommendationsError)
 	const isLoading = useSelector(getIsLoading)
-	const error = useSelector(getError)
+	const commentError = useSelector(getError)
 	const dispatch = useAppDispatch()
 
 	useInitialEffect(() => {
@@ -71,24 +72,37 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 		reducers={reducers}
 	>
 		<PageWrapper className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-			<ArticleDetailsPageHeader
-				articleId={id}
-			/>
-			<ArticleDetails id={id} />
-			<Text title={t('recommendations-title')} />
-			<ArticleList
-				className={cls.recommendations}
-				articles={recommendations}
-				isLoading={isRecommendationsLoading}
-				target='_blank'
-			/>
-			<Text title={t('comment-title')} />
-			<AddNewComment handleSubmit={onCreateNewComment} />
-			<CommentsList
-				comments={comments}
-				isLoading={isLoading}
-				error={error}
-			/>
+			<VStack
+				gap='gap24'
+			>
+				<ArticleDetailsPageHeader
+					articleId={id}
+				/>
+				<ArticleDetails id={id} />
+				<VStack
+					gap='gap8'
+				>
+					<Text title={t('recommendations-title')} />
+					<ArticleList
+						className={cls.recommendations}
+						articles={recommendations}
+						isLoading={isRecommendationsLoading}
+						error={isRecommendationsError}
+						target='_blank'
+					/>
+				</VStack>
+				<VStack
+					gap='gap16'
+				>
+					<Text title={t('comment-title')} />
+					<AddNewComment handleSubmit={onCreateNewComment} />
+					<CommentsList
+						comments={comments}
+						isLoading={isLoading}
+						error={commentError}
+					/>
+				</VStack>
+			</VStack>
 		</PageWrapper>
 	</LazyReducerLoader>
 }

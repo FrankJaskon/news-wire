@@ -19,6 +19,10 @@ import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfil
 import { profileActions, profileReducer } from '../model/slice/profileSlice'
 import { ValidateProfileError, ValidateProfileErrorType } from '../model/types/ProfileScheme'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
+import { VStack } from 'shared/ui/Stack'
+import { getUserAuthData } from 'entities/User'
+import { getProfileData } from '../model/selectors/getProfileData/getProfileData'
+import { updateProfileData } from '../model/services/updateProfileData/updateProfileData'
 
 const reducers: ReducerList = {
 	profile: profileReducer
@@ -31,6 +35,11 @@ const ProfilePage: FC = () => {
 	const validateError = useSelector(getValidateError)
 	const loadingError = useSelector(getLoadingError)
 	const readonly = useSelector(getReadonly)
+	const authData = useSelector(getUserAuthData)
+	const profileData = useSelector(getProfileData)
+	const canEdit: boolean = useMemo(() => (
+		authData?.id === profileData?.id
+	), [authData?.id, profileData?.id])
 	const { id } = useParams()
 	const { t } = useTranslation('profile')
 
@@ -50,7 +59,7 @@ const ProfilePage: FC = () => {
 		if (id) {
 			dispatch(fetchProfileData(Number(id)))
 		}
-	})
+	}, id)
 
 	const onChangeFirstname = useCallback((value?: string) => {
 		dispatch(profileActions.updateProfileData({ firstname: value || '' }))
@@ -84,32 +93,52 @@ const ProfilePage: FC = () => {
 		dispatch(profileActions.updateProfileData({ country: value }))
 	}, [dispatch])
 
+	const onEdit = useCallback(() => {
+		dispatch(profileActions.setReadonly(false))
+	}, [dispatch])
+
+	const onClose = useCallback(() => {
+		dispatch(profileActions.cancelEdit())
+	}, [dispatch])
+
+	const onSave = useCallback(() => {
+		authData?.id && dispatch(updateProfileData())
+	}, [dispatch, authData?.id])
+
 	return <LazyReducerLoader reducers={reducers} removeAfterUnmount>
 		<PageWrapper>
-			{(!loadingError && !isLoading) && <ProfilePageHeader
-				readonly={readonly}
-			/>}
-			{validateError && validateError?.map((err: ValidateProfileErrorType) => (
-				<Text
-					key={err}
-					variant='error'
-					content={validateError && ValidateErrorTranslation[err]}
+			<VStack
+				gap='gap16'
+			>
+				{(!loadingError && !isLoading) && <ProfilePageHeader
+					readonly={readonly}
+				/>}
+				{validateError && validateError?.map((err: ValidateProfileErrorType) => (
+					<Text
+						key={err}
+						variant='error'
+						content={validateError && ValidateErrorTranslation[err]}
+					/>
+				))}
+				<ProfileCard
+					data={formData}
+					isLoading={isLoading}
+					readonly={readonly}
+					error={loadingError && ValidateErrorTranslation[loadingError]}
+					updateFirstname={onChangeFirstname}
+					updateLastname={onChangeLastname}
+					updateAge={onChangeAge}
+					updateCity={onChangeCity}
+					updateUsername={onChangeUsername}
+					updateAvatar={onChangeAvatar}
+					updateCurrency={onChangeCurrency}
+					updateCountry={onChangeCountry}
+					editForm={onEdit}
+					cancelEdit={onClose}
+					saveForm={onSave}
+					canEdit={canEdit}
 				/>
-			))}
-			<ProfileCard
-				data={formData}
-				isLoading={isLoading}
-				readonly={readonly}
-				error={loadingError && ValidateErrorTranslation[loadingError]}
-				updateFirstname={onChangeFirstname}
-				updateLastname={onChangeLastname}
-				updateAge={onChangeAge}
-				updateCity={onChangeCity}
-				updateUsername={onChangeUsername}
-				updateAvatar={onChangeAvatar}
-				updateCurrency={onChangeCurrency}
-				updateCountry={onChangeCountry}
-			/>
+			</VStack>
 		</PageWrapper>
 	</LazyReducerLoader>
 }

@@ -17,6 +17,7 @@ import { useSearchParams } from 'react-router-dom'
 import { setQueryParams } from 'shared/lib/setQueryParams/setQueryParams'
 import { QueryParamsKeys } from 'shared/const/queryParams'
 import { ArticlesTypesType, ArticleTypeTabs } from 'features/ArticleTypeTabs'
+import { HStack, VStack } from 'shared/ui/Stack'
 
 export interface ArticlesPageFiltersProps {
 	className?: string
@@ -80,8 +81,13 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo((props: Ar
 		fetchArticles()
 	}, [dispatch, setFirstPage, fetchArticles, setSearchParams])
 
-	return <div className={classNames(cls.ArticlesPageFilters, {}, [className])}>
-		<div className={cls.sortWrapper}>
+	return <VStack
+		className={classNames('', {}, [className])}
+		gap='gap8'
+	>
+		<HStack
+			justify='between'
+		>
 			<ArticlesSortSelector
 				order={order}
 				sort={sort}
@@ -92,7 +98,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo((props: Ar
 				activeView={view}
 				onToggle={changeView}
 			/>
-		</div>
+		</HStack>
 		<AppInput
 			className={cls.searchInput}
 			placeholder={t('search-input-placeholder')}
@@ -103,5 +109,5 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo((props: Ar
 			filter={filter}
 			onTabClick={changeFilter}
 		/>
-	</div>
+	</VStack>
 })

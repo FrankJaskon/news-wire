@@ -34,9 +34,14 @@ export const fetchArticlesList = createAsyncThunk<
 						_sort: sort,
 						_order: order,
 						q: search,
-						type: filter === ArticlesTypes.ALL ? undefined : filter
+						type: filter === ArticlesTypes.ALL ? undefined : filter,
+						_expand: 'profile'
 					}
 				})
+
+			if (!response) {
+				return rejectWithValue('error')
+			}
 			return response.data
 		} catch (error: any) {
 			return rejectWithValue('error')

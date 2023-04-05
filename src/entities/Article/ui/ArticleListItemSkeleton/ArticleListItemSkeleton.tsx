@@ -1,94 +1,99 @@
 import { FC } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
 import { AppCard } from 'shared/ui/AppCard'
 import { Skeleton } from 'shared/ui/Skeleton'
 import { ViewVariant, ViewVariantType } from '../ArticleList/ArticleList'
-import cls from './ArticleListItemSkeleton.module.scss'
+import { HStack, VStack } from 'shared/ui/Stack'
 
 export interface ArticleListItemSkeletonProps {
-	className?: string
 	view?: ViewVariantType
 }
 
 export const ArticleListItemSkeleton: FC<ArticleListItemSkeletonProps> = (props) => {
 	const {
-		className,
 		view
 	} = props
 
 	if (view === ViewVariant.GRID) {
-		return <AppCard className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-			<Skeleton
-				height={200}
-			/>
-			<div className={cls.infoWrapper}>
+		return <AppCard
+			style={{ maxWidth: 230 }}
+		>
+			<VStack
+				gap='gap8'
+			>
 				<Skeleton
-					className={cls.info}
-					height={20}
-					width={100}
+					height={200}
 				/>
+				<HStack
+					justify='between'
+				>
+					<Skeleton
+						height={20}
+						width={100}
+					/>
+					<Skeleton
+						height={20}
+						width={80}
+					/>
+				</HStack>
 				<Skeleton
-					className={cls.info}
-					height={20}
-					width={80}
+					height={30}
 				/>
-			</div>
-			<Skeleton
-				height={30}
-				width={150}
-			/>
+			</VStack>
 		</AppCard>
 	}
 
 	return (
-		<AppCard className={classNames(cls.ArticleListItem, {}, [className, view && cls[view]])}>
-			<div className={cls.header}>
-				<div className={classNames(cls.userInfo, {}, [cls.link])}>
+		<AppCard
+			style={{ minWidth: '100%' }}
+		>
+			<VStack
+				gap='gap12'
+			>
+				<HStack
+					justify='between'
+				>
+					<HStack
+						gap='gap4'
+					>
+						<Skeleton
+							height={40}
+							width={40}
+							borderRadius='50%'
+						/>
+						<Skeleton height={20} width={150} />
+					</HStack>
+					<Skeleton height={20} width={120} />
+				</HStack>
+				<Skeleton
+					height={30}
+					width={600}
+				/>
+				<HStack
+					gap='gap4'
+				>
 					<Skeleton
-						height={40}
-						width={40}
-						borderRadius='50%'
-						className={cls.avatar}
+						height={30}
+						width={60}
 					/>
-					<Skeleton height={20} width={150} />
-				</div>
-				<Skeleton height={20} width={120} />
-			</div>
-			<Skeleton
-				className={cls.title}
-				height={30}
-				width={600}
-			/>
-			<div className={cls.typesWrapper}>
+					<Skeleton
+						height={30}
+						width={80}
+					/>
+				</HStack>
 				<Skeleton
-					className={cls.types}
-					height={30}
-					width={60}
+					height={180}
 				/>
 				<Skeleton
-					className={cls.types}
-					height={30}
-					width={80}
-				/>
-			</div>
-			<Skeleton
-				height={200}
-				className={cls.img}
-			/>
-			<div className={cls.contentWrapper}>
-				<Skeleton
-					className={cls.textContent}
 					height={90}
 				/>
 				<Skeleton
-					className={cls.textContent}
 					height={70}
 				/>
-			</div>
-			<Skeleton
-				height={40}
-				width={80}
-			/>
+				<Skeleton
+					height={40}
+					width={120}
+				/>
+			</VStack>
 		</AppCard>
 	)
 }

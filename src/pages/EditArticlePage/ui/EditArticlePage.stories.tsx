@@ -2,13 +2,14 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from 'shared/config/theme/ThemeContext'
 import EditArticlePage from './EditArticlePage'
+import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 
 export default {
 	title: 'pages/EditArticlePage',
 	component: EditArticlePage,
 	argTypes: {},
 	args: {},
-	decorators: []
+	decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof EditArticlePage>
 
 const Template: ComponentStory<typeof EditArticlePage> = (args) => <EditArticlePage {...args} />

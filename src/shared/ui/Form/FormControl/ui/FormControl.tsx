@@ -23,7 +23,7 @@ export const FormControl: FC<FormControlProps> = (props) => {
 		variant = FormControlVariant.PRIMARY
 	} = props
 
-	return <div className={classNames(cls.FormControl, {}, [className, cls[variant]])}>
+	return <div className={classNames('', {}, [className, cls[variant]])}>
 		{children}
 	</div>
 }

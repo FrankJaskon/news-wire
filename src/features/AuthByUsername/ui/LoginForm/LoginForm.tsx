@@ -8,15 +8,16 @@ import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading'
 import { getError } from '../../model/selectors/getError/getError'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink'
 import { AppInput } from 'shared/ui/Form/AppInput'
-import { AppLabel } from 'shared/ui/Form/Label'
+import { AppLabel, LabelVariant } from 'shared/ui/Form/Label'
 import cls from './LoginForm.module.scss'
-import { Text } from 'shared/ui/Text'
+import { Text, TextVariant } from 'shared/ui/Text'
 import { translateErrorOrFalse } from 'shared/config/errorResponse/errorResponse'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
+import { VStack } from 'shared/ui/Stack'
 
 export interface LoginFormProps {
 	className?: string
@@ -65,67 +66,68 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 			action='/login'
 			method='POST'
 			data-testid='login-form'>
+			<VStack
+				gap='gap16'
+			>
+				<Text
+					className={cls.title}
+					align='center'
+					title={t('login.header')}
+				/>
 
-			<Text
-				className={cls.title}
-				align='center'
-				title={t('login.header')}
-			/>
-
-			<div className={cls.formGroup}>
 				<AppLabel
-					variant='srOnly'
-					htmlFor='email'>
+					variant={LabelVariant.SR_ONLY}
+					htmlFor='login-email'>
 					{t('login.login')}
 				</AppLabel>
 				<AppInput
 					data-testid='login-input'
-					className={cls.formControl}
+					className={cls.input}
 					value={usernameValue}
 					onChange={onChangeLogin}
 					type='text'
-					id='email'
-					name='email'
+					id='login-email'
+					name='login-email'
 					placeholder={t('login.login')}
 					required />
-			</div>
 
-			<div className={cls.formGroup}>
 				<AppLabel
-					variant='srOnly'
-					htmlFor='password'>
+					variant={LabelVariant.SR_ONLY}
+					htmlFor='login-password'>
 					{t('login.password')}
 				</AppLabel>
 				<AppInput
 					data-testid='password-input'
 					value={passwordValue}
 					onChange={onChangePassword}
-					className={cls.formControl}
+					className={cls.input}
 					type='password'
-					id='password'
-					name='password'
+					id='login-password'
+					name='login-password'
 					placeholder={t('login.password')}
 					required />
 				{loginError && <Text
-					variant='error'
+					variant={TextVariant.ERROR}
 					content={loginErrorWithTranslation ? t(`${loginErrorWithTranslation}`) : loginError} />}
-			</div>
+				<AppButton
+					className={cls.btn}
+					disabled={loginIsLoading}
+					data-testid='submit-button'
+					onClick={onSubmitForm}
+				>
+					{t('login.log-in')}
+				</AppButton>
 
-			<AppButton
-				disabled={loginIsLoading}
-				data-testid='submit-button'
-				onClick={onSubmitForm}>
-				{t('login.log-in')}
-			</AppButton>
-
-			<div className={cls.loginLinks}>
-				<AppLink
-					data-testid='singup-link'
-					to='#'
-					variant='primary'>
-					{t('login.new-account')}
-				</AppLink>
-			</div>
+				<div className={cls.loginLinks}>
+					<AppLink
+						data-testid='singup-link'
+						to='#'
+						variant={AppLinkVariant.PRIMARY}
+					>
+						{t('login.new-account')}
+					</AppLink>
+				</div>
+			</VStack>
 		</form>
 	</LazyReducerLoader>
 })

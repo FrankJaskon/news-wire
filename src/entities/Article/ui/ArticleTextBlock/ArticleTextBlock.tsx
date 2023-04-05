@@ -2,6 +2,7 @@ import { FC, memo, useMemo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { Text } from 'shared/ui/Text'
 import cls from './ArticleTextBlock.module.scss'
+import { VStack } from 'shared/ui/Stack'
 
 export interface ArticleTextBlockProps {
 	className?: string
@@ -26,12 +27,14 @@ export const ArticleTextBlock: FC<ArticleTextBlockProps> = memo((props: ArticleT
 	), [paragraphs])
 
 	return (
-		<div className={classNames(cls.ArticleTextBlock, {}, [className])}>
+		<VStack
+			className={classNames('', {}, [className])}
+			gap='gap12'
+		>
 			{title && <Text
 				title={title}
-				className={cls.title}
 			/>}
 			{content}
-		</div>
+		</VStack>
 	)
 })

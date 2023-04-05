@@ -30,6 +30,6 @@ export const AppLabel: FC<AppLabelProps> = memo((props: AppLabelProps) => {
 		className={classNames(cls.AppLabel, {}, [className, cls[variant]])}
 		htmlFor={htmlFor}
 		{...extraProps}>
-		{children}
+		{children}:
 	</label>
 })

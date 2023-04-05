@@ -13,6 +13,7 @@ export interface ArticleListProps {
 	view?: ViewVariantType
 	limit?: number
 	target?: HTMLAttributeAnchorTarget
+	error?: string
 }
 
 export const ViewVariant = {

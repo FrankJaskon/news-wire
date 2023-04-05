@@ -7,6 +7,7 @@ import { AppIcon } from 'shared/ui/AppIcon'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { SidebarItemType } from '../../model/types/sidebarTypes'
 import cls from './SidebarLink.module.scss'
+import { HStack } from 'shared/ui/Stack'
 
 export interface SidebarLinkProps {
 	item: SidebarItemType
@@ -35,11 +36,15 @@ export const SidebarLink: FC<SidebarLinkProps> = memo((props: SidebarLinkProps) 
 	return <AppLink
 		className={classNames(cls.SidebarLink, { [cls.collapsed]: collapsed })}
 		to={path}>
-		<AppIcon
-			Svg={Icon}
-			variant='contrast-color'
-			className={cls.icon}
-		/>
-		<span>{t(`${text}`)}</span>
+		<HStack>
+			<AppIcon
+				Svg={Icon}
+				variant='contrast-color'
+				className={cls.icon}
+			/>
+			<span>
+				{t(`${text}`)}
+			</span>
+		</HStack>
 	</AppLink>
 })

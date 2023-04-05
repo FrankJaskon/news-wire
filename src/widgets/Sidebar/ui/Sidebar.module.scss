@@ -7,8 +7,6 @@
 	position: relative;
 	transition: width .2s linear, background-color .2s;
 	.buttonGroup {
-		display: flex;
-		justify-content: center;
 		position: absolute;
 		bottom: 20px;
 		left: 50%;
@@ -23,25 +21,20 @@
 		color: var(--secondary-color);
 	}
 	.menu {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
 		color: var(--light-color);
 	}
 	.toggler {
+		color: var(--block-secondary-color);
 		background-color: var(--block-primary-lighter);
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
 		position: absolute;
-		right: -33px;
+		right: -32px;
 		bottom: 20px;
 	}
 	&.collapsed {
 		width: var(--sidebar-width-collapsed);
 		padding: 30px 5px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 		.menu {
 			.item {
 				span {
@@ -49,10 +42,6 @@
 					width: 0;
 				}
 			}
-		}
-		.buttonGroup {
-			flex-direction: column;
-			justify-content: center;
 		}
 	}
 }

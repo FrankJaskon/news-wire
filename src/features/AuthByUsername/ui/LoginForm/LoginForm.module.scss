@@ -4,19 +4,11 @@
 	text-align: center;
 }
 
-.loginHeading {
-	margin-bottom: 20px;
-}
-
-.title {
-	margin-bottom: 10px;
-}
-
-.formGroup {
-	margin-bottom: 10px;
+.input,
+.btn {
+	padding: 8px 16px;
 }
 
 .loginLinks {
-	margin-top: 20px;
 	font-size: var(--font-size-s);
 }

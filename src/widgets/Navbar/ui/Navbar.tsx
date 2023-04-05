@@ -8,9 +8,10 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton, ButtonVariant } from 'shared/ui/AppButton'
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink'
-import { Text, TextColor } from 'shared/ui/Text'
+import { Text } from 'shared/ui/Text'
 import cls from './Navbar.module.scss'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
+import { TextColor } from 'shared/const/consts'
 
 interface NavbarProps {
 	className?: string
@@ -48,8 +49,10 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 			</AppLink>
 			<AppButton
 				className={cls.link}
-				variant={ButtonVariant.CUSTOM}
-				onClick={onLogout}>
+				variant={ButtonVariant.PRIMARY}
+				onClick={onLogout}
+				noBg
+			>
 				{t('navbar.logout')}
 			</AppButton>
 		</div>
@@ -58,8 +61,10 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 			<div className={cls.linksGroup}>
 				<AppButton
 					className={classNames(cls.link, {}, [cls.login])}
-					variant='custom'
-					onClick={openModal}>
+					variant={ButtonVariant.PRIMARY}
+					onClick={openModal}
+					noBg
+				>
 					{t('navbar.login')}
 				</AppButton>
 			</div>

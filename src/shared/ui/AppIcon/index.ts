@@ -1,1 +1,6 @@
-export { AppIcon } from './ui/AppIcon'
+export {
+	AppIcon,
+	// constants
+	AppIconVariant,
+	AppIconSize
+} from './ui/AppIcon'

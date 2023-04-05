@@ -3,7 +3,7 @@ import { ValueOf } from '../../types/types'
 export const AppRoutes = {
 	MAIN: 'main',
 	ABOUT: 'about',
-	PROFILE: 'profile',
+	PROFILE: 'profiles',
 	ARTICLES: 'articles',
 	ARTICLES_DETAILS: 'articles_details',
 	ARTICLES_DETAILS_EDIT: 'articles_details_edit',
@@ -18,7 +18,7 @@ export type AppRoutesTypes = ValueOf<typeof AppRoutes>
 export const RoutePaths: Record<AppRoutesTypes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.ABOUT]: '/about',
-	[AppRoutes.PROFILE]: '/profile/', // + 'id'
+	[AppRoutes.PROFILE]: '/profiles/', // + 'id'
 	[AppRoutes.ARTICLES]: '/articles',
 	[AppRoutes.ARTICLES_DETAILS]: '/articles/', // + 'id'
 	[AppRoutes.ARTICLES_DETAILS_EDIT]: '/articles/:id/edit',

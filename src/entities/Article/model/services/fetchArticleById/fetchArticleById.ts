@@ -20,7 +20,11 @@ export const fetchArticleById = createAsyncThunk<
 				return rejectWithValue(ValidateArticleDetailsError.NO_DATA)
 			}
 
-			const response = await extra.api.get<ArticleType>(RoutePaths.articles_details + id)
+			const response = await extra.api.get<ArticleType>(RoutePaths.articles_details + id, {
+				params: {
+					_expand: 'profile'
+				}
+			})
 
 			return response.data
 		} catch (error: any) {

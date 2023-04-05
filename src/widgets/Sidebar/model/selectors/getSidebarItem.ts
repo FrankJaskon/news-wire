@@ -24,7 +24,7 @@ export const getSidebarItem = createSelector(
 		]
 		if (authData) {
 			sidebarLinks.push({
-				path: `${RoutePaths.profile}${authData?.id ?? 0}`,
+				path: `${RoutePaths.profiles}${authData?.id ?? 0}`,
 				text: 'sidebar.link.profile',
 				Icon: ProfileIcon,
 				authOnly: true

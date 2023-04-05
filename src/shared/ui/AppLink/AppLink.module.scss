@@ -10,6 +10,7 @@
 
 .primary {
 	color: var(--primary-color);
+	padding: .25em 1em;
 }
 
 .secondary {
@@ -26,7 +27,7 @@
 	display: block;
 	border: 1px solid #0000;
 	color: var(--secondary-color);
-	padding: .25rem 1rem;
+	padding: 4px 16px;
 	border-radius: var(--border-radius);
 	box-shadow: 0 0 0 0 var(--overlay-bg-color);
 	transition: color .2s, background-color .2s, box-shadow .2s;

@@ -6,6 +6,7 @@ import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink'
 import cls from './ArticleDetailsPageHeader.module.scss'
+import { HStack } from 'shared/ui/Stack'
 
 export interface ArticleDetailsPageHeaderProps {
 	className?: string
@@ -24,7 +25,9 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 	const ifCanEdit = useSelector(getIfCanEdit)
 
 	return (
-		<div className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}>
+		<HStack
+			className={classNames('', {}, [className])}
+		>
 			<AppLink
 				variant={AppLinkVariant.PRIMARY_BUTTON}
 				className={cls.backBtn}
@@ -39,6 +42,6 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 			>
 				{t('edit-article-btn')}
 			</AppLink>}
-		</div>
+		</HStack>
 	)
 })

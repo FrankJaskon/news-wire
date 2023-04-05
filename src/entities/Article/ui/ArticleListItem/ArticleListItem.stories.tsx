@@ -6,7 +6,7 @@ import { ViewVariant } from '../ArticleList/ArticleList'
 
 const article: ArticleType = {
 	'id': 1,
-	'user': {
+	'profile': {
 		'id': 1,
 		'username': 'admin',
 		'avatar': 'https://teleprogramma.pro/sites/default/files/nodes/node_436422_1653684561.jpg'

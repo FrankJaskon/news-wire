@@ -4,6 +4,7 @@ import { ValueOf } from 'shared/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
 import cls from './ArticleCodeBlock.module.scss'
+import { VStack } from 'shared/ui/Stack'
 
 export interface ArticleCodeBlockProps {
 	className?: string
@@ -49,7 +50,7 @@ export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = memo((props: ArticleC
 	const isInProgress = btnText !== BtnText.BASIC
 
 	return (
-		<div className={classNames(cls.ArticleCodeBlock, {}, [className])}>
+		<VStack className={classNames(cls.ArticleCodeBlock, {}, [className])}>
 			<div className={cls.header}>
 				{isInProgress
 					? <AppButton className={cls.copyBtn}>
@@ -68,6 +69,6 @@ export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = memo((props: ArticleC
 					{code}
 				</code>
 			</pre>
-		</div>
+		</VStack>
 	)
 })

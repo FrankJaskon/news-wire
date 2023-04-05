@@ -1,8 +1,8 @@
-import { FC, memo } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { ValueOf } from 'shared/types/types'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './Text.module.scss'
-
+import { TextColor, TextColorType } from 'shared/const/consts'
 
 interface TextProps {
 	className?: string
@@ -13,6 +13,8 @@ interface TextProps {
 	align?: TextAlignType
 	titleHue?: TextColorType
 	contentHue?: TextColorType
+	titleElement?: ElementType
+	contentElement?: ElementType
 }
 
 export const TextVariant = {
@@ -34,17 +36,10 @@ export const TextAlign = {
 	JUSTIFY: 'justify'
 } as const
 
-export const TextColor = {
-	PRIMARY: 'primary-color',
-	SECONDARY: 'secondary-color',
-	LIGHT: 'light-color',
-
-} as const
-
 export type TextVariantType = ValueOf<typeof TextVariant>
 export type TextSizeType = ValueOf<typeof TextSize>
 export type TextAlignType = ValueOf<typeof TextAlign>
-export type TextColorType = ValueOf<typeof TextColor>
+export type ElementType = 'h1' | 'h2' | 'h3' | 'h4' | 'h6' | 'span' | 'div' | 'p'
 
 export const Text: FC<TextProps> = memo((props: TextProps) => {
 	const {
@@ -55,7 +50,9 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		align = TextAlign.START,
 		size = TextSize.M,
 		titleHue = TextColor.PRIMARY,
-		contentHue = TextColor.SECONDARY
+		contentHue = TextColor.SECONDARY,
+		titleElement = 'h3',
+		contentElement = 'p'
 	} = props
 
 	const extra = [
@@ -65,18 +62,21 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		cls[size]
 	]
 
+	const TitleTag = useMemo(() => titleElement, [titleElement])
+	const ContentTag = useMemo(() => contentElement, [contentElement])
+
 	return <div
 		data-testid='text-block'
 		className={classNames(cls.Text, {}, extra)}>
-		{title && <p
+		{title && <TitleTag
 			data-testid='text-title'
-			className={classNames(cls.title, {}, [cls[titleHue]])}>
+			className={classNames(cls.title, {}, [titleHue])}>
 			{title}
-		</p>}
-		{content && <p
+		</TitleTag>}
+		{content && <ContentTag
 			data-testid='text-content'
-			className={classNames(cls.content, {}, [cls[contentHue]])}>
+			className={classNames(cls.content, {}, [contentHue])}>
 			{content}
-		</p>}
+		</ContentTag>}
 	</div>
 })

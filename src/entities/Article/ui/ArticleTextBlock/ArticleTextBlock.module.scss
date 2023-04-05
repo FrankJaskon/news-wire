@@ -1,7 +1,3 @@
-.ArticleTextBlock {
-	margin-bottom: 30px;
-}
-
 .paragraph {
 	p:first-of-type {
 		&::first-letter {
@@ -9,22 +5,3 @@
 		}
 	}
 }
-
-.title {
-	margin: 20px 0;
-}
-
-// .paragraph {
-// 	p:first-of-type {
-// 		&::first-letter {
-// 			margin-left: 10px;
-// 		}
-// 	}
-// 	&.first {
-// 		p:first-of-type {
-// 			&::first-letter {
-// 				margin-left: 30px;
-// 			}
-// 		}
-// 	}
-// }

@@ -22,6 +22,7 @@ import {
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
 import { ArticleBlockType } from '../../model/types/ArticleDetailsScheme'
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
+import { HStack, VStack } from 'shared/ui/Stack'
 
 export interface ArticleDetailsProps {
 	className?: string
@@ -72,8 +73,10 @@ export const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
 	useInitialEffect(() => dispatch(fetchArticleById(Number(id))))
 
 	if (isLoading) {
-		content = <div className={classNames(cls.ArticleDetails, {}, [className])}>
-			<Skeleton width={500} height={200} className={cls.avatar} />
+		content = <div className={classNames('', {}, [className])}>
+			<HStack justify='center'>
+				<Skeleton width={500} height={200} className={cls.img} />
+			</HStack>
 			<Skeleton width={700} height={34} className={cls.title} />
 			<Skeleton width={400} height={24} className={cls.subtitle} />
 			<Skeleton width={100} height={22} className={cls.feature} />
@@ -82,45 +85,55 @@ export const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
 			<Skeleton height={250} className={classNames(cls.contentBlock)} />
 		</div>
 	} else if (error) {
-		content = <div className={classNames(cls.ArticleDetails, {}, [className, cls.error])}>
+		content = <div className={classNames('', {}, [className, cls.error])}>
 			<Text variant='error' content={error} size='size-l' />
 		</div>
 	} else {
-		content = <div className={classNames(cls.ArticleDetails, {}, [className])}>
-			<div className={cls.imgWrapper}>
+		content = <VStack
+			className={classNames('', {}, [className])}
+			gap='gap24'
+		>
+			<HStack
+				className={cls.imgWrapper}
+				justify='center'
+			>
 				<img
 					src={article?.img}
 					className={cls.img}
 				/>
-			</div>
-			<Text
-				variant='primary'
-				title={article?.title}
-				content={article?.subtitle}
-				size='size-l'
-			/>
-			<div className={cls.featureWrapper}>
-				<AppIcon
-					Svg={ViewsIcon}
-					className={cls.icon}
-				/>
+			</HStack>
+			<VStack
+				gap='gap8'
+			>
 				<Text
-					content={String(article?.views)}
-					size='size-s'
+					variant='primary'
+					title={article?.title}
+					content={article?.subtitle}
+					size='size-l'
 				/>
-			</div>
-			<div className={classNames(cls.featureWrapper, {}, [cls.featureWrapperLast])}>
-				<AppIcon
-					Svg={DateIcon}
-					className={cls.icon}
-				/>
-				<Text
-					content={article?.createdAt}
-					size='size-s'
-				/>
-			</div>
+				<HStack>
+					<AppIcon
+						Svg={ViewsIcon}
+						className={cls.icon}
+					/>
+					<Text
+						content={String(article?.views)}
+						size='size-s'
+					/>
+				</HStack>
+				<HStack>
+					<AppIcon
+						Svg={DateIcon}
+						className={cls.icon}
+					/>
+					<Text
+						content={article?.createdAt}
+						size='size-s'
+					/>
+				</HStack>
+			</VStack>
 			{article?.blocks?.map(renderBlockContent)}
-		</div>
+		</VStack>
 	}
 
 	return <LazyReducerLoader

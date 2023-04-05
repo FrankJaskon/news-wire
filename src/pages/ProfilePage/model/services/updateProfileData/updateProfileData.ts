@@ -18,7 +18,7 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkApiConfigT
 			if (!formData?.id) {
 				return rejectWithValue([ValidateProfileError.NO_DATA])
 			}
-			const response = await extra.api.put<Profile>(`${RoutePaths.profile}${formData?.id}`, formData)
+			const response = await extra.api.put<Profile>(`${RoutePaths.profiles}${formData?.id}`, formData)
 
 			return response.data
 		} catch (error: any) {

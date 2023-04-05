@@ -38,3 +38,29 @@ body {
 .content-wrapper {
 	display: flex;
 }
+
+/* colors */
+
+.primary-color {
+	color: var(--primary-color);
+}
+
+.secondary-color {
+	color: var(--secondary-color);
+}
+
+.light-color {
+	color: var(--light-color);
+}
+
+.dark-color {
+	color: var(--dark-color);
+}
+
+.red-color {
+	color: var(--red-color);
+}
+
+.light-red-color {
+	color: var(--red-color-lighter);
+}

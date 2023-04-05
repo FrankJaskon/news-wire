@@ -1,13 +1,11 @@
 import { CommentType } from '../../model/types/comment'
 import { FC, memo, useMemo } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
-import cls from './CommentsList.module.scss'
 import { Text } from 'shared/ui/Text'
 import { useTranslation } from 'react-i18next'
 import { CommentCard } from '../CommentCard/CommentCard'
+import { VStack } from 'shared/ui/Stack'
 
 export interface CommentsListProps {
-	className?: string
 	comments?: CommentType[]
 	isLoading?: boolean
 	error?: string
@@ -15,7 +13,6 @@ export interface CommentsListProps {
 
 export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProps) => {
 	const {
-		className,
 		comments,
 		isLoading,
 		error
@@ -28,29 +25,35 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 			key={c.id}
 			isLoading={isLoading}
 			comment={c}
-			className={cls.comment}
 		/>
 	)), [comments, isLoading])
 
 	if (error) {
-		return <div className={classNames(cls.CommentsList, {}, [className])}>
+		return <VStack
+			justify='center'
+			align='center'
+		>
 			<Text content={t('error')} />
-		</div>
+		</VStack>
 	}
 
 	if (isLoading) {
-		return <div className={classNames(cls.CommentsList, {}, [className])}>
+		return <VStack
+			gap='gap16'
+		>
 			<CommentCard isLoading />
 			<CommentCard isLoading />
 			<CommentCard isLoading />
-		</div>
+		</VStack>
 	}
 
 	return (
-		<div className={classNames(cls.CommentsList, {}, [className])}>
+		<VStack
+			gap='gap16'
+		>
 			{comments?.length
 				? renderComments
 				: <Text content={t('empty-list')} />}
-		</div>
+		</VStack>
 	)
 })

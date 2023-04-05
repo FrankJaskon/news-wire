@@ -2,6 +2,7 @@ import { FC, memo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { Text } from 'shared/ui/Text'
 import cls from './ArticleImageBlock.module.scss'
+import { VStack } from 'shared/ui/Stack'
 
 export interface ArticleImageBlockProps {
 	className ?: string
@@ -17,17 +18,25 @@ export const ArticleImageBlock: FC<ArticleImageBlockProps> = memo((props: Articl
 	} = props
 
 	return (
-		<div className={classNames(cls.ArticleImageBlock, {}, [className])}>
+		<VStack
+			className={classNames('', {}, [className])}
+			align='center'
+			gap='gap8'
+		>
 			<img
 				className={cls.img}
 				src={src}
 				alt={title}
 			/>
-			{title && <Text
-				className={cls.title}
-				content={title}
-				align='center'
-			/>}
-		</div>
+			{
+				title && <VStack>
+					<Text
+						className={cls.title}
+						content={title}
+						align='center'
+					/>
+				</VStack>
+			}
+		</VStack>
 	)
 })

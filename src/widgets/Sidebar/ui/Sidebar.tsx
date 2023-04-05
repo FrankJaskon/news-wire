@@ -1,15 +1,16 @@
 import { FC, memo, useMemo, useState } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
-import { AppButton } from 'shared/ui/AppButton'
+import { AppButton, ButtonShape, ButtonSize, ButtonVariant } from 'shared/ui/AppButton'
 import { LanguageToggler } from 'features/LanguageToggler'
 import { ThemeToggler } from 'features/ThemeToggler'
 import cls from './Sidebar.module.scss'
 import { SidebarLink } from './SidebarLink/SidebarLink'
 import { useSelector } from 'react-redux'
 import { getSidebarItem } from '../model/selectors/getSidebarItem'
+import { HStack, VStack } from 'shared/ui/Stack'
 
 interface SidebarProps {
-    className?: string
+	className?: string
 }
 
 export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
@@ -33,29 +34,52 @@ export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 		)
 	}, [isCollapsed, sidebarLinks])
 
-	return <menu
+	return <aside
 		data-testid='sidebar'
 		className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}>
-		<div className={cls.menu}>
+		<VStack
+			align={isCollapsed ? 'center' : 'start'}
+			className={cls.menu}
+			innerWidth={isCollapsed ? undefined : 'full'}
+		>
 			{renderLinks}
-		</div>
+		</VStack>
 		<AppButton
 			data-testid='sidebar-toggler'
 			className={cls.toggler}
-			variant='primary'
-			size='l'
-			shape='square'
+			variant={ButtonVariant.CUSTOM}
+			size={ButtonSize.L}
+			shape={ButtonShape.SQUARE}
 			onClick={toggleSidebar}>
 			{isCollapsed ? '>' : '<'}
 		</AppButton>
-		<div className={cls.buttonGroup}>
-			<ThemeToggler className={cls.themeToggler} />
-			<LanguageToggler
-				className={classNames(
-					cls.languageToggler,
-					{ [cls.collapsed]: isCollapsed })}
-				short={isCollapsed}
-			/>
-		</div>
-	</menu>
+		{isCollapsed
+			? <VStack
+				justify='center'
+				align='center'
+				className={cls.buttonGroup}
+			>
+				<ThemeToggler className={cls.themeToggler} />
+				<LanguageToggler
+					className={classNames(
+						cls.languageToggler,
+						{ [cls.collapsed]: isCollapsed })}
+					short={isCollapsed}
+				/>
+			</VStack>
+			: <HStack
+				justify='center'
+				align='center'
+				className={cls.buttonGroup}
+			>
+				<ThemeToggler className={cls.themeToggler} />
+				<LanguageToggler
+					className={classNames(
+						cls.languageToggler,
+						{ [cls.collapsed]: isCollapsed })}
+					short={isCollapsed}
+				/>
+			</HStack>
+		}
+	</aside>
 })

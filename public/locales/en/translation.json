@@ -47,6 +47,14 @@
       "cancel": "Cancel"
     },
     "label": "Enter your comment"
+  },
+  "currency": {
+    "UAH": "UAH",
+    "USD": "USD"
+  },
+  "country": {
+    "Ukraine": "Ukraine",
+    "USA": "USA"
   }
 }
 

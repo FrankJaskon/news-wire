@@ -23,6 +23,7 @@ export const ArticleTypeTabs: FC<ArticleTypeTabsProps> = memo((props: ArticleTyp
 
 	const { t } = useTranslation('article')
 
+
 	const tabs: FilterTabsType[] = useMemo(() => Object.values(ArticlesTypes)
 		.map(value => ({
 			value,

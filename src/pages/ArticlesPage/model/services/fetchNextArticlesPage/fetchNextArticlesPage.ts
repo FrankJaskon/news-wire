@@ -14,12 +14,11 @@ export const fetchNextArticlesPage = createAsyncThunk<
 		const { extra, rejectWithValue, getState } = thunkAPI
 
 		try {
-			const error = getError(getState())
 			const hasMore = getHasMore(getState())
 			const page = getPage(getState())
 			const isLoading = getIsLoading(getState())
 
-			if (hasMore && !isLoading && !error) {
+			if (hasMore && !isLoading) {
 				thunkAPI.dispatch(articlesPageActions.setPage(page + 1))
 				const response = await thunkAPI.dispatch(fetchArticlesList({}))
 				if (response.meta.requestStatus === 'rejected') {

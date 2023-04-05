@@ -22,7 +22,7 @@ export const routerConfig: AuthRouteProps[] = [
 		element: <AboutPage />
 	},
 	{
-		path: `${RoutePaths.profile}:id`,
+		path: `${RoutePaths.profiles}:id`,
 		element: <ProfilePage />,
 		authOnly: true
 	},

@@ -1,9 +1,7 @@
 import { ArticleList } from 'entities/Article'
 import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice'
 import { FC, memo, ReactNode, useCallback, useMemo } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import cls from './ArticlesPage.module.scss'
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
@@ -20,6 +18,7 @@ import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticles
 import { PageWrapper } from 'widgets/PageWrapper'
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
 import { useSearchParams } from 'react-router-dom'
+import { VStack } from 'shared/ui/Stack'
 
 export interface ArticlesPageProps {
 	className?: string
@@ -48,33 +47,41 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 	})
 
 	const onLoadNextPart = useCallback(() => {
-		dispatch(fetchNextArticlesPage())
-	}, [dispatch])
+		if (!error) {
+			dispatch(fetchNextArticlesPage())
+		}
+	}, [dispatch, error])
 
-	let content: ReactNode = <ArticleList
+	let content: ReactNode = useMemo(() => <ArticleList
 		articles={articles}
 		view={view}
 		isLoading={isLoading}
 		limit={limit}
-	/>
+	/>, [articles, view, isLoading, limit])
 
 	if (error) {
-		content = <div className={cls.warningWrapper}>
+		content = <VStack
+			justify='center'
+			align='center'
+		>
 			<Text
 				variant={TextVariant.ERROR}
 				size={TextSize.L}
 				content={t('error.server-error')}
 			/>
-		</div>
+		</VStack>
 	}
 
 	if (!isLoading && !articles.length && !error) {
-		content = <div className={cls.warningWrapper}>
+		content = <VStack
+			justify='center'
+			align='start'
+		>
 			<Text
 				size={TextSize.L}
 				content={t('empty-articles-list')}
 			/>
-		</div>
+		</VStack>
 	}
 
 	return <LazyReducerLoader
@@ -82,12 +89,15 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 		removeAfterUnmount={false}
 	>
 		<PageWrapper
-			className={classNames(cls.ArticlesPage, {}, [className])}
 			onScrollEnd={onLoadNextPart}
 			watchedScroll={true}
 		>
-			<ArticlesPageFilters />
-			{content}
+			<VStack
+				gap='gap16'
+			>
+				<ArticlesPageFilters />
+				{content}
+			</VStack>
 		</PageWrapper>
 	</LazyReducerLoader>
 }
