@@ -13,7 +13,7 @@ import cls from './Navbar.module.scss'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { TextColor } from 'shared/const/consts'
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
-import { Avatar } from 'shared/ui/Avatar'
+import { Avatar, AvatarVariant } from 'shared/ui/Avatar'
 import { HStack } from 'shared/ui/Stack'
 
 interface NavbarProps {
@@ -68,6 +68,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 				trigger={<Avatar
 					size={40}
 					src={authData.avatar}
+					variant={AvatarVariant.CIRCLE}
 				/>}
 				direction='bottom left'
 				isRelativeWithin={false}

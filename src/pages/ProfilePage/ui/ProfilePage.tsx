@@ -38,8 +38,9 @@ const ProfilePage: FC = () => {
 	const authData = useSelector(getUserAuthData)
 	const profileData = useSelector(getProfileData)
 	const canEdit: boolean = useMemo(() => (
-		authData?.id === profileData?.id
+		Number(authData?.id) === Number(profileData?.id)
 	), [authData?.id, profileData?.id])
+	console.log(authData?.id, profileData?.id)
 	const { id } = useParams()
 	const { t } = useTranslation('profile')
 

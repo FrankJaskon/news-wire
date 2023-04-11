@@ -6,7 +6,7 @@ import { getUserAuthData } from 'entities/User'
 import { fetchCommentsByArticleId } from '../fetchCommentsByArticleId/fetchCommentsByArticleId'
 
 export const createNewCommentForArticle = createAsyncThunk<CommentType, string, ThunkApiConfigType<string>>(
-	'articleDetails/createNewCommentForArticle',
+	'articleDetailsComments/createNewCommentForArticle',
 	async (comment, thunkAPI) => {
 		const { extra, rejectWithValue, getState } = thunkAPI
 		try {
@@ -20,7 +20,7 @@ export const createNewCommentForArticle = createAsyncThunk<CommentType, string, 
 			const response = await extra.api.post<CommentType>(
 				'/comments',
 				{
-					userId: userData.id,
+					profileId: userData.id,
 					articleId: articleDetails.id,
 					text: comment
 				})

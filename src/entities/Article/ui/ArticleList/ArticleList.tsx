@@ -8,7 +8,7 @@ import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListI
 
 export interface ArticleListProps {
 	className?: string
-	articles: ArticleType[]
+	articles?: ArticleType[]
 	isLoading?: boolean
 	view?: ViewVariantType
 	limit?: number

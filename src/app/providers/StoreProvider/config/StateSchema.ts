@@ -1,24 +1,27 @@
 import { CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
 import { AxiosInstance } from 'axios'
+import { AddNewCommentScheme } from 'entities/AddNewComment'
 import { ArticleDetailsScheme } from 'entities/Article'
 import { UserScheme } from 'entities/User'
-import { AddNewCommentScheme } from 'features/AddNewComment'
+import { ArticleDetailsCommentsScheme } from 'features/ArticleComments'
 import { LoginScheme } from 'features/AuthByUsername'
-import { ArticleDetailsPageScheme } from 'pages/ArticleDetailsPage'
 import { ArticlesPageScheme } from 'pages/ArticlesPage'
 import { ProfileScheme } from 'pages/ProfilePage'
+import { rtkApi } from 'shared/api/rtkApi'
 import { PageScrollScheme } from 'widgets/PageWrapper'
 
 export interface StateSchema {
 	user: UserScheme
 	pageScroll: PageScrollScheme
+	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>,
+
 	// Async reducers
 	profile?: ProfileScheme
 	login?: LoginScheme
 	articleDetails?: ArticleDetailsScheme
-	articleDetailsPage?: ArticleDetailsPageScheme
 	addNewComment?: AddNewCommentScheme
 	articlesPage?: ArticlesPageScheme
+	articleDetailsComments?: ArticleDetailsCommentsScheme
 }
 
 export type StateSchemaKey = keyof StateSchema

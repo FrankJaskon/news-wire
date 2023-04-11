@@ -37,6 +37,9 @@
       "unexpected-error": "An error occurred while logging in",
       "gateway": "Gateway Timeout. No response from server",
       "bad-request": "Bad request"
+    },
+    "common": {
+      "some-error": "Some error has occurred"
     }
   },
   "choose-currency": "Currency",

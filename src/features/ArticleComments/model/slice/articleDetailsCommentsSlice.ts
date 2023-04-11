@@ -10,11 +10,11 @@ import { ArticleDetailsCommentsScheme } from '../types/articleDetailsCommentsSch
 const commentsAdapter = createEntityAdapter<CommentType>({})
 
 export const getArticleDetailsComments = commentsAdapter.getSelectors<StateSchema>(
-	state => state.articleDetailsPage?.comments || commentsAdapter.getInitialState()
+	state => state.articleDetailsComments || commentsAdapter.getInitialState()
 )
 
 const articleDetailsCommentsSlice = createSlice({
-	name: 'articleDetailsCommentsSlice',
+	name: 'articleDetailsComments',
 	initialState: commentsAdapter.getInitialState<ArticleDetailsCommentsScheme>({
 		entities: {},
 		ids: [],

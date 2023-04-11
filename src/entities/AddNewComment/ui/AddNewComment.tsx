@@ -6,10 +6,10 @@ import classNames from 'shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { AppButton, ButtonVariant } from 'shared/ui/AppButton'
 import { AppTextArea } from 'shared/ui/Form/AppTextArea'
-import { FormControl, FormControlVariant } from 'shared/ui/Form/FormControl'
 import { getNewCommentText } from '../model/selectors/newCommentSelectors'
 import { addNewCommentActions, addNewCommentReducer } from '../model/slices/addNewCommentSlice'
 import cls from './AddNewComment.module.scss'
+import { VStack } from 'shared/ui/Stack'
 
 export interface AddNewCommentProps {
 	className?: string
@@ -46,9 +46,9 @@ const AddNewComment: FC<AddNewCommentProps> = (props) => {
 		reducers={reducers}
 	>
 		<div className={classNames(cls.AddNewComment, {}, [className])}>
-			<FormControl
+			<VStack
 				className={cls.inputWrapper}
-				variant={FormControlVariant.UNDERLINED}
+				gap='gap8'
 			>
 				<AppTextArea
 					placeholder={t('new-comment.label')}
@@ -56,7 +56,7 @@ const AddNewComment: FC<AddNewCommentProps> = (props) => {
 					value={text}
 					onChange={handleChange}
 				/>
-			</FormControl>
+			</VStack>
 			{
 				text && <div className={cls.btnGroup}>
 					<AppButton

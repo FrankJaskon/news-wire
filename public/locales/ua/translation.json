@@ -37,6 +37,9 @@
       "unexpected-error": "Трапилась помилка",
       "gateway": "Упс. Сервер не відповідає",
       "bad-request": "Невірний запрос"
+    },
+    "common": {
+      "some-error": "Трапилась помилка"
     }
   },
   "choose-currency": "Валюта",

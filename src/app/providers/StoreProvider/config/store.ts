@@ -4,6 +4,7 @@ import { $api } from 'shared/api/api'
 import { pageScrollReducer } from 'widgets/PageWrapper'
 import { createReducerManager } from './reducerManager'
 import { ExtraArgumentType, StateSchema } from './StateSchema'
+import { rtkApi } from 'shared/api/rtkApi'
 
 export const createReduxStore = (
 	initialState?: StateSchema,
@@ -12,7 +13,8 @@ export const createReduxStore = (
 	const rootReducer: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
 		user: userReducer,
-		pageScroll: pageScrollReducer
+		pageScroll: pageScrollReducer,
+		[rtkApi.reducerPath]: rtkApi.reducer,
 	}
 
 	const reducerManager = createReducerManager(rootReducer)
@@ -29,7 +31,7 @@ export const createReduxStore = (
 			thunk: {
 				extraArgument: extraArg
 			}
-		}),
+		}).concat(rtkApi.middleware),
 	})
 
 	// @ts-ignore

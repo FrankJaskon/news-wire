@@ -8,6 +8,7 @@ import {
 } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './AppTextArea.module.scss'
+import { AppCard } from 'shared/ui/AppCard'
 
 export interface AppTextAreaProps extends Omit<
 	TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -26,7 +27,7 @@ export const AppTextArea: FC<AppTextAreaProps> = memo((props: AppTextAreaProps) 
 		value,
 		onChange,
 		readonly = false,
-		minHeight = 30,
+		minHeight = 50,
 		maxHeight = 200,
 		...extraProps
 	} = props
@@ -53,16 +54,20 @@ export const AppTextArea: FC<AppTextAreaProps> = memo((props: AppTextAreaProps) 
 		className,
 	]
 
-	return <textarea
-		ref={textareaRef}
-		className={classNames(cls.AppTextArea, mods, extra)}
-		style={{
-			minHeight,
-			maxHeight
-		}}
-		value={value}
-		onChange={onChangeHandler}
-		readOnly={readonly}
-		{...extraProps}
-	/>
+	return <AppCard
+		noPaddings
+	>
+		<textarea
+			ref={textareaRef}
+			className={classNames(cls.AppTextArea, mods, extra)}
+			style={{
+				minHeight,
+				maxHeight
+			}}
+			value={value}
+			onChange={onChangeHandler}
+			readOnly={readonly}
+			{...extraProps}
+		/>
+	</AppCard>
 })
