@@ -64,11 +64,11 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 			>
 				<AppLink
 					className={cls.avatarWrapper}
-					to={`${RoutePaths.profiles}${Number(comment?.user.id)}`}
+					to={`${RoutePaths.profiles}${Number(comment?.profile.id)}`}
 				>
 					<Avatar
 						size={50}
-						src={comment?.user?.avatar}
+						src={comment?.profile?.avatar}
 					/>
 				</AppLink>
 				<VStack
@@ -76,10 +76,10 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 					justify='between'
 				>
 					<AppLink
-						to={`${RoutePaths.profiles}${Number(comment?.user.id)}`}
+						to={`${RoutePaths.profiles}${Number(comment?.profile.id)}`}
 					>
 						<Text
-							title={comment?.user.username}
+							title={comment?.profile.username}
 							size={TextSize.S}
 						/>
 					</AppLink>

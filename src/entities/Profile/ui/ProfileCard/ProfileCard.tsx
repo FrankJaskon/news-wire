@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ProfileCard.module.scss'
@@ -61,6 +61,22 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	} = props
 
 	const { t } = useTranslation('profile')
+
+	const onPressEscape = useCallback((e: KeyboardEvent) => {
+		if (e.key === 'Escape') {
+			cancelEdit?.()
+		}
+	}, [cancelEdit])
+
+	useEffect(() => {
+		if (!readonly) {
+			window.addEventListener('keydown', onPressEscape)
+		}
+
+		return () => {
+			window.removeEventListener('keydown', onPressEscape)
+		}
+	}, [readonly, onPressEscape])
 
 	if (error) {
 		return <VStack

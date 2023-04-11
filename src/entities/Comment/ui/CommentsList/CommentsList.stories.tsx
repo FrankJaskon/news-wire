@@ -6,7 +6,7 @@ const comments = [
 	{
 		id: 1,
 		text: 'some text',
-		user: {
+		profile: {
 			id: 1,
 			username: 'some username',
 		}
@@ -14,7 +14,7 @@ const comments = [
 	{
 		id: 2,
 		text: 'some text1',
-		user: {
+		profile: {
 			id: 2,
 			username: 'some username1',
 		}
@@ -22,7 +22,7 @@ const comments = [
 	{
 		id: 3,
 		text: 'some text2',
-		user: {
+		profile: {
 			id: 3,
 			username: 'some username2',
 		}

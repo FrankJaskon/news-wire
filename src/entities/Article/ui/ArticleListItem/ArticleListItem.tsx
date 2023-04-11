@@ -65,7 +65,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					gap='gap4'
 				>
 					<AppLink
-						className={classNames(cls.imgWrapper, {}, [cls.link])}
+						className={classNames(cls.imgWrapper, {})}
+						hover={false}
 						to={RoutePaths.articles_details + article?.id}
 						target={target}
 					>
@@ -104,7 +105,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					justify='between'
 				>
 					<AppLink
-						className={classNames(cls.userInfo, {}, [cls.link])}
+						className={classNames(cls.userInfo, {})}
 						to={RoutePaths.profiles + article?.profile.id}
 					>
 						<HStack

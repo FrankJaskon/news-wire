@@ -19,6 +19,7 @@ export type AppLinkProps = Omit<LinkProps, 'to'> & {
 	className?: string
     variant?: AppLinkVariantType
 	to?: string
+	hover?: boolean
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
@@ -27,11 +28,18 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
 		children,
 		className,
 		variant = AppLinkVariant.SECONDARY,
+		hover = true,
 		...otherProps } = props
 
 	return <Link
 		to={to}
-		className={classNames(cls.AppLink, {}, [className, cls[variant]])}
+		className={classNames(
+			cls.AppLink,
+			{
+				[cls.hover] : hover
+			},
+			[className, cls[variant]]
+		)}
 		{...otherProps}>
 		{ children }
 	</Link>

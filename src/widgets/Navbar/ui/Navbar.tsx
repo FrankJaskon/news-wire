@@ -12,6 +12,9 @@ import { Text } from 'shared/ui/Text'
 import cls from './Navbar.module.scss'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { TextColor } from 'shared/const/consts'
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
+import { Avatar } from 'shared/ui/Avatar'
+import { HStack } from 'shared/ui/Stack'
 
 interface NavbarProps {
 	className?: string
@@ -39,7 +42,11 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 	let content: ReactNode
 
 	if (authData) {
-		content = <div className={cls.linksGroup}>
+		content = <HStack
+			justify='between'
+			align='center'
+			className={cls.linksGroup}
+		>
 			<AppLink
 				className={cls.link}
 				to={RoutePaths.articles_details_new}
@@ -47,15 +54,26 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 			>
 				{t('navbar.create-article')}
 			</AppLink>
-			<AppButton
-				className={cls.link}
-				variant={ButtonVariant.PRIMARY}
-				onClick={onLogout}
-				noBg
-			>
-				{t('navbar.logout')}
-			</AppButton>
-		</div>
+			<Dropdown
+				items={[
+					{
+						component: 'Перейти до профілю',
+						href: RoutePaths.profiles + authData.id
+					},
+					{
+						component: t('navbar.logout'),
+						onClick: onLogout
+					},
+				]}
+				trigger={<Avatar
+					size={40}
+					src={authData.avatar}
+				/>}
+				direction='bottom left'
+				isRelativeWithin={false}
+				className={cls.dropdownButton}
+			/>
+		</HStack>
 	} else {
 		content = <>
 			<div className={cls.linksGroup}>
@@ -75,15 +93,20 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 	}
 
 	return <header className={classNames(cls.Navbar, {}, [className])}>
-		<AppLink
-			to={RoutePaths.main}
+		<HStack
+			className={cls.container}
+			align='center'
 		>
-			<Text
-				className={cls.logo}
-				title='News wire'
-				titleHue={TextColor.LIGHT}
-			/>
-		</AppLink>
-		{content}
+			<AppLink
+				to={RoutePaths.main}
+			>
+				<Text
+					className={cls.logo}
+					title='News wire'
+					titleHue={TextColor.LIGHT}
+				/>
+			</AppLink>
+			{content}
+		</HStack>
 	</header>
 })

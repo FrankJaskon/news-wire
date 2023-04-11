@@ -1,18 +1,18 @@
 .Navbar {
-	display: flex;
-	align-items: center;
 	height: var(--navbar-height);
 	padding-left: 10px;
 	padding-right: 10px;
 	background-color: var(--block-primary-color);
 	transition: background-color .2s;
+	position: relative;
+}
+
+.container {
+	height: 100%;
 }
 
 .linksGroup {
 	margin-left: auto;
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
 	.link {
 		color: var(--block-secondary-color);
 	}
@@ -25,4 +25,12 @@
 .logo {
 	padding: 0 5px;
 	white-space: nowrap;
+}
+
+.dropdownButton {
+	display: flex;
+	border-radius: 50%;
+	&:hover {
+		box-shadow: 0 0 5px 0 var(--overlay-bg-color);
+	}
 }

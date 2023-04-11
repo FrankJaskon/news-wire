@@ -12,7 +12,7 @@ export default {
 		comment: {
 			id: 1,
 			text: 'some text',
-			user: {
+			profile: {
 				id: 1,
 				username: 'some username',
 			}

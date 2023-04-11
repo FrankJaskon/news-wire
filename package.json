@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --env port=3000",
+    "start": "webpack serve --env port=3000 --env apiUrl=https://newswire-frankjaskon.b4a.run/",
     "start:dev": "concurrently \"npm run start\" \"npm run start:json:server\" \"npm run storybook\"",
     "build:dev": "webpack --env mode=development",
     "build:analyzed": "webpack --env mode=development --env analyzed=true",
