@@ -20,8 +20,17 @@ type DirectionType = 'row' | 'column'
 type JustifyType = 'start' | 'end' | 'center' | 'between' | 'evenly' | 'around'
 type AlignType = 'start' | 'end' | 'center'
 type WrapType = 'wrap' | 'nowrap'
-type GapType = 'gap4' |'gap8' | 'gap12' | 'gap16' | 'gap24' | 'gap32'
+type GapType = '4' |'8' | '12' | '16' | '24' | '32'
 type InnerWidthType = 'full' |'evenly'
+
+const GapMapper: Record<GapType, string> = {
+	'4': 'gap4',
+	'8': 'gap8',
+	'12': 'gap12',
+	'16': 'gap16',
+	'24': 'gap24',
+	'32': 'gap32',
+}
 
 export const FlexStack: FC<FlexStackProps> = (props) => {
 	const {
@@ -46,7 +55,7 @@ export const FlexStack: FC<FlexStackProps> = (props) => {
 		justify && cls[`justify-${justify}`],
 		align && cls[`align-${align}`],
 		wrap && cls[wrap],
-		gap && cls[gap],
+		gap && cls[GapMapper[gap]],
 		innerWidth && cls[innerWidth]
 	]
 

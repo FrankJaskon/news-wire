@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { getHasMore, getIsLoading, getPage, getError } from '../../selectors/articlesPageSelector'
-import { articlesPageActions } from '../../slice/articlesPageSlice'
+import { articlesInfiniteListActions } from '../../slice/articlesInfiniteListSlice'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 
 export const fetchNextArticlesPage = createAsyncThunk<
@@ -9,7 +9,7 @@ export const fetchNextArticlesPage = createAsyncThunk<
 	void,
 	ThunkApiConfigType<string>
 >(
-	'articlesPage/fetchNextArticlesPage',
+	'articlesInfiniteList/fetchNextArticlesPage',
 	async (_, thunkAPI) => {
 		const { extra, rejectWithValue, getState } = thunkAPI
 
@@ -19,7 +19,7 @@ export const fetchNextArticlesPage = createAsyncThunk<
 			const isLoading = getIsLoading(getState())
 
 			if (hasMore && !isLoading) {
-				thunkAPI.dispatch(articlesPageActions.setPage(page + 1))
+				thunkAPI.dispatch(articlesInfiniteListActions.setPage(page + 1))
 				const response = await thunkAPI.dispatch(fetchArticlesList({}))
 				if (response.meta.requestStatus === 'rejected') {
 					return rejectWithValue('error')

@@ -11,6 +11,7 @@ interface LazyReducerLoaderProps {
 	reducers: ReducerList
 	removeAfterUnmount?: boolean
 	children: ReactNode
+	setIsReducerMounted?: (value: boolean) => void
 }
 
 export const LazyReducerLoader: FC<LazyReducerLoaderProps> = (props) => {
@@ -18,6 +19,7 @@ export const LazyReducerLoader: FC<LazyReducerLoaderProps> = (props) => {
 		children,
 		reducers,
 		removeAfterUnmount = true,
+		setIsReducerMounted
 	} = props
 
 	const store = useStore() as ReduxStoreWithManager
@@ -30,6 +32,7 @@ export const LazyReducerLoader: FC<LazyReducerLoaderProps> = (props) => {
 			if (!mountedReducers[name as StateSchemaKey]) {
 				store.reducerManager.add(name as StateSchemaKey, reducer)
 				dispatch({ type: `@INIT ${name } reducer` })
+				setIsReducerMounted?.(true)
 			}
 		})
 		return () => {

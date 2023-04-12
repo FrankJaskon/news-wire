@@ -8,7 +8,6 @@ import { AppLabel, LabelVariant } from 'shared/ui/Form/Label'
 import { Avatar } from 'shared/ui/Avatar'
 import { CurrencySelect, CurrencyType } from 'entities/Currency'
 import { CountrySelect, CountryType } from 'entities/Country'
-import type { Profile } from 'pages/ProfilePage'
 import { PageLoader } from 'widgets/PageLoader'
 import { HStack, VStack } from 'shared/ui/Stack'
 import { AppCard } from 'shared/ui/AppCard'
@@ -19,6 +18,7 @@ import EditIcon from 'shared/assets/icons/edit.svg'
 import CancelIcon from 'shared/assets/icons/cancel.svg'
 import SaveIcon from 'shared/assets/icons/checkmark.svg'
 import { TextColor } from 'shared/const/consts'
+import { Profile } from 'features/EditableProfileCard'
 
 export interface ProfileCardProps {
 	className?: string
@@ -103,11 +103,11 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	return <form className={classNames(cls.ProfileCard, {}, [className])}>
 		<AppCard>
 			<HStack
-				gap='gap24'
+				gap='24'
 				max={false}
 			>
 				<VStack
-					gap='gap8'
+					gap='8'
 				>
 					<AppLabel
 						variant={LabelVariant.PRIMARY}
@@ -122,6 +122,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 						onChange={updateUsername}
 						value={data?.username ?? ''}
 						readonly={readonly}
+						data-testid='profile-card-username-input'
 					/>
 					<AppLabel
 						variant={LabelVariant.PRIMARY}
@@ -137,6 +138,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 						onChange={updateFirstname}
 						value={data?.firstname || ''}
 						readonly={readonly}
+						data-testid='profile-card-firstname-input'
 					/>
 					<AppLabel
 						variant={LabelVariant.PRIMARY}
@@ -151,9 +153,10 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 						onChange={updateLastname}
 						value={data?.lastname || ''}
 						readonly={readonly}
+						data-testid='profile-card-lastname-input'
 					/>
 					<HStack
-						gap='gap4'
+						gap='4'
 						innerWidth='evenly'
 					>
 						<VStack
@@ -173,6 +176,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 								value={data?.age}
 								readonly={readonly}
 								type='number'
+								data-testid='profile-card-age-input'
 							/>
 						</VStack>
 						<CountrySelect
@@ -201,12 +205,13 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 							onChange={updateAvatar}
 							value={data?.avatar || ''}
 							readonly={readonly}
+							data-testid='profile-card-avatar-input'
 						/>
 					</>}
 				</VStack>
 				<VStack
 					max={false}
-					gap='gap8'
+					gap='8'
 				>
 					<Avatar
 						src={data?.avatar}
@@ -224,11 +229,12 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 									size={ButtonSize.S}
 									contentHue={TextColor.SECONDARY}
 									noBg
+									data-testid='profile-card-edit-btn'
 								>
 									<HStack
 										align='center'
 										justify='center'
-										gap='gap4'
+										gap='4'
 									>
 										<AppIcon
 											Svg={EditIcon}
@@ -239,7 +245,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 								</AppButton>
 							</HStack>
 							: <VStack
-								gap='gap4'
+								gap='4'
 								max={false}
 							>
 								<HStack
@@ -251,11 +257,12 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 										size={ButtonSize.S}
 										contentHue={TextColor.SECONDARY}
 										noBg
+										data-testid='profile-card-close-btn'
 									>
 										<HStack
 											align='center'
 											justify='center'
-											gap='gap4'
+											gap='4'
 										>
 											<AppIcon
 												Svg={CancelIcon}
@@ -274,11 +281,12 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 										size={ButtonSize.S}
 										contentHue={TextColor.SECONDARY}
 										noBg
+										data-testid='profile-card-save-btn'
 									>
 										<HStack
 											align='center'
 											justify='center'
-											gap='gap4'
+											gap='4'
 										>
 											<AppIcon
 												Svg={SaveIcon}

@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import ArticlesPage from './ArticlesPage'
-import type { ArticlesPageProps } from './ArticlesPage'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 import { ArticleType } from 'entities/Article'
 
@@ -99,16 +98,16 @@ export default {
 
 const Template: ComponentStory<typeof ArticlesPage> = (args) => < ArticlesPage { ...args } />
 
-export const Basic: Story<ArticlesPageProps> = Template.bind({})
+export const Basic: Story = Template.bind({})
 Basic.args = {}
 Basic.decorators = [StoreDecorator({
-	articlesPage: {
+	articlesInfiniteList: {
 		isLoading: false,
 		entities: articles as any,
 		ids: ids as any
 	}
 })]
 
-export const Loading: Story<ArticlesPageProps> = Template.bind({})
+export const Loading: Story = Template.bind({})
 Loading.args = {}
 Loading.decorators = [StoreDecorator({})]

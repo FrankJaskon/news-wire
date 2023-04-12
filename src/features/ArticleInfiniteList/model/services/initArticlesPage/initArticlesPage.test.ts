@@ -7,7 +7,7 @@ jest.mock('../fetchArticlesList/fetchArticlesList')
 describe('initArticlesPage', () => {
 	test('should call dispatch if _initialized = false', async () => {
 		const thunk = new TestAsyncThunk(initArticlesPage, {
-			articlesPage: {
+			articlesInfiniteList: {
 				_initialized: false
 			}
 		})
@@ -19,7 +19,7 @@ describe('initArticlesPage', () => {
 	})
 	test('should not call dispatch if _initialized = true', async () => {
 		const thunk = new TestAsyncThunk(initArticlesPage, {
-			articlesPage: {
+			articlesInfiniteList: {
 				_initialized: true
 			}
 		})

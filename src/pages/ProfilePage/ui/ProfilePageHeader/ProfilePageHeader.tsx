@@ -1,19 +1,9 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text } from 'shared/ui/Text'
 import { HStack } from 'shared/ui/Stack'
 
-interface ProfilePageHeaderProps {
-	className?: string
-	readonly?: boolean
-}
-
-export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
-	const {
-		className,
-		readonly,
-	} = props
-
+export const ProfilePageHeader: FC = memo(() => {
 	const { t } = useTranslation('profile')
 
 	return <HStack
@@ -21,4 +11,4 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = (props) => {
 	>
 		<Text title={t('card.header.title')} />
 	</HStack>
-}
+})

@@ -91,7 +91,7 @@ export const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
 	} else {
 		content = <VStack
 			className={classNames('', {}, [className])}
-			gap='gap24'
+			gap='24'
 		>
 			<HStack
 				className={cls.imgWrapper}
@@ -103,7 +103,7 @@ export const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
 				/>
 			</HStack>
 			<VStack
-				gap='gap8'
+				gap='8'
 			>
 				<Text
 					variant='primary'

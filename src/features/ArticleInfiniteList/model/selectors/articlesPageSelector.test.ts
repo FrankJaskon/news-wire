@@ -21,7 +21,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('getIsLoading should return data', () => {
 		expect(getIsLoading({
-			articlesPage: {
+			articlesInfiniteList: {
 				isLoading: false
 			}
 		} as StateSchema)).toBe(false)
@@ -31,7 +31,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('getView should return data', () => {
 		expect(getView({
-			articlesPage: {
+			articlesInfiniteList: {
 				view: ViewVariant.LIST
 			}
 		} as StateSchema)).toBe(ViewVariant.LIST)
@@ -41,7 +41,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('getPage should return data', () => {
 		expect(getPage({
-			articlesPage: {
+			articlesInfiniteList: {
 				page: 4
 			}
 		} as StateSchema)).toBe(4)
@@ -51,7 +51,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('getLimit should return data', () => {
 		expect(getLimit({
-			articlesPage: {
+			articlesInfiniteList: {
 				limit: 4
 			}
 		} as StateSchema)).toBe(4)
@@ -61,7 +61,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('getHasMore should return data', () => {
 		expect(getHasMore({
-			articlesPage: {
+			articlesInfiniteList: {
 				hasMore: true
 			}
 		} as StateSchema)).toBe(true)
@@ -71,7 +71,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('getError should return data', () => {
 		expect(getError({
-			articlesPage: {
+			articlesInfiniteList: {
 				error: 'error'
 			}
 		} as StateSchema)).toBe('error')
@@ -81,7 +81,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('geInitialized should return data', () => {
 		expect(geInitialized({
-			articlesPage: {
+			articlesInfiniteList: {
 				_initialized: true
 			}
 		} as StateSchema)).toBe(true)
@@ -91,7 +91,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('getSearch should return data', () => {
 		expect(getSearch({
-			articlesPage: {
+			articlesInfiniteList: {
 				search: 'some text'
 			}
 		} as StateSchema)).toBe('some text')
@@ -101,7 +101,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('getOrder should return data', () => {
 		expect(getOrder({
-			articlesPage: {
+			articlesInfiniteList: {
 				order: SortOrder.DOWN_UP
 			}
 		} as StateSchema)).toBe(SortOrder.DOWN_UP)
@@ -111,7 +111,7 @@ describe('articlesPageSelector', () => {
 	})
 	test('getSort should return data', () => {
 		expect(getSort({
-			articlesPage: {
+			articlesInfiniteList: {
 				sort: ArticlesSortVariant.TITLE
 			}
 		} as StateSchema)).toBe(ArticlesSortVariant.TITLE)

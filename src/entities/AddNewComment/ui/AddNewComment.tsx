@@ -48,7 +48,7 @@ const AddNewComment: FC<AddNewCommentProps> = (props) => {
 		<div className={classNames(cls.AddNewComment, {}, [className])}>
 			<VStack
 				className={cls.inputWrapper}
-				gap='gap8'
+				gap='8'
 			>
 				<AppTextArea
 					placeholder={t('new-comment.label')}

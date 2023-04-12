@@ -49,7 +49,7 @@ export const ArticleComments: FC<ArticleCommentsProps> = (props) => {
 		reducers={reducers}
 	>
 		<VStack
-			gap='gap16'
+			gap='16'
 			className={classNames('', {}, [className])}
 		>
 			<Text title={t('comment-title', {

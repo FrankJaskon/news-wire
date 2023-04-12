@@ -67,7 +67,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 			method='POST'
 			data-testid='login-form'>
 			<VStack
-				gap='gap16'
+				gap='16'
 			>
 				<Text
 					className={cls.title}

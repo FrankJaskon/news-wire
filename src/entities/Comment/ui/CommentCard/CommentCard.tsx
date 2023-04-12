@@ -27,7 +27,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 		return <AppCard>
 			<HStack
 				className={classNames('', {}, [className])}
-				gap='gap12'
+				gap='12'
 			>
 				<Skeleton
 					height={50}
@@ -36,7 +36,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 				/>
 				<VStack
 					align='start'
-					gap='gap12'
+					gap='12'
 				>
 					<Skeleton
 						height={20}
@@ -60,7 +60,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 		<AppCard>
 			<HStack
 				className={classNames('', {}, [className])}
-				gap='gap12'
+				gap='12'
 			>
 				<AppLink
 					className={cls.avatarWrapper}

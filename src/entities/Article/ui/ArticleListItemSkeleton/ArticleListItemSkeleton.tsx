@@ -18,7 +18,7 @@ export const ArticleListItemSkeleton: FC<ArticleListItemSkeletonProps> = (props)
 			style={{ maxWidth: 230 }}
 		>
 			<VStack
-				gap='gap8'
+				gap='8'
 			>
 				<Skeleton
 					height={200}
@@ -47,13 +47,13 @@ export const ArticleListItemSkeleton: FC<ArticleListItemSkeletonProps> = (props)
 			style={{ minWidth: '100%' }}
 		>
 			<VStack
-				gap='gap12'
+				gap='12'
 			>
 				<HStack
 					justify='between'
 				>
 					<HStack
-						gap='gap4'
+						gap='4'
 					>
 						<Skeleton
 							height={40}
@@ -69,7 +69,7 @@ export const ArticleListItemSkeleton: FC<ArticleListItemSkeletonProps> = (props)
 					width={600}
 				/>
 				<HStack
-					gap='gap4'
+					gap='4'
 				>
 					<Skeleton
 						height={30}

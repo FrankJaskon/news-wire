@@ -29,7 +29,7 @@ export const ArticleTextBlock: FC<ArticleTextBlockProps> = memo((props: ArticleT
 	return (
 		<VStack
 			className={classNames('', {}, [className])}
-			gap='gap12'
+			gap='12'
 		>
 			{title && <Text
 				title={title}

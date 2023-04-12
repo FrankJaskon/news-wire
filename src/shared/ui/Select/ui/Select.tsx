@@ -30,7 +30,7 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
 		onChange,
 		name,
 		readonly,
-		placeholder
+		placeholder,
 	} = props
 
 	return <div className={classNames(cls.Select, {}, [className])}>
@@ -48,7 +48,7 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
 				<HStack
 					justify='between'
 					align='center'
-					gap='gap8'
+					gap='8'
 				>
 					{value?.label || placeholder}
 					<AppIcon
@@ -76,7 +76,7 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
 							<HStack
 								justify='between'
 								align='center'
-								gap='gap8'
+								gap='8'
 							>
 								{item.label}
 								{selected && <AppIcon

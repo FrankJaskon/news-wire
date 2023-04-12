@@ -9,13 +9,14 @@ interface CountrySelectProps {
 	value?: CountryType
 	onChange?: (value: CountryType) => void
 	readonly?: boolean
+	'data-testid'?: string
 }
 
 export const CountrySelect: FC<CountrySelectProps> = memo((props: CountrySelectProps) => {
 	const {
 		value,
 		onChange,
-		readonly
+		readonly,
 	} = props
 
 	const { t } = useTranslation()
@@ -35,7 +36,6 @@ export const CountrySelect: FC<CountrySelectProps> = memo((props: CountrySelectP
 	return <VStack>
 		<AppLabel htmlFor='country-select'>{t('choose-country')}</AppLabel>
 		<Select
-			name={'country-select'}
 			onChange={handleOnChange}
 			value={selected}
 			options={countryOptionList}

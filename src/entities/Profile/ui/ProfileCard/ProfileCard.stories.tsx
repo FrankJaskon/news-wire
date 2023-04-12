@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import { Profile } from 'pages/ProfilePage'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { ProfileCard, ProfileCardProps } from './ProfileCard'
+import { Profile } from 'features/EditableProfileCard'
 
 export default {
 	title: 'entities/ProfileCard',

@@ -39,7 +39,7 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 
 	if (isLoading) {
 		return <VStack
-			gap='gap16'
+			gap='16'
 		>
 			<CommentCard isLoading />
 			<CommentCard isLoading />
@@ -49,7 +49,7 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 
 	return (
 		<VStack
-			gap='gap16'
+			gap='16'
 		>
 			{comments?.length
 				? renderComments

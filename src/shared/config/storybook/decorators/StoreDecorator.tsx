@@ -3,9 +3,9 @@ import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { addNewCommentReducer } from 'entities/AddNewComment'
 import { articleDetailsReducer } from 'entities/Article'
 import { articleDetailsCommentsReducer } from 'features/ArticleComments'
+import { articlesInfiniteListReducer } from 'features/ArticleInfiniteList'
 import { loginReducer } from 'features/AuthByUsername'
-import { articlesPageReducer } from 'pages/ArticlesPage'
-import { profileReducer } from 'pages/ProfilePage'
+import { profileReducer } from 'features/EditableProfileCard'
 import type { ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 
 const defaultAsyncReducers: ReducerList = {
@@ -14,7 +14,7 @@ const defaultAsyncReducers: ReducerList = {
 	articleDetails: articleDetailsReducer,
 	articleDetailsComments: articleDetailsCommentsReducer,
 	addNewComment: addNewCommentReducer,
-	articlesPage: articlesPageReducer
+	articlesInfiniteList: articlesInfiniteListReducer
 }
 
 export const StoreDecorator = (

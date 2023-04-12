@@ -21,7 +21,7 @@ export const ArticleImageBlock: FC<ArticleImageBlockProps> = memo((props: Articl
 		<VStack
 			className={classNames('', {}, [className])}
 			align='center'
-			gap='gap8'
+			gap='8'
 		>
 			<img
 				className={cls.img}

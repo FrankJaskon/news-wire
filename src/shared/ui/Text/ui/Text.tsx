@@ -15,6 +15,7 @@ interface TextProps {
 	contentHue?: TextColorType
 	titleElement?: ElementType
 	contentElement?: ElementType
+	'data-testid'?: string
 }
 
 export const TextVariant = {
@@ -52,7 +53,8 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		titleHue = TextColor.PRIMARY,
 		contentHue = TextColor.SECONDARY,
 		titleElement = 'h3',
-		contentElement = 'p'
+		contentElement = 'p',
+		'data-testid': dataTestId = 'Text'
 	} = props
 
 	const extra = [
@@ -66,15 +68,15 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 	const ContentTag = useMemo(() => contentElement, [contentElement])
 
 	return <div
-		data-testid='text-block'
+		data-testid={dataTestId}
 		className={classNames(cls.Text, {}, extra)}>
 		{title && <TitleTag
-			data-testid='text-title'
+			data-testid={`${dataTestId}.title`}
 			className={classNames(cls.title, {}, [titleHue])}>
 			{title}
 		</TitleTag>}
 		{content && <ContentTag
-			data-testid='text-content'
+			data-testid={`${dataTestId}.content`}
 			className={classNames(cls.content, {}, [contentHue])}>
 			{content}
 		</ContentTag>}

@@ -10,19 +10,18 @@ import { ArticlesTypes, ArticlesTypesType } from 'features/ArticleTypeTabs'
 import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from 'shared/const/localstorage'
 import { SortOrder, SortOrderType } from 'shared/types/types'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
-import { ArticlesPageScheme } from '../types/ArticlesPageScheme'
-import { fetchNextArticlesPage } from '../services/fetchNextArticlesPage/fetchNextArticlesPage'
+import { ArticleInfiniteListScheme } from '../types/ArticleInfiniteListScheme'
 import { initArticlesPage } from '../services/initArticlesPage/initArticlesPage'
 
 const articlesPageAdapter = createEntityAdapter<ArticleType>({})
 
 export const getArticles = articlesPageAdapter.getSelectors<StateSchema>(
-	state => state.articlesPage || articlesPageAdapter.getInitialState()
+	state => state.articlesInfiniteList || articlesPageAdapter.getInitialState()
 )
 
-const articlesPageSlice = createSlice({
-	name: 'articlesPageSlice',
-	initialState: articlesPageAdapter.getInitialState<ArticlesPageScheme>({
+const articlesInfiniteListSlice = createSlice({
+	name: 'articlesInfiniteListSlice',
+	initialState: articlesPageAdapter.getInitialState<ArticleInfiniteListScheme>({
 		entities: {},
 		ids: [],
 		error: undefined,
@@ -38,29 +37,29 @@ const articlesPageSlice = createSlice({
 		filter: ArticlesTypes.ALL
 	}),
 	reducers: {
-		setView: (state: ArticlesPageScheme, action: PayloadAction<ViewVariantType>) => {
+		setView: (state: ArticleInfiniteListScheme, action: PayloadAction<ViewVariantType>) => {
 			state.view = action.payload
 			localStorage.setItem(VIEW_ARTICLES_LOCAL_STORAGE_KEY, action.payload)
 		},
-		setPage: (state: ArticlesPageScheme, action: PayloadAction<number>) => {
+		setPage: (state: ArticleInfiniteListScheme, action: PayloadAction<number>) => {
 			state.page = action.payload
 		},
-		setLimit: (state: ArticlesPageScheme, action: PayloadAction<number>) => {
+		setLimit: (state: ArticleInfiniteListScheme, action: PayloadAction<number>) => {
 			state.limit = action.payload
 		},
-		setOrder: (state: ArticlesPageScheme, action: PayloadAction<SortOrderType>) => {
+		setOrder: (state: ArticleInfiniteListScheme, action: PayloadAction<SortOrderType>) => {
 			state.order = action.payload
 		},
-		setSort: (state: ArticlesPageScheme, action: PayloadAction<ArticlesSortVariantType>) => {
+		setSort: (state: ArticleInfiniteListScheme, action: PayloadAction<ArticlesSortVariantType>) => {
 			state.sort = action.payload
 		},
-		setSearch: (state: ArticlesPageScheme, action: PayloadAction<string>) => {
+		setSearch: (state: ArticleInfiniteListScheme, action: PayloadAction<string>) => {
 			state.search = action.payload
 		},
-		setFilter: (state: ArticlesPageScheme, action: PayloadAction<ArticlesTypesType>) => {
+		setFilter: (state: ArticleInfiniteListScheme, action: PayloadAction<ArticlesTypesType>) => {
 			state.filter = action.payload
 		},
-		setInitializedValues: (state: ArticlesPageScheme) => {
+		setInitializedValues: (state: ArticleInfiniteListScheme) => {
 			const initialView = localStorage.getItem(
 				VIEW_ARTICLES_LOCAL_STORAGE_KEY) as ViewVariantType || ViewVariant.GRID
 			const initialLimit = initialView === ViewVariant.GRID ? 9 : 5
@@ -93,23 +92,11 @@ const articlesPageSlice = createSlice({
 			state.isLoading = false
 			state.error = action.payload
 		})
-		// // fetchNextArticlesPage
-		// builder.addCase(fetchNextArticlesPage.pending, (state) => {
-		// 	state.isLoading = true
-		// })
-		// builder.addCase(fetchNextArticlesPage.rejected, (state, action) => {
-		// 	state.isLoading = false
-		// 	state.error = action.payload
-		// })
-		// // initArticlesPage
-		// builder.addCase(initArticlesPage.pending, (state) => {
-		// 	state.isLoading = true
-		// })
 		builder.addCase(initArticlesPage.rejected, (state) => {
 			state._initialized = false
 		})
 	}
 })
 
-export const { reducer: articlesPageReducer } = articlesPageSlice
-export const { actions: articlesPageActions } = articlesPageSlice
+export const { reducer: articlesInfiniteListReducer } = articlesInfiniteListSlice
+export const { actions: articlesInfiniteListActions } = articlesInfiniteListSlice

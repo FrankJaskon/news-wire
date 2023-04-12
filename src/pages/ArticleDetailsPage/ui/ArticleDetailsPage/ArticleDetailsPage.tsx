@@ -31,7 +31,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 
 	return <PageWrapper className={classNames(cls.ArticleDetailsPage, {}, [className])}>
 		<VStack
-			gap='gap24'
+			gap='24'
 		>
 			<ArticleDetailsPageHeader
 				articleId={id}

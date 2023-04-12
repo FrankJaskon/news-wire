@@ -40,7 +40,7 @@ export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = m
 		return (
 			<div className={classNames('', {}, [className])}>
 				<VStack
-					gap='gap24'
+					gap='24'
 				>
 					<Text title={t('recommendations-title', {
 						ns: 'article'

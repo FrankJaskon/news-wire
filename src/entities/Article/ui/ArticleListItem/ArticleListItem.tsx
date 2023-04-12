@@ -62,7 +62,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 				className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
 			>
 				<VStack
-					gap='gap4'
+					gap='4'
 				>
 					<AppLink
 						className={classNames(cls.imgWrapper, {})}
@@ -99,7 +99,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 	return (
 		<AppCard className={classNames(cls.ArticleListItem, {}, [className, view && cls[view]])}>
 			<VStack
-				gap='gap8'
+				gap='8'
 			>
 				<HStack
 					justify='between'
@@ -109,7 +109,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 						to={RoutePaths.profiles + article?.profile.id}
 					>
 						<HStack
-							gap='gap8'
+							gap='8'
 						>
 							<Avatar
 								size={40}
@@ -125,7 +125,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					<Text content={article?.createdAt} />
 				</HStack>
 				<VStack
-					gap='gap4'
+					gap='4'
 				>
 					<AppLink
 						className={cls.link}

@@ -57,7 +57,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 			<Dropdown
 				items={[
 					{
-						component: 'Перейти до профілю',
+						component: t('navbar.links.profile'),
 						href: RoutePaths.profiles + authData.id
 					},
 					{
