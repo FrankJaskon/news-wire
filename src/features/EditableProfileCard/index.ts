@@ -3,7 +3,6 @@ export {
 } from './ui/EditableProfileCard'
 
 export type {
-	Profile,
 	ProfileScheme
 } from './model/types/ProfileScheme'
 

@@ -1,7 +1,10 @@
+import { UserRole, UserRoleType } from 'entities/User'
 import { AboutPage } from 'pages/AboutPage'
+import AdminPage from 'pages/AdminPage/ui/AdminPage'
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage'
 import { ArticlesPage } from 'pages/ArticlesPage'
 import { EditArticlePage } from 'pages/EditArticlePage'
+import { ForbiddenPage } from 'pages/ForbiddenPage'
 import { MainPage } from 'pages/MainPage'
 import { NotFound } from 'pages/NotFound'
 import { ProfilePage } from 'pages/ProfilePage'
@@ -10,6 +13,7 @@ import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 
 export type AuthRouteProps = RouteProps & {
 	authOnly?: boolean
+	roles?: UserRoleType[]
 }
 
 export const routerConfig: AuthRouteProps[] = [
@@ -45,6 +49,18 @@ export const routerConfig: AuthRouteProps[] = [
 		path: RoutePaths.articles_details_new,
 		element: <EditArticlePage />,
 		authOnly: true
+	},
+	{
+		path: RoutePaths.admin,
+		element: <AdminPage />,
+		authOnly: true,
+		roles: [UserRole.ADMIN, UserRole.MANAGER]
+	},
+
+	// forbidden
+	{
+		path: RoutePaths.forbidden,
+		element: <ForbiddenPage />
 	},
 
 	// last

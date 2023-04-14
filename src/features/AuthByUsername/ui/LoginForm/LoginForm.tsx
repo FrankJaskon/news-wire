@@ -18,6 +18,8 @@ import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReduce
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { VStack } from 'shared/ui/Stack'
+import { useNavigate } from 'react-router-dom'
+import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 
 export interface LoginFormProps {
 	className?: string
@@ -39,6 +41,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 	const usernameValue = useSelector(getLoginLogin)
 	const passwordValue = useSelector(getPassword)
 	const loginIsLoading = useSelector(getIsLoading)
+	const navigate = useNavigate()
 
 	const loginErrorWithTranslation = translateErrorOrFalse(loginError)
 
@@ -57,8 +60,9 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		}))
 		if (result.meta.requestStatus === 'fulfilled') {
 			onSuccess()
+			navigate(RoutePaths.main)
 		}
-	}, [dispatch, usernameValue, passwordValue, onSuccess])
+	}, [dispatch, usernameValue, passwordValue, onSuccess, navigate])
 
 	return <LazyReducerLoader reducers={reducers}>
 		<form

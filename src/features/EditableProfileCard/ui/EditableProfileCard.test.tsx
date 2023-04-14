@@ -3,19 +3,18 @@ import { EditableProfileCard } from './EditableProfileCard'
 import { MockStore } from 'shared/config/tests/MockStore/MockStore'
 import { MockTranslation } from 'shared/config/tests/MockTranslation/MockTranslation'
 import { MockBrowserRouter } from 'shared/config/tests/MockBrowserRouter/MockBrowserRouter'
-import { Profile, ValidateProfileError } from '../model/types/ProfileScheme'
+import { ValidateProfileError } from '../model/types/ProfileScheme'
 import { screen } from '@testing-library/react'
 import { profileReducer } from '../model/slice/profileSlice'
 import { Country } from 'entities/Country'
 import { Currency } from 'entities/Currency'
 import userEvent from '@testing-library/user-event'
 import { ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk'
-import { updateProfileData } from '../model/services/updateProfileData/updateProfileData'
 import { $api } from 'shared/api/api'
+import { ProfileType } from 'entities/Profile'
 
 describe('EditableProfileCard', () => {
-	const profile: Profile = {
+	const profile: ProfileType = {
 		age: 20,
 		avatar: 'http://avatar',
 		city: 'Test',

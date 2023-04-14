@@ -4,6 +4,7 @@ import { FC, Fragment, ReactNode, memo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 
 export type DirectionType = 'top right' | 'top left' | 'bottom left' | 'bottom right'
+export type AlignType = 'start' | 'end' | 'center'
 
 export const DirectionVariant: Record<DirectionType, string> = {
 	'top right': 'topRight',
@@ -25,6 +26,7 @@ export interface DropdownProps {
 	items: DropdownItem[]
 	direction?: DirectionType
 	isRelativeWithin?: boolean
+	align?: AlignType
 }
 
 export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
@@ -33,7 +35,8 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 		trigger,
 		items,
 		direction = 'bottom right',
-		isRelativeWithin = true
+		isRelativeWithin = true,
+		align = 'start'
 	} = props
 	return (
 		<Menu
@@ -67,7 +70,7 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 								type='button'
 								disabled={item.disabled}
 								onClick={item.onClick}
-								className={classNames(cls.item, { [cls.active]: active })}
+								className={classNames(cls.item, { [cls.active]: active }, [cls[align]])}
 							>
 								{item.component}
 							</button>

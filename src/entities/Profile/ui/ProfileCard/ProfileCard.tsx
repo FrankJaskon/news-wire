@@ -18,11 +18,11 @@ import EditIcon from 'shared/assets/icons/edit.svg'
 import CancelIcon from 'shared/assets/icons/cancel.svg'
 import SaveIcon from 'shared/assets/icons/checkmark.svg'
 import { TextColor } from 'shared/const/consts'
-import { Profile } from 'features/EditableProfileCard'
+import { ProfileType } from '../../model/types/profile'
 
 export interface ProfileCardProps {
 	className?: string
-	data?: Profile
+	data?: ProfileType
 	isLoading?: boolean
 	readonly?: boolean
 	error?: string

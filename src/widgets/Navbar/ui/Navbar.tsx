@@ -1,4 +1,4 @@
-import { userActions } from 'entities/User'
+import { getIsUserAdmin, getIsUserManager, userActions } from 'entities/User'
 import { getUserAuthData } from 'entities/User'
 import { LoginModal } from 'features/AuthByUsername'
 import { FC, memo, ReactNode, useCallback, useState } from 'react'
@@ -15,6 +15,7 @@ import { TextColor } from 'shared/const/consts'
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
 import { Avatar, AvatarVariant } from 'shared/ui/Avatar'
 import { HStack } from 'shared/ui/Stack'
+import { useNavigate } from 'react-router-dom'
 
 interface NavbarProps {
 	className?: string
@@ -26,6 +27,11 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 	const [isAuthModal, setIsAuthModal] = useState<boolean>(false)
 	const authData = useSelector(getUserAuthData)
 	const dispatch = useAppDispatch()
+	const isUserAdmin = useSelector(getIsUserAdmin)
+	const isUserManager = useSelector(getIsUserManager)
+	const navigate = useNavigate()
+
+	const isAdminPageAvailable = isUserAdmin || isUserManager
 
 	const openModal = useCallback(() => {
 		setIsAuthModal(true)
@@ -37,7 +43,8 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 
 	const onLogout = useCallback(() => {
 		dispatch(userActions.removeAuthData())
-	}, [dispatch])
+		navigate(RoutePaths.main)
+	}, [dispatch, navigate])
 
 	let content: ReactNode
 
@@ -56,6 +63,10 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 			</AppLink>
 			<Dropdown
 				items={[
+					...(isAdminPageAvailable ? [{
+						component: t('navbar.links.admin'),
+						href: RoutePaths.admin
+					}]: []),
 					{
 						component: t('navbar.links.profile'),
 						href: RoutePaths.profiles + authData.id
@@ -73,6 +84,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 				direction='bottom left'
 				isRelativeWithin={false}
 				className={cls.dropdownButton}
+				align='center'
 			/>
 		</HStack>
 	} else {

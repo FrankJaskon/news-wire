@@ -2,8 +2,9 @@ import { Country } from 'entities/Country'
 import { Currency } from 'entities/Currency'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
-import { Profile, ProfileScheme, ValidateProfileError } from '../types/ProfileScheme'
+import { ProfileScheme, ValidateProfileError } from '../types/ProfileScheme'
 import { profileActions, profileReducer } from './profileSlice'
+import { ProfileType } from 'entities/Profile'
 
 describe('Profile reducer', () => {
 	const initialState: ProfileScheme = {
@@ -14,7 +15,7 @@ describe('Profile reducer', () => {
 		validateError: undefined,
 		loadingError: undefined
 	}
-	const data: Profile = {
+	const data: ProfileType = {
 		age: 12,
 		city: 'Test',
 		firstname: 'Test',
@@ -53,7 +54,7 @@ describe('Profile reducer', () => {
 		})
 	})
 	test('should set up field form is equal to field data', () => {
-		const form: Profile = {
+		const form: ProfileType = {
 			id: 1,
 			age: 14,
 			city: 'TestTest',
@@ -127,7 +128,7 @@ describe('Profile reducer', () => {
 		})
 	})
 	test('test update profile service fulfilled', () => {
-		const newData: Profile = {
+		const newData: ProfileType = {
 			firstname: 'Test',
 			lastname: 'Test'
 		}

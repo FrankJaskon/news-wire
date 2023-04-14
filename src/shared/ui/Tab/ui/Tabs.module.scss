@@ -2,14 +2,13 @@
 	cursor: pointer;
 	display: flex;
 	gap: 10px;
+	.active {
+		background-color: var(--primary-color);
+		color: var(--light-color);
+	}
 }
 
 .tab {
 	padding: 8px 12px;
 	text-transform: capitalize;
-}
-
-.active {
-	background-color: var(--primary-color);
-	color: var(--light-color);
 }

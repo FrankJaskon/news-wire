@@ -8,6 +8,8 @@ export const AppRoutes = {
 	ARTICLES_DETAILS: 'articles_details',
 	ARTICLES_DETAILS_EDIT: 'articles_details_edit',
 	ARTICLES_DETAILS_NEW: 'articles_details_new',
+	ADMIN_PAGE: 'admin',
+	FORBIDDEN: 'forbidden',
 
 	// last
 	NOT_FOUND: 'not_found'
@@ -23,6 +25,8 @@ export const RoutePaths: Record<AppRoutesTypes, string> = {
 	[AppRoutes.ARTICLES_DETAILS]: '/articles/', // + 'id'
 	[AppRoutes.ARTICLES_DETAILS_EDIT]: '/articles/:id/edit',
 	[AppRoutes.ARTICLES_DETAILS_NEW]: '/articles/new',
+	[AppRoutes.ADMIN_PAGE]: '/admin',
+	[AppRoutes.FORBIDDEN]: '/forbidden',
 
 	// last
 	[AppRoutes.NOT_FOUND]: '*'

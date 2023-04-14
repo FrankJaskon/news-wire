@@ -1,5 +1,4 @@
-import type { CountryType } from 'entities/Country'
-import type { CurrencyType } from 'entities/Currency'
+import { ProfileType } from 'entities/Profile'
 import { ValueOf } from 'shared/types/types'
 
 export const ValidateProfileError = {
@@ -16,21 +15,9 @@ export const ValidateProfileError = {
 
 export type ValidateProfileErrorType = ValueOf<typeof ValidateProfileError>
 
-export interface Profile {
-	id?: number
-	firstname?: string
-	lastname?: string
-	age?: number
-	currency?: CurrencyType
-	country?: CountryType
-	city?: string
-	username?: string
-	avatar?: string
-}
-
 export interface ProfileScheme {
-	data?: Profile,
-	form?: Profile,
+	data?: ProfileType,
+	form?: ProfileType,
 	isLoading: boolean,
 	readonly: boolean,
 	validateError?: ValidateProfileErrorType[],

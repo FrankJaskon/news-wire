@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { ProfileCard, ProfileCardProps } from './ProfileCard'
-import { Profile } from 'features/EditableProfileCard'
+import { ProfileType } from 'entities/Profile/model/types/profile'
 
 export default {
 	title: 'entities/ProfileCard',
@@ -14,7 +14,7 @@ export default {
 
 const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />
 
-const profileData: Profile = {
+const profileData: ProfileType = {
 	age: 20,
 	firstname: 'Test',
 	lastname: 'Test',

@@ -1,12 +1,12 @@
 import { StateSchema } from 'app/providers/StoreProvider'
 import { getProfileData } from './getProfileData'
-import type { Profile } from '../../types/ProfileScheme'
 import { Country } from 'entities/Country'
 import { Currency } from 'entities/Currency'
+import { ProfileType } from 'entities/Profile'
 
 describe('getProfileData', () => {
 	test('Should return profile data', () => {
-		const profileData: Profile = {
+		const profileData: ProfileType = {
 			age: 12,
 			city: 'Test',
 			firstname: 'Test',

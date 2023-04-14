@@ -1,11 +1,13 @@
 import { userActions } from 'entities/User'
 import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk'
 import { loginByUsername } from './loginByUsername'
+import { UserRole } from 'entities/User'
 
 describe('loginByUsername', () => {
 	const responseData = {
 		id: 1,
 		username: 'username@',
+		roles: [UserRole.USER]
 	}
 	test('Correct request', async () => {
 		const thunk = new TestAsyncThunk(loginByUsername)

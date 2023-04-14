@@ -2,11 +2,12 @@
 import { Country } from 'entities/Country'
 import { Currency } from 'entities/Currency'
 import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk'
-import { Profile, ValidateProfileError } from '../../types/ProfileScheme'
+import { ValidateProfileError } from '../../types/ProfileScheme'
 import { fetchProfileData } from './fetchProfileData'
+import { ProfileType } from 'entities/Profile'
 
 describe('fetchProfileData', () => {
-	const responseData: Profile = {
+	const responseData: ProfileType = {
 		age: 12,
 		city: 'Test',
 		firstname: 'Test',

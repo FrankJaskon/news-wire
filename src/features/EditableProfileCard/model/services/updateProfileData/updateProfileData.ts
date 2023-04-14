@@ -2,10 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm'
-import { Profile, ValidateProfileError, ValidateProfileErrorType } from '../../types/ProfileScheme'
+import { ValidateProfileError, ValidateProfileErrorType } from '../../types/ProfileScheme'
 import { validateProfile } from '../validateProfile/validateProfile'
+import { ProfileType } from 'entities/Profile'
 
-export const updateProfileData = createAsyncThunk<Profile, void, ThunkApiConfigType<ValidateProfileErrorType[]>>(
+export const updateProfileData = createAsyncThunk<ProfileType, void, ThunkApiConfigType<ValidateProfileErrorType[]>>(
 	'profile/updateProfileData',
 	async (_, thunkAPI) => {
 		const { extra, rejectWithValue, getState } = thunkAPI
@@ -18,7 +19,7 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkApiConfigT
 			if (!formData?.id) {
 				return rejectWithValue([ValidateProfileError.NO_DATA])
 			}
-			const response = await extra.api.put<Profile>(`${RoutePaths.profiles}${formData?.id}`, formData)
+			const response = await extra.api.put<ProfileType>(`${RoutePaths.profiles}${formData?.id}`, formData)
 
 			return response.data
 		} catch (error: any) {
