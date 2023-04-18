@@ -5,6 +5,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { BuildOptions } from './types/config'
 import CopyPlugin from 'copy-webpack-plugin'
+import CircularDependencyPlugin from 'circular-dependency-plugin'
 
 const buildPlugins = ({
 	paths,
@@ -28,7 +29,10 @@ const buildPlugins = ({
 		})
 	]
 	if (isDev) {
-		plugins.push(new ReactRefreshWebpackPlugin())
+		plugins.push(new ReactRefreshWebpackPlugin(), new CircularDependencyPlugin({
+			exclude: /a\.js|node_modules/,
+			failOnError: true
+		}))
 	} else {
 		plugins.push(new CopyPlugin({
 			patterns: [

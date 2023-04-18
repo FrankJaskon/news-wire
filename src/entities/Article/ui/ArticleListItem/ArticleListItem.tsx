@@ -1,4 +1,5 @@
-import { ArticleType, BlockType, TextBlockType } from '../../model/types/ArticleDetailsScheme'
+import { ArticleType, TextBlockType, ViewVariantType } from '../../model/types/ArticleDetailsScheme'
+import { BlockType, ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { FC, HTMLAttributeAnchorTarget, memo, useCallback, useMemo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleListItem.module.scss'
@@ -13,7 +14,6 @@ import { AppButton } from 'shared/ui/AppButton'
 import { useTranslation } from 'react-i18next'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
-import { ViewVariant, ViewVariantType } from '../ArticleList/ArticleList'
 import { HStack, VStack } from 'shared/ui/Stack'
 
 export interface ArticleListItemProps {

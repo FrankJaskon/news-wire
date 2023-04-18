@@ -11,7 +11,6 @@ import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from 'shared/const/localstorage'
 import { SortOrder, SortOrderType } from 'shared/types/types'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
 import { ArticleInfiniteListScheme } from '../types/ArticleInfiniteListScheme'
-import { initArticlesPage } from '../services/initArticlesPage/initArticlesPage'
 
 const articlesPageAdapter = createEntityAdapter<ArticleType>({})
 
@@ -91,9 +90,6 @@ const articlesInfiniteListSlice = createSlice({
 		builder.addCase(fetchArticlesList.rejected, (state, action) => {
 			state.isLoading = false
 			state.error = action.payload
-		})
-		builder.addCase(initArticlesPage.rejected, (state) => {
-			state._initialized = false
 		})
 	}
 })

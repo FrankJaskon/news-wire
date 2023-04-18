@@ -5,8 +5,8 @@ import { ArticlesTypesType } from 'features/ArticleTypeTabs'
 import { QueryParamsKeys, QueryParamsKeysType } from 'shared/const/queryParams'
 import { SortOrderType } from 'shared/types/types'
 import { geInitialized } from '../../selectors/articlesPageSelector'
-import { articlesInfiniteListActions } from '../../slice/articlesInfiniteListSlice'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
+import { articlesInfiniteListActions } from '../../slice/articlesInfiniteListSlice'
 
 export const initArticlesPage = createAsyncThunk<
 	void,

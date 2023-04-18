@@ -11,17 +11,17 @@ export {
 	getArticleDetailsData
 } from './model/selectors/articleDetailsSelectors'
 
+export {
+	ViewVariant
+} from './model/consts/articleDetailsConsts'
+
 export type {
 	ArticleDetailsScheme,
 	ArticleType,
-	ArticleBlockType
+	ArticleBlockType,
+	ViewVariantType
 } from './model/types/ArticleDetailsScheme'
 
 export {
 	ArticleList,
-	ViewVariant
-} from './ui/ArticleList/ArticleList'
-
-export type {
-	ViewVariantType
 } from './ui/ArticleList/ArticleList'

@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider'
-import { ValidateArticleDetailsError } from '../types/ArticleDetailsScheme'
+import { ValidateArticleDetailsError } from '../consts/articleDetailsConsts'
 import {
 	getArticleDetailsData,
 	getArticleDetailsError,

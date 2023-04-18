@@ -1,10 +1,10 @@
-import { ArticleType } from '../../model/types/ArticleDetailsScheme'
+import { ArticleType, ViewVariantType } from '../../model/types/ArticleDetailsScheme'
 import { FC, HTMLAttributeAnchorTarget, memo, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleList.module.scss'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
-import { ValueOf } from 'shared/types/types'
 import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
+import { ViewVariant } from '../../model/consts/articleDetailsConsts'
 
 export interface ArticleListProps {
 	className?: string
@@ -15,13 +15,6 @@ export interface ArticleListProps {
 	target?: HTMLAttributeAnchorTarget
 	error?: string
 }
-
-export const ViewVariant = {
-	GRID: 'grid',
-	LIST: 'list'
-} as const
-
-export type ViewVariantType = ValueOf<typeof ViewVariant>
 
 export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) => {
 	const {

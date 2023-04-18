@@ -1,7 +1,8 @@
+import { ViewVariant } from '../../model/consts/articleDetailsConsts'
+import { ViewVariantType } from '../../model/types/ArticleDetailsScheme'
 import { FC } from 'react'
 import { AppCard } from 'shared/ui/AppCard'
 import { Skeleton } from 'shared/ui/Skeleton'
-import { ViewVariant, ViewVariantType } from '../ArticleList/ArticleList'
 import { HStack, VStack } from 'shared/ui/Stack'
 
 export interface ArticleListItemSkeletonProps {
@@ -10,7 +11,7 @@ export interface ArticleListItemSkeletonProps {
 
 export const ArticleListItemSkeleton: FC<ArticleListItemSkeletonProps> = (props) => {
 	const {
-		view
+		view = ViewVariant.GRID
 	} = props
 
 	if (view === ViewVariant.GRID) {

@@ -1,9 +1,8 @@
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById'
 import {
 	ArticleDetailsScheme,
-	ArticleType,
-	ValidateArticleDetailsError
-} from '../types/ArticleDetailsScheme'
+	ArticleType } from '../types/ArticleDetailsScheme'
+import { ValidateArticleDetailsError } from '../consts/articleDetailsConsts'
 import {
 	articleDetailsActions,
 	articleDetailsReducer

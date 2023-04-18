@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ArticleListItem } from './ArticleListItem'
 import type { ArticleListItemProps } from './ArticleListItem'
 import type { ArticleType } from '../../model/types/ArticleDetailsScheme'
-import { ViewVariant } from '../ArticleList/ArticleList'
+import { ViewVariant } from '../../model/consts/articleDetailsConsts'
 
 const article: ArticleType = {
 	'id': 1,

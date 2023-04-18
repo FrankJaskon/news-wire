@@ -3,9 +3,9 @@ import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import {
 	ArticleType,
-	ValidateArticleDetailsError,
 	ValidateArticleDetailsErrorType
 } from '../../types/ArticleDetailsScheme'
+import { ValidateArticleDetailsError } from '../../consts/articleDetailsConsts'
 
 export const fetchArticleById = createAsyncThunk<
 	ArticleType,

@@ -1,6 +1,12 @@
 import { CommentType } from 'entities/Comment'
 import { ProfileType } from 'entities/Profile'
 import { ValueOf } from 'shared/types/types'
+import {
+	ArticleTopic,
+	BlockType,
+	ValidateArticleDetailsError,
+	ViewVariant
+} from '../consts/articleDetailsConsts'
 
 export interface ArticleDetailsScheme {
 	data?: ArticleType
@@ -9,23 +15,6 @@ export interface ArticleDetailsScheme {
 	readonly: boolean
 	comments?: CommentType[]
 }
-
-export const ValidateArticleDetailsError = {
-	SERVER_ERROR: 'SERVER_ERROR',
-	NO_DATA: 'NO_DATA'
-} as const
-
-export const ArticleTopic = {
-	IT: 'IT',
-	SCIENCE: 'SCIENCE',
-	ECONOMIC: 'ECONOMIC'
-} as const
-
-export const BlockType = {
-	TEXT: 'TEXT',
-	CODE: 'CODE',
-	IMAGE: 'IMAGE'
-} as const
 
 export type ArticleTopicType = ValueOf<typeof ArticleTopic>
 export type BlockTypeType = ValueOf<typeof BlockType>
@@ -52,6 +41,8 @@ export interface ImageBlockType extends Block {
 	src: string
 	title: string
 }
+
+export type ViewVariantType = ValueOf<typeof ViewVariant>
 
 export type ArticleBlockType = TextBlockType | CodeBlockType | ImageBlockType
 
