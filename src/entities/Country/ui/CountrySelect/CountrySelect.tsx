@@ -1,4 +1,5 @@
-import { Country, CountryType } from '../../model/types/CountryScheme'
+import { CountryType } from '../../model/types/CountryScheme'
+import { Country } from '../../model/consts/country'
 import { FC, memo, useCallback, useMemo } from 'react'
 import { AppLabel } from 'shared/ui/Form/Label'
 import { Select, SelectOption } from 'shared/ui/Select'

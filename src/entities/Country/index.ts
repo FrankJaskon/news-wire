@@ -1,6 +1,6 @@
 export {
 	Country
-} from './model/types/CountryScheme'
+} from './model/consts/country'
 
 export type {
 	CountryType

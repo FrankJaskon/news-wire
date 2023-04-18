@@ -3,37 +3,16 @@ import { BuildOptions } from '../types/config'
 import { imgLoader } from './imgLoader'
 import { styleLoader } from './styleLoader'
 import { svgLoader } from './svgLoader'
+import { babelLoader } from './babelLoader'
 
 const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
 
-	const typeScriptLoader: webpack.RuleSetRule =  {
-		test: /\.tsx?$/,
-		use: {
-			loader: 'ts-loader',
-			// options: {
-			// 	transpileOnly: true,
-			// }
-		},
-		exclude: /node_modules/,
-	}
-
-	const babelLoader: webpack.RuleSetRule = {
-		test: /\.(js|ts|tsx|jsx)$/,
-		exclude: /node_modules/,
-		use: {
-			loader: 'babel-loader',
-			options: {
-				presets: [
-					'@babel/preset-typescript',
-					['@babel/preset-env', { targets: 'defaults' }]
-				]
-			}
-		}
-	}
+	const codeBabelLoader = babelLoader({ ...options, isTsx: false })
+	const tsxBabelLoader = babelLoader({ ...options, isTsx: true })
 
 	return [
-		babelLoader,
-		typeScriptLoader,
+		codeBabelLoader,
+		tsxBabelLoader,
 		styleLoader(options.isDev),
 		imgLoader(),
 		svgLoader()

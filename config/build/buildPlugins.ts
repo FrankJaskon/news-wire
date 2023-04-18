@@ -6,6 +6,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { BuildOptions } from './types/config'
 import CopyPlugin from 'copy-webpack-plugin'
 import CircularDependencyPlugin from 'circular-dependency-plugin'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 
 const buildPlugins = ({
 	paths,
@@ -29,10 +30,22 @@ const buildPlugins = ({
 		})
 	]
 	if (isDev) {
-		plugins.push(new ReactRefreshWebpackPlugin(), new CircularDependencyPlugin({
-			exclude: /a\.js|node_modules/,
-			failOnError: true
-		}))
+		plugins.push(
+			new ReactRefreshWebpackPlugin(),
+			new ForkTsCheckerWebpackPlugin({
+				typescript: {
+					diagnosticOptions: {
+						semantic: true,
+						syntactic: true,
+					},
+					mode: 'write-references',
+				},
+			}),
+			new CircularDependencyPlugin({
+				exclude: /a\.js|node_modules/,
+				failOnError: true
+			})
+		)
 	} else {
 		plugins.push(new CopyPlugin({
 			patterns: [

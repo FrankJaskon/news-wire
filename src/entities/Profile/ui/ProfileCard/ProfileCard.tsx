@@ -81,7 +81,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	if (error) {
 		return <VStack
 			justify='center'
-			align='center'
+			align='start'
 		>
 			<Text
 				variant='error'
