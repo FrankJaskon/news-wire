@@ -2,12 +2,15 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { CountrySelect } from './CountrySelect'
+import { Country } from '../../model/types/CountryScheme'
 
 export default {
-	title: 'entities/CurrencySelect',
+	title: 'entities/CountrySelect',
 	component: CountrySelect,
 	argTypes: {},
-	args: {},
+	args: {
+		value: Country.UKRAINE
+	},
 	decorators: []
 } as ComponentMeta<typeof CountrySelect>
 
@@ -15,6 +18,7 @@ const Template: ComponentStory<typeof CountrySelect> = (args) => <CountrySelect 
 
 export const Basic: Story = Template.bind({})
 Basic.args = {
+
 }
 
 export const DarkTheme: Story = Template.bind({})

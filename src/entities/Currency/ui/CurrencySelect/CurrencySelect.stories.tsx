@@ -2,12 +2,15 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from 'shared/config/theme/ThemeContext'
 import { CurrencySelect } from './CurrencySelect'
+import { Currency } from '../../model/types/CurrencyScheme'
 
 export default {
 	title: 'entities/CurrencySelect',
 	component: CurrencySelect,
 	argTypes: {},
-	args: {},
+	args: {
+		value: Currency.UAH
+	},
 	decorators: []
 } as ComponentMeta<typeof CurrencySelect>
 

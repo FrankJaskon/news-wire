@@ -20,7 +20,7 @@ import {
 import { useParams } from 'react-router-dom'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 
-interface ArticleCommentsProps {
+export interface ArticleCommentsProps {
 	className?: string
 }
 
@@ -42,7 +42,6 @@ export const ArticleComments: FC<ArticleCommentsProps> = (props) => {
 
 	useInitialEffect(() => {
 		dispatch(fetchCommentsByArticleId(Number(id)))
-		// dispatch(fetchArticlesRecommendations())
 	})
 
 	return <LazyReducerLoader

@@ -12,7 +12,7 @@ export const ForbiddenPage: FC<ForbiddenPageProps> = (props) => {
 
 	return <PageWrapper>
 		<div className={classNames(cls.ForbiddenPage, {}, [className])}>
-			Acces is forbidden
+			+
 		</div>
 	</PageWrapper>
 }

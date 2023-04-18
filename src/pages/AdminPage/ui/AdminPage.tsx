@@ -12,7 +12,7 @@ const AdminPage: FC<AdminPageProps> = (props) => {
 
 	return <PageWrapper>
 		<div className={classNames(cls.AdminPage, {}, [className])}>
-			ADMIN PANEL
+			+
 		</div>
 	</PageWrapper>
 }

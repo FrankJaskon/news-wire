@@ -11,6 +11,8 @@
 	}
 }
 
+/* VARIANT */
+
 .primary {
 	background-color: var(--primary-color);
 	color: var(--light-color);
@@ -72,12 +74,42 @@
 	}
 }
 
+/* SHAPE */
+
 .square {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 0;
 }
+
+/* COLORS */
+
+.primary-color {
+	color: var(--primary-color);
+}
+
+.secondary-color {
+	color: var(--secondary-color);
+}
+
+.light-color {
+	color: var(--light-color);
+}
+
+.dark-color {
+	color: var(--dark-color);
+}
+
+.red-color {
+	color: var(--red-color);
+}
+
+.light-red-color {
+	color: var(--red-color-lighter);
+}
+
+/* EXTRA OPTIONS */
 
 .noBg {
 	background-color: initial;

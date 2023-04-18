@@ -9,6 +9,7 @@ export const RenderWithMocks = (component: ReactNode, mocks: MockFunction[]): Re
 	const componentWithMocks = reversedMocks.reduce((previousMockResult, mockFunction) => {
 		return mockFunction(previousMockResult)
 	}, component)
+	// @ts-ignore
 	return render(
 		<>
 			{componentWithMocks}

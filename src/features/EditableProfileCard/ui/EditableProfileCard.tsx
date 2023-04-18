@@ -1,6 +1,4 @@
 import { FC, memo, useCallback, useMemo } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
-import cls from './EditableProfileCard.module.scss'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm'
@@ -10,7 +8,6 @@ import { getLoadingError } from '../model/selectors/getLoadingError/getLoadingEr
 import { getReadonly } from '../model/selectors/getReadonly/getReadonly'
 import { getUserAuthData } from 'entities/User'
 import { getProfileData } from '../model/selectors/getProfileData/getProfileData'
-import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ValidateProfileError, ValidateProfileErrorType } from '../model/types/ProfileScheme'
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
@@ -24,8 +21,7 @@ import { ProfileCard } from 'entities/Profile'
 import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 
 export interface EditableProfileCardProps {
-	className?: string
-	id: number
+	id?: number
 }
 
 const reducers: ReducerList = {
@@ -34,7 +30,6 @@ const reducers: ReducerList = {
 
 export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: EditableProfileCardProps) => {
 	const {
-		className,
 		id
 	} = props
 
@@ -115,7 +110,6 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: Ed
 
 	return <LazyReducerLoader
 		reducers={reducers}
-		removeAfterUnmount
 	>
 		{validateError && validateError?.map((err: ValidateProfileErrorType) => (
 			<Text

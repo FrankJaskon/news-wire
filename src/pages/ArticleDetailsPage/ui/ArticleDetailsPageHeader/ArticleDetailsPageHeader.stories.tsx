@@ -4,7 +4,7 @@ import type { ArticleDetailsPageHeaderProps } from './ArticleDetailsPageHeader'
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
 
 export default {
-	title: 'shared/ArticleDetailsPageHeader',
+	title: 'pages/ArticleDetailsPage/ArticleDetailsPageHeader',
 	component: ArticleDetailsPageHeader,
 	argTypes: {},
 	decorators: [StoreDecorator({})]

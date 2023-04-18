@@ -60,7 +60,7 @@ export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 		cls[variant],
 		cls[size],
 		shape && cls[shape],
-		contentHue
+		contentHue && cls[contentHue]
 	]
 
 	return <button
