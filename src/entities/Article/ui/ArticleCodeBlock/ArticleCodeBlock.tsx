@@ -5,6 +5,7 @@ import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
 import cls from './ArticleCodeBlock.module.scss'
 import { VStack } from 'shared/ui/Stack'
+import { AppCard } from 'shared/ui/AppCard'
 
 export interface ArticleCodeBlockProps {
 	className?: string
@@ -51,24 +52,28 @@ export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = memo((props: ArticleC
 
 	return (
 		<VStack className={classNames(cls.ArticleCodeBlock, {}, [className])}>
-			<div className={cls.header}>
-				{isInProgress
-					? <AppButton className={cls.copyBtn}>
-						{t(btnText)}
-					</AppButton>
-					: <AppButton
-						className={cls.copyBtn}
-						onClick={handleCopy}
-					>
-						{t(btnText)}
-					</AppButton>
-				}
-			</div>
-			<pre className={cls.code}>
-				<code ref={codeRef}>
-					{code}
-				</code>
-			</pre>
+			<AppCard
+				noPaddings
+			>
+				<div className={cls.header}>
+					{isInProgress
+						? <AppButton className={cls.copyBtn}>
+							{t(btnText)}
+						</AppButton>
+						: <AppButton
+							className={cls.copyBtn}
+							onClick={handleCopy}
+						>
+							{t(btnText)}
+						</AppButton>
+					}
+				</div>
+				<pre className={cls.code}>
+					<code ref={codeRef}>
+						{code}
+					</code>
+				</pre>
+			</AppCard>
 		</VStack>
 	)
 })

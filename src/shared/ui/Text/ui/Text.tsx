@@ -16,6 +16,7 @@ interface TextProps {
 	titleElement?: ElementType
 	contentElement?: ElementType
 	'data-testid'?: string
+	nowrap?: boolean
 }
 
 export const TextVariant = {
@@ -54,14 +55,15 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		contentHue = TextColor.SECONDARY,
 		titleElement = 'h3',
 		contentElement = 'p',
-		'data-testid': dataTestId = 'Text'
+		'data-testid': dataTestId = 'Text',
+		nowrap = false
 	} = props
 
 	const extra = [
 		className,
 		cls[variant],
 		cls[align],
-		cls[size]
+		cls[size],
 	]
 
 	const TitleTag = useMemo(() => titleElement, [titleElement])
@@ -69,7 +71,13 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 
 	return <div
 		data-testid={dataTestId}
-		className={classNames(cls.Text, {}, extra)}>
+		className={classNames(
+			cls.Text,
+			{
+				[cls.nowrap]: nowrap
+			},
+			extra
+		)}>
 		{title && <TitleTag
 			data-testid={`${dataTestId}.title`}
 			className={classNames(cls.title, {}, [titleHue])}>

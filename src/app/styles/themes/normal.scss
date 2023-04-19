@@ -8,10 +8,13 @@ body.light {
 	--overlay-bg-color: rgba(0 0 0 / 80%);
 	--highlighted-color: rgba(0 0 0 / 4%);
 
-	/* skeleton */
+	/* CARD */
+	--sheet-color: #ebebeb;
+
+	/* SKELETON */
 	--skeleton-color: #fff;
 	--skeleton-shadow: rgba(0 0 0 / 20%);
 
-	/* focus */
+	/* FOCUS */
 	--focus-shadow: 0 0 3px 2px rgba(0 0 0 / 60%);
 }

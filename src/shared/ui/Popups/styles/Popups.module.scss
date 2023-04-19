@@ -1,0 +1,56 @@
+.Popup {
+	position: relative;
+	z-index: var(--absolute-content-z-index);
+
+	/* INTERACTIONS */
+
+	.active {
+		background-color: var(--primary-color);
+		color: var(--light-color);
+	}
+
+	.disabled {
+		color: var(--dark-color);
+		opacity: .9;
+	}
+}
+
+/* LIST DIRECTION */
+
+.topRight {
+	bottom: 100%;
+	left: 0;
+	margin-bottom: 5px;
+}
+
+.topLeft {
+	bottom: 100%;
+	right: 0;
+	margin-bottom: 5px;
+}
+
+.bottomLeft {
+	top: 100%;
+	right: 0;
+	margin-top: 5px;
+}
+
+.bottomRight {
+	top: 100%;
+	left: 0;
+	margin-top: 5px;
+}
+
+/* INNER POSITION */
+
+.start {
+	text-align: start;
+}
+
+.end {
+	text-align: end;
+}
+
+.center {
+	text-align: center;
+}

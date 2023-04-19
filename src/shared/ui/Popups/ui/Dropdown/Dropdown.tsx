@@ -1,17 +1,14 @@
 import { Menu } from '@headlessui/react'
-import cls from './Dropdown.module.scss'
 import { FC, Fragment, ReactNode, memo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
-
-export type DirectionType = 'top right' | 'top left' | 'bottom left' | 'bottom right'
-export type AlignType = 'start' | 'end' | 'center'
-
-export const DirectionVariant: Record<DirectionType, string> = {
-	'top right': 'topRight',
-	'top left': 'topLeft',
-	'bottom left': 'bottomLeft',
-	'bottom right': 'bottomRight'
-}
+import {
+	AlignType,
+	DirectionType,
+	DirectionVariant,
+	InnerPositionVariant
+} from '../../styles/consts'
+import cls from './Dropdown.module.scss'
+import popupCls from '../../styles/Popups.module.scss'
 
 export interface DropdownItem {
 	disabled?: boolean
@@ -25,7 +22,6 @@ export interface DropdownProps {
 	trigger: ReactNode
 	items: DropdownItem[]
 	direction?: DirectionType
-	isRelativeWithin?: boolean
 	align?: AlignType
 }
 
@@ -35,7 +31,6 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 		trigger,
 		items,
 		direction = 'bottom right',
-		isRelativeWithin = true,
 		align = 'start'
 	} = props
 	return (
@@ -43,9 +38,8 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 			as='div'
 			className={classNames(
 				cls.Dropdown,
-				{
-					[cls.relative]: isRelativeWithin
-				}
+				{},
+				[popupCls.Popup]
 			)}
 		>
 			<Menu.Button
@@ -57,10 +51,8 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 				as='div'
 				className={classNames(
 					cls.items,
-					{
-						[cls.fullWith]: isRelativeWithin
-					},
-					[cls[DirectionVariant[direction]]]
+					{},
+					[DirectionVariant[direction]]
 				)}
 			>
 				{
@@ -70,7 +62,14 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 								type='button'
 								disabled={item.disabled}
 								onClick={item.onClick}
-								className={classNames(cls.item, { [cls.active]: active }, [cls[align]])}
+								className={classNames(
+									cls.item,
+									{
+										[popupCls.active]: active,
+										[popupCls.disabled]: item.disabled
+									},
+									[InnerPositionVariant[align]])
+								}
 							>
 								{item.component}
 							</button>

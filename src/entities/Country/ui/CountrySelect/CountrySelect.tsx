@@ -2,9 +2,9 @@ import { CountryType } from '../../model/types/CountryScheme'
 import { Country } from '../../model/consts/country'
 import { FC, memo, useCallback, useMemo } from 'react'
 import { AppLabel } from 'shared/ui/Form/Label'
-import { Select, SelectOption } from 'shared/ui/Select'
 import { useTranslation } from 'react-i18next'
 import { VStack } from 'shared/ui/Stack'
+import { Select, SelectOption } from 'shared/ui/Popups'
 
 interface CountrySelectProps {
 	value?: CountryType

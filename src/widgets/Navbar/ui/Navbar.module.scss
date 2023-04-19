@@ -26,11 +26,3 @@
 	padding: 0 5px;
 	white-space: nowrap;
 }
-
-.dropdownButton {
-	display: flex;
-	border-radius: 50%;
-	&:hover {
-		box-shadow: 0 0 5px 0 var(--overlay-bg-color);
-	}
-}

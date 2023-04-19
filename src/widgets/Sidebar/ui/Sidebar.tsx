@@ -44,15 +44,6 @@ export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 		>
 			{renderLinks}
 		</VStack>
-		<AppButton
-			data-testid='sidebar-toggler'
-			className={cls.toggler}
-			variant={ButtonVariant.CUSTOM}
-			size={ButtonSize.L}
-			shape={ButtonShape.SQUARE}
-			onClick={toggleSidebar}>
-			{isCollapsed ? '>' : '<'}
-		</AppButton>
 		{isCollapsed
 			? <VStack
 				justify='center'
@@ -81,5 +72,14 @@ export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 				/>
 			</HStack>
 		}
+		<AppButton
+			data-testid='sidebar-toggler'
+			className={cls.toggler}
+			variant={ButtonVariant.CUSTOM}
+			size={ButtonSize.L}
+			shape={ButtonShape.SQUARE}
+			onClick={toggleSidebar}>
+			{isCollapsed ? '>' : '<'}
+		</AppButton>
 	</aside>
 })

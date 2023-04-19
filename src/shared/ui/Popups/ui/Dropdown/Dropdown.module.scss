@@ -1,0 +1,26 @@
+.Dropdown {
+	display: flex;
+}
+
+.items {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	background-color: var(--light-color);
+	border-radius: var(--border-radius);
+	&.fullWith {
+		min-width: 100%;
+	}
+	& > * {
+		width: 100%;
+	}
+}
+
+.item {
+	cursor: pointer;
+	width: 100%;
+	padding: 4px 16px;
+	white-space: nowrap;
+	border-radius: var(--border-radius);
+	transition: background-color .2s, color .2s;
+}

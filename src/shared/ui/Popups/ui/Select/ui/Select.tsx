@@ -3,9 +3,11 @@ import { Listbox } from '@headlessui/react'
 import ExpandIcon from 'shared/assets/icons/expand.svg'
 import CheckMark from 'shared/assets/icons/checkmark.svg'
 import classNames from 'shared/lib/classNames/classNames'
-import cls from './Select.module.scss'
 import { AppIcon, AppIconSize, AppIconVariant } from 'shared/ui/AppIcon'
 import { HStack } from 'shared/ui/Stack'
+import cls from './Select.module.scss'
+import popupCls from '../../../styles/Popups.module.scss'
+import { AlignType, DirectionType, DirectionVariant, InnerPositionVariant } from '../../../styles/consts'
 
 export interface SelectOption {
 	value: string
@@ -18,6 +20,8 @@ export interface SelectProps {
 	options: SelectOption[]
 	value?: SelectOption
 	onChange?: (value: SelectOption) => void
+	direction?: DirectionType
+	align?: AlignType
 	readonly?: boolean
 	placeholder?: string
 }
@@ -31,9 +35,15 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
 		name,
 		readonly,
 		placeholder,
+		direction = 'bottom right',
+		align = 'start'
 	} = props
 
-	return <div className={classNames(cls.Select, {}, [className])}>
+	return <div className={classNames(
+		popupCls.Popup,
+		{},
+		[className])}
+	>
 		<Listbox
 			value={value || {}}
 			onChange={onChange}
@@ -42,7 +52,7 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
 		>
 			<Listbox.Button
 				className={classNames(cls.button, {
-					[cls.disabled]: readonly
+					[popupCls.disabled]: readonly
 				})}
 			>
 				<HStack
@@ -58,7 +68,11 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
 				</HStack>
 			</Listbox.Button>
 			<Listbox.Options
-				className={cls.options}
+				className={classNames(
+					cls.options,
+					{},
+					[DirectionVariant[direction]]
+				)}
 			>
 				{options.map((item) => (
 					<Listbox.Option
@@ -69,9 +83,9 @@ export const Select: FC<SelectProps> = memo((props: SelectProps) => {
 						{({ active, selected }) => <li className={classNames(
 							cls.item,
 							{
-								[cls.active]: active,
+								[popupCls.active]: active,
 							},
-							[])
+							[InnerPositionVariant[align]])
 						}>
 							<HStack
 								justify='between'

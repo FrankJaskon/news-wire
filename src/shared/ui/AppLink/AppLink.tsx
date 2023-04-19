@@ -11,6 +11,7 @@ export const AppLinkVariant = {
 	UNDERLINED: 'underlined',
 	PRIMARY_BUTTON: 'primary_button',
 	CUSTOM_BUTTON: 'custom_button',
+	CLEAR: 'clear'
 } as const
 
 export type AppLinkVariantType = ValueOf<typeof AppLinkVariant>

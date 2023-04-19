@@ -1,3 +1,5 @@
+/* SIZE */
+
 .size-s {
 	.title {
 		font: var(--font-m);
@@ -38,6 +40,8 @@
 	}
 }
 
+/* VARIANT */
+
 .error {
 	.title {
 		color: var(--red-color);
@@ -47,6 +51,8 @@
 		color: var(--red-color-lighter);
 	}
 }
+
+/* ALIGN */
 
 .start {
 	text-align: start;
@@ -62,4 +68,15 @@
 
 .justify {
 	text-align: justify;
+}
+
+/* EXTRA OPTIONS */
+
+.nowrap {
+	.title {
+		white-space: nowrap;
+	}
+	.content {
+		white-space: nowrap;
+	}
 }
