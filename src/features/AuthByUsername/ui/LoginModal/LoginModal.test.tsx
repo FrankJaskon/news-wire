@@ -9,7 +9,7 @@ describe('LoginModal', () => {
 	const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore()]
 	it('renders the LoginForm when isOpen is true', () => {
 		RenderWithMocks(
-			<LoginModal isOpen onClose={() => ({})} />,
+			<LoginModal isOpen={true} onClose={() => ({})} />,
 			mocks
 		)
 

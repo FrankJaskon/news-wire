@@ -1,8 +1,9 @@
-import { FC, MouseEvent, ReactNode, useState, useRef, useEffect, useCallback } from 'react'
+import { FC, ReactNode, useState, useRef, useEffect, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { Portal } from 'shared/ui/Portal'
 import cls from './Modal.module.scss'
+import { Overlay } from 'shared/ui/Overlay/Overlay'
 
 interface ModalProps {
 	className?: string
@@ -24,37 +25,13 @@ export const Modal: FC<ModalProps> = (props) => {
 	} = props
 
 	const [isMounted, setIsMounted] = useState<boolean>(false)
-	const [isMouseDown, setIsMouseDown] = useState(false)
 	const [isClosing, setIsClosing] = useState<boolean>(false)
 	const timerRef = useRef<ReturnType<typeof setTimeout>>()
-	const overlayRef = useRef<HTMLDivElement | null>(null)
-	const contentRef = useRef<HTMLDivElement | null>(null)
 
 	const mods: Mods = {
-		[cls.open]: isOpen,
+		[cls.opened]: isOpen,
 		[cls.closed]: isClosing,
 	} as const
-
-	const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
-		if (isMouseDown) return
-		if (e.target === overlayRef.current) {
-			setIsMouseDown(true)
-		}
-	}
-
-	const handleMouseUp = (e: MouseEvent<HTMLDivElement>) => {
-		if (!isMouseDown) return
-		if (e.target === overlayRef.current) {
-			setIsMouseDown(false)
-			closeHandler()
-		}
-	}
-
-	const handleClickOnOverlay = (e: MouseEvent<HTMLDivElement>) => {
-		if (e.target === overlayRef.current) {
-			e.preventDefault()
-		}
-	}
 
 	const closeHandler = useCallback(() => {
 		if (onClose) {
@@ -97,21 +74,15 @@ export const Modal: FC<ModalProps> = (props) => {
 	return <Portal>
 		<div
 			className={classNames(cls.Modal, mods, [className])}
-			onMouseDown={handleMouseDown}
-			onMouseUp={handleMouseUp}
 		>
-			<div
-				onMouseDown={handleClickOnOverlay}
-				ref={overlayRef}
-				className={cls.overlay}
-			>
+			{isOpen && <>
+				<Overlay onClick={closeHandler} />
 				<div
-					ref={contentRef}
 					className={cls.content}
 				>
 					{children}
 				</div>
-			</div>
+			</>}
 		</div>
 	</Portal>
 }

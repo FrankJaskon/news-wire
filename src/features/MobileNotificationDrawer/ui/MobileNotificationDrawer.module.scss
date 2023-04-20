@@ -1,14 +1,8 @@
-.NotificationPopup {
+.MobileNotificationDrawer {
 	display: flex;
 	padding: 5px;
 	border-radius: var(--border-radius);
 	&:hover {
 		box-shadow: 0 0 5px 0 var(--overlay-bg-color);
 	}
-}
-
-.listWrapper {
-	margin-top: 4px;
-	max-height: 400px;
-	overflow-y: auto;
 }

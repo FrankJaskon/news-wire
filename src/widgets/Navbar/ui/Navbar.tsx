@@ -13,6 +13,10 @@ import { HStack } from 'shared/ui/Stack'
 import { NotificationPopup } from 'features/NotificationPopup'
 import { AvatarDropdown } from 'features/AvatarDropdown'
 import cls from './Navbar.module.scss'
+import { Drawer } from 'shared/ui/Drawer/Drawer'
+import { NotificationList } from 'entities/Notification'
+import { MobileNotificationDrawer } from 'features/MobileNotificationDrawer'
+import { useDetectMobile } from 'shared/hooks/useDetectMobile/useDetectMobile'
 
 interface NavbarProps {
 	className?: string
@@ -23,6 +27,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 	const { t } = useTranslation()
 	const [isAuthModal, setIsAuthModal] = useState<boolean>(false)
 	const authData = useSelector(getUserAuthData)
+	const isMobile = useDetectMobile()
 
 	const openModal = useCallback(() => {
 		setIsAuthModal(true)
@@ -52,7 +57,11 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 				max={false}
 				align='center'
 			>
-				<NotificationPopup />
+				{
+					isMobile
+						? <MobileNotificationDrawer />
+						: <NotificationPopup />
+				}
 				<AvatarDropdown />
 			</HStack>
 		</HStack>

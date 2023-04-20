@@ -26,6 +26,8 @@ export const NotificationPopup: FC<NotificationPopupProps> = (props) => {
 		className={classNames(cls.NotificationPopup, {}, [className])}
 		unmount={false}
 	>
-		<NotificationList />
+		<div className={cls.listWrapper}>
+			<NotificationList />
+		</div>
 	</Popover>
 }

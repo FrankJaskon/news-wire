@@ -2,7 +2,7 @@ import { FC, ReactNode, useMemo } from 'react'
 import { NotificationType } from '../../model/types/notifications'
 import { VStack } from 'shared/ui/Stack'
 import { Text, TextSize } from 'shared/ui/Text'
-import { AppCard } from 'shared/ui/AppCard'
+import { AppCard, CardVariant } from 'shared/ui/AppCard'
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './NotificationItem.module.scss'
@@ -24,7 +24,9 @@ export const NotificationItem: FC<NotificationItemProps> = (props) => {
 		}
 	} = props
 
-	let content: ReactNode = useMemo(() => <AppCard>
+	let content: ReactNode = useMemo(() => <AppCard
+		variant={CardVariant.LIGHT}
+	>
 		<Text
 			title={title}
 			content={description}

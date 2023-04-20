@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton } from 'shared/ui/AppButton'
@@ -8,15 +8,15 @@ interface ErrorPageProps {
 	className?: string
 }
 
-export const ErrorPage: FC<ErrorPageProps> = (props) => {
+export const ErrorPage: FC<ErrorPageProps> = memo((props: ErrorPageProps) => {
 	const { className } = props
 	const { t } = useTranslation()
 
-	const reloadPage = () => {
+	const reloadPage = useCallback(() => {
 		location.reload()
-	}
+	}, [])
 
-	return <div className={classNames(cls.ErrorPage, {}, [className])}>
+	return <div className={classNames(cls.ErrorPage, {}, [className, 'errorBoundary'])}>
 		<div>{t('error-page.something-went-wrong')}</div>
 		<AppButton
 			onClick={reloadPage}
@@ -24,4 +24,4 @@ export const ErrorPage: FC<ErrorPageProps> = (props) => {
 			{t('error-page.reload')}
 		</AppButton>
 	</div>
-}
+})

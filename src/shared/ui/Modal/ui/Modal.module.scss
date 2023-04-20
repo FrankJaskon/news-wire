@@ -9,17 +9,11 @@
 	z-index: -1;
 }
 
-.overlay {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #0000;
-	height: 100%;
-	width: 100%;
-	transition: background-color .2s linear;
-}
-
 .content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(.5);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -29,20 +23,16 @@
 	padding: 20px;
 	background-color: var(--bg-color);
 	border-radius: var(--border-radius);
-	transform: scale(.5);
 	transition: transform .2s linear, opacity .2s linear;
 }
 
-.open {
+.opened {
 	opacity: 1;
 	pointer-events: auto;
 	z-index: var(--modal-z-index);
 	.content {
-		transform: scale(1);
+		transform: translate(-50%, -50%) scale(1);
 		opacity: 1;
-	}
-	.overlay {
-		background-color: var(--overlay-bg-color);
 	}
 }
 
@@ -50,8 +40,5 @@
 	.content {
 		transform: scale(.2);
 		opacity: .2;
-	}
-	.overlay {
-		background-color: #0000;
 	}
 }
