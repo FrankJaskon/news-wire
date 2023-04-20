@@ -28,6 +28,7 @@ export const LoginModal: FC<LoginModalProps> = memo((props: LoginModalProps) => 
 		className={classNames(cls.LoginModal)}
 		isOpen={isOpen}
 		onClose={onClose}
+		lazy
 	>
 		<Suspense fallback={<Loader />}>
 			<LoginForm onSuccess={onClose} />
