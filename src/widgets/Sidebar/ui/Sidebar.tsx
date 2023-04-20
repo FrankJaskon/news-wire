@@ -1,4 +1,4 @@
-import { FC, memo, useMemo, useState } from 'react'
+import { FC, memo, useEffect, useMemo, useState } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppButton, ButtonShape, ButtonSize, ButtonVariant } from 'shared/ui/AppButton'
 import { LanguageToggler } from 'features/LanguageToggler'
@@ -8,6 +8,7 @@ import { SidebarLink } from './SidebarLink/SidebarLink'
 import { useSelector } from 'react-redux'
 import { getSidebarItem } from '../model/selectors/getSidebarItem'
 import { HStack, VStack } from 'shared/ui/Stack'
+import { useDetectMobile } from 'shared/hooks/useDetectMobile/useDetectMobile'
 
 interface SidebarProps {
 	className?: string
@@ -15,7 +16,8 @@ interface SidebarProps {
 
 export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 	const { className } = props
-	const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
+	const isMobile = useDetectMobile()
+	const [isCollapsed, setIsCollapsed] = useState<boolean>(isMobile ? true : false)
 	const sidebarLinks = useSelector(getSidebarItem)
 
 	const toggleSidebar = () => {

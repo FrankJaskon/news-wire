@@ -13,8 +13,6 @@ import { HStack } from 'shared/ui/Stack'
 import { NotificationPopup } from 'features/NotificationPopup'
 import { AvatarDropdown } from 'features/AvatarDropdown'
 import cls from './Navbar.module.scss'
-import { Drawer } from 'shared/ui/Drawer/Drawer'
-import { NotificationList } from 'entities/Notification'
 import { MobileNotificationDrawer } from 'features/MobileNotificationDrawer'
 import { useDetectMobile } from 'shared/hooks/useDetectMobile/useDetectMobile'
 
