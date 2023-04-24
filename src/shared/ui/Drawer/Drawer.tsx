@@ -1,19 +1,18 @@
 import {
 	memo, ReactNode, useCallback, useEffect,
 } from 'react'
-import { Overlay } from 'shared/ui/Overlay/Overlay'
+import { Overlay } from '@/shared/ui/Overlay/Overlay'
 import cls from './Drawer.module.scss'
-import useTheme from 'shared/config/theme/useTheme'
-import { Portal } from 'shared/ui/Portal'
-import classNames from 'shared/lib/classNames/classNames'
-import { useAnimationLibs } from 'shared/lib/components/AnimationProvider'
+import useTheme from '@/shared/config/theme/useTheme'
+import { Portal } from '@/shared/ui/Portal'
+import classNames from '@/shared/lib/classNames/classNames'
+import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider'
 
 interface DrawerProps {
 	className?: string
 	children: ReactNode
 	isOpen?: boolean
 	onClose?: () => void
-	lazy?: boolean
 }
 
 const height = window.innerHeight - 100
@@ -27,7 +26,6 @@ export const DrawerContent = memo((props: DrawerProps) => {
 		children,
 		onClose,
 		isOpen,
-		lazy,
 	} = props
 
 	const openDrawer = useCallback(() => {
@@ -98,7 +96,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
 	)
 })
 
-export const Drawer = memo((props: DrawerProps) => {
+const DrawerAsync = (props: DrawerProps) => {
 	const {
 		isLoaded
 	} = useAnimationLibs()
@@ -108,4 +106,10 @@ export const Drawer = memo((props: DrawerProps) => {
 	}
 
 	return <DrawerContent {...props} />
-})
+}
+
+export const Drawer = (props: DrawerProps) => {
+	return <AnimationProvider>
+		<DrawerAsync {...props} />
+	</AnimationProvider>
+}

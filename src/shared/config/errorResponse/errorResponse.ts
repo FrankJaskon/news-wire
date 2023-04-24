@@ -1,4 +1,4 @@
-import { ValueOf } from 'shared/types/types'
+import { ValueOf } from '@/shared/types/types'
 
 export const LoginErrors = {
 	GATEWAY: 'Gateway Timeout. No response from server',

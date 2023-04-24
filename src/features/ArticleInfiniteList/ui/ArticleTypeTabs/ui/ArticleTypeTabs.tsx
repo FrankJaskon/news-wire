@@ -1,8 +1,8 @@
 import { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { TabItem, Tabs } from 'shared/ui/Tab/ui/Tabs'
+import { TabItem, Tabs } from '@/shared/ui/Tab/ui/Tabs'
 import { ArticlesTypes, ArticlesTypesType } from '../model/types/tabs'
-import { TabVariant } from 'shared/ui/Tab'
+import { TabVariant } from '@/shared/ui/Tab'
 
 export interface ArticleTypeTabsProps {
 	className?: string

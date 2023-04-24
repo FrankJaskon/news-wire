@@ -1,11 +1,11 @@
 import { FC, memo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ValueOf } from 'shared/types/types'
-import classNames from 'shared/lib/classNames/classNames'
-import { AppButton } from 'shared/ui/AppButton'
+import { ValueOf } from '@/shared/types/types'
+import classNames from '@/shared/lib/classNames/classNames'
+import { AppButton } from '@/shared/ui/AppButton'
 import cls from './ArticleCodeBlock.module.scss'
-import { VStack } from 'shared/ui/Stack'
-import { AppCard } from 'shared/ui/AppCard'
+import { VStack } from '@/shared/ui/Stack'
+import { AppCard } from '@/shared/ui/AppCard'
 
 export interface ArticleCodeBlockProps {
 	className?: string

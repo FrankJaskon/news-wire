@@ -2,11 +2,11 @@ import { getIfCanEdit } from '../../model/selectors/article'
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
-import classNames from 'shared/lib/classNames/classNames'
-import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink'
+import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
+import classNames from '@/shared/lib/classNames/classNames'
+import { AppLink, AppLinkVariant } from '@/shared/ui/AppLink/AppLink'
 import cls from './ArticleDetailsPageHeader.module.scss'
-import { HStack } from 'shared/ui/Stack'
+import { HStack } from '@/shared/ui/Stack'
 
 export interface ArticleDetailsPageHeaderProps {
 	className?: string

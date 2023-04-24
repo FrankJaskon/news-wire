@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
+import classNames from '@/shared/lib/classNames/classNames'
 import cls from './ForbiddenPage.module.scss'
-import { PageWrapper } from 'widgets/PageWrapper'
+import { PageWrapper } from '@/widgets/PageWrapper'
 
 export interface ForbiddenPageProps {
 	className?: string

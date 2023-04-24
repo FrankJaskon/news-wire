@@ -1,4 +1,4 @@
-import { ValueOf } from 'shared/types/types'
+import { ValueOf } from '@/shared/types/types'
 
 export const TextColor = {
 	PRIMARY: 'primary-color',

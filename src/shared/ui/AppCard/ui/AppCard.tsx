@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes, ReactNode, useMemo } from 'react'
-import classNames, { Mods } from 'shared/lib/classNames/classNames'
+import classNames, { Mods } from '@/shared/lib/classNames/classNames'
 import cls from './AppCard.module.scss'
-import { ValueOf } from 'shared/types/types'
+import { ValueOf } from '@/shared/types/types'
 
 export const CardVariant = {
 	PRIMARY: 'primary',

@@ -1,7 +1,7 @@
-import { AddNewComment } from 'entities/AddNewComment'
+import { AddNewComment } from '@/entities/AddNewComment'
 import { createNewCommentForArticle } from '../../model/services/createNewCommentForArticle/createNewCommentForArticle'
 import { FC, memo, useCallback } from 'react'
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 
 export const AddArticleComment: FC = memo(() => {
 

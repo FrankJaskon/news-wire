@@ -1,10 +1,10 @@
-import { Country } from 'entities/Country'
-import { Currency } from 'entities/Currency'
+import { Country } from '@/entities/Country'
+import { Currency } from '@/entities/Currency'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
 import { ProfileScheme, ValidateProfileError } from '../types/ProfileScheme'
 import { profileActions, profileReducer } from './profileSlice'
-import { ProfileType } from 'entities/Profile'
+import { ProfileType } from '@/entities/Profile'
 
 describe('Profile reducer', () => {
 	const initialState: ProfileScheme = {

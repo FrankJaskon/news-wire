@@ -1,4 +1,4 @@
-import { QueryParamsKeysType } from 'shared/const/queryParams'
+import { QueryParamsKeysType } from '@/shared/const/queryParams'
 
 export const setQueryParams = (
 	setSearchParams: (

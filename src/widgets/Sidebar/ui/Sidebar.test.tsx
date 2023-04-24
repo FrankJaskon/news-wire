@@ -1,13 +1,13 @@
 import { fireEvent, screen } from '@testing-library/react'
 import {
 	MockTranslation
-} from 'shared/config/tests/MockTranslation/MockTranslation'
+} from '@/shared/config/tests/MockTranslation/MockTranslation'
 import {
 	MockBrowserRouter
-} from 'shared/config/tests/MockBrowserRouter/MockBrowserRouter'
+} from '@/shared/config/tests/MockBrowserRouter/MockBrowserRouter'
 import { Sidebar } from './Sidebar'
-import { MockFunction, RenderWithMocks } from 'shared/config/tests/RenderWithMocks/RenderWithMocks'
-import { MockStore } from 'shared/config/tests/MockStore/MockStore'
+import { MockFunction, RenderWithMocks } from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
+import { MockStore } from '@/shared/config/tests/MockStore/MockStore'
 
 describe('Sidebar', () => {
 	const mocks: MockFunction[] = [MockBrowserRouter(), MockStore(), MockTranslation]

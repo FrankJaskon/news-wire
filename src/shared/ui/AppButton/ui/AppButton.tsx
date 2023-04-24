@@ -1,8 +1,8 @@
 import React, { FC, memo } from 'react'
-import { ValueOf } from 'shared/types/types'
-import classNames from 'shared/lib/classNames/classNames'
+import { ValueOf } from '@/shared/types/types'
+import classNames from '@/shared/lib/classNames/classNames'
 import cls from './AppButton.module.scss'
-import { TextColorType } from 'shared/const/consts'
+import { TextColorType } from '@/shared/const/consts'
 
 interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string,

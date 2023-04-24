@@ -1,9 +1,9 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import classNames from 'shared/lib/classNames/classNames'
-import { PageWrapper } from 'widgets/PageWrapper'
+import classNames from '@/shared/lib/classNames/classNames'
+import { PageWrapper } from '@/widgets/PageWrapper'
 import cls from './NotFound.module.scss'
-import { Text, TextSize, TextVariant } from 'shared/ui/Text'
+import { Text, TextSize, TextVariant } from '@/shared/ui/Text'
 
 interface NotFoundProps {
 	className?: string

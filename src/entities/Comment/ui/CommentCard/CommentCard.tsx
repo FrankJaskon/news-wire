@@ -1,14 +1,14 @@
 import { CommentType } from '../../model/types/comment'
 import { FC, memo } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
+import classNames from '@/shared/lib/classNames/classNames'
 import cls from './CommentCard.module.scss'
-import { Skeleton } from 'shared/ui/Skeleton'
-import { Text, TextSize } from 'shared/ui/Text'
-import { Avatar } from 'shared/ui/Avatar'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
-import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
-import { HStack, VStack } from 'shared/ui/Stack'
-import { AppCard } from 'shared/ui/AppCard'
+import { Skeleton } from '@/shared/ui/Skeleton'
+import { Text, TextSize } from '@/shared/ui/Text'
+import { Avatar } from '@/shared/ui/Avatar'
+import { AppLink } from '@/shared/ui/AppLink/AppLink'
+import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
+import { HStack, VStack } from '@/shared/ui/Stack'
+import { AppCard } from '@/shared/ui/AppCard'
 
 export interface CommentCardProps {
 	className?: string

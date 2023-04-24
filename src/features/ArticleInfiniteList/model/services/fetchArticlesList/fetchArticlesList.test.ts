@@ -1,6 +1,6 @@
 
-import { ArticleType } from 'entities/Article'
-import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk'
+import { ArticleType } from '@/entities/Article'
+import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
 import { fetchArticlesList } from './fetchArticlesList'
 
 describe('fetchArticlesList', () => {

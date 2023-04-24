@@ -1,6 +1,6 @@
 import { FC, LabelHTMLAttributes, memo, ReactNode } from 'react'
-import { ValueOf } from 'shared/types/types'
-import classNames from 'shared/lib/classNames/classNames'
+import { ValueOf } from '@/shared/types/types'
+import classNames from '@/shared/lib/classNames/classNames'
 import cls from './AppLabel.module.scss'
 
 export const LabelVariant = {

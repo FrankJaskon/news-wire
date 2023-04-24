@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ArticleDetails } from './ArticleDetails'
 import type { ArticleDetailsProps } from './ArticleDetails'
-import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ArticleDetailsScheme, ValidateArticleDetailsErrorType } from '../../model/types/ArticleDetailsScheme'
 
 const articleDetailsState: ArticleDetailsScheme = {

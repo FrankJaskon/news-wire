@@ -1,6 +1,6 @@
 import { Menu } from '@headlessui/react'
 import { FC, Fragment, ReactNode, memo } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
+import classNames from '@/shared/lib/classNames/classNames'
 import {
 	AlignType,
 	DirectionType,

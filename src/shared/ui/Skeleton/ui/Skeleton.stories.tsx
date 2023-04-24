@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { Skeleton } from './Skeleton'
 import type { SkeletonProps } from './Skeleton'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from 'shared/config/theme/ThemeContext'
+import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
+import { AppThemes } from '@/shared/config/theme/ThemeContext'
 
 export default {
 	title: 'shared/Skeleton',

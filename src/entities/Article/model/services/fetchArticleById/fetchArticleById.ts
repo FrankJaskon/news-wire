@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from 'app/providers/StoreProvider'
-import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
+import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
 import {
 	ArticleType,
 	ValidateArticleDetailsErrorType

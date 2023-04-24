@@ -1,5 +1,5 @@
 
-import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk'
+import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
 import { fetchArticleById } from './fetchArticleById'
 import { ArticleType } from '../../types/ArticleDetailsScheme'
 import { ValidateArticleDetailsError } from '../../consts/articleDetailsConsts'

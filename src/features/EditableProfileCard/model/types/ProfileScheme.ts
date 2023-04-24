@@ -1,5 +1,5 @@
-import { ProfileType } from 'entities/Profile'
-import { ValueOf } from 'shared/types/types'
+import { ProfileType } from '@/entities/Profile'
+import { ValueOf } from '@/shared/types/types'
 
 export const ValidateProfileError = {
 	INCORRECT_FIRSTNAME: 'INCORRECT_FIRSTNAME',

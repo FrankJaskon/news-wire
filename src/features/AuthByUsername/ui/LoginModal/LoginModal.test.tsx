@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react'
-import { MockBrowserRouter } from 'shared/config/tests/MockBrowserRouter/MockBrowserRouter'
-import { MockStore } from 'shared/config/tests/MockStore/MockStore'
-import { MockTranslation } from 'shared/config/tests/MockTranslation/MockTranslation'
-import { MockFunction, RenderWithMocks } from 'shared/config/tests/RenderWithMocks/RenderWithMocks'
+import { MockBrowserRouter } from '@/shared/config/tests/MockBrowserRouter/MockBrowserRouter'
+import { MockStore } from '@/shared/config/tests/MockStore/MockStore'
+import { MockTranslation } from '@/shared/config/tests/MockTranslation/MockTranslation'
+import { MockFunction, RenderWithMocks } from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
 import { LoginModal } from './LoginModal'
 
 describe('LoginModal', () => {

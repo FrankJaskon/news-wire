@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from 'shared/config/theme/ThemeContext'
+import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
+import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { Text, TextAlign, TextVariant } from './Text'
 
 export default {

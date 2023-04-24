@@ -1,6 +1,6 @@
-import { CommentType } from 'entities/Comment'
-import { ProfileType } from 'entities/Profile'
-import { ValueOf } from 'shared/types/types'
+import { CommentType } from '@/entities/Comment'
+import { ProfileType } from '@/entities/Profile'
+import { ValueOf } from '@/shared/types/types'
 import {
 	ArticleTopic,
 	BlockType,

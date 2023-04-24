@@ -3,7 +3,7 @@ import ThemeContext, {
 	LOCAL_STORAGE_THEME_KEY,
 	AppThemes,Theme,
 	ThemeContextProps
-} from 'shared/config/theme/ThemeContext'
+} from '@/shared/config/theme/ThemeContext'
 
 const defaultTheme: Theme = localStorage
 	.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || AppThemes.LIGHT

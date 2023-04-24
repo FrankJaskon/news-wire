@@ -1,15 +1,15 @@
 import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
-import classNames from 'shared/lib/classNames/classNames'
-import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { AppButton, ButtonVariant } from 'shared/ui/AppButton'
-import { AppTextArea } from 'shared/ui/Form/AppTextArea'
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
+import classNames from '@/shared/lib/classNames/classNames'
+import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
+import { AppTextArea } from '@/shared/ui/Form/AppTextArea'
 import { getNewCommentText } from '../model/selectors/newCommentSelectors'
 import { addNewCommentActions, addNewCommentReducer } from '../model/slices/addNewCommentSlice'
 import cls from './AddNewComment.module.scss'
-import { VStack } from 'shared/ui/Stack'
+import { VStack } from '@/shared/ui/Stack'
 
 export interface AddNewCommentProps {
 	className?: string

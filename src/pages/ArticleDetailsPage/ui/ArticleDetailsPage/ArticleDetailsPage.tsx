@@ -1,15 +1,15 @@
-import { ArticleDetails } from 'entities/Article'
+import { ArticleDetails } from '@/entities/Article'
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import classNames from 'shared/lib/classNames/classNames'
+import classNames from '@/shared/lib/classNames/classNames'
 import cls from './ArticleDetailsPage.module.scss'
-import { Text } from 'shared/ui/Text'
+import { Text } from '@/shared/ui/Text'
 import { useParams } from 'react-router-dom'
-import { PageWrapper } from 'widgets/PageWrapper'
+import { PageWrapper } from '@/widgets/PageWrapper'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
-import { VStack } from 'shared/ui/Stack'
-import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList'
-import { ArticleComments } from 'features/ArticleComments'
+import { VStack } from '@/shared/ui/Stack'
+import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList'
+import { ArticleComments } from '@/features/ArticleComments'
 
 export interface ArticleDetailsPageProps {
 	className ?: string

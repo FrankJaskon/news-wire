@@ -1,8 +1,8 @@
 import { FC, memo, useMemo } from 'react'
-import { ValueOf } from 'shared/types/types'
-import classNames from 'shared/lib/classNames/classNames'
+import { ValueOf } from '@/shared/types/types'
+import classNames from '@/shared/lib/classNames/classNames'
 import cls from './Text.module.scss'
-import { TextColor, TextColorType } from 'shared/const/consts'
+import { TextColor, TextColorType } from '@/shared/const/consts'
 
 interface TextProps {
 	className?: string

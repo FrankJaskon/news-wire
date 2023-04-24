@@ -1,11 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { getUserAuthData } from 'entities/User'
-import HomeIcon from 'shared/assets/icons/home.svg'
-import AboutIcon from 'shared/assets/icons/about.svg'
-import ProfileIcon from 'shared/assets/icons/profile.svg'
-import ArticlesIcon from 'shared/assets/icons/articles.svg'
+import { getUserAuthData } from '@/entities/User'
+import HomeIcon from '@/shared/assets/icons/home.svg'
+import AboutIcon from '@/shared/assets/icons/about.svg'
+import ProfileIcon from '@/shared/assets/icons/profile.svg'
+import ArticlesIcon from '@/shared/assets/icons/articles.svg'
 import { SidebarItemType } from '../types/sidebarTypes'
-import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
+import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
 
 export const getSidebarItem = createSelector(
 	getUserAuthData,

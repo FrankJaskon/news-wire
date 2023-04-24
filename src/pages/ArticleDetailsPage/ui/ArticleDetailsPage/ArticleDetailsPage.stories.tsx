@@ -2,9 +2,9 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import ArticleDetailsPage from './ArticleDetailsPage'
 import type { ArticleDetailsPageProps } from './ArticleDetailsPage'
-import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
-import { ArticleType } from 'entities/Article'
-import { ValidateArticleDetailsErrorType } from 'entities/Article/model/types/ArticleDetailsScheme'
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
+import { ArticleType } from '@/entities/Article'
+import { ValidateArticleDetailsErrorType } from '@/entities/Article/model/types/ArticleDetailsScheme'
 
 const data: ArticleType = {
 	id: 1,

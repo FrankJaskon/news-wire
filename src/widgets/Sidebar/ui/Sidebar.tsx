@@ -1,14 +1,14 @@
 import { FC, memo, useEffect, useMemo, useState } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
-import { AppButton, ButtonShape, ButtonSize, ButtonVariant } from 'shared/ui/AppButton'
-import { LanguageToggler } from 'features/LanguageToggler'
-import { ThemeToggler } from 'features/ThemeToggler'
+import classNames from '@/shared/lib/classNames/classNames'
+import { AppButton, ButtonShape, ButtonSize, ButtonVariant } from '@/shared/ui/AppButton'
+import { LanguageToggler } from '@/features/LanguageToggler'
+import { ThemeToggler } from '@/features/ThemeToggler'
 import cls from './Sidebar.module.scss'
 import { SidebarLink } from './SidebarLink/SidebarLink'
 import { useSelector } from 'react-redux'
 import { getSidebarItem } from '../model/selectors/getSidebarItem'
-import { HStack, VStack } from 'shared/ui/Stack'
-import { useDetectMobile } from 'shared/hooks/useDetectMobile/useDetectMobile'
+import { HStack, VStack } from '@/shared/ui/Stack'
+import { useDetectMobile } from '@/shared/hooks/useDetectMobile/useDetectMobile'
 
 interface SidebarProps {
 	className?: string

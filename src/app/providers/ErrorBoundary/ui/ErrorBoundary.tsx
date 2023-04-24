@@ -1,4 +1,4 @@
-import { ErrorPage } from 'pages/ErrorPage'
+import { ErrorPage } from '@/pages/ErrorPage'
 import React, { ErrorInfo, ReactNode, Suspense } from 'react'
 
 interface Props {

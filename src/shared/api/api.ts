@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { LOCAL_STORAGE_TOKEN_KEY } from 'shared/const/localstorage'
+import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/const/localstorage'
 
 export const $api = axios.create({
 	baseURL: __API_URL__,

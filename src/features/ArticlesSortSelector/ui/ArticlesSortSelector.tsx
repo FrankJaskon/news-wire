@@ -1,10 +1,10 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import classNames from 'shared/lib/classNames/classNames'
-import { SortOrder, SortOrderType } from 'shared/types/types'
+import classNames from '@/shared/lib/classNames/classNames'
+import { SortOrder, SortOrderType } from '@/shared/types/types'
 import { ArticlesSortVariant, ArticlesSortVariantType } from '../model/types/ArticlesSortSelectorTypes'
 import cls from './ArticlesSortSelector.module.scss'
-import { Select, SelectOption } from 'shared/ui/Popups'
+import { Select, SelectOption } from '@/shared/ui/Popups'
 
 interface ArticlesSortSelectorProps {
 	className?: string

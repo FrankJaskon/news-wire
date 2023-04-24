@@ -1,11 +1,11 @@
 import { FC, memo, Suspense } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
-import { Loader } from 'shared/ui/Loader'
-import { Modal } from 'shared/ui/Modal'
+import classNames from '@/shared/lib/classNames/classNames'
+import { Loader } from '@/shared/ui/Loader'
+import { Modal } from '@/shared/ui/Modal'
 import { LazyLoginForm as LoginForm } from '../LoginForm/LoginForm.lazy'
 import cls from './LoginModal.module.scss'
 import { useSelector } from 'react-redux'
-import { getUserAuthData } from 'entities/User'
+import { getUserAuthData } from '@/entities/User'
 
 export interface LoginModalProps {
 	isOpen: boolean

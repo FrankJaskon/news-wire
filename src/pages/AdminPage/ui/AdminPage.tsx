@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
+import classNames from '@/shared/lib/classNames/classNames'
 import cls from './AdminPage.module.scss'
-import { PageWrapper } from 'widgets/PageWrapper'
+import { PageWrapper } from '@/widgets/PageWrapper'
 
 export interface AdminPageProps {
 	className?: string

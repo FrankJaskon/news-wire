@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, FC, ReactNode } from 'react'
-import classNames from 'shared/lib/classNames/classNames'
+import classNames from '@/shared/lib/classNames/classNames'
 import cls from './FlexStack.module.scss'
 
 export interface FlexStackProps extends DetailedHTMLProps<

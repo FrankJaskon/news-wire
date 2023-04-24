@@ -1,10 +1,10 @@
 
-import { Country } from 'entities/Country'
-import { Currency } from 'entities/Currency'
-import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk'
+import { Country } from '@/entities/Country'
+import { Currency } from '@/entities/Currency'
+import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
 import { ValidateProfileError } from '../../types/ProfileScheme'
 import { fetchProfileData } from './fetchProfileData'
-import { ProfileType } from 'entities/Profile'
+import { ProfileType } from '@/entities/Profile'
 
 describe('fetchProfileData', () => {
 	const responseData: ProfileType = {

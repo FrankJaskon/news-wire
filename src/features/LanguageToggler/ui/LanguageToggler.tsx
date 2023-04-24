@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import classNames from 'shared/lib/classNames/classNames'
-import { AppButton } from 'shared/ui/AppButton'
+import classNames from '@/shared/lib/classNames/classNames'
+import { AppButton } from '@/shared/ui/AppButton'
 
 interface LanguageTogglerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string,

@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ViewToggler } from './ViewToggler'
 import type { ViewTogglerProps } from './ViewToggler'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from 'shared/config/theme/ThemeContext'
+import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
+import { AppThemes } from '@/shared/config/theme/ThemeContext'
 
 export default {
 	title: 'features/ViewToggler',

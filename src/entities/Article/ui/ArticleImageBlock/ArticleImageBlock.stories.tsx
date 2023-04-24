@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from 'shared/config/theme/ThemeContext'
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
+import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
+import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { ArticleImageBlock, ArticleImageBlockProps } from './ArticleImageBlock'
-import someImage from 'shared/assets/icons/default-user.png'
+import someImage from '@/shared/assets/icons/default-user.png'
 
 export default {
 	title: 'entities/Article/ArticleImageBlock',

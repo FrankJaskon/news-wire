@@ -1,12 +1,12 @@
-import { CommentsList } from 'entities/Comment'
+import { CommentsList } from '@/entities/Comment'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import classNames from 'shared/lib/classNames/classNames'
-import { VStack } from 'shared/ui/Stack'
-import { Text } from 'shared/ui/Text'
+import classNames from '@/shared/lib/classNames/classNames'
+import { VStack } from '@/shared/ui/Stack'
+import { Text } from '@/shared/ui/Text'
 import { AddArticleComment } from '../AddArticleComment/AddArticleComment'
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch'
-import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import {
 	articleDetailsCommentsReducer,
@@ -18,7 +18,7 @@ import {
 	getArticleDetailsCommentsIsLoading
 } from '../../model/selectors/comments'
 import { useParams } from 'react-router-dom'
-import { LazyReducerLoader, ReducerList } from 'shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 
 export interface ArticleCommentsProps {
 	className?: string

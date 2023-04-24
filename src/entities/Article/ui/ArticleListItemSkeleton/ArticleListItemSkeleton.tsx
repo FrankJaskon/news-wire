@@ -1,9 +1,9 @@
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { ViewVariantType } from '../../model/types/ArticleDetailsScheme'
 import { FC } from 'react'
-import { AppCard } from 'shared/ui/AppCard'
-import { Skeleton } from 'shared/ui/Skeleton'
-import { HStack, VStack } from 'shared/ui/Stack'
+import { AppCard } from '@/shared/ui/AppCard'
+import { Skeleton } from '@/shared/ui/Skeleton'
+import { HStack, VStack } from '@/shared/ui/Stack'
 
 export interface ArticleListItemSkeletonProps {
 	view?: ViewVariantType

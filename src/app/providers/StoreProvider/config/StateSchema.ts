@@ -1,14 +1,14 @@
 import { CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
 import { AxiosInstance } from 'axios'
-import { AddNewCommentScheme } from 'entities/AddNewComment'
-import { ArticleDetailsScheme } from 'entities/Article'
-import { UserScheme } from 'entities/User'
-import { ArticleDetailsCommentsScheme } from 'features/ArticleComments'
-import { ArticleInfiniteListScheme } from 'features/ArticleInfiniteList'
-import { LoginScheme } from 'features/AuthByUsername'
-import { ProfileScheme } from 'features/EditableProfileCard'
-import { rtkApi } from 'shared/api/rtkApi'
-import { PageScrollScheme } from 'widgets/PageWrapper'
+import { AddNewCommentScheme } from '@/entities/AddNewComment'
+import { ArticleDetailsScheme } from '@/entities/Article'
+import { UserScheme } from '@/entities/User'
+import { ArticleDetailsCommentsScheme } from '@/features/ArticleComments'
+import { ArticleInfiniteListScheme } from '@/features/ArticleInfiniteList'
+import { LoginScheme } from '@/features/AuthByUsername'
+import { ProfileScheme } from '@/features/EditableProfileCard'
+import { rtkApi } from '@/shared/api/rtkApi'
+import { PageScrollScheme } from '@/widgets/PageWrapper'
 
 export interface StateSchema {
 	user: UserScheme

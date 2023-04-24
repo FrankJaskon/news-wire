@@ -1,13 +1,13 @@
-import { getUserAuthData } from 'entities/User'
+import { getUserAuthData } from '@/entities/User'
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import classNames from 'shared/lib/classNames/classNames'
-import { AppIcon } from 'shared/ui/AppIcon'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
+import classNames from '@/shared/lib/classNames/classNames'
+import { AppIcon } from '@/shared/ui/AppIcon'
+import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { SidebarItemType } from '../../model/types/sidebarTypes'
 import cls from './SidebarLink.module.scss'
-import { HStack } from 'shared/ui/Stack'
+import { HStack } from '@/shared/ui/Stack'
 
 export interface SidebarLinkProps {
 	item: SidebarItemType

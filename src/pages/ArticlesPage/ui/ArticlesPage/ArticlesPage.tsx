@@ -1,4 +1,4 @@
-import { ArticleInfiniteList } from 'features/ArticleInfiniteList'
+import { ArticleInfiniteList } from '@/features/ArticleInfiniteList'
 import { FC } from 'react'
 
 const ArticlesPage: FC = () => {

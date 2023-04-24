@@ -1,8 +1,8 @@
 
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { Country } from 'entities/Country'
-import { Currency } from 'entities/Currency'
-import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk'
+import { Country } from '@/entities/Country'
+import { Currency } from '@/entities/Currency'
+import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
 import { ValidateProfileError } from '../../types/ProfileScheme'
 import { updateProfileData } from './updateProfileData'
 

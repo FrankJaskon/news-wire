@@ -1,7 +1,7 @@
 import { StateSchema } from 'app/providers/StoreProvider'
-import { ViewVariant } from 'entities/Article'
-import { ArticlesSortVariant } from 'features/ArticlesSortSelector'
-import { SortOrder } from 'shared/types/types'
+import { ViewVariant } from '@/entities/Article'
+import { ArticlesSortVariant } from '@/features/ArticlesSortSelector'
+import { SortOrder } from '@/shared/types/types'
 import {
 	getIsLoading,
 	getView,

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from 'shared/config/theme/ThemeContext'
+import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
+import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { LanguageToggler } from './LanguageToggler'
 
 export default {
