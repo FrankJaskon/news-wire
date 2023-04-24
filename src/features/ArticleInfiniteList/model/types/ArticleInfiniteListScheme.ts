@@ -1,7 +1,7 @@
 import { EntityState } from '@reduxjs/toolkit'
 import { ArticleType, ViewVariantType } from 'entities/Article'
+import { ArticlesTypesType } from '../../ui/ArticleTypeTabs'
 import { ArticlesSortVariantType } from 'features/ArticlesSortSelector'
-import { ArticlesTypesType } from 'features/ArticleTypeTabs'
 import { SortOrderType } from 'shared/types/types'
 
 export interface ArticleInfiniteListScheme extends EntityState<ArticleType>{

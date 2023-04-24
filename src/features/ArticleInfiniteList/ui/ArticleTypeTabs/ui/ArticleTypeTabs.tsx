@@ -2,6 +2,7 @@ import { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { TabItem, Tabs } from 'shared/ui/Tab/ui/Tabs'
 import { ArticlesTypes, ArticlesTypesType } from '../model/types/tabs'
+import { TabVariant } from 'shared/ui/Tab'
 
 export interface ArticleTypeTabsProps {
 	className?: string
@@ -36,6 +37,7 @@ export const ArticleTypeTabs: FC<ArticleTypeTabsProps> = memo((props: ArticleTyp
 			tabs={tabs}
 			value={filter}
 			onTabClick={onTabClick}
+			variant={TabVariant.SECONDARY}
 		/>
 	)
 })

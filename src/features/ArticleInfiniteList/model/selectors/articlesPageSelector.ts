@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider'
-import { ArticlesTypes } from 'features/ArticleTypeTabs'
+import { ArticlesTypes } from '../../ui/ArticleTypeTabs'
 
 export const getIsLoading = (state: StateSchema) => (
 	state?.articlesInfiniteList?.isLoading !== undefined ? state?.articlesInfiniteList?.isLoading : true

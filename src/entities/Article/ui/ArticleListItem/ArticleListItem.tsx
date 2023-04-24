@@ -3,7 +3,7 @@ import { BlockType, ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { FC, HTMLAttributeAnchorTarget, memo, useCallback, useMemo } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import cls from './ArticleListItem.module.scss'
-import { Text } from 'shared/ui/Text'
+import { Text, TextSize } from 'shared/ui/Text'
 import ViewsIcon from 'shared/assets/icons/views.svg'
 import { AppIcon } from 'shared/ui/AppIcon'
 import { useNavigate } from 'react-router-dom'
@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { RoutePaths } from 'shared/config/RoutePaths/RoutPaths'
 import { HStack, VStack } from 'shared/ui/Stack'
+import { TextColor } from 'shared/const/consts'
 
 export interface ArticleListItemProps {
 	className?: string
@@ -37,6 +38,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 	const ArticleTitle = useMemo(() => <Text
 		className={cls.title}
 		title={article?.title}
+		titleHue={TextColor.SECONDARY}
 	/>, [article?.title])
 
 	const ArticleTypes = useMemo(() => <Text
@@ -117,8 +119,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 								className={cls.avatar}
 							/>
 							<Text
-								title={article?.profile?.username}
-								titleElement='div'
+								content={article?.profile?.username}
+								size={TextSize.L}
 							/>
 						</HStack>
 					</AppLink>

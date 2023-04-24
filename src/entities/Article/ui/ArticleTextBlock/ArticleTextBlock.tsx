@@ -3,6 +3,7 @@ import classNames from 'shared/lib/classNames/classNames'
 import { Text } from 'shared/ui/Text'
 import cls from './ArticleTextBlock.module.scss'
 import { VStack } from 'shared/ui/Stack'
+import { TextColor } from 'shared/const/consts'
 
 export interface ArticleTextBlockProps {
 	className?: string
@@ -33,6 +34,7 @@ export const ArticleTextBlock: FC<ArticleTextBlockProps> = memo((props: ArticleT
 		>
 			{title && <Text
 				title={title}
+				titleHue={TextColor.SECONDARY}
 			/>}
 			{content}
 		</VStack>

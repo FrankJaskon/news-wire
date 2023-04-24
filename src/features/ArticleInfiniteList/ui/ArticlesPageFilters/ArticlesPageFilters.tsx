@@ -16,10 +16,10 @@ import { useDebounce } from 'shared/hooks/useDebounce/useDebounce'
 import { useSearchParams } from 'react-router-dom'
 import { setQueryParams } from 'shared/lib/setQueryParams/setQueryParams'
 import { QueryParamsKeys } from 'shared/const/queryParams'
-import { ArticlesTypesType, ArticleTypeTabs } from 'features/ArticleTypeTabs'
 import { HStack, VStack } from 'shared/ui/Stack'
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect'
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
+import { ArticleTypeTabs, ArticlesTypesType } from '../ArticleTypeTabs'
 
 export interface ArticlesPageFiltersProps {
 	className?: string

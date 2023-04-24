@@ -2,6 +2,7 @@ import { FC, memo, ReactNode, useCallback } from 'react'
 import classNames from 'shared/lib/classNames/classNames'
 import { AppCard } from 'shared/ui/AppCard'
 import cls from './Tabs.module.scss'
+import { TabVariant, TabVariantType } from '../model/consts'
 
 export interface TabItem {
 	value: string
@@ -13,6 +14,7 @@ export interface TabsProps {
 	tabs: TabItem[]
 	value: string
 	onTabClick: (tab: string) => void
+	variant?: TabVariantType
 }
 
 export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
@@ -20,7 +22,8 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 		className,
 		tabs,
 		value,
-		onTabClick
+		onTabClick,
+		variant = TabVariant.PRIMARY
 	} = props
 
 	const handleClick = useCallback((tab: string) => () => {
@@ -35,7 +38,12 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 		{tabs?.map(tab => <AppCard
 			key={tab.value}
 			onClick={handleClick(tab.value)}
-			className={classNames(cls.tab, {}, [isActive(tab) && cls.active])}
+			className={classNames(cls.tab,
+				{},
+				[
+					isActive(tab) && cls.active,
+					cls[variant]
+				])}
 		>
 			{tab.content}
 		</AppCard>)}
