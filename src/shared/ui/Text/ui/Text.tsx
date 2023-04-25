@@ -17,6 +17,7 @@ interface TextProps {
 	contentElement?: ElementType
 	'data-testid'?: string
 	nowrap?: boolean
+	transform?: 'uppercase' | 'lowercase'
 }
 
 export const TextVariant = {
@@ -56,7 +57,8 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		titleElement = 'h3',
 		contentElement = 'p',
 		'data-testid': dataTestId = 'Text',
-		nowrap = false
+		nowrap = false,
+		transform
 	} = props
 
 	const extra = [
@@ -64,6 +66,7 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		cls[variant],
 		cls[align],
 		cls[size],
+		transform && cls[transform]
 	]
 
 	const TitleTag = useMemo(() => titleElement, [titleElement])

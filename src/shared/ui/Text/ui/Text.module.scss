@@ -72,6 +72,24 @@
 
 /* EXTRA OPTIONS */
 
+.uppercase {
+	.title {
+		text-transform: uppercase;
+	}
+	.content {
+		text-transform: uppercase;
+	}
+}
+
+.lowercase {
+	.title {
+		text-transform: lowercase;
+	}
+	.content {
+		text-transform: lowercase;
+	}
+}
+
 .nowrap {
 	.title {
 		white-space: nowrap;

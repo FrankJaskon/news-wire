@@ -12,13 +12,14 @@ export const AppIconVariant = {
 export const AppIconSize = {
 	SMALL: 'small',
 	MEDIUM: 'medium',
-	LARGE: 'large'
+	LARGE: 'large',
+	CUSTOM: 'custom'
 } as const
 
 export type AppIconVariantType = ValueOf<typeof AppIconVariant>
 export type AppIconSizeType = ValueOf<typeof AppIconSize>
 
-export interface AppIconProps {
+export interface AppIconProps extends React.SVGAttributes<SVGElement> {
 	className?: string
 	Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
 	variant?: AppIconVariantType
@@ -30,7 +31,8 @@ export const AppIcon: FC<AppIconProps> = (props) => {
 		className,
 		Svg,
 		variant = AppIconVariant.PRIMARY,
-		size = AppIconSize.MEDIUM
+		size = AppIconSize.MEDIUM,
+		...otherProps
 	} = props
 
 	const extra: (string | undefined)[] = useMemo(() => [
@@ -39,5 +41,8 @@ export const AppIcon: FC<AppIconProps> = (props) => {
 		cls[size]
 	], [size, variant, className])
 
-	return <Svg className={classNames(cls.AppIcon, {}, extra)} />
+	return <Svg
+		className={classNames(cls.AppIcon, {}, extra)}
+		{...otherProps}
+	/>
 }

@@ -1,11 +1,10 @@
 import { FC, Suspense, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import classNames from '@/shared/lib/classNames/classNames'
-import { Navbar } from '@/widgets/Navbar'
-import { Sidebar } from '@/widgets/Sidebar'
 import { getInitializedUser, userActions } from '@/entities/User'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { AppRouter } from '@/app/providers/router'
+import { Navbar, Sidebar } from './ui'
 
 const App: FC = () => {
 	const dispatch = useAppDispatch()

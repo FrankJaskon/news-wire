@@ -1,4 +1,8 @@
 {
+  "btn": {
+    "submit": "Відправити",
+    "cancel": "Відмінити"
+  },
   "language-toggler": {
     "language": "Українська",
     "language-short": "Укр"
@@ -49,10 +53,6 @@
   "choose-currency": "Валюта",
   "choose-country": "Країна",
   "new-comment": {
-    "btn": {
-      "submit": "Відправити",
-      "cancel": "Відмінити"
-    },
     "label": "Введить свій коментар"
   },
   "currency": {
@@ -62,5 +62,6 @@
   "country": {
     "Ukraine": "Україна",
     "USA": "США"
-  }
+  },
+  "leave-feedback": "Залиш свій відгук"
 }

@@ -63,11 +63,11 @@ const AddNewComment: FC<AddNewCommentProps> = (props) => {
 						variant={ButtonVariant.OUTLINE}
 						onClick={handleCancel}
 						className={cls.btn}
-					>{t('new-comment.btn.cancel')}</AppButton>
+					>{t('btn.cancel')}</AppButton>
 					<AppButton
 						className={cls.btn}
 						onClick={handleSubmitNewComment}
-					>{t('new-comment.btn.submit')}</AppButton>
+					>{t('btn.submit')}</AppButton>
 				</div>
 			}
 		</div>

@@ -120,7 +120,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 							/>
 							<Text
 								content={article?.profile?.username}
-								size={TextSize.L}
+								contentHue={TextColor.PRIMARY}
+								transform='uppercase'
 							/>
 						</HStack>
 					</AppLink>
