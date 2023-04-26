@@ -41,7 +41,8 @@
         "react",
         "@typescript-eslint",
         "i18next",
-        "react-hooks"
+        "react-hooks",
+        "ulbi-tv-plugin"
     ],
     "rules": {
         "indent": [
@@ -79,6 +80,9 @@
         "react/display-name": "off",
         "@typescript-eslint/ban-ts-comment": "warn",
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "error"
+        "react-hooks/exhaustive-deps": "error",
+        "ulbi-tv-plugin/path-checker": ["error", {
+            "alias": "@"
+        }]
     }
 }
