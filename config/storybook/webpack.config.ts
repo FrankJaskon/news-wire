@@ -41,6 +41,7 @@ const config = ({ config }: { config: webpack.Configuration }): webpack.Configur
 		config.resolve.extensions = ['.tsx', '.ts', '.js']
 		config.resolve.mainFiles = ['index']
 		config.resolve.alias = {
+			...config.resolve.alias,
 			'@': paths.src
 		}
 	}
