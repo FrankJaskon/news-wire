@@ -1,9 +1,12 @@
-import { ArticleInfiniteList, articlesInfiniteListReducer } from '@/features/ArticleInfiniteList'
-import { fetchNextArticlesPage } from '@/features/ArticleInfiniteList'
-import { getError } from '@/features/ArticleInfiniteList'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { VStack } from '@/shared/ui/Stack'
+import {
+	ArticleInfiniteList,
+	articlesInfiniteListReducer,
+	fetchNextArticlesPage,
+	getError
+} from '@/widgets/ArticleInfiniteList'
 import { PageWrapper } from '@/widgets/PageWrapper'
 import { FC, memo, useCallback, useState } from 'react'
 import { useSelector } from 'react-redux'

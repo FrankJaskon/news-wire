@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon } from '@/shared/ui/AppIcon'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
-import { SidebarItemType } from '../../model/types/sidebarTypes'
-import cls from './SidebarLink.module.scss'
 import { HStack } from '@/shared/ui/Stack'
+import { SidebarItemType } from '../model/types/sidebarTypes'
+import cls from './SidebarLink.module.scss'
 
 export interface SidebarLinkProps {
 	item: SidebarItemType

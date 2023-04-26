@@ -3,3 +3,4 @@ node_modules/
 storybook-static/
 scripts/
 .fttemplates/
+src/shared/config/storybook/decorators/

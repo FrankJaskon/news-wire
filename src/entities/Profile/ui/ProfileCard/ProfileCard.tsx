@@ -8,7 +8,6 @@ import { AppLabel, LabelVariant } from '@/shared/ui/Form/Label'
 import { Avatar } from '@/shared/ui/Avatar'
 import { CurrencySelect, CurrencyType } from '@/entities/Currency'
 import { CountrySelect, CountryType } from '@/entities/Country'
-import { PageLoader } from '@/widgets/PageLoader'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { AppCard } from '@/shared/ui/AppCard'
 import { Divider } from '@/shared/ui/Form/Divider/Divider'
@@ -19,6 +18,7 @@ import CancelIcon from '@/shared/assets/icons/cancel.svg'
 import SaveIcon from '@/shared/assets/icons/checkmark.svg'
 import { TextColor } from '@/shared/const/consts'
 import { ProfileType } from '../../model/types/profile'
+import { Loader } from '@/shared/ui/Loader'
 
 export interface ProfileCardProps {
 	className?: string
@@ -96,7 +96,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 			justify='center'
 			align='center'
 		>
-			<PageLoader />
+			<Loader />
 		</VStack>
 	}
 

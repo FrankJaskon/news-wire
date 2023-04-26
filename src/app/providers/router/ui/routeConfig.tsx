@@ -9,7 +9,7 @@ import { MainPage } from '@/pages/MainPage'
 import { NotFound } from '@/pages/NotFound'
 import { ProfilePage } from '@/pages/ProfilePage'
 import { RouteProps } from 'react-router-dom'
-import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
+import { RoutePaths } from '@/shared/const/RoutPaths'
 
 export type AuthRouteProps = RouteProps & {
 	authOnly?: boolean

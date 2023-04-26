@@ -19,7 +19,7 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { VStack } from '@/shared/ui/Stack'
 import { useNavigate } from 'react-router-dom'
-import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
+import { RoutePaths } from '@/shared/const/RoutPaths'
 
 export interface LoginFormProps {
 	className?: string

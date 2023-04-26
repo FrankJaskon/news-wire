@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { getIsUserAdmin, getIsUserManager, getUserAuthData, userActions } from '@/entities/User'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
-import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
+import { RoutePaths } from '@/shared/const/RoutPaths'
 import { useTranslation } from 'react-i18next'
 import { Avatar, AvatarVariant } from '@/shared/ui/Avatar'
 

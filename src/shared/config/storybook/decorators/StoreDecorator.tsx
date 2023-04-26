@@ -3,10 +3,10 @@ import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { addNewCommentReducer } from '@/entities/AddNewComment'
 import { articleDetailsReducer } from '@/entities/Article'
 import { articleDetailsCommentsReducer } from '@/features/ArticleComments'
-import { articlesInfiniteListReducer } from '@/features/ArticleInfiniteList'
 import { loginReducer } from '@/features/AuthByUsername'
 import { profileReducer } from '@/features/EditableProfileCard'
 import type { ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { articlesInfiniteListReducer } from '@/widgets/ArticleInfiniteList'
 
 const defaultAsyncReducers: ReducerList = {
 	login: loginReducer,

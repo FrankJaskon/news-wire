@@ -3,7 +3,7 @@ import { ArticleRecommendationsList, ArticleRecommendationsListProps } from './A
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import withMock from 'storybook-addon-mock'
 import { ArticleType } from '@/entities/Article'
-import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
+import { RoutePaths } from '@/shared/const/RoutPaths'
 
 const article: ArticleType = {
 	'id': 1,

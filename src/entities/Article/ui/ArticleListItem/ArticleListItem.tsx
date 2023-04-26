@@ -13,7 +13,7 @@ import { Avatar } from '@/shared/ui/Avatar'
 import { AppButton } from '@/shared/ui/AppButton'
 import { useTranslation } from 'react-i18next'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
-import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
+import { RoutePaths } from '@/shared/const/RoutPaths'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { TextColor } from '@/shared/const/consts'
 

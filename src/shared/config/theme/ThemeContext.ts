@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { ValueOf } from '@/shared/types/types'
+import { ValueOf } from '../../types/types'
 
 export const AppThemes = {
 	LIGHT: 'light',
@@ -15,7 +15,5 @@ export interface ThemeContextProps {
 }
 
 const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps)
-
-export const LOCAL_STORAGE_THEME_KEY = 'theme'
 
 export default ThemeContext

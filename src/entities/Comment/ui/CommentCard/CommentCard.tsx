@@ -6,7 +6,7 @@ import { Skeleton } from '@/shared/ui/Skeleton'
 import { Text, TextSize } from '@/shared/ui/Text'
 import { Avatar } from '@/shared/ui/Avatar'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
-import { RoutePaths } from '@/shared/config/RoutePaths/RoutPaths'
+import { RoutePaths } from '@/shared/const/RoutPaths'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { AppCard } from '@/shared/ui/AppCard'
 

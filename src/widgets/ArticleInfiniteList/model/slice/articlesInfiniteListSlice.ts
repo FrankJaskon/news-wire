@@ -6,7 +6,7 @@ import {
 import { StateSchema } from 'app/providers/StoreProvider'
 import { ArticleType, ViewVariant, ViewVariantType } from '@/entities/Article'
 import { ArticlesSortVariant, ArticlesSortVariantType } from '@/features/ArticlesSortSelector'
-import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from '@/shared/const/localstorage'
+import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from '@/shared/const/localStorage'
 import { SortOrder, SortOrderType } from '@/shared/types/types'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
 import { ArticleInfiniteListScheme } from '../types/ArticleInfiniteListScheme'

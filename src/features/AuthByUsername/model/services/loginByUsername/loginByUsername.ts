@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { User, userActions } from '@/entities/User'
 import { LoginErrors } from '@/shared/config/errorResponse/errorResponse'
-import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/const/localstorage'
+import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/const/localStorage'
 
 interface LoginProps {
 	username: string,

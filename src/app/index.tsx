@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 import classNames from '@/shared/lib/classNames/classNames'
 import { getInitializedUser, userActions } from '@/entities/User'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
-import { AppRouter } from '@/app/providers/router'
 import { Navbar, Sidebar } from './ui'
+import { AppRouter } from './providers/router'
 
 const App: FC = () => {
 	const dispatch = useAppDispatch()
