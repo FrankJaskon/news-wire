@@ -1,10 +1,10 @@
 import { FC, memo, useCallback, useState } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
-import { AppIcon, AppIconSize } from '@/shared/ui/AppIcon'
+import { AppIcon, AppIconSize } from '../AppIcon'
 import StarIcon from '@/shared/assets/icons/star_rate.svg'
 import cls from './StarRating.module.scss'
-import { HStack } from '@/shared/ui/Stack'
-import { Skeleton } from '@/shared/ui/Skeleton'
+import { HStack } from '../Stack'
+import { Skeleton } from '../Skeleton'
 
 export interface StarRatingProps {
 	className?: string

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { ProfileCard, ProfileCardProps } from './ProfileCard'
-import { ProfileType } from '@/entities/Profile/model/types/profile'
+import { ProfileType } from '../../model/types/profile'
 
 export default {
 	title: 'entities/ProfileCard',

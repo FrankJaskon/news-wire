@@ -83,6 +83,9 @@
         "react-hooks/exhaustive-deps": "error",
         "ulbi-tv-plugin/path-checker": ["error", {
             "alias": "@"
+        }],
+        "ulbi-tv-plugin/public-api-imports": ["error", {
+            "alias": "@"
         }]
     }
 }

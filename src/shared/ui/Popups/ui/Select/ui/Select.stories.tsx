@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
-import { AppLabel } from '@/shared/ui/Form/Label'
+import { AppLabel } from '../../../../Form/Label'
 import { Select, SelectProps } from './Select'
 
 export default {

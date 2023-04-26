@@ -45,7 +45,8 @@ export default {
 	moduleNameMapper: {
 		'\\.(scss)$': 'identity-obj-proxy',
 		'\\.svg$': path.resolve(__dirname, 'svgJestMapper.tsx'),
-		'\\.(png|jpg|jpeg|gif)$': path.resolve(__dirname, 'imgJestMapper.ts')
+		'\\.(png|jpg|jpeg|gif)$': path.resolve(__dirname, 'imgJestMapper.ts'),
+		'^@/(.*)$': '<rootDir>/src/$1'
 	},
 	// A set of global variables that need to be available in all test environments
 	globals: {

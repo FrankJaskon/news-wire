@@ -1,4 +1,4 @@
-import { FC, ReactNode, Suspense, useCallback } from 'react'
+import { FC, Suspense, useCallback } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { PageLoader } from '@/widgets/PageLoader'
 import { RequireAuth } from './RequireAuth'

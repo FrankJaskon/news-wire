@@ -1,6 +1,6 @@
 import { UserRole, UserRoleType } from '@/entities/User'
 import { AboutPage } from '@/pages/AboutPage'
-import AdminPage from '@/pages/AdminPage/ui/AdminPage'
+import { AdminPanel } from '@/pages/AdminPage'
 import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage'
 import { ArticlesPage } from '@/pages/ArticlesPage'
 import { EditArticlePage } from '@/pages/EditArticlePage'
@@ -52,7 +52,7 @@ export const routerConfig: AuthRouteProps[] = [
 	},
 	{
 		path: RoutePaths.admin,
-		element: <AdminPage />,
+		element: <AdminPanel />,
 		authOnly: true,
 		roles: [UserRole.ADMIN, UserRole.MANAGER]
 	},

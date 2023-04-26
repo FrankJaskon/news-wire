@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider'
-import { FC, MutableRefObject, ReactNode, UIEvent, UIEventHandler, useEffect, useRef } from 'react'
+import { FC, MutableRefObject, ReactNode, UIEvent, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'

@@ -15,7 +15,7 @@ export default {
 				content: 'Tab 2'
 			},
 		],
-		onTabClick(tab) {},
+		onTabClick() {'test'},
 		value: 'tab 1'
 	}
 } as ComponentMeta<typeof Tabs>
