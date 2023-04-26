@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { PageWrapper } from '@/widgets/PageWrapper'
-import { Rating } from '@/entities/Rating'
+import { RatingCard } from '@/entities/Rating'
 
 const MainPage: FC = memo(() => {
 	const { t } = useTranslation('main')
@@ -9,7 +9,7 @@ const MainPage: FC = memo(() => {
 	return <PageWrapper>
 		<h1>{t('page-title')}</h1>
 		{t('page-subtitle')}
-		<Rating
+		<RatingCard
 			title='Some title like Do you like our app?'
 			feedbackTitle='Leave your feedback on our goods'
 			onAccept={(rating: number, feedback?: string) => {

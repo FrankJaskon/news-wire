@@ -35,7 +35,7 @@ export const fetchArticlesList = createAsyncThunk<
 						_order: order,
 						q: search,
 						type: filter === ArticlesTypes.ALL ? undefined : filter,
-						_expand: 'profile'
+						_expand: 'profile',
 					}
 				})
 

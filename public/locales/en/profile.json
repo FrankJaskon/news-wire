@@ -29,5 +29,9 @@
         "city": "City can only contain letters and spaces",
         "empty": "Form must not be empty",
         "server-error": "Something went wrong. Try later please"
-    }
+    },
+    "rating": {
+		"rate-profile-title": "Don't you want to rate this user?",
+		"rate-profile-title-has-response": "You've already rated this"
+	}
 }

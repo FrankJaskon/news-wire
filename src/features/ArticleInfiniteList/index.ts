@@ -10,3 +10,11 @@ export {
 	articlesInfiniteListReducer,
 	articlesInfiniteListActions
 } from './model/slice/articlesInfiniteListSlice'
+
+export {
+	fetchNextArticlesPage
+} from './model/services/fetchNextArticlesPage/fetchNextArticlesPage'
+
+export {
+	getError
+} from './model/selectors/articlesPageSelector'

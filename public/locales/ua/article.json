@@ -32,5 +32,10 @@
 		"SCIENCE": "Наука",
 		"ECONOMIC": "Економіка"
 	},
-	"empty-articles-list": "Статті не знайдено"
+	"empty-articles-list": "Статті не знайдено",
+	"rating": {
+		"rate-article-title": "Вам сподобалась ця стаття?",
+		"rate-article-feedback-title": "Залиште свій відгук до статті",
+		"rate-article-title-has-response": "Ви вже залишили свою оцінку"
+	}
 }

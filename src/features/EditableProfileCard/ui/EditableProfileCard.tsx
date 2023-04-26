@@ -19,6 +19,9 @@ import { updateProfileData } from '../model/services/updateProfileData/updatePro
 import { Text, TextVariant } from '@/shared/ui/Text'
 import { ProfileCard } from '@/entities/Profile'
 import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { VStack } from '@/shared/ui/Stack'
+import { ProfileRating } from './ProfileRating'
+import cls from './EditableProfileCard.module.scss'
 
 export interface EditableProfileCardProps {
 	id?: number
@@ -111,30 +114,36 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: Ed
 	return <LazyReducerLoader
 		reducers={reducers}
 	>
-		{validateError && validateError?.map((err: ValidateProfileErrorType) => (
-			<Text
-				key={err}
-				variant={TextVariant.ERROR}
-				content={validateError && ValidateErrorTranslation[err]}
+		<VStack
+			gap='12'
+			className={cls.EditableProfileCard}
+		>
+			{validateError && validateError?.map((err: ValidateProfileErrorType) => (
+				<Text
+					key={err}
+					variant={TextVariant.ERROR}
+					content={validateError && ValidateErrorTranslation[err]}
+				/>
+			))}
+			<ProfileCard
+				data={formData}
+				isLoading={isLoading}
+				readonly={readonly}
+				error={loadingError && ValidateErrorTranslation[loadingError]}
+				updateFirstname={onChangeFirstname}
+				updateLastname={onChangeLastname}
+				updateAge={onChangeAge}
+				updateCity={onChangeCity}
+				updateUsername={onChangeUsername}
+				updateAvatar={onChangeAvatar}
+				updateCurrency={onChangeCurrency}
+				updateCountry={onChangeCountry}
+				editForm={onEdit}
+				cancelEdit={onClose}
+				saveForm={onSave}
+				canEdit={canEdit}
 			/>
-		))}
-		<ProfileCard
-			data={formData}
-			isLoading={isLoading}
-			readonly={readonly}
-			error={loadingError && ValidateErrorTranslation[loadingError]}
-			updateFirstname={onChangeFirstname}
-			updateLastname={onChangeLastname}
-			updateAge={onChangeAge}
-			updateCity={onChangeCity}
-			updateUsername={onChangeUsername}
-			updateAvatar={onChangeAvatar}
-			updateCurrency={onChangeCurrency}
-			updateCountry={onChangeCountry}
-			editForm={onEdit}
-			cancelEdit={onClose}
-			saveForm={onSave}
-			canEdit={canEdit}
-		/>
+			{!canEdit && <ProfileRating profileId={id} />}
+		</VStack>
 	</LazyReducerLoader>
 })

@@ -10,6 +10,7 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import { VStack } from '@/shared/ui/Stack'
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList'
 import { ArticleComments } from '@/features/ArticleComments'
+import { ArticleRating } from '@/features/ArticleRating'
 
 export interface ArticleDetailsPageProps {
 	className ?: string
@@ -37,6 +38,9 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 				articleId={id}
 			/>
 			<ArticleDetails id={id} />
+			<ArticleRating
+				articleId={id}
+			/>
 			<ArticleRecommendationsList />
 			<ArticleComments />
 		</VStack>

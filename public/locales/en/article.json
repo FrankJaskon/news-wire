@@ -32,5 +32,10 @@
 		"SCIENCE": "Science",
 		"ECONOMIC": "Economic"
 	},
-	"empty-articles-list": "Articles have not been found"
+	"empty-articles-list": "Articles have not been found",
+	"rating": {
+		"rate-article-title": "How do you feel about this article?",
+		"rate-article-feedback-title": "Leave your feedback about this article",
+		"rate-article-title-has-response": "You've already rated this"
+	}
 }

@@ -3,12 +3,15 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon, AppIconSize } from '@/shared/ui/AppIcon'
 import StarIcon from '@/shared/assets/icons/star_rate.svg'
 import cls from './StarRating.module.scss'
+import { HStack } from '@/shared/ui/Stack'
+import { Skeleton } from '@/shared/ui/Skeleton'
 
 export interface StarRatingProps {
 	className?: string
 	onSelect?: (starCount: number) => void
 	size?: number
 	selectedStar?: number
+	isLoading?: boolean
 }
 
 const stars = [1, 2, 3, 4, 5]
@@ -18,7 +21,8 @@ export const StarRating: FC<StarRatingProps> = memo((props: StarRatingProps) => 
 		className,
 		onSelect,
 		size = 30,
-		selectedStar
+		selectedStar,
+		isLoading
 	} = props
 
 	const [currentStarsCount, setCurrentStartsCount] = useState<number>(selectedStar ?? 0)
@@ -44,7 +48,28 @@ export const StarRating: FC<StarRatingProps> = memo((props: StarRatingProps) => 
 		}
 	}, [onSelect, isSelected])
 
-	return <div className={classNames(cls.StarRating, {}, [className])}>
+	if (isLoading) {
+		return <HStack
+			className={classNames(cls.StarRating, {}, [className])}
+			justify='center'
+			gap='4'
+		>
+			{
+				stars.map(starNumber => {
+					return <Skeleton
+						key={starNumber}
+						height={40}
+						width={40}
+					/>
+				})
+			}
+		</HStack>
+	}
+
+	return <HStack
+		className={classNames(cls.StarRating, {}, [className])}
+		justify='center'
+	>
 		{
 			stars.map(starNumber => {
 				return <AppIcon
@@ -66,5 +91,5 @@ export const StarRating: FC<StarRatingProps> = memo((props: StarRatingProps) => 
 				/>
 			})
 		}
-	</div>
+	</HStack>
 })
