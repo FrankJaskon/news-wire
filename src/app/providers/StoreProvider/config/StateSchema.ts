@@ -7,8 +7,8 @@ import { ArticleDetailsCommentsScheme } from '@/features/ArticleComments'
 import { LoginScheme } from '@/features/AuthByUsername'
 import { ProfileScheme } from '@/features/EditableProfileCard'
 import { rtkApi } from '@/shared/api/rtkApi'
-import { PageScrollScheme } from '@/widgets/PageWrapper'
 import { ArticleInfiniteListScheme } from '@/widgets/ArticleInfiniteList'
+import { PageScrollScheme } from '@/widgets/PageWrapper'
 
 export interface StateSchema {
 	user: UserScheme

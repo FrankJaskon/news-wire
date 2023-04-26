@@ -1,8 +1,8 @@
 import webpack from 'webpack'
 import buildDevServer from './buildDevServer'
-import buildLoaders from './Loaders/buildLoaders'
 import buildPlugins from './buildPlugins'
 import buildResolves from './buildResolves'
+import buildLoaders from './Loaders/buildLoaders'
 import { BuildOptions } from './types/config'
 
 const buildWebpackConfig = (options: BuildOptions): webpack.Configuration => {

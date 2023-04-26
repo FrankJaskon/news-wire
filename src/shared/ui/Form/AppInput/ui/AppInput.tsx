@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, InputHTMLAttributes, memo } from 'react'
-import { ValueOf } from '@/shared/types/types'
 import classNames from '@/shared/lib/classNames/classNames'
+import { ValueOf } from '@/shared/types/types'
 import cls from './AppInput.module.scss'
 
 export interface AppInputProps extends Omit<

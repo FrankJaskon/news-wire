@@ -1,13 +1,13 @@
-import { FC, Fragment, memo } from 'react'
 import { Listbox } from '@headlessui/react'
-import ExpandIcon from '@/shared/assets/icons/expand.svg'
+import { FC, Fragment, memo } from 'react'
 import CheckMark from '@/shared/assets/icons/checkmark.svg'
+import ExpandIcon from '@/shared/assets/icons/expand.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon, AppIconSize, AppIconVariant } from '../../../../AppIcon'
 import { HStack } from '../../../../Stack'
-import cls from './Select.module.scss'
-import popupCls from '../../../styles/Popups.module.scss'
 import { AlignType, DirectionType, DirectionVariant, InnerPositionVariant } from '../../../styles/consts'
+import popupCls from '../../../styles/Popups.module.scss'
+import cls from './Select.module.scss'
 
 export interface SelectOption {
 	value: string

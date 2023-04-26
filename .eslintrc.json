@@ -4,13 +4,13 @@
         "es2021": true,
         "jest": true,
         "node": true
-
     },
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:i18next/recommended"
+        "plugin:i18next/recommended",
+        "plugin:import/recommended"
     ],
     "globals": {
         "__IS_DEV__": true,
@@ -19,7 +19,12 @@
     },
     "overrides": [
         {
-            "files": ["*.test.ts", "*.test.tsx", "*.stories.ts", "*.stories.tsx"],
+            "files": [
+                "*.test.ts",
+                "*.test.tsx",
+                "*.stories.ts",
+                "*.stories.tsx"
+            ],
             "rules": {
                 "i18next/no-literal-string": "off",
                 "@typescript-eslint/no-empty-function": "warn",
@@ -30,6 +35,36 @@
     "settings": {
         "react": {
             "version": "detect"
+        },
+        "import/extensions": [
+            "js",
+            "ts",
+            "jsx",
+            "tsx"
+        ],
+        "import/external-module-folders": [
+            "node_modules",
+            "node_modules/@types"
+        ],
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+            "typescript": {},
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ],
+                "paths": [
+                    "src"
+                ],
+                "alias": {
+                    "@/": "**/src/"
+                }
+            }
         }
     },
     "parser": "@typescript-eslint/parser",
@@ -42,9 +77,32 @@
         "@typescript-eslint",
         "i18next",
         "react-hooks",
-        "ulbi-tv-plugin"
+        "ulbi-tv-plugin",
+        "unused-imports",
+        "import"
     ],
     "rules": {
+        "import/named": "off",
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "object",
+                    "parent",
+                    "sibling",
+                    "type",
+                    "index"
+                ],
+                "pathGroupsExcludedImportTypes": ["builtin"],
+                "alphabetize": {
+                   "order": "asc",
+                   "caseInsensitive": true
+                }
+            }
+        ],
         "indent": [
             "error",
             "tab"
@@ -64,32 +122,62 @@
         "react/react-in-jsx-scope": "off",
         "max-len": [
             "error",
-            {"code": 120, "ignoreComments": true}
+            {
+                "code": 120,
+                "ignoreComments": true
+            }
+        ],
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "^_",
+                "args": "after-used",
+                "argsIgnorePattern": "^_"
+            }
         ],
         "i18next/no-literal-string": [
             "error",
             {
                 "markupOnly": true,
-                "onlyAttribute": [""]
+                "onlyAttribute": [
+                    ""
+                ]
             }
         ],
-        "object-curly-spacing": ["error", "always", {
-            "arraysInObjects": false,
-            "objectsInObjects": false
-        }],
+        "object-curly-spacing": [
+            "error",
+            "always",
+            {
+                "arraysInObjects": false,
+                "objectsInObjects": false
+            }
+        ],
         "react/display-name": "off",
         "@typescript-eslint/ban-ts-comment": "warn",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error",
-        "ulbi-tv-plugin/path-checker": ["error", {
-            "alias": "@"
-        }],
-        "ulbi-tv-plugin/public-api-imports": ["error", {
-            "alias": "@"
-        }],
-        "ulbi-tv-plugin/layer-imports": ["error", {
-            "alias": "@",
-            "ignoreImportPatterns": ["**/StoreProvider"]
-        }]
+        "ulbi-tv-plugin/path-checker": [
+            "error",
+            {
+                "alias": "@"
+            }
+        ],
+        "ulbi-tv-plugin/public-api-imports": [
+            "error",
+            {
+                "alias": "@"
+            }
+        ],
+        "ulbi-tv-plugin/layer-imports": [
+            "error",
+            {
+                "alias": "@",
+                "ignoreImportPatterns": [
+                    "**/StoreProvider"
+                ]
+            }
+        ]
     }
 }

@@ -1,3 +1,5 @@
+import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { TextColor } from '@/shared/const/consts'
 import { useDetectMobile } from '@/shared/hooks/useDetectMobile/useDetectMobile'
 import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
@@ -8,8 +10,6 @@ import { Modal } from '@/shared/ui/Modal'
 import { GapType, HStack, VStack } from '@/shared/ui/Stack'
 import { StarRating } from '@/shared/ui/StarRating/StarRating'
 import { Text, TextSizeType } from '@/shared/ui/Text'
-import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { RatingVariant, RatingVariantType } from '../../consts/consts'
 
 export interface RatingCardProps {

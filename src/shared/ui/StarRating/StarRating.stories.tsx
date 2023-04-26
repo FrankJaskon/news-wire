@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import { StarRating, StarRatingProps } from './StarRating'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
+import { StarRating, StarRatingProps } from './StarRating'
 
 export default {
 	title: 'shared/StarRating',

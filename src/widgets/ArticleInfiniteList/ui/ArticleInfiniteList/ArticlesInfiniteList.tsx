@@ -1,10 +1,10 @@
-import { getError, getIsLoading, getLimit, getView } from '../../model/selectors/articlesPageSelector'
-import { getArticles } from '../../model/slice/articlesInfiniteListSlice'
 import { FC, ReactNode, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { Text, TextSize, TextVariant } from '@/shared/ui/Text'
 import { ArticleList } from '@/entities/Article'
+import { Text, TextSize, TextVariant } from '@/shared/ui/Text'
+import { getError, getIsLoading, getLimit, getView } from '../../model/selectors/articlesPageSelector'
+import { getArticles } from '../../model/slice/articlesInfiniteListSlice'
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
 
 export interface ArticleInfiniteListProps {

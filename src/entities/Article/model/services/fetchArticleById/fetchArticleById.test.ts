@@ -1,8 +1,8 @@
 
 import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
-import { fetchArticleById } from './fetchArticleById'
-import { ArticleType } from '../../types/ArticleDetailsScheme'
 import { ValidateArticleDetailsError } from '../../consts/articleDetailsConsts'
+import { ArticleType } from '../../types/ArticleDetailsScheme'
+import { fetchArticleById } from './fetchArticleById'
 
 describe('fetchArticleById', () => {
 	const responseData: DeepPartial<ArticleType> = {

@@ -7,8 +7,8 @@ import {
 	useRef
 } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
-import cls from './AppTextArea.module.scss'
 import { AppCard } from '../../../AppCard'
+import cls from './AppTextArea.module.scss'
 
 export interface AppTextAreaProps extends Omit<
 	TextareaHTMLAttributes<HTMLTextAreaElement>,

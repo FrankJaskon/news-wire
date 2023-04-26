@@ -1,9 +1,9 @@
-import { CommentType } from '../../model/types/comment'
 import { FC, memo, useMemo } from 'react'
-import { Text } from '@/shared/ui/Text'
 import { useTranslation } from 'react-i18next'
-import { CommentCard } from '../CommentCard/CommentCard'
 import { VStack } from '@/shared/ui/Stack'
+import { Text } from '@/shared/ui/Text'
+import { CommentType } from '../../model/types/comment'
+import { CommentCard } from '../CommentCard/CommentCard'
 
 export interface CommentsListProps {
 	comments?: CommentType[]

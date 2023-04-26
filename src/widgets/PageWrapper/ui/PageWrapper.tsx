@@ -1,7 +1,8 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+
 import { FC, MutableRefObject, ReactNode, UIEvent, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll/useInfiniteScroll'
 import { useThrottle } from '@/shared/hooks/useThrottle/useThrottle'

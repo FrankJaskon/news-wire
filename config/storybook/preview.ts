@@ -1,9 +1,9 @@
 import { addDecorator } from '@storybook/react'
-import { AppThemes } from '../../src/shared/config/theme/ThemeContext'
 import { RouteDecorator } from '../../src/shared/config/storybook/decorators/RouteDecorator'
 import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator'
-import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecorator'
 import { SuspenseDecorator } from '../../src/shared/config/storybook/decorators/SuspenseDecorator'
+import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecorator'
+import { AppThemes } from '../../src/shared/config/theme/ThemeContext'
 
 import i18n from './i18next'
 

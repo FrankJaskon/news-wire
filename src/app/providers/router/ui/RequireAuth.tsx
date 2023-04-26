@@ -1,7 +1,7 @@
-import { getUserAuthData } from '@/entities/User'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
+import { getUserAuthData } from '@/entities/User'
 import { RoutePaths } from '@/shared/const/RoutPaths'
 
 export interface RequireAuthProps {

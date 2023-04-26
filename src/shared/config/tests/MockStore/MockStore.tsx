@@ -1,6 +1,6 @@
 import { ReducersMapObject } from '@reduxjs/toolkit'
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { ReactNode } from 'react'
+import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 
 type MockStoreType = (
 	initialState?: DeepPartial<StateSchema>,

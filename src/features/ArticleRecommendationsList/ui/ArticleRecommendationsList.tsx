@@ -1,8 +1,8 @@
 import { FC, ReactNode, memo, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+import { ArticleList } from '@/entities/Article'
 import classNames from '@/shared/lib/classNames/classNames'
 import { VStack } from '@/shared/ui/Stack'
-import { ArticleList } from '@/entities/Article'
-import { useTranslation } from 'react-i18next'
 import { Text, TextSize, TextVariant } from '@/shared/ui/Text'
 import { useArticleRecommendationsList } from '../api/articleRecommendationsApi'
 

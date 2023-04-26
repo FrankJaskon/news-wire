@@ -1,8 +1,8 @@
 import { Country } from '@/entities/Country'
 import { Currency } from '@/entities/Currency'
+import { ProfileType } from '@/entities/Profile'
 import { ValidateProfileError } from '../../types/ProfileScheme'
 import { validateProfile } from './validateProfile'
-import { ProfileType } from '@/entities/Profile'
 
 describe('validateProfile', () => {
 	test('Should return empty array', () => {

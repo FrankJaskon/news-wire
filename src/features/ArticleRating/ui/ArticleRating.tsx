@@ -1,9 +1,9 @@
-import { RatingCard } from '@/entities/Rating'
 import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useArticleRating, useRateArticle } from '../api/articleRatingApi'
 import { useSelector } from 'react-redux'
+import { RatingCard } from '@/entities/Rating'
 import { getUserAuthData } from '@/entities/User'
+import { useArticleRating, useRateArticle } from '../api/articleRatingApi'
 
 export interface ArticleRatingProps {
 	className?: string

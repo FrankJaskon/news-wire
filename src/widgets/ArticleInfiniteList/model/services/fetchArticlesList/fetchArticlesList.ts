@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { ArticleType } from '@/entities/Article'
-import { getFilter, getLimit, getOrder, getPage, getSearch, getSort } from '../../selectors/articlesPageSelector'
 import { RoutePaths } from '@/shared/const/RoutPaths'
+import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { ArticlesTypes } from '../../../ui/ArticleTypeTabs'
+import { getFilter, getLimit, getOrder, getPage, getSearch, getSort } from '../../selectors/articlesPageSelector'
 
 export interface FetchArticlesListProps {
 	replace?: boolean

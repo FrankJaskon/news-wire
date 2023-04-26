@@ -1,8 +1,8 @@
 import { FC, useMemo } from 'react'
-import { ValueOf } from '@/shared/types/types'
-import classNames from '@/shared/lib/classNames/classNames'
-import cls from './Avatar.module.scss'
 import defaultUser from '@/shared/assets/icons/default-user.png'
+import classNames from '@/shared/lib/classNames/classNames'
+import { ValueOf } from '@/shared/types/types'
+import cls from './Avatar.module.scss'
 
 export interface AvatarProps {
 	className?: string

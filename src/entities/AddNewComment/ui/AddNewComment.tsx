@@ -6,10 +6,10 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
 import { AppTextArea } from '@/shared/ui/Form/AppTextArea'
+import { VStack } from '@/shared/ui/Stack'
 import { getNewCommentText } from '../model/selectors/newCommentSelectors'
 import { addNewCommentActions, addNewCommentReducer } from '../model/slices/addNewCommentSlice'
 import cls from './AddNewComment.module.scss'
-import { VStack } from '@/shared/ui/Stack'
 
 export interface AddNewCommentProps {
 	className?: string

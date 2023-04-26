@@ -1,9 +1,9 @@
-import webpack, { RuleSetRule } from 'webpack'
 import path from 'path'
-import { styleLoader } from '../../config/build/Loaders/styleLoader'
-import { BuildPaths } from '../../config/build/types/config'
-import { svgLoader } from '../../config/build/Loaders/svgLoader'
+import webpack, { RuleSetRule } from 'webpack'
 import { imgLoader } from '../../config/build/Loaders/imgLoader'
+import { styleLoader } from '../../config/build/Loaders/styleLoader'
+import { svgLoader } from '../../config/build/Loaders/svgLoader'
+import { BuildPaths } from '../../config/build/types/config'
 
 const config = ({ config }: { config: webpack.Configuration }): webpack.Configuration => {
 	const paths: BuildPaths = {

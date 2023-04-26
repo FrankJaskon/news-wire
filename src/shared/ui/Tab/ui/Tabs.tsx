@@ -1,8 +1,8 @@
 import { FC, memo, ReactNode, useCallback } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppCard } from '../../AppCard'
-import cls from './Tabs.module.scss'
 import { TabVariant, TabVariantType } from '../model/consts'
+import cls from './Tabs.module.scss'
 
 export interface TabItem {
 	value: string

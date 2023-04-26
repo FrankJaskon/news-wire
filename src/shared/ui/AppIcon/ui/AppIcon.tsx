@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react'
-import { ValueOf } from '@/shared/types/types'
 import classNames from '@/shared/lib/classNames/classNames'
+import { ValueOf } from '@/shared/types/types'
 import cls from './AppIcon.module.scss'
 
 export const AppIconVariant = {

@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import { EditableProfileCard } from './EditableProfileCard'
-import type { EditableProfileCardProps } from './EditableProfileCard'
-import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
-import { Currency } from '@/entities/Currency'
 import { Country } from '@/entities/Country'
+import { Currency } from '@/entities/Currency'
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
+import { EditableProfileCard } from './EditableProfileCard'
+import type { EditableProfileCardProps } from './EditableProfileCard'
 
 const data = {
 	age: 1,

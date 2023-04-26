@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import { ArticleListItemSkeleton } from './ArticleListItemSkeleton'
-import { ArticleListItemSkeletonProps } from './ArticleListItemSkeleton'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
+import { ArticleListItemSkeleton , ArticleListItemSkeletonProps } from './ArticleListItemSkeleton'
+
 
 export default {
 	title: 'entities/Article/ArticleListItemSkeleton',

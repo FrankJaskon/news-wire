@@ -1,14 +1,14 @@
 import { FC, useCallback } from 'react'
-import { Dropdown } from '@/shared/ui/Popups'
-import classNames from '@/shared/lib/classNames/classNames'
-import cls from './AvatarDropdown.module.scss'
-import { useSelector } from 'react-redux'
-import { getIsUserAdmin, getIsUserManager, getUserAuthData, userActions } from '@/entities/User'
-import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
-import { RoutePaths } from '@/shared/const/RoutPaths'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { getIsUserAdmin, getIsUserManager, getUserAuthData, userActions } from '@/entities/User'
+import { RoutePaths } from '@/shared/const/RoutPaths'
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
+import classNames from '@/shared/lib/classNames/classNames'
 import { Avatar, AvatarVariant } from '@/shared/ui/Avatar'
+import { Dropdown } from '@/shared/ui/Popups'
+import cls from './AvatarDropdown.module.scss'
 
 interface AvatarDropdownProps {
 	className?: string

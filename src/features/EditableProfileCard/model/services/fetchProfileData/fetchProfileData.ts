@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkApiConfigType } from 'app/providers/StoreProvider'
+import { ProfileType } from '@/entities/Profile'
 import { RoutePaths } from '@/shared/const/RoutPaths'
+import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { ValidateProfileError } from '../../types/ProfileScheme'
 import type { ValidateProfileErrorType } from '../../types/ProfileScheme'
-import { ProfileType } from '@/entities/Profile'
 
 export const fetchProfileData = createAsyncThunk<ProfileType, number, ThunkApiConfigType<ValidateProfileErrorType>>(
 	'profile/fetchProfileData',

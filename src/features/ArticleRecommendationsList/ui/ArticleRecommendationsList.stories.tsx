@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import { ArticleRecommendationsList, ArticleRecommendationsListProps } from './ArticleRecommendationsList'
-import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import withMock from 'storybook-addon-mock'
 import { ArticleType } from '@/entities/Article'
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { RoutePaths } from '@/shared/const/RoutPaths'
+import { ArticleRecommendationsList, ArticleRecommendationsListProps } from './ArticleRecommendationsList'
 
 const article: ArticleType = {
 	'id': 1,

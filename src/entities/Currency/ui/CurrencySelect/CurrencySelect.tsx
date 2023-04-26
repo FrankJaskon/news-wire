@@ -1,9 +1,9 @@
-import { Currency, CurrencyType } from '../../model/types/CurrencyScheme'
 import { FC, memo, useCallback, useMemo } from 'react'
-import { AppLabel } from '@/shared/ui/Form/Label'
 import { useTranslation } from 'react-i18next'
-import { VStack } from '@/shared/ui/Stack'
+import { AppLabel } from '@/shared/ui/Form/Label'
 import { Select, SelectOption } from '@/shared/ui/Popups'
+import { VStack } from '@/shared/ui/Stack'
+import { Currency, CurrencyType } from '../../model/types/CurrencyScheme'
 
 interface CurrencySelectProps {
 	value?: CurrencyType

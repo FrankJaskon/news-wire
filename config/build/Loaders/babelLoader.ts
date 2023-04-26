@@ -1,6 +1,6 @@
-import type webpack from 'webpack'
-import { BuildOptions } from '../types/config'
 import babelRemoveAttributesPlugin from '../babel/babel-plugin-remove-attributes'
+import { BuildOptions } from '../types/config'
+import type webpack from 'webpack'
 
 interface BuildOptionsProps extends BuildOptions {
 	isTsx?: boolean

@@ -7,8 +7,8 @@ import {
 	DirectionVariant,
 	InnerPositionVariant
 } from '../../styles/consts'
-import cls from './Dropdown.module.scss'
 import popupCls from '../../styles/Popups.module.scss'
+import cls from './Dropdown.module.scss'
 
 export interface DropdownItem {
 	disabled?: boolean

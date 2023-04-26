@@ -1,10 +1,10 @@
-import { ArticleType, ViewVariantType } from '../../model/types/ArticleDetailsScheme'
 import { FC, HTMLAttributeAnchorTarget, memo, useCallback } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
-import cls from './ArticleList.module.scss'
+import { ViewVariant } from '../../model/consts/articleDetailsConsts'
+import { ArticleType, ViewVariantType } from '../../model/types/ArticleDetailsScheme'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
-import { ViewVariant } from '../../model/consts/articleDetailsConsts'
+import cls from './ArticleList.module.scss'
 
 export interface ArticleListProps {
 	className?: string

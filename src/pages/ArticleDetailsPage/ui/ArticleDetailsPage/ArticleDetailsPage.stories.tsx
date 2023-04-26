@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { ArticleType } from '@/entities/Article'
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import ArticleDetailsPage from './ArticleDetailsPage'
 import type { ArticleDetailsPageProps } from './ArticleDetailsPage'
-import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
-import { ArticleType } from '@/entities/Article'
 
 const data: ArticleType = {
 	id: 1,

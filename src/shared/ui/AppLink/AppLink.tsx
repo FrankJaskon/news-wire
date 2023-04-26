@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
-import { Link } from 'react-router-dom'
-import { LinkProps } from 'react-router-dom'
-import { ValueOf } from '@/shared/types/types'
+import { Link , LinkProps } from 'react-router-dom'
+
 import classNames from '@/shared/lib/classNames/classNames'
+import { ValueOf } from '@/shared/types/types'
 import cls from './AppLink.module.scss'
 
 export const AppLinkVariant = {

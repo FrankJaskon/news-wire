@@ -1,8 +1,8 @@
 import { EntityState } from '@reduxjs/toolkit'
 import { ArticleType, ViewVariantType } from '@/entities/Article'
-import { ArticlesTypesType } from '../../ui/ArticleTypeTabs'
 import { ArticlesSortVariantType } from '@/features/ArticlesSortSelector'
 import { SortOrderType } from '@/shared/types/types'
+import { ArticlesTypesType } from '../../ui/ArticleTypeTabs'
 
 export interface ArticleInfiniteListScheme extends EntityState<ArticleType>{
 	isLoading: boolean

@@ -1,10 +1,10 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
 import { userReducer } from '@/entities/User'
 import { $api } from '@/shared/api/api'
+import { rtkApi } from '@/shared/api/rtkApi'
 import { pageScrollReducer } from '@/widgets/PageWrapper'
 import { createReducerManager } from './reducerManager'
 import { ExtraArgumentType, StateSchema } from './StateSchema'
-import { rtkApi } from '@/shared/api/rtkApi'
 
 export const createReduxStore = (
 	initialState?: StateSchema,

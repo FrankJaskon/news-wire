@@ -1,9 +1,9 @@
-import { FC, ReactNode, memo } from 'react'
 import { Popover as HeadlessPopover } from '@headlessui/react'
-import { DirectionType, DirectionVariant } from '../../styles/consts'
+import { FC, ReactNode, memo } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
-import cls from './Popover.module.scss'
+import { DirectionType, DirectionVariant } from '../../styles/consts'
 import popupCls from '../../styles/Popups.module.scss'
+import cls from './Popover.module.scss'
 
 export interface PopoverProps {
 	className?: string

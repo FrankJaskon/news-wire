@@ -1,9 +1,9 @@
 import { FC, memo, useMemo } from 'react'
+import { TextColor } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
+import { VStack } from '@/shared/ui/Stack'
 import { Text } from '@/shared/ui/Text'
 import cls from './ArticleTextBlock.module.scss'
-import { VStack } from '@/shared/ui/Stack'
-import { TextColor } from '@/shared/const/consts'
 
 export interface ArticleTextBlockProps {
 	className?: string

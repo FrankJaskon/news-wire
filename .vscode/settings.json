@@ -18,5 +18,9 @@
     }
   ],
   "npm.packageManager": "npm",
-  "files.eol": "\r\n"
+  "files.eol": "\r\n",
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
 }

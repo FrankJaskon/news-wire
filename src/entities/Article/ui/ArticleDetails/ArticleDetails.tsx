@@ -1,18 +1,15 @@
 import { FC, ReactNode } from 'react'
-import classNames from '@/shared/lib/classNames/classNames'
-import { Skeleton } from '@/shared/ui/Skeleton'
-import { Text } from '@/shared/ui/Text'
-import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
-import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
-import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
-import ViewsIcon from '@/shared/assets/icons/views.svg'
-import DateIcon from '@/shared/assets/icons/date.svg'
-import cls from './ArticleDetails.module.scss'
-import { AppIcon } from '@/shared/ui/AppIcon'
-import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
-import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
+import DateIcon from '@/shared/assets/icons/date.svg'
+import ViewsIcon from '@/shared/assets/icons/views.svg'
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect'
+import classNames from '@/shared/lib/classNames/classNames'
+import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { AppIcon } from '@/shared/ui/AppIcon'
+import { Skeleton } from '@/shared/ui/Skeleton'
+import { HStack, VStack } from '@/shared/ui/Stack'
+import { Text } from '@/shared/ui/Text'
 import {
 	getArticleDetailsData,
 	getArticleDetailsError,
@@ -20,9 +17,12 @@ import {
 	getArticleDetailsReadonly
 } from '../../model/selectors/articleDetailsSelectors'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import { ArticleBlockType } from '../../model/types/ArticleDetailsScheme'
-import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect'
-import { HStack, VStack } from '@/shared/ui/Stack'
+import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
+import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
+import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
+import cls from './ArticleDetails.module.scss'
 
 export interface ArticleDetailsProps {
 	className?: string

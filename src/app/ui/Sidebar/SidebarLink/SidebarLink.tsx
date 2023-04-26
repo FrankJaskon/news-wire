@@ -1,7 +1,7 @@
-import { getUserAuthData } from '@/entities/User'
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import { getUserAuthData } from '@/entities/User'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon } from '@/shared/ui/AppIcon'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'

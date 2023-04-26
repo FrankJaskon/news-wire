@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkApiConfigType } from 'app/providers/StoreProvider'
 import { RoutePaths } from '@/shared/const/RoutPaths'
+import { ThunkApiConfigType } from 'app/providers/StoreProvider'
+import { ValidateArticleDetailsError } from '../../consts/articleDetailsConsts'
 import {
 	ArticleType,
 	ValidateArticleDetailsErrorType
 } from '../../types/ArticleDetailsScheme'
-import { ValidateArticleDetailsError } from '../../consts/articleDetailsConsts'
 
 export const fetchArticleById = createAsyncThunk<
 	ArticleType,

@@ -1,7 +1,9 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
+
 import { PageWrapper } from './PageWrapper'
 import type { PageWrapperProps } from './PageWrapper'
-import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 
 export default {
 	title: 'shared/PageWrapper',
