@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { ValueOf } from '@/shared/types/types'
 
 export const TextColor = {
@@ -10,3 +11,5 @@ export const TextColor = {
 } as const
 
 export type TextColorType = ValueOf<typeof TextColor>
+
+export const typedMemo: <T>(c: T) => T = memo

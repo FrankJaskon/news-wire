@@ -15,15 +15,15 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo((props: CurrencySele
 	const { value, onChange, readonly } = props
 	const { t } = useTranslation()
 
-	const currencyOptionList: SelectOption[] = useMemo(() => Object.values(Currency).map(item => (
+	const currencyOptionList: SelectOption<CurrencyType>[] = useMemo(() => Object.values(Currency).map(item => (
 		{ label: t(`currency.${item}`), value: item }
 	)), [t])
 
 	const selected = useMemo(() => currencyOptionList.find((item) => item.value === value),
 		[value, currencyOptionList])
 
-	const handleOnChange = useCallback((value: SelectOption) => {
-		onChange?.(value.value as CurrencyType)
+	const handleOnChange = useCallback((value: SelectOption<CurrencyType>) => {
+		onChange?.(value.value)
 	}, [onChange])
 
 	return <VStack>

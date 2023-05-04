@@ -23,15 +23,15 @@ export const CountrySelect: FC<CountrySelectProps> = memo((props: CountrySelectP
 	const { t } = useTranslation()
 
 
-	const countryOptionList: SelectOption[] = useMemo(() => Object.values(Country).map(item => (
+	const countryOptionList: SelectOption<CountryType>[] = useMemo(() => Object.values(Country).map(item => (
 		{ label: t(`country.${item}`), value: item }
 	)), [t])
 
 	const selected = useMemo(() => countryOptionList.find((item) => item.value === value),
 		[value, countryOptionList])
 
-	const handleOnChange = useCallback((value: SelectOption) => {
-		onChange?.(value.value as CountryType)
+	const handleOnChange = useCallback((value: SelectOption<CountryType>) => {
+		onChange?.(value.value)
 	}, [onChange])
 
 	return <VStack>

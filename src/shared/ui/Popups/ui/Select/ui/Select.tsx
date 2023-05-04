@@ -1,7 +1,8 @@
 import { Listbox } from '@headlessui/react'
-import { FC, Fragment, memo } from 'react'
+import { Fragment } from 'react'
 import CheckMark from '@/shared/assets/icons/checkmark.svg'
 import ExpandIcon from '@/shared/assets/icons/expand.svg'
+import { typedMemo } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon, AppIconSize, AppIconVariant } from '../../../../AppIcon'
 import { HStack } from '../../../../Stack'
@@ -9,24 +10,24 @@ import { AlignType, DirectionType, DirectionVariant, InnerPositionVariant } from
 import popupCls from '../../../styles/Popups.module.scss'
 import cls from './Select.module.scss'
 
-export interface SelectOption {
-	value: string
-	label: string
+export interface SelectOption<T extends string> {
+	value: T
+	label: T
 }
 
-export interface SelectProps {
+export interface SelectProps<T extends string> {
 	className?: string
 	name?: string
-	options: SelectOption[]
-	value?: SelectOption
-	onChange?: (value: SelectOption) => void
+	options: SelectOption<T>[]
+	value?: SelectOption<T>
+	onChange?: (value: SelectOption<T>) => void
 	direction?: DirectionType
 	align?: AlignType
 	readonly?: boolean
 	placeholder?: string
 }
 
-export const Select: FC<SelectProps> = memo((props: SelectProps) => {
+export const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
 	const {
 		className,
 		options,

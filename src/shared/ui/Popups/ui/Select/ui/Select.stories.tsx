@@ -20,16 +20,16 @@ export default {
 
 const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />
 
-export const Basic: Story<SelectProps> = Template.bind({})
+export const Basic: Story<SelectProps<string>> = Template.bind({})
 Basic.args = {
 }
 
-export const DarkTheme: Story<SelectProps> = Template.bind({})
+export const DarkTheme: Story<SelectProps<string>> = Template.bind({})
 DarkTheme.args = {
 }
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const PurpleTheme: Story<SelectProps> = Template.bind({})
+export const PurpleTheme: Story<SelectProps<string>> = Template.bind({})
 PurpleTheme.args = {
 }
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

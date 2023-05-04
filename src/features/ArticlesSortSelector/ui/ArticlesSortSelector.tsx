@@ -24,13 +24,14 @@ export const ArticlesSortSelector: FC<ArticlesSortSelectorProps> = memo((props: 
 	} = props
 	const { t } = useTranslation('article')
 
-	const orderOptionList: SelectOption[] = useMemo(() => Object.values(SortOrder).map(order => (
+	const orderOptionList: SelectOption<SortOrderType>[] = useMemo(() => Object.values(SortOrder).map(order => (
 		{ label: t(`order.${order}`), value: order }
 	)), [t])
 
-	const sortingOptionList: SelectOption[] = useMemo(() => Object.values(ArticlesSortVariant).map(sort => (
-		{ label: t(`sort-by.${sort}`), value: sort }
-	)), [t])
+	const sortingOptionList: SelectOption<ArticlesSortVariantType>[] = useMemo(
+		() => Object.values(ArticlesSortVariant).map(sort => (
+			{ label: t(`sort-by.${sort}`), value: sort }
+		)), [t])
 
 	const selectedOrder = useMemo(() => orderOptionList.find((item) => item.value === order),
 		[order, orderOptionList])
@@ -38,11 +39,11 @@ export const ArticlesSortSelector: FC<ArticlesSortSelectorProps> = memo((props: 
 	const selectedSort = useMemo(() => sortingOptionList.find((item) => item.value === sort),
 		[sort, sortingOptionList])
 
-	const handleChangeOrder = useCallback((value: SelectOption) => {
+	const handleChangeOrder = useCallback((value: SelectOption<SortOrderType>) => {
 		onChangeOrder?.(value.value as SortOrderType)
 	}, [onChangeOrder])
 
-	const handleChangeSort = useCallback((value: SelectOption) => {
+	const handleChangeSort = useCallback((value: SelectOption<ArticlesSortVariantType>) => {
 		onChangeSort?.(value.value as ArticlesSortVariantType)
 	}, [onChangeSort])
 
