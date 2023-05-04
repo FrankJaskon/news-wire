@@ -32,7 +32,7 @@ const reducers: ReducerList = {
 export const ArticleComments: FC<ArticleCommentsProps> = (props) => {
 	const { className } = props
 
-	const { t } = useTranslation(['translation', 'article', 'asafasf'])
+	const { t } = useTranslation(['translation', 'article'])
 	const dispatch = useAppDispatch()
 	const { id } = useParams()
 

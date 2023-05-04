@@ -21,7 +21,15 @@ export const parameters = {
 		en: 'English',
 		ua: 'Ukrainian',
 	},
-	layout: 'fullscreen'
+	layout: 'fullscreen',
+	themes: {
+		default: 'light',
+		list: [
+			{ name: 'light', class: AppThemes.LIGHT, color: '#ff8c00' },
+			{ name: 'dark', class: AppThemes.DARK, color: '#15202b' },
+			{ name: 'purple', class: AppThemes.PURPLE, color: '#ae12f6' }
+		],
+	},
 }
 
 addDecorator(StyleDecorator)
