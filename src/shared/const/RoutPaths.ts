@@ -17,17 +17,13 @@ export const AppRoutes = {
 
 export type AppRoutesTypes = ValueOf<typeof AppRoutes>
 
-export const RoutePaths: Record<AppRoutesTypes, string> = {
-	[AppRoutes.MAIN]: '/',
-	[AppRoutes.ABOUT]: '/about',
-	[AppRoutes.PROFILE]: '/profiles/', // + 'id'
-	[AppRoutes.ARTICLES]: '/articles',
-	[AppRoutes.ARTICLES_DETAILS]: '/articles/', // + 'id'
-	[AppRoutes.ARTICLES_DETAILS_EDIT]: '/articles/:id/edit',
-	[AppRoutes.ARTICLES_DETAILS_NEW]: '/articles/new',
-	[AppRoutes.ADMIN_PAGE]: '/admin',
-	[AppRoutes.FORBIDDEN]: '/forbidden',
-
-	// last
-	[AppRoutes.NOT_FOUND]: '*'
-}
+export const getMainRoute = () => ''
+export const getAboutRoute = () => '/about'
+export const getProfileRoute = (id: number | string) => '/profiles/' + id
+export const getArticlesRoute = () => '/articles'
+export const getArticleDetailsRoute = (id: number | string) => '/articles/' + id
+export const getEditArticleDetailsRoute = (id: number | string) => `/articles/${id}/edit`
+export const getNewArticleDetailsRoute = () => '/articles/new'
+export const getAdminRoute = () => '/admin'
+export const getForbiddenRoute = () => '/forbidden'
+export const getNotFoundRoute = () => '*'

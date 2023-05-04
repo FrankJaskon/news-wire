@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { translateErrorOrFalse } from '@/shared/config/errorResponse/errorResponse'
-import { RoutePaths } from '@/shared/const/RoutPaths'
+import { getMainRoute } from '@/shared/const/RoutPaths'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
@@ -60,7 +60,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		}))
 		if (result.meta.requestStatus === 'fulfilled') {
 			onSuccess()
-			navigate(RoutePaths.main)
+			navigate(getMainRoute())
 		}
 	}, [dispatch, usernameValue, passwordValue, onSuccess, navigate])
 

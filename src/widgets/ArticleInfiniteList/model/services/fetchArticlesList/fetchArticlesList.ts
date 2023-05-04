@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ArticleType } from '@/entities/Article'
-import { RoutePaths } from '@/shared/const/RoutPaths'
 import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
+import { ArticleType } from '@/entities/Article'
+import { getArticlesRoute } from '@/shared/const/RoutPaths'
 import { ArticlesTypes } from '../../../ui/ArticleTypeTabs'
 import { getFilter, getLimit, getOrder, getPage, getSearch, getSort } from '../../selectors/articlesPageSelector'
 
@@ -26,7 +26,7 @@ export const fetchArticlesList = createAsyncThunk<
 			const search = getSearch(getState())
 			const filter = getFilter(getState())
 			const response = await extra.api.get<ArticleType[]>(
-				RoutePaths.articles,
+				getArticlesRoute(),
 				{
 					params: {
 						_page: page,

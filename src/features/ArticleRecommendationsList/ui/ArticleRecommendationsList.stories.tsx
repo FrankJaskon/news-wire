@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
 import withMock from 'storybook-addon-mock'
 import { ArticleType } from '@/entities/Article'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
-import { RoutePaths } from '@/shared/const/RoutPaths'
+import { getArticlesRoute } from '@/shared/const/RoutPaths'
 import { ArticleRecommendationsList, ArticleRecommendationsListProps } from './ArticleRecommendationsList'
 
 const article: ArticleType = {
@@ -42,7 +42,7 @@ export const Basic: Story<ArticleRecommendationsListProps> = Template.bind({})
 Basic.parameters = {
 	mockData: [
 		{
-			url: `${__API_URL__}${RoutePaths.articles}?_limit=3`,
+			url: `${__API_URL__}${getArticlesRoute()}?_limit=3`,
 			method: 'GET',
 			status: 200,
 			response: [

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { RoutePaths } from '@/shared/const/RoutPaths'
 import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
+import { getArticleDetailsRoute } from '@/shared/const/RoutPaths'
 import { ValidateArticleDetailsError } from '../../consts/articleDetailsConsts'
 import {
 	ArticleType,
@@ -20,7 +20,7 @@ export const fetchArticleById = createAsyncThunk<
 				return rejectWithValue(ValidateArticleDetailsError.NO_DATA)
 			}
 
-			const response = await extra.api.get<ArticleType>(RoutePaths.articles_details + id, {
+			const response = await extra.api.get<ArticleType>(getArticleDetailsRoute(id), {
 				params: {
 					_expand: 'profile'
 				}

@@ -9,7 +9,18 @@ import { ForbiddenPage } from '@/pages/ForbiddenPage'
 import { MainPage } from '@/pages/MainPage'
 import { NotFound } from '@/pages/NotFound'
 import { ProfilePage } from '@/pages/ProfilePage'
-import { RoutePaths } from '@/shared/const/RoutPaths'
+import {
+	getAboutRoute,
+	getAdminRoute,
+	getArticleDetailsRoute,
+	getArticlesRoute,
+	getEditArticleDetailsRoute,
+	getForbiddenRoute,
+	getMainRoute,
+	getNewArticleDetailsRoute,
+	getNotFoundRoute,
+	getProfileRoute
+} from '@/shared/const/RoutPaths'
 
 export type AuthRouteProps = RouteProps & {
 	authOnly?: boolean
@@ -18,40 +29,40 @@ export type AuthRouteProps = RouteProps & {
 
 export const routerConfig: AuthRouteProps[] = [
 	{
-		path: RoutePaths.main,
+		path: getMainRoute(),
 		element: <MainPage />
 	},
 	{
-		path: RoutePaths.about,
+		path: getAboutRoute(),
 		element: <AboutPage />
 	},
 	{
-		path: `${RoutePaths.profiles}:id`,
+		path: getProfileRoute(':id'),
 		element: <ProfilePage />,
 		authOnly: true
 	},
 	{
-		path: RoutePaths.articles,
+		path: getArticlesRoute(),
 		element: <ArticlesPage />,
 		authOnly: true
 	},
 	{
-		path: `${RoutePaths.articles_details}:id`,
+		path: getArticleDetailsRoute(':id'),
 		element: <ArticleDetailsPage />,
 		authOnly: true
 	},
 	{
-		path: RoutePaths.articles_details_edit,
+		path: getEditArticleDetailsRoute(':id'),
 		element: <EditArticlePage />,
 		authOnly: true
 	},
 	{
-		path: RoutePaths.articles_details_new,
+		path: getNewArticleDetailsRoute(),
 		element: <EditArticlePage />,
 		authOnly: true
 	},
 	{
-		path: RoutePaths.admin,
+		path: getAdminRoute(),
 		element: <AdminPanel />,
 		authOnly: true,
 		roles: [UserRole.ADMIN, UserRole.MANAGER]
@@ -59,13 +70,13 @@ export const routerConfig: AuthRouteProps[] = [
 
 	// forbidden
 	{
-		path: RoutePaths.forbidden,
+		path: getForbiddenRoute(),
 		element: <ForbiddenPage />
 	},
 
 	// last
 	{
-		path: RoutePaths.not_found,
+		path: getNotFoundRoute(),
 		element: <NotFound />
 	}
 ]

@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { RoutePaths } from '@/shared/const/RoutPaths'
+import { getProfileRoute } from '@/shared/const/RoutPaths'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppCard } from '@/shared/ui/AppCard'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
@@ -64,7 +64,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 			>
 				<AppLink
 					className={cls.avatarWrapper}
-					to={`${RoutePaths.profiles}${Number(comment?.profile.id)}`}
+					to={getProfileRoute(comment?.profile.id)}
 				>
 					<Avatar
 						size={50}
@@ -76,7 +76,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 					justify='between'
 				>
 					<AppLink
-						to={`${RoutePaths.profiles}${Number(comment?.profile.id)}`}
+						to={getProfileRoute(comment?.profile.id)}
 					>
 						<Text
 							title={comment?.profile.username}

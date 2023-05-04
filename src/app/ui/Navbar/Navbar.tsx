@@ -7,7 +7,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown'
 import { MobileNotificationDrawer } from '@/features/MobileNotificationDrawer'
 import { NotificationPopup } from '@/features/NotificationPopup'
 import { TextColor } from '@/shared/const/consts'
-import { RoutePaths } from '@/shared/const/RoutPaths'
+import { getMainRoute, getNewArticleDetailsRoute } from '@/shared/const/RoutPaths'
 import { useDetectMobile } from '@/shared/hooks/useDetectMobile/useDetectMobile'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
@@ -45,7 +45,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 		>
 			<AppLink
 				className={cls.link}
-				to={RoutePaths.articles_details_new}
+				to={getNewArticleDetailsRoute()}
 				variant={AppLinkVariant.CUSTOM_BUTTON}
 			>
 				{t('navbar.create-article')}
@@ -87,7 +87,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 			align='center'
 		>
 			<AppLink
-				to={RoutePaths.main}
+				to={getMainRoute()}
 			>
 				<Text
 					className={cls.logo}

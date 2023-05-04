@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import ViewsIcon from '@/shared/assets/icons/views.svg'
 import { TextColor } from '@/shared/const/consts'
-import { RoutePaths } from '@/shared/const/RoutPaths'
+import { getArticleDetailsRoute, getProfileRoute } from '@/shared/const/RoutPaths'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton } from '@/shared/ui/AppButton'
 import { AppCard } from '@/shared/ui/AppCard'
@@ -69,7 +69,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					<AppLink
 						className={classNames(cls.imgWrapper, {})}
 						hover={false}
-						to={RoutePaths.articles_details + article?.id}
+						to={(article?.id && getArticleDetailsRoute(article?.id)) || undefined}
 						target={target}
 					>
 						<img
@@ -108,7 +108,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 				>
 					<AppLink
 						className={classNames(cls.userInfo, {})}
-						to={RoutePaths.profiles + article?.profile.id}
+						to={(article?.profile.id && getProfileRoute(article?.profile.id)) || undefined}
 					>
 						<HStack
 							gap='8'

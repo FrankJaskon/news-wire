@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { RoutePaths } from '@/shared/const/RoutPaths'
+import { getArticlesRoute, getEditArticleDetailsRoute } from '@/shared/const/RoutPaths'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppLink, AppLinkVariant } from '@/shared/ui/AppLink/AppLink'
 import { HStack } from '@/shared/ui/Stack'
@@ -31,14 +31,14 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 			<AppLink
 				variant={AppLinkVariant.PRIMARY_BUTTON}
 				className={cls.backBtn}
-				to={RoutePaths.articles}
+				to={getArticlesRoute()}
 			>
 				{'< ' + t('back-to-list-btn')}
 			</AppLink>
 			{ifCanEdit && <AppLink
 				variant={AppLinkVariant.PRIMARY_BUTTON}
 				className={cls.editBtn}
-				to={`${RoutePaths.articles}/${articleId}/edit`}
+				to={getEditArticleDetailsRoute(articleId)}
 			>
 				{t('edit-article-btn')}
 			</AppLink>}
