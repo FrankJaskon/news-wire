@@ -41,7 +41,8 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
 			},
 			[className, cls[variant]]
 		)}
-		{...otherProps}>
+		{...otherProps}
+	>
 		{ children }
 	</Link>
 })

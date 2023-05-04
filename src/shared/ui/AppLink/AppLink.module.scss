@@ -2,22 +2,22 @@
 	text-decoration: none;
 	box-shadow: 0 0 0 0 var(--overlay-bg-color);
 	border-radius: var(--border-radius);
-	transition: color .2s, background-color .2s, box-shadow .2s;
-}
-
-.hover {
-	&:hover {
-		box-shadow: 0 0 5px 0 var(--overlay-bg-color);
-	}
+	transition: color .2s, background-color .2s;
 }
 
 .primary {
 	color: var(--primary-color);
 	padding: .25em 1em;
+	&.hover:hover {
+		color: var(--primary-hovered-color);
+	}
 }
 
 .secondary {
 	color: var(--secondary-color);
+	&.hover:hover {
+		color: var(--secondary-hovered-color);
+	}
 }
 
 .underlined {
@@ -53,4 +53,7 @@
 .primary_button {
 	background-color: var(--primary-color);
 	color: var(--light-color);
+	&.hover:hover {
+		color: var(--light-hovered-color);
+	}
 }

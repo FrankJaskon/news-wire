@@ -2,7 +2,7 @@ import { FC, memo, useMemo } from 'react'
 import { TextColor } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
 import { VStack } from '@/shared/ui/Stack'
-import { Text } from '@/shared/ui/Text'
+import { Text, TextSize } from '@/shared/ui/Text'
 import cls from './ArticleTextBlock.module.scss'
 
 export interface ArticleTextBlockProps {
@@ -34,6 +34,7 @@ export const ArticleTextBlock: FC<ArticleTextBlockProps> = memo((props: ArticleT
 		>
 			{title && <Text
 				title={title}
+				size={TextSize.S}
 				titleHue={TextColor.SECONDARY}
 			/>}
 			{content}

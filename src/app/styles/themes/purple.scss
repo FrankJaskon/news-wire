@@ -1,12 +1,16 @@
 body.purple {
 	--bg-color: #f9ebff;
 	--primary-color: #ae12f6;
-	--secondary-color: #110219;
+	--secondary-color: #333;
 	--block-primary-color: #ae12f6;
 	--block-primary-lighter: #e3acfc;
 	--block-secondary-color: #f9f4fb;
 	--overlay-bg-color: rgba(17 3 25 / 80%);
 	--highlighted-color: rgba(0 0 0 / 10%);
+
+	/* HOVERED COLORS */
+	--primary-hovered-color: #ae12f6ee;
+	--secondary-hovered-color: #000;
 
 	/* CARD */
 	--sheet-color: #ebebeb;

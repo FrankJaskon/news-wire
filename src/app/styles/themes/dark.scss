@@ -1,12 +1,16 @@
 body.dark {
 	--bg-color: #15202b;
 	--primary-color: #ff8c00;
-	--secondary-color: #fff;
+	--secondary-color: #eee;
 	--block-primary-color: #333;
 	--block-primary-lighter: #555;
 	--block-secondary-color: #ff8c00;
 	--overlay-bg-color: rgba(121 121 121 / 80%);
 	--highlighted-color: rgba(255 255 255 / 10%);
+
+	/* HOVERED COLORS */
+	--primary-hovered-color: #ff8c00ee;
+	--secondary-hovered-color: #fff;
 
 	/* CARD */
 	--sheet-color: #2d3741;

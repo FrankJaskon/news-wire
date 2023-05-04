@@ -1,12 +1,16 @@
 body.light {
 	--bg-color: #f5f5f5;
 	--primary-color: #ff8c00;
-	--secondary-color: #111;
+	--secondary-color: #333;
 	--block-primary-color: #ff8c00;
 	--block-primary-lighter: #ffa333;
 	--block-secondary-color: #eee;
 	--overlay-bg-color: rgba(0 0 0 / 80%);
 	--highlighted-color: rgba(0 0 0 / 4%);
+
+	/* HOVERED COLORS */
+	--primary-hovered-color: #ff8c00ee;
+	--secondary-hovered-color: #000;
 
 	/* CARD */
 	--sheet-color: #ebebeb;
