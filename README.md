@@ -28,6 +28,7 @@ npm run start:dev or npm run start:dev:vite - project interface + storybook in d
 - `npm run test:ui:report` - Generate full report for screenshot tests
 - `npm run storybook` - run Storybook
 - `npm run fix:absolute:imports` - Adding alias to absolute imports
+- `npm run postinstall` - Removes .cache's directory from node_modules every time we install some package
 
 ----
 

@@ -15,20 +15,20 @@ const buildPlugins = ({
 	analyzed,
 	project
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
+	const isProd = !isDev
+
 	const plugins: webpack.WebpackPluginInstance[] = [
 		new HtmlWebpackPlugin({
 			template: paths.html,
 		}),
 		new webpack.ProgressPlugin(),
-		new MiniCssExtractPlugin({
-			filename: 'css/[name].[contenthash:8].css',
-		}),
 		new webpack.DefinePlugin({
 			__iS_DEV__: JSON.stringify(isDev),
 			__API_URL__: JSON.stringify(apiUrl),
 			__PROJECT__: JSON.stringify(project)
 		})
 	]
+
 	if (isDev) {
 		plugins.push(
 			new ReactRefreshWebpackPlugin(),
@@ -46,13 +46,19 @@ const buildPlugins = ({
 				failOnError: true
 			})
 		)
-	} else {
+	}
+
+	if (isProd) {
 		plugins.push(new CopyPlugin({
 			patterns: [
 				{ from: paths.locales, to: paths.buildLocales },
 			],
+		}),
+		new MiniCssExtractPlugin({
+			filename: 'css/[name].[contenthash:8].css',
 		}))
 	}
+
 	if (analyzed) {
 		plugins.push(new BundleAnalyzerPlugin({
 			openAnalyzer: true
