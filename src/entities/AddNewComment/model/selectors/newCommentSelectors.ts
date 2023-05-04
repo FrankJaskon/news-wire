@@ -1,3 +1,3 @@
-import type { StateSchema } from 'app/providers/StoreProvider'
+import type { StateSchema } from '@/app/providers/StoreProvider'
 
 export const getNewCommentText = (state: StateSchema) => state?.addNewComment?.text ?? ''

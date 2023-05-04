@@ -175,7 +175,8 @@
             {
                 "alias": "@",
                 "ignoreImportPatterns": [
-                    "**/StoreProvider"
+                    "**/StoreProvider",
+                    "**/testing"
                 ]
             }
         ]

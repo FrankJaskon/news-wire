@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { CommentType } from '@/entities/Comment'
-import { ThunkApiConfigType } from 'app/providers/StoreProvider'
+import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
 
 export const fetchCommentsByArticleId = createAsyncThunk<
 	CommentType[],

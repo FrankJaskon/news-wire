@@ -8,7 +8,7 @@ project.addSourceFilesAtPaths('src/**/*.tsx')
 const files = project.getSourceFiles()
 
 const checkIfImportIsAbsolute = (value: string) => {
-	const layers = ['pages', 'features', 'widgets', 'entities', 'shared']
+	const layers = ['app', 'pages', 'features', 'widgets', 'entities', 'shared']
 
 	return layers.some(layer => value.startsWith(layer))
 }

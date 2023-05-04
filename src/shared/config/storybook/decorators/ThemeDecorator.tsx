@@ -1,8 +1,8 @@
 import { Story } from '@storybook/react'
-import { ThemeProvider } from 'app/providers/ThemeProvider'
+import { ThemeProvider } from '@/app/providers/ThemeProvider'
 import { FC, ReactNode } from 'react'
-import { Theme } from '../../theme/ThemeContext'
-import useTheme from '../../theme/useTheme'
+import { Theme } from '@/shared/config/theme/ThemeContext'
+import useTheme from '@/shared/config/theme/useTheme'
 
 interface WithUseThemeProps {
 	children: ReactNode

@@ -4,7 +4,7 @@ import { Currency } from '@/entities/Currency'
 import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
 import { ValidateProfileError } from '../../types/ProfileScheme'
 import { updateProfileData } from './updateProfileData'
-import type { StateSchema } from 'app/providers/StoreProvider'
+import type { StateSchema } from '@/app/providers/StoreProvider'
 
 describe('updateProfileData', () => {
 	test('Correct request', async () => {

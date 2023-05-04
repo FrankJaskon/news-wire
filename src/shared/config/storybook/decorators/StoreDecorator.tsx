@@ -1,12 +1,12 @@
 import { Story } from '@storybook/react'
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { addNewCommentReducer } from '@/entities/AddNewComment'
-import { articleDetailsReducer } from '@/entities/Article'
-import { articleDetailsCommentsReducer } from '@/features/ArticleComments'
-import { loginReducer } from '@/features/AuthByUsername'
-import { profileReducer } from '@/features/EditableProfileCard'
-import type { ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { articlesInfiniteListReducer } from '@/widgets/ArticleInfiniteList'
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider/testing'
+import { articleDetailsReducer } from '@/entities/Article/testing'
+import { addNewCommentReducer } from '@/entities/AddNewComment/testing'
+import { articleDetailsCommentsReducer } from '@/features/ArticleComments/testing'
+import { loginReducer } from '@/features/AuthByUsername/testing'
+import { profileReducer } from '@/features/EditableProfileCard/testing'
+import type { ReducerList } from '@/shared/lib/components/LazyReducerLoader/testing'
+import { articlesInfiniteListReducer } from '@/widgets/ArticleInfiniteList/testing'
 
 const defaultAsyncReducers: ReducerList = {
 	login: loginReducer,

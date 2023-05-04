@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { ArticlesTypes } from '../../ui/ArticleTypeTabs'
 
 export const getIsLoading = (state: StateSchema) => (
