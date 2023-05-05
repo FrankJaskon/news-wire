@@ -7,7 +7,6 @@ import { ProfileCard } from '@/entities/Profile'
 import { getUserAuthData } from '@/entities/User'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect'
-import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { VStack } from '@/shared/ui/Stack'
 import { Text, TextVariant } from '@/shared/ui/Text'
 import { getIsLoading } from '../model/selectors/getIsLoading/getIsLoading'
@@ -18,17 +17,13 @@ import { getReadonly } from '../model/selectors/getReadonly/getReadonly'
 import { getValidateError } from '../model/selectors/getValidateError/getValidateError'
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData'
-import { profileActions, profileReducer } from '../model/slice/profileSlice'
+import { profileActions } from '../model/slice/profileSlice'
 import { ValidateProfileError, ValidateProfileErrorType } from '../model/types/ProfileScheme'
 import cls from './EditableProfileCard.module.scss'
 import { ProfileRating } from './ProfileRating'
 
 export interface EditableProfileCardProps {
 	id?: number
-}
-
-const reducers: ReducerList = {
-	profile: profileReducer
 }
 
 export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: EditableProfileCardProps) => {
@@ -47,6 +42,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: Ed
 	const canEdit: boolean = useMemo(() => (
 		Number(authData?.id) === Number(profileData?.id)
 	), [authData?.id, profileData?.id])
+	const isNotProfileOwner = useMemo(() => !canEdit, [canEdit])
 	const { t } = useTranslation('profile')
 
 	const ValidateErrorTranslation = useMemo(() => ({
@@ -111,39 +107,35 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: Ed
 		authData?.id && dispatch(updateProfileData())
 	}, [dispatch, authData?.id])
 
-	return <LazyReducerLoader
-		reducers={reducers}
+	return <VStack
+		gap='12'
+		className={cls.EditableProfileCard}
 	>
-		<VStack
-			gap='12'
-			className={cls.EditableProfileCard}
-		>
-			{validateError && validateError?.map((err: ValidateProfileErrorType) => (
-				<Text
-					key={err}
-					variant={TextVariant.ERROR}
-					content={validateError && ValidateErrorTranslation[err]}
-				/>
-			))}
-			<ProfileCard
-				data={formData}
-				isLoading={isLoading}
-				readonly={readonly}
-				error={loadingError && ValidateErrorTranslation[loadingError]}
-				updateFirstname={onChangeFirstname}
-				updateLastname={onChangeLastname}
-				updateAge={onChangeAge}
-				updateCity={onChangeCity}
-				updateUsername={onChangeUsername}
-				updateAvatar={onChangeAvatar}
-				updateCurrency={onChangeCurrency}
-				updateCountry={onChangeCountry}
-				editForm={onEdit}
-				cancelEdit={onClose}
-				saveForm={onSave}
-				canEdit={canEdit}
+		{validateError && validateError?.map((err: ValidateProfileErrorType) => (
+			<Text
+				key={err}
+				variant={TextVariant.ERROR}
+				content={validateError && ValidateErrorTranslation[err]}
 			/>
-			{!canEdit && <ProfileRating profileId={id} />}
-		</VStack>
-	</LazyReducerLoader>
+		))}
+		<ProfileCard
+			data={formData}
+			readonly={readonly}
+			error={loadingError && ValidateErrorTranslation[loadingError]}
+			isLoading={isLoading}
+			updateFirstname={onChangeFirstname}
+			updateLastname={onChangeLastname}
+			updateAge={onChangeAge}
+			updateCity={onChangeCity}
+			updateUsername={onChangeUsername}
+			updateAvatar={onChangeAvatar}
+			updateCurrency={onChangeCurrency}
+			updateCountry={onChangeCountry}
+			editForm={onEdit}
+			cancelEdit={onClose}
+			saveForm={onSave}
+			canEdit={canEdit}
+		/>
+		{!isLoading && isNotProfileOwner && <ProfileRating profileId={id} />}
+	</VStack>
 })

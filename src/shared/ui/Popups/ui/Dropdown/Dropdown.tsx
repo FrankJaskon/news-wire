@@ -1,5 +1,6 @@
 import { Menu } from '@headlessui/react'
 import { FC, Fragment, ReactNode, memo } from 'react'
+import { NavLink } from 'react-router-dom'
 import classNames from '@/shared/lib/classNames/classNames'
 import {
 	AlignType,
@@ -78,8 +79,8 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 						if (item.href) {
 							return <Menu.Item
 								key={index}
-								as='a'
-								href={item.href}
+								as={NavLink}
+								to={item.href}
 								disabled={item.disabled}
 							>
 								{content}

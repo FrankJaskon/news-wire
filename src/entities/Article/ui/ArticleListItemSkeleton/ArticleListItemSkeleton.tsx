@@ -59,7 +59,6 @@ export const ArticleListItemSkeleton: FC<ArticleListItemSkeletonProps> = (props)
 						<Skeleton
 							height={40}
 							width={40}
-							borderRadius='50%'
 						/>
 						<Skeleton height={20} width={150} />
 					</HStack>

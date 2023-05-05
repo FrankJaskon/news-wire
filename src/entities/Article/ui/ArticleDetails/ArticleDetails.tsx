@@ -7,6 +7,7 @@ import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffe
 import classNames from '@/shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { AppIcon } from '@/shared/ui/AppIcon'
+import { AppImage } from '@/shared/ui/AppImage'
 import { Skeleton } from '@/shared/ui/Skeleton'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { Text } from '@/shared/ui/Text'
@@ -97,9 +98,13 @@ export const ArticleDetails: FC<ArticleDetailsProps> = (props) => {
 				className={cls.imgWrapper}
 				justify='center'
 			>
-				<img
+				<AppImage
 					src={article?.img}
 					className={cls.img}
+					fallback={<Skeleton
+						width={500}
+						height={200}
+					/>}
 				/>
 			</HStack>
 			<VStack

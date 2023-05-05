@@ -1,5 +1,7 @@
 import { FC, memo } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
+import { AppImage } from '@/shared/ui/AppImage'
+import { Skeleton } from '@/shared/ui/Skeleton'
 import { VStack } from '@/shared/ui/Stack'
 import { Text } from '@/shared/ui/Text'
 import cls from './ArticleImageBlock.module.scss'
@@ -23,10 +25,13 @@ export const ArticleImageBlock: FC<ArticleImageBlockProps> = memo((props: Articl
 			align='center'
 			gap='8'
 		>
-			<img
+			<AppImage
 				className={cls.img}
 				src={src}
 				alt={title}
+				fallback={<Skeleton
+					height={300}
+				/>}
 			/>
 			{
 				title && <VStack>

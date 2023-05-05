@@ -1,4 +1,5 @@
 import { FC, ReactNode, useMemo } from 'react'
+import { TextColor } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppCard, CardVariant } from '@/shared/ui/AppCard'
 import { AppLink, AppLinkVariant } from '@/shared/ui/AppLink/AppLink'
@@ -17,9 +18,7 @@ export const NotificationItem: FC<NotificationItemProps> = (props) => {
 		className,
 		notification: {
 			description,
-			id,
 			title,
-			userId,
 			href
 		}
 	} = props
@@ -30,6 +29,7 @@ export const NotificationItem: FC<NotificationItemProps> = (props) => {
 		<Text
 			title={title}
 			content={description}
+			contentHue={TextColor.DARK}
 			size={TextSize.S}
 			nowrap
 		/>

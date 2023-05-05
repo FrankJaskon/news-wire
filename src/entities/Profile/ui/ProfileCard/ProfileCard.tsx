@@ -14,7 +14,6 @@ import { Avatar } from '@/shared/ui/Avatar'
 import { AppInput, InputColor, InputVariant } from '@/shared/ui/Form/AppInput'
 import { Divider } from '@/shared/ui/Form/Divider/Divider'
 import { AppLabel, LabelVariant } from '@/shared/ui/Form/Label'
-import { Loader } from '@/shared/ui/Loader'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { Text } from '@/shared/ui/Text'
 import { ProfileType } from '../../model/types/profile'
@@ -92,12 +91,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	}
 
 	if (isLoading) {
-		return <VStack
-			justify='center'
-			align='center'
-		>
-			<Loader />
-		</VStack>
+		return null
 	}
 
 	return <form className={classNames(cls.ProfileCard, {}, [className])}>

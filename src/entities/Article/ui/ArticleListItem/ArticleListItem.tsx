@@ -8,8 +8,10 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton } from '@/shared/ui/AppButton'
 import { AppCard } from '@/shared/ui/AppCard'
 import { AppIcon } from '@/shared/ui/AppIcon'
+import { AppImage } from '@/shared/ui/AppImage'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { Avatar } from '@/shared/ui/Avatar'
+import { Skeleton } from '@/shared/ui/Skeleton'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { Text } from '@/shared/ui/Text'
 import { BlockType, ViewVariant } from '../../model/consts/articleDetailsConsts'
@@ -72,10 +74,14 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 						to={(article?.id && getArticleDetailsRoute(article?.id)) || undefined}
 						target={target}
 					>
-						<img
+						<AppImage
 							className={cls.img}
 							src={article?.img}
 							alt={article?.title}
+							fallback={<Skeleton
+								height={200}
+								width={200}
+							/>}
 						/>
 						<Text
 							className={cls.date}
@@ -142,9 +148,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					className={cls.link}
 					to={String(article?.id)}
 				>
-					<img
+					<AppImage
 						className={cls.img}
 						src={article?.img}
+						fallback={<Skeleton
+							height={200}
+						/>}
 						alt={article?.title}
 					/>
 				</AppLink>
