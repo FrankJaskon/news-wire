@@ -19,7 +19,9 @@ const ProfilePage: FC = () => {
 	const [isMounted, setIsMounted] = useState<boolean>(false)
 
 	if (isMounted) {
-		content = <PageWrapper>
+		content = <PageWrapper
+			data-testid='profile-page'
+		>
 			<VStack
 				gap='16'
 			>

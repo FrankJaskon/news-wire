@@ -34,6 +34,7 @@ const ArticlesPage: FC = () => {
 		<PageWrapper
 			onScrollEnd={onLoadNextPart}
 			watchedScroll={true}
+			data-testid='articles-page'
 		>
 			<VStack
 				gap='16'

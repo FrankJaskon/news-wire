@@ -10,7 +10,9 @@ export interface ForbiddenPageProps {
 export const ForbiddenPage: FC<ForbiddenPageProps> = (props) => {
 	const { className } = props
 
-	return <PageWrapper>
+	return <PageWrapper
+		data-testid='forbidden-page'
+	>
 		<div className={classNames(cls.ForbiddenPage, {}, [className])}>
 			+
 		</div>

@@ -17,7 +17,7 @@ export const AppRoutes = {
 
 export type AppRoutesTypes = ValueOf<typeof AppRoutes>
 
-export const getMainRoute = () => ''
+export const getMainRoute = () => '/'
 export const getAboutRoute = () => '/about'
 export const getProfileRoute = (id: number | string) => '/profiles/' + id
 export const getArticlesRoute = () => '/articles'

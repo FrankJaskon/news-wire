@@ -1,0 +1,3 @@
+export {
+	MockBrowserRouter
+} from './MockBrowserRouter'

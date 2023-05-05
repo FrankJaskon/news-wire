@@ -10,7 +10,9 @@ export interface AdminPageProps {
 const AdminPage: FC<AdminPageProps> = (props) => {
 	const { className } = props
 
-	return <PageWrapper>
+	return <PageWrapper
+		data-testid='admin-page'
+	>
 		<div className={classNames(cls.AdminPage, {}, [className])}>
 			+
 		</div>

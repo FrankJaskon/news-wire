@@ -6,26 +6,23 @@ import { RequireRoles } from './RequireRoles'
 import { AuthRouteProps, routerConfig } from './routeConfig'
 
 export const AppRouter: FC = () => {
-
 	const renderWithWrapper = useCallback((route: AuthRouteProps) => {
 		const element = <Suspense fallback={<PageLoader />}>
 			{route.element}
 		</Suspense>
 
 		const definedElement = (element: JSX.Element) => {
-			if (route.authOnly) {
-				if (route?.roles && route?.roles?.length > 0) {
-					return <RequireRoles roles={route.roles}>
-						{element}
-					</RequireRoles>
-				} else {
-					return <RequireAuth>
-						{element}
-					</RequireAuth>
-				}
-			} else {
-				return element
+			if (route?.roles && route?.roles?.length > 0) {
+				return <RequireRoles roles={route.roles}>
+					{element}
+				</RequireRoles>
 			}
+			if (route.authOnly) {
+				return <RequireAuth>
+					{element}
+				</RequireAuth>
+			}
+			return element
 		}
 
 		return <Route

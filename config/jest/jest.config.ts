@@ -40,7 +40,9 @@ export default {
 		'\\\\node_modules\\\\'
 	],
 	// A list of paths to modules that run some code to configure or set up the testing framework before each test
-	setupFilesAfterEnv: ['<rootDir>config/jest/jest-setup.ts'],
+	setupFilesAfterEnv: [
+		'<rootDir>config/jest/jest-setup.ts',
+	],
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
 	moduleNameMapper: {
 		'\\.(scss)$': 'identity-obj-proxy',

@@ -7,11 +7,12 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll/useInfiniteScroll'
 import { useThrottle } from '@/shared/hooks/useThrottle/useThrottle'
 import classNames from '@/shared/lib/classNames/classNames'
+import { TestProps } from '@/shared/types/test'
 import { getPageScrollByPath } from '../model/selectors/getPageScroll'
 import { pageScrollActions } from '../model/slice/pageScrollSlice'
 import cls from './PageWrapper.module.scss'
 
-export interface PageWrapperProps {
+export interface PageWrapperProps extends TestProps {
 	className?: string
 	children: ReactNode
 	onScrollEnd?: () => void
@@ -23,7 +24,7 @@ export const PageWrapper: FC<PageWrapperProps> = (props) => {
 		className,
 		children,
 		onScrollEnd,
-		watchedScroll = false
+		watchedScroll = false,
 	} = props
 	const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
 	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
@@ -54,6 +55,7 @@ export const PageWrapper: FC<PageWrapperProps> = (props) => {
 			ref={wrapperRef}
 			className={classNames(cls.PageWrapper, {}, [className])}
 			onScroll={watchedScroll ? onScroll : undefined}
+			data-testid={props['data-testid'] ?? 'page-wrapper'}
 		>
 			{children}
 			{onScrollEnd && <div ref={triggerRef} />}
