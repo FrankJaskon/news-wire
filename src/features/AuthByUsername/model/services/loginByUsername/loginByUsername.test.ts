@@ -1,7 +1,7 @@
 import { userActions , UserRole } from '@/entities/User'
+import { LoginErrors } from '@/shared/config/errorResponse/errorResponse'
 import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
 import { loginByUsername } from './loginByUsername'
-
 
 describe('loginByUsername', () => {
 	const responseData = {
@@ -27,9 +27,11 @@ describe('loginByUsername', () => {
 	})
 	test('Incorrect request', async () => {
 		const thunk = new TestAsyncThunk(loginByUsername)
-		thunk.api.post.mockRejectedValue(Promise.resolve({
-			status: 403
-		}))
+		thunk.api.post.mockRejectedValueOnce({
+			response: {
+				status: 403
+			}
+		})
 		const result = await thunk.callThunk({
 			username: '123',
 			password: '123'
@@ -38,6 +40,6 @@ describe('loginByUsername', () => {
 		expect(thunk.api.post).toHaveBeenCalled()
 		expect(thunk.dispatch).toHaveBeenCalledTimes(2)
 		expect(result.meta.requestStatus).toBe('rejected')
-		expect(result.payload).toBe('An error occurred while logging in')
+		expect(result.payload).toBe(LoginErrors.INCORRECT_DATA)
 	})
 })

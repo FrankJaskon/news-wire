@@ -47,6 +47,8 @@ export const Avatar: FC<AvatarProps> = (props) => {
 		errorFallback={<img
 			src={defaultUser}
 			alt='default-user'
+			height={size}
+			width={size}
 		/>}
 		src={src}
 		alt={alt}

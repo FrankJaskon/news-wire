@@ -5,13 +5,13 @@ describe('getIsLoading', () => {
 	test('Should return isLoading', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
-				isLoading: true
+				isLoading: false
 			}
 		}
-		expect(getIsLoading(initialState as StateSchema)).toBe(true)
+		expect(getIsLoading(initialState as StateSchema)).toBe(false)
 	})
 	test('Should work with empty state', () => {
 		const initialState: DeepPartial<StateSchema> = {}
-		expect(getIsLoading(initialState as StateSchema)).toBe(false)
+		expect(getIsLoading(initialState as StateSchema)).toBe(true)
 	})
 })

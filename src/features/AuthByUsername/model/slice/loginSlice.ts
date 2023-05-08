@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { loginByUsername } from '../services/loginByUsername/loginByUsername'
+import { registration } from '../services/registration/registration'
 import { LoginScheme } from '../types/LoginScheme'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
@@ -32,7 +33,19 @@ export const loginSlice = createSlice({
 		})
 		builder.addCase(loginByUsername.rejected, (state, { payload }) => {
 			state.isLoading = false
-			state.error = payload as string | undefined
+			state.error = payload
+		})
+		// registration
+		builder.addCase(registration.pending, (state) => {
+			state.error = undefined
+			state.isLoading = true
+		})
+		builder.addCase(registration.fulfilled, (state) => {
+			state.isLoading = false
+		})
+		builder.addCase(registration.rejected, (state, { payload }) => {
+			state.isLoading = false
+			state.error = payload
 		})
 	},
 })

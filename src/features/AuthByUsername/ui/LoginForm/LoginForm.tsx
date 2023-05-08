@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, memo, useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -7,8 +7,7 @@ import { getMainRoute } from '@/shared/const/RoutPaths'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
 import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { AppButton } from '@/shared/ui/AppButton'
-import { AppLink, AppLinkVariant } from '@/shared/ui/AppLink/AppLink'
+import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
 import { AppInput } from '@/shared/ui/Form/AppInput'
 import { AppLabel, LabelVariant } from '@/shared/ui/Form/Label'
 import { VStack } from '@/shared/ui/Stack'
@@ -18,6 +17,7 @@ import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading'
 import { getLoginLogin } from '../../model/selectors/getLoginUsername/getLoginUsername'
 import { getPassword } from '../../model/selectors/getPassword/getPassword'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
+import { registration } from '../../model/services/registration/registration'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import cls from './LoginForm.module.scss'
 
@@ -42,6 +42,8 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 	const passwordValue = useSelector(getPassword)
 	const loginIsLoading = useSelector(getIsLoading)
 	const navigate = useNavigate()
+	const [isLogin, setIsLogin] = useState<boolean>(true)
+	const isRegistration = useMemo(() => !isLogin, [isLogin])
 
 	const loginErrorWithTranslation = translateErrorOrFalse(loginError)
 
@@ -53,23 +55,40 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		dispatch(loginActions.setPassword(value))
 	}, [dispatch])
 
+	const onToggleLoginModal = useCallback(() => {
+		setIsLogin(prev => !prev)
+	}, [setIsLogin])
+
 	const onSubmitForm = useCallback(async () => {
-		const result = await dispatch(loginByUsername({
-			username: usernameValue,
-			password: passwordValue
-		}))
+		const result = isLogin
+			? await dispatch(loginByUsername({
+				username: usernameValue,
+				password: passwordValue
+			}))
+			: await dispatch(registration({
+				username: usernameValue,
+				password: passwordValue
+			}))
 		if (result.meta.requestStatus === 'fulfilled') {
 			onSuccess()
 			navigate(getMainRoute())
 		}
-	}, [dispatch, usernameValue, passwordValue, onSuccess, navigate])
+	}, [
+		dispatch,
+		usernameValue,
+		passwordValue,
+		onSuccess,
+		navigate,
+		isLogin
+	])
 
 	return <LazyReducerLoader reducers={reducers}>
 		<form
 			className={classNames(cls.LoginForm, {}, [className])}
 			action='/login'
 			method='POST'
-			data-testid='login-form'>
+			data-testid='login-form'
+		>
 			<VStack
 				gap='16'
 			>
@@ -123,13 +142,15 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 				</AppButton>
 
 				<div className={cls.loginLinks}>
-					<AppLink
+					<AppButton
 						data-testid='singup-link'
-						to='#'
-						variant={AppLinkVariant.PRIMARY}
+						variant={ButtonVariant.CUSTOM}
+						onClick={onToggleLoginModal}
+						className={cls.toggleButton}
 					>
-						{t('login.new-account')}
-					</AppLink>
+						{isLogin && t('login.new-account')}
+						{isRegistration && t('login.existed-account')}
+					</AppButton>
 				</div>
 			</VStack>
 		</form>

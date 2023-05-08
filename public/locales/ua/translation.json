@@ -37,14 +37,16 @@
     "login": "Логін",
     "password": "Пароль",
     "log-in": "Увійти",
-    "new-account": "Створити аккаунт"
+    "new-account": "Створити аккаунт",
+    "existed-account": "Вже маєшь аккаунт?"
   },
   "error": {
     "login": {
       "incorrect-data": "Невірний логін або пароль",
       "unexpected-error": "Трапилась помилка",
       "gateway": "Упс. Сервер не відповідає",
-      "bad-request": "Невірний запрос"
+      "bad-request": "Невірний запрос",
+      "existed-user": "Користувач з таким логіном вже існує"
     },
     "common": {
       "some-error": "Трапилась помилка"

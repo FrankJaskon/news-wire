@@ -23,9 +23,16 @@ describe('updateProfileData', () => {
 				}
 			}
 		}
+		const response = {
+			user: {
+				id: initialState.profile?.form?.id,
+				avatar: initialState.profile?.form?.avatar
+			},
+			profile: initialState.profile?.form
+		}
 		const thunk = new TestAsyncThunk(updateProfileData, initialState)
 		thunk.api.put.mockReturnValue(Promise.resolve({
-			data: initialState.profile?.form
+			data: response
 		}))
 		const result = await thunk.callThunk()
 

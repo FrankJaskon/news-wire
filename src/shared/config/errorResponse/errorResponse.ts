@@ -1,10 +1,11 @@
 import { ValueOf } from '@/shared/types/types'
 
 export const LoginErrors = {
-	GATEWAY: 'Gateway Timeout. No response from server',
-	INCORRECT_DATA: 'Login or password is wrong',
-	BAD_REQUEST: 'Bad request',
-	UNEXPECTED: 'An error occurred while logging in'
+	GATEWAY: 'gateway',
+	INCORRECT_DATA: 'incorrect-data',
+	BAD_REQUEST: 'bad-request',
+	UNEXPECTED: 'unexpected',
+	EXIST: 'exist'
 } as const
 
 type LoginErrorsType = ValueOf<typeof LoginErrors>
@@ -14,6 +15,7 @@ export const LoginErrorsKey: Record<LoginErrorsType | string, string> = {
 	[LoginErrors.INCORRECT_DATA]: 'error.login.incorrect-data',
 	[LoginErrors.BAD_REQUEST]: 'error.login.bad-request',
 	[LoginErrors.UNEXPECTED]: 'error.login.unexpected-error',
+	[LoginErrors.EXIST]: 'error.login.existed-user',
 } as const
 
 export const translateErrorOrFalse = (error: LoginErrorsType | string) => {
