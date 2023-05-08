@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
 import { ArticlesSortVariantType } from '@/features/ArticlesSortSelector'
 import { QueryParamsKeys, QueryParamsKeysType } from '@/shared/const/queryParams'
 import { SortOrderType } from '@/shared/types/types'
-import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
 import { ArticlesTypesType } from '../../../ui/ArticleTypeTabs'
 import { geInitialized } from '../../selectors/articlesPageSelector'
 import { articlesInfiniteListActions } from '../../slice/articlesInfiniteListSlice'
@@ -47,4 +47,5 @@ export const initArticlesPage = createAsyncThunk<
 			return rejectWithValue('error')
 		}
 	}
+
 )

@@ -19,6 +19,7 @@ npm run start:dev or npm run start:dev:vite - project interface + storybook in d
 - `npm run eslint:fix` - Fix ts files with linter
 - `npm run lint:scss` - Checking scss file styles with linter
 - `npm run lint:scss:fix` - Fixing scss file styles with linter
+- `lint-staged` - Quick check staged files
 - `npm run test:unit` - Start unit tests with jest
 - `npm run test:ui` - Start screenshot tests from loki
 - `npm run test:ui:approve` - Confirm new screenshots
@@ -27,6 +28,7 @@ npm run start:dev or npm run start:dev:vite - project interface + storybook in d
 - `npm run test:ui:html` - Generate HTML's report for screenshot tests
 - `npm run test:ui:report` - Generate full report for screenshot tests
 - `npm run storybook` - run Storybook
+- `storybook:build` - build Storybook
 - `npm run fix:absolute:imports` - Adding alias to absolute imports
 - `npm run postinstall` - Removes .cache's directory from node_modules every time we install some package
 
