@@ -10,7 +10,8 @@
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:i18next/recommended",
-        "plugin:import/recommended"
+        "plugin:import/recommended",
+        "plugin:storybook/recommended"
     ],
     "globals": {
         "__IS_DEV__": true,
@@ -47,7 +48,10 @@
             "node_modules/@types"
         ],
         "import/parsers": {
-            "@typescript-eslint/parser": [".ts", ".tsx"]
+            "@typescript-eslint/parser": [
+                ".ts",
+                ".tsx"
+            ]
         },
         "import/resolver": {
             "typescript": {},
@@ -96,10 +100,12 @@
                     "type",
                     "index"
                 ],
-                "pathGroupsExcludedImportTypes": ["builtin"],
+                "pathGroupsExcludedImportTypes": [
+                    "builtin"
+                ],
                 "alphabetize": {
-                   "order": "asc",
-                   "caseInsensitive": true
+                    "order": "asc",
+                    "caseInsensitive": true
                 }
             }
         ],

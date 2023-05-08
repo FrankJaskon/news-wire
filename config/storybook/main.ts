@@ -1,12 +1,8 @@
-import type { StorybookConfig } from '@storybook/react/types'
-
+import type { StorybookConfig } from '@storybook/types'
 const config: StorybookConfig = {
-	'stories': [
-		'../../src/**/*.stories.@(js|jsx|ts|tsx)'
-	],
+	'stories': ['../../src/**/*.stories.@(js|jsx|ts|tsx)'],
 	'addons': [
-		'@storybook/addon-links',
-		{
+		'@storybook/addon-links', {
 			name: '@storybook/addon-essentials',
 			options: {
 				backgrounds: false
@@ -17,10 +13,13 @@ const config: StorybookConfig = {
 		'storybook-addon-mock/register',
 		'storybook-addon-themes'
 	],
-	'framework': '@storybook/react',
-	'core': {
-		'builder': '@storybook/builder-webpack5'
+	'framework': {
+		name: '@storybook/react-webpack5',
+		options: {}
 	},
+	'core': {},
+	docs: {
+		autodocs: true
+	}
 }
-
 module.exports = config

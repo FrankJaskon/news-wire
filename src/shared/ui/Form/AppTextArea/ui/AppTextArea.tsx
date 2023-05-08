@@ -12,13 +12,14 @@ import cls from './AppTextArea.module.scss'
 
 export interface AppTextAreaProps extends Omit<
 	TextareaHTMLAttributes<HTMLTextAreaElement>,
-	'value' | 'onChange' | 'readOnly'
+	'value' | 'onChange' | 'readOnly' | 'placeholder'
 > {
 	value?: string | number
 	onChange?: (value: string) => void
 	readonly?: boolean
 	minHeight?: number
 	maxHeight?: number
+	placeholder?: string
 }
 
 export const AppTextArea: FC<AppTextAreaProps> = memo((props: AppTextAreaProps) => {

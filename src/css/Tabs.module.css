@@ -1,0 +1,1 @@
+.Tabs{cursor:pointer;display:flex;gap:10px}.Tabs .active{background-color:var(--primary-color);color:var(--light-color)}.tab{padding:8px 12px;text-transform:capitalize}.primary{color:var(--primary-color)}.secondary{color:var(--secondary-color)}/*# sourceMappingURL=Tabs.module.css.map */
