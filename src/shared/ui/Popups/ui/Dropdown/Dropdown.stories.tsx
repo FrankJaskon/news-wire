@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { Avatar } from '../../../Avatar'
 import { Dropdown, DropdownProps } from './Dropdown'
 
@@ -6,11 +6,11 @@ export default {
 	title: 'shared/Dropdown',
 	component: Dropdown,
 	args: {}
-} as ComponentMeta<typeof Dropdown>
+} as Meta<typeof Dropdown>
 
-const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} />
+const Template: StoryFn<typeof Dropdown> = (args) => <Dropdown {...args} />
 
-export const Basic: Story<DropdownProps> = Template.bind({})
+export const Basic: StoryFn<DropdownProps> = Template.bind({})
 Basic.args = {
 	trigger: <Avatar />,
 	items: [

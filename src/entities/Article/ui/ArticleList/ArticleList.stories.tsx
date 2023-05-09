@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { ArticleList } from './ArticleList'
 import type { ArticleListProps } from './ArticleList'
@@ -87,31 +87,31 @@ export default {
 	title: 'entities/Article/ArticleList',
 	component: ArticleList,
 	argTypes: {},
-} as ComponentMeta<typeof ArticleList>
+} as Meta<typeof ArticleList>
 
-const Template: ComponentStory<typeof ArticleList> = (args) => < ArticleList {...args} />
+const Template: StoryFn<typeof ArticleList> = (args) => <ArticleList {...args} />
 
-export const BasicGrid: Story<ArticleListProps> = Template.bind({})
+export const BasicGrid: StoryFn<ArticleListProps> = Template.bind({})
 BasicGrid.args = {
 	articles: articles,
 	isLoading: false,
 	view: ViewVariant.GRID
 }
 
-export const List: Story<ArticleListProps> = Template.bind({})
+export const List: StoryFn<ArticleListProps> = Template.bind({})
 List.args = {
 	articles: articles,
 	isLoading: false,
 	view: ViewVariant.LIST
 }
 
-export const LoadingGrid: Story<ArticleListProps> = Template.bind({})
+export const LoadingGrid: StoryFn<ArticleListProps> = Template.bind({})
 LoadingGrid.args = {
 	isLoading: true,
 	view: ViewVariant.GRID
 }
 
-export const LoadingList: Story<ArticleListProps> = Template.bind({})
+export const LoadingList: StoryFn<ArticleListProps> = Template.bind({})
 LoadingList.args = {
 	isLoading: true,
 	view: ViewVariant.LIST

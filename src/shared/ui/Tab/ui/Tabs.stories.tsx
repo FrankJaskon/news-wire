@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { Tabs, TabsProps } from './Tabs'
 
 export default {
@@ -18,10 +18,10 @@ export default {
 		onTabClick() {'test'},
 		value: 'tab 1'
 	}
-} as ComponentMeta<typeof Tabs>
+} as Meta<typeof Tabs>
 
-const Template: ComponentStory<typeof Tabs> = (args) => <Tabs {...args} />
+const Template: StoryFn<typeof Tabs> = (args) => <Tabs {...args} />
 
-export const Basic: Story<TabsProps> = Template.bind({})
+export const Basic: StoryFn<TabsProps> = Template.bind({})
 Basic.args = {
 }

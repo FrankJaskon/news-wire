@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { FlexStack, FlexStackProps } from './FlexStack'
 
 export default {
@@ -14,9 +14,9 @@ export default {
 			<div>6</div>
 		</>
 	}
-} as ComponentMeta<typeof FlexStack>
+} as Meta<typeof FlexStack>
 
-const Template: ComponentStory<typeof FlexStack> = (args) => <FlexStack {...args} />
+const Template: StoryFn<typeof FlexStack> = (args) => <FlexStack {...args} />
 
-export const Basic: Story<FlexStackProps> = Template.bind({})
+export const Basic: StoryFn<FlexStackProps> = Template.bind({})
 Basic.args = {}

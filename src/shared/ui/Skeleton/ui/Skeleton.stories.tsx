@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { Skeleton } from './Skeleton'
@@ -8,32 +8,32 @@ export default {
 	title: 'shared/Skeleton',
 	component: Skeleton,
 	argTypes: {},
-} as ComponentMeta<typeof Skeleton>
+} as Meta<typeof Skeleton>
 
-const Template: ComponentStory<typeof Skeleton> = (args) => < Skeleton { ...args } />
+const Template: StoryFn<typeof Skeleton> = (args) => <Skeleton { ...args } />
 
-export const Basic: Story<SkeletonProps> = Template.bind({})
+export const Basic: StoryFn<SkeletonProps> = Template.bind({})
 Basic.args = {
 }
 
-export const BasicDark: Story<SkeletonProps> = Template.bind({})
+export const BasicDark: StoryFn<SkeletonProps> = Template.bind({})
 BasicDark.args = {
 }
 BasicDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const BasicPurple: Story<SkeletonProps> = Template.bind({})
+export const BasicPurple: StoryFn<SkeletonProps> = Template.bind({})
 BasicPurple.args = {
 }
 BasicPurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
-export const Circle: Story<SkeletonProps> = Template.bind({})
+export const Circle: StoryFn<SkeletonProps> = Template.bind({})
 Circle.args = {
 	borderRadius: '50%',
 	width: 100,
 	height: 100
 }
 
-export const CircleDark: Story<SkeletonProps> = Template.bind({})
+export const CircleDark: StoryFn<SkeletonProps> = Template.bind({})
 CircleDark.args = {
 	borderRadius: '50%',
 	width: 100,
@@ -41,7 +41,7 @@ CircleDark.args = {
 }
 CircleDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const CirclePurple: Story<SkeletonProps> = Template.bind({})
+export const CirclePurple: StoryFn<SkeletonProps> = Template.bind({})
 CirclePurple.args = {
 	borderRadius: '50%',
 	width: 100,

@@ -17,6 +17,7 @@ import { AppLabel, LabelVariant } from '@/shared/ui/Form/Label'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { Text } from '@/shared/ui/Text'
 import { ProfileType } from '../../model/types/profile'
+import { ProfileCardSkeleton } from '../ProfileCardSkeleton/ProfileCardSkeleton'
 import cls from './ProfileCard.module.scss'
 
 export interface ProfileCardProps {
@@ -91,7 +92,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	}
 
 	if (isLoading) {
-		return null
+		return <ProfileCardSkeleton />
 	}
 
 	return <form className={classNames(cls.ProfileCard, {}, [className])}>

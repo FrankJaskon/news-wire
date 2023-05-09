@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ArticleType } from '@/entities/Article'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import ArticlesPage from './ArticlesPage'
@@ -94,11 +94,11 @@ export default {
 	title: 'pages/ArticlesPage',
 	component: ArticlesPage,
 	argTypes: {},
-} as ComponentMeta<typeof ArticlesPage>
+} as Meta<typeof ArticlesPage>
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => < ArticlesPage { ...args } />
+const Template: StoryFn<typeof ArticlesPage> = (args) => < ArticlesPage { ...args } />
 
-export const Basic: Story = Template.bind({})
+export const Basic: StoryFn = Template.bind({})
 Basic.args = {}
 Basic.decorators = [StoreDecorator({
 	articlesInfiniteList: {
@@ -108,6 +108,6 @@ Basic.decorators = [StoreDecorator({
 	}
 })]
 
-export const Loading: Story = Template.bind({})
+export const Loading: StoryFn = Template.bind({})
 Loading.args = {}
 Loading.decorators = [StoreDecorator({})]

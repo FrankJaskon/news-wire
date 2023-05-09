@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ArticleType } from '@/entities/Article'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import ArticleDetailsPage from './ArticleDetailsPage'
@@ -85,11 +85,11 @@ export default {
 	title: 'pages/ArticleDetailsPage',
 	component: ArticleDetailsPage,
 	argTypes: {},
-} as ComponentMeta<typeof ArticleDetailsPage>
+} as Meta<typeof ArticleDetailsPage>
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => < ArticleDetailsPage { ...args } />
+const Template: StoryFn<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage { ...args } />
 
-export const Basic: Story<ArticleDetailsPageProps> = Template.bind({})
+export const Basic: StoryFn<ArticleDetailsPageProps> = Template.bind({})
 Basic.args = {
 }
 Basic.decorators = [StoreDecorator({
@@ -99,7 +99,7 @@ Basic.decorators = [StoreDecorator({
 	}
 })]
 
-export const Loading: Story<ArticleDetailsPageProps> = Template.bind({})
+export const Loading: StoryFn<ArticleDetailsPageProps> = Template.bind({})
 Loading.args = {
 }
 Loading.decorators = [StoreDecorator({ articleDetails: { isLoading: true }})]

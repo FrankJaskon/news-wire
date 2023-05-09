@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
@@ -12,20 +12,20 @@ export default {
 	},
 	args: {},
 	decorators: [StoreDecorator({})]
-} as ComponentMeta<typeof AboutPage>
+} as Meta<typeof AboutPage>
 
-const Template: ComponentStory<typeof AboutPage> = (args) => <AboutPage {...args} />
+const Template: StoryFn<typeof AboutPage> = (args) => <AboutPage {...args} />
 
-export const Basic: Story = Template.bind({})
+export const Basic: StoryFn = Template.bind({})
 Basic.args = {
 }
 
-export const DarkTheme: Story = Template.bind({})
+export const DarkTheme: StoryFn = Template.bind({})
 DarkTheme.args = {
 }
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const PurpleTheme: Story = Template.bind({})
+export const PurpleTheme: StoryFn = Template.bind({})
 PurpleTheme.args = {
 }
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

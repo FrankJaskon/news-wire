@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ArticleComments } from './ArticleComments'
 import type { ArticleCommentsProps } from './ArticleComments'
@@ -14,11 +14,11 @@ export default {
 			ids: []
 		}
 	})]
-} as ComponentMeta<typeof ArticleComments>
+} as Meta<typeof ArticleComments>
 
-const Template: ComponentStory<typeof ArticleComments> = (args) => < ArticleComments { ...args } />
+const Template: StoryFn<typeof ArticleComments> = (args) => < ArticleComments { ...args } />
 
-export const Basic: Story<ArticleCommentsProps> = Template.bind({})
+export const Basic: StoryFn<ArticleCommentsProps> = Template.bind({})
 Basic.args = {
 
 }

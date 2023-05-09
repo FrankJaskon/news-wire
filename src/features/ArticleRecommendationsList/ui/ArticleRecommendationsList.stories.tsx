@@ -1,5 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import withMock from 'storybook-addon-mock'
+import { Meta, StoryFn } from '@storybook/react'
 import { ArticleType } from '@/entities/Article'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { getArticlesRoute } from '@/shared/const/RoutPaths'
@@ -33,12 +32,12 @@ export default {
 	title: 'features/ArticleRecommendationsList',
 	component: ArticleRecommendationsList,
 	argTypes: {},
-	decorators: [withMock, StoreDecorator({})]
-} as ComponentMeta<typeof ArticleRecommendationsList>
+	decorators: [StoreDecorator({})]
+} as Meta<typeof ArticleRecommendationsList>
 
-const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => < ArticleRecommendationsList {...args} />
+const Template: StoryFn<typeof ArticleRecommendationsList> = (args) => <ArticleRecommendationsList {...args} />
 
-export const Basic: Story<ArticleRecommendationsListProps> = Template.bind({})
+export const Basic: StoryFn<ArticleRecommendationsListProps> = Template.bind({})
 Basic.parameters = {
 	mockData: [
 		{

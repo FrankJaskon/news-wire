@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader'
 import type { ArticleDetailsPageHeaderProps } from './ArticleDetailsPageHeader'
@@ -8,11 +8,11 @@ export default {
 	component: ArticleDetailsPageHeader,
 	argTypes: {},
 	decorators: [StoreDecorator({})]
-} as ComponentMeta<typeof ArticleDetailsPageHeader>
+} as Meta<typeof ArticleDetailsPageHeader>
 
-const Template: ComponentStory<typeof ArticleDetailsPageHeader> = (args) => < ArticleDetailsPageHeader { ...args } />
+const Template: StoryFn<typeof ArticleDetailsPageHeader> = (args) => <ArticleDetailsPageHeader { ...args } />
 
-export const Basic: Story<ArticleDetailsPageHeaderProps> = Template.bind({})
+export const Basic: StoryFn<ArticleDetailsPageHeaderProps> = Template.bind({})
 Basic.args = {
 	articleId: 0,
 }

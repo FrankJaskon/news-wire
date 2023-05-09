@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import someImage from '@/shared/assets/icons/default-user.png'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
@@ -15,20 +15,20 @@ export default {
 		title: 'Some text'
 	},
 	decorators: [StoreDecorator({})]
-} as ComponentMeta<typeof ArticleImageBlock>
+} as Meta<typeof ArticleImageBlock>
 
-const Template: ComponentStory<typeof ArticleImageBlock> = (args) => <ArticleImageBlock {...args} />
+const Template: StoryFn<typeof ArticleImageBlock> = (args) => <ArticleImageBlock {...args} />
 
-export const Basic: Story<ArticleImageBlockProps> = Template.bind({})
+export const Basic: StoryFn<ArticleImageBlockProps> = Template.bind({})
 Basic.args = {
 }
 
-export const DarkTheme: Story<ArticleImageBlockProps> = Template.bind({})
+export const DarkTheme: StoryFn<ArticleImageBlockProps> = Template.bind({})
 DarkTheme.args = {
 }
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const PurpleTheme: Story<ArticleImageBlockProps> = Template.bind({})
+export const PurpleTheme: StoryFn<ArticleImageBlockProps> = Template.bind({})
 PurpleTheme.args = {
 }
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

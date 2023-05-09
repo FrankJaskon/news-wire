@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
@@ -9,19 +9,19 @@ export default {
 	component: Navbar,
 	argTypes: {},
 	decorators: [StoreDecorator({})]
-} as ComponentMeta<typeof Navbar>
+} as Meta<typeof Navbar>
 
-const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />
+const Template: StoryFn<typeof Navbar> = (args) => <Navbar {...args} />
 
-export const Unauthorize: Story = Template.bind({})
+export const Unauthorize: StoryFn = Template.bind({})
 
-export const UnauthorizeDark: Story = Template.bind({})
+export const UnauthorizeDark: StoryFn = Template.bind({})
 UnauthorizeDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const UnauthorizePurple: Story = Template.bind({})
+export const UnauthorizePurple: StoryFn = Template.bind({})
 UnauthorizePurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
-export const Authorize: Story = Template.bind({})
+export const Authorize: StoryFn = Template.bind({})
 Authorize.decorators = [StoreDecorator({
 	user: {
 		authData: {

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { ArticleListItemSkeleton , ArticleListItemSkeletonProps } from './ArticleListItemSkeleton'
 
@@ -8,13 +8,13 @@ export default {
 	component: ArticleListItemSkeleton,
 	argTypes: {},
 	args: {}
-} as ComponentMeta<typeof ArticleListItemSkeleton>
+} as Meta<typeof ArticleListItemSkeleton>
 
-const Template: ComponentStory<typeof ArticleListItemSkeleton> = (args) => < ArticleListItemSkeleton { ...args } />
+const Template: StoryFn<typeof ArticleListItemSkeleton> = (args) => < ArticleListItemSkeleton { ...args } />
 
-export const Basic: Story<ArticleListItemSkeletonProps> = Template.bind({})
+export const Basic: StoryFn<ArticleListItemSkeletonProps> = Template.bind({})
 
-export const List: Story<ArticleListItemSkeletonProps> = Template.bind({})
+export const List: StoryFn<ArticleListItemSkeletonProps> = Template.bind({})
 List.args = {
 	view: ViewVariant.LIST
 }

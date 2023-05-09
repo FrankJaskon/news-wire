@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { CommentCard } from './CommentCard'
@@ -19,25 +19,25 @@ export default {
 		},
 		isLoading: false
 	}
-} as ComponentMeta<typeof CommentCard>
+} as Meta<typeof CommentCard>
 
-const Template: ComponentStory<typeof CommentCard> = (args) => < CommentCard {...args} />
+const Template: StoryFn<typeof CommentCard> = (args) => < CommentCard {...args} />
 
-export const Basic: Story<CommentCardProps> = Template.bind({})
+export const Basic: StoryFn<CommentCardProps> = Template.bind({})
 Basic.args = {
 }
 
-export const Loading: Story<CommentCardProps> = Template.bind({})
+export const Loading: StoryFn<CommentCardProps> = Template.bind({})
 Loading.args = {
 	isLoading: true
 }
 
-export const DarkTheme: Story<CommentCardProps> = Template.bind({})
+export const DarkTheme: StoryFn<CommentCardProps> = Template.bind({})
 DarkTheme.args = {
 }
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const PurpleTheme: Story<CommentCardProps> = Template.bind({})
+export const PurpleTheme: StoryFn<CommentCardProps> = Template.bind({})
 PurpleTheme.args = {
 }
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

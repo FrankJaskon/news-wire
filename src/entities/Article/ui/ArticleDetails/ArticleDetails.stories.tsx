@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ArticleDetailsScheme, ValidateArticleDetailsErrorType } from '../../model/types/ArticleDetailsScheme'
 import { ArticleDetails } from './ArticleDetails'
@@ -89,16 +89,16 @@ export default {
 	title: 'entities/Article/ArticleDetails',
 	component: ArticleDetails,
 	argTypes: {},
-} as ComponentMeta<typeof ArticleDetails>
+} as Meta<typeof ArticleDetails>
 
-const Template: ComponentStory<typeof ArticleDetails> = (args) => < ArticleDetails {...args} />
+const Template: StoryFn<typeof ArticleDetails> = (args) => < ArticleDetails {...args} />
 
-export const Basic: Story<ArticleDetailsProps> = Template.bind({})
+export const Basic: StoryFn<ArticleDetailsProps> = Template.bind({})
 Basic.decorators = [StoreDecorator({
 	articleDetails: articleDetailsState
 })]
 
-export const Error: Story<ArticleDetailsProps> = Template.bind({})
+export const Error: StoryFn<ArticleDetailsProps> = Template.bind({})
 Error.decorators = [StoreDecorator({
 	articleDetails: {
 		error: 'Error' as ValidateArticleDetailsErrorType,
@@ -107,5 +107,5 @@ Error.decorators = [StoreDecorator({
 })]
 
 
-export const Loading: Story<ArticleDetailsProps> = Template.bind({})
+export const Loading: StoryFn<ArticleDetailsProps> = Template.bind({})
 Loading.decorators = [StoreDecorator({ articleDetails: { isLoading: true }})]

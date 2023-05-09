@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { ArticleListItem } from './ArticleListItem'
 import type { ArticleListItemProps } from './ArticleListItem'
@@ -88,16 +88,16 @@ export default {
 	args: {
 		article
 	}
-} as ComponentMeta<typeof ArticleListItem>
+} as Meta<typeof ArticleListItem>
 
-const Template: ComponentStory<typeof ArticleListItem> = (args) => < ArticleListItem { ...args } />
+const Template: StoryFn<typeof ArticleListItem> = (args) => < ArticleListItem { ...args } />
 
-export const BasicGrid: Story<ArticleListItemProps> = Template.bind({})
+export const BasicGrid: StoryFn<ArticleListItemProps> = Template.bind({})
 BasicGrid.args = {
 	view: ViewVariant.GRID
 }
 
-export const BasicList: Story<ArticleListItemProps> = Template.bind({})
+export const BasicList: StoryFn<ArticleListItemProps> = Template.bind({})
 BasicGrid.args = {
 	view: ViewVariant.LIST
 }

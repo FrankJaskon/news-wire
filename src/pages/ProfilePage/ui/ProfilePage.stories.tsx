@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { Country } from '@/entities/Country'
 import { Currency } from '@/entities/Currency'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
@@ -33,14 +33,14 @@ export default {
 			}
 		}
 	})]
-} as ComponentMeta<typeof ProfilePage>
+} as Meta<typeof ProfilePage>
 
-const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />
+const Template: StoryFn<typeof ProfilePage> = (args) => <ProfilePage {...args} />
 
-export const Basic: Story = Template.bind({})
+export const Basic: StoryFn = Template.bind({})
 
-export const DarkTheme: Story = Template.bind({})
+export const DarkTheme: StoryFn = Template.bind({})
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const PurpleTheme: Story = Template.bind({})
+export const PurpleTheme: StoryFn = Template.bind({})
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

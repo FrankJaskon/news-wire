@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { CommentsList } from './CommentsList'
 import type { CommentsListProps } from './CommentsList'
 
@@ -37,20 +37,20 @@ export default {
 		comments,
 		isLoading: false
 	}
-} as ComponentMeta<typeof CommentsList>
+} as Meta<typeof CommentsList>
 
-const Template: ComponentStory<typeof CommentsList> = (args) => < CommentsList { ...args } />
+const Template: StoryFn<typeof CommentsList> = (args) => < CommentsList { ...args } />
 
-export const Basic: Story<CommentsListProps> = Template.bind({})
+export const Basic: StoryFn<CommentsListProps> = Template.bind({})
 Basic.args = {
 }
 
-export const Loading: Story<CommentsListProps> = Template.bind({})
+export const Loading: StoryFn<CommentsListProps> = Template.bind({})
 Loading.args = {
 	isLoading: true
 }
 
-export const Error: Story<CommentsListProps> = Template.bind({})
+export const Error: StoryFn<CommentsListProps> = Template.bind({})
 Error.args = {
 	error: 'Some error'
 }

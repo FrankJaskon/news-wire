@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { LanguageToggler } from './LanguageToggler'
@@ -8,20 +8,20 @@ export default {
 	component: LanguageToggler,
 	argTypes: {},
 	args: {}
-} as ComponentMeta<typeof LanguageToggler>
+} as Meta<typeof LanguageToggler>
 
-const Template: ComponentStory<typeof LanguageToggler> = (args) => <LanguageToggler {...args} />
+const Template: StoryFn<typeof LanguageToggler> = (args) => <LanguageToggler {...args} />
 
-export const Basic: Story = Template.bind({})
+export const Basic: StoryFn = Template.bind({})
 Basic.args = {
 }
 
-export const DarkTheme: Story = Template.bind({})
+export const DarkTheme: StoryFn = Template.bind({})
 DarkTheme.args = {
 }
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const PurpleTheme: Story = Template.bind({})
+export const PurpleTheme: StoryFn = Template.bind({})
 PurpleTheme.args = {
 }
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

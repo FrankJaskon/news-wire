@@ -10,7 +10,7 @@ const config: StorybookConfig = {
 		},
 		'@storybook/addon-interactions',
 		'storybook-react-i18next',
-		'storybook-addon-mock/register',
+		'storybook-addon-mock',
 		'storybook-addon-themes'
 	],
 	'framework': {
@@ -19,7 +19,7 @@ const config: StorybookConfig = {
 	},
 	'core': {},
 	docs: {
-		autodocs: true
+		autodocs: false
 	}
 }
 module.exports = config

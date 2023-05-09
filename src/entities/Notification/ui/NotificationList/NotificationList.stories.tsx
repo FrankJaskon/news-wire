@@ -1,5 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import withMock from 'storybook-addon-mock'
+import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { NotificationList, NotificationListProps } from './NotificationList'
 
@@ -8,12 +7,12 @@ export default {
 	component: NotificationList,
 	argTypes: {},
 	args: {},
-	decorators: [withMock, StoreDecorator({})]
-} as ComponentMeta<typeof NotificationList>
+	decorators: [StoreDecorator({})]
+} as Meta<typeof NotificationList>
 
-const Template: ComponentStory<typeof NotificationList> = (args) => < NotificationList { ...args } />
+const Template: StoryFn<typeof NotificationList> = (args) => < NotificationList { ...args } />
 
-export const Basic: Story<NotificationListProps> = Template.bind({})
+export const Basic: StoryFn<NotificationListProps> = Template.bind({})
 
 Basic.parameters = {
 	mockData: [

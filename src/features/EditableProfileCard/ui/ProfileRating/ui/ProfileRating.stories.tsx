@@ -1,5 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react'
-import withMock from 'storybook-addon-mock'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import ProfileRating, { ProfileRatingProps } from './ProfileRating'
 
@@ -8,7 +7,7 @@ export default {
 	component: ProfileRating,
 	argTypes: {},
 	args: {},
-	decorators: [withMock, StoreDecorator({})]
+	decorators: [StoreDecorator({})]
 } as Meta<typeof ProfileRating>
 
 const Template: StoryFn<typeof ProfileRating> = (args) => <ProfileRating { ...args } />

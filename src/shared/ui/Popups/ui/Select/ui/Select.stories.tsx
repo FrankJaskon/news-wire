@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { AppLabel } from '../../../../Form/Label'
@@ -16,20 +16,20 @@ export default {
 			{ label: 'ANY', value: 'ANY' }
 		]
 	}
-} as ComponentMeta<typeof Select>
+} as Meta<typeof Select>
 
-const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />
+const Template: StoryFn<typeof Select> = (args) => <Select {...args} />
 
-export const Basic: Story<SelectProps<string>> = Template.bind({})
+export const Basic: StoryFn<SelectProps<string>> = Template.bind({})
 Basic.args = {
 }
 
-export const DarkTheme: Story<SelectProps<string>> = Template.bind({})
+export const DarkTheme: StoryFn<SelectProps<string>> = Template.bind({})
 DarkTheme.args = {
 }
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const PurpleTheme: Story<SelectProps<string>> = Template.bind({})
+export const PurpleTheme: StoryFn<SelectProps<string>> = Template.bind({})
 PurpleTheme.args = {
 }
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

@@ -1,5 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
-import withMock from 'storybook-addon-mock'
+import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import ArticleRating, { ArticleRatingProps } from './ArticleRating'
 
@@ -8,12 +7,12 @@ export default {
 	component: ArticleRating,
 	argTypes: {},
 	args: {},
-	decorators: [withMock, StoreDecorator({})]
-} as ComponentMeta<typeof ArticleRating>
+	decorators: [StoreDecorator({})]
+} as Meta<typeof ArticleRating>
 
-const Template: ComponentStory<typeof ArticleRating> = (args) => < ArticleRating { ...args } />
+const Template: StoryFn<typeof ArticleRating> = (args) => < ArticleRating { ...args } />
 
-export const Basic: Story<ArticleRatingProps> = Template.bind({})
+export const Basic: StoryFn<ArticleRatingProps> = Template.bind({})
 
 Basic.parameters = {
 	mockData: [
@@ -31,7 +30,7 @@ Basic.parameters = {
 	],
 }
 
-export const WithNoRating: Story<ArticleRatingProps> = Template.bind({})
+export const WithNoRating: StoryFn<ArticleRatingProps> = Template.bind({})
 
 WithNoRating.parameters = {
 	mockData: [

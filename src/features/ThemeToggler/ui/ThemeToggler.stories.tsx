@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { ThemeToggler } from './ThemeToggler'
@@ -10,20 +10,20 @@ export default {
 		backgroundColor: { control: 'color' },
 	},
 	args: {}
-} as ComponentMeta<typeof ThemeToggler>
+} as Meta<typeof ThemeToggler>
 
-const Template: ComponentStory<typeof ThemeToggler> = (args) => <ThemeToggler {...args} />
+const Template: StoryFn<typeof ThemeToggler> = (args) => <ThemeToggler {...args} />
 
-export const Basic: Story = Template.bind({})
+export const Basic: StoryFn = Template.bind({})
 Basic.args = {
 }
 
-export const DarkTheme: Story = Template.bind({})
+export const DarkTheme: StoryFn = Template.bind({})
 DarkTheme.args = {
 }
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
-export const PurpleTheme: Story = Template.bind({})
+export const PurpleTheme: StoryFn = Template.bind({})
 PurpleTheme.args = {
 }
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import { RatingVariant } from '../../consts/consts'
 import { RatingCard, RatingCardProps } from './RatingCard'
 
@@ -8,21 +8,21 @@ export default {
 	argTypes: {},
 	args: {},
 	decorators: []
-} as ComponentMeta<typeof RatingCard>
+} as Meta<typeof RatingCard>
 
-const Template: ComponentStory<typeof RatingCard> = (args) => <RatingCard {...args} />
+const Template: StoryFn<typeof RatingCard> = (args) => <RatingCard {...args} />
 
-export const Basic: Story<RatingCardProps> = Template.bind({})
+export const Basic: StoryFn<RatingCardProps> = Template.bind({})
 Basic.args = {
 	title: 'Some title'
 }
 
-export const Small: Story<RatingCardProps> = Template.bind({})
+export const Small: StoryFn<RatingCardProps> = Template.bind({})
 Small.args = {
 	variant: RatingVariant.SMALL
 }
 
-export const Large: Story<RatingCardProps> = Template.bind({})
+export const Large: StoryFn<RatingCardProps> = Template.bind({})
 Large.args = {
 	variant: RatingVariant.LARGE,
 	title: 'Some title'
