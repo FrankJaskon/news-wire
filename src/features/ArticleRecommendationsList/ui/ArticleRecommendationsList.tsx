@@ -38,7 +38,10 @@ export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = m
 		}
 
 		return (
-			<div className={classNames('', {}, [className])}>
+			<div
+				className={classNames('', {}, [className])}
+				data-testid={'article-recommendations-list'}
+			>
 				<VStack
 					gap='24'
 				>

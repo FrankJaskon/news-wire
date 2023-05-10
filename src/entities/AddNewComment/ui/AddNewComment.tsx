@@ -14,6 +14,7 @@ import cls from './AddNewComment.module.scss'
 export interface AddNewCommentProps {
 	className?: string
 	handleSubmit: (value: string) => void
+	'data-testid'?: string
 }
 
 const reducers: ReducerList = {
@@ -23,7 +24,8 @@ const reducers: ReducerList = {
 const AddNewComment: FC<AddNewCommentProps> = (props) => {
 	const {
 		className,
-		handleSubmit
+		handleSubmit,
+		'data-testid': dataTestId = 'add-new-comment'
 	} = props
 	const dispatch = useAppDispatch()
 	const { t } = useTranslation()
@@ -55,6 +57,7 @@ const AddNewComment: FC<AddNewCommentProps> = (props) => {
 					className={cls.input}
 					value={text}
 					onChange={handleChange}
+					data-testid={dataTestId}
 				/>
 			</VStack>
 			{

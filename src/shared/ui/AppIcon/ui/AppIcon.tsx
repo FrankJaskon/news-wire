@@ -24,6 +24,7 @@ export interface AppIconProps extends React.SVGAttributes<SVGElement> {
 	Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
 	variant?: AppIconVariantType
 	size?: AppIconSizeType
+	'data-testid'?: string
 }
 
 export const AppIcon: FC<AppIconProps> = (props) => {
@@ -32,6 +33,7 @@ export const AppIcon: FC<AppIconProps> = (props) => {
 		Svg,
 		variant = AppIconVariant.PRIMARY,
 		size = AppIconSize.MEDIUM,
+		'data-testid': dataTestId = 'app-icon',
 		...otherProps
 	} = props
 
@@ -43,6 +45,7 @@ export const AppIcon: FC<AppIconProps> = (props) => {
 
 	return <Svg
 		className={classNames(cls.AppIcon, {}, extra)}
+		data-testid={dataTestId}
 		{...otherProps}
 	/>
 }

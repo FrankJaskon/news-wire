@@ -9,13 +9,15 @@ export interface CommentsListProps {
 	comments?: CommentType[]
 	isLoading?: boolean
 	error?: string
+	'data-testid'?: string
 }
 
 export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProps) => {
 	const {
 		comments,
 		isLoading,
-		error
+		error,
+		'data-testid': dataTestId = 'comments-list'
 	} = props
 
 	const { t } = useTranslation('comment')
@@ -25,8 +27,9 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 			key={c.id}
 			isLoading={isLoading}
 			comment={c}
+			data-testid={`${dataTestId}-item`}
 		/>
-	)), [comments, isLoading])
+	)), [comments, isLoading, dataTestId])
 
 	if (error) {
 		return <VStack
@@ -50,6 +53,7 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 	return (
 		<VStack
 			gap='16'
+			data-testid={dataTestId}
 		>
 			{comments?.length
 				? renderComments

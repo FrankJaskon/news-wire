@@ -13,3 +13,4 @@ export const getNotFoundRoute = () => '*'
 
 export const getLoginRoute = () => '/login'
 export const getUsersRoute = () => '/users'
+export const getCommentsRoute = () => '/comments'

@@ -15,6 +15,7 @@ export interface TabsProps {
 	value: string
 	onTabClick: (tab: string) => void
 	variant?: TabVariantType
+	'data-testid'?: string
 }
 
 export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
@@ -23,7 +24,8 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 		tabs,
 		value,
 		onTabClick,
-		variant = TabVariant.PRIMARY
+		variant = TabVariant.PRIMARY,
+		'data-testid': dataTestId = 'tabs'
 	} = props
 
 	const handleClick = useCallback((tab: string) => () => {
@@ -34,7 +36,10 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 		value === tab.value ? cls.active : undefined
 	), [value])
 
-	return <div className={classNames(cls.Tabs, {}, [className])}>
+	return <div
+		className={classNames(cls.Tabs, {}, [className])}
+		data-testid={dataTestId}
+	>
 		{tabs?.map(tab => <AppCard
 			key={tab.value}
 			onClick={handleClick(tab.value)}
@@ -44,6 +49,7 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 					isActive(tab) && cls.active,
 					cls[variant]
 				])}
+			data-testid={`${dataTestId}-${tab.value}`}
 		>
 			{tab.content}
 		</AppCard>)}

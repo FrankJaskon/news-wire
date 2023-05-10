@@ -42,7 +42,8 @@ export const FlexStack: FC<FlexStackProps> = (props) => {
 		wrap,
 		gap,
 		max = true,
-		innerWidth
+		innerWidth,
+		...otherProps
 	} = props
 
 	const mods: Record<string, boolean> = {
@@ -59,7 +60,10 @@ export const FlexStack: FC<FlexStackProps> = (props) => {
 		innerWidth && cls[innerWidth]
 	]
 
-	return <div className={classNames(cls.FlexStack, mods, extra)}>
+	return <div
+		className={classNames(cls.FlexStack, mods, extra)}
+		{...otherProps}
+	>
 		{children}
 	</div>
 }

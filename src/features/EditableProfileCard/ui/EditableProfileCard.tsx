@@ -72,7 +72,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props: Ed
 	}, [dispatch])
 
 	const onChangeAge = useCallback((value?: string) => {
-		dispatch(profileActions.updateProfileData({ age: Number(value) ?? 0 }))
+		dispatch(profileActions.updateProfileData({ age: value ?? '' }))
 	}, [dispatch])
 
 	const onChangeCity = useCallback((value?: string) => {

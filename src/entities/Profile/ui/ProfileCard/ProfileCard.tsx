@@ -38,6 +38,7 @@ export interface ProfileCardProps {
 	editForm?: () => void
 	cancelEdit?: () => void
 	saveForm?: () => void
+	'data-testid'?: string
 }
 
 export const ProfileCard: FC<ProfileCardProps> = (props) => {
@@ -57,7 +58,8 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 		editForm,
 		cancelEdit,
 		saveForm,
-		canEdit
+		canEdit,
+		'data-testid': dataTestId = 'profile-card'
 	} = props
 
 	const { t } = useTranslation('profile')
@@ -96,7 +98,9 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	}
 
 	return <form className={classNames(cls.ProfileCard, {}, [className])}>
-		<AppCard>
+		<AppCard
+			data-testid={dataTestId}
+		>
 			<HStack
 				gap='24'
 				max={false}

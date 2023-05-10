@@ -14,6 +14,7 @@ export interface ArticleListProps {
 	limit?: number
 	target?: HTMLAttributeAnchorTarget
 	error?: string
+	'data-testid'?: string
 }
 
 export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) => {
@@ -23,7 +24,8 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 		view = ViewVariant.GRID,
 		isLoading,
 		limit = view === ViewVariant.GRID ? 9 : 3,
-		target
+		target,
+		'data-testid': datTestId = 'articles-list'
 	} = props
 
 	const renderArticle = useCallback((article: ArticleType) => (
@@ -44,7 +46,10 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 	}, [limit])
 
 	return (
-		<div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+		<div
+			className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+			data-testid={datTestId}
+		>
 			{articles && articles.length > 0
 				? articles.map(renderArticle)
 				: null

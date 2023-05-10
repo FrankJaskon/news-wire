@@ -92,7 +92,9 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 		/>
 	</>, [feedback, feedbackTitle, t])
 
-	return <AppCard>
+	return <AppCard
+		data-testid='rating-card'
+	>
 		<VStack
 			className={className}
 			gap={GapSizeMapper[variant]}
@@ -148,11 +150,13 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 									variant={ButtonVariant.OUTLINE}
 									contentHue='red-color'
 									onClick={onFeedbackCancel}
+									data-testid={'rating-card-cancel'}
 								>
 									{t('btn.cancel')}
 								</AppButton>
 								<AppButton
 									onClick={onFeedbackSubmit}
+									data-testid={'rating-card-submit'}
 								>
 									{t('btn.submit')}
 								</AppButton>

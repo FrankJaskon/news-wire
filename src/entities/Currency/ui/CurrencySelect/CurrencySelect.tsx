@@ -9,10 +9,16 @@ interface CurrencySelectProps {
 	value?: CurrencyType
 	onChange?: (value: CurrencyType) => void
 	readonly?: boolean
+	'data-testid'?: string
 }
 
 export const CurrencySelect: FC<CurrencySelectProps> = memo((props: CurrencySelectProps) => {
-	const { value, onChange, readonly } = props
+	const {
+		value,
+		onChange,
+		readonly,
+		'data-testid': dataTestId = 'currency-select'
+	} = props
 	const { t } = useTranslation()
 
 	const currencyOptionList: SelectOption<CurrencyType>[] = useMemo(() => Object.values(Currency).map(item => (
@@ -34,6 +40,7 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo((props: CurrencySele
 			value={selected}
 			options={currencyOptionList}
 			readonly={readonly}
+			data-testid={dataTestId}
 		/>
 	</VStack>
 })

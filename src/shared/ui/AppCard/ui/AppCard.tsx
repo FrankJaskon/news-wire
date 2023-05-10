@@ -16,6 +16,7 @@ export interface AppCardProps extends HTMLAttributes<HTMLDivElement> {
 	children: ReactNode
 	noPaddings?: boolean
 	variant?: CardVariantType
+	'data-testid'?: string
 }
 
 export const AppCard: FC<AppCardProps> = (props) => {
@@ -24,6 +25,7 @@ export const AppCard: FC<AppCardProps> = (props) => {
 		children,
 		noPaddings = false,
 		variant = CardVariant.PRIMARY,
+		'data-testid': dataTestId = 'app-card',
 		...extraProps
 	} = props
 
@@ -43,6 +45,7 @@ export const AppCard: FC<AppCardProps> = (props) => {
 				mods,
 				extra
 			)}
+			data-testid={dataTestId}
 			{...extraProps}
 		>
 			{children}

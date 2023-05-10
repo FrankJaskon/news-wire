@@ -24,6 +24,7 @@ export interface ArticleListItemProps {
 	article?: ArticleType
 	view?: ViewVariantType
 	target?: HTMLAttributeAnchorTarget
+	'data-testid'?: string
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleListItemProps) => {
@@ -31,7 +32,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 		className,
 		article,
 		view,
-		target
+		target,
+		'data-testid': dataTestId = 'articles-list-item'
 	} = props
 
 	const navigate = useNavigate()
@@ -64,6 +66,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 		return (
 			<AppCard
 				className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
+				data-testid={`${dataTestId}-grid`}
 			>
 				<VStack
 					gap='4'
@@ -105,7 +108,10 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 	const textBlockProps = article?.blocks.find(block => block.type === BlockType.TEXT) as TextBlockType
 
 	return (
-		<AppCard className={classNames(cls.ArticleListItem, {}, [className, view && cls[view]])}>
+		<AppCard
+			className={classNames(cls.ArticleListItem, {}, [className, view && cls[view]])}
+			data-testid={`${dataTestId}-list`}
+		>
 			<VStack
 				gap='8'
 			>

@@ -24,12 +24,14 @@ import cls from './ArticlesPageFilters.module.scss'
 export interface ArticlesPageFiltersProps {
 	className?: string
 	isReducerMounted?: boolean
+	'data-testid'?: string
 }
 
 export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo((props: ArticlesPageFiltersProps) => {
 	const {
 		className,
-		isReducerMounted
+		isReducerMounted,
+		'data-testid': dataTestId = 'articles-filter'
 	} = props
 	const { t } = useTranslation('article')
 	const dispatch = useAppDispatch()
@@ -114,6 +116,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo((props: Ar
 			placeholder={t('search-input-placeholder')}
 			value={search}
 			onChange={changeSearch}
+			data-testid={`${dataTestId}-search`}
 		/>
 		<ArticleTypeTabs
 			filter={filter}

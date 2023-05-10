@@ -25,6 +25,7 @@ export interface SelectProps<T extends string> {
 	align?: AlignType
 	readonly?: boolean
 	placeholder?: string
+	'data-testid'?: string
 }
 
 export const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
@@ -37,7 +38,8 @@ export const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
 		readonly,
 		placeholder,
 		direction = 'bottom right',
-		align = 'start'
+		align = 'start',
+		'data-testid': datTestId
 	} = props
 
 	return <div className={classNames(
@@ -55,6 +57,7 @@ export const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
 				className={classNames(cls.button, {
 					[popupCls.disabled]: readonly
 				})}
+				data-testid={datTestId}
 			>
 				<HStack
 					justify='between'

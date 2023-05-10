@@ -3,7 +3,14 @@ import { AddNewComment } from '@/entities/AddNewComment'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { createNewCommentForArticle } from '../../model/services/createNewCommentForArticle/createNewCommentForArticle'
 
-export const AddArticleComment: FC = memo(() => {
+export interface AddArticleCommentProps {
+	'data-testid'?: string
+}
+
+export const AddArticleComment: FC = memo((props: AddArticleCommentProps) => {
+	const {
+		'data-testid': dataTestId = 'article-details-add-new-comment'
+	} = props
 
 	const dispatch = useAppDispatch()
 
@@ -11,5 +18,8 @@ export const AddArticleComment: FC = memo(() => {
 		dispatch(createNewCommentForArticle(value))
 	}, [dispatch])
 
-	return <AddNewComment handleSubmit={onCreateNewComment} />
+	return <AddNewComment
+		handleSubmit={onCreateNewComment}
+		data-testid={dataTestId}
+	/>
 })

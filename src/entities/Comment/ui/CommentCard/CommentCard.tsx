@@ -14,13 +14,15 @@ export interface CommentCardProps {
 	className?: string
 	comment?: CommentType
 	isLoading?: boolean
+	'data-testid'?: string
 }
 
 export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) => {
 	const {
 		className,
 		comment,
-		isLoading
+		isLoading,
+		'data-testid': dataTestId = 'comments-list-item'
 	} = props
 
 	if (isLoading) {
@@ -57,7 +59,9 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 	}
 
 	return (
-		<AppCard>
+		<AppCard
+			data-testid={dataTestId}
+		>
 			<HStack
 				className={classNames('', {}, [className])}
 				gap='12'

@@ -12,6 +12,7 @@ export interface AppInputProps extends Omit<
 	readonly?: boolean
 	variant?: InputVariantType
 	colorVariant?: InputColorType
+	'data-testid'?: string
 }
 
 export const InputVariant = {

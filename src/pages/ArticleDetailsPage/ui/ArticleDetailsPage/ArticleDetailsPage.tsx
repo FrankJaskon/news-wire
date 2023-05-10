@@ -30,7 +30,10 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 		</div>
 	}
 
-	return <PageWrapper className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+	return <PageWrapper
+		className={classNames(cls.ArticleDetailsPage, {}, [className])}
+		data-testid='article-details-page'
+	>
 		<VStack
 			gap='24'
 		>

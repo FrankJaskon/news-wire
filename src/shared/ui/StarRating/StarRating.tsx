@@ -12,6 +12,7 @@ export interface StarRatingProps {
 	size?: number
 	selectedStar?: number
 	isLoading?: boolean
+	'data-testid'?: string
 }
 
 const stars = [1, 2, 3, 4, 5]
@@ -22,7 +23,8 @@ export const StarRating: FC<StarRatingProps> = memo((props: StarRatingProps) => 
 		onSelect,
 		size = 30,
 		selectedStar,
-		isLoading
+		isLoading,
+		'data-testid': datTestId = 'rating-star'
 	} = props
 
 	const [currentStarsCount, setCurrentStartsCount] = useState<number>(selectedStar ?? 0)
@@ -88,6 +90,8 @@ export const StarRating: FC<StarRatingProps> = memo((props: StarRatingProps) => 
 					onMouseEnter={onHover(starNumber)}
 					onMouseLeave={onLeave}
 					onClick={onClick(starNumber)}
+					data-testid={datTestId + starNumber}
+					data-selected={isSelected}
 				/>
 			})
 		}

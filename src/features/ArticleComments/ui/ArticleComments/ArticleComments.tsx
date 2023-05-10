@@ -22,7 +22,8 @@ import {
 import { AddArticleComment } from '../AddArticleComment/AddArticleComment'
 
 export interface ArticleCommentsProps {
-	className?: string
+	className?: string,
+	'data-testid'?: string
 }
 
 const reducers: ReducerList = {
@@ -30,7 +31,10 @@ const reducers: ReducerList = {
 }
 
 export const ArticleComments: FC<ArticleCommentsProps> = (props) => {
-	const { className } = props
+	const {
+		className,
+		'data-testid': dataTestId = 'article-details-comments'
+	} = props
 
 	const { t } = useTranslation(['translation', 'article'])
 	const dispatch = useAppDispatch()
@@ -51,6 +55,7 @@ export const ArticleComments: FC<ArticleCommentsProps> = (props) => {
 		<VStack
 			gap='16'
 			className={classNames('', {}, [className])}
+			data-testid={dataTestId}
 		>
 			<Text title={t('comment-title', {
 				ns: 'article'
@@ -60,6 +65,7 @@ export const ArticleComments: FC<ArticleCommentsProps> = (props) => {
 				comments={comments}
 				isLoading={isLoading}
 				error={error}
+				data-testid={`${dataTestId}-list`}
 			/>
 		</VStack>
 	</LazyReducerLoader>

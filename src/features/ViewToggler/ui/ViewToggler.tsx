@@ -47,6 +47,7 @@ export const ViewToggler: FC<ViewTogglerProps> = (props) => {
 			variant={ButtonVariant.CUSTOM}
 			onClick={handleToggle(view)}
 			key={view}
+			data-testid={`view-${view === 'grid' ? 'grid' : 'list'}`}
 		>
 			<AppIcon
 				className={cls.icon}
