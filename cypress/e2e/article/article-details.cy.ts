@@ -30,11 +30,15 @@ describe('User transits into article details page', () => {
 		cy.getByTestId('article-details-comments-list-item').should('contain.text', commentText)
 	})
 	it('User has left the rating', () => {
+		cy.intercept(
+			'GET',
+			'**/articles/*', {
+				fixture: 'article-details.json'
+			})
 		cy.getByTestId('article-details-page').should('exist')
 		cy.getByTestId('rating-card').scrollIntoView()
 		cy.getByTestId('rating-star4').click()
 		cy.getByTestId('rating-card-submit').click()
-		cy.reload()
 		cy.getByTestId('rating-star4', '[data-selected="true"]').should('exist')
 	})
 })

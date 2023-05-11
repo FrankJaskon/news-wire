@@ -3,8 +3,9 @@ import { selectByTestId } from '../../helpers/selectByTestId'
 
 describe('User transits to articles list', () => {
 	beforeEach(() => {
-		cy.login()
-		cy.visit(getArticlesRoute())
+		cy.login().then(() => {
+			cy.visit(getArticlesRoute())
+		})
 	})
 	afterEach(() => {
 		cy.getByTestId('tabs').contains('All').click()
@@ -62,5 +63,20 @@ describe('User transits to articles list', () => {
 		cy.getByTestId('view-list').click()
 		cy.getByTestId('articles-page').wait(500).scrollTo('bottom')
 		cy.getByTestId('articles-list-item-list').should('have.length.greaterThan', 5)
+	})
+})
+
+describe('User transits to articles list(with stub)', () => {
+	beforeEach(() => {
+		cy.login().then(() => {
+			cy.visit(getArticlesRoute())
+		})
+	})
+	it('Articles should be rendered', () => {
+		cy.getByTestId('articles-list').should('exist')
+		cy.intercept('GET', '**/articles?*', {
+			fixture: 'articles.json'
+		})
+		cy.getByTestId('articles-list-item-grid').should('have.length.greaterThan', 3)
 	})
 })
