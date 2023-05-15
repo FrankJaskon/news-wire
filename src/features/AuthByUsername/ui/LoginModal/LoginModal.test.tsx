@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import { MockBrowserRouter } from '@/shared/config/tests/MockBrowserRouter/MockBrowserRouter'
 import { MockStore } from '@/shared/config/tests/MockStore/MockStore'
 import { MockTranslation } from '@/shared/config/tests/MockTranslation/MockTranslation'
@@ -7,22 +7,25 @@ import { LoginModal } from './LoginModal'
 
 describe('LoginModal', () => {
 	const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore()]
-	it('renders the LoginForm when isOpen is true', () => {
+	it('renders the LoginForm when isOpen is true', async () => {
 		RenderWithMocks(
 			<LoginModal isOpen={true} onClose={() => ({})} />,
 			mocks
 		)
 
-		setTimeout(() => {
+		await waitFor(() => {
 			expect(screen.getByTestId('login-form')).toBeInTheDocument()
-		}, 100)
+		})
 	})
 
-	it('does not render the LoginForm when isOpen is false', () => {
+	it('does not render the LoginForm when isOpen is false', async () => {
 		RenderWithMocks(
 			<LoginModal isOpen={false} onClose={() => ({})} />,
 			mocks
 		)
-		expect(screen.queryByTestId('login-form')).not.toBeInTheDocument()
+
+		await waitFor(() => {
+			expect(screen.queryByTestId('login-form')).not.toBeInTheDocument()
+		})
 	})
 })

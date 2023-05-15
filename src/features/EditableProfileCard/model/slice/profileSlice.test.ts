@@ -16,7 +16,7 @@ describe('Profile reducer', () => {
 		loadingError: undefined
 	}
 	const data: ProfileType = {
-		age: 12,
+		age: '12',
 		city: 'Test',
 		firstname: 'Test',
 		avatar: 'http://Test',
@@ -56,7 +56,7 @@ describe('Profile reducer', () => {
 	test('should set up field form is equal to field data', () => {
 		const form: ProfileType = {
 			id: 1,
-			age: 14,
+			age: '14',
 			city: 'TestTest',
 			firstname: 'TestTest',
 			avatar: 'http://TestTest',

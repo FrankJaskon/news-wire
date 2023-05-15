@@ -10,7 +10,7 @@ interface UseThemeResult {
 const useTheme = (): UseThemeResult => {
 	const { theme, setTheme } = useContext(ThemeContext)
 
-	document.body.className = theme
+	document.body.className = theme ?? AppThemes.LIGHT
 
 	const toggleTheme = () => {
 		let newTheme: Theme

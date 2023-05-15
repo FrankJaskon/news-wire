@@ -8,7 +8,7 @@ import { EditableProfileCard } from './EditableProfileCard'
 import type { EditableProfileCardProps } from './EditableProfileCard'
 
 const data = {
-	age: 1,
+	age: '1',
 	city: 'Test',
 	id: 1,
 	firstname: 'User',

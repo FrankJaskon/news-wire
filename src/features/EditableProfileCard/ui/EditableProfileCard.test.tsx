@@ -1,4 +1,4 @@
-import { screen, act } from '@testing-library/react'
+import { screen, act, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Country } from '@/entities/Country'
 import { Currency } from '@/entities/Currency'
@@ -16,7 +16,7 @@ import { EditableProfileCard } from './EditableProfileCard'
 const mockPut = jest.spyOn($api, 'put')
 
 const profile: ProfileType = {
-	age: 20,
+	age: '20',
 	avatar: 'http://avatar',
 	city: 'Test',
 	country: Country.UKRAINE,
@@ -45,7 +45,6 @@ const mockReducers: DeepPartial<ReducerList> = {
 }
 
 describe('EditableProfileCard', () => {
-
 	test('Should display an error', async () => {
 		const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore({
 			profile: {
@@ -114,7 +113,7 @@ describe('EditableProfileCard', () => {
 		expect(usernameInput).toHaveValue(mockOptions.profile.form.username)
 		expect(firstnameInput).toHaveValue(mockOptions.profile.form.firstname)
 		expect(lastnameInput).toHaveValue(mockOptions.profile.form.lastname)
-		expect(ageInput).toHaveValue(mockOptions.profile.form.age)
+		expect(ageInput).toHaveValue(Number(mockOptions.profile.form.age))
 	})
 
 	test('Should display validation errors', async () => {
@@ -153,7 +152,7 @@ describe('EditableProfileCard', () => {
 		})
 		const saveBtn = screen.getByTestId('profile-card-save-btn')
 		await act(async () => {
-			await userEvent.click(saveBtn)
+			fireEvent.click(saveBtn)
 		})
 		const errors = screen.getAllByTestId('Text.content')
 		expect(errors.length).toBe(4)
@@ -183,11 +182,6 @@ describe('EditableProfileCard', () => {
 		const avatarInput = screen.getByTestId('profile-card-avatar-input')
 
 		await act(async () => {
-			await userEvent.click(editBtn)
-		})
-		const saveBtn = screen.getByTestId('profile-card-save-btn')
-		expect(saveBtn).toBeInTheDocument()
-		await act(async () => {
 			await userEvent.clear(usernameInput)
 			await userEvent.type(usernameInput, 'test')
 			await userEvent.clear(firstnameInput)
@@ -198,8 +192,10 @@ describe('EditableProfileCard', () => {
 			await userEvent.type(ageInput, '24')
 			await userEvent.clear(avatarInput)
 			await userEvent.type(avatarInput, 'http://test-url')
-			await userEvent.click(saveBtn)
 		})
+		const saveBtn = screen.getByTestId('profile-card-save-btn')
+		expect(saveBtn).toBeInTheDocument()
+		fireEvent.click(saveBtn)
 		expect(mockPut).toHaveBeenCalled()
 	})
 })

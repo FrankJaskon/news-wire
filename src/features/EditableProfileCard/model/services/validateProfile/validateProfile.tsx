@@ -17,7 +17,7 @@ export const validateProfile = (profile?: ProfileType) => {
 
 	const error: ValidateProfileErrorType[] = []
 
-	if (age && (age < 0 || age > 120 || age === 0)) {
+	if (age && (Number(age) < 0 || Number(age) > 120 || Number(age) === 0)) {
 		error.push(ValidateProfileError.INCORRECT_AGE)
 	}
 	{

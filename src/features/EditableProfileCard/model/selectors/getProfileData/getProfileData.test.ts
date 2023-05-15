@@ -7,7 +7,7 @@ import { getProfileData } from './getProfileData'
 describe('getProfileData', () => {
 	test('Should return profile data', () => {
 		const profileData: ProfileType = {
-			age: 12,
+			age: '12',
 			city: 'Test',
 			firstname: 'Test',
 			avatar: 'Test',

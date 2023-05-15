@@ -12,7 +12,7 @@ describe('updateProfileData', () => {
 			profile: {
 				form: {
 					id: 1,
-					age: 12,
+					age: '12',
 					city: 'Test',
 					firstname: 'Test',
 					avatar: 'http://Test',
@@ -52,7 +52,7 @@ describe('updateProfileData', () => {
 			profile: {
 				form: {
 					id: 4,
-					age: 12,
+					age: '12',
 					city: 'Test',
 					firstname: 'Test',
 					avatar: 'http://Test',

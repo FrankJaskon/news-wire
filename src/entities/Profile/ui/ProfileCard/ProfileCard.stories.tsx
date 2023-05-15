@@ -15,7 +15,7 @@ export default {
 const Template: StoryFn<typeof ProfileCard> = (args) => <ProfileCard {...args} />
 
 const profileData: ProfileType = {
-	age: 20,
+	age: '20',
 	firstname: 'Test',
 	lastname: 'Test',
 	city: 'Test',

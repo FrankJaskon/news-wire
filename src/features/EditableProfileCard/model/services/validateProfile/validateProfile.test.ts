@@ -7,7 +7,7 @@ import { validateProfile } from './validateProfile'
 describe('validateProfile', () => {
 	test('Should return empty array', () => {
 		const responseData: ProfileType | undefined = {
-			age: 12,
+			age: '12',
 			city: 'Test',
 			firstname: 'Test',
 			lastname: 'Test',
@@ -20,7 +20,7 @@ describe('validateProfile', () => {
 	})
 	test('Should return array with length is equal 6', () => {
 		const responseData: ProfileType | undefined = {
-			age: 150,
+			age: '150',
 			city: 'Test123',
 			firstname: 'Test123',
 			lastname: 'Test123',
@@ -36,11 +36,11 @@ describe('validateProfile', () => {
 		expect(validateProfile(responseData)).toEqual([ValidateProfileError.NO_DATA])
 	})
 	test('Should return INCORRECT_AGE', () => {
-		const responseData: ProfileType | undefined = { age: -1 }
+		const responseData: ProfileType | undefined = { age: '-1' }
 		expect(validateProfile(responseData)).toEqual([ValidateProfileError.INCORRECT_AGE])
 	})
 	test('Should return INCORRECT_AGE', () => {
-		const responseData: ProfileType | undefined = { age: 140 }
+		const responseData: ProfileType | undefined = { age: '140' }
 		expect(validateProfile(responseData)).toEqual([ValidateProfileError.INCORRECT_AGE])
 	})
 	test('Should return array with length is equal 1 if firstname is too long and have forbidden symbols', () => {

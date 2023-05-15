@@ -8,7 +8,7 @@ import { fetchProfileData } from './fetchProfileData'
 
 describe('fetchProfileData', () => {
 	const responseData: ProfileType = {
-		age: 12,
+		age: '12',
 		city: 'Test',
 		firstname: 'Test',
 		avatar: 'http://Test',

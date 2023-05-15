@@ -17,14 +17,14 @@ export default ( env: BuildEnv ) => {
 		buildLocales: path.resolve(__dirname, 'dist', 'locales')
 	}
 
-	const analyzed: boolean = env.analyzed || false
+	const analyzed: boolean = env?.analyzed || false
 
-	const mode: BuildMode = env.mode || 'development'
+	const mode: BuildMode = env?.mode || 'development'
 
 
-	const PORT: number = env.port || 3000
+	const PORT: number = env?.port || 3000
 
-	const apiUrl: string = env.apiUrl || 'http://localhost:8000'
+	const apiUrl: string = env?.apiUrl || 'http://localhost:8000'
 
 	const isDev: boolean = mode === 'development'
 

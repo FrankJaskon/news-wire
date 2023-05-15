@@ -1,4 +1,4 @@
-import { FC, memo, useRef, useState } from 'react'
+import { FC, MutableRefObject, memo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
@@ -27,6 +27,7 @@ export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = memo((props: ArticleC
 	} = props
 
 	const { t } = useTranslation()
+	const ref: MutableRefObject<NodeJS.Timeout | undefined> = useRef(undefined)
 	const codeRef = useRef<HTMLDivElement>(null)
 	const [btnText, setBtnText] = useState<BtnTextType>(BtnText.BASIC)
 
@@ -41,9 +42,13 @@ export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = memo((props: ArticleC
 					setBtnText(BtnText.ERROR)
 				})
 				.finally(() => {
-					setTimeout(() => {
+					const timeoutId = setTimeout(() => {
 						setBtnText(BtnText.BASIC)
 					}, 1000)
+					if (ref.current) {
+						clearTimeout(ref.current)
+					}
+					ref.current = timeoutId
 				})
 		}
 	}

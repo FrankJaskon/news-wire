@@ -157,6 +157,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 					<HStack
 						gap='4'
 						innerWidth='evenly'
+						wrap='wrap'
 					>
 						<VStack
 							max={false}

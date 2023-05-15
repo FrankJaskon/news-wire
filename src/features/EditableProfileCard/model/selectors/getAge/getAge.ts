@@ -1,3 +1,3 @@
 import type { StateSchema } from '@/app/providers/StoreProvider'
 
-export const getAge = (state: StateSchema) => state?.profile?.data?.age || 0
+export const getAge = (state: StateSchema) => state?.profile?.data?.age ?? ''

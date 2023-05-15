@@ -7,7 +7,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import ProfilePage from './ProfilePage'
 
 const data = {
-	age: 1,
+	age: '1',
 	city: 'Test',
 	id: 1,
 	firstname: 'User',

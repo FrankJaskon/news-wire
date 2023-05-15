@@ -7,7 +7,7 @@ import { getProfileForm } from './getProfileForm'
 describe('getProfileForm', () => {
 	test('Should return profile form data', () => {
 		const profileData: ProfileType = {
-			age: 12,
+			age: '12',
 			city: 'Test',
 			firstname: 'Test',
 			avatar: 'Test',
