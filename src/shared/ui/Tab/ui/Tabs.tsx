@@ -25,33 +25,33 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 		value,
 		onTabClick,
 		variant = TabVariant.PRIMARY,
-		'data-testid': dataTestId = 'tabs'
+		'data-testid': dataTestId = 'tabs',
 	} = props
 
-	const handleClick = useCallback((tab: string) => () => {
-		onTabClick(tab)
-	}, [onTabClick])
+	const handleClick = useCallback(
+		(tab: string) => () => {
+			onTabClick(tab)
+		},
+		[onTabClick]
+	)
 
-	const isActive = useCallback((tab: TabItem) => (
-		value === tab.value ? cls.active : undefined
-	), [value])
+	const isActive = useCallback(
+		(tab: TabItem) => (value === tab.value ? cls.active : undefined),
+		[value]
+	)
 
-	return <div
-		className={classNames(cls.Tabs, {}, [className])}
-		data-testid={dataTestId}
-	>
-		{tabs?.map(tab => <AppCard
-			key={tab.value}
-			onClick={handleClick(tab.value)}
-			className={classNames(cls.tab,
-				{},
-				[
-					isActive(tab) && cls.active,
-					cls[variant]
-				])}
-			data-testid={`${dataTestId}-${tab.value}`}
-		>
-			{tab.content}
-		</AppCard>)}
-	</div>
+	return (
+		<div className={classNames(cls.Tabs, {}, [className])} data-testid={dataTestId}>
+			{tabs?.map(tab => (
+				<AppCard
+					key={tab.value}
+					onClick={handleClick(tab.value)}
+					className={classNames(cls.tab, {}, [isActive(tab) && cls.active, cls[variant]])}
+					data-testid={`${dataTestId}-${tab.value}`}
+				>
+					{tab.content}
+				</AppCard>
+			))}
+		</div>
+	)
 })

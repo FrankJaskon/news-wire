@@ -3,10 +3,8 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import cls from './AppInput.module.scss'
 
-export interface AppInputProps extends Omit<
-	InputHTMLAttributes<HTMLInputElement>,
-	'value' | 'onChange' | 'readOnly'
-> {
+export interface AppInputProps
+	extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'> {
 	value?: string | number
 	onChange?: (value: string) => void
 	readonly?: boolean
@@ -17,12 +15,12 @@ export interface AppInputProps extends Omit<
 
 export const InputVariant = {
 	PRIMARY: 'primary',
-	CLEAR: 'clear'
+	CLEAR: 'clear',
 } as const
 
 export const InputColor = {
 	PRIMARY: 'primary-color',
-	SECONDARY: 'secondary-color'
+	SECONDARY: 'secondary-color',
 } as const
 
 export type InputVariantType = ValueOf<typeof InputVariant>
@@ -44,19 +42,18 @@ export const AppInput: FC<AppInputProps> = memo((props: AppInputProps) => {
 	}
 
 	const mods = {
-		[cls.readonly]: readonly
+		[cls.readonly]: readonly,
 	}
 
-	const extra = [
-		className,
-		cls[variant],
-		colorVariant && cls[colorVariant]
-	]
+	const extra = [className, cls[variant], colorVariant && cls[colorVariant]]
 
-	return <input
-		className={classNames(cls.AppInput, mods, extra)}
-		value={value}
-		onChange={onChangeHandler}
-		readOnly={readonly}
-		{...extraProps} />
+	return (
+		<input
+			className={classNames(cls.AppInput, mods, extra)}
+			value={value}
+			onChange={onChangeHandler}
+			readOnly={readonly}
+			{...extraProps}
+		/>
+	)
 })

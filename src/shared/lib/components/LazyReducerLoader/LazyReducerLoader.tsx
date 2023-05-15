@@ -4,7 +4,7 @@ import { useDispatch, useStore } from 'react-redux'
 import type {
 	ReduxStoreWithManager,
 	StateSchema,
-	StateSchemaKey
+	StateSchemaKey,
 } from '@/app/providers/StoreProvider'
 
 export type ReducerList = {
@@ -18,13 +18,8 @@ interface LazyReducerLoaderProps {
 	setIsReducerMounted?: (value: boolean) => void
 }
 
-export const LazyReducerLoader: FC<LazyReducerLoaderProps> = (props) => {
-	const {
-		children,
-		reducers,
-		removeAfterUnmount = true,
-		setIsReducerMounted
-	} = props
+export const LazyReducerLoader: FC<LazyReducerLoaderProps> = props => {
+	const { children, reducers, removeAfterUnmount = true, setIsReducerMounted } = props
 
 	const store = useStore() as ReduxStoreWithManager
 	const dispatch = useDispatch()
@@ -35,7 +30,7 @@ export const LazyReducerLoader: FC<LazyReducerLoaderProps> = (props) => {
 		Object.entries(reducers).forEach(([name, reducer]) => {
 			if (!mountedReducers[name as StateSchemaKey]) {
 				store.reducerManager.add(name as StateSchemaKey, reducer)
-				dispatch({ type: `@INIT ${name } reducer` })
+				dispatch({ type: `@INIT ${name} reducer` })
 				setIsReducerMounted?.(true)
 			}
 		})
@@ -47,10 +42,8 @@ export const LazyReducerLoader: FC<LazyReducerLoaderProps> = (props) => {
 				})
 			}
 		}
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [])
 
-	return <>
-		{children}
-	</>
+	return <>{children}</>
 }

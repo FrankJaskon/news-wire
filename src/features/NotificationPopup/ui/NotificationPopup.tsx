@@ -10,24 +10,19 @@ interface NotificationPopupProps {
 	className?: string
 }
 
-export const NotificationPopup: FC<NotificationPopupProps> = (props) => {
-	const {
-		className
-	} = props
+export const NotificationPopup: FC<NotificationPopupProps> = props => {
+	const { className } = props
 
-	return <Popover
-		trigger={
-			<AppIcon
-				Svg={NotificationIcon}
-				variant={AppIconVariant.CONTRAST}
-			/>
-		}
-		direction='bottom left'
-		className={classNames(cls.NotificationPopup, {}, [className])}
-		unmount={false}
-	>
-		<div className={cls.listWrapper}>
-			<NotificationList />
-		</div>
-	</Popover>
+	return (
+		<Popover
+			trigger={<AppIcon Svg={NotificationIcon} variant={AppIconVariant.CONTRAST} />}
+			direction='bottom left'
+			className={classNames(cls.NotificationPopup, {}, [className])}
+			unmount={false}
+		>
+			<div className={cls.listWrapper}>
+				<NotificationList />
+			</div>
+		</Popover>
+	)
 }

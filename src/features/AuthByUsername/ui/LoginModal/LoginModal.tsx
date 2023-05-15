@@ -13,10 +13,7 @@ export interface LoginModalProps {
 }
 
 export const LoginModal: FC<LoginModalProps> = memo((props: LoginModalProps) => {
-	const {
-		isOpen,
-		onClose
-	} = props
+	const { isOpen, onClose } = props
 
 	const authData = useSelector(getUserAuthData)
 
@@ -24,14 +21,11 @@ export const LoginModal: FC<LoginModalProps> = memo((props: LoginModalProps) => 
 		return null
 	}
 
-	return <Modal
-		className={classNames(cls.LoginModal)}
-		isOpen={isOpen}
-		onClose={onClose}
-		lazy
-	>
-		<Suspense fallback={<Loader />}>
-			<LoginForm onSuccess={onClose} />
-		</Suspense>
-	</Modal>
+	return (
+		<Modal className={classNames(cls.LoginModal)} isOpen={isOpen} onClose={onClose} lazy>
+			<Suspense fallback={<Loader />}>
+				<LoginForm onSuccess={onClose} />
+			</Suspense>
+		</Modal>
+	)
 })

@@ -4,7 +4,7 @@ import { ArticlesSortVariantType } from '@/features/ArticlesSortSelector'
 import { SortOrderType } from '@/shared/types/types'
 import { ArticlesTypesType } from '../../ui/ArticleTypeTabs'
 
-export interface ArticleInfiniteListScheme extends EntityState<ArticleType>{
+export interface ArticleInfiniteListScheme extends EntityState<ArticleType> {
 	isLoading: boolean
 	error?: string
 	_initialized: boolean

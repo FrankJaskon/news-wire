@@ -6,17 +6,15 @@ export default defineConfig({
 	plugins: [
 		react(),
 		svgr({
-			exportAsDefault: true
-		})
+			exportAsDefault: true,
+		}),
 	],
 	resolve: {
-		alias: [
-			{ find: '@', replacement: '/src' }
-		],
+		alias: [{ find: '@', replacement: '/src' }],
 	},
 	define: {
 		__iS_DEV__: JSON.stringify(true),
 		__API_URL__: JSON.stringify('http://localhost:8000'),
-		__PROJECT__: JSON.stringify('frontend')
-	}
+		__PROJECT__: JSON.stringify('frontend'),
+	},
 })

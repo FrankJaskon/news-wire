@@ -14,7 +14,7 @@ describe('validateProfile', () => {
 			username: 'Test',
 			avatar: 'http://123',
 			country: Country.UKRAINE,
-			currency: Currency.UAH
+			currency: Currency.UAH,
 		}
 		expect(validateProfile(responseData)).toEqual([])
 	})
@@ -27,7 +27,7 @@ describe('validateProfile', () => {
 			username: 'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest',
 			avatar: 'Test',
 			country: Country.UKRAINE,
-			currency: Currency.UAH
+			currency: Currency.UAH,
 		}
 		expect(validateProfile(responseData).length).toBe(6)
 	})
@@ -44,7 +44,9 @@ describe('validateProfile', () => {
 		expect(validateProfile(responseData)).toEqual([ValidateProfileError.INCORRECT_AGE])
 	})
 	test('Should return array with length is equal 1 if firstname is too long and have forbidden symbols', () => {
-		const responseData: ProfileType | undefined = { firstname: '123Test123Test123Test123Test123Test123Test123Test123' }
+		const responseData: ProfileType | undefined = {
+			firstname: '123Test123Test123Test123Test123Test123Test123Test123',
+		}
 		expect(validateProfile(responseData).length).toBe(1)
 	})
 	test('Should return INCORRECT_FIRSTNAME', () => {
@@ -52,11 +54,15 @@ describe('validateProfile', () => {
 		expect(validateProfile(responseData)).toEqual([ValidateProfileError.INCORRECT_FIRSTNAME])
 	})
 	test('Should return INCORRECT_FIRSTNAME', () => {
-		const responseData: ProfileType | undefined = { firstname: 'TestTestTestTestTestTestTestTestTestTestTestTestTest' }
+		const responseData: ProfileType | undefined = {
+			firstname: 'TestTestTestTestTestTestTestTestTestTestTestTestTest',
+		}
 		expect(validateProfile(responseData)).toEqual([ValidateProfileError.INCORRECT_FIRSTNAME])
 	})
 	test('Should return array with length is equal 1 if lastname is too long and have forbidden symbols', () => {
-		const responseData: ProfileType | undefined = { lastname: '123Test123Test123Test123Test123Test123Test123Test123' }
+		const responseData: ProfileType | undefined = {
+			lastname: '123Test123Test123Test123Test123Test123Test123Test123',
+		}
 		expect(validateProfile(responseData).length).toBe(1)
 	})
 	test('Should return INCORRECT_LASTNAME', () => {
@@ -64,11 +70,15 @@ describe('validateProfile', () => {
 		expect(validateProfile(responseData)).toEqual([ValidateProfileError.INCORRECT_LASTNAME])
 	})
 	test('Should return INCORRECT_LASTNAME', () => {
-		const responseData: ProfileType | undefined = { lastname: 'TestTestTestTestTestTestTestTestTestTestTestTestTest' }
+		const responseData: ProfileType | undefined = {
+			lastname: 'TestTestTestTestTestTestTestTestTestTestTestTestTest',
+		}
 		expect(validateProfile(responseData)).toEqual([ValidateProfileError.INCORRECT_LASTNAME])
 	})
 	test('Should return INCORRECT_USERNAME', () => {
-		const responseData: ProfileType | undefined = { username: 'TestTestTestTestTestTestTestTestTestTestTestTestTest' }
+		const responseData: ProfileType | undefined = {
+			username: 'TestTestTestTestTestTestTestTestTestTestTestTestTest',
+		}
 		expect(validateProfile(responseData)).toEqual([ValidateProfileError.INCORRECT_USERNAME])
 	})
 	test('Should return INCORRECT_CITY', () => {

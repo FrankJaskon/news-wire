@@ -22,36 +22,21 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 		className,
 		comment,
 		isLoading,
-		'data-testid': dataTestId = 'comments-list-item'
+		'data-testid': dataTestId = 'comments-list-item',
 	} = props
 
 	if (isLoading) {
-		return <AppCard>
-			<HStack
-				className={classNames('', {}, [className])}
-				gap='12'
-			>
-				<Skeleton
-					height={50}
-					width={50}
-					borderRadius='50%'
-				/>
-				<VStack
-					align='start'
-					gap='12'
-				>
-					<Skeleton
-						height={20}
-						width={80}
-						className={cls.userName}
-					/>
-					<Skeleton
-						height={40}
-						width={400}
-					/>
-				</VStack>
-			</HStack>
-		</AppCard>
+		return (
+			<AppCard>
+				<HStack className={classNames('', {}, [className])} gap='12'>
+					<Skeleton height={50} width={50} borderRadius='50%' />
+					<VStack align='start' gap='12'>
+						<Skeleton height={20} width={80} className={cls.userName} />
+						<Skeleton height={40} width={400} />
+					</VStack>
+				</HStack>
+			</AppCard>
+		)
 	}
 
 	if (!comment) {
@@ -59,33 +44,14 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 	}
 
 	return (
-		<AppCard
-			data-testid={dataTestId}
-		>
-			<HStack
-				className={classNames('', {}, [className])}
-				gap='12'
-			>
-				<AppLink
-					className={cls.avatarWrapper}
-					to={getProfileRoute(comment?.profile.id)}
-				>
-					<Avatar
-						size={50}
-						src={comment?.profile?.avatar}
-					/>
+		<AppCard data-testid={dataTestId}>
+			<HStack className={classNames('', {}, [className])} gap='12'>
+				<AppLink className={cls.avatarWrapper} to={getProfileRoute(comment?.profile.id)}>
+					<Avatar size={50} src={comment?.profile?.avatar} />
 				</AppLink>
-				<VStack
-					align='start'
-					justify='between'
-				>
-					<AppLink
-						to={getProfileRoute(comment?.profile.id)}
-					>
-						<Text
-							title={comment?.profile.username}
-							size={TextSize.S}
-						/>
+				<VStack align='start' justify='between'>
+					<AppLink to={getProfileRoute(comment?.profile.id)}>
+						<Text title={comment?.profile.username} size={TextSize.S} />
 					</AppLink>
 					<Text content={comment?.text} />
 				</VStack>

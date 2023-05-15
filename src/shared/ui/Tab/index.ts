@@ -1,11 +1,5 @@
-export {
-	Tabs
-} from './ui/Tabs'
+export { Tabs } from './ui/Tabs'
 
-export {
-	TabVariant
-} from './model/consts'
+export { TabVariant } from './model/consts'
 
-export type {
-	TabVariantType
-} from './model/consts'
+export type { TabVariantType } from './model/consts'

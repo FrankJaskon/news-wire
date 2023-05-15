@@ -6,10 +6,12 @@ describe('getValidateError', () => {
 	test('Should return isLoading', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
-				validateError: [ValidateProfileError.NO_DATA]
-			}
+				validateError: [ValidateProfileError.NO_DATA],
+			},
 		}
-		expect(getValidateError(initialState as StateSchema)).toEqual([ValidateProfileError.NO_DATA])
+		expect(getValidateError(initialState as StateSchema)).toEqual([
+			ValidateProfileError.NO_DATA,
+		])
 	})
 	test('Should work with empty state', () => {
 		const initialState: DeepPartial<StateSchema> = {}

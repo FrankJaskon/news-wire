@@ -26,15 +26,15 @@ describe('User transits into article details page', () => {
 		cy.getByTestId('article-details-page').should('exist')
 		cy.getByTestId('article-details-comments').scrollIntoView()
 		cy.getByTestId('article-details-comments', ' textArea').type(commentText)
-		cy.getByTestId('article-details-comments', ` ${selectByTestId('btn')}`).contains('Submit').click()
+		cy.getByTestId('article-details-comments', ` ${selectByTestId('btn')}`)
+			.contains('Submit')
+			.click()
 		cy.getByTestId('article-details-comments-list-item').should('contain.text', commentText)
 	})
 	it('User has left the rating', () => {
-		cy.intercept(
-			'GET',
-			'**/articles/*', {
-				fixture: 'article-details.json'
-			})
+		cy.intercept('GET', '**/articles/*', {
+			fixture: 'article-details.json',
+		})
 		cy.getByTestId('article-details-page').should('exist')
 		cy.getByTestId('rating-card').scrollIntoView()
 		cy.getByTestId('rating-star4').click()

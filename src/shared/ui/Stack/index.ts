@@ -1,11 +1,5 @@
-export {
-	VStack
-} from './VStack/VStack'
+export { VStack } from './VStack/VStack'
 
-export type {
-	GapType
-} from './FlexStack/FlexStack'
+export type { GapType } from './FlexStack/FlexStack'
 
-export {
-	HStack
-} from './HStack/HStack'
+export { HStack } from './HStack/HStack'

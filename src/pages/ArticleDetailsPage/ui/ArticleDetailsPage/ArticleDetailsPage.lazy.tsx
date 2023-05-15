@@ -1,3 +1,3 @@
-import React from 'react'
+import { lazy } from 'react'
 
-export const LazyArticleDetailsPage = React.lazy(() => import('./ArticleDetailsPage'))
+export const LazyArticleDetailsPage = lazy(() => import('./ArticleDetailsPage'))

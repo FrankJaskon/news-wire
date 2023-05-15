@@ -2,16 +2,16 @@ import { screen } from '@testing-library/react'
 import { MockBrowserRouter } from '@/shared/config/tests/MockBrowserRouter/MockBrowserRouter'
 import { MockStore } from '@/shared/config/tests/MockStore/MockStore'
 import { MockTranslation } from '@/shared/config/tests/MockTranslation/MockTranslation'
-import { MockFunction, RenderWithMocks } from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
+import {
+	MockFunction,
+	RenderWithMocks,
+} from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
 import LoginForm from './LoginForm'
 
 describe('LoginForm', () => {
 	const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore()]
 	it('should render correctly', () => {
-		RenderWithMocks(
-			<LoginForm onSuccess={() => {}} />,
-			mocks
-		)
+		RenderWithMocks(<LoginForm onSuccess={() => {}} />, mocks)
 
 		const loginInput = screen.getByTestId('login-input')
 		const passwordInput = screen.getByTestId('password-input')

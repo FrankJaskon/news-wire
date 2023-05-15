@@ -14,12 +14,12 @@ describe('getProfileData', () => {
 			country: Country.UKRAINE,
 			currency: Currency.UAH,
 			lastname: 'Test',
-			username: 'Test'
+			username: 'Test',
 		}
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
-				data: profileData
-			}
+				data: profileData,
+			},
 		}
 		expect(getProfileData(initialState as StateSchema)).toEqual(profileData)
 	})

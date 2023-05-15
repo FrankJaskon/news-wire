@@ -7,41 +7,29 @@ import { Text } from '@/shared/ui/Text'
 import cls from './ArticleImageBlock.module.scss'
 
 export interface ArticleImageBlockProps {
-	className ?: string
+	className?: string
 	src: string
 	title?: string
 }
 
-export const ArticleImageBlock: FC<ArticleImageBlockProps> = memo((props: ArticleImageBlockProps) => {
-	const {
-		className,
-		src,
-		title,
-	} = props
+export const ArticleImageBlock: FC<ArticleImageBlockProps> = memo(
+	(props: ArticleImageBlockProps) => {
+		const { className, src, title } = props
 
-	return (
-		<VStack
-			className={classNames('', {}, [className])}
-			align='center'
-			gap='8'
-		>
-			<AppImage
-				className={cls.img}
-				src={src}
-				alt={title}
-				fallback={<Skeleton
-					height={300}
-				/>}
-			/>
-			{
-				title && <VStack>
-					<Text
-						className={cls.title}
-						content={title}
-						align='center'
-					/>
-				</VStack>
-			}
-		</VStack>
-	)
-})
+		return (
+			<VStack className={classNames('', {}, [className])} align='center' gap='8'>
+				<AppImage
+					className={cls.img}
+					src={src}
+					alt={title}
+					fallback={<Skeleton height={300} />}
+				/>
+				{title && (
+					<VStack>
+						<Text className={cls.title} content={title} align='center' />
+					</VStack>
+				)}
+			</VStack>
+		)
+	}
+)

@@ -35,7 +35,7 @@ const testProfileData = {
 }
 
 describe('EditableProfileCard.cy.tsx', () => {
-	it('playground', () => {
+	it('Should be rendered and return initial state if cancel is pressed', () => {
 		cy.mount(RenderWithMocks(
 			<EditableProfileCard id={Cypress.env('TEST_USER_ID')} />,
 			[

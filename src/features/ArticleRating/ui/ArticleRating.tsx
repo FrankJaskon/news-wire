@@ -10,52 +10,62 @@ export interface ArticleRatingProps {
 	articleId?: number
 }
 
-const ArticleRating: FC<ArticleRatingProps> = (props) => {
-	const {
-		className,
-		articleId
-	} = props
+const ArticleRating: FC<ArticleRatingProps> = props => {
+	const { className, articleId } = props
 
 	const authData = useSelector(getUserAuthData)
 	const { t } = useTranslation('article')
 	const { data, isLoading } = useArticleRating({
 		userId: authData?.id,
-		articleId
+		articleId,
 	})
 	const [rateArticleMutation] = useRateArticle()
 
 	const rating = data?.[0]?.rating
 
-	const sendFeedback = useCallback((rating: number, feedback?: string) => {
-		rateArticleMutation({
-			userId: authData?.id,
-			articleId: articleId,
-			rating,
-			feedback
-		})
-	}, [articleId, authData?.id, rateArticleMutation])
+	const sendFeedback = useCallback(
+		(rating: number, feedback?: string) => {
+			rateArticleMutation({
+				userId: authData?.id,
+				articleId: articleId,
+				rating,
+				feedback,
+			})
+		},
+		[articleId, authData?.id, rateArticleMutation]
+	)
 
-	const onAccept = useCallback((rating: number, feedback?: string) => {
-		sendFeedback(rating, feedback)
-	}, [sendFeedback])
+	const onAccept = useCallback(
+		(rating: number, feedback?: string) => {
+			sendFeedback(rating, feedback)
+		},
+		[sendFeedback]
+	)
 
-	const onCancel = useCallback((rating: number) => {
-		sendFeedback(rating)
-	}, [sendFeedback])
+	const onCancel = useCallback(
+		(rating: number) => {
+			sendFeedback(rating)
+		},
+		[sendFeedback]
+	)
 
 	if (isLoading) return null
 
-	const title = rating ? t('rating.rate-article-title-has-response') : t('rating.rate-article-title')
+	const title = rating
+		? t('rating.rate-article-title-has-response')
+		: t('rating.rate-article-title')
 
-	return <RatingCard
-		className={className}
-		rating={rating}
-		title={title}
-		feedbackTitle={t('rating.rate-article-feedback-title')}
-		onAccept={onAccept}
-		onCancel={onCancel}
-		isLoading={isLoading}
-	/>
+	return (
+		<RatingCard
+			className={className}
+			rating={rating}
+			title={title}
+			feedbackTitle={t('rating.rate-article-feedback-title')}
+			onAccept={onAccept}
+			onCancel={onCancel}
+			isLoading={isLoading}
+		/>
+	)
 }
 
 export default memo(ArticleRating)

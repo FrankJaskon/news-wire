@@ -21,27 +21,29 @@ describe('User transits to articles list', () => {
 			all: 'All',
 			it: 'Information Technology',
 			science: 'Science',
-			economic: 'Economic'
+			economic: 'Economic',
 		}
 		cy.getByTestId('tabs').contains(filters.it).click()
-		cy.getByTestId('articles-list-item-grid').each(($el) => {
+		cy.getByTestId('articles-list-item-grid').each($el => {
 			cy.wrap($el).find(selectByTestId('Text.content')).should('contain', 'IT')
 		})
 		cy.getByTestId('tabs').contains(filters.science).click()
-		cy.getByTestId('articles-list-item-grid').each(($el) => {
+		cy.getByTestId('articles-list-item-grid').each($el => {
 			cy.wrap($el).find(selectByTestId('Text.content')).should('contain', 'SCIENCE')
 		})
 		cy.getByTestId('tabs').contains(filters.economic).click()
-		cy.getByTestId('articles-list-item-grid').each(($el) => {
+		cy.getByTestId('articles-list-item-grid').each($el => {
 			cy.wrap($el).find(selectByTestId('Text.content')).should('contain', 'ECONOMIC')
 		})
 	})
 	it('Search input should work', () => {
 		const searchValue = 'Python'
 		cy.getByTestId('articles-filter-search').clear().type(searchValue)
-		cy.getByTestId('articles-list-item-grid').should('have.length', 3).each(($el) => {
-			cy.wrap($el).find(selectByTestId('Text.title')).should('contain.text', searchValue)
-		})
+		cy.getByTestId('articles-list-item-grid')
+			.should('have.length', 3)
+			.each($el => {
+				cy.wrap($el).find(selectByTestId('Text.title')).should('contain.text', searchValue)
+			})
 	})
 	it('View toggler should work', () => {
 		cy.getByTestId('view-list').click()
@@ -75,7 +77,7 @@ describe('User transits to articles list(with stub)', () => {
 	it('Articles should be rendered', () => {
 		cy.getByTestId('articles-list').should('exist')
 		cy.intercept('GET', '**/articles?*', {
-			fixture: 'articles.json'
+			fixture: 'articles.json',
 		})
 		cy.getByTestId('articles-list-item-grid').should('have.length.greaterThan', 3)
 	})

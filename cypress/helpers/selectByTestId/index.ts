@@ -1,3 +1,1 @@
-export {
-	selectByTestId
-} from './selectByTestId'
+export { selectByTestId } from './selectByTestId'

@@ -1,4 +1,3 @@
-
 import { FC, MutableRefObject, ReactNode, UIEvent, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -19,13 +18,8 @@ export interface PageWrapperProps extends TestProps {
 	watchedScroll?: boolean
 }
 
-export const PageWrapper: FC<PageWrapperProps> = (props) => {
-	const {
-		className,
-		children,
-		onScrollEnd,
-		watchedScroll = false,
-	} = props
+export const PageWrapper: FC<PageWrapperProps> = props => {
+	const { className, children, onScrollEnd, watchedScroll = false } = props
 	const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
 	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
 	const dispatch = useAppDispatch()
@@ -35,7 +29,7 @@ export const PageWrapper: FC<PageWrapperProps> = (props) => {
 	useInfiniteScroll({
 		wrapperRef,
 		triggerRef,
-		callback: onScrollEnd
+		callback: onScrollEnd,
 	})
 
 	useEffect(() => {
@@ -46,7 +40,12 @@ export const PageWrapper: FC<PageWrapperProps> = (props) => {
 
 	const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
 		if (watchedScroll) {
-			dispatch(pageScrollActions.setScrollPosition({ path: pathname, position: e.currentTarget.scrollTop }))
+			dispatch(
+				pageScrollActions.setScrollPosition({
+					path: pathname,
+					position: e.currentTarget.scrollTop,
+				})
+			)
 		}
 	}, 300)
 

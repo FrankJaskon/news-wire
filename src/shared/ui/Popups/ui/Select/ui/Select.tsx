@@ -6,7 +6,12 @@ import { typedMemo } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon, AppIconSize, AppIconVariant } from '../../../../AppIcon'
 import { HStack } from '../../../../Stack'
-import { AlignType, DirectionType, DirectionVariant, InnerPositionVariant } from '../../../styles/consts'
+import {
+	AlignType,
+	DirectionType,
+	DirectionVariant,
+	InnerPositionVariant,
+} from '../../../styles/consts'
 import popupCls from '../../../styles/Popups.module.scss'
 import cls from './Select.module.scss'
 
@@ -39,75 +44,58 @@ export const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
 		placeholder,
 		direction = 'bottom right',
 		align = 'start',
-		'data-testid': datTestId
+		'data-testid': datTestId,
 	} = props
 
-	return <div className={classNames(
-		popupCls.Popup,
-		{},
-		[className])}
-	>
-		<Listbox
-			value={value || {}}
-			onChange={onChange}
-			name={name}
-			disabled={readonly}
-		>
-			<Listbox.Button
-				className={classNames(cls.button, {
-					[popupCls.disabled]: readonly
-				})}
-				data-testid={datTestId}
-			>
-				<HStack
-					justify='between'
-					align='center'
-					gap='8'
+	return (
+		<div className={classNames(popupCls.Popup, {}, [className])}>
+			<Listbox value={value || {}} onChange={onChange} name={name} disabled={readonly}>
+				<Listbox.Button
+					className={classNames(cls.button, {
+						[popupCls.disabled]: readonly,
+					})}
+					data-testid={datTestId}
 				>
-					{value?.label || placeholder}
-					<AppIcon
-						Svg={ExpandIcon}
-						size={AppIconSize.SMALL}
-					/>
-				</HStack>
-			</Listbox.Button>
-			<Listbox.Options
-				className={classNames(
-					cls.options,
-					{},
-					[DirectionVariant[direction]]
-				)}
-			>
-				{options.map((item) => (
-					<Listbox.Option
-						key={item.value}
-						value={item}
-						as={Fragment}
-					>
-						{({ active, selected }) => <li className={classNames(
-							cls.item,
-							{
-								[popupCls.active]: active,
-							},
-							[InnerPositionVariant[align]])
-						}>
-							<HStack
-								justify='between'
-								align='center'
-								gap='8'
-							>
-								{item.label}
-								{selected && <AppIcon
-									variant={active ? AppIconVariant.CONTRAST : AppIconVariant.PRIMARY}
-									Svg={CheckMark}
-									size={AppIconSize.SMALL}
-								/>}
-							</HStack>
-						</li>
-						}
-					</Listbox.Option>
-				))}
-			</Listbox.Options>
-		</Listbox>
-	</div>
+					<HStack justify='between' align='center' gap='8'>
+						{value?.label || placeholder}
+						<AppIcon Svg={ExpandIcon} size={AppIconSize.SMALL} />
+					</HStack>
+				</Listbox.Button>
+				<Listbox.Options
+					className={classNames(cls.options, {}, [DirectionVariant[direction]])}
+				>
+					{options.map(item => (
+						<Listbox.Option key={item.value} value={item} as={Fragment}>
+							{({ active, selected }) => (
+								<li
+									className={classNames(
+										cls.item,
+										{
+											[popupCls.active]: active,
+										},
+										[InnerPositionVariant[align]]
+									)}
+								>
+									<HStack justify='between' align='center' gap='8'>
+										{item.label}
+										{selected && (
+											<AppIcon
+												variant={
+													active
+														? AppIconVariant.CONTRAST
+														: AppIconVariant.PRIMARY
+												}
+												Svg={CheckMark}
+												size={AppIconSize.SMALL}
+											/>
+										)}
+									</HStack>
+								</li>
+							)}
+						</Listbox.Option>
+					))}
+				</Listbox.Options>
+			</Listbox>
+		</div>
+	)
 })

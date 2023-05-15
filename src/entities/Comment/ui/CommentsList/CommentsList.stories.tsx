@@ -9,7 +9,7 @@ const comments = [
 		profile: {
 			id: 1,
 			username: 'some username',
-		}
+		},
 	},
 	{
 		id: 2,
@@ -17,7 +17,7 @@ const comments = [
 		profile: {
 			id: 2,
 			username: 'some username1',
-		}
+		},
 	},
 	{
 		id: 3,
@@ -25,7 +25,7 @@ const comments = [
 		profile: {
 			id: 3,
 			username: 'some username2',
-		}
+		},
 	},
 ]
 
@@ -35,22 +35,21 @@ export default {
 	argTypes: {},
 	args: {
 		comments,
-		isLoading: false
-	}
+		isLoading: false,
+	},
 } as Meta<typeof CommentsList>
 
-const Template: StoryFn<typeof CommentsList> = (args) => < CommentsList { ...args } />
+const Template: StoryFn<typeof CommentsList> = args => <CommentsList {...args} />
 
 export const Basic: StoryFn<CommentsListProps> = Template.bind({})
-Basic.args = {
-}
+Basic.args = {}
 
 export const Loading: StoryFn<CommentsListProps> = Template.bind({})
 Loading.args = {
-	isLoading: true
+	isLoading: true,
 }
 
 export const Error: StoryFn<CommentsListProps> = Template.bind({})
 Error.args = {
-	error: 'Some error'
+	error: 'Some error',
 }

@@ -10,15 +10,15 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({})],
 } as Meta<typeof Sidebar>
 
-const Template: StoryFn<typeof Sidebar> = (args) => <Sidebar {...args} />
+const Template: StoryFn<typeof Sidebar> = args => <Sidebar {...args} />
 
 export const Basic: StoryFn = Template.bind({})
 
 export const SidebarAuthorized: StoryFn = Template.bind({})
-SidebarAuthorized.decorators = [StoreDecorator({ user: { authData: {}}})]
+SidebarAuthorized.decorators = [StoreDecorator({ user: { authData: {} } })]
 
 export const DarkTheme: StoryFn = Template.bind({})
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]

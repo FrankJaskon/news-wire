@@ -6,7 +6,7 @@ import cls from './Loader.module.scss'
 export const LoaderSize = {
 	SMALL: 'small',
 	MEDIUM: 'medium',
-	LARGE: 'large'
+	LARGE: 'large',
 } as const
 
 export type LoaderSizeType = ValueOf<typeof LoaderSize>
@@ -17,10 +17,7 @@ export interface LoaderProps {
 }
 
 export const Loader: FC<LoaderProps> = memo((props: LoaderProps) => {
-	const {
-		className,
-		size = LoaderSize.MEDIUM
-	} = props
+	const { className, size = LoaderSize.MEDIUM } = props
 
 	return <div className={classNames(cls.Loader, {}, [className, cls[size]])} />
 })

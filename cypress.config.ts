@@ -7,8 +7,8 @@ export default defineConfig({
 		},
 		baseUrl: 'http://localhost:5173',
 		env: {
-			TEST_USER_ID: 9963726
-		}
+			TEST_USER_ID: 9963726,
+		},
 	},
 	component: {
 		setupNodeEvents(on, config) {
@@ -16,10 +16,10 @@ export default defineConfig({
 		},
 		devServer: {
 			framework: 'react',
-			bundler: 'webpack'
+			bundler: 'webpack',
 		},
 		env: {
-			TEST_USER_ID: 9963726
-		}
-	}
+			TEST_USER_ID: 9963726,
+		},
+	},
 })

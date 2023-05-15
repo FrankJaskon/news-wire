@@ -1,3 +1,3 @@
-import React from 'react'
+import { lazy } from 'react'
 
-export const LazyProfilePage = React.lazy(() =>import('./ProfilePage'))
+export const LazyProfilePage = lazy(() => import('./ProfilePage'))

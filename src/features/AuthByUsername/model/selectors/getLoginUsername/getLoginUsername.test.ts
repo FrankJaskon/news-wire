@@ -6,7 +6,7 @@ describe('getLoginLogin', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			login: {
 				username: 'username@',
-			}
+			},
 		}
 		test('Return username value', () => {
 			expect(getLoginLogin(initialState as StateSchema)).toBe('username@')
@@ -17,7 +17,7 @@ describe('getLoginLogin', () => {
 	}
 	{
 		const initialState: DeepPartial<StateSchema> = {
-			login: {}
+			login: {},
 		}
 		test('Should return empty string', () => {
 			expect(getLoginLogin(initialState as StateSchema)).toBe('')

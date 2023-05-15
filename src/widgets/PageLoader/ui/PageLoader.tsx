@@ -10,7 +10,9 @@ interface PageLoaderProps {
 export const PageLoader: FC<PageLoaderProps> = memo((props: PageLoaderProps) => {
 	const { className } = props
 
-	return <div className={classNames(cls.PageLoader, {}, [className])}>
-		<Loader className={cls.loader}/>
-	</div>
+	return (
+		<div className={classNames(cls.PageLoader, {}, [className])}>
+			<Loader className={cls.loader} />
+		</div>
+	)
 })

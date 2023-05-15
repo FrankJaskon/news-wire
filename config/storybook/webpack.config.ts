@@ -9,21 +9,21 @@ const config = ({ config }: { config: webpack.Configuration }): webpack.Configur
 	const paths: BuildPaths = {
 		assets: {
 			svg: '',
-			images: ''
+			images: '',
 		},
 		entry: '',
 		html: '',
 		output: '',
 		src: path.resolve(__dirname, '..', '..', 'src'),
 		buildLocales: '',
-		locales: ''
+		locales: '',
 	}
 
 	// LOADERS
 
-	if ( config.module?.rules ) {
-		config.module.rules = config.module.rules.map((rule) => {
-			if (/svg/.test((rule as RuleSetRule ).test as string)) {
+	if (config.module?.rules) {
+		config.module.rules = config.module.rules.map(rule => {
+			if (/svg/.test((rule as RuleSetRule).test as string)) {
 				return svgLoader()
 			}
 			return rule
@@ -35,25 +35,27 @@ const config = ({ config }: { config: webpack.Configuration }): webpack.Configur
 
 	// RESOLVES
 
-	if ( config.resolve ) {
+	if (config.resolve) {
 		config.resolve.modules = [paths.src, 'node_modules']
 		config.resolve.preferAbsolute = true
 		config.resolve.extensions = ['.tsx', '.ts', '.js']
 		config.resolve.mainFiles = ['index']
 		config.resolve.alias = {
 			...config.resolve.alias,
-			'@': paths.src
+			'@': paths.src,
 		}
 	}
 
 	// PLUGINS
 
-	if ( config.plugins ) {
-		config.plugins?.push(new webpack.DefinePlugin({
-			__iS_DEV__: JSON.stringify(true),
-			__API_URL__: JSON.stringify('http://mock.url'),
-			__PROJECT__: JSON.stringify('storybook')
-		}))
+	if (config.plugins) {
+		config.plugins?.push(
+			new webpack.DefinePlugin({
+				__iS_DEV__: JSON.stringify(true),
+				__API_URL__: JSON.stringify('http://mock.url'),
+				__PROJECT__: JSON.stringify('storybook'),
+			})
+		)
 	}
 
 	return config

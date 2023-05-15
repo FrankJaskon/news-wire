@@ -1,14 +1,16 @@
 {
-    "i18n-ally.localesPaths": ["public/locales"],
-    "i18n-ally.defaultNamespace": "translation",
-    "i18n-ally.sourceLanguage": "english",
-    "i18n-ally.namespace": true,
-    "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
-    "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
+  "i18n-ally.localesPaths": [
+    "public/locales"
+  ],
+  "i18n-ally.defaultNamespace": "translation",
+  "i18n-ally.sourceLanguage": "english",
+  "i18n-ally.namespace": true,
+  "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
   ],
   "eslint.enable": true,
   "eslint.run": "onSave",
@@ -20,7 +22,9 @@
   "npm.packageManager": "npm",
   "files.eol": "\r\n",
   "eslint.format.enable": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
+  "editor.tabSize": 4,
+  "editor.autoIndent": "none",
+  "files.insertFinalNewline": false,
+  "prettier.endOfLine": "crlf",
+  "prettier.semi": false
 }

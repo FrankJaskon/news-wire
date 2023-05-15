@@ -15,29 +15,26 @@ export default {
 			profile: {
 				id: 1,
 				username: 'some username',
-			}
+			},
 		},
-		isLoading: false
-	}
+		isLoading: false,
+	},
 } as Meta<typeof CommentCard>
 
-const Template: StoryFn<typeof CommentCard> = (args) => < CommentCard {...args} />
+const Template: StoryFn<typeof CommentCard> = args => <CommentCard {...args} />
 
 export const Basic: StoryFn<CommentCardProps> = Template.bind({})
-Basic.args = {
-}
+Basic.args = {}
 
 export const Loading: StoryFn<CommentCardProps> = Template.bind({})
 Loading.args = {
-	isLoading: true
+	isLoading: true,
 }
 
 export const DarkTheme: StoryFn<CommentCardProps> = Template.bind({})
-DarkTheme.args = {
-}
+DarkTheme.args = {}
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: StoryFn<CommentCardProps> = Template.bind({})
-PurpleTheme.args = {
-}
+PurpleTheme.args = {}
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

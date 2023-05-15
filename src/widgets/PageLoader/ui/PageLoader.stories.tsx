@@ -7,21 +7,18 @@ export default {
 	title: 'widgets/PageLoader',
 	component: PageLoader,
 	argTypes: {},
-	args: {}
+	args: {},
 } as Meta<typeof PageLoader>
 
-const Template: StoryFn<typeof PageLoader> = (args) => <PageLoader {...args} />
+const Template: StoryFn<typeof PageLoader> = args => <PageLoader {...args} />
 
 export const Basic: StoryFn = Template.bind({})
-Basic.args = {
-}
+Basic.args = {}
 
 export const DarkTheme: StoryFn = Template.bind({})
-DarkTheme.args = {
-}
+DarkTheme.args = {}
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: StoryFn = Template.bind({})
-PurpleTheme.args = {
-}
+PurpleTheme.args = {}
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

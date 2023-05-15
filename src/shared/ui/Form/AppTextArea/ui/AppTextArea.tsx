@@ -1,19 +1,13 @@
-import {
-	ChangeEvent,
-	FC,
-	memo,
-	TextareaHTMLAttributes,
-	useEffect,
-	useRef
-} from 'react'
+import { ChangeEvent, FC, memo, TextareaHTMLAttributes, useEffect, useRef } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppCard } from '../../../AppCard'
 import cls from './AppTextArea.module.scss'
 
-export interface AppTextAreaProps extends Omit<
-	TextareaHTMLAttributes<HTMLTextAreaElement>,
-	'value' | 'onChange' | 'readOnly' | 'placeholder'
-> {
+export interface AppTextAreaProps
+	extends Omit<
+		TextareaHTMLAttributes<HTMLTextAreaElement>,
+		'value' | 'onChange' | 'readOnly' | 'placeholder'
+	> {
 	value?: string | number
 	onChange?: (value: string) => void
 	readonly?: boolean
@@ -48,27 +42,25 @@ export const AppTextArea: FC<AppTextAreaProps> = memo((props: AppTextAreaProps) 
 	}
 
 	const mods = {
-		[cls.readonly]: readonly
+		[cls.readonly]: readonly,
 	}
 
-	const extra = [
-		className,
-	]
+	const extra = [className]
 
-	return <AppCard
-		noPaddings
-	>
-		<textarea
-			ref={textareaRef}
-			className={classNames(cls.AppTextArea, mods, extra)}
-			style={{
-				minHeight,
-				maxHeight
-			}}
-			value={value}
-			onChange={onChangeHandler}
-			readOnly={readonly}
-			{...extraProps}
-		/>
-	</AppCard>
+	return (
+		<AppCard noPaddings>
+			<textarea
+				ref={textareaRef}
+				className={classNames(cls.AppTextArea, mods, extra)}
+				style={{
+					minHeight,
+					maxHeight,
+				}}
+				value={value}
+				onChange={onChangeHandler}
+				readOnly={readonly}
+				{...extraProps}
+			/>
+		</AppCard>
+	)
 })

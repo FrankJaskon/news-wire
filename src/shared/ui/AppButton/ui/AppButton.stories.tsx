@@ -9,7 +9,7 @@ export default {
 	argTypes: {},
 } as Meta<typeof AppButton>
 
-const Template: StoryFn<typeof AppButton> = (args) => <AppButton {...args} />
+const Template: StoryFn<typeof AppButton> = args => <AppButton {...args} />
 
 export const Button: StoryFn = Template.bind({})
 Button.args = {
@@ -31,31 +31,31 @@ ButtonPurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 export const ButtonDisabled: StoryFn = Template.bind({})
 ButtonDisabled.args = {
 	children: 'Click',
-	disabled: true
+	disabled: true,
 }
 
 export const ButtonL: StoryFn = Template.bind({})
 ButtonL.args = {
 	children: 'Click',
-	size: ButtonSize.L
+	size: ButtonSize.L,
 }
 
 export const ButtonXL: StoryFn = Template.bind({})
 ButtonXL.args = {
 	children: 'Click',
-	size: ButtonSize.XL
+	size: ButtonSize.XL,
 }
 
 export const Square: StoryFn = Template.bind({})
 Square.args = {
 	children: '>',
-	shape: ButtonShape.SQUARE
+	shape: ButtonShape.SQUARE,
 }
 
 export const SquareDark: StoryFn = Template.bind({})
 SquareDark.args = {
 	children: '>',
-	shape: ButtonShape.SQUARE
+	shape: ButtonShape.SQUARE,
 }
 SquareDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
@@ -63,14 +63,14 @@ export const SquareL: StoryFn = Template.bind({})
 SquareL.args = {
 	children: '>',
 	shape: ButtonShape.SQUARE,
-	size: ButtonSize.L
+	size: ButtonSize.L,
 }
 
 export const SquareXL: StoryFn = Template.bind({})
 SquareXL.args = {
 	children: '>',
 	shape: ButtonShape.SQUARE,
-	size: ButtonSize.XL
+	size: ButtonSize.XL,
 }
 
 export const Custom: StoryFn = Template.bind({})
@@ -103,19 +103,19 @@ export const OutlineSquare: StoryFn = Template.bind({})
 OutlineSquare.args = {
 	children: '>',
 	variant: ButtonVariant.OUTLINE,
-	shape: ButtonShape.SQUARE
+	shape: ButtonShape.SQUARE,
 }
 
 export const OutlineL: StoryFn = Template.bind({})
 OutlineL.args = {
 	children: 'Click',
 	variant: ButtonVariant.OUTLINE,
-	size: ButtonSize.L
+	size: ButtonSize.L,
 }
 
 export const OutlineXL: StoryFn = Template.bind({})
 OutlineXL.args = {
 	children: 'Click',
 	variant: ButtonVariant.OUTLINE,
-	size: ButtonSize.XL
+	size: ButtonSize.XL,
 }

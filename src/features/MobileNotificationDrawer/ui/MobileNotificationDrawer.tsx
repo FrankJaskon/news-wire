@@ -11,7 +11,7 @@ interface MobileNotificationDrawerProps {
 	className?: string
 }
 
-export const MobileNotificationDrawer: FC<MobileNotificationDrawerProps> = (props) => {
+export const MobileNotificationDrawer: FC<MobileNotificationDrawerProps> = props => {
 	const { className } = props
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -23,22 +23,18 @@ export const MobileNotificationDrawer: FC<MobileNotificationDrawerProps> = (prop
 		setIsOpen(false)
 	}, [])
 
-	return <>
-		<AppButton
-			variant={ButtonVariant.CUSTOM}
-			onClick={handleOpen}
-			className={classNames(cls.MobileNotificationDrawer, {}, [className])}
-		>
-			<AppIcon
-				Svg={NotificationIcon}
-				variant={AppIconVariant.CONTRAST}
-			/>
-		</AppButton>
-		<Drawer
-			isOpen={isOpen}
-			onClose={handleClose}
-		>
-			<NotificationList />
-		</Drawer>
-	</>
+	return (
+		<>
+			<AppButton
+				variant={ButtonVariant.CUSTOM}
+				onClick={handleOpen}
+				className={classNames(cls.MobileNotificationDrawer, {}, [className])}
+			>
+				<AppIcon Svg={NotificationIcon} variant={AppIconVariant.CONTRAST} />
+			</AppButton>
+			<Drawer isOpen={isOpen} onClose={handleClose}>
+				<NotificationList />
+			</Drawer>
+		</>
+	)
 }

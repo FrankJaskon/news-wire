@@ -6,11 +6,7 @@ export interface InfiniteScrollProps {
 	wrapperRef: MutableRefObject<HTMLElement>
 }
 
-export const useInfiniteScroll = ({
-	callback,
-	triggerRef,
-	wrapperRef
-}: InfiniteScrollProps) => {
+export const useInfiniteScroll = ({ callback, triggerRef, wrapperRef }: InfiniteScrollProps) => {
 	useEffect(() => {
 		let observer: IntersectionObserver | null = null
 		const currentWrapperRef = wrapperRef.current
@@ -20,7 +16,7 @@ export const useInfiniteScroll = ({
 			const options = {
 				root: currentWrapperRef,
 				rootMargin: '20px 20px 20px 40px',
-				threshold: 1.0
+				threshold: 1.0,
 			}
 
 			observer = new IntersectionObserver(([entry]) => {

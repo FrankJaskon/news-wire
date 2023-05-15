@@ -2,9 +2,8 @@ import { DetailedHTMLProps, FC, ReactNode } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
 import cls from './FlexStack.module.scss'
 
-export interface FlexStackProps extends DetailedHTMLProps<
-	React.HTMLAttributes<HTMLDivElement>, HTMLDivElement
->{
+export interface FlexStackProps
+	extends DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	direction: DirectionType
 	className?: string
 	children?: ReactNode
@@ -20,8 +19,8 @@ type DirectionType = 'row' | 'column'
 type JustifyType = 'start' | 'end' | 'center' | 'between' | 'evenly' | 'around'
 type AlignType = 'start' | 'end' | 'center'
 type WrapType = 'wrap' | 'nowrap'
-export type GapType = '4' |'8' | '12' | '16' | '24' | '32'
-type InnerWidthType = 'full' |'evenly'
+export type GapType = '4' | '8' | '12' | '16' | '24' | '32'
+type InnerWidthType = 'full' | 'evenly'
 
 const GapMapper: Record<GapType, string> = {
 	'4': 'gap4',
@@ -32,7 +31,7 @@ const GapMapper: Record<GapType, string> = {
 	'32': 'gap32',
 }
 
-export const FlexStack: FC<FlexStackProps> = (props) => {
+export const FlexStack: FC<FlexStackProps> = props => {
 	const {
 		className,
 		children,
@@ -47,7 +46,7 @@ export const FlexStack: FC<FlexStackProps> = (props) => {
 	} = props
 
 	const mods: Record<string, boolean> = {
-		[cls.max]: max
+		[cls.max]: max,
 	}
 
 	const extra: (string | undefined)[] = [
@@ -57,13 +56,12 @@ export const FlexStack: FC<FlexStackProps> = (props) => {
 		align && cls[`align-${align}`],
 		wrap && cls[wrap],
 		gap && cls[GapMapper[gap]],
-		innerWidth && cls[innerWidth]
+		innerWidth && cls[innerWidth],
 	]
 
-	return <div
-		className={classNames(cls.FlexStack, mods, extra)}
-		{...otherProps}
-	>
-		{children}
-	</div>
+	return (
+		<div className={classNames(cls.FlexStack, mods, extra)} {...otherProps}>
+			{children}
+		</div>
+	)
 }

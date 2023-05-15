@@ -8,20 +8,25 @@ import { AppButton } from '@/shared/ui/AppButton'
 import cls from './ThemeToggler.module.scss'
 
 interface ThemeTogglerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    className?: string,
+	className?: string
 }
 
 export const ThemeToggler: FC<ThemeTogglerProps> = memo((props: ThemeTogglerProps) => {
 	const { className, ...otherProps } = props
 	const { theme, toggleTheme } = useTheme()
 
-	return  <AppButton
-		variant='custom'
-		onClick={toggleTheme}
-		className={classNames(cls.ThemeToggler, {}, [className])}
-		{...otherProps}>
-		{theme === AppThemes.DARK
-			? <DarkIcon className={cls.svg} />
-			: <LightIcon className={cls.svg} />}
-	</AppButton>
+	return (
+		<AppButton
+			variant='custom'
+			onClick={toggleTheme}
+			className={classNames(cls.ThemeToggler, {}, [className])}
+			{...otherProps}
+		>
+			{theme === AppThemes.DARK ? (
+				<DarkIcon className={cls.svg} />
+			) : (
+				<LightIcon className={cls.svg} />
+			)}
+		</AppButton>
+	)
 })

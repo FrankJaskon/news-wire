@@ -14,31 +14,15 @@ export interface PopoverProps {
 }
 
 export const Popover: FC<PopoverProps> = memo((props: PopoverProps) => {
-	const {
-		className,
-		trigger,
-		direction = 'bottom right',
-		children,
-		unmount = true
-	} = props
+	const { className, trigger, direction = 'bottom right', children, unmount = true } = props
 
 	return (
-		<HeadlessPopover
-			as='div'
-			className={popupCls.Popup}
-		>
-			<HeadlessPopover.Button
-				className={className}
-			>
-				{trigger}
-			</HeadlessPopover.Button>
+		<HeadlessPopover as='div' className={popupCls.Popup}>
+			<HeadlessPopover.Button className={className}>{trigger}</HeadlessPopover.Button>
 
 			<HeadlessPopover.Panel
 				unmount={unmount}
-				className={classNames(
-					cls.items,
-					{},
-					[DirectionVariant[direction]])}
+				className={classNames(cls.items, {}, [DirectionVariant[direction]])}
 			>
 				{children}
 			</HeadlessPopover.Panel>

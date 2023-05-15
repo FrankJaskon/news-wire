@@ -7,7 +7,10 @@ import { $api } from '@/shared/api/api'
 import { MockBrowserRouter } from '@/shared/config/tests/MockBrowserRouter/MockBrowserRouter'
 import { MockStore } from '@/shared/config/tests/MockStore/MockStore'
 import { MockTranslation } from '@/shared/config/tests/MockTranslation/MockTranslation'
-import { MockFunction, RenderWithMocks } from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
+import {
+	MockFunction,
+	RenderWithMocks,
+} from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
 import { ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { profileReducer } from '../model/slice/profileSlice'
 import { ValidateProfileError } from '../model/types/ProfileScheme'
@@ -24,7 +27,7 @@ const profile: ProfileType = {
 	firstname: 'Test',
 	lastname: 'TestTest',
 	id: 1,
-	username: 'Test user'
+	username: 'Test user',
 }
 
 const mockOptions = {
@@ -35,23 +38,30 @@ const mockOptions = {
 	},
 	user: {
 		authData: {
-			id: 1
-		}
-	}
+			id: 1,
+		},
+	},
 }
 
 const mockReducers: DeepPartial<ReducerList> = {
-	profile: profileReducer
+	profile: profileReducer,
 }
 
 describe('EditableProfileCard', () => {
 	test('Should display an error', async () => {
-		const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore({
-			profile: {
-				...mockOptions.profile,
-				validateError: [ValidateProfileError.SERVER_ERROR]
-			}
-		}, mockReducers)]
+		const mocks: MockFunction[] = [
+			MockTranslation,
+			MockBrowserRouter(),
+			MockStore(
+				{
+					profile: {
+						...mockOptions.profile,
+						validateError: [ValidateProfileError.SERVER_ERROR],
+					},
+				},
+				mockReducers
+			),
+		]
 
 		await act(async () => {
 			RenderWithMocks(<EditableProfileCard id={1} />, mocks)
@@ -61,14 +71,21 @@ describe('EditableProfileCard', () => {
 		expect(error).toBeInTheDocument()
 	})
 	test('Should return initial state if cancel is pressed', async () => {
-		const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore({
-			profile: {
-				...mockOptions.profile
-			},
-			user: {
-				...mockOptions.user
-			}
-		}, mockReducers)]
+		const mocks: MockFunction[] = [
+			MockTranslation,
+			MockBrowserRouter(),
+			MockStore(
+				{
+					profile: {
+						...mockOptions.profile,
+					},
+					user: {
+						...mockOptions.user,
+					},
+				},
+				mockReducers
+			),
+		]
 		await act(async () => {
 			RenderWithMocks(<EditableProfileCard id={1} />, mocks)
 		})
@@ -97,7 +114,6 @@ describe('EditableProfileCard', () => {
 
 			await userEvent.clear(avatarInput)
 			await userEvent.type(avatarInput, 'Some test value')
-
 		})
 		const closeBtn = screen.getByTestId('profile-card-close-btn')
 		expect(closeBtn).toBeInTheDocument()
@@ -117,14 +133,21 @@ describe('EditableProfileCard', () => {
 	})
 
 	test('Should display validation errors', async () => {
-		const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore({
-			profile: {
-				...mockOptions.profile
-			},
-			user: {
-				...mockOptions.user
-			}
-		}, mockReducers)]
+		const mocks: MockFunction[] = [
+			MockTranslation,
+			MockBrowserRouter(),
+			MockStore(
+				{
+					profile: {
+						...mockOptions.profile,
+					},
+					user: {
+						...mockOptions.user,
+					},
+				},
+				mockReducers
+			),
+		]
 		await act(async () => {
 			RenderWithMocks(<EditableProfileCard id={1} />, mocks)
 		})
@@ -142,7 +165,10 @@ describe('EditableProfileCard', () => {
 			await userEvent.clear(usernameInput)
 			await userEvent.type(usernameInput, '123')
 			await userEvent.clear(firstnameInput)
-			await userEvent.type(firstnameInput, 'Some test value some test value some test value some test value')
+			await userEvent.type(
+				firstnameInput,
+				'Some test value some test value some test value some test value'
+			)
 			await userEvent.clear(lastnameInput)
 			await userEvent.type(lastnameInput, '24')
 			await userEvent.clear(ageInput)
@@ -159,14 +185,21 @@ describe('EditableProfileCard', () => {
 	})
 
 	test('Should send the PUT request if all is ok', async () => {
-		const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore({
-			profile: {
-				...mockOptions.profile
-			},
-			user: {
-				...mockOptions.user
-			}
-		}, mockReducers)]
+		const mocks: MockFunction[] = [
+			MockTranslation,
+			MockBrowserRouter(),
+			MockStore(
+				{
+					profile: {
+						...mockOptions.profile,
+					},
+					user: {
+						...mockOptions.user,
+					},
+				},
+				mockReducers
+			),
+		]
 
 		act(() => {
 			RenderWithMocks(<EditableProfileCard id={1} />, mocks)

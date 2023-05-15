@@ -11,21 +11,18 @@ export default {
 		backgroundColor: { control: 'color' },
 	},
 	args: {},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({})],
 } as Meta<typeof AboutPage>
 
-const Template: StoryFn<typeof AboutPage> = (args) => <AboutPage {...args} />
+const Template: StoryFn<typeof AboutPage> = args => <AboutPage {...args} />
 
 export const Basic: StoryFn = Template.bind({})
-Basic.args = {
-}
+Basic.args = {}
 
 export const DarkTheme: StoryFn = Template.bind({})
-DarkTheme.args = {
-}
+DarkTheme.args = {}
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: StoryFn = Template.bind({})
-PurpleTheme.args = {
-}
+PurpleTheme.args = {}
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

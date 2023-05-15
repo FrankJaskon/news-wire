@@ -10,11 +10,8 @@ export interface ProfileRatingProps {
 	profileId?: number
 }
 
-const ProfileRating: FC<ProfileRatingProps> = (props) => {
-	const {
-		className,
-		profileId
-	} = props
+const ProfileRating: FC<ProfileRatingProps> = props => {
+	const { className, profileId } = props
 
 	const authData = useSelector(getUserAuthData)
 	const { t } = useTranslation('profile')
@@ -26,29 +23,39 @@ const ProfileRating: FC<ProfileRatingProps> = (props) => {
 
 	const rating = data?.[0]?.rating
 
-	const sendFeedback = useCallback((rating: number) => {
-		rateProfileMutation({
-			userId: authData?.id,
-			profileId,
-			rating
-		})
-	}, [authData?.id, profileId, rateProfileMutation])
+	const sendFeedback = useCallback(
+		(rating: number) => {
+			rateProfileMutation({
+				userId: authData?.id,
+				profileId,
+				rating,
+			})
+		},
+		[authData?.id, profileId, rateProfileMutation]
+	)
 
-	const onAccept = useCallback((rating: number) => {
-		sendFeedback(rating)
-	}, [sendFeedback])
+	const onAccept = useCallback(
+		(rating: number) => {
+			sendFeedback(rating)
+		},
+		[sendFeedback]
+	)
 
 	if (isLoading) return null
 
-	const title = rating ? t('rating.rate-profile-title-has-response') : t('rating.rate-profile-title')
+	const title = rating
+		? t('rating.rate-profile-title-has-response')
+		: t('rating.rate-profile-title')
 
-	return <RatingCard
-		className={className}
-		rating={rating}
-		title={title}
-		onAccept={onAccept}
-		isLoading={isLoading}
-	/>
+	return (
+		<RatingCard
+			className={className}
+			rating={rating}
+			title={title}
+			onAccept={onAccept}
+			isLoading={isLoading}
+		/>
+	)
 }
 
 export default memo(ProfileRating)

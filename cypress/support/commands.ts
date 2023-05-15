@@ -6,4 +6,4 @@ Cypress.Commands.addAll(commonCommands)
 Cypress.Commands.addAll(profileCommands)
 Cypress.Commands.addAll(articleCommands)
 
-export { }
+export {}

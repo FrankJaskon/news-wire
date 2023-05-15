@@ -1,4 +1,3 @@
-
 import { Country } from '@/entities/Country'
 import { Currency } from '@/entities/Currency'
 import { ProfileType } from '@/entities/Profile'
@@ -15,14 +14,16 @@ describe('fetchProfileData', () => {
 		country: Country.UKRAINE,
 		currency: Currency.UAH,
 		lastname: 'Test',
-		username: 'Test'
+		username: 'Test',
 	}
 
 	test('Correct request', async () => {
 		const thunk = new TestAsyncThunk(fetchProfileData)
-		thunk.api.get.mockReturnValue(Promise.resolve({
-			data: responseData
-		}))
+		thunk.api.get.mockReturnValue(
+			Promise.resolve({
+				data: responseData,
+			})
+		)
 		const result = await thunk.callThunk(1)
 
 		expect(thunk.api.get).toHaveBeenCalled()

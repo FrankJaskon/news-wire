@@ -10,16 +10,16 @@ export const ValidateProfileError = {
 	INCORRECT_AGE: 'INCORRECT_AGE',
 	SERVER_ERROR: 'SERVER_ERROR',
 	INCORRECT_DATA: 'INCORRECT_DATA',
-	NO_DATA: 'NO_DATA'
+	NO_DATA: 'NO_DATA',
 } as const
 
 export type ValidateProfileErrorType = ValueOf<typeof ValidateProfileError>
 
 export interface ProfileScheme {
-	data?: ProfileType,
-	form?: ProfileType,
-	isLoading: boolean,
-	readonly: boolean,
-	validateError?: ValidateProfileErrorType[],
+	data?: ProfileType
+	form?: ProfileType
+	isLoading: boolean
+	readonly: boolean
+	validateError?: ValidateProfileErrorType[]
 	loadingError?: ValidateProfileErrorType
 }

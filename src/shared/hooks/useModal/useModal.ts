@@ -6,11 +6,7 @@ interface UseModalProps {
 	animationDelay?: number
 }
 
-export const useModal = ({
-	onClose,
-	isOpen,
-	animationDelay
-} : UseModalProps) => {
+export const useModal = ({ onClose, isOpen, animationDelay }: UseModalProps) => {
 	const [isMounted, setIsMounted] = useState<boolean>(false)
 	const [isClosing, setIsClosing] = useState<boolean>(false)
 	const timerRef = useRef<ReturnType<typeof setTimeout>>()
@@ -26,11 +22,14 @@ export const useModal = ({
 		}
 	}, [onClose, animationDelay])
 
-	const onPressEscape = useCallback((e: KeyboardEvent) => {
-		if (e.key === 'Escape') {
-			close()
-		}
-	}, [close])
+	const onPressEscape = useCallback(
+		(e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				close()
+			}
+		},
+		[close]
+	)
 
 	useEffect(() => {
 		if (isOpen) {
@@ -52,6 +51,6 @@ export const useModal = ({
 	return {
 		isMounted,
 		isClosing,
-		close
+		close,
 	}
 }

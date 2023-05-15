@@ -29,63 +29,54 @@ export const Sidebar: FC<SidebarProps> = memo((props: SidebarProps) => {
 	}, [isMobile])
 
 	const renderLinks = useMemo(() => {
-		return (
-			sidebarLinks.map((item) => {
-				return <SidebarLink
-					key={item.path}
-					item={item}
-					collapsed={isCollapsed}
-				/>
-			})
-		)
+		return sidebarLinks.map(item => {
+			return <SidebarLink key={item.path} item={item} collapsed={isCollapsed} />
+		})
 	}, [isCollapsed, sidebarLinks])
 
-	return <aside
-		data-testid='sidebar'
-		className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}>
-		<VStack
-			align={isCollapsed ? 'center' : 'start'}
-			className={cls.menu}
-			innerWidth={isCollapsed ? undefined : 'full'}
+	return (
+		<aside
+			data-testid='sidebar'
+			className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}
 		>
-			{renderLinks}
-		</VStack>
-		{isCollapsed
-			? <VStack
-				justify='center'
-				align='center'
-				className={cls.buttonGroup}
+			<VStack
+				align={isCollapsed ? 'center' : 'start'}
+				className={cls.menu}
+				innerWidth={isCollapsed ? undefined : 'full'}
 			>
-				<ThemeToggler className={cls.themeToggler} />
-				<LanguageToggler
-					className={classNames(
-						cls.languageToggler,
-						{ [cls.collapsed]: isCollapsed })}
-					short={isCollapsed}
-				/>
+				{renderLinks}
 			</VStack>
-			: <HStack
-				justify='center'
-				align='center'
-				className={cls.buttonGroup}
+			{isCollapsed ? (
+				<VStack justify='center' align='center' className={cls.buttonGroup}>
+					<ThemeToggler className={cls.themeToggler} />
+					<LanguageToggler
+						className={classNames(cls.languageToggler, {
+							[cls.collapsed]: isCollapsed,
+						})}
+						short={isCollapsed}
+					/>
+				</VStack>
+			) : (
+				<HStack justify='center' align='center' className={cls.buttonGroup}>
+					<ThemeToggler className={cls.themeToggler} />
+					<LanguageToggler
+						className={classNames(cls.languageToggler, {
+							[cls.collapsed]: isCollapsed,
+						})}
+						short={isCollapsed}
+					/>
+				</HStack>
+			)}
+			<AppButton
+				data-testid='sidebar-toggler'
+				className={cls.toggler}
+				variant={ButtonVariant.CUSTOM}
+				size={ButtonSize.L}
+				shape={ButtonShape.SQUARE}
+				onClick={toggleSidebar}
 			>
-				<ThemeToggler className={cls.themeToggler} />
-				<LanguageToggler
-					className={classNames(
-						cls.languageToggler,
-						{ [cls.collapsed]: isCollapsed })}
-					short={isCollapsed}
-				/>
-			</HStack>
-		}
-		<AppButton
-			data-testid='sidebar-toggler'
-			className={cls.toggler}
-			variant={ButtonVariant.CUSTOM}
-			size={ButtonSize.L}
-			shape={ButtonShape.SQUARE}
-			onClick={toggleSidebar}>
-			{isCollapsed ? '>' : '<'}
-		</AppButton>
-	</aside>
+				{isCollapsed ? '>' : '<'}
+			</AppButton>
+		</aside>
+	)
 })

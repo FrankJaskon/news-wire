@@ -12,23 +12,20 @@ export default {
 	argTypes: {},
 	args: {
 		src: someImage,
-		title: 'Some text'
+		title: 'Some text',
 	},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({})],
 } as Meta<typeof ArticleImageBlock>
 
-const Template: StoryFn<typeof ArticleImageBlock> = (args) => <ArticleImageBlock {...args} />
+const Template: StoryFn<typeof ArticleImageBlock> = args => <ArticleImageBlock {...args} />
 
 export const Basic: StoryFn<ArticleImageBlockProps> = Template.bind({})
-Basic.args = {
-}
+Basic.args = {}
 
 export const DarkTheme: StoryFn<ArticleImageBlockProps> = Template.bind({})
-DarkTheme.args = {
-}
+DarkTheme.args = {}
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: StoryFn<ArticleImageBlockProps> = Template.bind({})
-PurpleTheme.args = {
-}
+PurpleTheme.args = {}
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

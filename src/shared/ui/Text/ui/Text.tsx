@@ -29,14 +29,14 @@ export const TextSize = {
 	S: 'size-s',
 	M: 'size-m',
 	L: 'size-l',
-	XL: 'size-xl'
+	XL: 'size-xl',
 } as const
 
 export const TextAlign = {
 	CENTER: 'center',
 	START: 'start',
 	END: 'end',
-	JUSTIFY: 'justify'
+	JUSTIFY: 'justify',
 } as const
 
 export type TextVariantType = ValueOf<typeof TextVariant>
@@ -58,38 +58,41 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		contentElement = 'p',
 		'data-testid': dataTestId = 'Text',
 		nowrap = false,
-		transform
+		transform,
 	} = props
 
-	const extra = [
-		className,
-		cls[variant],
-		cls[align],
-		cls[size],
-		transform && cls[transform]
-	]
+	const extra = [className, cls[variant], cls[align], cls[size], transform && cls[transform]]
 
 	const TitleTag = useMemo(() => titleElement, [titleElement])
 	const ContentTag = useMemo(() => contentElement, [contentElement])
 
-	return <div
-		data-testid={dataTestId}
-		className={classNames(
-			cls.Text,
-			{
-				[cls.nowrap]: nowrap
-			},
-			extra
-		)}>
-		{title && <TitleTag
-			data-testid={`${dataTestId}.title`}
-			className={classNames(cls.title, {}, [titleHue])}>
-			{title}
-		</TitleTag>}
-		{content && <ContentTag
-			data-testid={`${dataTestId}.content`}
-			className={classNames(cls.content, {}, [contentHue])}>
-			{content}
-		</ContentTag>}
-	</div>
+	return (
+		<div
+			data-testid={dataTestId}
+			className={classNames(
+				cls.Text,
+				{
+					[cls.nowrap]: nowrap,
+				},
+				extra
+			)}
+		>
+			{title && (
+				<TitleTag
+					data-testid={`${dataTestId}.title`}
+					className={classNames(cls.title, {}, [titleHue])}
+				>
+					{title}
+				</TitleTag>
+			)}
+			{content && (
+				<ContentTag
+					data-testid={`${dataTestId}.content`}
+					className={classNames(cls.content, {}, [contentHue])}
+				>
+					{content}
+				</ContentTag>
+			)}
+		</div>
+	)
 })

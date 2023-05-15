@@ -1,0 +1,10 @@
+# Ignore artifacts:
+dist
+node_modules
+.husky
+.loki
+.github
+.fttemplates
+*.html
+*.css
+*.scss

@@ -4,7 +4,7 @@ export const ArticlesTypes = {
 	ALL: 'ALL',
 	IT: 'IT',
 	SCIENCE: 'SCIENCE',
-	ECONOMIC: 'ECONOMIC'
-}  as const
+	ECONOMIC: 'ECONOMIC',
+} as const
 
 export type ArticlesTypesType = ValueOf<typeof ArticlesTypes>

@@ -6,7 +6,7 @@ import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/const/localStorage'
 import { getUsersRoute } from '@/shared/const/RoutPaths'
 
 interface LoginProps {
-	username: string,
+	username: string
 	password: string
 }
 

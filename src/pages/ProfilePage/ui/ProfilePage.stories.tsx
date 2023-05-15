@@ -14,28 +14,30 @@ const data = {
 	lastname: 'Test',
 	username: 'Test user',
 	currency: Currency.UAH,
-	country: Country.UKRAINE
+	country: Country.UKRAINE,
 }
 
 export default {
 	title: 'pages/ProfilePage',
 	component: ProfilePage,
 	argTypes: {},
-	decorators: [StoreDecorator({
-		profile: {
-			isLoading: false,
-			data: data,
-			form: data,
-		},
-		user: {
-			authData: {
-				id: 1
-			}
-		}
-	})]
+	decorators: [
+		StoreDecorator({
+			profile: {
+				isLoading: false,
+				data: data,
+				form: data,
+			},
+			user: {
+				authData: {
+					id: 1,
+				},
+			},
+		}),
+	],
 } as Meta<typeof ProfilePage>
 
-const Template: StoryFn<typeof ProfilePage> = (args) => <ProfilePage {...args} />
+const Template: StoryFn<typeof ProfilePage> = args => <ProfilePage {...args} />
 
 export const Basic: StoryFn = Template.bind({})
 

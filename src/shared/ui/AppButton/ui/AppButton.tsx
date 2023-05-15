@@ -5,7 +5,7 @@ import { ValueOf } from '@/shared/types/types'
 import cls from './AppButton.module.scss'
 
 interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	className?: string,
+	className?: string
 	variant?: ButtonVariantType
 	size?: ButtonSizeType
 	shape?: ButtonShapeType
@@ -18,14 +18,14 @@ interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const ButtonVariant = {
 	PRIMARY: 'primary',
 	CUSTOM: 'custom',
-	OUTLINE: 'outline'
+	OUTLINE: 'outline',
 } as const
 
 export const ButtonSize = {
 	S: 's',
 	M: 'm',
 	L: 'l',
-	XL: 'xl'
+	XL: 'xl',
 } as const
 
 export const ButtonShape = {
@@ -52,7 +52,7 @@ export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 
 	const mods = {
 		[cls.disabled]: disabled,
-		[cls.noBg]: noBg
+		[cls.noBg]: noBg,
 	}
 
 	const extra = [
@@ -60,14 +60,17 @@ export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 		cls[variant],
 		cls[size],
 		shape && cls[shape],
-		contentHue && cls[contentHue]
+		contentHue && cls[contentHue],
 	]
 
-	return <button
-		data-testid='btn'
-		type={type}
-		className={classNames(cls.AppButton, mods, extra)}
-		{...otherProps}>
-		{children}
-	</button>
+	return (
+		<button
+			data-testid='btn'
+			type={type}
+			className={classNames(cls.AppButton, mods, extra)}
+			{...otherProps}
+		>
+			{children}
+		</button>
+	)
 })

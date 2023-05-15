@@ -5,7 +5,7 @@ import {
 	ArticleTopic,
 	BlockType,
 	ValidateArticleDetailsError,
-	ViewVariant
+	ViewVariant,
 } from '../consts/articleDetailsConsts'
 
 export interface ArticleDetailsScheme {

@@ -1,8 +1,4 @@
-import {
-	createEntityAdapter,
-	createSlice,
-	PayloadAction,
-} from '@reduxjs/toolkit'
+import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { StateSchema } from '@/app/providers/StoreProvider'
 import { ArticleType, ViewVariant, ViewVariantType } from '@/entities/Article'
 import { ArticlesSortVariant, ArticlesSortVariantType } from '@/features/ArticlesSortSelector'
@@ -33,7 +29,7 @@ const articlesInfiniteListSlice = createSlice({
 		search: undefined,
 		order: SortOrder.UP_DOWN,
 		sort: ArticlesSortVariant.DATE,
-		filter: ArticlesTypes.ALL
+		filter: ArticlesTypes.ALL,
 	}),
 	reducers: {
 		setView: (state: ArticleInfiniteListScheme, action: PayloadAction<ViewVariantType>) => {
@@ -49,7 +45,10 @@ const articlesInfiniteListSlice = createSlice({
 		setOrder: (state: ArticleInfiniteListScheme, action: PayloadAction<SortOrderType>) => {
 			state.order = action.payload
 		},
-		setSort: (state: ArticleInfiniteListScheme, action: PayloadAction<ArticlesSortVariantType>) => {
+		setSort: (
+			state: ArticleInfiniteListScheme,
+			action: PayloadAction<ArticlesSortVariantType>
+		) => {
 			state.sort = action.payload
 		},
 		setSearch: (state: ArticleInfiniteListScheme, action: PayloadAction<string>) => {
@@ -59,15 +58,16 @@ const articlesInfiniteListSlice = createSlice({
 			state.filter = action.payload
 		},
 		setInitializedValues: (state: ArticleInfiniteListScheme) => {
-			const initialView = localStorage.getItem(
-				VIEW_ARTICLES_LOCAL_STORAGE_KEY) as ViewVariantType || ViewVariant.GRID
+			const initialView =
+				(localStorage.getItem(VIEW_ARTICLES_LOCAL_STORAGE_KEY) as ViewVariantType) ||
+				ViewVariant.GRID
 			const initialLimit = initialView === ViewVariant.GRID ? 9 : 5
 			state.view = initialView
 			state.limit = initialLimit
 			state._initialized = true
-		}
+		},
 	},
-	extraReducers: (builder) => {
+	extraReducers: builder => {
 		// fetchArticlesList
 		builder.addCase(fetchArticlesList.pending, (state, action) => {
 			state.error = undefined
@@ -91,7 +91,7 @@ const articlesInfiniteListSlice = createSlice({
 			state.isLoading = false
 			state.error = action.payload
 		})
-	}
+	},
 })
 
 export const { reducer: articlesInfiniteListReducer } = articlesInfiniteListSlice

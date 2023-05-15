@@ -1,3 +1,1 @@
-export type {
-	ReducerList
-} from './LazyReducerLoader'
+export type { ReducerList } from './LazyReducerLoader'

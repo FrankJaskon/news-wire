@@ -6,7 +6,10 @@ import { translateErrorOrFalse } from '@/shared/config/errorResponse/errorRespon
 import { getMainRoute } from '@/shared/const/RoutPaths'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
-import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import {
+	LazyReducerLoader,
+	ReducerList,
+} from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
 import { AppInput } from '@/shared/ui/Form/AppInput'
 import { AppLabel, LabelVariant } from '@/shared/ui/Form/Label'
@@ -27,14 +30,11 @@ export interface LoginFormProps {
 }
 
 const reducers: ReducerList = {
-	login: loginReducer
+	login: loginReducer,
 }
 
 const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
-	const {
-		className,
-		onSuccess
-	} = props
+	const { className, onSuccess } = props
 	const dispatch = useAppDispatch()
 	const { t } = useTranslation()
 	const loginError = useSelector(getError)
@@ -47,13 +47,19 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 
 	const loginErrorWithTranslation = translateErrorOrFalse(loginError)
 
-	const onChangeLogin = useCallback((value: string) => {
-		dispatch(loginActions.setLogin(value))
-	}, [dispatch])
+	const onChangeLogin = useCallback(
+		(value: string) => {
+			dispatch(loginActions.setLogin(value))
+		},
+		[dispatch]
+	)
 
-	const onChangePassword = useCallback((value: string) => {
-		dispatch(loginActions.setPassword(value))
-	}, [dispatch])
+	const onChangePassword = useCallback(
+		(value: string) => {
+			dispatch(loginActions.setPassword(value))
+		},
+		[dispatch]
+	)
 
 	const onToggleLoginModal = useCallback(() => {
 		setIsLogin(prev => !prev)
@@ -61,100 +67,98 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 
 	const onSubmitForm = useCallback(async () => {
 		const result = isLogin
-			? await dispatch(loginByUsername({
-				username: usernameValue,
-				password: passwordValue
-			}))
-			: await dispatch(registration({
-				username: usernameValue,
-				password: passwordValue
-			}))
+			? await dispatch(
+					loginByUsername({
+						username: usernameValue,
+						password: passwordValue,
+					})
+			  )
+			: await dispatch(
+					registration({
+						username: usernameValue,
+						password: passwordValue,
+					})
+			  )
 		if (result.meta.requestStatus === 'fulfilled') {
 			onSuccess()
 			navigate(getMainRoute())
 		}
-	}, [
-		dispatch,
-		usernameValue,
-		passwordValue,
-		onSuccess,
-		navigate,
-		isLogin
-	])
+	}, [dispatch, usernameValue, passwordValue, onSuccess, navigate, isLogin])
 
-	return <LazyReducerLoader reducers={reducers}>
-		<form
-			className={classNames(cls.LoginForm, {}, [className])}
-			action='/login'
-			method='POST'
-			data-testid='login-form'
-		>
-			<VStack
-				gap='16'
+	return (
+		<LazyReducerLoader reducers={reducers}>
+			<form
+				className={classNames(cls.LoginForm, {}, [className])}
+				action='/login'
+				method='POST'
+				data-testid='login-form'
 			>
-				<Text
-					className={cls.title}
-					align='center'
-					title={t('login.header')}
-				/>
+				<VStack gap='16'>
+					<Text className={cls.title} align='center' title={t('login.header')} />
 
-				<AppLabel
-					variant={LabelVariant.SR_ONLY}
-					htmlFor='login-email'>
-					{t('login.login')}
-				</AppLabel>
-				<AppInput
-					data-testid='login-input'
-					className={cls.input}
-					value={usernameValue}
-					onChange={onChangeLogin}
-					type='text'
-					id='login-email'
-					name='login-email'
-					placeholder={t('login.login')}
-					required />
+					<AppLabel variant={LabelVariant.SR_ONLY} htmlFor='login-email'>
+						{t('login.login')}
+					</AppLabel>
+					<AppInput
+						data-testid='login-input'
+						className={cls.input}
+						value={usernameValue}
+						onChange={onChangeLogin}
+						type='text'
+						id='login-email'
+						name='login-email'
+						placeholder={t('login.login')}
+						required
+					/>
 
-				<AppLabel
-					variant={LabelVariant.SR_ONLY}
-					htmlFor='login-password'>
-					{t('login.password')}
-				</AppLabel>
-				<AppInput
-					data-testid='password-input'
-					value={passwordValue}
-					onChange={onChangePassword}
-					className={cls.input}
-					type='password'
-					id='login-password'
-					name='login-password'
-					placeholder={t('login.password')}
-					required />
-				{loginError && <Text
-					variant={TextVariant.ERROR}
-					content={loginErrorWithTranslation ? t(`${loginErrorWithTranslation}`) : loginError} />}
-				<AppButton
-					className={cls.btn}
-					disabled={loginIsLoading}
-					data-testid='submit-button'
-					onClick={onSubmitForm}
-				>
-					{t('login.log-in')}
-				</AppButton>
-
-				<div className={cls.loginLinks}>
+					<AppLabel variant={LabelVariant.SR_ONLY} htmlFor='login-password'>
+						{t('login.password')}
+					</AppLabel>
+					<AppInput
+						data-testid='password-input'
+						value={passwordValue}
+						onChange={onChangePassword}
+						className={cls.input}
+						type='password'
+						id='login-password'
+						name='login-password'
+						placeholder={t('login.password')}
+						required
+					/>
+					{loginError && (
+						<Text
+							variant={TextVariant.ERROR}
+							content={
+								loginErrorWithTranslation
+									? t(`${loginErrorWithTranslation}`)
+									: loginError
+							}
+						/>
+					)}
 					<AppButton
-						data-testid='singup-link'
-						variant={ButtonVariant.CUSTOM}
-						onClick={onToggleLoginModal}
-						className={cls.toggleButton}
+						className={cls.btn}
+						disabled={loginIsLoading}
+						data-testid='submit-button'
+						onClick={onSubmitForm}
 					>
-						{isLogin && t('login.new-account')}
-						{isRegistration && t('login.existed-account')}
+						{t('login.log-in')}
 					</AppButton>
-				</div>
-			</VStack>
-		</form>
-	</LazyReducerLoader>
+
+					<div className={cls.loginLinks}>
+						<AppButton
+							data-testid='singup-link'
+							variant={ButtonVariant.CUSTOM}
+							onClick={onToggleLoginModal}
+							className={cls.toggleButton}
+						>
+							{isLogin && t('login.new-account')}
+							{isRegistration && t('login.existed-account')}
+						</AppButton>
+					</div>
+				</VStack>
+			</form>
+		</LazyReducerLoader>
+	)
 })
 
 export default LoginForm

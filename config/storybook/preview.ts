@@ -26,9 +26,14 @@ export const parameters = {
 		list: [
 			{ name: 'light', class: AppThemes.LIGHT, color: '#ff8c00' },
 			{ name: 'dark', class: AppThemes.DARK, color: '#15202b' },
-			{ name: 'purple', class: AppThemes.PURPLE, color: '#ae12f6' }
+			{ name: 'purple', class: AppThemes.PURPLE, color: '#ae12f6' },
 		],
 	},
 }
 
-export const decorators = [StyleDecorator, RouteDecorator, ThemeDecorator(AppThemes.LIGHT), SuspenseDecorator]
+export const decorators = [
+	StyleDecorator,
+	RouteDecorator,
+	ThemeDecorator(AppThemes.LIGHT),
+	SuspenseDecorator,
+]

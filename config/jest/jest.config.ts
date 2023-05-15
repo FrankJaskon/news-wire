@@ -9,22 +9,11 @@ export default {
 	// Automatically clear mock calls, instances and results before every test
 	clearMocks: true,
 	// An array of regexp pattern strings used to skip coverage collection
-	coveragePathIgnorePatterns: [
-		'\\\\node_modules\\\\'
-	],
+	coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
 	// An array of file extensions your modules use
-	moduleFileExtensions: [
-		'js',
-		'jsx',
-		'ts',
-		'tsx',
-		'json',
-		'node'
-	],
+	moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
 	// An array of directory names to be searched recursively up from the requiring module's location
-	moduleDirectories: [
-		'node_modules', 'src'
-	],
+	moduleDirectories: ['node_modules', 'src'],
 	// The root directory that Jest should scan for tests and modules within
 	rootDir: '../../',
 	// The test environment that will be used for testing
@@ -33,40 +22,38 @@ export default {
 	testMatch: [
 		// '**/__tests__/**/*.[jt]s?(x)',
 		// '**/?(*.)+(spec|test).[tj]s?(x)'
-		'<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
+		'<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
 	],
 	// An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-	testPathIgnorePatterns: [
-		'\\\\node_modules\\\\',
-		'src/shared/types/test\\.ts',
-	],
+	testPathIgnorePatterns: ['\\\\node_modules\\\\', 'src/shared/types/test\\.ts'],
 	// A list of paths to modules that run some code to configure or set up the testing framework before each test
-	setupFilesAfterEnv: [
-		'<rootDir>config/jest/jest-setup.ts',
-	],
+	setupFilesAfterEnv: ['<rootDir>config/jest/jest-setup.ts'],
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
 	moduleNameMapper: {
 		'\\.(scss)$': 'identity-obj-proxy',
 		'\\.svg$': path.resolve(__dirname, 'svgJestMapper.tsx'),
 		'\\.(png|jpg|jpeg|gif)$': path.resolve(__dirname, 'imgJestMapper.ts'),
-		'^@/(.*)$': '<rootDir>/src/$1'
+		'^@/(.*)$': '<rootDir>/src/$1',
 	},
 	// A set of global variables that need to be available in all test environments
 	globals: {
 		__iS_DEV__: true,
 		__API_URL__: 'http//localhost:8000',
-		__PROJECT__: 'jest'
+		__PROJECT__: 'jest',
 	},
 	// Use this configuration option to add custom reporters to Jest
 	reporters: [
 		'default',
-		['jest-html-reporters', {
-			publicPath: '<rootDir>/reports/unit',
-			filename: 'report.html',
-			openReport: false,
-			inlineSource: true
-		}]
-	]
+		[
+			'jest-html-reporters',
+			{
+				publicPath: '<rootDir>/reports/unit',
+				filename: 'report.html',
+				openReport: false,
+				inlineSource: true,
+			},
+		],
+	],
 	// All imported modules in your tests should be mocked automatically
 	// automock: false,
 
@@ -131,7 +118,6 @@ export default {
 
 	// Run tests from one or more projects
 	// projects: undefined,
-
 
 	// Automatically reset mock state before every test
 	// resetMocks: false,

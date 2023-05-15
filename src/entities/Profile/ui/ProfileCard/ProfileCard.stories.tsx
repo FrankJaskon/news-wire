@@ -9,10 +9,10 @@ export default {
 	component: ProfileCard,
 	argTypes: {},
 	args: {},
-	decorators: []
+	decorators: [],
 } as Meta<typeof ProfileCard>
 
-const Template: StoryFn<typeof ProfileCard> = (args) => <ProfileCard {...args} />
+const Template: StoryFn<typeof ProfileCard> = args => <ProfileCard {...args} />
 
 const profileData: ProfileType = {
 	age: '20',
@@ -27,24 +27,24 @@ const profileData: ProfileType = {
 
 export const Basic: StoryFn<ProfileCardProps> = Template.bind({})
 Basic.args = {
-	data: profileData
+	data: profileData,
 }
 
 export const DarkTheme: StoryFn<ProfileCardProps> = Template.bind({})
 DarkTheme.args = {
-	data: profileData
+	data: profileData,
 }
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: StoryFn<ProfileCardProps> = Template.bind({})
 PurpleTheme.args = {
-	data: profileData
+	data: profileData,
 }
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
 export const Error: StoryFn<ProfileCardProps> = Template.bind({})
 Error.args = {
-	error: 'Some error text'
+	error: 'Some error text',
 }
 
 export const LoadingMode: StoryFn<ProfileCardProps> = Template.bind({})

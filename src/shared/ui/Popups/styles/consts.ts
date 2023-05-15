@@ -7,11 +7,11 @@ export const DirectionVariant: Record<DirectionType, string> = {
 	'top right': cls.topRight,
 	'top left': cls.topLeft,
 	'bottom left': cls.bottomLeft,
-	'bottom right': cls.bottomRight
+	'bottom right': cls.bottomRight,
 } as const
 
 export const InnerPositionVariant: Record<AlignType, string> = {
-	'start': cls.start,
-	'end': cls.end,
-	'center': cls.center,
+	start: cls.start,
+	end: cls.end,
+	center: cls.center,
 } as const

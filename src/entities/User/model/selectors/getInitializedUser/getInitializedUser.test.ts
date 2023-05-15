@@ -4,8 +4,8 @@ import { getInitializedUser } from './getInitializedUser'
 describe('getUserAuthData', () => {
 	const initialState: DeepPartial<StateSchema> = {
 		user: {
-			_initialized: true
-		}
+			_initialized: true,
+		},
 	}
 	test('should return false', () => {
 		expect(getInitializedUser({} as StateSchema)).toBe(false)

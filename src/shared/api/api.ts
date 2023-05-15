@@ -6,7 +6,7 @@ export const $api = axios.create({
 })
 
 $api.interceptors.request.use(
-	(config) => {
+	config => {
 		const accessToken = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
 
 		if (accessToken && config.headers) {
@@ -15,7 +15,7 @@ $api.interceptors.request.use(
 
 		return config
 	},
-	(error) => {
+	error => {
 		return Promise.reject(error)
 	}
 )

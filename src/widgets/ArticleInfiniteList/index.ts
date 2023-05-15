@@ -1,20 +1,12 @@
-export {
-	ArticleInfiniteList
-} from './ui/ArticleInfiniteList/ArticlesInfiniteList'
+export { ArticleInfiniteList } from './ui/ArticleInfiniteList/ArticlesInfiniteList'
 
-export type {
-	ArticleInfiniteListScheme
-} from './model/types/ArticleInfiniteListScheme'
+export type { ArticleInfiniteListScheme } from './model/types/ArticleInfiniteListScheme'
 
 export {
 	articlesInfiniteListReducer,
-	articlesInfiniteListActions
+	articlesInfiniteListActions,
 } from './model/slice/articlesInfiniteListSlice'
 
-export {
-	fetchNextArticlesPage
-} from './model/services/fetchNextArticlesPage/fetchNextArticlesPage'
+export { fetchNextArticlesPage } from './model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 
-export {
-	getError
-} from './model/selectors/articlesPageSelector'
+export { getError } from './model/selectors/articlesPageSelector'

@@ -9,14 +9,7 @@ export interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export const AppImage: FC<AppImageProps> = memo((props: AppImageProps) => {
-	const {
-		className,
-		src,
-		alt = 'image',
-		fallback,
-		errorFallback,
-		...otherProps
-	} = props
+	const { className, src, alt = 'image', fallback, errorFallback, ...otherProps } = props
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [hasError, setHasError] = useState<boolean>(false)
 
@@ -41,10 +34,5 @@ export const AppImage: FC<AppImageProps> = memo((props: AppImageProps) => {
 		return errorFallback
 	}
 
-	return <img
-		className={className}
-		src={src}
-		alt={alt}
-		{...otherProps}
-	/>
+	return <img className={className} src={src} alt={alt} {...otherProps} />
 })

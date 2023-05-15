@@ -6,7 +6,7 @@ export const QueryParamsKeys = {
 	SORT: '_sort',
 	ORDER: '_order',
 	SEARCH: '_q',
-	TYPE: 'type'
+	TYPE: 'type',
 } as const
 
 export type QueryParamsKeysType = ValueOf<typeof QueryParamsKeys>

@@ -1,4 +1,1 @@
-export {
-	Loader,
-	LoaderSize
-} from './ui/Loader'
+export { Loader, LoaderSize } from './ui/Loader'

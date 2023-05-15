@@ -12,29 +12,24 @@ export interface ArticleRecommendationsListProps {
 
 export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = memo(
 	(props: ArticleRecommendationsListProps) => {
-		const {
-			className
-		} = props
+		const { className } = props
 
 		const { t } = useTranslation(['translation', 'article'])
-		const {
-			isLoading,
-			isError,
-			data: articles
-		} = useArticleRecommendationsList(4)
+		const { isLoading, isError, data: articles } = useArticleRecommendationsList(4)
 
-		let content: ReactNode = useMemo(() => <ArticleList
-			articles={articles}
-			isLoading={isLoading}
-			target='_blank'
-		/>, [articles, isLoading])
+		let content: ReactNode = useMemo(
+			() => <ArticleList articles={articles} isLoading={isLoading} target='_blank' />,
+			[articles, isLoading]
+		)
 
 		if (isError) {
-			content =<Text
-				content={t('error.common.some-error')}
-				size={TextSize.L}
-				variant={TextVariant.ERROR}
-			/>
+			content = (
+				<Text
+					content={t('error.common.some-error')}
+					size={TextSize.L}
+					variant={TextVariant.ERROR}
+				/>
+			)
 		}
 
 		return (
@@ -42,14 +37,15 @@ export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = m
 				className={classNames('', {}, [className])}
 				data-testid={'article-recommendations-list'}
 			>
-				<VStack
-					gap='24'
-				>
-					<Text title={t('recommendations-title', {
-						ns: 'article'
-					})} />
+				<VStack gap='24'>
+					<Text
+						title={t('recommendations-title', {
+							ns: 'article',
+						})}
+					/>
 					{content}
 				</VStack>
 			</div>
 		)
-	})
+	}
+)

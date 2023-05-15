@@ -1,5 +1,1 @@
-export {
-	AppInput,
-	InputVariant,
-	InputColor
-} from './ui/AppInput'
+export { AppInput, InputVariant, InputColor } from './ui/AppInput'

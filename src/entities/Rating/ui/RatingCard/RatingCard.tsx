@@ -26,19 +26,19 @@ export interface RatingCardProps {
 const TitleSizeMapper: OptionalRecord<RatingVariantType, TextSizeType> = {
 	small: 'size-s',
 	medium: 'size-m',
-	large: 'size-l'
+	large: 'size-l',
 }
 
 const StarSizeMapper: Record<RatingVariantType, number> = {
 	small: 20,
 	medium: 30,
-	large: 40
+	large: 40,
 }
 
 const GapSizeMapper: OptionalRecord<RatingVariantType, GapType> = {
 	small: '4',
 	medium: '8',
-	large: '16'
+	large: '16',
 }
 
 export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => {
@@ -50,7 +50,7 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 		onAccept,
 		rating,
 		isLoading,
-		variant = RatingVariant.MEDIUM
+		variant = RatingVariant.MEDIUM,
 	} = props
 
 	const { t } = useTranslation()
@@ -64,14 +64,17 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 		rating !== undefined && setStarsCount(rating)
 	}, [rating])
 
-	const onSelectStars = useCallback((rating: number) => {
-		setStarsCount(rating)
-		if (hasFeedback) {
-			setIsOpenedModal(true)
-		} else {
-			onAccept?.(rating)
-		}
-	}, [hasFeedback, onAccept])
+	const onSelectStars = useCallback(
+		(rating: number) => {
+			setStarsCount(rating)
+			if (hasFeedback) {
+				setIsOpenedModal(true)
+			} else {
+				onAccept?.(rating)
+			}
+		},
+		[hasFeedback, onAccept]
+	)
 
 	const onFeedbackCancel = useCallback(() => {
 		onCancel?.(starsCount)
@@ -83,69 +86,50 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 		setIsOpenedModal(false)
 	}, [onAccept, starsCount, feedback])
 
-	const modalContent = useMemo(() => <>
-		{feedbackTitle && <Text title={feedbackTitle} />}
-		<AppTextArea
-			placeholder={t('leave-feedback')}
-			value={feedback}
-			onChange={setFeedback}
-		/>
-	</>, [feedback, feedbackTitle, t])
+	const modalContent = useMemo(
+		() => (
+			<>
+				{feedbackTitle && <Text title={feedbackTitle} />}
+				<AppTextArea
+					placeholder={t('leave-feedback')}
+					value={feedback}
+					onChange={setFeedback}
+				/>
+			</>
+		),
+		[feedback, feedbackTitle, t]
+	)
 
-	return <AppCard
-		data-testid='rating-card'
-	>
-		<VStack
-			className={className}
-			gap={GapSizeMapper[variant]}
-			align='center'
-		>
-			{variant !== RatingVariant.SMALL && title && <Text
-				title={title}
-				titleHue={TextColor.SECONDARY}
-				size={TitleSizeMapper[variant]}
-			/>}
-			<StarRating
-				onSelect={onSelectStars}
-				size={StarSizeMapper[variant]}
-				selectedStar={starsCount}
-				isLoading={isLoading}
-			/>
-			{
-				isMobile
-					? <Drawer
-						isOpen={isOpenedModal}
-						onClose={() => setIsOpenedModal(false)}
-					>
-						<VStack
-							className={className}
-							gap='12'
-						>
+	return (
+		<AppCard data-testid='rating-card'>
+			<VStack className={className} gap={GapSizeMapper[variant]} align='center'>
+				{variant !== RatingVariant.SMALL && title && (
+					<Text
+						title={title}
+						titleHue={TextColor.SECONDARY}
+						size={TitleSizeMapper[variant]}
+					/>
+				)}
+				<StarRating
+					onSelect={onSelectStars}
+					size={StarSizeMapper[variant]}
+					selectedStar={starsCount}
+					isLoading={isLoading}
+				/>
+				{isMobile ? (
+					<Drawer isOpen={isOpenedModal} onClose={() => setIsOpenedModal(false)}>
+						<VStack className={className} gap='12'>
 							{modalContent}
-							<HStack
-								innerWidth='full'
-							>
-								<AppButton
-									onClick={onFeedbackSubmit}
-								>
-									{t('btn.submit')}
-								</AppButton>
+							<HStack innerWidth='full'>
+								<AppButton onClick={onFeedbackSubmit}>{t('btn.submit')}</AppButton>
 							</HStack>
 						</VStack>
 					</Drawer>
-					: <Modal
-						isOpen={isOpenedModal}
-						onClose={() => setIsOpenedModal(false)}
-					>
-						<VStack
-							className={className}
-							gap='16'
-						>
+				) : (
+					<Modal isOpen={isOpenedModal} onClose={() => setIsOpenedModal(false)}>
+						<VStack className={className} gap='16'>
 							{modalContent}
-							<HStack
-								gap='8'
-								justify='end'
-							>
+							<HStack gap='8' justify='end'>
 								<AppButton
 									variant={ButtonVariant.OUTLINE}
 									contentHue='red-color'
@@ -163,7 +147,8 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 							</HStack>
 						</VStack>
 					</Modal>
-			}
-		</VStack>
-	</AppCard>
+				)}
+			</VStack>
+		</AppCard>
+	)
 })

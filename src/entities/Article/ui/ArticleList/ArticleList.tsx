@@ -25,35 +25,31 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 		isLoading,
 		limit = view === ViewVariant.GRID ? 9 : 3,
 		target,
-		'data-testid': datTestId = 'articles-list'
+		'data-testid': datTestId = 'articles-list',
 	} = props
 
-	const renderArticle = useCallback((article: ArticleType) => (
-		<ArticleListItem
-			key={article.id}
-			article={article}
-			view={view}
-			target={target}
-		/>
-	), [view, target])
+	const renderArticle = useCallback(
+		(article: ArticleType) => (
+			<ArticleListItem key={article.id} article={article} view={view} target={target} />
+		),
+		[view, target]
+	)
 
-	const getSkeletons = useCallback((view: ViewVariantType) => {
-		return new Array(limit)
-			.fill(0).map((_, index) => <ArticleListItemSkeleton
-				key={index}
-				view={view}
-			/>)
-	}, [limit])
+	const getSkeletons = useCallback(
+		(view: ViewVariantType) => {
+			return new Array(limit)
+				.fill(0)
+				.map((_, index) => <ArticleListItemSkeleton key={index} view={view} />)
+		},
+		[limit]
+	)
 
 	return (
 		<div
 			className={classNames(cls.ArticleList, {}, [className, cls[view]])}
 			data-testid={datTestId}
 		>
-			{articles && articles.length > 0
-				? articles.map(renderArticle)
-				: null
-			}
+			{articles && articles.length > 0 ? articles.map(renderArticle) : null}
 			{isLoading && getSkeletons(view)}
 		</div>
 	)

@@ -5,31 +5,30 @@ import { CommentType } from '@/entities/Comment'
 import { getUserAuthData } from '@/entities/User'
 import { fetchCommentsByArticleId } from '../fetchCommentsByArticleId/fetchCommentsByArticleId'
 
-export const createNewCommentForArticle = createAsyncThunk<CommentType, string, ThunkApiConfigType<string>>(
-	'articleDetailsComments/createNewCommentForArticle',
-	async (comment, thunkAPI) => {
-		const { extra, rejectWithValue, getState } = thunkAPI
-		try {
-			const userData = getUserAuthData(getState())
-			const articleDetails = getArticleDetailsData(getState())
+export const createNewCommentForArticle = createAsyncThunk<
+	CommentType,
+	string,
+	ThunkApiConfigType<string>
+>('articleDetailsComments/createNewCommentForArticle', async (comment, thunkAPI) => {
+	const { extra, rejectWithValue, getState } = thunkAPI
+	try {
+		const userData = getUserAuthData(getState())
+		const articleDetails = getArticleDetailsData(getState())
 
-			if (!userData || !comment || !articleDetails) {
-				return rejectWithValue('no data')
-			}
-
-			const response = await extra.api.post<CommentType>(
-				'/comments',
-				{
-					profileId: userData.id,
-					articleId: articleDetails.id,
-					text: comment
-				})
-
-			thunkAPI.dispatch(fetchCommentsByArticleId(articleDetails.id))
-
-			return response.data
-		} catch (error: any) {
-			return rejectWithValue('error')
+		if (!userData || !comment || !articleDetails) {
+			return rejectWithValue('no data')
 		}
+
+		const response = await extra.api.post<CommentType>('/comments', {
+			profileId: userData.id,
+			articleId: articleDetails.id,
+			text: comment,
+		})
+
+		thunkAPI.dispatch(fetchCommentsByArticleId(articleDetails.id))
+
+		return response.data
+	} catch (error: any) {
+		return rejectWithValue('error')
 	}
-)
+})

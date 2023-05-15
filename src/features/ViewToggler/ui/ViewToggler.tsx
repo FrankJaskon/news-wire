@@ -22,43 +22,44 @@ interface ViewProps {
 const views: ViewProps[] = [
 	{
 		view: 'grid',
-		Icon: GridIcon
+		Icon: GridIcon,
 	},
 	{
 		view: 'list',
-		Icon: ListIcon
-	}
+		Icon: ListIcon,
+	},
 ]
 
-export const ViewToggler: FC<ViewTogglerProps> = (props) => {
-	const {
-		className,
-		activeView,
-		onToggle
-	} = props
+export const ViewToggler: FC<ViewTogglerProps> = props => {
+	const { className, activeView, onToggle } = props
 
-	const handleToggle = useCallback((view: ViewType) => () => {
-		onToggle?.(view)
-	}, [onToggle])
-
-	const viewsComponent = useMemo(() => views.map(({ view, Icon }) => (
-		<AppButton
-			className={classNames(cls.btn, { [cls.active]: activeView === view })}
-			variant={ButtonVariant.CUSTOM}
-			onClick={handleToggle(view)}
-			key={view}
-			data-testid={`view-${view === 'grid' ? 'grid' : 'list'}`}
-		>
-			<AppIcon
-				className={cls.icon}
-				Svg={Icon}
-			/>
-		</AppButton>), [onToggle]
-	), [onToggle, activeView, handleToggle])
-
-	return (
-		<div className={classNames(cls.ViewToggler, {}, [className])}>
-			{viewsComponent}
-		</div>
+	const handleToggle = useCallback(
+		(view: ViewType) => () => {
+			onToggle?.(view)
+		},
+		[onToggle]
 	)
+
+	const viewsComponent = useMemo(
+		() =>
+			views.map(
+				({ view, Icon }) => (
+					<AppButton
+						className={classNames(cls.btn, {
+							[cls.active]: activeView === view,
+						})}
+						variant={ButtonVariant.CUSTOM}
+						onClick={handleToggle(view)}
+						key={view}
+						data-testid={`view-${view === 'grid' ? 'grid' : 'list'}`}
+					>
+						<AppIcon className={cls.icon} Svg={Icon} />
+					</AppButton>
+				),
+				[onToggle]
+			),
+		[onToggle, activeView, handleToggle]
+	)
+
+	return <div className={classNames(cls.ViewToggler, {}, [className])}>{viewsComponent}</div>
 }

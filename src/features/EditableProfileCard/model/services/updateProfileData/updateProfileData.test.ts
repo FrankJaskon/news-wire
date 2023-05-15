@@ -1,4 +1,3 @@
-
 import { Country } from '@/entities/Country'
 import { Currency } from '@/entities/Currency'
 import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
@@ -19,21 +18,23 @@ describe('updateProfileData', () => {
 					country: Country.UKRAINE,
 					currency: Currency.UAH,
 					lastname: 'Test',
-					username: 'Test'
-				}
-			}
+					username: 'Test',
+				},
+			},
 		}
 		const response = {
 			user: {
 				id: initialState.profile?.form?.id,
-				avatar: initialState.profile?.form?.avatar
+				avatar: initialState.profile?.form?.avatar,
 			},
-			profile: initialState.profile?.form
+			profile: initialState.profile?.form,
 		}
 		const thunk = new TestAsyncThunk(updateProfileData, initialState)
-		thunk.api.put.mockReturnValue(Promise.resolve({
-			data: response
-		}))
+		thunk.api.put.mockReturnValue(
+			Promise.resolve({
+				data: response,
+			})
+		)
 		const result = await thunk.callThunk()
 
 		expect(thunk.api.put).toHaveBeenCalled()
@@ -59,9 +60,9 @@ describe('updateProfileData', () => {
 					country: Country.UKRAINE,
 					currency: Currency.UAH,
 					lastname: 'Test',
-					username: 'Test'
-				}
-			}
+					username: 'Test',
+				},
+			},
 		}
 		const thunk = new TestAsyncThunk(updateProfileData, initialState)
 		thunk.api.put.mockRejectedValue(Promise.resolve())

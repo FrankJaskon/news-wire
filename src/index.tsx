@@ -9,12 +9,14 @@ import { ThemeProvider } from '@/app/providers/ThemeProvider'
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
-root.render(<BrowserRouter>
-	<StoreProvider>
-		<ErrorBoundary>
-			<ThemeProvider>
-				<App />
-			</ThemeProvider>
-		</ErrorBoundary>
-	</StoreProvider>
-</BrowserRouter>)
+root.render(
+	<BrowserRouter>
+		<StoreProvider>
+			<ErrorBoundary>
+				<ThemeProvider>
+					<App />
+				</ThemeProvider>
+			</ErrorBoundary>
+		</StoreProvider>
+	</BrowserRouter>
+)

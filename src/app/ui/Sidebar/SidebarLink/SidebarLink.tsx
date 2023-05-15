@@ -16,35 +16,29 @@ export interface SidebarLinkProps {
 
 export const SidebarLink: FC<SidebarLinkProps> = memo((props: SidebarLinkProps) => {
 	const {
-		item: {
-			path,
-			Icon,
-			text,
-			authOnly
-		},
-		collapsed
+		item: { path, Icon, text, authOnly },
+		collapsed,
 	} = props
 
 	const { t } = useTranslation()
 	const authData = useSelector(getUserAuthData)
 	const isAuth = Boolean(authData)
 
-	if (authOnly && !isAuth ) {
+	if (authOnly && !isAuth) {
 		return null
 	}
 
-	return <AppLink
-		className={classNames(cls.SidebarLink, { [cls.collapsed]: collapsed })}
-		to={path}>
-		<HStack>
-			<AppIcon
-				Svg={Icon}
-				variant='contrast-color'
-				className={cls.icon}
-			/>
-			<span>
-				{t(`${text}`)}
-			</span>
-		</HStack>
-	</AppLink>
+	return (
+		<AppLink
+			className={classNames(cls.SidebarLink, {
+				[cls.collapsed]: collapsed,
+			})}
+			to={path}
+		>
+			<HStack>
+				<AppIcon Svg={Icon} variant='contrast-color' className={cls.icon} />
+				<span>{t(`${text}`)}</span>
+			</HStack>
+		</AppLink>
+	)
 })

@@ -6,7 +6,7 @@ import {
 	AlignType,
 	DirectionType,
 	DirectionVariant,
-	InnerPositionVariant
+	InnerPositionVariant,
 } from '../../styles/consts'
 import popupCls from '../../styles/Popups.module.scss'
 import cls from './Dropdown.module.scss'
@@ -27,57 +27,36 @@ export interface DropdownProps {
 }
 
 export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
-	const {
-		className,
-		trigger,
-		items,
-		direction = 'bottom right',
-		align = 'start'
-	} = props
+	const { className, trigger, items, direction = 'bottom right', align = 'start' } = props
 	return (
-		<Menu
-			as='div'
-			className={classNames(
-				cls.Dropdown,
-				{},
-				[popupCls.Popup]
-			)}
-		>
-			<Menu.Button
-				className={className}
-			>
-				{trigger}
-			</Menu.Button>
+		<Menu as='div' className={classNames(cls.Dropdown, {}, [popupCls.Popup])}>
+			<Menu.Button className={className}>{trigger}</Menu.Button>
 			<Menu.Items
 				as='div'
-				className={classNames(
-					cls.items,
-					{},
-					[DirectionVariant[direction]]
-				)}
+				className={classNames(cls.items, {}, [DirectionVariant[direction]])}
 			>
-				{
-					items.map((item, index) => {
-						const content = ({ active }: { active: boolean }) => (
-							<button
-								type='button'
-								disabled={item.disabled}
-								onClick={item.onClick}
-								className={classNames(
-									cls.item,
-									{
-										[popupCls.active]: active,
-										[popupCls.disabled]: item.disabled
-									},
-									[InnerPositionVariant[align]])
-								}
-							>
-								{item.component}
-							</button>
-						)
+				{items.map((item, index) => {
+					const content = ({ active }: { active: boolean }) => (
+						<button
+							type='button'
+							disabled={item.disabled}
+							onClick={item.onClick}
+							className={classNames(
+								cls.item,
+								{
+									[popupCls.active]: active,
+									[popupCls.disabled]: item.disabled,
+								},
+								[InnerPositionVariant[align]]
+							)}
+						>
+							{item.component}
+						</button>
+					)
 
-						if (item.href) {
-							return <Menu.Item
+					if (item.href) {
+						return (
+							<Menu.Item
 								key={index}
 								as={NavLink}
 								to={item.href}
@@ -85,18 +64,16 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 							>
 								{content}
 							</Menu.Item>
-						}
+						)
+					}
 
-						return <Menu.Item
-							key={index}
-							as={Fragment}
-							disabled={item.disabled}
-						>
+					return (
+						<Menu.Item key={index} as={Fragment} disabled={item.disabled}>
 							{content}
 						</Menu.Item>
-					})
-				}
+					)
+				})}
 			</Menu.Items>
-		</Menu >
+		</Menu>
 	)
 })

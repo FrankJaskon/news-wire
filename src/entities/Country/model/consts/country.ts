@@ -1,4 +1,4 @@
 export const Country = {
 	UKRAINE: 'Ukraine',
-	USA: 'USA'
+	USA: 'USA',
 } as const

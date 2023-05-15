@@ -2,5 +2,5 @@ export {
 	AppIcon,
 	// constants
 	AppIconVariant,
-	AppIconSize
+	AppIconSize,
 } from './ui/AppIcon'

@@ -17,40 +17,36 @@ export interface AvatarProps {
 export const AvatarVariant = {
 	CIRCLE: 'circle',
 	RECTANGLE: 'rectangle',
-	SQUARE: 'square'
+	SQUARE: 'square',
 } as const
 
 export type AvatarVariantType = ValueOf<typeof AvatarVariant>
 
-export const Avatar: FC<AvatarProps> = (props) => {
-	const {
-		className,
-		variant = AvatarVariant.SQUARE,
-		src,
-		alt = 'user',
-		size = 100
-	} = props
+export const Avatar: FC<AvatarProps> = props => {
+	const { className, variant = AvatarVariant.SQUARE, src, alt = 'user', size = 100 } = props
 
-	const styles = useMemo(() => ({
-		width: size,
-		height: size
-	}), [size])
+	const styles = useMemo(
+		() => ({
+			width: size,
+			height: size,
+		}),
+		[size]
+	)
 
-	return <AppImage
-		className={classNames(cls.Avatar, {}, [className, variant && cls[variant]])}
-		style={styles}
-		fallback={<Skeleton
-			borderRadius={variant === AvatarVariant.CIRCLE ? '50%' : undefined}
-			height={size}
-			width={size}
-		/>}
-		errorFallback={<img
-			src={defaultUser}
-			alt='default-user'
-			height={size}
-			width={size}
-		/>}
-		src={src}
-		alt={alt}
-	/>
+	return (
+		<AppImage
+			className={classNames(cls.Avatar, {}, [className, variant && cls[variant]])}
+			style={styles}
+			fallback={
+				<Skeleton
+					borderRadius={variant === AvatarVariant.CIRCLE ? '50%' : undefined}
+					height={size}
+					width={size}
+				/>
+			}
+			errorFallback={<img src={defaultUser} alt='default-user' height={size} width={size} />}
+			src={src}
+			alt={alt}
+		/>
+	)
 }

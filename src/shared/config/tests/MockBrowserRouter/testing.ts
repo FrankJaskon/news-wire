@@ -1,3 +1,1 @@
-export {
-	MockBrowserRouter
-} from './MockBrowserRouter'
+export { MockBrowserRouter } from './MockBrowserRouter'

@@ -9,11 +9,8 @@ export interface RequireRolesProps {
 	roles: UserRoleType[]
 }
 
-export const RequireRoles: FC<RequireRolesProps> = (props) => {
-	const {
-		children,
-		roles
-	} = props
+export const RequireRoles: FC<RequireRolesProps> = props => {
+	const { children, roles } = props
 	const location = useLocation()
 	const userRoles = useSelector(getUserRoles)
 
@@ -25,11 +22,7 @@ export const RequireRoles: FC<RequireRolesProps> = (props) => {
 	}, [roles, userRoles])
 
 	if (!isRouteAvailable) {
-		return <Navigate
-			to={getForbiddenRoute()}
-			replace
-			state={{ from: location }}
-		/>
+		return <Navigate to={getForbiddenRoute()} replace state={{ from: location }} />
 	}
 
 	return children

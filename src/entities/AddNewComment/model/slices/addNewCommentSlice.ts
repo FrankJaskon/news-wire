@@ -3,7 +3,7 @@ import { AddNewCommentScheme } from '../types/AddNewCommentScheme'
 
 const initialState: AddNewCommentScheme = {
 	error: undefined,
-	text: undefined
+	text: undefined,
 }
 
 const addNewCommentSlice = createSlice({
@@ -13,7 +13,7 @@ const addNewCommentSlice = createSlice({
 		setCommentText: (state, action: PayloadAction<string | undefined>) => {
 			state.text = action.payload
 		},
-	}
+	},
 })
 
 export const { actions: addNewCommentActions } = addNewCommentSlice

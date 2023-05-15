@@ -13,7 +13,7 @@ import { PageScrollScheme } from '@/widgets/PageWrapper'
 export interface StateSchema {
 	user: UserScheme
 	pageScroll: PageScrollScheme
-	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>,
+	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
 	// Async reducers
 	profile?: ProfileScheme

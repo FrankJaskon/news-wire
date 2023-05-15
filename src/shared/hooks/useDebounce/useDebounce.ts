@@ -1,9 +1,6 @@
 import { MutableRefObject, useCallback, useRef } from 'react'
 
-export const useDebounce = <T extends (...args: any[]) => void>(
-	callback: T,
-	delay: number
-) => {
+export const useDebounce = <T extends (...args: any[]) => void>(callback: T, delay: number) => {
 	const timerRef: MutableRefObject<NodeJS.Timeout | null> = useRef(null)
 
 	return useCallback(

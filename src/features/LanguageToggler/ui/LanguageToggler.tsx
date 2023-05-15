@@ -4,7 +4,7 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton } from '@/shared/ui/AppButton'
 
 interface LanguageTogglerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    className?: string,
+	className?: string
 	short?: boolean
 }
 
@@ -18,12 +18,15 @@ export const LanguageToggler: FC<LanguageTogglerProps> = memo((props: LanguageTo
 		await i18n.changeLanguage(isEn ? 'ua' : 'en')
 	}
 
-	return <AppButton
-		variant='custom'
-		data-testid='language-toggler'
-		onClick={toggleLanguage}
-		className={classNames('', {}, [className])}
-		{...otherProps}>
-		{short ? t('language-toggler.language-short') : t('language-toggler.language')}
-	</AppButton>
+	return (
+		<AppButton
+			variant='custom'
+			data-testid='language-toggler'
+			onClick={toggleLanguage}
+			className={classNames('', {}, [className])}
+			{...otherProps}
+		>
+			{short ? t('language-toggler.language-short') : t('language-toggler.language')}
+		</AppButton>
+	)
 })

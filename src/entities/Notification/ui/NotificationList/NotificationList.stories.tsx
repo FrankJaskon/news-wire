@@ -7,10 +7,10 @@ export default {
 	component: NotificationList,
 	argTypes: {},
 	args: {},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({})],
 } as Meta<typeof NotificationList>
 
-const Template: StoryFn<typeof NotificationList> = (args) => < NotificationList { ...args } />
+const Template: StoryFn<typeof NotificationList> = args => <NotificationList {...args} />
 
 export const Basic: StoryFn<NotificationListProps> = Template.bind({})
 
@@ -24,23 +24,23 @@ Basic.parameters = {
 				{
 					id: 1,
 					title: 'Your profile was liked',
-					description: 'See your profile. Some user left there a reaction'
+					description: 'See your profile. Some user left there a reaction',
 				},
 				{
 					id: 2,
 					title: 'Your profile was liked',
-					description: 'See your profile. Some user2 left there a reaction'
+					description: 'See your profile. Some user2 left there a reaction',
 				},
 				{
 					id: 3,
 					title: 'Your profile was liked',
-					description: 'See your profile. Some user3 left there a reaction'
+					description: 'See your profile. Some user3 left there a reaction',
 				},
 				{
 					id: 4,
 					title: 'Your profile was liked',
-					description: 'See your profile. Some user4 left there a reaction'
-				}
+					description: 'See your profile. Some user4 left there a reaction',
+				},
 			],
 		},
 	],

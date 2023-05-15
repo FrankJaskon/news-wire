@@ -9,21 +9,18 @@ export default {
 	component: NotFound,
 	argTypes: {},
 	args: {},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({})],
 } as Meta<typeof NotFound>
 
-const Template: StoryFn<typeof NotFound> = (args) => <NotFound {...args} />
+const Template: StoryFn<typeof NotFound> = args => <NotFound {...args} />
 
 export const Basic: StoryFn = Template.bind({})
-Basic.args = {
-}
+Basic.args = {}
 
 export const DarkTheme: StoryFn = Template.bind({})
-DarkTheme.args = {
-}
+DarkTheme.args = {}
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: StoryFn = Template.bind({})
-PurpleTheme.args = {
-}
+PurpleTheme.args = {}
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

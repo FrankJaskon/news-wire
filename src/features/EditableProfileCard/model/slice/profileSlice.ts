@@ -10,7 +10,7 @@ const initialState: ProfileScheme = {
 	isLoading: true,
 	readonly: true,
 	validateError: undefined,
-	loadingError: undefined
+	loadingError: undefined,
 }
 
 const profileSlice = createSlice({
@@ -20,21 +20,21 @@ const profileSlice = createSlice({
 		updateProfileData: (state, action: PayloadAction<ProfileType>) => {
 			state.form = {
 				...state.form,
-				...action.payload
+				...action.payload,
 			}
 		},
-		cancelEdit: (state) => {
+		cancelEdit: state => {
 			state.readonly = true
 			state.validateError = undefined
 			state.form = state.data
 		},
 		setReadonly: (state, action: PayloadAction<boolean>) => {
 			state.readonly = action.payload
-		}
+		},
 	},
-	extraReducers: (builder) => {
+	extraReducers: builder => {
 		// fetchProfileData
-		builder.addCase(fetchProfileData.pending, (state) => {
+		builder.addCase(fetchProfileData.pending, state => {
 			state.loadingError = undefined
 			state.isLoading = true
 		})
@@ -48,7 +48,7 @@ const profileSlice = createSlice({
 			state.loadingError = action.payload as ValidateProfileErrorType
 		})
 		// updateProfileData
-		builder.addCase(updateProfileData.pending, (state) => {
+		builder.addCase(updateProfileData.pending, state => {
 			state.validateError = undefined
 			state.isLoading = true
 		})

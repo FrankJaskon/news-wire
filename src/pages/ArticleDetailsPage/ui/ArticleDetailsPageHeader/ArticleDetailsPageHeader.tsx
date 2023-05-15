@@ -13,35 +13,32 @@ export interface ArticleDetailsPageHeaderProps {
 	articleId: number
 }
 
-export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo((
-	props: ArticleDetailsPageHeaderProps
-) => {
-	const {
-		className,
-		articleId
-	} = props
+export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
+	(props: ArticleDetailsPageHeaderProps) => {
+		const { className, articleId } = props
 
-	const { t } = useTranslation('article')
-	const ifCanEdit = useSelector(getIfCanEdit)
+		const { t } = useTranslation('article')
+		const ifCanEdit = useSelector(getIfCanEdit)
 
-	return (
-		<HStack
-			className={classNames('', {}, [className])}
-		>
-			<AppLink
-				variant={AppLinkVariant.PRIMARY_BUTTON}
-				className={cls.backBtn}
-				to={getArticlesRoute()}
-			>
-				{'< ' + t('back-to-list-btn')}
-			</AppLink>
-			{ifCanEdit && <AppLink
-				variant={AppLinkVariant.PRIMARY_BUTTON}
-				className={cls.editBtn}
-				to={getEditArticleDetailsRoute(articleId)}
-			>
-				{t('edit-article-btn')}
-			</AppLink>}
-		</HStack>
-	)
-})
+		return (
+			<HStack className={classNames('', {}, [className])}>
+				<AppLink
+					variant={AppLinkVariant.PRIMARY_BUTTON}
+					className={cls.backBtn}
+					to={getArticlesRoute()}
+				>
+					{'< ' + t('back-to-list-btn')}
+				</AppLink>
+				{ifCanEdit && (
+					<AppLink
+						variant={AppLinkVariant.PRIMARY_BUTTON}
+						className={cls.editBtn}
+						to={getEditArticleDetailsRoute(articleId)}
+					>
+						{t('edit-article-btn')}
+					</AppLink>
+				)}
+			</HStack>
+		)
+	}
+)

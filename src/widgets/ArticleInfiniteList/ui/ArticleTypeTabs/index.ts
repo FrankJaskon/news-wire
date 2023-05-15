@@ -1,11 +1,5 @@
-export {
-	ArticleTypeTabs
-} from './ui/ArticleTypeTabs'
+export { ArticleTypeTabs } from './ui/ArticleTypeTabs'
 
-export type {
-	ArticlesTypesType
-} from './model/types/tabs'
+export type { ArticlesTypesType } from './model/types/tabs'
 
-export {
-	ArticlesTypes
-} from './model/types/tabs'
+export { ArticlesTypes } from './model/types/tabs'

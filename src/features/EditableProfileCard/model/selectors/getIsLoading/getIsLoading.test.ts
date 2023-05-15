@@ -5,8 +5,8 @@ describe('getIsLoading', () => {
 	test('Should return isLoading', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
-				isLoading: false
-			}
+				isLoading: false,
+			},
 		}
 		expect(getIsLoading(initialState as StateSchema)).toBe(false)
 	})

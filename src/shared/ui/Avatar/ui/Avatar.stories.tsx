@@ -5,10 +5,10 @@ import avatarImage from './storybook.jpg'
 export default {
 	title: 'shared/Avatar',
 	component: Avatar,
-	args: {}
+	args: {},
 } as Meta<typeof Avatar>
 
-const Template: StoryFn<typeof Avatar> = (args) => <Avatar {...args} />
+const Template: StoryFn<typeof Avatar> = args => <Avatar {...args} />
 
 export const Basic: StoryFn<AvatarProps> = Template.bind({})
 Basic.args = {

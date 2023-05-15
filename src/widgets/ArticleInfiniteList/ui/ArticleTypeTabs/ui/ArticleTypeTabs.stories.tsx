@@ -8,9 +8,7 @@ export default {
 	argTypes: {},
 } as Meta<typeof ArticleTypeTabs>
 
-const Template: StoryFn<typeof ArticleTypeTabs> = (args) => <ArticleTypeTabs { ...args } />
+const Template: StoryFn<typeof ArticleTypeTabs> = args => <ArticleTypeTabs {...args} />
 
 export const Basic: StoryFn<ArticleTypeTabsProps> = Template.bind({})
-Basic.args = {
-
-}
+Basic.args = {}

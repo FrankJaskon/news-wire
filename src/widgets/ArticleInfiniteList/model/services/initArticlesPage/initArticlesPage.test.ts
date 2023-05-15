@@ -8,8 +8,8 @@ describe('initArticlesPage', () => {
 	test('should call dispatch if _initialized = false', async () => {
 		const thunk = new TestAsyncThunk(initArticlesPage, {
 			articlesInfiniteList: {
-				_initialized: false
-			}
+				_initialized: false,
+			},
 		})
 
 		await thunk.callThunk({} as URLSearchParams)
@@ -20,8 +20,8 @@ describe('initArticlesPage', () => {
 	test('should not call dispatch if _initialized = true', async () => {
 		const thunk = new TestAsyncThunk(initArticlesPage, {
 			articlesInfiniteList: {
-				_initialized: true
-			}
+				_initialized: true,
+			},
 		})
 
 		await thunk.callThunk({} as URLSearchParams)

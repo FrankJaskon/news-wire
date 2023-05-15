@@ -1,11 +1,5 @@
-export {
-	LoginModal
-} from './ui/LoginModal/LoginModal'
+export { LoginModal } from './ui/LoginModal/LoginModal'
 
-export type {
-	LoginScheme
-} from './model/types/LoginScheme'
+export type { LoginScheme } from './model/types/LoginScheme'
 
-export {
-	loginReducer
-} from './model/slice/loginSlice'
+export { loginReducer } from './model/slice/loginSlice'

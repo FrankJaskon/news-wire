@@ -7,14 +7,16 @@ export default {
 	title: 'shared/PageWrapper',
 	component: PageWrapper,
 	argTypes: {},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({})],
 } as Meta<typeof PageWrapper>
 
-const Template: StoryFn<typeof PageWrapper> = (args) => <PageWrapper { ...args } />
+const Template: StoryFn<typeof PageWrapper> = args => <PageWrapper {...args} />
 
 export const Basic: StoryFn<PageWrapperProps> = Template.bind({})
 Basic.args = {
-	children: <>
-		<div>Text</div>
-	</>
+	children: (
+		<>
+			<div>Text</div>
+		</>
+	),
 }

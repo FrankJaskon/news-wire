@@ -19,7 +19,7 @@ import {
 	getMainRoute,
 	getNewArticleDetailsRoute,
 	getNotFoundRoute,
-	getProfileRoute
+	getProfileRoute,
 } from '@/shared/const/RoutPaths'
 
 export type AuthRouteProps = RouteProps & {
@@ -30,53 +30,53 @@ export type AuthRouteProps = RouteProps & {
 export const routerConfig: AuthRouteProps[] = [
 	{
 		path: getMainRoute(),
-		element: <MainPage />
+		element: <MainPage />,
 	},
 	{
 		path: getAboutRoute(),
-		element: <AboutPage />
+		element: <AboutPage />,
 	},
 	{
 		path: getProfileRoute(':id'),
 		element: <ProfilePage />,
-		authOnly: true
+		authOnly: true,
 	},
 	{
 		path: getArticlesRoute(),
 		element: <ArticlesPage />,
-		authOnly: true
+		authOnly: true,
 	},
 	{
 		path: getArticleDetailsRoute(':id'),
 		element: <ArticleDetailsPage />,
-		authOnly: true
+		authOnly: true,
 	},
 	{
 		path: getEditArticleDetailsRoute(':id'),
 		element: <EditArticlePage />,
-		authOnly: true
+		authOnly: true,
 	},
 	{
 		path: getNewArticleDetailsRoute(),
 		element: <EditArticlePage />,
-		authOnly: true
+		authOnly: true,
 	},
 	{
 		path: getAdminRoute(),
 		element: <AdminPanel />,
 		authOnly: true,
-		roles: [UserRole.ADMIN, UserRole.MANAGER]
+		roles: [UserRole.ADMIN, UserRole.MANAGER],
 	},
 
 	// forbidden
 	{
 		path: getForbiddenRoute(),
-		element: <ForbiddenPage />
+		element: <ForbiddenPage />,
 	},
 
 	// last
 	{
 		path: getNotFoundRoute(),
-		element: <NotFound />
-	}
+		element: <NotFound />,
+	},
 ]

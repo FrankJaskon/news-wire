@@ -6,7 +6,7 @@ const initialState: ArticleDetailsScheme = {
 	data: undefined,
 	isLoading: true,
 	error: undefined,
-	readonly: true
+	readonly: true,
 }
 
 export const articleDetailsSlice = createSlice({
@@ -17,9 +17,9 @@ export const articleDetailsSlice = createSlice({
 			state.data = action.payload
 		},
 	},
-	extraReducers: (builder) => {
+	extraReducers: builder => {
 		// fetchArticleById
-		builder.addCase(fetchArticleById.pending, (state) => {
+		builder.addCase(fetchArticleById.pending, state => {
 			state.error = undefined
 			state.isLoading = true
 		})

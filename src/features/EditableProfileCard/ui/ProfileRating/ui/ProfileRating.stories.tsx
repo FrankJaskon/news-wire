@@ -7,10 +7,10 @@ export default {
 	component: ProfileRating,
 	argTypes: {},
 	args: {},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({})],
 } as Meta<typeof ProfileRating>
 
-const Template: StoryFn<typeof ProfileRating> = (args) => <ProfileRating { ...args } />
+const Template: StoryFn<typeof ProfileRating> = args => <ProfileRating {...args} />
 
 export const Basic: StoryFn<ProfileRatingProps> = Template.bind({})
 
@@ -23,8 +23,8 @@ Basic.parameters = {
 			status: 200,
 			response: [
 				{
-					rating: 4
-				}
+					rating: 4,
+				},
 			],
 		},
 	],

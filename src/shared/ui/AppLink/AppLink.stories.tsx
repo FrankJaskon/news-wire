@@ -8,11 +8,11 @@ export default {
 	title: 'shared/AppLink',
 	component: AppLink,
 	args: {
-		to: '/'
-	}
+		to: '/',
+	},
 } as Meta<typeof AppLink>
 
-const Template: StoryFn<typeof AppLink> = (args) => <AppLink {...args} />
+const Template: StoryFn<typeof AppLink> = args => <AppLink {...args} />
 
 export const Primary: StoryFn<AppLinkProps> = Template.bind({})
 Primary.args = {

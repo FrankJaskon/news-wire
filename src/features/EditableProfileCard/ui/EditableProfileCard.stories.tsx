@@ -15,28 +15,30 @@ const data = {
 	lastname: 'Test',
 	username: 'Test user',
 	currency: Currency.UAH,
-	country: Country.UKRAINE
+	country: Country.UKRAINE,
 }
 
 export default {
 	title: 'features/EditableProfileCard',
 	component: EditableProfileCard,
 	argTypes: {},
-	decorators: [StoreDecorator({
-		profile: {
-			isLoading: false,
-			data: data,
-			form: data,
-		},
-		user: {
-			authData: {
-				id: 1
-			}
-		}
-	})]
+	decorators: [
+		StoreDecorator({
+			profile: {
+				isLoading: false,
+				data: data,
+				form: data,
+			},
+			user: {
+				authData: {
+					id: 1,
+				},
+			},
+		}),
+	],
 } as Meta<typeof EditableProfileCard>
 
-const Template: StoryFn<typeof EditableProfileCard> = (args) => <EditableProfileCard { ...args } />
+const Template: StoryFn<typeof EditableProfileCard> = args => <EditableProfileCard {...args} />
 
 export const Basic: StoryFn<EditableProfileCardProps> = Template.bind({})
 

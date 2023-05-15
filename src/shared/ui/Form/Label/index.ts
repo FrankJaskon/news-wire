@@ -1,4 +1,1 @@
-export {
-	AppLabel,
-	LabelVariant
-} from './ui/AppLabel'
+export { AppLabel, LabelVariant } from './ui/AppLabel'

@@ -13,7 +13,7 @@ describe('Profile reducer', () => {
 		isLoading: true,
 		readonly: true,
 		validateError: undefined,
-		loadingError: undefined
+		loadingError: undefined,
 	}
 	const data: ProfileType = {
 		age: '12',
@@ -23,34 +23,32 @@ describe('Profile reducer', () => {
 		country: Country.UKRAINE,
 		currency: Currency.UAH,
 		lastname: 'Test',
-		username: 'Test'
+		username: 'Test',
 	}
 	test('should handle initial state', () => {
 		expect(profileReducer(undefined, { type: 'unknown' })).toEqual(initialState)
 	})
 	test('should set up readonly value', () => {
-		expect(profileReducer(
-			initialState as ProfileScheme,
-			profileActions.setReadonly(false)
-		)).toEqual({
+		expect(
+			profileReducer(initialState as ProfileScheme, profileActions.setReadonly(false))
+		).toEqual({
 			isLoading: true,
 			readonly: false,
 			data: undefined,
 			form: undefined,
 			loadingError: undefined,
-			validateError: undefined
+			validateError: undefined,
 		})
 	})
 	test('should update profile form data', () => {
-		expect(profileReducer(
-			initialState as ProfileScheme,
-			profileActions.updateProfileData(data)
-		)).toEqual({
+		expect(
+			profileReducer(initialState as ProfileScheme, profileActions.updateProfileData(data))
+		).toEqual({
 			form: data,
 			data: undefined,
 			isLoading: true,
 			readonly: true,
-			validateError: undefined
+			validateError: undefined,
 		})
 	})
 	test('should set up field form is equal to field data', () => {
@@ -63,23 +61,25 @@ describe('Profile reducer', () => {
 			country: Country.USA,
 			currency: Currency.USD,
 			lastname: 'TestTest',
-			username: 'TestTest'
+			username: 'TestTest',
 		}
-		expect(profileReducer(
-			{
-				data,
-				form,
-				validateError: undefined,
-				isLoading: false,
-				readonly: true
-			} as ProfileScheme,
-			profileActions.cancelEdit()
-		)).toEqual({
+		expect(
+			profileReducer(
+				{
+					data,
+					form,
+					validateError: undefined,
+					isLoading: false,
+					readonly: true,
+				} as ProfileScheme,
+				profileActions.cancelEdit()
+			)
+		).toEqual({
 			form: data,
 			data,
 			isLoading: false,
 			readonly: true,
-			validateError: undefined
+			validateError: undefined,
 		})
 	})
 	test('test update and fetch profile service pending', () => {
@@ -87,27 +87,21 @@ describe('Profile reducer', () => {
 			isLoading: false,
 			readonly: false,
 			loadingError: ValidateProfileError.SERVER_ERROR,
-			validateError: [ValidateProfileError.INCORRECT_AGE]
+			validateError: [ValidateProfileError.INCORRECT_AGE],
 		}
 		// updateProfileData
-		expect(profileReducer(
-			initialState as ProfileScheme,
-			updateProfileData.pending
-		)).toEqual({
+		expect(profileReducer(initialState as ProfileScheme, updateProfileData.pending)).toEqual({
 			isLoading: true,
 			readonly: false,
 			validateError: undefined,
 			loadingError: ValidateProfileError.SERVER_ERROR,
 		})
 		// fetchProfileData
-		expect(profileReducer(
-			initialState as ProfileScheme,
-			fetchProfileData.pending
-		)).toEqual({
+		expect(profileReducer(initialState as ProfileScheme, fetchProfileData.pending)).toEqual({
 			isLoading: true,
 			readonly: false,
 			loadingError: undefined,
-			validateError: [ValidateProfileError.INCORRECT_AGE]
+			validateError: [ValidateProfileError.INCORRECT_AGE],
 		})
 	})
 	test('test fetch profile service fulfilled', () => {
@@ -116,50 +110,53 @@ describe('Profile reducer', () => {
 			readonly: true,
 		}
 		// fetchProfileData
-		expect(profileReducer(
-			initialState as ProfileScheme,
-			fetchProfileData.fulfilled(data, '', 1)
-		)).toEqual({
+		expect(
+			profileReducer(initialState as ProfileScheme, fetchProfileData.fulfilled(data, '', 1))
+		).toEqual({
 			isLoading: false,
 			readonly: true,
 			loadingError: undefined,
 			data,
-			form: data
+			form: data,
 		})
 	})
 	test('test update profile service fulfilled', () => {
 		const newData: ProfileType = {
 			firstname: 'Test',
-			lastname: 'Test'
+			lastname: 'Test',
 		}
 		const initialState: ProfileScheme = {
 			isLoading: true,
 			readonly: false,
 			form: newData,
-			data
+			data,
 		}
 		// updateProfileData
-		expect(profileReducer(
-			initialState as ProfileScheme,
-			updateProfileData.fulfilled(newData, '', undefined)
-		)).toEqual({
+		expect(
+			profileReducer(
+				initialState as ProfileScheme,
+				updateProfileData.fulfilled(newData, '', undefined)
+			)
+		).toEqual({
 			isLoading: false,
 			readonly: true,
 			data: newData,
-			form: newData
+			form: newData,
 		})
 	})
 	test('test fetch profile service rejected', () => {
 		const initialState: ProfileScheme = {
 			isLoading: true,
 			readonly: true,
-			loadingError: undefined
+			loadingError: undefined,
 		}
 		// fetchProfileData
-		expect(profileReducer(
-			initialState as ProfileScheme,
-			fetchProfileData.rejected(new Error(), '', 1, ValidateProfileError.SERVER_ERROR)
-		)).toEqual({
+		expect(
+			profileReducer(
+				initialState as ProfileScheme,
+				fetchProfileData.rejected(new Error(), '', 1, ValidateProfileError.SERVER_ERROR)
+			)
+		).toEqual({
 			isLoading: false,
 			readonly: true,
 			loadingError: ValidateProfileError.SERVER_ERROR,
@@ -169,16 +166,20 @@ describe('Profile reducer', () => {
 		const initialState: ProfileScheme = {
 			isLoading: true,
 			readonly: true,
-			validateError: undefined
+			validateError: undefined,
 		}
 		// updateProfileData
-		expect(profileReducer(
-			initialState as ProfileScheme,
-			updateProfileData.rejected(new Error(), '', undefined, [ValidateProfileError.SERVER_ERROR])
-		)).toEqual({
+		expect(
+			profileReducer(
+				initialState as ProfileScheme,
+				updateProfileData.rejected(new Error(), '', undefined, [
+					ValidateProfileError.SERVER_ERROR,
+				])
+			)
+		).toEqual({
 			isLoading: false,
 			readonly: true,
-			validateError: [ValidateProfileError.SERVER_ERROR]
+			validateError: [ValidateProfileError.SERVER_ERROR],
 		})
 	})
 })

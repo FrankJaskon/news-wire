@@ -9,26 +9,25 @@ export default {
 	component: LoginForm,
 	argTypes: {},
 	args: {
-		onSuccess: () => {}
+		onSuccess: () => {},
 	},
-	decorators: [StoreDecorator({
-		login: { username: 'test', password: 'test' },
-	})]
+	decorators: [
+		StoreDecorator({
+			login: { username: 'test', password: 'test' },
+		}),
+	],
 } as Meta<typeof LoginForm>
 
-const Template: StoryFn<typeof LoginForm> = (args) => <LoginForm {...args} />
+const Template: StoryFn<typeof LoginForm> = args => <LoginForm {...args} />
 
 export const Basic: StoryFn<LoginFormProps> = Template.bind({})
-Basic.args = {
-}
+Basic.args = {}
 Basic.decorators = []
 
 export const DarkTheme: StoryFn<LoginFormProps> = Template.bind({})
-DarkTheme.args = {
-}
+DarkTheme.args = {}
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: StoryFn<LoginFormProps> = Template.bind({})
-PurpleTheme.args = {
-}
+PurpleTheme.args = {}
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

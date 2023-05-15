@@ -5,7 +5,7 @@ import cls from './AppLabel.module.scss'
 
 export const LabelVariant = {
 	PRIMARY: 'primary',
-	SR_ONLY: 'srOnly'
+	SR_ONLY: 'srOnly',
 } as const
 
 type LabelVariantType = ValueOf<typeof LabelVariant>
@@ -13,23 +13,20 @@ type LabelVariantType = ValueOf<typeof LabelVariant>
 export interface AppLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	className?: string
 	htmlFor: string
-	children: ReactNode,
+	children: ReactNode
 	variant?: LabelVariantType
 }
 
 export const AppLabel: FC<AppLabelProps> = memo((props: AppLabelProps) => {
-	const {
-		className,
-		htmlFor,
-		children,
-		variant = LabelVariant.PRIMARY,
-		...extraProps
-	} = props
+	const { className, htmlFor, children, variant = LabelVariant.PRIMARY, ...extraProps } = props
 
-	return <label
-		className={classNames(cls.AppLabel, {}, [className, cls[variant]])}
-		htmlFor={htmlFor}
-		{...extraProps}>
-		{children}:
-	</label>
+	return (
+		<label
+			className={classNames(cls.AppLabel, {}, [className, cls[variant]])}
+			htmlFor={htmlFor}
+			{...extraProps}
+		>
+			{children}:
+		</label>
+	)
 })

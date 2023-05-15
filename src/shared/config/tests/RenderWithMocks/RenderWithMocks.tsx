@@ -1,7 +1,7 @@
 import { RenderResult, render } from '@testing-library/react'
 import { ReactElement } from 'react'
 
-export type MockFunction = (mock: ReactElement) => ReactElement;
+export type MockFunction = (mock: ReactElement) => ReactElement
 
 export const RenderWithMocks = (
 	component: ReactElement,
@@ -10,12 +10,9 @@ export const RenderWithMocks = (
 ): RenderResult | ReactElement => {
 	const reversedMocks = [...mocks].reverse()
 
-	const componentWithMocks = reversedMocks.reduce(
-		(previousMockResult, mockFunction) => {
-			return mockFunction(previousMockResult)
-		},
-		component
-	)
+	const componentWithMocks = reversedMocks.reduce((previousMockResult, mockFunction) => {
+		return mockFunction(previousMockResult)
+	}, component)
 
 	if (isRender) {
 		return render(componentWithMocks)

@@ -1,11 +1,5 @@
-export {
-	CommentCard
-} from './ui/CommentCard/CommentCard'
+export { CommentCard } from './ui/CommentCard/CommentCard'
 
-export {
-	CommentsList
-} from './ui/CommentsList/CommentsList'
+export { CommentsList } from './ui/CommentsList/CommentsList'
 
-export type {
-	CommentType
-} from './model/types/comment'
+export type { CommentType } from './model/types/comment'

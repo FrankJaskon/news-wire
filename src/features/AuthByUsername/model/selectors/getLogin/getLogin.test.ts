@@ -7,27 +7,27 @@ describe('getLogin', () => {
 			login: {
 				username: 'username@',
 				password: 'test',
-				isLoading: false
-			}
+				isLoading: false,
+			},
 		}
 		test('Return login object is equal initialState', () => {
 			expect(getLogin(initialState as StateSchema)).toEqual({
 				username: 'username@',
 				password: 'test',
-				isLoading: false
+				isLoading: false,
 			})
 		})
 		test('Objects should be not the same', () => {
 			expect(getLogin(initialState as StateSchema)).not.toEqual({
 				username: 'username@123',
 				password: 'test123',
-				isLoading: true
+				isLoading: true,
 			})
 		})
 	}
 	{
 		const initialState: DeepPartial<StateSchema> = {
-			login: {}
+			login: {},
 		}
 		test('Should return empty object', () => {
 			expect(getLogin(initialState as StateSchema)).toEqual({})

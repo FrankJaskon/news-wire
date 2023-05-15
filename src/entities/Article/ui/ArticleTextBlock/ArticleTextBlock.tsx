@@ -12,31 +12,19 @@ export interface ArticleTextBlockProps {
 }
 
 export const ArticleTextBlock: FC<ArticleTextBlockProps> = memo((props: ArticleTextBlockProps) => {
-	const {
-		className,
-		paragraphs,
-		title,
-	} = props
+	const { className, paragraphs, title } = props
 
-	const content = useMemo(() => (
-		paragraphs?.map(p => <Text
-			className={cls.paragraph}
-			content={p}
-			key={p}
-			align='justify'
-		/>)
-	), [paragraphs])
+	const content = useMemo(
+		() =>
+			paragraphs?.map(p => (
+				<Text className={cls.paragraph} content={p} key={p} align='justify' />
+			)),
+		[paragraphs]
+	)
 
 	return (
-		<VStack
-			className={classNames('', {}, [className])}
-			gap='12'
-		>
-			{title && <Text
-				title={title}
-				size={TextSize.S}
-				titleHue={TextColor.SECONDARY}
-			/>}
+		<VStack className={classNames('', {}, [className])} gap='12'>
+			{title && <Text title={title} size={TextSize.S} titleHue={TextColor.SECONDARY} />}
 			{content}
 		</VStack>
 	)

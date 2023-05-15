@@ -1,3 +1,1 @@
-export {
-	AppImage
-} from './ui/AppImage'
+export { AppImage } from './ui/AppImage'

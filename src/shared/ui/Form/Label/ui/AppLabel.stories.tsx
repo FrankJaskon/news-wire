@@ -7,23 +7,19 @@ export default {
 	title: 'shared/Form/AppLabel',
 	component: AppLabel,
 	args: {
-		children: 'Test'
-	}
+		children: 'Test',
+	},
 } as Meta<typeof AppLabel>
 
-const Template: StoryFn<typeof AppLabel> = (args) => <AppLabel {...args} />
+const Template: StoryFn<typeof AppLabel> = args => <AppLabel {...args} />
 
 export const Basic: StoryFn<AppLabelProps> = Template.bind({})
-Basic.args = {
-
-}
+Basic.args = {}
 
 export const BasicDark: StoryFn<AppLabelProps> = Template.bind({})
-BasicDark.args = {
-}
+BasicDark.args = {}
 BasicDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const BasicPurple: StoryFn<AppLabelProps> = Template.bind({})
-BasicPurple.args = {
-}
+BasicPurple.args = {}
 BasicPurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]

@@ -6,14 +6,14 @@ describe('getLoginLogin', () => {
 		{
 			const initialState: DeepPartial<StateSchema> = {
 				login: {
-					isLoading: false
-				}
+					isLoading: false,
+				},
 			}
 			expect(getIsLoading(initialState as StateSchema)).toBe(false)
 		}
 		{
 			const initialState: DeepPartial<StateSchema> = {
-				login: {}
+				login: {},
 			}
 			expect(getIsLoading(initialState as StateSchema)).toBe(false)
 		}
@@ -21,8 +21,8 @@ describe('getLoginLogin', () => {
 	test('IsLoading value should be the same as in initialState', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			login: {
-				isLoading: true
-			}
+				isLoading: true,
+			},
 		}
 		expect(getIsLoading(initialState as StateSchema)).toBe(true)
 	})

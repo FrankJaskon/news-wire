@@ -8,18 +8,16 @@ export interface AddArticleCommentProps {
 }
 
 export const AddArticleComment: FC = memo((props: AddArticleCommentProps) => {
-	const {
-		'data-testid': dataTestId = 'article-details-add-new-comment'
-	} = props
+	const { 'data-testid': dataTestId = 'article-details-add-new-comment' } = props
 
 	const dispatch = useAppDispatch()
 
-	const onCreateNewComment = useCallback((value: string) => {
-		dispatch(createNewCommentForArticle(value))
-	}, [dispatch])
+	const onCreateNewComment = useCallback(
+		(value: string) => {
+			dispatch(createNewCommentForArticle(value))
+		},
+		[dispatch]
+	)
 
-	return <AddNewComment
-		handleSubmit={onCreateNewComment}
-		data-testid={dataTestId}
-	/>
+	return <AddNewComment handleSubmit={onCreateNewComment} data-testid={dataTestId} />
 })

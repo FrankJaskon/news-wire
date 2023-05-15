@@ -7,18 +7,18 @@ export default {
 	title: 'features/ArticleComments',
 	component: ArticleComments,
 	argTypes: {},
-	decorators: [StoreDecorator({
-		articleDetailsComments: {
-			isLoading: false,
-			entities: {},
-			ids: []
-		}
-	})]
+	decorators: [
+		StoreDecorator({
+			articleDetailsComments: {
+				isLoading: false,
+				entities: {},
+				ids: [],
+			},
+		}),
+	],
 } as Meta<typeof ArticleComments>
 
-const Template: StoryFn<typeof ArticleComments> = (args) => < ArticleComments { ...args } />
+const Template: StoryFn<typeof ArticleComments> = args => <ArticleComments {...args} />
 
 export const Basic: StoryFn<ArticleCommentsProps> = Template.bind({})
-Basic.args = {
-
-}
+Basic.args = {}

@@ -4,23 +4,23 @@ import { User, UserScheme } from '../types/UserScheme'
 
 const initialState: UserScheme = {
 	authData: undefined,
-	_initialized: false
+	_initialized: false,
 }
 
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		initAuthData: (state) => {
+		initAuthData: state => {
 			const data = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
-			const initialAuthData = data && JSON.parse(data) || undefined
+			const initialAuthData = (data && JSON.parse(data)) || undefined
 			state.authData = initialAuthData
 			state._initialized = true
 		},
 		setAuthData: (state, action: PayloadAction<User>) => {
 			state.authData = action.payload
 		},
-		removeAuthData: (state) => {
+		removeAuthData: state => {
 			state.authData = initialState.authData
 			localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY)
 		},

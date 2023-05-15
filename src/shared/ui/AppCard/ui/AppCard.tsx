@@ -6,7 +6,7 @@ import cls from './AppCard.module.scss'
 export const CardVariant = {
 	PRIMARY: 'primary',
 	LIGHT: 'light',
-	DARK: 'dark'
+	DARK: 'dark',
 } as const
 
 export type CardVariantType = ValueOf<typeof CardVariant>
@@ -19,7 +19,7 @@ export interface AppCardProps extends HTMLAttributes<HTMLDivElement> {
 	'data-testid'?: string
 }
 
-export const AppCard: FC<AppCardProps> = (props) => {
+export const AppCard: FC<AppCardProps> = props => {
 	const {
 		className,
 		children,
@@ -29,22 +29,21 @@ export const AppCard: FC<AppCardProps> = (props) => {
 		...extraProps
 	} = props
 
-	const mods: Mods = useMemo(() => ({
-		[cls.noPaddings]: noPaddings
-	}), [noPaddings])
+	const mods: Mods = useMemo(
+		() => ({
+			[cls.noPaddings]: noPaddings,
+		}),
+		[noPaddings]
+	)
 
-	const extra: (string | undefined)[] = useMemo(() => ([
-		className,
-		cls[variant]
-	]), [className, variant])
+	const extra: (string | undefined)[] = useMemo(
+		() => [className, cls[variant]],
+		[className, variant]
+	)
 
 	return (
 		<div
-			className={classNames(
-				cls.AppCard,
-				mods,
-				extra
-			)}
+			className={classNames(cls.AppCard, mods, extra)}
 			data-testid={dataTestId}
 			{...extraProps}
 		>

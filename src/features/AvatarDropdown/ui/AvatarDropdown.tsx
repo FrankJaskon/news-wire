@@ -14,7 +14,7 @@ interface AvatarDropdownProps {
 	className?: string
 }
 
-export const AvatarDropdown: FC<AvatarDropdownProps> = (props) => {
+export const AvatarDropdown: FC<AvatarDropdownProps> = props => {
 	const { className } = props
 
 	const dispatch = useAppDispatch()
@@ -34,28 +34,30 @@ export const AvatarDropdown: FC<AvatarDropdownProps> = (props) => {
 		return null
 	}
 
-	return <Dropdown
-		items={[
-			...(isAdminPageAvailable ? [{
-				component: t('navbar.links.admin'),
-				href: getAdminRoute()
-			}] : []),
-			{
-				component: t('navbar.links.profile'),
-				href: getProfileRoute(authData.id)
-			},
-			{
-				component: t('navbar.logout'),
-				onClick: onLogout
-			},
-		]}
-		trigger={<Avatar
-			size={40}
-			src={authData.avatar}
-			variant={AvatarVariant.CIRCLE}
-		/>}
-		direction='bottom left'
-		className={classNames(cls.AvatarDropdown, {}, [className])}
-		align='center'
-	/>
+	return (
+		<Dropdown
+			items={[
+				...(isAdminPageAvailable
+					? [
+							{
+								component: t('navbar.links.admin'),
+								href: getAdminRoute(),
+							},
+					  ]
+					: []),
+				{
+					component: t('navbar.links.profile'),
+					href: getProfileRoute(authData.id),
+				},
+				{
+					component: t('navbar.logout'),
+					onClick: onLogout,
+				},
+			]}
+			trigger={<Avatar size={40} src={authData.avatar} variant={AvatarVariant.CIRCLE} />}
+			direction='bottom left'
+			className={classNames(cls.AvatarDropdown, {}, [className])}
+			align='center'
+		/>
+	)
 }

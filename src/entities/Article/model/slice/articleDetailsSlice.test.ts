@@ -1,12 +1,7 @@
 import { ValidateArticleDetailsError } from '../consts/articleDetailsConsts'
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById'
-import {
-	ArticleDetailsScheme,
-	ArticleType } from '../types/ArticleDetailsScheme'
-import {
-	articleDetailsActions,
-	articleDetailsReducer
-} from './articleDetailsSlice'
+import { ArticleDetailsScheme, ArticleType } from '../types/ArticleDetailsScheme'
+import { articleDetailsActions, articleDetailsReducer } from './articleDetailsSlice'
 
 describe('article details reducer', () => {
 	const initialState: ArticleDetailsScheme = {
@@ -17,16 +12,18 @@ describe('article details reducer', () => {
 	const data: DeepPartial<ArticleType> = {
 		id: 1,
 		title: 'title test',
-		subtitle: 'subtitle test'
+		subtitle: 'subtitle test',
 	}
 	test('should handle initial state', () => {
 		expect(articleDetailsReducer(undefined, { type: 'unknown' })).toEqual(initialState)
 	})
 	test('should set up new data', () => {
-		expect(articleDetailsReducer(
-			initialState as ArticleDetailsScheme,
-			articleDetailsActions.setArticleData(data as ArticleType)
-		)).toEqual({
+		expect(
+			articleDetailsReducer(
+				initialState as ArticleDetailsScheme,
+				articleDetailsActions.setArticleData(data as ArticleType)
+			)
+		).toEqual({
 			isLoading: true,
 			readonly: true,
 			data,
@@ -39,13 +36,12 @@ describe('article details reducer', () => {
 			error: ValidateArticleDetailsError.SERVER_ERROR,
 		}
 		// fetchArticleById
-		expect(articleDetailsReducer(
-			initialState as ArticleDetailsScheme,
-			fetchArticleById.pending
-		)).toEqual({
+		expect(
+			articleDetailsReducer(initialState as ArticleDetailsScheme, fetchArticleById.pending)
+		).toEqual({
 			isLoading: true,
 			readonly: false,
-			error: undefined
+			error: undefined,
 		})
 	})
 	test('fetchArticleById service fulfilled', () => {
@@ -54,10 +50,12 @@ describe('article details reducer', () => {
 			readonly: true,
 		}
 		// fetchArticleById
-		expect(articleDetailsReducer(
-			initialState as ArticleDetailsScheme,
-			fetchArticleById.fulfilled(data as ArticleType, '', 1)
-		)).toEqual({
+		expect(
+			articleDetailsReducer(
+				initialState as ArticleDetailsScheme,
+				fetchArticleById.fulfilled(data as ArticleType, '', 1)
+			)
+		).toEqual({
 			isLoading: false,
 			readonly: true,
 			error: undefined,
@@ -68,13 +66,20 @@ describe('article details reducer', () => {
 		const initialState: ArticleDetailsScheme = {
 			isLoading: true,
 			readonly: true,
-			error: undefined
+			error: undefined,
 		}
 		// fetchArticleById
-		expect(articleDetailsReducer(
-			initialState as ArticleDetailsScheme,
-			fetchArticleById.rejected(new Error(), '', 1, ValidateArticleDetailsError.SERVER_ERROR)
-		)).toEqual({
+		expect(
+			articleDetailsReducer(
+				initialState as ArticleDetailsScheme,
+				fetchArticleById.rejected(
+					new Error(),
+					'',
+					1,
+					ValidateArticleDetailsError.SERVER_ERROR
+				)
+			)
+		).toEqual({
 			isLoading: false,
 			readonly: true,
 			error: ValidateArticleDetailsError.SERVER_ERROR,

@@ -8,17 +8,13 @@ export interface RequireAuthProps {
 	children: JSX.Element
 }
 
-export const RequireAuth: FC<RequireAuthProps> = (props) => {
+export const RequireAuth: FC<RequireAuthProps> = props => {
 	const { children } = props
 	const location = useLocation()
 	const authData = useSelector(getUserAuthData)
 
 	if (!authData) {
-		return <Navigate
-			to={getMainRoute()}
-			replace
-			state={{ from: location }}
-		/>
+		return <Navigate to={getMainRoute()} replace state={{ from: location }} />
 	}
 
 	return children

@@ -9,21 +9,18 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-	args: {}
+	args: {},
 } as Meta<typeof ThemeToggler>
 
-const Template: StoryFn<typeof ThemeToggler> = (args) => <ThemeToggler {...args} />
+const Template: StoryFn<typeof ThemeToggler> = args => <ThemeToggler {...args} />
 
 export const Basic: StoryFn = Template.bind({})
-Basic.args = {
-}
+Basic.args = {}
 
 export const DarkTheme: StoryFn = Template.bind({})
-DarkTheme.args = {
-}
+DarkTheme.args = {}
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: StoryFn = Template.bind({})
-PurpleTheme.args = {
-}
+PurpleTheme.args = {}
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

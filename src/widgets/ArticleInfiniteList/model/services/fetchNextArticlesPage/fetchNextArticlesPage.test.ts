@@ -16,8 +16,8 @@ describe('fetchNextArticlesPage', () => {
 				view: ViewVariant.GRID,
 				page: 2,
 				limit: 10,
-				hasMore: true
-			}
+				hasMore: true,
+			},
 		})
 
 		await thunk.callThunk()
@@ -35,8 +35,8 @@ describe('fetchNextArticlesPage', () => {
 				view: ViewVariant.GRID,
 				page: 2,
 				limit: 10,
-				hasMore: true
-			}
+				hasMore: true,
+			},
 		})
 
 		await thunk.callThunk()
@@ -54,8 +54,8 @@ describe('fetchNextArticlesPage', () => {
 				view: ViewVariant.GRID,
 				page: 2,
 				limit: 10,
-				hasMore: false
-			}
+				hasMore: false,
+			},
 		})
 
 		const result = await thunk.callThunk()

@@ -24,17 +24,20 @@ export const StarRating: FC<StarRatingProps> = memo((props: StarRatingProps) => 
 		size = 30,
 		selectedStar,
 		isLoading,
-		'data-testid': datTestId = 'rating-star'
+		'data-testid': datTestId = 'rating-star',
 	} = props
 
 	const [currentStarsCount, setCurrentStartsCount] = useState<number>(selectedStar ?? 0)
 	const [isSelected, setIsSelected] = useState<boolean>(Boolean(selectedStar))
 
-	const onHover = useCallback((starsCount: number) => () => {
-		if (!isSelected) {
-			setCurrentStartsCount(starsCount)
-		}
-	}, [isSelected])
+	const onHover = useCallback(
+		(starsCount: number) => () => {
+			if (!isSelected) {
+				setCurrentStartsCount(starsCount)
+			}
+		},
+		[isSelected]
+	)
 
 	const onLeave = useCallback(() => {
 		if (!isSelected) {
@@ -42,58 +45,57 @@ export const StarRating: FC<StarRatingProps> = memo((props: StarRatingProps) => 
 		}
 	}, [isSelected])
 
-	const onClick = useCallback((starsCount: number) => () => {
-		if (!isSelected) {
-			onSelect?.(starsCount)
-			setCurrentStartsCount(starsCount)
-			setIsSelected(true)
-		}
-	}, [onSelect, isSelected])
+	const onClick = useCallback(
+		(starsCount: number) => () => {
+			if (!isSelected) {
+				onSelect?.(starsCount)
+				setCurrentStartsCount(starsCount)
+				setIsSelected(true)
+			}
+		},
+		[onSelect, isSelected]
+	)
 
 	if (isLoading) {
-		return <HStack
-			className={classNames(cls.StarRating, {}, [className])}
-			justify='center'
-			gap='4'
-		>
-			{
-				stars.map(starNumber => {
-					return <Skeleton
-						key={starNumber}
-						height={40}
-						width={40}
-					/>
-				})
-			}
-		</HStack>
+		return (
+			<HStack
+				className={classNames(cls.StarRating, {}, [className])}
+				justify='center'
+				gap='4'
+			>
+				{stars.map(starNumber => {
+					return <Skeleton key={starNumber} height={40} width={40} />
+				})}
+			</HStack>
+		)
 	}
 
-	return <HStack
-		className={classNames(cls.StarRating, {}, [className])}
-		justify='center'
-	>
-		{
-			stars.map(starNumber => {
-				return <AppIcon
-					key={starNumber}
-					Svg={StarIcon}
-					className={
-						classNames(cls.starIcon, {
-							[cls.hovered]: currentStarsCount >= starNumber,
-							[cls.selected]: isSelected,
-						},
-						[])
-					}
-					width={size}
-					height={size}
-					size={AppIconSize.CUSTOM}
-					onMouseEnter={onHover(starNumber)}
-					onMouseLeave={onLeave}
-					onClick={onClick(starNumber)}
-					data-testid={datTestId + starNumber}
-					data-selected={isSelected}
-				/>
-			})
-		}
-	</HStack>
+	return (
+		<HStack className={classNames(cls.StarRating, {}, [className])} justify='center'>
+			{stars.map(starNumber => {
+				return (
+					<AppIcon
+						key={starNumber}
+						Svg={StarIcon}
+						className={classNames(
+							cls.starIcon,
+							{
+								[cls.hovered]: currentStarsCount >= starNumber,
+								[cls.selected]: isSelected,
+							},
+							[]
+						)}
+						width={size}
+						height={size}
+						size={AppIconSize.CUSTOM}
+						onMouseEnter={onHover(starNumber)}
+						onMouseLeave={onLeave}
+						onClick={onClick(starNumber)}
+						data-testid={datTestId + starNumber}
+						data-selected={isSelected}
+					/>
+				)
+			})}
+		</HStack>
+	)
 })

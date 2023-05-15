@@ -5,12 +5,12 @@ import { PageWrapper } from '@/widgets/PageWrapper'
 const MainPage: FC = memo(() => {
 	const { t } = useTranslation('main')
 
-	return <PageWrapper
-		data-testid='main-page'
-	>
-		<h1>{t('page-title')}</h1>
-		{t('page-subtitle')}
-	</PageWrapper>
+	return (
+		<PageWrapper data-testid='main-page'>
+			<h1>{t('page-title')}</h1>
+			{t('page-subtitle')}
+		</PageWrapper>
+	)
 })
 
 export default MainPage

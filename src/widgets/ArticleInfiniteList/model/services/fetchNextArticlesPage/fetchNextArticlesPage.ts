@@ -4,11 +4,7 @@ import { getHasMore, getIsLoading, getPage } from '../../selectors/articlesPageS
 import { articlesInfiniteListActions } from '../../slice/articlesInfiniteListSlice'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 
-export const fetchNextArticlesPage = createAsyncThunk<
-	void,
-	void,
-	ThunkApiConfigType<string>
->(
+export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkApiConfigType<string>>(
 	'articlesInfiniteList/fetchNextArticlesPage',
 	async (_, thunkAPI) => {
 		const { extra, rejectWithValue, getState } = thunkAPI

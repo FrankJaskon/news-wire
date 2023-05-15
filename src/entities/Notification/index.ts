@@ -1,7 +1,3 @@
-export type {
-	NotificationType
-} from './model/types/notifications'
+export type { NotificationType } from './model/types/notifications'
 
-export {
-	NotificationList
-} from './ui/NotificationList/NotificationList'
+export { NotificationList } from './ui/NotificationList/NotificationList'

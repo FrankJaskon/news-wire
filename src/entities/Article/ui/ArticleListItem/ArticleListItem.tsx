@@ -33,30 +33,31 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 		article,
 		view,
 		target,
-		'data-testid': dataTestId = 'articles-list-item'
+		'data-testid': dataTestId = 'articles-list-item',
 	} = props
 
 	const navigate = useNavigate()
 	const { t } = useTranslation('article')
 
-	const ArticleTitle = useMemo(() => <Text
-		className={cls.title}
-		title={article?.title}
-		titleHue={TextColor.SECONDARY}
-	/>, [article?.title])
+	const ArticleTitle = useMemo(
+		() => <Text className={cls.title} title={article?.title} titleHue={TextColor.SECONDARY} />,
+		[article?.title]
+	)
 
-	const ArticleTypes = useMemo(() => <Text
-		className={cls.types}
-		content={article?.type.join(', ')}
-	/>, [article?.type])
+	const ArticleTypes = useMemo(
+		() => <Text className={cls.types} content={article?.type.join(', ')} />,
+		[article?.type]
+	)
 
-	const Views = useMemo(() => <div className={cls.viewWrapper}>
-		<Text
-			className={cls.views}
-			content={String(article?.views)}
-		/>
-		<AppIcon Svg={ViewsIcon} />
-	</div>, [article?.views])
+	const Views = useMemo(
+		() => (
+			<div className={cls.viewWrapper}>
+				<Text className={cls.views} content={String(article?.views)} />
+				<AppIcon Svg={ViewsIcon} />
+			</div>
+		),
+		[article?.views]
+	)
 
 	const handleClick = useCallback(() => {
 		navigate(String(article?.id))
@@ -68,9 +69,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 				className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
 				data-testid={`${dataTestId}-grid`}
 			>
-				<VStack
-					gap='4'
-				>
+				<VStack gap='4'>
 					<AppLink
 						className={classNames(cls.imgWrapper, {})}
 						hover={false}
@@ -81,50 +80,39 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 							className={cls.img}
 							src={article?.img}
 							alt={article?.title}
-							fallback={<Skeleton
-								height={200}
-								width={200}
-							/>}
+							fallback={<Skeleton height={200} width={200} />}
 						/>
-						<Text
-							className={cls.date}
-							content={article?.createdAt}
-						/>
+						<Text className={cls.date} content={article?.createdAt} />
 					</AppLink>
-					<HStack
-						justify='between'
-					>
+					<HStack justify='between'>
 						{ArticleTypes}
 						{Views}
 					</HStack>
-					<AppLink to={String(article?.id)}>
-						{ArticleTitle}
-					</AppLink>
+					<AppLink to={String(article?.id)}>{ArticleTitle}</AppLink>
 				</VStack>
 			</AppCard>
 		)
 	}
 
-	const textBlockProps = article?.blocks.find(block => block.type === BlockType.TEXT) as TextBlockType
+	const textBlockProps = article?.blocks.find(
+		block => block.type === BlockType.TEXT
+	) as TextBlockType
 
 	return (
 		<AppCard
 			className={classNames(cls.ArticleListItem, {}, [className, view && cls[view]])}
 			data-testid={`${dataTestId}-list`}
 		>
-			<VStack
-				gap='8'
-			>
-				<HStack
-					justify='between'
-				>
+			<VStack gap='8'>
+				<HStack justify='between'>
 					<AppLink
 						className={classNames(cls.userInfo, {})}
-						to={(article?.profile.id && getProfileRoute(article?.profile.id)) || undefined}
+						to={
+							(article?.profile.id && getProfileRoute(article?.profile.id)) ||
+							undefined
+						}
 					>
-						<HStack
-							gap='8'
-						>
+						<HStack gap='8'>
 							<Avatar
 								size={40}
 								src={article?.profile?.avatar}
@@ -139,40 +127,23 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					</AppLink>
 					<Text content={article?.createdAt} />
 				</HStack>
-				<VStack
-					gap='4'
-				>
-					<AppLink
-						className={cls.link}
-						to={String(article?.id)}
-					>
+				<VStack gap='4'>
+					<AppLink className={cls.link} to={String(article?.id)}>
 						{ArticleTitle}
 					</AppLink>
 					{ArticleTypes}
 				</VStack>
-				<AppLink
-					className={cls.link}
-					to={String(article?.id)}
-				>
+				<AppLink className={cls.link} to={String(article?.id)}>
 					<AppImage
 						className={cls.img}
 						src={article?.img}
-						fallback={<Skeleton
-							height={200}
-						/>}
+						fallback={<Skeleton height={200} />}
 						alt={article?.title}
 					/>
 				</AppLink>
-				<ArticleTextBlock
-					className={cls.textContent}
-					{...textBlockProps}
-				/>
-				<HStack
-					justify='between'
-				>
-					<AppButton onClick={handleClick}>
-						{t('read-more-btn')}
-					</AppButton>
+				<ArticleTextBlock className={cls.textContent} {...textBlockProps} />
+				<HStack justify='between'>
+					<AppButton onClick={handleClick}>{t('read-more-btn')}</AppButton>
 					{Views}
 				</HStack>
 			</VStack>

@@ -8,7 +8,7 @@ import { ExtraArgumentType, StateSchema } from './StateSchema'
 
 export const createReduxStore = (
 	initialState?: StateSchema,
-	asyncReducers?: ReducersMapObject<StateSchema>,
+	asyncReducers?: ReducersMapObject<StateSchema>
 ) => {
 	const rootReducer: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
@@ -27,11 +27,12 @@ export const createReduxStore = (
 		reducer: reducerManager.reduce,
 		devTools: __iS_DEV__,
 		preloadedState: initialState,
-		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-			thunk: {
-				extraArgument: extraArg
-			}
-		}).concat(rtkApi.middleware),
+		middleware: getDefaultMiddleware =>
+			getDefaultMiddleware({
+				thunk: {
+					extraArgument: extraArg,
+				},
+			}).concat(rtkApi.middleware),
 	})
 
 	// @ts-ignore

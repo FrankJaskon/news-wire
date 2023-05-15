@@ -6,8 +6,8 @@ describe('getLoadingError', () => {
 	test('Should return loadingError', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
-				loadingError: ValidateProfileError.NO_DATA
-			}
+				loadingError: ValidateProfileError.NO_DATA,
+			},
 		}
 		expect(getLoadingError(initialState as StateSchema)).toBe(ValidateProfileError.NO_DATA)
 	})

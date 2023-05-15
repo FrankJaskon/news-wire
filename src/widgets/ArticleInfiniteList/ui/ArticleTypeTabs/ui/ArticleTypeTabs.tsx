@@ -16,20 +16,18 @@ interface FilterTabsType extends TabItem {
 }
 
 export const ArticleTypeTabs: FC<ArticleTypeTabsProps> = memo((props: ArticleTypeTabsProps) => {
-	const {
-		className,
-		filter,
-		onTabClick
-	} = props
+	const { className, filter, onTabClick } = props
 
 	const { t } = useTranslation('article')
 
-
-	const tabs: FilterTabsType[] = useMemo(() => Object.values(ArticlesTypes)
-		.map(value => ({
-			value,
-			content: t(`filter.${value}`)
-		})), [t])
+	const tabs: FilterTabsType[] = useMemo(
+		() =>
+			Object.values(ArticlesTypes).map(value => ({
+				value,
+				content: t(`filter.${value}`),
+			})),
+		[t]
+	)
 
 	return (
 		<Tabs

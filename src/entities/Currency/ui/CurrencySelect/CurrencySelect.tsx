@@ -13,34 +13,41 @@ interface CurrencySelectProps {
 }
 
 export const CurrencySelect: FC<CurrencySelectProps> = memo((props: CurrencySelectProps) => {
-	const {
-		value,
-		onChange,
-		readonly,
-		'data-testid': dataTestId = 'currency-select'
-	} = props
+	const { value, onChange, readonly, 'data-testid': dataTestId = 'currency-select' } = props
 	const { t } = useTranslation()
 
-	const currencyOptionList: SelectOption<CurrencyType>[] = useMemo(() => Object.values(Currency).map(item => (
-		{ label: t(`currency.${item}`), value: item }
-	)), [t])
+	const currencyOptionList: SelectOption<CurrencyType>[] = useMemo(
+		() =>
+			Object.values(Currency).map(item => ({
+				label: t(`currency.${item}`),
+				value: item,
+			})),
+		[t]
+	)
 
-	const selected = useMemo(() => currencyOptionList.find((item) => item.value === value),
-		[value, currencyOptionList])
+	const selected = useMemo(
+		() => currencyOptionList.find(item => item.value === value),
+		[value, currencyOptionList]
+	)
 
-	const handleOnChange = useCallback((value: SelectOption<CurrencyType>) => {
-		onChange?.(value.value)
-	}, [onChange])
+	const handleOnChange = useCallback(
+		(value: SelectOption<CurrencyType>) => {
+			onChange?.(value.value)
+		},
+		[onChange]
+	)
 
-	return <VStack>
-		<AppLabel htmlFor='currency-select'>{t('choose-currency')}</AppLabel>
-		<Select
-			name={'currency-select'}
-			onChange={handleOnChange}
-			value={selected}
-			options={currencyOptionList}
-			readonly={readonly}
-			data-testid={dataTestId}
-		/>
-	</VStack>
+	return (
+		<VStack>
+			<AppLabel htmlFor='currency-select'>{t('choose-currency')}</AppLabel>
+			<Select
+				name={'currency-select'}
+				onChange={handleOnChange}
+				value={selected}
+				options={currencyOptionList}
+				readonly={readonly}
+				data-testid={dataTestId}
+			/>
+		</VStack>
+	)
 })

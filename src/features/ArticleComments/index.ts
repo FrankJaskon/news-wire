@@ -1,11 +1,5 @@
-export {
-	ArticleComments
-} from './ui/ArticleComments/ArticleComments'
+export { ArticleComments } from './ui/ArticleComments/ArticleComments'
 
-export type {
-	ArticleDetailsCommentsScheme
-} from './model/types/articleDetailsCommentsScheme'
+export type { ArticleDetailsCommentsScheme } from './model/types/articleDetailsCommentsScheme'
 
-export {
-	articleDetailsCommentsReducer
-} from './model/slice/articleDetailsCommentsSlice'
+export { articleDetailsCommentsReducer } from './model/slice/articleDetailsCommentsSlice'

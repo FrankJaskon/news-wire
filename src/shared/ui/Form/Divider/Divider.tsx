@@ -6,7 +6,7 @@ interface DividerProps {
 	className?: string
 }
 
-export const Divider: FC<DividerProps> = (props) => {
+export const Divider: FC<DividerProps> = props => {
 	const { className } = props
 
 	return <div className={classNames(cls.Divider, {}, [className])} />

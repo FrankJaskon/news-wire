@@ -1,3 +1,3 @@
-import React from 'react'
+import { lazy } from 'react'
 
-export const LazyAddNewComment = React.lazy(() => import('./AddNewComment'))
+export const LazyAddNewComment = lazy(() => import('./AddNewComment'))

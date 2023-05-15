@@ -2,7 +2,7 @@ import { RatingType } from '@/entities/Rating'
 import { rtkApi } from '@/shared/api/rtkApi'
 
 interface GetProfileRatingProps {
-	userId?: number,
+	userId?: number
 	profileId?: number
 }
 
@@ -11,21 +11,21 @@ interface RateProfileProps extends GetProfileRatingProps {
 }
 
 const profileRatingApi = rtkApi.injectEndpoints({
-	endpoints: (build) => ({
+	endpoints: build => ({
 		getProfileRating: build.query<RatingType[], GetProfileRatingProps>({
 			query: ({ userId, profileId }) => ({
 				url: '/profile-ratings',
 				params: {
 					userId,
-					profileId
-				}
+					profileId,
+				},
 			}),
 		}),
 		rateProfile: build.mutation<null, RateProfileProps>({
-			query: (args) => ({
+			query: args => ({
 				url: '/profile-ratings',
 				method: 'POST',
-				body: args
+				body: args,
 			}),
 		}),
 	}),

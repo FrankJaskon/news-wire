@@ -8,9 +8,9 @@ export default {
 	argTypes: {},
 } as Meta<typeof AppCard>
 
-const Template: StoryFn<typeof AppCard> = (args) => <AppCard { ...args } />
+const Template: StoryFn<typeof AppCard> = args => <AppCard {...args} />
 
 export const Basic: StoryFn<AppCardProps> = Template.bind({})
 Basic.args = {
-	children: <p>Some text</p>
+	children: <p>Some text</p>,
 }

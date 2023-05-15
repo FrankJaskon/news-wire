@@ -5,7 +5,7 @@ export const LoginErrors = {
 	INCORRECT_DATA: 'incorrect-data',
 	BAD_REQUEST: 'bad-request',
 	UNEXPECTED: 'unexpected',
-	EXIST: 'exist'
+	EXIST: 'exist',
 } as const
 
 type LoginErrorsType = ValueOf<typeof LoginErrors>

@@ -2,12 +2,12 @@ import React, { ErrorInfo, ReactNode, Suspense } from 'react'
 import { ErrorPage } from '@/pages/ErrorPage'
 
 interface Props {
-	children?: ReactNode;
-  }
+	children?: ReactNode
+}
 
-  interface State {
-	hasError: boolean;
-  }
+interface State {
+	hasError: boolean
+}
 
 export class ErrorBoundary extends React.Component<Props, State> {
 	constructor(props: Props) {
@@ -28,7 +28,11 @@ export class ErrorBoundary extends React.Component<Props, State> {
 	render() {
 		if (this.state.hasError) {
 			// You can render any custom fallback UI
-			return <Suspense fallback=''><ErrorPage /></Suspense>
+			return (
+				<Suspense fallback=''>
+					<ErrorPage />
+				</Suspense>
+			)
 		}
 
 		return this.props.children

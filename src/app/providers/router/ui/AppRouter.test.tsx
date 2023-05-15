@@ -11,7 +11,7 @@ describe('AppRouter', () => {
 		RenderWithMocks(<AppRouter />, [
 			MockBrowserRouter(getAboutRoute()),
 			MockStore({}),
-			MockTranslation
+			MockTranslation,
 		])
 
 		const page = await screen.findByTestId('about-page')
@@ -21,7 +21,7 @@ describe('AppRouter', () => {
 		RenderWithMocks(<AppRouter />, [
 			MockBrowserRouter(getProfileRoute(1)),
 			MockStore({}),
-			MockTranslation
+			MockTranslation,
 		])
 
 		const page = await screen.findByTestId('main-page')
@@ -34,22 +34,17 @@ describe('AppRouter', () => {
 				user: {
 					_initialized: true,
 					authData: {
-						id: 1
-					}
-				}
+						id: 1,
+					},
+				},
 			}),
-			MockTranslation
+			MockTranslation,
 		])
-
-		const page = await screen.findByTestId('profile-page')
-		expect(page).toBeInTheDocument()
+		const profilePage = await screen.findByTestId('profile-page')
+		expect(profilePage).toBeInTheDocument()
 	})
 	test('NotFound page should be rendered', async () => {
-		RenderWithMocks(<AppRouter />, [
-			MockBrowserRouter('/test'),
-			MockStore({}),
-			MockTranslation
-		])
+		RenderWithMocks(<AppRouter />, [MockBrowserRouter('/test'), MockStore({}), MockTranslation])
 
 		const page = await screen.findByTestId('not-found-page')
 		expect(page).toBeInTheDocument()
@@ -58,7 +53,7 @@ describe('AppRouter', () => {
 		RenderWithMocks(<AppRouter />, [
 			MockBrowserRouter(getAdminRoute()),
 			MockStore({}),
-			MockTranslation
+			MockTranslation,
 		])
 
 		const page = await screen.findByTestId('forbidden-page')
@@ -72,11 +67,11 @@ describe('AppRouter', () => {
 					_initialized: true,
 					authData: {
 						id: 1,
-						roles: ['USER']
-					}
-				}
+						roles: ['USER'],
+					},
+				},
 			}),
-			MockTranslation
+			MockTranslation,
 		])
 
 		const page = await screen.findByTestId('forbidden-page')
@@ -90,11 +85,11 @@ describe('AppRouter', () => {
 					_initialized: true,
 					authData: {
 						id: 1,
-						roles: ['ADMIN', 'MANAGER']
-					}
-				}
+						roles: ['ADMIN', 'MANAGER'],
+					},
+				},
 			}),
-			MockTranslation
+			MockTranslation,
 		])
 
 		const page = await screen.findByTestId('admin-page')

@@ -13,42 +13,38 @@ interface NotificationItemProps {
 	notification: NotificationType
 }
 
-export const NotificationItem: FC<NotificationItemProps> = (props) => {
+export const NotificationItem: FC<NotificationItemProps> = props => {
 	const {
 		className,
-		notification: {
-			description,
-			title,
-			href
-		}
+		notification: { description, title, href },
 	} = props
 
-	let content: ReactNode = useMemo(() => <AppCard
-		variant={CardVariant.LIGHT}
-	>
-		<Text
-			title={title}
-			content={description}
-			contentHue={TextColor.DARK}
-			size={TextSize.S}
-			nowrap
-		/>
-	</AppCard>, [title, description])
+	let content: ReactNode = useMemo(
+		() => (
+			<AppCard variant={CardVariant.LIGHT}>
+				<Text
+					title={title}
+					content={description}
+					contentHue={TextColor.DARK}
+					size={TextSize.S}
+					nowrap
+				/>
+			</AppCard>
+		),
+		[title, description]
+	)
 
 	if (href) {
-		content = <AppLink
-			to={href}
-			variant={AppLinkVariant.CLEAR}
-			target='_blank'
-		>
-			{content}
-		</AppLink>
+		content = (
+			<AppLink to={href} variant={AppLinkVariant.CLEAR} target='_blank'>
+				{content}
+			</AppLink>
+		)
 	}
 
-	return <VStack
-		className={classNames(cls.NotificationItem, {}, [className])}
-		gap='12'
-	>
-		{content}
-	</VStack>
+	return (
+		<VStack className={classNames(cls.NotificationItem, {}, [className])} gap='12'>
+			{content}
+		</VStack>
+	)
 }

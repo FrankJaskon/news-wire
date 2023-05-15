@@ -13,41 +13,35 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import cls from './ArticleDetailsPage.module.scss'
 
 export interface ArticleDetailsPageProps {
-	className ?: string
+	className?: string
 }
 
-const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
-	const {
-		className
-	} = props
+const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
+	const { className } = props
 
 	const { t } = useTranslation('article')
 	const id = Number(useParams().id)
 
 	if (!id && __PROJECT__ !== 'storybook') {
-		<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+		;<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
 			<Text variant='error' content={t('details.error.article-not-found')} />
 		</div>
 	}
 
-	return <PageWrapper
-		className={classNames(cls.ArticleDetailsPage, {}, [className])}
-		data-testid='article-details-page'
-	>
-		<VStack
-			gap='24'
+	return (
+		<PageWrapper
+			className={classNames(cls.ArticleDetailsPage, {}, [className])}
+			data-testid='article-details-page'
 		>
-			<ArticleDetailsPageHeader
-				articleId={id}
-			/>
-			<ArticleDetails id={id} />
-			<ArticleRating
-				articleId={id}
-			/>
-			<ArticleRecommendationsList />
-			<ArticleComments />
-		</VStack>
-	</PageWrapper>
+			<VStack gap='24'>
+				<ArticleDetailsPageHeader articleId={id} />
+				<ArticleDetails id={id} />
+				<ArticleRating articleId={id} />
+				<ArticleRecommendationsList />
+				<ArticleComments />
+			</VStack>
+		</PageWrapper>
+	)
 }
 
 export default memo(ArticleDetailsPage)

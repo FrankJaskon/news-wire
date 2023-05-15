@@ -14,34 +14,40 @@ interface CountrySelectProps {
 }
 
 export const CountrySelect: FC<CountrySelectProps> = memo((props: CountrySelectProps) => {
-	const {
-		value,
-		onChange,
-		readonly,
-	} = props
+	const { value, onChange, readonly } = props
 
 	const { t } = useTranslation()
 
+	const countryOptionList: SelectOption<CountryType>[] = useMemo(
+		() =>
+			Object.values(Country).map(item => ({
+				label: t(`country.${item}`),
+				value: item,
+			})),
+		[t]
+	)
 
-	const countryOptionList: SelectOption<CountryType>[] = useMemo(() => Object.values(Country).map(item => (
-		{ label: t(`country.${item}`), value: item }
-	)), [t])
+	const selected = useMemo(
+		() => countryOptionList.find(item => item.value === value),
+		[value, countryOptionList]
+	)
 
-	const selected = useMemo(() => countryOptionList.find((item) => item.value === value),
-		[value, countryOptionList])
+	const handleOnChange = useCallback(
+		(value: SelectOption<CountryType>) => {
+			onChange?.(value.value)
+		},
+		[onChange]
+	)
 
-	const handleOnChange = useCallback((value: SelectOption<CountryType>) => {
-		onChange?.(value.value)
-	}, [onChange])
-
-	return <VStack>
-		<AppLabel htmlFor='country-select'>{t('choose-country')}</AppLabel>
-		<Select
-			onChange={handleOnChange}
-			value={selected}
-			options={countryOptionList}
-			readonly={readonly}
-		/>
-	</VStack>
-
+	return (
+		<VStack>
+			<AppLabel htmlFor='country-select'>{t('choose-country')}</AppLabel>
+			<Select
+				onChange={handleOnChange}
+				value={selected}
+				options={countryOptionList}
+				readonly={readonly}
+			/>
+		</VStack>
+	)
 })

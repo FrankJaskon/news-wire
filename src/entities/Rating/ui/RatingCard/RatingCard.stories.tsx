@@ -7,23 +7,23 @@ export default {
 	component: RatingCard,
 	argTypes: {},
 	args: {},
-	decorators: []
+	decorators: [],
 } as Meta<typeof RatingCard>
 
-const Template: StoryFn<typeof RatingCard> = (args) => <RatingCard {...args} />
+const Template: StoryFn<typeof RatingCard> = args => <RatingCard {...args} />
 
 export const Basic: StoryFn<RatingCardProps> = Template.bind({})
 Basic.args = {
-	title: 'Some title'
+	title: 'Some title',
 }
 
 export const Small: StoryFn<RatingCardProps> = Template.bind({})
 Small.args = {
-	variant: RatingVariant.SMALL
+	variant: RatingVariant.SMALL,
 }
 
 export const Large: StoryFn<RatingCardProps> = Template.bind({})
 Large.args = {
 	variant: RatingVariant.LARGE,
-	title: 'Some title'
+	title: 'Some title',
 }

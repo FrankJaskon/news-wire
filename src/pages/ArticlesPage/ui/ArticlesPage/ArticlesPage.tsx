@@ -1,18 +1,21 @@
 import { FC, memo, useCallback, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
-import { LazyReducerLoader, ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import {
+	LazyReducerLoader,
+	ReducerList,
+} from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { VStack } from '@/shared/ui/Stack'
 import {
 	ArticleInfiniteList,
 	articlesInfiniteListReducer,
 	fetchNextArticlesPage,
-	getError
+	getError,
 } from '@/widgets/ArticleInfiniteList'
 import { PageWrapper } from '@/widgets/PageWrapper'
 
 const reducers: ReducerList = {
-	articlesInfiniteList: articlesInfiniteListReducer
+	articlesInfiniteList: articlesInfiniteListReducer,
 }
 
 const ArticlesPage: FC = () => {
@@ -26,25 +29,23 @@ const ArticlesPage: FC = () => {
 		}
 	}, [dispatch, error])
 
-	return <LazyReducerLoader
-		reducers={reducers}
-		removeAfterUnmount={false}
-		setIsReducerMounted={setIsReducerMounted}
-	>
-		<PageWrapper
-			onScrollEnd={onLoadNextPart}
-			watchedScroll={true}
-			data-testid='articles-page'
+	return (
+		<LazyReducerLoader
+			reducers={reducers}
+			removeAfterUnmount={false}
+			setIsReducerMounted={setIsReducerMounted}
 		>
-			<VStack
-				gap='16'
+			<PageWrapper
+				onScrollEnd={onLoadNextPart}
+				watchedScroll={true}
+				data-testid='articles-page'
 			>
-				<ArticleInfiniteList
-					isReducerMounted={isReducerMounted}
-				/>
-			</VStack>
-		</PageWrapper>
-	</LazyReducerLoader>
+				<VStack gap='16'>
+					<ArticleInfiniteList isReducerMounted={isReducerMounted} />
+				</VStack>
+			</PageWrapper>
+		</LazyReducerLoader>
+	)
 }
 
 export default memo(ArticlesPage)

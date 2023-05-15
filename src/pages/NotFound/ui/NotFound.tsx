@@ -13,14 +13,12 @@ export const NotFound: FC<NotFoundProps> = memo((props: NotFoundProps) => {
 	const { className } = props
 	const { t } = useTranslation()
 
-	return <PageWrapper
-		className={classNames(cls.NotFound, {}, [className])}
-		data-testid='not-found-page'
-	>
-		<Text
-			variant={TextVariant.ERROR}
-			size={TextSize.L}
-			content={t('not-found')}
-		/>
-	</PageWrapper>
+	return (
+		<PageWrapper
+			className={classNames(cls.NotFound, {}, [className])}
+			data-testid='not-found-page'
+		>
+			<Text variant={TextVariant.ERROR} size={TextSize.L} content={t('not-found')} />
+		</PageWrapper>
+	)
 })

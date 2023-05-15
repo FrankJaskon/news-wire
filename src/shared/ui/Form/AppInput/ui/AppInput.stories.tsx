@@ -7,24 +7,21 @@ export default {
 	title: 'shared/Form/AppInput',
 	component: AppInput,
 	args: {
-		value: 'Test'
-	}
+		value: 'Test',
+	},
 } as Meta<typeof AppInput>
 
-const Template: StoryFn<typeof AppInput> = (args) => <AppInput {...args} />
+const Template: StoryFn<typeof AppInput> = args => <AppInput {...args} />
 
 export const Basic: StoryFn<AppInputProps> = Template.bind({})
-Basic.args = {
-}
+Basic.args = {}
 
 export const BasicDark: StoryFn<AppInputProps> = Template.bind({})
-BasicDark.args = {
-}
+BasicDark.args = {}
 BasicDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const BasicPurple: StoryFn<AppInputProps> = Template.bind({})
-BasicPurple.args = {
-}
+BasicPurple.args = {}
 BasicPurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
 export const Clear: StoryFn<AppInputProps> = Template.bind({})
@@ -34,15 +31,15 @@ Clear.args = {
 
 export const BasicPrimary: StoryFn<AppInputProps> = Template.bind({})
 BasicPrimary.args = {
-	color: InputColor.PRIMARY
+	color: InputColor.PRIMARY,
 }
 
 export const BasicSecondary: StoryFn<AppInputProps> = Template.bind({})
 BasicSecondary.args = {
-	color: InputColor.SECONDARY
+	color: InputColor.SECONDARY,
 }
 
 export const BasicReadonly: StoryFn<AppInputProps> = Template.bind({})
 BasicReadonly.args = {
-	readonly: true
+	readonly: true,
 }

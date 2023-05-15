@@ -3,5 +3,5 @@ export {
 	// constants
 	ButtonVariant,
 	ButtonShape,
-	ButtonSize
+	ButtonSize,
 } from './ui/AppButton'

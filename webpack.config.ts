@@ -3,24 +3,23 @@ import * as webpack from 'webpack'
 import buildWebpackConfig from './config/build/buildWebpackConfig'
 import { BuildEnv, BuildMode, BuildPaths } from './config/build/types/config'
 
-export default ( env: BuildEnv ) => {
+export default (env: BuildEnv) => {
 	const paths: BuildPaths = {
 		entry: path.resolve(__dirname, 'src', 'index.tsx'),
 		output: path.resolve(__dirname, 'dist'),
 		html: path.resolve(__dirname, 'public', 'index.html'),
-		src: path.resolve(__dirname, 'src' ),
+		src: path.resolve(__dirname, 'src'),
 		assets: {
 			svg: path.join('icons', '[name].[contenthash][ext]'),
 			images: path.join('images', '[name].[contenthash][ext]'),
 		},
 		locales: path.resolve(__dirname, 'public', 'locales'),
-		buildLocales: path.resolve(__dirname, 'dist', 'locales')
+		buildLocales: path.resolve(__dirname, 'dist', 'locales'),
 	}
 
 	const analyzed: boolean = env?.analyzed || false
 
 	const mode: BuildMode = env?.mode || 'development'
-
 
 	const PORT: number = env?.port || 3000
 
@@ -35,7 +34,7 @@ export default ( env: BuildEnv ) => {
 		apiUrl,
 		port: PORT,
 		analyzed,
-		project: 'frontend'
+		project: 'frontend',
 	})
 
 	return config

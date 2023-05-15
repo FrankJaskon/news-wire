@@ -16,12 +16,12 @@ export const ErrorPage: FC<ErrorPageProps> = memo((props: ErrorPageProps) => {
 		location.reload()
 	}, [])
 
-	return <div className={classNames(cls.ErrorPage, {}, [className, 'errorBoundary'])}>
-		<div>{t('error-page.something-went-wrong')}</div>
-		<AppButton
-			onClick={reloadPage}
-			className={cls.mt20}>
-			{t('error-page.reload')}
-		</AppButton>
-	</div>
+	return (
+		<div className={classNames(cls.ErrorPage, {}, [className, 'errorBoundary'])}>
+			<div>{t('error-page.something-went-wrong')}</div>
+			<AppButton onClick={reloadPage} className={cls.mt20}>
+				{t('error-page.reload')}
+			</AppButton>
+		</div>
+	)
 })

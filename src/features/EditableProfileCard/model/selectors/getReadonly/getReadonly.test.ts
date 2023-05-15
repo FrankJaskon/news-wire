@@ -5,8 +5,8 @@ describe('getReadonly', () => {
 	test('Should return isLoading', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
-				readonly: false
-			}
+				readonly: false,
+			},
 		}
 		expect(getReadonly(initialState as StateSchema)).toBe(false)
 	})

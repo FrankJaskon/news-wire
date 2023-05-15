@@ -9,24 +9,20 @@ export default {
 	component: CountrySelect,
 	argTypes: {},
 	args: {
-		value: Country.UKRAINE
+		value: Country.UKRAINE,
 	},
-	decorators: []
+	decorators: [],
 } as Meta<typeof CountrySelect>
 
-const Template: StoryFn<typeof CountrySelect> = (args) => <CountrySelect {...args} />
+const Template: StoryFn<typeof CountrySelect> = args => <CountrySelect {...args} />
 
 export const Basic: StoryFn = Template.bind({})
-Basic.args = {
-
-}
+Basic.args = {}
 
 export const DarkTheme: StoryFn = Template.bind({})
-DarkTheme.args = {
-}
+DarkTheme.args = {}
 DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
 
 export const PurpleTheme: StoryFn = Template.bind({})
-PurpleTheme.args = {
-}
+PurpleTheme.args = {}
 PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

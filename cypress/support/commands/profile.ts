@@ -4,7 +4,8 @@ import { getProfileRoute } from '@/shared/const/RoutPaths'
 export const updateProfile = (profile: ProfileType) => {
 	cy.getByTestId('profile-card-edit-btn').click()
 	profile.username && cy.getByTestId('profile-card-username-input').clear().type(profile.username)
-	profile.firstname && cy.getByTestId('profile-card-firstname-input').clear().type(profile.firstname)
+	profile.firstname &&
+		cy.getByTestId('profile-card-firstname-input').clear().type(profile.firstname)
 	profile.lastname && cy.getByTestId('profile-card-lastname-input').clear().type(profile.lastname)
 	profile.age && cy.getByTestId('profile-card-age-input').clear().type(`${profile.age}`)
 	cy.getByTestId('profile-card-save-btn').click()
@@ -15,7 +16,7 @@ export const resetProfile = (profileId: number) => {
 		method: 'PUT',
 		url: `http://localhost:8000${getProfileRoute(profileId)}`,
 		headers: {
-			Authorization: 'test'
+			Authorization: 'test',
 		},
 		body: {
 			id: 9963726,
@@ -26,7 +27,7 @@ export const resetProfile = (profileId: number) => {
 			country: 'USA',
 			city: 'New York',
 			username: 'testUser',
-			avatar: ''
+			avatar: '',
 		},
 	})
 }

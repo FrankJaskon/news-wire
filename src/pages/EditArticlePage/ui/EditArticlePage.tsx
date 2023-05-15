@@ -9,17 +9,11 @@ const EditArticlePage: FC = memo(() => {
 	const { id } = useParams()
 	const isEdit = Boolean(id)
 
-	return <PageWrapper>
-		{
-			isEdit
-				? <Text
-					title={t('edit-title')}
-				/>
-				: <Text
-					title={t('create-title')}
-				/>
-		}
-	</PageWrapper>
+	return (
+		<PageWrapper>
+			{isEdit ? <Text title={t('edit-title')} /> : <Text title={t('create-title')} />}
+		</PageWrapper>
+	)
 })
 
 export default EditArticlePage

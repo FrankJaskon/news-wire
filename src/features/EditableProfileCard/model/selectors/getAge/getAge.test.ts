@@ -6,9 +6,9 @@ describe('getAge', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
 				data: {
-					age: '40'
-				}
-			}
+					age: '40',
+				},
+			},
 		}
 		expect(getAge(initialState as StateSchema)).toBe('40')
 	})

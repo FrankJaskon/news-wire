@@ -4,13 +4,15 @@ import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider/testin
 
 type MockStoreType = (
 	initialState?: DeepPartial<StateSchema>,
-	asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>) => (component: ReactElement) => ReactElement
+	asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
+) => (component: ReactElement) => ReactElement
 
-export const MockStore: MockStoreType = (initialState = {}, asyncReducers) => (component: ReactNode) => {
-	return <StoreProvider
-		initialState={initialState as StateSchema}
-		asyncReducers={asyncReducers}
-	>
-		{ component }
-	</StoreProvider>
-}
+export const MockStore: MockStoreType =
+	(initialState = {}, asyncReducers) =>
+	(component: ReactNode) => {
+		return (
+			<StoreProvider initialState={initialState as StateSchema} asyncReducers={asyncReducers}>
+				{component}
+			</StoreProvider>
+		)
+	}

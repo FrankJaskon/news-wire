@@ -10,20 +10,18 @@ interface StoreProviderProps {
 	asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
 }
 
-export const StoreProvider: FC<StoreProviderProps> = (props) => {
-	const {
-		children,
-		initialState,
-		asyncReducers
-	} = props
+export const StoreProvider: FC<StoreProviderProps> = props => {
+	const { children, initialState, asyncReducers } = props
 
-	const store = useMemo(() => createReduxStore(
-		initialState as StateSchema,
-		asyncReducers as ReducersMapObject<StateSchema>,
+	const store = useMemo(
+		() =>
+			createReduxStore(
+				initialState as StateSchema,
+				asyncReducers as ReducersMapObject<StateSchema>
+			),
 		// eslint-disable-next-line
-	), [])
+		[]
+	)
 
-	return <Provider store={store}>
-		{children}
-	</Provider>
+	return <Provider store={store}>{children}</Provider>
 }

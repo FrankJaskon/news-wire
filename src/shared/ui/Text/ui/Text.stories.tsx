@@ -9,7 +9,7 @@ export default {
 	argTypes: {},
 } as Meta<typeof Text>
 
-const Template: StoryFn<typeof Text> = (args) => <Text {...args} />
+const Template: StoryFn<typeof Text> = args => <Text {...args} />
 
 export const Primary: StoryFn = Template.bind({})
 Primary.args = {
@@ -35,28 +35,28 @@ export const PrimaryStart: StoryFn = Template.bind({})
 PrimaryStart.args = {
 	title: 'Test',
 	content: 'Test test test test test test',
-	align: TextAlign.START
+	align: TextAlign.START,
 }
 
 export const PrimaryEnd: StoryFn = Template.bind({})
 PrimaryEnd.args = {
 	title: 'Test',
 	content: 'Test test test test test test',
-	align: TextAlign.END
+	align: TextAlign.END,
 }
 
 export const PrimaryCenter: StoryFn = Template.bind({})
 PrimaryCenter.args = {
 	title: 'Test',
 	content: 'Test test test test test test',
-	align: TextAlign.CENTER
+	align: TextAlign.CENTER,
 }
 
 export const PrimaryJustify: StoryFn = Template.bind({})
 PrimaryJustify.args = {
 	title: 'Test',
 	content: 'Test test test test test test',
-	align: TextAlign.JUSTIFY
+	align: TextAlign.JUSTIFY,
 }
 
 export const OnlyTitle: StoryFn = Template.bind({})
@@ -97,14 +97,14 @@ export const Error: StoryFn = Template.bind({})
 Error.args = {
 	title: 'Test',
 	content: 'Test test test test test test',
-	variant: TextVariant.ERROR
+	variant: TextVariant.ERROR,
 }
 
 export const ErrorDark: StoryFn = Template.bind({})
 ErrorDark.args = {
 	title: 'Test',
 	content: 'Test test test test test test',
-	variant: TextVariant.ERROR
+	variant: TextVariant.ERROR,
 }
 ErrorDark.decorators = [ThemeDecorator(AppThemes.DARK)]
 
@@ -112,6 +112,6 @@ export const ErrorPurple: StoryFn = Template.bind({})
 ErrorPurple.args = {
 	title: 'Test',
 	content: 'Test test test test test test',
-	variant: TextVariant.ERROR
+	variant: TextVariant.ERROR,
 }
 ErrorPurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]

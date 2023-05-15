@@ -8,14 +8,10 @@ import { geInitialized } from '../../selectors/articlesPageSelector'
 import { articlesInfiniteListActions } from '../../slice/articlesInfiniteListSlice'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 
-export const initArticlesPage = createAsyncThunk<
-	void,
-	URLSearchParams,
-	ThunkApiConfigType<string>
->(
+export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkApiConfigType<string>>(
 	'articlesInfiniteList/initArticlesPage',
 	async (searchParams, thunkAPI) => {
-		const { extra, rejectWithValue, getState } = thunkAPI
+		const { rejectWithValue, getState } = thunkAPI
 
 		const params: OptionalRecord<QueryParamsKeysType, string> = {}
 
@@ -28,17 +24,26 @@ export const initArticlesPage = createAsyncThunk<
 					}
 				})
 
-				params._order && thunkAPI.dispatch(articlesInfiniteListActions.setOrder(params._order as SortOrderType))
-				params._sort && thunkAPI.dispatch(
-					articlesInfiniteListActions.setSort(params._sort as ArticlesSortVariantType))
+				params._order &&
+					thunkAPI.dispatch(
+						articlesInfiniteListActions.setOrder(params._order as SortOrderType)
+					)
+				params._sort &&
+					thunkAPI.dispatch(
+						articlesInfiniteListActions.setSort(params._sort as ArticlesSortVariantType)
+					)
 				params._q && thunkAPI.dispatch(articlesInfiniteListActions.setSearch(params._q))
-				params.type && thunkAPI.dispatch(
-					articlesInfiniteListActions.setFilter(params.type as ArticlesTypesType))
+				params.type &&
+					thunkAPI.dispatch(
+						articlesInfiniteListActions.setFilter(params.type as ArticlesTypesType)
+					)
 
 				thunkAPI.dispatch(articlesInfiniteListActions.setInitializedValues())
-				const response = await thunkAPI.dispatch(fetchArticlesList({
-					replace: true
-				}))
+				const response = await thunkAPI.dispatch(
+					fetchArticlesList({
+						replace: true,
+					})
+				)
 				if (response.meta.requestStatus === 'rejected') {
 					return rejectWithValue('error')
 				}
@@ -47,5 +52,4 @@ export const initArticlesPage = createAsyncThunk<
 			return rejectWithValue('error')
 		}
 	}
-
 )

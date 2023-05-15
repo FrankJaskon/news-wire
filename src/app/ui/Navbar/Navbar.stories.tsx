@@ -8,10 +8,10 @@ export default {
 	title: 'widgets/Navbar',
 	component: Navbar,
 	argTypes: {},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({})],
 } as Meta<typeof Navbar>
 
-const Template: StoryFn<typeof Navbar> = (args) => <Navbar {...args} />
+const Template: StoryFn<typeof Navbar> = args => <Navbar {...args} />
 
 export const Unauthorize: StoryFn = Template.bind({})
 
@@ -22,11 +22,13 @@ export const UnauthorizePurple: StoryFn = Template.bind({})
 UnauthorizePurple.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
 export const Authorize: StoryFn = Template.bind({})
-Authorize.decorators = [StoreDecorator({
-	user: {
-		authData: {
-			id: 0,
-			username: 'Test',
-		}
-	}
-})]
+Authorize.decorators = [
+	StoreDecorator({
+		user: {
+			authData: {
+				id: 0,
+				username: 'Test',
+			},
+		},
+	}),
+]

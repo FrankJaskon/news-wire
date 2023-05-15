@@ -6,14 +6,14 @@ import cls from './AppIcon.module.scss'
 export const AppIconVariant = {
 	PRIMARY: 'primary-color',
 	SECONDARY: 'secondary-color',
-	CONTRAST: 'contrast-color'
+	CONTRAST: 'contrast-color',
 } as const
 
 export const AppIconSize = {
 	SMALL: 'small',
 	MEDIUM: 'medium',
 	LARGE: 'large',
-	CUSTOM: 'custom'
+	CUSTOM: 'custom',
 } as const
 
 export type AppIconVariantType = ValueOf<typeof AppIconVariant>
@@ -27,7 +27,7 @@ export interface AppIconProps extends React.SVGAttributes<SVGElement> {
 	'data-testid'?: string
 }
 
-export const AppIcon: FC<AppIconProps> = (props) => {
+export const AppIcon: FC<AppIconProps> = props => {
 	const {
 		className,
 		Svg,
@@ -37,15 +37,16 @@ export const AppIcon: FC<AppIconProps> = (props) => {
 		...otherProps
 	} = props
 
-	const extra: (string | undefined)[] = useMemo(() => [
-		className,
-		cls[variant],
-		cls[size]
-	], [size, variant, className])
+	const extra: (string | undefined)[] = useMemo(
+		() => [className, cls[variant], cls[size]],
+		[size, variant, className]
+	)
 
-	return <Svg
-		className={classNames(cls.AppIcon, {}, extra)}
-		data-testid={dataTestId}
-		{...otherProps}
-	/>
+	return (
+		<Svg
+			className={classNames(cls.AppIcon, {}, extra)}
+			data-testid={dataTestId}
+			{...otherProps}
+		/>
+	)
 }

@@ -11,7 +11,8 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:i18next/recommended",
         "plugin:import/recommended",
-        "plugin:storybook/recommended"
+        "plugin:storybook/recommended",
+        "prettier"
     ],
     "globals": {
         "__IS_DEV__": true,
@@ -30,8 +31,7 @@
             ],
             "rules": {
                 "i18next/no-literal-string": "off",
-                "@typescript-eslint/no-empty-function": "warn",
-                "max-len": "off"
+                "@typescript-eslint/no-empty-function": "warn"
             }
         }
     ],
@@ -83,7 +83,6 @@
         "@typescript-eslint",
         "i18next",
         "react-hooks",
-        "ulbi-tv-plugin",
         "unused-imports",
         "import"
     ],
@@ -111,30 +110,11 @@
                 }
             }
         ],
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ],
+        "indent": "off",
+        "linebreak-style": "off",
+        "quotes": "off",
+        "semi": "off",
         "react/react-in-jsx-scope": "off",
-        "max-len": [
-            "error",
-            {
-                "code": 120,
-                "ignoreComments": true
-            }
-        ],
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
             "warn",
@@ -154,39 +134,15 @@
                 ]
             }
         ],
-        "object-curly-spacing": [
-            "error",
-            "always",
-            {
-                "arraysInObjects": false,
-                "objectsInObjects": false
-            }
-        ],
         "react/display-name": "off",
         "@typescript-eslint/ban-ts-comment": "warn",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error",
         "@typescript-eslint/no-namespace": "off",
-        "ulbi-tv-plugin/path-checker": [
+        "react/jsx-max-props-per-line": [
             "error",
             {
-                "alias": "@"
-            }
-        ],
-        "ulbi-tv-plugin/public-api-imports": [
-            "error",
-            {
-                "alias": "@"
-            }
-        ],
-        "ulbi-tv-plugin/layer-imports": [
-            "error",
-            {
-                "alias": "@",
-                "ignoreImportPatterns": [
-                    "**/StoreProvider",
-                    "**/testing"
-                ]
+                "maximum": 4
             }
         ]
     }

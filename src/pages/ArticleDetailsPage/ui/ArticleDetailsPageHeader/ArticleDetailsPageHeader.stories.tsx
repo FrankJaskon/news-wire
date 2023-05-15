@@ -7,10 +7,12 @@ export default {
 	title: 'pages/ArticleDetailsPage/ArticleDetailsPageHeader',
 	component: ArticleDetailsPageHeader,
 	argTypes: {},
-	decorators: [StoreDecorator({})]
+	decorators: [StoreDecorator({})],
 } as Meta<typeof ArticleDetailsPageHeader>
 
-const Template: StoryFn<typeof ArticleDetailsPageHeader> = (args) => <ArticleDetailsPageHeader { ...args } />
+const Template: StoryFn<typeof ArticleDetailsPageHeader> = args => (
+	<ArticleDetailsPageHeader {...args} />
+)
 
 export const Basic: StoryFn<ArticleDetailsPageHeaderProps> = Template.bind({})
 Basic.args = {

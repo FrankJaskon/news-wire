@@ -5,14 +5,14 @@ describe('getError', () => {
 	test('Should return error', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			login: {
-				error: 'Error text'
-			}
+				error: 'Error text',
+			},
 		}
 		expect(getError(initialState as StateSchema)).toBe('Error text')
 	})
 	test('Should return empty string', () => {
 		const initialState: DeepPartial<StateSchema> = {
-			login: {}
+			login: {},
 		}
 		expect(getError(initialState as StateSchema)).toBe('')
 	})

@@ -4,18 +4,20 @@ import { getLoginRoute } from '@/shared/const/RoutPaths'
 import { selectByTestId } from '../../helpers/selectByTestId'
 
 export const login = (username = 'testUser', password = '123') => {
-	return cy.request({
-		method: 'POST',
-		url: `http://localhost:8000${getLoginRoute()}`,
-		body: {
-			username,
-			password
-		},
-	}).then(({ body }) => {
-		window.localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(body))
+	return cy
+		.request({
+			method: 'POST',
+			url: `http://localhost:8000${getLoginRoute()}`,
+			body: {
+				username,
+				password,
+			},
+		})
+		.then(({ body }) => {
+			window.localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(body))
 
-		return body
-	})
+			return body
+		})
 }
 
 export const getByTestId = (testId: string, extraSelector = '') => {

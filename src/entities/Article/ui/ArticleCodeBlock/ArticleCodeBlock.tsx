@@ -15,16 +15,13 @@ export interface ArticleCodeBlockProps {
 const BtnText = {
 	BASIC: 'copy-code',
 	SUCCESS: 'copy-successful',
-	ERROR: 'copy-error'
+	ERROR: 'copy-error',
 } as const
 
 type BtnTextType = ValueOf<typeof BtnText>
 
 export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = memo((props: ArticleCodeBlockProps) => {
-	const {
-		className,
-		code,
-	} = props
+	const { className, code } = props
 
 	const { t } = useTranslation()
 	const ref: MutableRefObject<NodeJS.Timeout | undefined> = useRef(undefined)
@@ -34,7 +31,8 @@ export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = memo((props: ArticleC
 	const handleCopy = () => {
 		if (codeRef.current) {
 			const codeText = codeRef.current.innerText
-			navigator.clipboard.writeText(codeText)
+			navigator.clipboard
+				.writeText(codeText)
 				.then(() => {
 					setBtnText(BtnText.SUCCESS)
 				})
@@ -57,26 +55,18 @@ export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = memo((props: ArticleC
 
 	return (
 		<VStack className={classNames(cls.ArticleCodeBlock, {}, [className])}>
-			<AppCard
-				noPaddings
-			>
+			<AppCard noPaddings>
 				<div className={cls.header}>
-					{isInProgress
-						? <AppButton className={cls.copyBtn}>
+					{isInProgress ? (
+						<AppButton className={cls.copyBtn}>{t(btnText)}</AppButton>
+					) : (
+						<AppButton className={cls.copyBtn} onClick={handleCopy}>
 							{t(btnText)}
 						</AppButton>
-						: <AppButton
-							className={cls.copyBtn}
-							onClick={handleCopy}
-						>
-							{t(btnText)}
-						</AppButton>
-					}
+					)}
 				</div>
 				<pre className={cls.code}>
-					<code ref={codeRef}>
-						{code}
-					</code>
+					<code ref={codeRef}>{code}</code>
 				</pre>
 			</AppCard>
 		</VStack>

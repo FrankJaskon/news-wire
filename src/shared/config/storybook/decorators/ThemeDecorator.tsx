@@ -11,16 +11,14 @@ interface WithUseThemeProps {
 const WithUseTheme: FC<WithUseThemeProps> = ({ children }) => {
 	const { theme } = useTheme()
 
-	return <>
-		{children}
-	</>
+	return <>{children}</>
 }
 
-export const ThemeDecorator = (theme: Theme) => (
-	(StoryComponent: Story) => (
+export const ThemeDecorator = (theme: Theme) => (StoryComponent: Story) =>
+	(
 		<ThemeProvider initialTheme={theme}>
 			<WithUseTheme>
 				<StoryComponent />
 			</WithUseTheme>
 		</ThemeProvider>
-	))
+	)

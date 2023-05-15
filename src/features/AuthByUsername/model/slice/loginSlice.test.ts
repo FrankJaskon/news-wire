@@ -6,7 +6,7 @@ describe('counter reducer', () => {
 		const initialState: DeepPartial<LoginScheme> = {
 			username: '',
 			password: '',
-			isLoading: false
+			isLoading: false,
 		}
 		it('should handle initial state', () => {
 			expect(loginReducer(undefined, { type: 'unknown' })).toEqual(initialState)
@@ -17,9 +17,11 @@ describe('counter reducer', () => {
 			username: '',
 		}
 		it('should set new username', () => {
-			expect(loginReducer(initialState as LoginScheme, loginActions.setLogin('123'))).toEqual({
-				username: '123',
-			})
+			expect(loginReducer(initialState as LoginScheme, loginActions.setLogin('123'))).toEqual(
+				{
+					username: '123',
+				}
+			)
 		})
 	}
 	{
@@ -27,7 +29,9 @@ describe('counter reducer', () => {
 			password: '',
 		}
 		it('should set new password', () => {
-			expect(loginReducer(initialState as LoginScheme, loginActions.setPassword('123'))).toEqual({
+			expect(
+				loginReducer(initialState as LoginScheme, loginActions.setPassword('123'))
+			).toEqual({
 				password: '123',
 			})
 		})

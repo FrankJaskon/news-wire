@@ -1,4 +1,4 @@
-import { userActions , UserRole } from '@/entities/User'
+import { userActions, UserRole } from '@/entities/User'
 import { LoginErrors } from '@/shared/config/errorResponse/errorResponse'
 import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
 import { loginByUsername } from './loginByUsername'
@@ -7,16 +7,18 @@ describe('loginByUsername', () => {
 	const responseData = {
 		id: 1,
 		username: 'username@',
-		roles: [UserRole.USER]
+		roles: [UserRole.USER],
 	}
 	test('Correct request', async () => {
 		const thunk = new TestAsyncThunk(loginByUsername)
-		thunk.api.post.mockReturnValue(Promise.resolve({
-			data: responseData
-		}))
+		thunk.api.post.mockReturnValue(
+			Promise.resolve({
+				data: responseData,
+			})
+		)
 		const result = await thunk.callThunk({
 			username: '123',
-			password: '123'
+			password: '123',
 		})
 
 		expect(thunk.api.post).toHaveBeenCalled()
@@ -29,12 +31,12 @@ describe('loginByUsername', () => {
 		const thunk = new TestAsyncThunk(loginByUsername)
 		thunk.api.post.mockRejectedValueOnce({
 			response: {
-				status: 403
-			}
+				status: 403,
+			},
 		})
 		const result = await thunk.callThunk({
 			username: '123',
-			password: '123'
+			password: '123',
 		})
 
 		expect(thunk.api.post).toHaveBeenCalled()

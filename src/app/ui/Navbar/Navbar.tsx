@@ -38,64 +38,47 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 	let content: ReactNode
 
 	if (authData) {
-		content = <HStack
-			justify='between'
-			align='center'
-			className={cls.linksGroup}
-		>
-			<AppLink
-				className={cls.link}
-				to={getNewArticleDetailsRoute()}
-				variant={AppLinkVariant.CUSTOM_BUTTON}
-			>
-				{t('navbar.create-article')}
-			</AppLink>
-			<HStack
-				gap='4'
-				max={false}
-				align='center'
-			>
-				{
-					isMobile
-						? <MobileNotificationDrawer />
-						: <NotificationPopup />
-				}
-				<AvatarDropdown />
-			</HStack>
-		</HStack>
-	} else {
-		content = <>
-			<div className={cls.linksGroup}>
-				<AppButton
-					className={classNames(cls.link, {}, [cls.login])}
-					variant={ButtonVariant.PRIMARY}
-					onClick={openModal}
-					noBg
+		content = (
+			<HStack justify='between' align='center' className={cls.linksGroup}>
+				<AppLink
+					className={cls.link}
+					to={getNewArticleDetailsRoute()}
+					variant={AppLinkVariant.CUSTOM_BUTTON}
 				>
-					{t('navbar.login')}
-				</AppButton>
-			</div>
-			<LoginModal
-				isOpen={isAuthModal}
-				onClose={closeModal} />
-		</>
+					{t('navbar.create-article')}
+				</AppLink>
+				<HStack gap='4' max={false} align='center'>
+					{isMobile ? <MobileNotificationDrawer /> : <NotificationPopup />}
+					<AvatarDropdown />
+				</HStack>
+			</HStack>
+		)
+	} else {
+		content = (
+			<>
+				<div className={cls.linksGroup}>
+					<AppButton
+						className={classNames(cls.link, {}, [cls.login])}
+						variant={ButtonVariant.PRIMARY}
+						onClick={openModal}
+						noBg
+					>
+						{t('navbar.login')}
+					</AppButton>
+				</div>
+				<LoginModal isOpen={isAuthModal} onClose={closeModal} />
+			</>
+		)
 	}
 
-	return <header className={classNames(cls.Navbar, {}, [className])}>
-		<HStack
-			className={cls.container}
-			align='center'
-		>
-			<AppLink
-				to={getMainRoute()}
-			>
-				<Text
-					className={cls.logo}
-					title='News wire'
-					titleHue={TextColor.LIGHT}
-				/>
-			</AppLink>
-			{content}
-		</HStack>
-	</header>
+	return (
+		<header className={classNames(cls.Navbar, {}, [className])}>
+			<HStack className={cls.container} align='center'>
+				<AppLink to={getMainRoute()}>
+					<Text className={cls.logo} title='News wire' titleHue={TextColor.LIGHT} />
+				</AppLink>
+				{content}
+			</HStack>
+		</header>
+	)
 })

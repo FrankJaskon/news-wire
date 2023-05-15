@@ -2,7 +2,7 @@ import { rtkApi } from '@/shared/api/rtkApi'
 import { NotificationType } from '../model/types/notifications'
 
 const notificationsApi = rtkApi.injectEndpoints({
-	endpoints: (build) => ({
+	endpoints: build => ({
 		getNotifications: build.query<NotificationType[], null>({
 			query: () => ({
 				url: '/notifications',

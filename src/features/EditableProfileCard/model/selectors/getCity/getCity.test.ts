@@ -6,9 +6,9 @@ describe('getCity', () => {
 		const initialState: DeepPartial<StateSchema> = {
 			profile: {
 				data: {
-					city: 'Test'
-				}
-			}
+					city: 'Test',
+				},
+			},
 		}
 		expect(getCity(initialState as StateSchema)).toBe('Test')
 	})

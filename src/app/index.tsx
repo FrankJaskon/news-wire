@@ -14,15 +14,17 @@ const App: FC = () => {
 		dispatch(userActions.initAuthData())
 	}, [dispatch])
 
-	return <div className={classNames('App', {}, [])}>
-		<Suspense fallback=''>
-			<Navbar />
-			<div className='content-wrapper'>
-				<Sidebar />
-				{isInitialized && <AppRouter />}
-			</div>
-		</Suspense>
-	</div>
+	return (
+		<div className={classNames('App', {}, [])}>
+			<Suspense fallback=''>
+				<Navbar />
+				<div className='content-wrapper'>
+					<Sidebar />
+					{isInitialized && <AppRouter />}
+				</div>
+			</Suspense>
+		</div>
+	)
 }
 
 export default App

@@ -13,51 +13,44 @@ export interface CommentsListProps {
 }
 
 export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProps) => {
-	const {
-		comments,
-		isLoading,
-		error,
-		'data-testid': dataTestId = 'comments-list'
-	} = props
+	const { comments, isLoading, error, 'data-testid': dataTestId = 'comments-list' } = props
 
 	const { t } = useTranslation('comment')
 
-	const renderComments = useMemo(() => comments?.map(c => (
-		<CommentCard
-			key={c.id}
-			isLoading={isLoading}
-			comment={c}
-			data-testid={`${dataTestId}-item`}
-		/>
-	)), [comments, isLoading, dataTestId])
+	const renderComments = useMemo(
+		() =>
+			comments?.map(c => (
+				<CommentCard
+					key={c.id}
+					isLoading={isLoading}
+					comment={c}
+					data-testid={`${dataTestId}-item`}
+				/>
+			)),
+		[comments, isLoading, dataTestId]
+	)
 
 	if (error) {
-		return <VStack
-			justify='center'
-			align='center'
-		>
-			<Text content={t('error')} />
-		</VStack>
+		return (
+			<VStack justify='center' align='center'>
+				<Text content={t('error')} />
+			</VStack>
+		)
 	}
 
 	if (isLoading) {
-		return <VStack
-			gap='16'
-		>
-			<CommentCard isLoading />
-			<CommentCard isLoading />
-			<CommentCard isLoading />
-		</VStack>
+		return (
+			<VStack gap='16'>
+				<CommentCard isLoading />
+				<CommentCard isLoading />
+				<CommentCard isLoading />
+			</VStack>
+		)
 	}
 
 	return (
-		<VStack
-			gap='16'
-			data-testid={dataTestId}
-		>
-			{comments?.length
-				? renderComments
-				: <Text content={t('empty-list')} />}
+		<VStack gap='16' data-testid={dataTestId}>
+			{comments?.length ? renderComments : <Text content={t('empty-list')} />}
 		</VStack>
 	)
 })

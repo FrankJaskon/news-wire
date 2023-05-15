@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { Link , LinkProps } from 'react-router-dom'
+import { Link, LinkProps } from 'react-router-dom'
 
 import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
@@ -11,14 +11,14 @@ export const AppLinkVariant = {
 	UNDERLINED: 'underlined',
 	PRIMARY_BUTTON: 'primary_button',
 	CUSTOM_BUTTON: 'custom_button',
-	CLEAR: 'clear'
+	CLEAR: 'clear',
 } as const
 
 export type AppLinkVariantType = ValueOf<typeof AppLinkVariant>
 
 export type AppLinkProps = Omit<LinkProps, 'to'> & {
 	className?: string
-    variant?: AppLinkVariantType
+	variant?: AppLinkVariantType
 	to?: string
 	hover?: boolean
 }
@@ -30,19 +30,22 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
 		className,
 		variant = AppLinkVariant.SECONDARY,
 		hover = true,
-		...otherProps } = props
+		...otherProps
+	} = props
 
-	return <Link
-		to={to}
-		className={classNames(
-			cls.AppLink,
-			{
-				[cls.hover] : hover
-			},
-			[className, cls[variant]]
-		)}
-		{...otherProps}
-	>
-		{ children }
-	</Link>
+	return (
+		<Link
+			to={to}
+			className={classNames(
+				cls.AppLink,
+				{
+					[cls.hover]: hover,
+				},
+				[className, cls[variant]]
+			)}
+			{...otherProps}
+		>
+			{children}
+		</Link>
+	)
 })

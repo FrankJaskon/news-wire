@@ -41,7 +41,7 @@ export interface ProfileCardProps {
 	'data-testid'?: string
 }
 
-export const ProfileCard: FC<ProfileCardProps> = (props) => {
+export const ProfileCard: FC<ProfileCardProps> = props => {
 	const {
 		data,
 		isLoading,
@@ -59,16 +59,19 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 		cancelEdit,
 		saveForm,
 		canEdit,
-		'data-testid': dataTestId = 'profile-card'
+		'data-testid': dataTestId = 'profile-card',
 	} = props
 
 	const { t } = useTranslation('profile')
 
-	const onPressEscape = useCallback((e: KeyboardEvent) => {
-		if (e.key === 'Escape') {
-			cancelEdit?.()
-		}
-	}, [cancelEdit])
+	const onPressEscape = useCallback(
+		(e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				cancelEdit?.()
+			}
+		},
+		[cancelEdit]
+	)
 
 	useEffect(() => {
 		if (!readonly) {
@@ -81,226 +84,168 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	}, [readonly, onPressEscape])
 
 	if (error) {
-		return <VStack
-			justify='center'
-			align='start'
-		>
-			<Text
-				variant='error'
-				content={error}
-				size='size-l'
-			/>
-		</VStack>
+		return (
+			<VStack justify='center' align='start'>
+				<Text variant='error' content={error} size='size-l' />
+			</VStack>
+		)
 	}
 
 	if (isLoading) {
 		return <ProfileCardSkeleton />
 	}
 
-	return <form className={classNames(cls.ProfileCard, {}, [className])}>
-		<AppCard
-			data-testid={dataTestId}
-		>
-			<HStack
-				gap='24'
-				max={false}
-			>
-				<VStack
-					gap='8'
-				>
-					<AppLabel
-						variant={LabelVariant.PRIMARY}
-						htmlFor='user-username'
-					>
-						{t('card.input.username')}
-					</AppLabel>
-					<AppInput
-						colorVariant={InputColor.SECONDARY}
-						id='user-username'
-						variant={InputVariant.PRIMARY}
-						onChange={updateUsername}
-						value={data?.username ?? ''}
-						readonly={readonly}
-						data-testid='profile-card-username-input'
-					/>
-					<AppLabel
-						variant={LabelVariant.PRIMARY}
-						htmlFor='firstname'
-
-					>
-						{t('card.input.firstname')}
-					</AppLabel>
-					<AppInput
-						colorVariant={InputColor.SECONDARY}
-						id='firstname'
-						variant={InputVariant.PRIMARY}
-						onChange={updateFirstname}
-						value={data?.firstname || ''}
-						readonly={readonly}
-						data-testid='profile-card-firstname-input'
-					/>
-					<AppLabel
-						variant={LabelVariant.PRIMARY}
-						htmlFor='lastname'
-					>
-						{t('card.input.secondname')}
-					</AppLabel>
-					<AppInput
-						colorVariant={InputColor.SECONDARY}
-						id='lastname'
-						variant={InputVariant.PRIMARY}
-						onChange={updateLastname}
-						value={data?.lastname || ''}
-						readonly={readonly}
-						data-testid='profile-card-lastname-input'
-					/>
-					<HStack
-						gap='4'
-						innerWidth='evenly'
-						wrap='wrap'
-					>
-						<VStack
-							max={false}
-						>
-							<AppLabel
-								variant={LabelVariant.PRIMARY}
-								htmlFor='user-age'
-							>
-								{t('card.input.age')}
-							</AppLabel>
-							<AppInput
-								colorVariant={InputColor.SECONDARY}
-								id='user-age'
-								variant={InputVariant.PRIMARY}
-								onChange={updateAge}
-								value={data?.age}
-								readonly={readonly}
-								type='number'
-								data-testid='profile-card-age-input'
-							/>
-						</VStack>
-						<CountrySelect
-							value={data?.country}
-							onChange={updateCountry}
-							readonly={readonly}
-						/>
-						<CurrencySelect
-							value={data?.currency}
-							onChange={updateCurrency}
-							readonly={readonly}
-						/>
-					</HStack>
-					{!readonly && <>
-						<Divider />
-						<AppLabel
-							variant={LabelVariant.PRIMARY}
-							htmlFor='user-avatar'
-						>
-							{t('card.input.avatar')}
+	return (
+		<form className={classNames(cls.ProfileCard, {}, [className])}>
+			<AppCard data-testid={dataTestId}>
+				<HStack gap='24' max={false}>
+					<VStack gap='8'>
+						<AppLabel variant={LabelVariant.PRIMARY} htmlFor='user-username'>
+							{t('card.input.username')}
 						</AppLabel>
 						<AppInput
 							colorVariant={InputColor.SECONDARY}
-							id='user-avatar'
+							id='user-username'
 							variant={InputVariant.PRIMARY}
-							onChange={updateAvatar}
-							value={data?.avatar || ''}
+							onChange={updateUsername}
+							value={data?.username ?? ''}
 							readonly={readonly}
-							data-testid='profile-card-avatar-input'
+							data-testid='profile-card-username-input'
 						/>
-					</>}
-				</VStack>
-				<VStack
-					max={false}
-					gap='8'
-				>
-					<Avatar
-						src={data?.avatar}
-						size={150}
-						className={cls.avatar}
-					/>
-					{canEdit && <>
-						{readonly ?
-							<HStack
-								justify='center'
-							>
-								<AppButton
-									onClick={editForm}
-									variant={ButtonVariant.PRIMARY}
-									size={ButtonSize.S}
-									contentHue={TextColor.SECONDARY}
-									noBg
-									data-testid='profile-card-edit-btn'
-								>
-									<HStack
-										align='center'
-										justify='center'
-										gap='4'
-									>
-										<AppIcon
-											Svg={EditIcon}
-											size={AppIconSize.SMALL}
-										/>
-										{t('card.header.edit-btn')}
-									</HStack>
-								</AppButton>
-							</HStack>
-							: <VStack
-								gap='4'
-								max={false}
-							>
-								<HStack
-									justify='center'
-								>
-									<AppButton
-										onClick={cancelEdit}
-										variant={ButtonVariant.PRIMARY}
-										size={ButtonSize.S}
-										contentHue={TextColor.SECONDARY}
-										noBg
-										data-testid='profile-card-close-btn'
-									>
-										<HStack
-											align='center'
-											justify='center'
-											gap='4'
-										>
-											<AppIcon
-												Svg={CancelIcon}
-												size={AppIconSize.SMALL}
-											/>
-											{t('card.header.close-btn')}
-										</HStack>
-									</AppButton>
-								</HStack>
-								<HStack
-									justify='center'
-								>
-									<AppButton
-										onClick={saveForm}
-										variant={ButtonVariant.PRIMARY}
-										size={ButtonSize.S}
-										contentHue={TextColor.SECONDARY}
-										noBg
-										data-testid='profile-card-save-btn'
-									>
-										<HStack
-											align='center'
-											justify='center'
-											gap='4'
-										>
-											<AppIcon
-												Svg={SaveIcon}
-												size={AppIconSize.SMALL}
-											/>
-											{t('card.header.save-btn')}
-										</HStack>
-									</AppButton>
-								</HStack>
+						<AppLabel variant={LabelVariant.PRIMARY} htmlFor='firstname'>
+							{t('card.input.firstname')}
+						</AppLabel>
+						<AppInput
+							colorVariant={InputColor.SECONDARY}
+							id='firstname'
+							variant={InputVariant.PRIMARY}
+							onChange={updateFirstname}
+							value={data?.firstname || ''}
+							readonly={readonly}
+							data-testid='profile-card-firstname-input'
+						/>
+						<AppLabel variant={LabelVariant.PRIMARY} htmlFor='lastname'>
+							{t('card.input.secondname')}
+						</AppLabel>
+						<AppInput
+							colorVariant={InputColor.SECONDARY}
+							id='lastname'
+							variant={InputVariant.PRIMARY}
+							onChange={updateLastname}
+							value={data?.lastname || ''}
+							readonly={readonly}
+							data-testid='profile-card-lastname-input'
+						/>
+						<HStack gap='4' innerWidth='evenly' wrap='wrap'>
+							<VStack max={false}>
+								<AppLabel variant={LabelVariant.PRIMARY} htmlFor='user-age'>
+									{t('card.input.age')}
+								</AppLabel>
+								<AppInput
+									colorVariant={InputColor.SECONDARY}
+									id='user-age'
+									variant={InputVariant.PRIMARY}
+									onChange={updateAge}
+									value={data?.age}
+									readonly={readonly}
+									type='number'
+									data-testid='profile-card-age-input'
+								/>
 							</VStack>
-						}
-					</>}
-				</VStack>
-			</HStack>
-		</AppCard>
-	</form>
+							<CountrySelect
+								value={data?.country}
+								onChange={updateCountry}
+								readonly={readonly}
+							/>
+							<CurrencySelect
+								value={data?.currency}
+								onChange={updateCurrency}
+								readonly={readonly}
+							/>
+						</HStack>
+						{!readonly && (
+							<>
+								<Divider />
+								<AppLabel variant={LabelVariant.PRIMARY} htmlFor='user-avatar'>
+									{t('card.input.avatar')}
+								</AppLabel>
+								<AppInput
+									colorVariant={InputColor.SECONDARY}
+									id='user-avatar'
+									variant={InputVariant.PRIMARY}
+									onChange={updateAvatar}
+									value={data?.avatar || ''}
+									readonly={readonly}
+									data-testid='profile-card-avatar-input'
+								/>
+							</>
+						)}
+					</VStack>
+					<VStack max={false} gap='8'>
+						<Avatar src={data?.avatar} size={150} className={cls.avatar} />
+						{canEdit && (
+							<>
+								{readonly ? (
+									<HStack justify='center'>
+										<AppButton
+											onClick={editForm}
+											variant={ButtonVariant.PRIMARY}
+											size={ButtonSize.S}
+											contentHue={TextColor.SECONDARY}
+											noBg
+											data-testid='profile-card-edit-btn'
+										>
+											<HStack align='center' justify='center' gap='4'>
+												<AppIcon Svg={EditIcon} size={AppIconSize.SMALL} />
+												{t('card.header.edit-btn')}
+											</HStack>
+										</AppButton>
+									</HStack>
+								) : (
+									<VStack gap='4' max={false}>
+										<HStack justify='center'>
+											<AppButton
+												onClick={cancelEdit}
+												variant={ButtonVariant.PRIMARY}
+												size={ButtonSize.S}
+												contentHue={TextColor.SECONDARY}
+												noBg
+												data-testid='profile-card-close-btn'
+											>
+												<HStack align='center' justify='center' gap='4'>
+													<AppIcon
+														Svg={CancelIcon}
+														size={AppIconSize.SMALL}
+													/>
+													{t('card.header.close-btn')}
+												</HStack>
+											</AppButton>
+										</HStack>
+										<HStack justify='center'>
+											<AppButton
+												onClick={saveForm}
+												variant={ButtonVariant.PRIMARY}
+												size={ButtonSize.S}
+												contentHue={TextColor.SECONDARY}
+												noBg
+												data-testid='profile-card-save-btn'
+											>
+												<HStack align='center' justify='center' gap='4'>
+													<AppIcon
+														Svg={SaveIcon}
+														size={AppIconSize.SMALL}
+													/>
+													{t('card.header.save-btn')}
+												</HStack>
+											</AppButton>
+										</HStack>
+									</VStack>
+								)}
+							</>
+						)}
+					</VStack>
+				</HStack>
+			</AppCard>
+		</form>
+	)
 }

@@ -10,7 +10,7 @@ export default {
 	argTypes: {},
 } as Meta<typeof ViewToggler>
 
-const Template: StoryFn<typeof ViewToggler> = (args) => <ViewToggler { ...args } />
+const Template: StoryFn<typeof ViewToggler> = args => <ViewToggler {...args} />
 
 export const Basic: StoryFn<ViewTogglerProps> = Template.bind({})
 Basic.args = {}
