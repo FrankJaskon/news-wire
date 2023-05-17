@@ -14,7 +14,7 @@
 /* VARIANT */
 
 .primary {
-	background-color: var(--primary-color);
+	background: var(--primary-right-gradient);
 	color: var(--light-color);
 }
 
@@ -112,5 +112,5 @@
 /* EXTRA OPTIONS */
 
 .noBg {
-	background-color: initial;
+	background: none;
 }

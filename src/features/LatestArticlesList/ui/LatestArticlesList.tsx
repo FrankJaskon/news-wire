@@ -4,18 +4,18 @@ import { ArticleList } from '@/entities/Article'
 import classNames from '@/shared/lib/classNames/classNames'
 import { VStack } from '@/shared/ui/Stack'
 import { Text, TextSize, TextVariant } from '@/shared/ui/Text'
-import { useArticleRecommendationsList } from '../api/articleRecommendationsApi'
+import { useLatestArticlesList } from '../api/latestArticlesListApi'
 
-export interface ArticleRecommendationsListProps {
+export interface LatestArticlesListProps {
 	className?: string
 }
 
-export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = memo(
-	(props: ArticleRecommendationsListProps) => {
+export const LatestArticlesList: FC<LatestArticlesListProps> = memo(
+	(props: LatestArticlesListProps) => {
 		const { className } = props
 
 		const { t } = useTranslation(['translation', 'article'])
-		const { isLoading, isError, data: articles } = useArticleRecommendationsList(5)
+		const { isLoading, isError, data: articles } = useLatestArticlesList(10)
 
 		let content: ReactNode = useMemo(
 			() => (
@@ -41,7 +41,7 @@ export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = m
 			>
 				<VStack gap='8'>
 					<Text
-						title={t('recommendations-title', {
+						title={t('latest-articles-title', {
 							ns: 'article',
 						})}
 					/>

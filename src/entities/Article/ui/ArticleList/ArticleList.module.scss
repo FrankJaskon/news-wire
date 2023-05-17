@@ -13,3 +13,11 @@
 		gap: 30px;
 	}
 }
+
+.oneLine {
+	&.ArticleList {
+		padding-bottom: 8px;
+		overflow-x: auto;
+		grid-auto-flow: column;
+	}
+}

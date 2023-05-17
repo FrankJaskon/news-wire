@@ -1,9 +1,9 @@
 import { ValueOf } from '@/shared/types/types'
 
-export const ArticlesSortVariant = {
+export const SortVariant = {
 	VIEWS: 'views',
 	DATE: 'createdAt',
 	TITLE: 'title',
 } as const
 
-export type ArticlesSortVariantType = ValueOf<typeof ArticlesSortVariant>
+export type SortVariantType = ValueOf<typeof SortVariant>

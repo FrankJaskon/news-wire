@@ -3,13 +3,12 @@
 	display: flex;
 	gap: 10px;
 	.active {
-		background-color: var(--primary-color);
-		color: var(--light-color);
+		background: var(--primary-right-gradient);
 	}
 }
 
 .tab {
-	padding: 8px 12px;
+	padding: 4px 12px;
 	text-transform: capitalize;
 }
 

@@ -70,6 +70,55 @@
 	text-align: justify;
 }
 
+/* FONT-WEIGHT */
+
+.thick {
+	.title {
+		font-weight: var(--thick-weight);
+	}
+	.content {
+		font-weight: var(--thick-weight);
+	}
+}
+
+.normal {
+	.title {
+		font-weight: var(--normal-weight);
+	}
+	.content {
+		font-weight: var(--normal-weight);
+	}
+}
+
+.bold {
+	.title {
+		font-weight: var(--bold-weight);
+	}
+	.content {
+		font-weight: var(--bold-weight);
+	}
+}
+
+.bolder {
+	.title {
+		font-weight: var(--bolder-weight);
+	}
+	.content {
+		font-weight: var(--bolder-weight);
+	}
+}
+
+/* STYLE */
+
+.italic {
+	.title {
+		font-style: italic;
+	}
+	.content {
+		font-style: italic;
+	}
+}
+
 /* EXTRA OPTIONS */
 
 .uppercase {

@@ -11,6 +11,8 @@ interface TextProps {
 	variant?: TextVariantType
 	size?: TextSizeType
 	align?: TextAlignType
+	style?: TextStyleType
+	weight?: TextWeightType
 	titleHue?: TextColorType
 	contentHue?: TextColorType
 	titleElement?: ElementType
@@ -39,9 +41,23 @@ export const TextAlign = {
 	JUSTIFY: 'justify',
 } as const
 
+export const TextStyle = {
+	ITALIC: 'italic',
+	NORMAL: 'normal',
+} as const
+
+export const TextWeight = {
+	THICK: 'thick',
+	NORMAL: 'normal',
+	BOLD: 'bold',
+	BOLDER: 'bolder',
+} as const
+
 export type TextVariantType = ValueOf<typeof TextVariant>
 export type TextSizeType = ValueOf<typeof TextSize>
 export type TextAlignType = ValueOf<typeof TextAlign>
+export type TextStyleType = ValueOf<typeof TextStyle>
+export type TextWeightType = ValueOf<typeof TextWeight>
 export type ElementType = 'h1' | 'h2' | 'h3' | 'h4' | 'h6' | 'span' | 'div' | 'p'
 
 export const Text: FC<TextProps> = memo((props: TextProps) => {
@@ -54,6 +70,8 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		size = TextSize.M,
 		titleHue = TextColor.PRIMARY,
 		contentHue = TextColor.SECONDARY,
+		style = TextStyle.NORMAL,
+		weight = TextWeight.NORMAL,
 		titleElement = 'h3',
 		contentElement = 'p',
 		'data-testid': dataTestId = 'Text',
@@ -61,7 +79,18 @@ export const Text: FC<TextProps> = memo((props: TextProps) => {
 		transform,
 	} = props
 
-	const extra = [className, cls[variant], cls[align], cls[size], transform && cls[transform]]
+	const extra = useMemo(
+		() => [
+			className,
+			cls[variant],
+			cls[align],
+			cls[size],
+			transform && cls[transform],
+			cls[style],
+			cls[weight],
+		],
+		[className, variant, align, size, transform, style, weight]
+	)
 
 	const TitleTag = useMemo(() => titleElement, [titleElement])
 	const ContentTag = useMemo(() => contentElement, [contentElement])

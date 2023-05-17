@@ -1,6 +1,6 @@
 import { StateSchema } from '@/app/providers/StoreProvider'
 import { ViewVariant } from '@/entities/Article'
-import { ArticlesSortVariant } from '@/features/ArticlesSortSelector'
+import { SortVariant } from '@/entities/SortSelector'
 import { SortOrder } from '@/shared/types/types'
 import {
 	getIsLoading,
@@ -131,9 +131,9 @@ describe('articlesPageSelector', () => {
 		expect(
 			getSort({
 				articlesInfiniteList: {
-					sort: ArticlesSortVariant.TITLE,
+					sort: SortVariant.TITLE,
 				},
 			} as StateSchema)
-		).toBe(ArticlesSortVariant.TITLE)
+		).toBe(SortVariant.TITLE)
 	})
 })

@@ -1,12 +1,14 @@
-import { FC, memo, ReactNode, useCallback } from 'react'
+import { FC, memo, useCallback } from 'react'
+import { TextColor } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppCard } from '../../AppCard'
+import { Text } from '../../Text'
 import { TabVariant, TabVariantType } from '../model/consts'
 import cls from './Tabs.module.scss'
 
 export interface TabItem {
 	value: string
-	content: ReactNode
+	content: string
 }
 
 export interface TabsProps {
@@ -49,7 +51,10 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 					className={classNames(cls.tab, {}, [isActive(tab) && cls.active, cls[variant]])}
 					data-testid={`${dataTestId}-${tab.value}`}
 				>
-					{tab.content}
+					<Text
+						content={tab.content}
+						contentHue={isActive(tab) ? TextColor.LIGHT : undefined}
+					/>
 				</AppCard>
 			))}
 		</div>

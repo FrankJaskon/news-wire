@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
-import { ArticlesSortVariantType } from '@/features/ArticlesSortSelector'
+import { SortVariantType } from '@/entities/SortSelector'
 import { QueryParamsKeys, QueryParamsKeysType } from '@/shared/const/queryParams'
 import { SortOrderType } from '@/shared/types/types'
 import { ArticlesTypesType } from '../../../ui/ArticleTypeTabs'
@@ -30,7 +30,7 @@ export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkApi
 					)
 				params._sort &&
 					thunkAPI.dispatch(
-						articlesInfiniteListActions.setSort(params._sort as ArticlesSortVariantType)
+						articlesInfiniteListActions.setSort(params._sort as SortVariantType)
 					)
 				params._q && thunkAPI.dispatch(articlesInfiniteListActions.setSearch(params._q))
 				params.type &&

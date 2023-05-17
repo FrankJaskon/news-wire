@@ -7,6 +7,11 @@ body.dark {
 	--block-secondary-color: #ff8c00;
 	--overlay-bg-color: rgba(121 121 121 / 80%);
 	--highlighted-color: rgba(255 255 255 / 10%);
+	--second-bg-gradient-color: #202f3f;
+
+	/* GRADIENTS */
+	--primary-right-gradient: linear-gradient(to right, #333, #353535);
+	--sheet-right-gradient: linear-gradient(to right, var(--bg-color), #121e29);
 
 	/* HOVERED COLORS */
 	--primary-hovered-color: #ff8c00ee;

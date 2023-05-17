@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import { ViewVariantType } from '@/entities/Article'
-import { ArticlesSortSelector, ArticlesSortVariantType } from '@/features/ArticlesSortSelector'
+import { SortSelector, SortVariantType } from '@/entities/SortSelector'
 import { ViewToggler } from '@/features/ViewToggler'
 import { QueryParamsKeys } from '@/shared/const/queryParams'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
@@ -72,7 +72,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
 		const debouncedFetchArticles = useDebounce(fetchArticles, 500)
 
 		const changeSort = useCallback(
-			(value: ArticlesSortVariantType) => {
+			(value: SortVariantType) => {
 				dispatch(articlesInfiniteListActions.setSort(value))
 				setQueryParams(setSearchParams, QueryParamsKeys.SORT, value)
 				setFirstPage()
@@ -114,7 +114,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
 		return (
 			<VStack className={classNames('', {}, [className])} gap='8'>
 				<HStack justify='between'>
-					<ArticlesSortSelector
+					<SortSelector
 						order={order}
 						sort={sort}
 						onChangeOrder={changeOrder}

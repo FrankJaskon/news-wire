@@ -15,7 +15,7 @@ import { AppInput, InputColor, InputVariant } from '@/shared/ui/Form/AppInput'
 import { Divider } from '@/shared/ui/Form/Divider/Divider'
 import { AppLabel, LabelVariant } from '@/shared/ui/Form/Label'
 import { HStack, VStack } from '@/shared/ui/Stack'
-import { Text } from '@/shared/ui/Text'
+import { Text, TextSize } from '@/shared/ui/Text'
 import { ProfileType } from '../../model/types/profile'
 import { ProfileCardSkeleton } from '../ProfileCardSkeleton/ProfileCardSkeleton'
 import cls from './ProfileCard.module.scss'
@@ -86,7 +86,7 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 	if (error) {
 		return (
 			<VStack justify='center' align='start'>
-				<Text variant='error' content={error} size='size-l' />
+				<Text variant='error' content={error} size={TextSize.L} />
 			</VStack>
 		)
 	}

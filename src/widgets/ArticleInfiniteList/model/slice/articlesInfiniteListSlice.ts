@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { StateSchema } from '@/app/providers/StoreProvider'
 import { ArticleType, ViewVariant, ViewVariantType } from '@/entities/Article'
-import { ArticlesSortVariant, ArticlesSortVariantType } from '@/features/ArticlesSortSelector'
+import { SortVariant, SortVariantType } from '@/entities/SortSelector'
 import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from '@/shared/const/localStorage'
 import { SortOrder, SortOrderType } from '@/shared/types/types'
 import { ArticlesTypes, ArticlesTypesType } from '../../ui/ArticleTypeTabs'
@@ -28,7 +28,7 @@ const articlesInfiniteListSlice = createSlice({
 		_initialized: false,
 		search: undefined,
 		order: SortOrder.UP_DOWN,
-		sort: ArticlesSortVariant.DATE,
+		sort: SortVariant.DATE,
 		filter: ArticlesTypes.ALL,
 	}),
 	reducers: {
@@ -45,10 +45,7 @@ const articlesInfiniteListSlice = createSlice({
 		setOrder: (state: ArticleInfiniteListScheme, action: PayloadAction<SortOrderType>) => {
 			state.order = action.payload
 		},
-		setSort: (
-			state: ArticleInfiniteListScheme,
-			action: PayloadAction<ArticlesSortVariantType>
-		) => {
+		setSort: (state: ArticleInfiniteListScheme, action: PayloadAction<SortVariantType>) => {
 			state.sort = action.payload
 		},
 		setSearch: (state: ArticleInfiniteListScheme, action: PayloadAction<string>) => {

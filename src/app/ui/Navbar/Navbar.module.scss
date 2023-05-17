@@ -2,7 +2,7 @@
 	height: var(--navbar-height);
 	padding-left: 10px;
 	padding-right: 10px;
-	background-color: var(--block-primary-color);
+	background: var(--primary-right-gradient);
 	transition: background-color .2s;
 	position: relative;
 }

@@ -7,13 +7,13 @@ import { getArticleDetailsRoute, getProfileRoute } from '@/shared/const/RoutPath
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton } from '@/shared/ui/AppButton'
 import { AppCard } from '@/shared/ui/AppCard'
-import { AppIcon } from '@/shared/ui/AppIcon'
+import { AppIcon, AppIconSize, AppIconVariant } from '@/shared/ui/AppIcon'
 import { AppImage } from '@/shared/ui/AppImage'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { Avatar } from '@/shared/ui/Avatar'
 import { Skeleton } from '@/shared/ui/Skeleton'
 import { HStack, VStack } from '@/shared/ui/Stack'
-import { Text } from '@/shared/ui/Text'
+import { Text, TextSize, TextStyle, TextWeight } from '@/shared/ui/Text'
 import { BlockType, ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { ArticleType, TextBlockType, ViewVariantType } from '../../model/types/ArticleDetailsScheme'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
@@ -40,23 +40,20 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 	const { t } = useTranslation('article')
 
 	const ArticleTitle = useMemo(
-		() => <Text className={cls.title} title={article?.title} titleHue={TextColor.SECONDARY} />,
+		() => (
+			<Text
+				className={cls.title}
+				title={article?.title}
+				titleHue={TextColor.SECONDARY}
+				weight={TextWeight.BOLD}
+			/>
+		),
 		[article?.title]
 	)
 
 	const ArticleTypes = useMemo(
-		() => <Text className={cls.types} content={article?.type.join(', ')} />,
+		() => <Text className={cls.types} content={article?.type.join(', ')} size={TextSize.S} />,
 		[article?.type]
-	)
-
-	const Views = useMemo(
-		() => (
-			<div className={cls.viewWrapper}>
-				<Text className={cls.views} content={String(article?.views)} />
-				<AppIcon Svg={ViewsIcon} />
-			</div>
-		),
-		[article?.views]
 	)
 
 	const handleClick = useCallback(() => {
@@ -82,11 +79,28 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 							alt={article?.title}
 							fallback={<Skeleton height={200} width={200} />}
 						/>
-						<Text className={cls.date} content={article?.createdAt} />
+						<Text
+							className={cls.date}
+							content={article?.createdAt}
+							style={TextStyle.ITALIC}
+							size={TextSize.S}
+						/>
 					</AppLink>
 					<HStack justify='between'>
 						{ArticleTypes}
-						{Views}
+						<HStack align='center' justify='center' max={false}>
+							<Text
+								className={cls.views}
+								content={String(article?.views)}
+								style={TextStyle.ITALIC}
+								size={TextSize.S}
+							/>
+							<AppIcon
+								Svg={ViewsIcon}
+								variant={AppIconVariant.SECONDARY}
+								size={AppIconSize.SMALL}
+							/>
+						</HStack>
 					</HStack>
 					<AppLink to={String(article?.id)}>{ArticleTitle}</AppLink>
 				</VStack>
@@ -118,14 +132,10 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 								src={article?.profile?.avatar}
 								className={cls.avatar}
 							/>
-							<Text
-								content={article?.profile?.username}
-								contentHue={TextColor.PRIMARY}
-								transform='uppercase'
-							/>
+							<Text content={article?.profile?.username} weight={TextWeight.BOLD} />
 						</HStack>
 					</AppLink>
-					<Text content={article?.createdAt} />
+					<Text content={article?.createdAt} style={TextStyle.ITALIC} size={TextSize.S} />
 				</HStack>
 				<VStack gap='4'>
 					<AppLink className={cls.link} to={String(article?.id)}>
@@ -142,9 +152,17 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					/>
 				</AppLink>
 				<ArticleTextBlock className={cls.textContent} {...textBlockProps} />
-				<HStack justify='between'>
+				<HStack justify='between' align='end'>
 					<AppButton onClick={handleClick}>{t('read-more-btn')}</AppButton>
-					{Views}
+					<HStack align='center' justify='center' max={false}>
+						<Text
+							className={cls.views}
+							content={String(article?.views)}
+							style={TextStyle.ITALIC}
+							size={TextSize.S}
+						/>
+						<AppIcon Svg={ViewsIcon} variant={AppIconVariant.SECONDARY} />
+					</HStack>
 				</HStack>
 			</VStack>
 		</AppCard>

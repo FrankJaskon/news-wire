@@ -5,7 +5,7 @@ import { getArticlesRoute } from '@/shared/const/RoutPaths'
 const recommendationsApi = rtkApi.injectEndpoints({
 	endpoints: build => ({
 		getArticleRecommendationsList: build.query<ArticleType[], number>({
-			query: limit => ({
+			query: (limit: number) => ({
 				url: getArticlesRoute(),
 				params: {
 					_limit: limit,

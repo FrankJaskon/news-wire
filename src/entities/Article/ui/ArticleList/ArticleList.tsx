@@ -14,6 +14,7 @@ export interface ArticleListProps {
 	limit?: number
 	target?: HTMLAttributeAnchorTarget
 	error?: string
+	isOneLine?: boolean
 	'data-testid'?: string
 }
 
@@ -24,6 +25,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 		view = ViewVariant.GRID,
 		isLoading,
 		limit = view === ViewVariant.GRID ? 9 : 3,
+		isOneLine = false,
 		target,
 		'data-testid': datTestId = 'articles-list',
 	} = props
@@ -46,7 +48,13 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 
 	return (
 		<div
-			className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+			className={classNames(
+				cls.ArticleList,
+				{
+					[cls.oneLine]: isOneLine,
+				},
+				[className, cls[view]]
+			)}
 			data-testid={datTestId}
 		>
 			{articles && articles.length > 0 ? articles.map(renderArticle) : null}

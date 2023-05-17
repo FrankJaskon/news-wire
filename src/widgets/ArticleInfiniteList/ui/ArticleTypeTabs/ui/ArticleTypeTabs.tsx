@@ -12,7 +12,6 @@ export interface ArticleTypeTabsProps {
 
 interface FilterTabsType extends TabItem {
 	value: ArticlesTypesType
-	content: string
 }
 
 export const ArticleTypeTabs: FC<ArticleTypeTabsProps> = memo((props: ArticleTypeTabsProps) => {

@@ -30,7 +30,7 @@
 
 body {
 	font: var(--font-m);
-	background-color: var(--bg-color);
+	background: linear-gradient(to top, var(--bg-color), var(--second-bg-gradient-color));
 	color: var(--primary-color);
 	transition: background-color .4s;
 }
