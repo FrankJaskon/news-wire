@@ -4,7 +4,7 @@ import { ProfileType } from '@/entities/Profile'
 import { User, userActions } from '@/entities/User'
 import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/const/localStorage'
 import { getProfileRoute } from '@/shared/const/RoutPaths'
-import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm'
+import { getEditableProfileCardProfileForm } from '../../selectors/getEditableProfileCardProfileForm/getEditableProfileCardProfileForm'
 import { ValidateProfileError, ValidateProfileErrorType } from '../../types/ProfileScheme'
 import { validateProfile } from '../validateProfile/validateProfile'
 
@@ -20,7 +20,7 @@ export const updateProfileData = createAsyncThunk<
 >('profile/updateProfileData', async (_, thunkAPI) => {
 	const { extra, rejectWithValue, getState } = thunkAPI
 	try {
-		const formData = getProfileForm(getState())
+		const formData = getEditableProfileCardProfileForm(getState())
 		const errors: ValidateProfileErrorType[] = validateProfile(formData)
 		if (errors.length) {
 			return rejectWithValue(errors)

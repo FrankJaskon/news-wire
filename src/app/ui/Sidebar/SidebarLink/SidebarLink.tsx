@@ -1,7 +1,6 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
-import { getUserAuthData } from '@/entities/User'
+import { useUserAuthData } from '@/entities/User'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon } from '@/shared/ui/AppIcon'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
@@ -21,7 +20,7 @@ export const SidebarLink: FC<SidebarLinkProps> = memo((props: SidebarLinkProps) 
 	} = props
 
 	const { t } = useTranslation()
-	const authData = useSelector(getUserAuthData)
+	const authData = useUserAuthData()
 	const isAuth = Boolean(authData)
 
 	if (authOnly && !isAuth) {

@@ -1,6 +1,6 @@
 export type { AddNewCommentScheme } from './model/types/AddNewCommentScheme'
 
-export { getNewCommentText } from './model/selectors/newCommentSelectors'
+export { useNewCommentText, getNewCommentText } from './model/selectors/newCommentSelectors'
 
 export { addNewCommentReducer, addNewCommentActions } from './model/slices/addNewCommentSlice'
 

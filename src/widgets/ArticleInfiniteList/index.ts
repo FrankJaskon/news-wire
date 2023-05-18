@@ -9,4 +9,7 @@ export {
 
 export { fetchNextArticlesPage } from './model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 
-export { getError } from './model/selectors/articlesPageSelector'
+export {
+	useArticleInfiniteListError,
+	getArticleInfiniteListError,
+} from './model/selectors/articleInfiniteListSelector'

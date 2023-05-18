@@ -1,18 +1,17 @@
 import { useContext } from 'react'
-import { LOCAL_STORAGE_THEME_KEY } from '../../const/localStorage'
 import ThemeContext, { AppThemes, Theme } from './ThemeContext'
 
 interface UseThemeResult {
 	theme: Theme
-	toggleTheme: () => void
+	toggleTheme: (extraFunction?: ExtraFunction) => void
 }
+
+type ExtraFunction = (theme: Theme) => void
 
 const useTheme = (): UseThemeResult => {
 	const { theme, setTheme } = useContext(ThemeContext)
 
-	document.body.className = theme ?? AppThemes.LIGHT
-
-	const toggleTheme = () => {
+	const toggleTheme = (extraFunction?: ExtraFunction) => {
 		let newTheme: Theme
 		switch (theme) {
 			case AppThemes.LIGHT:
@@ -29,7 +28,7 @@ const useTheme = (): UseThemeResult => {
 		}
 		setTheme(newTheme)
 		document.body.className = theme
-		localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
+		extraFunction?.(newTheme)
 	}
 	return {
 		theme,

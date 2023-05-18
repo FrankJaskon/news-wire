@@ -1,8 +1,7 @@
 import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { RatingCard } from '@/entities/Rating'
-import { getUserAuthData } from '@/entities/User'
+import { useUserAuthData } from '@/entities/User'
 import { useProfileRating, useRateProfile } from '../api/profileRatingApi'
 
 export interface ProfileRatingProps {
@@ -13,7 +12,7 @@ export interface ProfileRatingProps {
 const ProfileRating: FC<ProfileRatingProps> = props => {
 	const { className, profileId } = props
 
-	const authData = useSelector(getUserAuthData)
+	const authData = useUserAuthData()
 	const { t } = useTranslation('profile')
 	const { data, isLoading } = useProfileRating({
 		userId: authData?.id,

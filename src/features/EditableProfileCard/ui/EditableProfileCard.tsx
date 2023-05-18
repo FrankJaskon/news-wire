@@ -1,20 +1,19 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { CountryType } from '@/entities/Country'
 import { CurrencyType } from '@/entities/Currency'
 import { ProfileCard } from '@/entities/Profile'
-import { getUserAuthData } from '@/entities/User'
+import { useUserAuthData } from '@/entities/User'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect'
 import { VStack } from '@/shared/ui/Stack'
 import { Text, TextVariant } from '@/shared/ui/Text'
-import { getIsLoading } from '../model/selectors/getIsLoading/getIsLoading'
-import { getLoadingError } from '../model/selectors/getLoadingError/getLoadingError'
-import { getProfileData } from '../model/selectors/getProfileData/getProfileData'
-import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm'
-import { getReadonly } from '../model/selectors/getReadonly/getReadonly'
-import { getValidateError } from '../model/selectors/getValidateError/getValidateError'
+import { useEditableProfileCardIsLoading } from '../model/selectors/getEditableProfileCardIsLoading/getEditableProfileCardIsLoading'
+import { useEditableProfileCardLoadingError } from '../model/selectors/getEditableProfileCardLoadingError/getEditableProfileCardLoadingError'
+import { useEditableProfileCardProfileData } from '../model/selectors/getEditableProfileCardProfileData/getEditableProfileCardProfileData'
+import { useEditableProfileCardProfileForm } from '../model/selectors/getEditableProfileCardProfileForm/getEditableProfileCardProfileForm'
+import { useEditableProfileCardReadonly } from '../model/selectors/getEditableProfileCardReadonly/getEditableProfileCardReadonly'
+import { useEditableProfileCardValidateError } from '../model/selectors/getEditableProfileCardValidateError/getEditableProfileCardValidateError'
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData'
 import { profileActions } from '../model/slice/profileSlice'
@@ -31,13 +30,13 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(
 		const { id } = props
 
 		const dispatch = useAppDispatch()
-		const formData = useSelector(getProfileForm)
-		const isLoading = useSelector(getIsLoading)
-		const validateError = useSelector(getValidateError)
-		const loadingError = useSelector(getLoadingError)
-		const readonly = useSelector(getReadonly)
-		const authData = useSelector(getUserAuthData)
-		const profileData = useSelector(getProfileData)
+		const formData = useEditableProfileCardProfileForm()
+		const isLoading = useEditableProfileCardIsLoading()
+		const validateError = useEditableProfileCardValidateError()
+		const loadingError = useEditableProfileCardLoadingError()
+		const readonly = useEditableProfileCardReadonly()
+		const authData = useUserAuthData()
+		const profileData = useEditableProfileCardProfileData()
 		const canEdit: boolean = useMemo(
 			() => Number(authData?.id) === Number(profileData?.id),
 			[authData?.id, profileData?.id]

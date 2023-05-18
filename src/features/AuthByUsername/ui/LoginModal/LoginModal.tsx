@@ -1,6 +1,5 @@
 import { FC, memo, Suspense } from 'react'
-import { useSelector } from 'react-redux'
-import { getUserAuthData } from '@/entities/User'
+import { useUserAuthData } from '@/entities/User'
 import classNames from '@/shared/lib/classNames/classNames'
 import { Loader } from '@/shared/ui/Loader'
 import { Modal } from '@/shared/ui/Modal'
@@ -15,7 +14,7 @@ export interface LoginModalProps {
 export const LoginModal: FC<LoginModalProps> = memo((props: LoginModalProps) => {
 	const { isOpen, onClose } = props
 
-	const authData = useSelector(getUserAuthData)
+	const authData = useUserAuthData()
 
 	if (authData) {
 		return null

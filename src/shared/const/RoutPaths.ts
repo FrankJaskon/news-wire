@@ -13,4 +13,5 @@ export const getNotFoundRoute = () => '*'
 
 export const getLoginRoute = () => '/login'
 export const getUsersRoute = () => '/users'
+export const getOneUserRoute = (id: number | string) => '/users/' + id
 export const getCommentsRoute = () => '/comments'

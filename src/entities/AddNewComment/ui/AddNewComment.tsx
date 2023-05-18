@@ -1,6 +1,5 @@
 import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
 import {
@@ -10,7 +9,7 @@ import {
 import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
 import { AppTextArea } from '@/shared/ui/Form/AppTextArea'
 import { VStack } from '@/shared/ui/Stack'
-import { getNewCommentText } from '../model/selectors/newCommentSelectors'
+import { useNewCommentText } from '../model/selectors/newCommentSelectors'
 import { addNewCommentActions, addNewCommentReducer } from '../model/slices/addNewCommentSlice'
 import cls from './AddNewComment.module.scss'
 
@@ -28,7 +27,7 @@ const AddNewComment: FC<AddNewCommentProps> = props => {
 	const { className, handleSubmit, 'data-testid': dataTestId = 'add-new-comment' } = props
 	const dispatch = useAppDispatch()
 	const { t } = useTranslation()
-	const text = useSelector(getNewCommentText)
+	const text = useNewCommentText()
 
 	const handleChange = useCallback(
 		(value: string) => {

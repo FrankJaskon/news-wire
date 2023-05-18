@@ -1,4 +1,5 @@
 import { ValueOf } from '@/shared/types/types'
+import { JsonSettings } from './jsonSettings'
 
 export const UserRole = {
 	ADMIN: 'ADMIN',
@@ -13,6 +14,7 @@ export interface User {
 	username: string
 	avatar?: string
 	roles: UserRoleType[]
+	jsonSettings?: JsonSettings
 }
 
 export interface UserScheme {

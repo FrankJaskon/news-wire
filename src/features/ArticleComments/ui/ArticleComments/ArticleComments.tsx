@@ -13,8 +13,8 @@ import {
 import { VStack } from '@/shared/ui/Stack'
 import { Text } from '@/shared/ui/Text'
 import {
-	getArticleDetailsCommentsError,
-	getArticleDetailsCommentsIsLoading,
+	useArticleDetailsCommentsError,
+	useArticleDetailsCommentsIsLoading,
 } from '../../model/selectors/comments'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import {
@@ -40,8 +40,8 @@ export const ArticleComments: FC<ArticleCommentsProps> = props => {
 	const { id } = useParams()
 
 	const comments = useSelector(getArticleDetailsComments.selectAll)
-	const isLoading = useSelector(getArticleDetailsCommentsIsLoading)
-	const error = useSelector(getArticleDetailsCommentsError)
+	const isLoading = useArticleDetailsCommentsIsLoading()
+	const error = useArticleDetailsCommentsError()
 
 	useInitialEffect(() => {
 		dispatch(fetchCommentsByArticleId(Number(id)))

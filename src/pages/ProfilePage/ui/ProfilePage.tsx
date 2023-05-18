@@ -22,7 +22,7 @@ const ProfilePage: FC = () => {
 	const { t } = useTranslation('profile')
 	const [isMounted, setIsMounted] = useState<boolean>(false)
 
-	if (isMounted) {
+	if (isMounted || __PROJECT__ === 'storybook') {
 		content = (
 			<PageWrapper data-testid='profile-page'>
 				<VStack gap='16'>

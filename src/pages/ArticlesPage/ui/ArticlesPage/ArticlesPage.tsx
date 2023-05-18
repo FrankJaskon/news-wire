@@ -1,5 +1,4 @@
 import { FC, memo, useCallback, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import {
 	LazyReducerLoader,
@@ -10,7 +9,7 @@ import {
 	ArticleInfiniteList,
 	articlesInfiniteListReducer,
 	fetchNextArticlesPage,
-	getError,
+	useArticleInfiniteListError,
 } from '@/widgets/ArticleInfiniteList'
 import { PageWrapper } from '@/widgets/PageWrapper'
 
@@ -20,7 +19,7 @@ const reducers: ReducerList = {
 
 const ArticlesPage: FC = () => {
 	const dispatch = useAppDispatch()
-	const error = useSelector(getError)
+	const error = useArticleInfiniteListError()
 	const [isReducerMounted, setIsReducerMounted] = useState<boolean>(false)
 
 	const onLoadNextPart = useCallback(() => {

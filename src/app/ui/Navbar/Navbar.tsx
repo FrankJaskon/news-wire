@@ -1,7 +1,6 @@
 import { FC, memo, ReactNode, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
-import { getUserAuthData } from '@/entities/User'
+import { useUserAuthData } from '@/entities/User'
 import { LoginModal } from '@/features/AuthByUsername'
 import { AvatarDropdown } from '@/features/AvatarDropdown'
 import { MobileNotificationDrawer } from '@/features/MobileNotificationDrawer'
@@ -24,7 +23,7 @@ export const Navbar: FC<NavbarProps> = memo((props: NavbarProps) => {
 	const { className } = props
 	const { t } = useTranslation()
 	const [isAuthModal, setIsAuthModal] = useState<boolean>(false)
-	const authData = useSelector(getUserAuthData)
+	const authData = useUserAuthData()
 	const isMobile = useDetectMobile()
 
 	const openModal = useCallback(() => {

@@ -1,15 +1,19 @@
-import { FC, ReactNode, memo, useMemo } from 'react'
+import { FC, ReactNode, memo, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { ArticleList } from '@/entities/Article'
+import { ArticleList, ViewVariant } from '@/entities/Article'
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { Text, TextSize, TextVariant } from '@/shared/ui/Text'
 import {
-	getError,
-	getIsLoading,
-	getLimit,
-	getView,
-} from '../../model/selectors/articlesPageSelector'
-import { getArticles } from '../../model/slice/articlesInfiniteListSlice'
+	useArticleInfiniteListError,
+	useArticleInfiniteListIsLoading,
+	useArticleInfiniteListLimit,
+	useArticleInfiniteListView,
+} from '../../model/selectors/articleInfiniteListSelector'
+import {
+	articlesInfiniteListActions,
+	getArticles,
+} from '../../model/slice/articlesInfiniteListSlice'
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
 
 export interface ArticleInfiniteListProps {
@@ -20,11 +24,18 @@ export const ArticleInfiniteList: FC<ArticleInfiniteListProps> = memo(
 	(props: ArticleInfiniteListProps) => {
 		const { isReducerMounted } = props
 		const { t } = useTranslation('article')
+		const error = useArticleInfiniteListError()
+		const isLoading = useArticleInfiniteListIsLoading()
+		const limit = useArticleInfiniteListLimit()
+		const view = useArticleInfiniteListView()
 		const articles = useSelector(getArticles.selectAll)
-		const isLoading = useSelector(getIsLoading)
-		const view = useSelector(getView)
-		const limit = useSelector(getLimit)
-		const error = useSelector(getError)
+
+		const dispatch = useAppDispatch()
+
+		useEffect(() => {
+			const limit = view === ViewVariant.GRID ? 9 : 3
+			dispatch(articlesInfiniteListActions.setLimit(limit))
+		}, [view, dispatch])
 
 		let content: ReactNode = useMemo(
 			() => (

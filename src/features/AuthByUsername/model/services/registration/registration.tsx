@@ -20,7 +20,7 @@ export const registration = createAsyncThunk<User, LoginProps, ThunkApiConfigTyp
 				throw new Error()
 			}
 			dispatch(userActions.setAuthData(response.data))
-			localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(response.data))
+			localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(response.data.id))
 
 			return response.data
 		} catch (error: any) {

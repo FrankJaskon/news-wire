@@ -39,7 +39,7 @@ export const Basic: StoryFn<LatestArticlesListProps> = Template.bind({})
 Basic.parameters = {
 	mockData: [
 		{
-			url: `${__API_URL__}${getArticlesRoute()}?_limit=3`,
+			url: `${__API_URL__}${getArticlesRoute()}?_limit=10&_sort=createdAt&_order=desc net::E`,
 			method: 'GET',
 			status: 200,
 			response: [

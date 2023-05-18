@@ -4,13 +4,13 @@ import { ArticleType } from '@/entities/Article'
 import { getArticlesRoute } from '@/shared/const/RoutPaths'
 import { ArticlesTypes } from '../../../ui/ArticleTypeTabs'
 import {
-	getFilter,
-	getLimit,
-	getOrder,
-	getPage,
-	getSearch,
-	getSort,
-} from '../../selectors/articlesPageSelector'
+	getArticleInfiniteListFilter,
+	getArticleInfiniteListLimit,
+	getArticleInfiniteListOrder,
+	getArticleInfiniteListPage,
+	getArticleInfiniteListSearch,
+	getArticleInfiniteListSort,
+} from '../../selectors/articleInfiniteListSelector'
 
 export interface FetchArticlesListProps {
 	replace?: boolean
@@ -24,12 +24,12 @@ export const fetchArticlesList = createAsyncThunk<
 	const { extra, rejectWithValue, getState } = thunkAPI
 
 	try {
-		const page = getPage(getState())
-		const limit = getLimit(getState())
-		const sort = getSort(getState())
-		const order = getOrder(getState())
-		const search = getSearch(getState())
-		const filter = getFilter(getState())
+		const filter = getArticleInfiniteListFilter(getState())
+		const limit = getArticleInfiniteListLimit(getState())
+		const order = getArticleInfiniteListOrder(getState())
+		const page = getArticleInfiniteListPage(getState())
+		const search = getArticleInfiniteListSearch(getState())
+		const sort = getArticleInfiniteListSort(getState())
 		const response = await extra.api.get<ArticleType[]>(getArticlesRoute(), {
 			params: {
 				_page: page,

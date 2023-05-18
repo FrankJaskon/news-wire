@@ -1,21 +1,25 @@
 import { FC, Suspense, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { getInitializedUser, userActions } from '@/entities/User'
+import { initUserData, useInitializedUser } from '@/entities/User'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
+import { PageLoader } from '@/widgets/PageLoader'
 import { AppRouter } from './providers/router'
 import { Navbar, Sidebar } from './ui'
 
 const App: FC = () => {
 	const dispatch = useAppDispatch()
-	const isInitialized = useSelector(getInitializedUser)
+	const isInitialized = useInitializedUser()
 
 	useEffect(() => {
-		dispatch(userActions.initAuthData())
+		dispatch(initUserData())
 	}, [dispatch])
 
+	if (!isInitialized) {
+		return <PageLoader fullHeight />
+	}
+
 	return (
-		<div className={classNames('App', {}, [])}>
+		<div className={classNames('App')}>
 			<Suspense fallback=''>
 				<Navbar />
 				<div className='content-wrapper'>

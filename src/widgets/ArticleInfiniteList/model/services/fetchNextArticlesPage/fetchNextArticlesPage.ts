@@ -1,6 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
-import { getHasMore, getIsLoading, getPage } from '../../selectors/articlesPageSelector'
+import {
+	getArticleInfiniteListHasMore,
+	getArticleInfiniteListIsLoading,
+	getArticleInfiniteListPage,
+} from '../../selectors/articleInfiniteListSelector'
 import { articlesInfiniteListActions } from '../../slice/articlesInfiniteListSlice'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 
@@ -10,9 +14,9 @@ export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkApiConfig
 		const { extra, rejectWithValue, getState } = thunkAPI
 
 		try {
-			const hasMore = getHasMore(getState())
-			const page = getPage(getState())
-			const isLoading = getIsLoading(getState())
+			const hasMore = getArticleInfiniteListHasMore(getState())
+			const isLoading = getArticleInfiniteListIsLoading(getState())
+			const page = getArticleInfiniteListPage(getState())
 
 			if (hasMore && !isLoading) {
 				thunkAPI.dispatch(articlesInfiniteListActions.setPage(page + 1))

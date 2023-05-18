@@ -1,4 +1,5 @@
 import { RouteDecorator } from '../../src/shared/config/storybook/decorators/RouteDecorator'
+import { StoreDecorator } from '../../src/shared/config/storybook/decorators/StoreDecorator'
 import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator'
 import { SuspenseDecorator } from '../../src/shared/config/storybook/decorators/SuspenseDecorator'
 import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecorator'
@@ -36,4 +37,5 @@ export const decorators = [
 	RouteDecorator,
 	ThemeDecorator(AppThemes.LIGHT),
 	SuspenseDecorator,
+	StoreDecorator({}),
 ]

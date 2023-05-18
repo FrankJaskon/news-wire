@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/const/localStorage'
+import { initUserData } from '../services/initUserData/initUserData'
+import { saveJsonSettings } from '../services/saveJsonSettings/saveJsonSettings'
 import { User, UserScheme } from '../types/UserScheme'
 
 const initialState: UserScheme = {
@@ -11,12 +13,6 @@ export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		initAuthData: state => {
-			const data = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
-			const initialAuthData = (data && JSON.parse(data)) || undefined
-			state.authData = initialAuthData
-			state._initialized = true
-		},
 		setAuthData: (state, action: PayloadAction<User>) => {
 			state.authData = action.payload
 		},
@@ -24,6 +20,21 @@ export const userSlice = createSlice({
 			state.authData = initialState.authData
 			localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY)
 		},
+	},
+	extraReducers: builder => {
+		// saveJsonSettings
+		builder.addCase(saveJsonSettings.fulfilled, (state, { payload }) => {
+			if (!state.authData) return
+			state.authData.jsonSettings = payload
+		})
+		// initUserData
+		builder.addCase(initUserData.fulfilled, (state, { payload }) => {
+			state.authData = payload
+			state._initialized = true
+		})
+		builder.addCase(initUserData.rejected, state => {
+			state._initialized = true
+		})
 	},
 })
 

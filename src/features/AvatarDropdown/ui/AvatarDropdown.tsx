@@ -2,7 +2,7 @@ import { FC, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { getIsUserAdmin, getIsUserManager, getUserAuthData, userActions } from '@/entities/User'
+import { getIsUserAdmin, getIsUserManager, useUserAuthData, userActions } from '@/entities/User'
 import { getAdminRoute, getMainRoute, getProfileRoute } from '@/shared/const/RoutPaths'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
@@ -22,7 +22,7 @@ export const AvatarDropdown: FC<AvatarDropdownProps> = props => {
 	const isUserManager = useSelector(getIsUserManager)
 	const navigate = useNavigate()
 	const { t } = useTranslation()
-	const authData = useSelector(getUserAuthData)
+	const authData = useUserAuthData()
 	const isAdminPageAvailable = isUserAdmin || isUserManager
 
 	const onLogout = useCallback(() => {

@@ -1,5 +1,4 @@
 import { FC, ReactNode } from 'react'
-import { useSelector } from 'react-redux'
 import DateIcon from '@/shared/assets/icons/date.svg'
 import ViewsIcon from '@/shared/assets/icons/views.svg'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
@@ -15,10 +14,10 @@ import { Skeleton } from '@/shared/ui/Skeleton'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { Text } from '@/shared/ui/Text'
 import {
-	getArticleDetailsData,
-	getArticleDetailsError,
-	getArticleDetailsIsLoading,
-	getArticleDetailsReadonly,
+	useArticleDetailsData,
+	useArticleDetailsError,
+	useArticleDetailsIsLoading,
+	useArticleDetailsReadonly,
 } from '../../model/selectors/articleDetailsSelectors'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
@@ -60,10 +59,10 @@ export const ArticleDetails: FC<ArticleDetailsProps> = props => {
 	const { className, id } = props
 
 	const dispatch = useAppDispatch()
-	const article = useSelector(getArticleDetailsData)
-	const isLoading = useSelector(getArticleDetailsIsLoading)
-	const error = useSelector(getArticleDetailsError)
-	const readonly = useSelector(getArticleDetailsReadonly)
+	const article = useArticleDetailsData()
+	const isLoading = useArticleDetailsIsLoading()
+	const error = useArticleDetailsError()
+	const readonly = useArticleDetailsReadonly()
 	let content: ReactNode
 
 	useInitialEffect(() => dispatch(fetchArticleById(Number(id))))

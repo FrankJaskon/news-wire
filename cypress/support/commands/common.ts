@@ -14,7 +14,10 @@ export const login = (username = 'testUser', password = '123') => {
 			},
 		})
 		.then(({ body }) => {
-			window.localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(body))
+			window.localStorage.setItem(
+				LOCAL_STORAGE_TOKEN_KEY,
+				JSON.stringify(Cypress.env('TEST_USER_ID'))
+			)
 
 			return body
 		})

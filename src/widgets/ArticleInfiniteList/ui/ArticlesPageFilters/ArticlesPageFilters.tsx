@@ -1,6 +1,5 @@
 import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import { ViewVariantType } from '@/entities/Article'
 import { SortSelector, SortVariantType } from '@/entities/SortSelector'
@@ -15,12 +14,12 @@ import { SortOrderType } from '@/shared/types/types'
 import { AppInput } from '@/shared/ui/Form/AppInput'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import {
-	getFilter,
-	getOrder,
-	getSearch,
-	getSort,
-	getView,
-} from '../../model/selectors/articlesPageSelector'
+	useArticleInfiniteListFilter,
+	useArticleInfiniteListOrder,
+	useArticleInfiniteListSearch,
+	useArticleInfiniteListSort,
+	useArticleInfiniteListView,
+} from '../../model/selectors/articleInfiniteListSelector'
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList'
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
 import { articlesInfiniteListActions } from '../../model/slice/articlesInfiniteListSlice'
@@ -39,11 +38,11 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
 		const { t } = useTranslation('article')
 		const dispatch = useAppDispatch()
 		const [searchParams, setSearchParams] = useSearchParams()
-		const view = useSelector(getView)
-		const sort = useSelector(getSort)
-		const order = useSelector(getOrder)
-		const search = useSelector(getSearch)
-		const filter = useSelector(getFilter)
+		const filter = useArticleInfiniteListFilter()
+		const order = useArticleInfiniteListOrder()
+		const search = useArticleInfiniteListSearch()
+		const sort = useArticleInfiniteListSort()
+		const view = useArticleInfiniteListView()
 
 		useInitialEffect(() => {
 			if (isReducerMounted) {

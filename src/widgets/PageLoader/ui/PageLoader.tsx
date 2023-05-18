@@ -5,13 +5,22 @@ import cls from './PageLoader.module.scss'
 
 interface PageLoaderProps {
 	className?: string
+	fullHeight?: boolean
 }
 
 export const PageLoader: FC<PageLoaderProps> = memo((props: PageLoaderProps) => {
-	const { className } = props
+	const { className, fullHeight = false } = props
 
 	return (
-		<div className={classNames(cls.PageLoader, {}, [className])}>
+		<div
+			className={classNames(
+				cls.PageLoader,
+				{
+					[cls.fullHeight]: fullHeight,
+				},
+				[className]
+			)}
+		>
 			<Loader className={cls.loader} />
 		</div>
 	)

@@ -1,7 +1,6 @@
 import { FC, useMemo } from 'react'
-import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
-import { UserRoleType, getUserRoles } from '@/entities/User'
+import { UserRoleType, useUserRoles } from '@/entities/User'
 import { getForbiddenRoute } from '@/shared/const/RoutPaths'
 
 export interface RequireRolesProps {
@@ -12,7 +11,7 @@ export interface RequireRolesProps {
 export const RequireRoles: FC<RequireRolesProps> = props => {
 	const { children, roles } = props
 	const location = useLocation()
-	const userRoles = useSelector(getUserRoles)
+	const userRoles = useUserRoles()
 
 	const isRouteAvailable = useMemo((): boolean => {
 		if (!roles) return true

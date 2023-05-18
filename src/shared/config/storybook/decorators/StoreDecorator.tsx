@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react'
+import { StoryFn } from '@storybook/react'
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider/testing'
 import { articleDetailsReducer } from '@/entities/Article/testing'
 import { addNewCommentReducer } from '@/entities/AddNewComment/testing'
@@ -18,7 +18,7 @@ const defaultAsyncReducers: ReducerList = {
 }
 
 export const StoreDecorator =
-	(state: DeepPartial<StateSchema>, asyncReducers?: ReducerList) => (StoryComponent: Story) =>
+	(state: DeepPartial<StateSchema>, asyncReducers?: ReducerList) => (StoryComponent: StoryFn) =>
 		(
 			<StoreProvider
 				initialState={state as StateSchema}

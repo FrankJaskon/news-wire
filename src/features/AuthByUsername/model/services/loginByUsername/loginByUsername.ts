@@ -20,7 +20,7 @@ export const loginByUsername = createAsyncThunk<User, LoginProps, ThunkApiConfig
 				throw new Error()
 			}
 			dispatch(userActions.setAuthData(response.data))
-			localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(response.data))
+			localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(response.data.id))
 
 			return response.data
 		} catch (error: any) {

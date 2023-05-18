@@ -1,5 +1,6 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useIsUserAuthorized } from '@/entities/User'
 import { LatestArticlesList } from '@/features/LatestArticlesList'
 import { TextColor } from '@/shared/const/consts'
 import { VStack } from '@/shared/ui/Stack'
@@ -8,6 +9,7 @@ import { PageWrapper } from '@/widgets/PageWrapper'
 
 const MainPage: FC = memo(() => {
 	const { t } = useTranslation('main')
+	const isAuthorized = useIsUserAuthorized()
 
 	return (
 		<PageWrapper data-testid='main-page'>
@@ -17,7 +19,7 @@ const MainPage: FC = memo(() => {
 					titleHue={TextColor.SECONDARY}
 					weight={TextWeight.BOLD}
 				/>
-				<LatestArticlesList />
+				{isAuthorized && <LatestArticlesList />}
 			</VStack>
 		</PageWrapper>
 	)

@@ -1,6 +1,5 @@
 import { FC, memo, useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { translateErrorOrFalse } from '@/shared/config/errorResponse/errorResponse'
 import { getMainRoute } from '@/shared/const/RoutPaths'
@@ -15,10 +14,10 @@ import { AppInput } from '@/shared/ui/Form/AppInput'
 import { AppLabel, LabelVariant } from '@/shared/ui/Form/Label'
 import { VStack } from '@/shared/ui/Stack'
 import { Text, TextVariant } from '@/shared/ui/Text'
-import { getError } from '../../model/selectors/getError/getError'
-import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading'
-import { getLoginLogin } from '../../model/selectors/getLoginUsername/getLoginUsername'
-import { getPassword } from '../../model/selectors/getPassword/getPassword'
+import { useAuthByUsernameError } from '../../model/selectors/getAuthByUsernameError/getAuthByUsernameError'
+import { useAuthByUsernameIsLoading } from '../../model/selectors/getAuthByUsernameIsLoading/getAuthByUsernameIsLoading'
+import { useAuthByUsernamePassword } from '../../model/selectors/getAuthByUsernamePassword/getAuthByUsernamePassword'
+import { useAuthByUsernameUsername } from '../../model/selectors/getAuthByUsernameUsername/getAuthByUsernameUsername'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 import { registration } from '../../model/services/registration/registration'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
@@ -37,10 +36,10 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 	const { className, onSuccess } = props
 	const dispatch = useAppDispatch()
 	const { t } = useTranslation()
-	const loginError = useSelector(getError)
-	const usernameValue = useSelector(getLoginLogin)
-	const passwordValue = useSelector(getPassword)
-	const loginIsLoading = useSelector(getIsLoading)
+	const loginError = useAuthByUsernameError()
+	const username = useAuthByUsernameUsername()
+	const password = useAuthByUsernamePassword()
+	const loginIsLoading = useAuthByUsernameIsLoading()
 	const navigate = useNavigate()
 	const [isLogin, setIsLogin] = useState<boolean>(true)
 	const isRegistration = useMemo(() => !isLogin, [isLogin])
@@ -69,21 +68,21 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		const result = isLogin
 			? await dispatch(
 					loginByUsername({
-						username: usernameValue,
-						password: passwordValue,
+						username: username,
+						password: password,
 					})
 			  )
 			: await dispatch(
 					registration({
-						username: usernameValue,
-						password: passwordValue,
+						username: username,
+						password: password,
 					})
 			  )
 		if (result.meta.requestStatus === 'fulfilled') {
 			onSuccess()
 			navigate(getMainRoute())
 		}
-	}, [dispatch, usernameValue, passwordValue, onSuccess, navigate, isLogin])
+	}, [dispatch, username, password, onSuccess, navigate, isLogin])
 
 	return (
 		<LazyReducerLoader reducers={reducers}>
@@ -102,7 +101,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 					<AppInput
 						data-testid='login-input'
 						className={cls.input}
-						value={usernameValue}
+						value={username}
 						onChange={onChangeLogin}
 						type='text'
 						id='login-email'
@@ -116,7 +115,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 					</AppLabel>
 					<AppInput
 						data-testid='password-input'
-						value={passwordValue}
+						value={password}
 						onChange={onChangePassword}
 						className={cls.input}
 						type='password'

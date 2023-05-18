@@ -4,7 +4,7 @@ import { SortVariantType } from '@/entities/SortSelector'
 import { QueryParamsKeys, QueryParamsKeysType } from '@/shared/const/queryParams'
 import { SortOrderType } from '@/shared/types/types'
 import { ArticlesTypesType } from '../../../ui/ArticleTypeTabs'
-import { geInitialized } from '../../selectors/articlesPageSelector'
+import { getArticleInfiniteListInitialized } from '../../selectors/articleInfiniteListSelector'
 import { articlesInfiniteListActions } from '../../slice/articlesInfiniteListSlice'
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList'
 
@@ -16,7 +16,7 @@ export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkApi
 		const params: OptionalRecord<QueryParamsKeysType, string> = {}
 
 		try {
-			const isInitialized = geInitialized(getState())
+			const isInitialized = getArticleInfiniteListInitialized(getState())
 			if (!isInitialized) {
 				Object.values(QueryParamsKeys).forEach(param => {
 					if (searchParams?.get?.(param) !== null) {
