@@ -1,0 +1,23 @@
+.OptionsDropdown {
+	border-radius: var(--border-radius);
+	&:hover {
+		box-shadow: 0 0 5px 0 var(--overlay-bg-color);
+	}
+
+	transition: box-shadow .2s;
+}
+
+.absolute {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+.trigger {
+	border-radius: var(--border-radius);
+}
+
+.iconWrapper {
+	padding: 6px;
+	background: var(--primary-color);
+}

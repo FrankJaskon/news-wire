@@ -1,7 +1,7 @@
 import { FC, memo, useCallback } from 'react'
 import { TextColor } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
-import { AppCard } from '../../AppCard'
+import { AppCard, CardVariant } from '../../AppCard'
 import { Text } from '../../Text'
 import { TabVariant, TabVariantType } from '../model/consts'
 import cls from './Tabs.module.scss'
@@ -14,10 +14,11 @@ export interface TabItem {
 export interface TabsProps {
 	className?: string
 	tabs: TabItem[]
-	value: string
+	value: string | string[]
 	onTabClick: (tab: string) => void
 	variant?: TabVariantType
 	'data-testid'?: string
+	light?: boolean
 }
 
 export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
@@ -28,6 +29,7 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 		onTabClick,
 		variant = TabVariant.PRIMARY,
 		'data-testid': dataTestId = 'tabs',
+		light = false,
 	} = props
 
 	const handleClick = useCallback(
@@ -38,7 +40,12 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 	)
 
 	const isActive = useCallback(
-		(tab: TabItem) => (value === tab.value ? cls.active : undefined),
+		(tab: TabItem) => {
+			if (Array.isArray(value)) {
+				return value.includes(tab.value)
+			}
+			return value === tab.value
+		},
 		[value]
 	)
 
@@ -47,8 +54,12 @@ export const Tabs: FC<TabsProps> = memo((props: TabsProps) => {
 			{tabs?.map(tab => (
 				<AppCard
 					key={tab.value}
+					variant={light ? CardVariant.LIGHT : CardVariant.SHEET}
 					onClick={handleClick(tab.value)}
-					className={classNames(cls.tab, {}, [isActive(tab) && cls.active, cls[variant]])}
+					className={classNames(cls.tab, {}, [
+						(isActive(tab) && cls.active) || undefined,
+						cls[variant],
+					])}
 					data-testid={`${dataTestId}-${tab.value}`}
 				>
 					<Text

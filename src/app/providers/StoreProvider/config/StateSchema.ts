@@ -1,10 +1,11 @@
 import { CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
 import { AxiosInstance } from 'axios'
 import { AddNewCommentScheme } from '@/entities/AddNewComment'
-import { ArticleDetailsScheme } from '@/entities/Article'
 import { UserScheme } from '@/entities/User'
 import { ArticleDetailsCommentsScheme } from '@/features/ArticleComments'
+import { ArticleDetailsScheme } from '@/features/ArticleDetails'
 import { LoginScheme } from '@/features/AuthByUsername'
+import { EditableArticleScheme } from '@/features/EditableArticle'
 import { ProfileScheme } from '@/features/EditableProfileCard'
 import { rtkApi } from '@/shared/api/rtkApi'
 import { ArticleInfiniteListScheme } from '@/widgets/ArticleInfiniteList'
@@ -22,6 +23,7 @@ export interface StateSchema {
 	addNewComment?: AddNewCommentScheme
 	articlesInfiniteList?: ArticleInfiniteListScheme
 	articleDetailsComments?: ArticleDetailsCommentsScheme
+	editableArticle?: EditableArticleScheme
 }
 
 export type StateSchemaKey = keyof StateSchema

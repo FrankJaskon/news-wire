@@ -4,7 +4,6 @@
 	min-height: 50px;
 	padding: 4px 16px;
 	border-radius: var(--border-radius);
-	background: none;
 	outline: none;
 	border: none;
 	resize: none;
@@ -13,4 +12,12 @@
 		border-color: #aaa;
 		outline: none;
 	}
+}
+
+.primary {
+	background: none;
+}
+
+.contrast {
+	background-color: var(--light-color);
 }

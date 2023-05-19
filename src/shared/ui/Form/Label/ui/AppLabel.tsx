@@ -12,7 +12,7 @@ type LabelVariantType = ValueOf<typeof LabelVariant>
 
 export interface AppLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	className?: string
-	htmlFor: string
+	htmlFor?: string
 	children: ReactNode
 	variant?: LabelVariantType
 }
@@ -26,7 +26,7 @@ export const AppLabel: FC<AppLabelProps> = memo((props: AppLabelProps) => {
 			htmlFor={htmlFor}
 			{...extraProps}
 		>
-			{children}:
+			{children}
 		</label>
 	)
 })

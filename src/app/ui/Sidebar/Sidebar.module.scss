@@ -26,8 +26,8 @@
 	.toggler {
 		color: var(--block-secondary-color);
 		background-color: var(--block-primary-lighter);
-		border-top-right-radius: var(--border-radius);
-		border-bottom-right-radius: var(--border-radius);
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
 		position: absolute;
 		right: -28px;
 		bottom: 20px;

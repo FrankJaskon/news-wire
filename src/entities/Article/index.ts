@@ -1,19 +1,23 @@
-export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails'
-
-export { articleDetailsReducer, articleDetailsActions } from './model/slice/articleDetailsSlice'
-
-export {
-	useArticleDetailsData,
-	getArticleDetailsData,
-} from './model/selectors/articleDetailsSelectors'
+export { Article, renderBlockContent } from './ui/Article/Article'
 
 export { ViewVariant } from './model/consts/articleDetailsConsts'
 
 export type {
-	ArticleDetailsScheme,
 	ArticleType,
+	TextBlockType,
+	CodeBlockType,
+	ImageBlockType,
 	ArticleBlockType,
 	ViewVariantType,
-} from './model/types/ArticleDetailsScheme'
+	ArticleTopicType,
+	ValidateArticleDetailsErrorType,
+	EditableParagraph,
+	EditableTextBlockType,
+	EditableArticleBlockType,
+} from './model/types/Article'
+
+export { BlockHeader } from './ui/BlockHeader/BlockHeader'
+
+export { BlockType, ValidateArticleDetailsError } from './model/consts/articleDetailsConsts'
 
 export { ArticleList } from './ui/ArticleList/ArticleList'

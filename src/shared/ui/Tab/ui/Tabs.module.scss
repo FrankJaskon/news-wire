@@ -1,6 +1,7 @@
 .Tabs {
 	cursor: pointer;
 	display: flex;
+	flex-wrap: wrap;
 	gap: 10px;
 	.active {
 		background: var(--primary-right-gradient);
@@ -8,6 +9,7 @@
 }
 
 .tab {
+	white-space: nowrap;
 	padding: 4px 12px;
 	text-transform: capitalize;
 }

@@ -29,11 +29,7 @@ const ArticlesPage: FC = () => {
 	}, [dispatch, error])
 
 	return (
-		<LazyReducerLoader
-			reducers={reducers}
-			removeAfterUnmount={false}
-			setIsReducerMounted={setIsReducerMounted}
-		>
+		<LazyReducerLoader reducers={reducers} setIsReducerMounted={setIsReducerMounted}>
 			<PageWrapper
 				onScrollEnd={onLoadNextPart}
 				watchedScroll={true}

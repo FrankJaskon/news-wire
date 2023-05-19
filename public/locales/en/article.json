@@ -5,10 +5,10 @@
 		}
 	},
 	"error": {
-        "incorrect-data": "Data is incorrect",
-        "empty": "Form must not be empty",
-        "server-error": "Something went wrong. Try later please"
-    },
+		"incorrect-data": "Data is incorrect",
+		"empty": "Form must not be empty",
+		"server-error": "Something went wrong. Try later please"
+	},
 	"comment-title": "Comments",
 	"edit-title": "Editing the article",
 	"create-title": "Creating new article",
@@ -38,5 +38,63 @@
 		"rate-article-title": "How do you feel about this article?",
 		"rate-article-feedback-title": "Leave your feedback about this article",
 		"rate-article-title-has-response": "You've already rated this article"
+	},
+	"editable-article": {
+		"titles": {
+			"edit": "Editing the article",
+			"create": "Create new article"
+		},
+		"places": {
+			"workplace": "Workplace",
+			"preview": "Preview"
+		},
+		"labels": {
+			"title": "Title for the article",
+			"subtitle": "Subtitle for the article",
+			"img": "Main image for the article",
+			"type": "What type does your article relate to?",
+			"text-block-title": "Fill in the title of the text block",
+			"image-block-title": "Fill in the descriptive title of the image"
+		},
+		"placeholders": {
+			"title": "Some title",
+			"subtitle": "Some subtitle",
+			"img": "Put some link of image",
+			"text-block-paragraph": "Enter text for the paragraph",
+			"code": "Enter some code"
+		},
+		"blocks": {
+			"text": "Text block",
+			"code": "Code block",
+			"img": "Image block"
+		},
+		"edit": {
+			"on-save-success": "Article has been updated successfully",
+			"on-remove-success": "Article has been removed successfully"
+		},
+		"create": {
+			"on-save-success": "Article has been created successfully"
+		},
+		"options": {
+			"add-subtitle": "Add subtitle",
+			"add-img": "Add main image",
+			"add-text-block": "Add text block",
+			"add-code-block": "Add code block",
+			"add-img-block": "Add image block",
+			"save-article": "Save changes",
+			"create-article": "Create article",
+			"reset-article": "Reset changes",
+			"remove-article": "Remove the article",
+			"remove-code-block": "Remove code block",
+			"add-img-title": "Add image title",
+			"remove-img-title": "Remove title",
+			"remove-img-block": "Remove image block",
+			"add-text-title": "Add title",
+			"add-text-paragraph": "Add new text paragraph",
+			"remove-text-title": "Remove title",
+			"remove-text-block": "Remove text block"
+		},
+		"on-save-link-to-article": "Visit your article",
+		"on-remove-link-to-articles": "Back to articles"
 	}
 }

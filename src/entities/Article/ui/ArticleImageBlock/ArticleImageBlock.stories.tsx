@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { Meta, StoryFn } from '@storybook/react'
 import someImage from '@/shared/assets/icons/default-user.png'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'

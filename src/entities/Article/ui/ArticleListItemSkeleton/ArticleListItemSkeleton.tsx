@@ -3,7 +3,7 @@ import { AppCard } from '@/shared/ui/AppCard'
 import { Skeleton } from '@/shared/ui/Skeleton'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
-import { ViewVariantType } from '../../model/types/ArticleDetailsScheme'
+import { ViewVariantType } from '../../model/types/Article'
 
 export interface ArticleListItemSkeletonProps {
 	view?: ViewVariantType

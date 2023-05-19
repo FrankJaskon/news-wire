@@ -1,19 +1,33 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
-import { Text } from '@/shared/ui/Text'
+import { TextColor } from '@/shared/const/consts'
+import { VStack } from '@/shared/ui/Stack'
+import { Text, TextWeight } from '@/shared/ui/Text'
+import { ArticleEditing } from '@/widgets/ArticleEditing'
 import { PageWrapper } from '@/widgets/PageWrapper'
 
-const EditArticlePage: FC = memo(() => {
+export interface EditArticlePageProps {
+	className?: string
+}
+
+const EditArticlePage: FC<EditArticlePageProps> = (props: EditArticlePageProps) => {
+	const { className } = props
 	const { t } = useTranslation('article')
-	const { id } = useParams()
-	const isEdit = Boolean(id)
+	const { id: articleId } = useParams()
 
 	return (
-		<PageWrapper>
-			{isEdit ? <Text title={t('edit-title')} /> : <Text title={t('create-title')} />}
+		<PageWrapper data-testid='edit-article-page' className={className}>
+			<VStack gap='16'>
+				<Text
+					title={t('editable-article.titles.edit')}
+					titleHue={TextColor.SECONDARY}
+					weight={TextWeight.BOLD}
+				/>
+				<ArticleEditing articleId={Number(articleId)} />
+			</VStack>
 		</PageWrapper>
 	)
-})
+}
 
-export default EditArticlePage
+export default memo(EditArticlePage)

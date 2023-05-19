@@ -1,31 +1,35 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
-import { getArticleDetailsData } from '@/entities/Article'
 import { CommentType } from '@/entities/Comment'
 import { getUserAuthData } from '@/entities/User'
 import { fetchCommentsByArticleId } from '../fetchCommentsByArticleId/fetchCommentsByArticleId'
 
+interface NewCommentForArticleProps {
+	articleId: number
+	comment: string
+}
+
 export const createNewCommentForArticle = createAsyncThunk<
 	CommentType,
-	string,
+	NewCommentForArticleProps,
 	ThunkApiConfigType<string>
->('articleDetailsComments/createNewCommentForArticle', async (comment, thunkAPI) => {
+>('articleDetailsComments/createNewCommentForArticle', async (props, thunkAPI) => {
 	const { extra, rejectWithValue, getState } = thunkAPI
+	const { comment, articleId } = props
 	try {
 		const userData = getUserAuthData(getState())
-		const articleDetails = getArticleDetailsData(getState())
 
-		if (!userData || !comment || !articleDetails) {
-			return rejectWithValue('no data')
+		if (!userData || !comment || !articleId) {
+			throw rejectWithValue('Error. No data')
 		}
 
 		const response = await extra.api.post<CommentType>('/comments', {
 			profileId: userData.id,
-			articleId: articleDetails.id,
+			articleId: articleId,
 			text: comment,
 		})
 
-		thunkAPI.dispatch(fetchCommentsByArticleId(articleDetails.id))
+		thunkAPI.dispatch(fetchCommentsByArticleId(articleId))
 
 		return response.data
 	} catch (error: any) {

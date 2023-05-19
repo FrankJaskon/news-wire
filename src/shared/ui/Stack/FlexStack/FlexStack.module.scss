@@ -6,6 +6,12 @@
 	width: 100%;
 }
 
+.no-shrink {
+	> * {
+		flex-shrink: 0;
+	}
+}
+
 .evenly {
 	> * {
 		flex: 1;

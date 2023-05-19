@@ -21,7 +21,7 @@ export interface DropdownItem {
 export interface DropdownProps {
 	className?: string
 	trigger: ReactNode
-	items: DropdownItem[]
+	items: DropdownItem[][]
 	direction?: DirectionType
 	align?: AlignType
 }
@@ -35,44 +35,49 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 				as='div'
 				className={classNames(cls.items, {}, [DirectionVariant[direction]])}
 			>
-				{items.map((item, index) => {
-					const content = ({ active }: { active: boolean }) => (
-						<button
-							type='button'
-							disabled={item.disabled}
-							onClick={item.onClick}
-							className={classNames(
-								cls.item,
-								{
-									[popupCls.active]: active,
-									[popupCls.disabled]: item.disabled,
-								},
-								[InnerPositionVariant[align]]
-							)}
-						>
-							{item.component}
-						</button>
-					)
+				{items.map((optionGroup, index, array) => (
+					<Fragment key={`option-${index}`}>
+						{optionGroup?.map((item, index) => {
+							const content = ({ active }: { active: boolean }) => (
+								<button
+									type='button'
+									disabled={item.disabled}
+									onClick={item.onClick}
+									className={classNames(
+										cls.item,
+										{
+											[popupCls.active]: active,
+											[popupCls.disabled]: item.disabled,
+										},
+										[InnerPositionVariant[align]]
+									)}
+								>
+									{item.component}
+								</button>
+							)
 
-					if (item.href) {
-						return (
-							<Menu.Item
-								key={index}
-								as={NavLink}
-								to={item.href}
-								disabled={item.disabled}
-							>
-								{content}
-							</Menu.Item>
-						)
-					}
+							if (item.href) {
+								return (
+									<Menu.Item
+										key={index}
+										as={NavLink}
+										to={item.href}
+										disabled={item.disabled}
+									>
+										{content}
+									</Menu.Item>
+								)
+							}
 
-					return (
-						<Menu.Item key={index} as={Fragment} disabled={item.disabled}>
-							{content}
-						</Menu.Item>
-					)
-				})}
+							return (
+								<Menu.Item key={index} as={Fragment} disabled={item.disabled}>
+									{content}
+								</Menu.Item>
+							)
+						})}
+						{index !== array.length - 1 && <div className={cls.divider} />}
+					</Fragment>
+				))}
 			</Menu.Items>
 		</Menu>
 	)

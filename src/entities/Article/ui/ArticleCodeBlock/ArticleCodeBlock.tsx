@@ -4,12 +4,14 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import { AppButton } from '@/shared/ui/AppButton'
 import { AppCard } from '@/shared/ui/AppCard'
-import { VStack } from '@/shared/ui/Stack'
+import { HStack, VStack } from '@/shared/ui/Stack'
+import { BlockHeader } from '../BlockHeader/BlockHeader'
 import cls from './ArticleCodeBlock.module.scss'
 
 export interface ArticleCodeBlockProps {
 	className?: string
 	code?: string
+	readonly?: boolean
 }
 
 const BtnText = {
@@ -56,15 +58,17 @@ export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = memo((props: ArticleC
 	return (
 		<VStack className={classNames(cls.ArticleCodeBlock, {}, [className])}>
 			<AppCard noPaddings>
-				<div className={cls.header}>
-					{isInProgress ? (
-						<AppButton className={cls.copyBtn}>{t(btnText)}</AppButton>
-					) : (
-						<AppButton className={cls.copyBtn} onClick={handleCopy}>
-							{t(btnText)}
-						</AppButton>
-					)}
-				</div>
+				<BlockHeader>
+					<HStack justify='end'>
+						{isInProgress ? (
+							<AppButton className={cls.copyBtn}>{t(btnText)}</AppButton>
+						) : (
+							<AppButton className={cls.copyBtn} onClick={handleCopy}>
+								{t(btnText)}
+							</AppButton>
+						)}
+					</HStack>
+				</BlockHeader>
 				<pre className={cls.code}>
 					<code ref={codeRef}>{code}</code>
 				</pre>

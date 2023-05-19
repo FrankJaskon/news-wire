@@ -20,7 +20,7 @@ type JustifyType = 'start' | 'end' | 'center' | 'between' | 'evenly' | 'around'
 type AlignType = 'start' | 'end' | 'center'
 type WrapType = 'wrap' | 'nowrap'
 export type GapType = '4' | '8' | '12' | '16' | '24' | '32'
-type InnerWidthType = 'full' | 'evenly'
+type InnerWidthType = 'full' | 'evenly' | 'no-shrink'
 
 const GapMapper: Record<GapType, string> = {
 	'4': 'gap4',

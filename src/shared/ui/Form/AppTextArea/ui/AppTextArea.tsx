@@ -1,6 +1,5 @@
 import { ChangeEvent, FC, memo, TextareaHTMLAttributes, useEffect, useRef } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
-import { AppCard } from '../../../AppCard'
 import cls from './AppTextArea.module.scss'
 
 export interface AppTextAreaProps
@@ -11,9 +10,8 @@ export interface AppTextAreaProps
 	value?: string | number
 	onChange?: (value: string) => void
 	readonly?: boolean
-	minHeight?: number
-	maxHeight?: number
 	placeholder?: string
+	variant?: 'primary' | 'contrast'
 }
 
 export const AppTextArea: FC<AppTextAreaProps> = memo((props: AppTextAreaProps) => {
@@ -22,8 +20,7 @@ export const AppTextArea: FC<AppTextAreaProps> = memo((props: AppTextAreaProps) 
 		value,
 		onChange,
 		readonly = false,
-		minHeight = 50,
-		maxHeight = 200,
+		variant = 'primary',
 		...extraProps
 	} = props
 
@@ -31,11 +28,11 @@ export const AppTextArea: FC<AppTextAreaProps> = memo((props: AppTextAreaProps) 
 
 	useEffect(() => {
 		if (textareaRef && textareaRef.current) {
-			textareaRef.current.style.height = `${minHeight}px`
+			textareaRef.current.style.height = '20px'
 			const scrollHeight = textareaRef.current.scrollHeight
 			textareaRef.current.style.height = `${scrollHeight}px`
 		}
-	}, [minHeight, value])
+	}, [value])
 
 	const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		onChange?.(e.target.value)
@@ -45,22 +42,16 @@ export const AppTextArea: FC<AppTextAreaProps> = memo((props: AppTextAreaProps) 
 		[cls.readonly]: readonly,
 	}
 
-	const extra = [className]
+	const extra = [className, cls[variant]]
 
 	return (
-		<AppCard noPaddings>
-			<textarea
-				ref={textareaRef}
-				className={classNames(cls.AppTextArea, mods, extra)}
-				style={{
-					minHeight,
-					maxHeight,
-				}}
-				value={value}
-				onChange={onChangeHandler}
-				readOnly={readonly}
-				{...extraProps}
-			/>
-		</AppCard>
+		<textarea
+			ref={textareaRef}
+			className={classNames(cls.AppTextArea, mods, extra)}
+			value={value ?? ''}
+			onChange={onChangeHandler}
+			readOnly={readonly}
+			{...extraProps}
+		/>
 	)
 })

@@ -3,14 +3,6 @@
 	border-radius: var(--border-radius);
 }
 
-.header {
-	padding: 5px;
-	text-align: end;
-	border-top-left-radius: var(--border-radius);
-	border-top-right-radius: var(--border-radius);
-	background-color: var(--primary-color);
-}
-
 .code {
 	overflow: auto;
 	max-width: 100%;

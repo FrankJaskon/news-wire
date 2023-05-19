@@ -90,11 +90,13 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 		() => (
 			<>
 				{feedbackTitle && <Text title={feedbackTitle} />}
-				<AppTextArea
-					placeholder={t('leave-feedback')}
-					value={feedback}
-					onChange={setFeedback}
-				/>
+				<AppCard noPaddings>
+					<AppTextArea
+						placeholder={t('leave-feedback')}
+						value={feedback}
+						onChange={setFeedback}
+					/>
+				</AppCard>
 			</>
 		),
 		[feedback, feedbackTitle, t]

@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
 import { ArticleType } from '@/entities/Article'
+import { ArticlesTypes } from '@/entities/ArticleTypeTabs'
 import { getArticlesRoute } from '@/shared/const/RoutPaths'
-import { ArticlesTypes } from '../../../ui/ArticleTypeTabs'
 import {
 	getArticleInfiniteListFilter,
 	getArticleInfiniteListLimit,

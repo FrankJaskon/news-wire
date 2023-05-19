@@ -1,6 +1,6 @@
 import { StoryFn } from '@storybook/react'
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider/testing'
-import { articleDetailsReducer } from '@/entities/Article/testing'
+import { articleDetailsReducer } from '@/features/ArticleDetails/testing'
 import { addNewCommentReducer } from '@/entities/AddNewComment/testing'
 import { articleDetailsCommentsReducer } from '@/features/ArticleComments/testing'
 import { loginReducer } from '@/features/AuthByUsername/testing'

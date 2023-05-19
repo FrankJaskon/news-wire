@@ -14,29 +14,31 @@ export const Basic: StoryFn<DropdownProps> = Template.bind({})
 Basic.args = {
 	trigger: <Avatar />,
 	items: [
-		{
-			onClick: () => {
-				'test'
+		[
+			{
+				onClick: () => {
+					'test'
+				},
+				component: <div>Menu item1</div>,
 			},
-			component: <div>Menu item1</div>,
-		},
-		{
-			onClick: () => {
-				'test'
+			{
+				onClick: () => {
+					'test'
+				},
+				component: <div>Menu item2</div>,
 			},
-			component: <div>Menu item2</div>,
-		},
-		{
-			onClick: () => {
-				'test'
+			{
+				onClick: () => {
+					'test'
+				},
+				component: <div>Menu item3</div>,
 			},
-			component: <div>Menu item3</div>,
-		},
-		{
-			onClick: () => {
-				'test'
+			{
+				onClick: () => {
+					'test'
+				},
+				component: <div>Menu item4</div>,
 			},
-			component: <div>Menu item4</div>,
-		},
+		],
 	],
 }

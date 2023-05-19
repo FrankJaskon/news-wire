@@ -1,10 +1,10 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { StateSchema } from '@/app/providers/StoreProvider'
 import { ArticleType, ViewVariant, ViewVariantType } from '@/entities/Article'
+import { ArticlesTypes, ArticlesTypesType } from '@/entities/ArticleTypeTabs'
 import { SortVariant, SortVariantType } from '@/entities/SortSelector'
 import { VIEW_ARTICLES_LOCAL_STORAGE_KEY } from '@/shared/const/localStorage'
 import { SortOrder, SortOrderType } from '@/shared/types/types'
-import { ArticlesTypes, ArticlesTypesType } from '../../ui/ArticleTypeTabs'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
 import { ArticleInfiniteListScheme } from '../types/ArticleInfiniteListScheme'
 

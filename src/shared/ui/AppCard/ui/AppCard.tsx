@@ -7,6 +7,7 @@ export const CardVariant = {
 	PRIMARY: 'primary',
 	LIGHT: 'light',
 	DARK: 'dark',
+	SHEET: 'sheet',
 } as const
 
 export type CardVariantType = ValueOf<typeof CardVariant>
@@ -17,6 +18,7 @@ export interface AppCardProps extends HTMLAttributes<HTMLDivElement> {
 	noPaddings?: boolean
 	variant?: CardVariantType
 	'data-testid'?: string
+	max?: boolean
 }
 
 export const AppCard: FC<AppCardProps> = props => {
@@ -24,16 +26,18 @@ export const AppCard: FC<AppCardProps> = props => {
 		className,
 		children,
 		noPaddings = false,
-		variant = CardVariant.PRIMARY,
+		variant = CardVariant.SHEET,
 		'data-testid': dataTestId = 'app-card',
+		max,
 		...extraProps
 	} = props
 
 	const mods: Mods = useMemo(
 		() => ({
 			[cls.noPaddings]: noPaddings,
+			[cls.max]: max,
 		}),
-		[noPaddings]
+		[noPaddings, max]
 	)
 
 	const extra: (string | undefined)[] = useMemo(

@@ -1,6 +1,6 @@
 import { StateSchema } from '@/app/providers/StoreProvider'
+import { ArticlesTypes } from '@/entities/ArticleTypeTabs'
 import { buildSelector } from '@/shared/lib/store'
-import { ArticlesTypes } from '../../ui/ArticleTypeTabs'
 
 export const [useArticleInfiniteListIsLoading, getArticleInfiniteListIsLoading] = buildSelector(
 	(state: StateSchema) =>

@@ -4,6 +4,7 @@ import { AboutPage } from '@/pages/AboutPage'
 import { AdminPanel } from '@/pages/AdminPage'
 import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage'
 import { ArticlesPage } from '@/pages/ArticlesPage'
+import { CreateArticlePage } from '@/pages/CreateArticlePage'
 import { EditArticlePage } from '@/pages/EditArticlePage'
 import { ForbiddenPage } from '@/pages/ForbiddenPage'
 import { MainPage } from '@/pages/MainPage'
@@ -58,7 +59,7 @@ export const routerConfig: AuthRouteProps[] = [
 	},
 	{
 		path: getNewArticleDetailsRoute(),
-		element: <EditArticlePage />,
+		element: <CreateArticlePage />,
 		authOnly: true,
 	},
 	{

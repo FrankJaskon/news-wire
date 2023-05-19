@@ -37,22 +37,24 @@ export const AvatarDropdown: FC<AvatarDropdownProps> = props => {
 	return (
 		<Dropdown
 			items={[
-				...(isAdminPageAvailable
-					? [
-							{
-								component: t('navbar.links.admin'),
-								href: getAdminRoute(),
-							},
-					  ]
-					: []),
-				{
-					component: t('navbar.links.profile'),
-					href: getProfileRoute(authData.id),
-				},
-				{
-					component: t('navbar.logout'),
-					onClick: onLogout,
-				},
+				[
+					...(isAdminPageAvailable
+						? [
+								{
+									component: t('navbar.links.admin'),
+									href: getAdminRoute(),
+								},
+						  ]
+						: []),
+					{
+						component: t('navbar.links.profile'),
+						href: getProfileRoute(authData.id),
+					},
+					{
+						component: t('navbar.logout'),
+						onClick: onLogout,
+					},
+				],
 			]}
 			trigger={<Avatar size={40} src={authData.avatar} variant={AvatarVariant.CIRCLE} />}
 			direction='bottom left'

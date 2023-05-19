@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
-import { ArticleDetails } from '@/entities/Article'
 import { ArticleComments } from '@/features/ArticleComments'
+import { ArticleDetails } from '@/features/ArticleDetails'
 import { ArticleRating } from '@/features/ArticleRating'
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList'
 import classNames from '@/shared/lib/classNames/classNames'
@@ -23,9 +23,11 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
 	const id = Number(useParams().id)
 
 	if (!id && __PROJECT__ !== 'storybook') {
-		;<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-			<Text variant='error' content={t('details.error.article-not-found')} />
-		</div>
+		return (
+			<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+				<Text variant='error' content={t('details.error.article-not-found')} />
+			</div>
+		)
 	}
 
 	return (

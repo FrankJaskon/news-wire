@@ -2,6 +2,7 @@ import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 import { ViewVariantType } from '@/entities/Article'
+import { ArticleTypeTabs, ArticlesTypesType } from '@/entities/ArticleTypeTabs'
 import { SortSelector, SortVariantType } from '@/entities/SortSelector'
 import { ViewToggler } from '@/features/ViewToggler'
 import { QueryParamsKeys } from '@/shared/const/queryParams'
@@ -23,7 +24,6 @@ import {
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList'
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
 import { articlesInfiniteListActions } from '../../model/slice/articlesInfiniteListSlice'
-import { ArticleTypeTabs, ArticlesTypesType } from '../ArticleTypeTabs'
 import cls from './ArticlesPageFilters.module.scss'
 
 export interface ArticlesPageFiltersProps {

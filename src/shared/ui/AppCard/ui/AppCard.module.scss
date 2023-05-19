@@ -8,7 +8,7 @@
 }
 
 .primary {
-	background: var(--sheet-right-gradient);
+	background: var(--primary-right-gradient);
 }
 
 .light {
@@ -17,4 +17,12 @@
 
 .dark {
 	background-color: var(--dark-color);
+}
+
+.sheet {
+	background: var(--sheet-right-gradient);
+}
+
+.max {
+	width: 100%;
 }

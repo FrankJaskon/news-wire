@@ -8,8 +8,9 @@ import cls from './ArticleImageBlock.module.scss'
 
 export interface ArticleImageBlockProps {
 	className?: string
-	src: string
+	src?: string
 	title?: string
+	readonly?: boolean
 }
 
 export const ArticleImageBlock: FC<ArticleImageBlockProps> = memo(

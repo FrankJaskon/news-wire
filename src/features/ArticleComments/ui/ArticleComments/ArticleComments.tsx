@@ -47,6 +47,10 @@ export const ArticleComments: FC<ArticleCommentsProps> = props => {
 		dispatch(fetchCommentsByArticleId(Number(id)))
 	})
 
+	if (!id) {
+		return <Text title={t('article.error.server-error')} />
+	}
+
 	return (
 		<LazyReducerLoader reducers={reducers}>
 			<VStack gap='16' className={classNames('', {}, [className])} data-testid={dataTestId}>
@@ -55,7 +59,7 @@ export const ArticleComments: FC<ArticleCommentsProps> = props => {
 						ns: 'article',
 					})}
 				/>
-				<AddArticleComment />
+				<AddArticleComment articleId={Number(id)} />
 				<CommentsList
 					comments={comments}
 					isLoading={isLoading}

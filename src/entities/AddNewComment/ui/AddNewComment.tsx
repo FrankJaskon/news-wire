@@ -7,6 +7,7 @@ import {
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
+import { AppCard } from '@/shared/ui/AppCard'
 import { AppTextArea } from '@/shared/ui/Form/AppTextArea'
 import { VStack } from '@/shared/ui/Stack'
 import { useNewCommentText } from '../model/selectors/newCommentSelectors'
@@ -49,13 +50,15 @@ const AddNewComment: FC<AddNewCommentProps> = props => {
 		<LazyReducerLoader reducers={reducers}>
 			<div className={classNames(cls.AddNewComment, {}, [className])}>
 				<VStack className={cls.inputWrapper} gap='8'>
-					<AppTextArea
-						placeholder={t('new-comment.label')}
-						className={cls.input}
-						value={text}
-						onChange={handleChange}
-						data-testid={dataTestId}
-					/>
+					<AppCard noPaddings>
+						<AppTextArea
+							placeholder={t('new-comment.label')}
+							className={cls.input}
+							value={text}
+							onChange={handleChange}
+							data-testid={dataTestId}
+						/>
+					</AppCard>
 				</VStack>
 				{text && (
 					<div className={cls.btnGroup}>

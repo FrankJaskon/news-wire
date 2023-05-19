@@ -1,7 +1,7 @@
 import { FC, HTMLAttributeAnchorTarget, memo, useCallback } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
-import { ArticleType, ViewVariantType } from '../../model/types/ArticleDetailsScheme'
+import { ArticleType, ViewVariantType } from '../../model/types/Article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItemSkeleton/ArticleListItemSkeleton'
 import cls from './ArticleList.module.scss'

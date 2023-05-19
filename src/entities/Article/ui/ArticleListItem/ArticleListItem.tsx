@@ -15,7 +15,7 @@ import { Skeleton } from '@/shared/ui/Skeleton'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { Text, TextSize, TextStyle, TextWeight } from '@/shared/ui/Text'
 import { BlockType, ViewVariant } from '../../model/consts/articleDetailsConsts'
-import { ArticleType, TextBlockType, ViewVariantType } from '../../model/types/ArticleDetailsScheme'
+import { ArticleType, TextBlockType, ViewVariantType } from '../../model/types/Article'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import cls from './ArticleListItem.module.scss'
 
@@ -52,7 +52,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 	)
 
 	const ArticleTypes = useMemo(
-		() => <Text className={cls.types} content={article?.type.join(', ')} size={TextSize.S} />,
+		() => <Text className={cls.types} content={article?.type?.join(', ')} size={TextSize.S} />,
 		[article?.type]
 	)
 
@@ -102,13 +102,18 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 							/>
 						</HStack>
 					</HStack>
-					<AppLink to={String(article?.id)}>{ArticleTitle}</AppLink>
+					<AppLink
+						to={(article?.id && getArticleDetailsRoute(article?.id)) || undefined}
+						target={target}
+					>
+						{ArticleTitle}
+					</AppLink>
 				</VStack>
 			</AppCard>
 		)
 	}
 
-	const textBlockProps = article?.blocks.find(
+	const textBlockProps = article?.blocks?.find(
 		block => block.type === BlockType.TEXT
 	) as TextBlockType
 
@@ -122,7 +127,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					<AppLink
 						className={classNames(cls.userInfo, {})}
 						to={
-							(article?.profile.id && getProfileRoute(article?.profile.id)) ||
+							(article?.profile?.id && getProfileRoute(article?.profile.id)) ||
 							undefined
 						}
 					>
