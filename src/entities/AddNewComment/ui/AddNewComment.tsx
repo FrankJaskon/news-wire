@@ -6,10 +6,10 @@ import {
 	LazyReducerLoader,
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
-import { AppCard } from '@/shared/ui/AppCard'
-import { AppTextArea } from '@/shared/ui/Form/AppTextArea'
-import { VStack } from '@/shared/ui/Stack'
+import { AppButton, ButtonVariant } from '@/shared/ui/deprecated/AppButton'
+import { AppCard } from '@/shared/ui/deprecated/AppCard'
+import { AppTextArea } from '@/shared/ui/deprecated/AppTextArea'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 import { useNewCommentText } from '../model/selectors/newCommentSelectors'
 import { addNewCommentActions, addNewCommentReducer } from '../model/slices/addNewCommentSlice'
 import cls from './AddNewComment.module.scss'

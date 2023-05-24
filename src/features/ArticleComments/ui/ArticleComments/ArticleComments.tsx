@@ -10,8 +10,8 @@ import {
 	LazyReducerLoader,
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { VStack } from '@/shared/ui/Stack'
-import { Text } from '@/shared/ui/Text'
+import { Text } from '@/shared/ui/deprecated/Text'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 import {
 	useArticleDetailsCommentsError,
 	useArticleDetailsCommentsIsLoading,

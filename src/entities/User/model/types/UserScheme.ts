@@ -1,3 +1,4 @@
+import { FeatureFlags } from '@/shared/types/featureFlags'
 import { ValueOf } from '@/shared/types/types'
 import { JsonSettings } from './jsonSettings'
 
@@ -15,6 +16,7 @@ export interface User {
 	avatar?: string
 	roles: UserRoleType[]
 	jsonSettings?: JsonSettings
+	features?: FeatureFlags
 }
 
 export interface UserScheme {

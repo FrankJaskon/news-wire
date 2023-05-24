@@ -28,15 +28,19 @@
 	height: 8px;
 }
 
-body {
+.App {
 	font: var(--font-m);
 	background: linear-gradient(to top, var(--bg-color), var(--second-bg-gradient-color));
 	color: var(--primary-color);
 	transition: background-color .4s;
+	min-height: 100vh;
 }
 
-.App {
-	height: 100vh;
+.App-redesign {
+	font: var(--font-m-redesign);
+	background: var(--bg-redesigned);
+	color: var(--text-redesigned);
+	transition: background-color .4s;
 	min-height: 100vh;
 }
 

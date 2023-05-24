@@ -1,4 +1,4 @@
-body.light {
+.light {
 	--bg-color: #eee;
 	--primary-color: #ff8c00;
 	--secondary-color: #333;
@@ -26,4 +26,15 @@ body.light {
 
 	/* FOCUS */
 	--focus-shadow: 0 0 3px 2px rgba(0 0 0 / 60%);
+
+    // REDESIGN
+    --dark-bg-redesigned: #FFF;
+    --bg-redesigned: #EFF5F6;
+    --light-bg-redesigned: #E2EEF1;
+    --text-redesigned: #141C1F;
+    --hint-redesigned: #ADBCC0;
+    --cancel-redesigned: #FF7;
+    --save-redesigned: #62DE85;
+    --icon-redesigned: #5ED3F3;
+    --accent-redesigned: #00C8FF;
 }

@@ -1,4 +1,4 @@
-body.purple {
+.purple {
 	--bg-color: #f9ebff;
 	--primary-color: #ae12f6;
 	--secondary-color: #333;
@@ -20,10 +20,21 @@ body.purple {
 	/* CARD */
 	--sheet-color: #ebebeb;
 
-	/* skeleton */
+	/* SKELETON */
 	--skeleton-color: #fff;
 	--skeleton-shadow: #e9bcfc;
 
-	/* focus */
+	/* FOCUS */
 	--focus-shadow: 0 0 3px 2px rgba(0 0 0 / 60%);
+
+	// REDESIGN
+    --dark-bg-redesigned: #FFF3D6;
+    --bg-redesigned: #F0C048;
+    --light-bg-redesigned: #F2D791;
+    --text-redesigned: #1B1311;
+    --hint-redesigned: #B8B2A2;
+    --cancel-redesigned: #FF5E5E;
+    --save-redesigned: #52FA81;
+    --icon-redesigned: #4875F0;
+    --accent-redesigned: #1D59FF;
 }

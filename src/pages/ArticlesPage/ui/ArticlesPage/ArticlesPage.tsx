@@ -4,7 +4,7 @@ import {
 	LazyReducerLoader,
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { VStack } from '@/shared/ui/Stack'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 import {
 	ArticleInfiniteList,
 	articlesInfiniteListReducer,

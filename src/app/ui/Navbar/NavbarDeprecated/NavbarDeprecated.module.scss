@@ -1,0 +1,28 @@
+.Navbar {
+	height: var(--navbar-height);
+	padding-left: 10px;
+	padding-right: 10px;
+	background: var(--primary-right-gradient);
+	transition: background-color .2s;
+	position: relative;
+}
+
+.container {
+	height: 100%;
+}
+
+.linksGroup {
+	margin-left: auto;
+	.link {
+		color: var(--block-secondary-color);
+	}
+}
+
+.login {
+	margin-left: auto;
+}
+
+.logo {
+	padding: 0 5px;
+	white-space: nowrap;
+}

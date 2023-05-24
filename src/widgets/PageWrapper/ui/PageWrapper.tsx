@@ -6,6 +6,7 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll/useInfiniteScroll'
 import { useThrottle } from '@/shared/hooks/useThrottle/useThrottle'
 import classNames from '@/shared/lib/classNames/classNames'
+import { toggleFeatures } from '@/shared/lib/features'
 import { TestProps } from '@/shared/types/test'
 import { getPageScrollByPath } from '../model/selectors/getPageScroll'
 import { pageScrollActions } from '../model/slice/pageScrollSlice'
@@ -52,7 +53,17 @@ export const PageWrapper: FC<PageWrapperProps> = props => {
 	return (
 		<section
 			ref={wrapperRef}
-			className={classNames(cls.PageWrapper, {}, [className])}
+			className={classNames(
+				cls[
+					toggleFeatures({
+						name: 'isAppRedesigned',
+						on: () => 'PageWrapper-redesign',
+						off: () => 'PageWrapper',
+					})
+				],
+				{},
+				[className]
+			)}
 			onScroll={watchedScroll ? onScroll : undefined}
 			data-testid={props['data-testid'] ?? 'page-wrapper'}
 		>

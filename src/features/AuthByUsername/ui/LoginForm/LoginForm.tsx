@@ -9,11 +9,11 @@ import {
 	LazyReducerLoader,
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { AppButton, ButtonVariant } from '@/shared/ui/AppButton'
-import { AppInput } from '@/shared/ui/Form/AppInput'
-import { AppLabel, LabelVariant } from '@/shared/ui/Form/Label'
-import { VStack } from '@/shared/ui/Stack'
-import { Text, TextVariant } from '@/shared/ui/Text'
+import { AppButton, ButtonVariant } from '@/shared/ui/deprecated/AppButton'
+import { AppInput } from '@/shared/ui/deprecated/AppInput'
+import { AppLabel, LabelVariant } from '@/shared/ui/deprecated/Label'
+import { Text, TextVariant } from '@/shared/ui/deprecated/Text'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 import { useAuthByUsernameError } from '../../model/selectors/getAuthByUsernameError/getAuthByUsernameError'
 import { useAuthByUsernameIsLoading } from '../../model/selectors/getAuthByUsernameIsLoading/getAuthByUsernameIsLoading'
 import { useAuthByUsernamePassword } from '../../model/selectors/getAuthByUsernamePassword/getAuthByUsernamePassword'

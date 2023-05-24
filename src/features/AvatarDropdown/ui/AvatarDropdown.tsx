@@ -6,8 +6,8 @@ import { getIsUserAdmin, getIsUserManager, useUserAuthData, userActions } from '
 import { getAdminRoute, getMainRoute, getProfileRoute } from '@/shared/const/RoutPaths'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
-import { Avatar, AvatarVariant } from '@/shared/ui/Avatar'
-import { Dropdown } from '@/shared/ui/Popups'
+import { Avatar, AvatarVariant } from '@/shared/ui/deprecated/Avatar'
+import { Dropdown } from '@/shared/ui/deprecated/Popups'
 import cls from './AvatarDropdown.module.scss'
 
 interface AvatarDropdownProps {

@@ -4,9 +4,10 @@ import { CodeBlockType } from '@/entities/Article'
 import { TextColor } from '@/shared/const/consts'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
-import { AppTextArea } from '@/shared/ui/Form/AppTextArea'
-import { HStack, VStack } from '@/shared/ui/Stack'
-import { Text } from '@/shared/ui/Text'
+import { AppTextArea } from '@/shared/ui/deprecated/AppTextArea'
+import { HStack } from '@/shared/ui/deprecated/HStack'
+import { Text } from '@/shared/ui/deprecated/Text'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 import { editableArticleActions } from '../../model/slice/editableArticleSlice'
 import {
 	ArticleOptionDropdownItem,

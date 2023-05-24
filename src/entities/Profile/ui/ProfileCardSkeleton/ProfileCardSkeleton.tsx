@@ -1,7 +1,8 @@
 import { FC, memo } from 'react'
-import { AppCard } from '@/shared/ui/AppCard'
-import { Skeleton } from '@/shared/ui/Skeleton'
-import { HStack, VStack } from '@/shared/ui/Stack'
+import { AppCard } from '@/shared/ui/deprecated/AppCard'
+import { HStack } from '@/shared/ui/deprecated/HStack'
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 
 export interface ProfileCardSkeletonProps {
 	className?: string

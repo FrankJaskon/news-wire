@@ -1,0 +1,43 @@
+body {
+	.Modal {
+		position: fixed;
+		inset: 0;
+		opacity: 0;
+		pointer-events: none;
+		background: none;
+		z-index: -1;
+	}
+
+	.content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(.5);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100px;
+		min-width: 300px;
+		max-width: 60%;
+		padding: 20px;
+		background-color: var(--bg-color);
+		border-radius: var(--border-radius);
+		transition: transform .2s linear, opacity .2s linear;
+	}
+	.opened {
+		opacity: 1;
+		pointer-events: auto;
+		z-index: var(--modal-z-index);
+		.content {
+			transform: translate(-50%, -50%) scale(1);
+			opacity: 1;
+		}
+	}
+
+	.closed {
+		.content {
+			transform: scale(.2);
+			opacity: .2;
+		}
+	}
+}

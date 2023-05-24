@@ -1,6 +1,7 @@
 :root {
 	/* FONT */
 	--font-family-main: 'Roboto', sans-serif;
+	--font-family-text: 'Nunito Sans', sans-serif;
 
 	/* s */
 	--font-size-s: 14px;
@@ -60,4 +61,21 @@
 	/* Z-INDEX */
 	--absolute-content-z-index: 10;
 	--modal-z-index: 15;
+
+	/* REDESIGN */
+
+	/* s */
+	--font-s-redesign: var(--font-size-s) / var(--font-line-s) var(--font-family-text);
+
+	/* m */
+	--font-m-redesign: var(--font-size-m) / var(--font-line-m) var(--font-family-text);
+
+	/* l */
+	--font-l-redesign: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+
+	/* xl */
+	--font-xl-redesign: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+
+	/* xxl */
+	--font-xxl-redesign: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-main);
 }

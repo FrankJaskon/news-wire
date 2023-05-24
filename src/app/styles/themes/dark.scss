@@ -1,4 +1,4 @@
-body.dark {
+.dark {
 	--bg-color: #15202b;
 	--primary-color: #ff8c00;
 	--secondary-color: #eee;
@@ -20,10 +20,21 @@ body.dark {
 	/* CARD */
 	--sheet-color: #2d3741;
 
-	/* skeleton */
+	/* SKELETON */
 	--skeleton-color: #053a6f;
 	--skeleton-shadow: #194775;
 
-	/* focus */
+	/* FOCUS */
 	--focus-shadow: 0 0 3px 2px rgba(255 255 255 / 80%);
+
+	// REDESIGN
+    --dark-bg-redesigned: #090F11;
+    --bg-redesigned: #0C1214;
+    --light-bg-redesigned: #151C1F;
+    --text-redesigned: #DBDBDB;
+    --hint-redesigned: #555;
+    --cancel-redesigned: #D95757;
+    --save-redesigned: #6CD98B;
+    --icon-redesigned: #74A2B2;
+    --accent-redesigned: #5ED3F3;
 }

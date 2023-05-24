@@ -26,5 +26,12 @@
   "editor.autoIndent": "none",
   "files.insertFinalNewline": false,
   "prettier.endOfLine": "crlf",
-  "prettier.semi": false
+  "prettier.semi": false,
+  "cSpell.words": [
+    "rightbar"
+  ],
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "prompt",
+  "typescript.updateImportsOnFileMove.enabled": "prompt"
 }

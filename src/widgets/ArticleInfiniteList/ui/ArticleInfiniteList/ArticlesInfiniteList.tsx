@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { ArticleList, ViewVariant } from '@/entities/Article'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
-import { Text, TextSize, TextVariant } from '@/shared/ui/Text'
+import { Text, TextSize, TextVariant } from '@/shared/ui/deprecated/Text'
 import {
 	useArticleInfiniteListError,
 	useArticleInfiniteListIsLoading,

@@ -21,9 +21,10 @@ import {
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
-import { AppLink, AppLinkVariant } from '@/shared/ui/AppLink/AppLink'
-import { HStack, VStack } from '@/shared/ui/Stack'
-import { Text, TextVariant } from '@/shared/ui/Text'
+import { AppLink, AppLinkVariant } from '@/shared/ui/deprecated/AppLink/AppLink'
+import { HStack } from '@/shared/ui/deprecated/HStack'
+import { Text, TextVariant } from '@/shared/ui/deprecated/Text'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 import cls from './ArticleEditing.module.scss'
 
 export interface ArticleEditingProps {

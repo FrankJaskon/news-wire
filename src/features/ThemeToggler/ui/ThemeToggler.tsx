@@ -1,12 +1,10 @@
 import { FC, memo, useCallback } from 'react'
 import { saveJsonSettings, useUserAuthData } from '@/entities/User'
-import DarkIcon from '@/shared/assets/icons/dark-theme.svg'
 import LightIcon from '@/shared/assets/icons/light-theme.svg'
-import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import useTheme from '@/shared/config/theme/useTheme'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
-import { AppButton } from '@/shared/ui/AppButton'
+import { AppButton } from '@/shared/ui/deprecated/AppButton'
 import cls from './ThemeToggler.module.scss'
 
 interface ThemeTogglerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -33,11 +31,7 @@ export const ThemeToggler: FC<ThemeTogglerProps> = memo((props: ThemeTogglerProp
 			className={classNames(cls.ThemeToggler, {}, [className])}
 			{...otherProps}
 		>
-			{theme === AppThemes.DARK ? (
-				<DarkIcon className={cls.svg} />
-			) : (
-				<LightIcon className={cls.svg} />
-			)}
+			<LightIcon className={cls.svg} width={32} height={32} />
 		</AppButton>
 	)
 })

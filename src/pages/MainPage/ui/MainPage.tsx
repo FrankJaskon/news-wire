@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { useIsUserAuthorized } from '@/entities/User'
 import { LatestArticlesList } from '@/features/LatestArticlesList'
 import { TextColor } from '@/shared/const/consts'
-import { VStack } from '@/shared/ui/Stack'
-import { Text, TextWeight } from '@/shared/ui/Text'
+import { Text, TextWeight } from '@/shared/ui/deprecated/Text'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 import { PageWrapper } from '@/widgets/PageWrapper'
 
 const MainPage: FC = memo(() => {

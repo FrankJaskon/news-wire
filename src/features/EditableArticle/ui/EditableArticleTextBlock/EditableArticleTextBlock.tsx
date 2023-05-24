@@ -4,11 +4,12 @@ import { EditableTextBlockType } from '@/entities/Article'
 import { TextColor } from '@/shared/const/consts'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
-import { AppInput } from '@/shared/ui/Form/AppInput'
-import { AppTextArea } from '@/shared/ui/Form/AppTextArea'
-import { AppLabel, LabelVariant } from '@/shared/ui/Form/Label'
-import { HStack, VStack } from '@/shared/ui/Stack'
-import { Text } from '@/shared/ui/Text'
+import { AppInput } from '@/shared/ui/deprecated/AppInput'
+import { AppTextArea } from '@/shared/ui/deprecated/AppTextArea'
+import { HStack } from '@/shared/ui/deprecated/HStack'
+import { AppLabel, LabelVariant } from '@/shared/ui/deprecated/Label'
+import { Text } from '@/shared/ui/deprecated/Text'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 import {
 	SetTextBlockParagraphProps,
 	editableArticleActions,

@@ -1,8 +1,8 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { AppLabel } from '@/shared/ui/Form/Label'
-import { Select, SelectOption } from '@/shared/ui/Popups'
-import { VStack } from '@/shared/ui/Stack'
+import { AppLabel } from '@/shared/ui/deprecated/Label'
+import { Select, SelectOption } from '@/shared/ui/deprecated/Popups'
+import { VStack } from '@/shared/ui/deprecated/VStack'
 import { Currency, CurrencyType } from '../../model/types/CurrencyScheme'
 
 interface CurrencySelectProps {
