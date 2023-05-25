@@ -2,6 +2,11 @@ import { CSSProperties, FC, memo } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
 import cls from './Skeleton.module.scss'
 
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
+
 export interface SkeletonProps {
 	className?: string
 	width?: number | string

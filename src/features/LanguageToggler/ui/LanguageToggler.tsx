@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
-import { useTranslation } from 'react-i18next'
-import classNames from '@/shared/lib/classNames/classNames'
-import { AppButton } from '@/shared/ui/deprecated/AppButton'
+import { ToggleFeatures } from '@/shared/lib/features'
+import { LanguageToggler as LanguageTogglerDeprecated } from './deprecated/LanguageToggler'
+import { LanguageToggler as LanguageTogglerRedesigned } from './redesigned/LanguageToggler'
 
 interface LanguageTogglerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string
@@ -9,24 +9,13 @@ interface LanguageTogglerProps extends React.ButtonHTMLAttributes<HTMLButtonElem
 }
 
 export const LanguageToggler: FC<LanguageTogglerProps> = memo((props: LanguageTogglerProps) => {
-	const { t, i18n } = useTranslation()
 	const { className, short, ...otherProps } = props
 
-	const isEn = i18n.language === 'en'
-
-	const toggleLanguage = async () => {
-		await i18n.changeLanguage(isEn ? 'ua' : 'en')
-	}
-
 	return (
-		<AppButton
-			variant='custom'
-			data-testid='language-toggler'
-			onClick={toggleLanguage}
-			className={classNames('', {}, [className])}
-			{...otherProps}
-		>
-			{short ? t('language-toggler.language-short') : t('language-toggler.language')}
-		</AppButton>
+		<ToggleFeatures
+			feature='isAppRedesigned'
+			on={<LanguageTogglerRedesigned className={className} />}
+			off={<LanguageTogglerDeprecated className={className} short={short} {...otherProps} />}
+		/>
 	)
 })

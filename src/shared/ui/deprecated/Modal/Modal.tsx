@@ -7,6 +7,11 @@ import { Portal } from '../Portal'
 import cls from './Modal.module.scss'
 import type { Mods } from '@/shared/lib/classNames/classNames'
 
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
+
 interface ModalProps {
 	className?: string
 	children?: ReactNode

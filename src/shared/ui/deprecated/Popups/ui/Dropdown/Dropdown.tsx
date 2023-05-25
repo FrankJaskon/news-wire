@@ -11,6 +11,11 @@ import {
 import popupCls from '../../styles/Popups.module.scss'
 import cls from './Dropdown.module.scss'
 
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
+
 export interface DropdownItem {
 	disabled?: boolean
 	component?: ReactNode

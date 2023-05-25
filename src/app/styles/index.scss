@@ -9,11 +9,6 @@
 	-ms-overflow-style: none; /* IE 10+ */
 }
 
-:focus {
-	outline: none;
-	box-shadow: var(--focus-shadow);
-}
-
 ::-webkit-scrollbar-thumb {
 	background-color: var(--block-primary-lighter);
 	border-radius: var(--border-radius);
@@ -34,6 +29,10 @@
 	color: var(--primary-color);
 	transition: background-color .4s;
 	min-height: 100vh;
+	:focus {
+		outline: none;
+		box-shadow: var(--focus-shadow);
+	}
 }
 
 .App-redesign {

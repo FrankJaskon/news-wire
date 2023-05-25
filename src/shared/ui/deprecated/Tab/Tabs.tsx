@@ -6,6 +6,11 @@ import { Text } from '../Text'
 import { TabVariant, TabVariantType } from './model/consts'
 import cls from './Tabs.module.scss'
 
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
+
 export interface TabItem {
 	value: string
 	content: string

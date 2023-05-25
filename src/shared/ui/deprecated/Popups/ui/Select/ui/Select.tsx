@@ -15,6 +15,11 @@ import {
 import popupCls from '../../../styles/Popups.module.scss'
 import cls from './Select.module.scss'
 
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
+
 export interface SelectOption<T extends string> {
 	value: T
 	label: T

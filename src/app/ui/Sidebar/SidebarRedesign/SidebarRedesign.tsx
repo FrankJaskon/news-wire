@@ -2,12 +2,13 @@ import { FC, memo, useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { LanguageToggler } from '@/features/LanguageToggler'
 import { ThemeToggler } from '@/features/ThemeToggler'
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg'
 import { useDetectMobile } from '@/shared/hooks/useDetectMobile/useDetectMobile'
 import classNames from '@/shared/lib/classNames/classNames'
-import { AppButton, ButtonShape, ButtonSize, ButtonVariant } from '@/shared/ui/deprecated/AppButton'
-import { AppLogo } from '@/shared/ui/deprecated/AppLogo'
 import { HStack } from '@/shared/ui/deprecated/HStack'
 import { VStack } from '@/shared/ui/deprecated/VStack'
+import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
+import { AppLogo } from '@/shared/ui/redesigned/AppLogo'
 import { getSidebarItem } from '../model/selectors/getSidebarItem'
 import { SidebarLink } from '../SidebarLink/SidebarLink'
 import cls from './SidebarRedesign.module.scss'
@@ -46,7 +47,7 @@ export const SidebarRedesign: FC<SidebarRedesignProps> = memo((props: SidebarRed
 				className={cls.menu}
 				innerWidth={isCollapsed ? undefined : 'full'}
 			>
-				<AppLogo className={cls.appLogo} />
+				<AppLogo className={cls.appLogo} size={isCollapsed ? 30 : 50} />
 				{renderLinks}
 			</VStack>
 			{isCollapsed ? (
@@ -70,16 +71,13 @@ export const SidebarRedesign: FC<SidebarRedesignProps> = memo((props: SidebarRed
 					/>
 				</HStack>
 			)}
-			<AppButton
+			<AppIcon
 				data-testid='sidebar-toggler'
-				className={cls.toggler}
-				variant={ButtonVariant.CUSTOM}
-				size={ButtonSize.L}
-				shape={ButtonShape.SQUARE}
+				className={classNames(cls.sidebarToggler, { [cls.collapsed]: isCollapsed })}
 				onClick={toggleSidebar}
-			>
-				{isCollapsed ? '>' : '<'}
-			</AppButton>
+				Svg={ArrowIcon}
+				clickable
+			/>
 		</aside>
 	)
 })

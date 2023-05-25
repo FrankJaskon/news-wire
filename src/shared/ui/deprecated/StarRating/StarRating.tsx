@@ -6,6 +6,11 @@ import { HStack } from '../HStack'
 import { Skeleton } from '../Skeleton'
 import cls from './StarRating.module.scss'
 
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
+
 export interface StarRatingProps {
 	className?: string
 	onSelect?: (starCount: number) => void

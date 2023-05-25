@@ -1,6 +1,44 @@
+/* stylelint-disable no-descending-specificity */
+
 .SidebarLink {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 0 1rem 0 9px;
+	.icon {
+		margin-right: 1rem;
+	}
+	span {
+		display: block;
+		white-space: nowrap;
+	}
+	&.collapsed {
+		justify-content: center;
+		padding: 0;
+		.icon {
+			margin-right: 0;
+		}
+		span {
+			opacity: 0;
+			width: 0;
+		}
+	}
+	&.active {
+		background: linear-gradient(89.97deg, rgba(29 89 255 / 30%) 1.15%, rgba(94 211 243 / 0%) 99.97%);
+		position: relative;
+		color: var(--accent-redesigned);
+		border-left: solid 2px;
+	}
+}
+
+.SidebarLinkDeprecated {
 	display: block;
 	padding: 5px 10px;
+	span {
+		display: block;
+		white-space: nowrap;
+		transition: .2s opacity, .2s width;
+	}
 	.icon {
 		min-height: 24px;
 		min-width: 24px;
@@ -8,11 +46,6 @@
 		width: 24px;
 		margin-right: 10px;
 		fill: var(--block-secondary-color);
-	}
-	span {
-		display: block;
-		white-space: nowrap;
-		transition: .2s opacity, .2s width;
 	}
 	&.collapsed {
 		.icon {

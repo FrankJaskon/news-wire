@@ -2,9 +2,12 @@ import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useUserAuthData } from '@/entities/User'
 import classNames from '@/shared/lib/classNames/classNames'
-import { AppIcon } from '@/shared/ui/deprecated/AppIcon'
-import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink'
+import { ToggleFeatures } from '@/shared/lib/features'
+import { AppIcon as AppIconDeprecated } from '@/shared/ui/deprecated/AppIcon'
+import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink/AppLink'
 import { HStack } from '@/shared/ui/deprecated/HStack'
+import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
+import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink'
 import { SidebarItemType } from '../model/types/sidebarTypes'
 import cls from './SidebarLink.module.scss'
 
@@ -28,16 +31,37 @@ export const SidebarLink: FC<SidebarLinkProps> = memo((props: SidebarLinkProps) 
 	}
 
 	return (
-		<AppLink
-			className={classNames(cls.SidebarLink, {
-				[cls.collapsed]: collapsed,
-			})}
-			to={path}
-		>
-			<HStack>
-				<AppIcon Svg={Icon} variant='contrast-color' className={cls.icon} />
-				<span>{t(`${text}`)}</span>
-			</HStack>
-		</AppLink>
+		<ToggleFeatures
+			feature='isAppRedesigned'
+			on={
+				<AppLink
+					className={classNames(cls.SidebarLink, {
+						[cls.collapsed]: collapsed,
+					})}
+					activeClassName={cls.active}
+					to={path}
+				>
+					<AppIcon Svg={Icon} className={cls.icon} />
+					<span>{t(`${text}`)}</span>
+				</AppLink>
+			}
+			off={
+				<AppLinkDeprecated
+					className={classNames(cls.SidebarLinkDeprecated, {
+						[cls.collapsed]: collapsed,
+					})}
+					to={path}
+				>
+					<HStack>
+						<AppIconDeprecated
+							Svg={Icon}
+							variant='contrast-color'
+							className={cls.icon}
+						/>
+						<span>{t(`${text}`)}</span>
+					</HStack>
+				</AppLinkDeprecated>
+			}
+		/>
 	)
 })

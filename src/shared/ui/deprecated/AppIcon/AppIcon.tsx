@@ -3,6 +3,11 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import cls from './AppIcon.module.scss'
 
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
+
 export const AppIconVariant = {
 	PRIMARY: 'primary-color',
 	SECONDARY: 'secondary-color',

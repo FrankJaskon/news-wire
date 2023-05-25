@@ -7,6 +7,11 @@ import { Overlay } from '../Overlay/Overlay'
 import { Portal } from '../Portal'
 import cls from './Drawer.module.scss'
 
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
+
 interface DrawerProps {
 	className?: string
 	children: ReactNode

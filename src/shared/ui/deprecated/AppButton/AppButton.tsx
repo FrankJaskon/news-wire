@@ -4,6 +4,11 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import cls from './AppButton.module.scss'
 
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
+
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string
 	variant?: ButtonVariantType
