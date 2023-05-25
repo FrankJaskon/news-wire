@@ -11,7 +11,7 @@ import {
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { Text } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import {
 	useArticleDetailsCommentsError,
 	useArticleDetailsCommentsIsLoading,

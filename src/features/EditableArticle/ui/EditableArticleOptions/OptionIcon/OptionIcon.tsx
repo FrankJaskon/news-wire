@@ -1,7 +1,7 @@
 import { FC, FunctionComponent, SVGAttributes } from 'react'
 import { AppCard, CardVariant } from '@/shared/ui/deprecated/AppCard'
 import { AppIcon, AppIconVariant } from '@/shared/ui/deprecated/AppIcon'
-import { HStack } from '@/shared/ui/deprecated/HStack'
+import { HStack } from '@/shared/ui/redesigned/HStack'
 
 export interface OptionIconProps {
 	className?: string

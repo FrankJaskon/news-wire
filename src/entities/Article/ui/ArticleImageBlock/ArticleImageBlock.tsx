@@ -1,9 +1,9 @@
 import { FC, memo } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
-import { AppImage } from '@/shared/ui/deprecated/AppImage'
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { Text } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { AppImage } from '@/shared/ui/redesigned/AppImage'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import cls from './ArticleImageBlock.module.scss'
 
 export interface ArticleImageBlockProps {

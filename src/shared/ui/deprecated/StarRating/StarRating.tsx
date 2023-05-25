@@ -1,8 +1,8 @@
 import { FC, memo, useCallback, useState } from 'react'
 import StarIcon from '@/shared/assets/icons/star_rate.svg'
 import classNames from '@/shared/lib/classNames/classNames'
+import { HStack } from '../../redesigned/HStack'
 import { AppIcon, AppIconSize } from '../AppIcon'
-import { HStack } from '../HStack'
 import { Skeleton } from '../Skeleton'
 import cls from './StarRating.module.scss'
 

@@ -22,9 +22,9 @@ import {
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
 import { AppLink, AppLinkVariant } from '@/shared/ui/deprecated/AppLink/AppLink'
-import { HStack } from '@/shared/ui/deprecated/HStack'
 import { Text, TextVariant } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { HStack } from '@/shared/ui/redesigned/HStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import cls from './ArticleEditing.module.scss'
 
 export interface ArticleEditingProps {

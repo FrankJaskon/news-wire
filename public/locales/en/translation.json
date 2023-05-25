@@ -12,8 +12,8 @@
     "logout": "Log out",
     "create-article": "Create new article",
     "links": {
-      "profile": "Go to profile",
-      "admin": "Go to admin panel"
+      "profile": "Profile",
+      "admin": "Admin panel"
     }
   },
   "sidebar": {

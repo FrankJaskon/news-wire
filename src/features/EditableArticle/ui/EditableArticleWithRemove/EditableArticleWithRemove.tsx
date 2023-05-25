@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
 import RemoveIcon from '@/shared/assets/icons/clear.svg'
 import { AppButton, ButtonShape, ButtonVariant } from '@/shared/ui/deprecated/AppButton'
-import { HStack } from '@/shared/ui/deprecated/HStack'
+import { HStack } from '@/shared/ui/redesigned/HStack'
 import { OptionIcon } from '../EditableArticleOptions/OptionIcon/OptionIcon'
 
 export interface EditableArticleWithRemoveProps {

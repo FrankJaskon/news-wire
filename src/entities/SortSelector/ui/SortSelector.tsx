@@ -1,8 +1,8 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SortOrder, SortOrderType } from '@/shared/types/types'
-import { HStack } from '@/shared/ui/deprecated/HStack'
 import { Select, SelectOption } from '@/shared/ui/deprecated/Popups'
+import { HStack } from '@/shared/ui/redesigned/HStack'
 import { SortVariant, SortVariantType } from '../model/types/SortSelectorTypes'
 
 interface SortSelectorProps {

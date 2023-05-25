@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react'
 import { BlockHeader } from '@/entities/Article'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppCard } from '@/shared/ui/deprecated/AppCard'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import cls from './EditableBlock.module.scss'
 
 export interface EditableBlockProps {

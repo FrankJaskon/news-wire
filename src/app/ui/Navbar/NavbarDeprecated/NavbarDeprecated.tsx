@@ -11,8 +11,8 @@ import { useDetectMobile } from '@/shared/hooks/useDetectMobile/useDetectMobile'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton, ButtonVariant } from '@/shared/ui/deprecated/AppButton'
 import { AppLink, AppLinkVariant } from '@/shared/ui/deprecated/AppLink/AppLink'
-import { HStack } from '@/shared/ui/deprecated/HStack'
 import { Text } from '@/shared/ui/deprecated/Text'
+import { HStack } from '@/shared/ui/redesigned/HStack'
 import cls from './NavbarDeprecated.module.scss'
 
 interface NavbarDeprecatedProps {

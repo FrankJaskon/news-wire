@@ -6,10 +6,10 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
 import { AppInput } from '@/shared/ui/deprecated/AppInput'
 import { AppTextArea } from '@/shared/ui/deprecated/AppTextArea'
-import { HStack } from '@/shared/ui/deprecated/HStack'
 import { AppLabel, LabelVariant } from '@/shared/ui/deprecated/Label'
 import { Text } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { HStack } from '@/shared/ui/redesigned/HStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import {
 	SetTextBlockParagraphProps,
 	editableArticleActions,

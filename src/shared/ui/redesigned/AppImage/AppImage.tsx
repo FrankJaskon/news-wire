@@ -1,10 +1,5 @@
 import { FC, ImgHTMLAttributes, memo, useLayoutEffect, useState } from 'react'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 	className?: string
 	src?: string

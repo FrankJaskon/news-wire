@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { TextColor } from '@/shared/const/consts'
 import { Text, TextWeight } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { ArticleEditing } from '@/widgets/ArticleEditing'
 import { PageWrapper } from '@/widgets/PageWrapper'
 

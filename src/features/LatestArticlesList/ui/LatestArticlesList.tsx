@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { ArticleList } from '@/entities/Article'
 import classNames from '@/shared/lib/classNames/classNames'
 import { Text, TextSize, TextVariant } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { useLatestArticlesList } from '../api/latestArticlesListApi'
 
 export interface LatestArticlesListProps {

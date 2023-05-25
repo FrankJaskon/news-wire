@@ -1,28 +1,22 @@
-import { FC } from 'react'
-import { NotificationList } from '@/entities/Notification'
-import NotificationIcon from '@/shared/assets/icons/notifications.svg'
-import classNames from '@/shared/lib/classNames/classNames'
-import { AppIcon, AppIconVariant } from '@/shared/ui/deprecated/AppIcon'
-import { Popover } from '@/shared/ui/deprecated/Popups'
-import cls from './NotificationPopup.module.scss'
+import { FC, memo } from 'react'
+import { ToggleFeatures } from '@/shared/lib/features'
+import { NotificationPopup as NotificationPopupDeprecated } from './deprecated/NotificationPopup'
+import { NotificationPopup as NotificationPopupRedesigned } from './redesigned/NotificationPopup'
 
 interface NotificationPopupProps {
 	className?: string
 }
 
-export const NotificationPopup: FC<NotificationPopupProps> = props => {
-	const { className } = props
+export const NotificationPopup: FC<NotificationPopupProps> = memo(
+	(props: NotificationPopupProps) => {
+		const { className } = props
 
-	return (
-		<Popover
-			trigger={<AppIcon Svg={NotificationIcon} variant={AppIconVariant.CONTRAST} />}
-			direction='bottom left'
-			className={classNames(cls.NotificationPopup, {}, [className])}
-			unmount={false}
-		>
-			<div className={cls.listWrapper}>
-				<NotificationList />
-			</div>
-		</Popover>
-	)
-}
+		return (
+			<ToggleFeatures
+				feature='isAppRedesigned'
+				on={<NotificationPopupRedesigned className={className} />}
+				off={<NotificationPopupDeprecated className={className} />}
+			/>
+		)
+	}
+)

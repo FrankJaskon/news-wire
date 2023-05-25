@@ -4,7 +4,7 @@ import { MobileNotificationDrawer } from '@/features/MobileNotificationDrawer'
 import { NotificationPopup } from '@/features/NotificationPopup'
 import { useDetectMobile } from '@/shared/hooks/useDetectMobile/useDetectMobile'
 import classNames from '@/shared/lib/classNames/classNames'
-import { HStack } from '@/shared/ui/deprecated/HStack'
+import { HStack } from '@/shared/ui/redesigned/HStack'
 import cls from './NavbarRedesign.module.scss'
 
 interface NavbarRedesignProps {

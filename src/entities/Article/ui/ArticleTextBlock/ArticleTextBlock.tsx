@@ -2,7 +2,7 @@ import { FC, memo, useMemo } from 'react'
 import { TextColor } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
 import { Text, TextSize, TextWeight } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import cls from './ArticleTextBlock.module.scss'
 
 export interface ArticleTextBlockProps {

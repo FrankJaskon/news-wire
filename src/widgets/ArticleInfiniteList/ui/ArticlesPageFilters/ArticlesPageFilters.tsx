@@ -13,8 +13,8 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { setQueryParams } from '@/shared/lib/setQueryParams/setQueryParams'
 import { SortOrderType } from '@/shared/types/types'
 import { AppInput } from '@/shared/ui/deprecated/AppInput'
-import { HStack } from '@/shared/ui/deprecated/HStack'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { HStack } from '@/shared/ui/redesigned/HStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import {
 	useArticleInfiniteListFilter,
 	useArticleInfiniteListOrder,

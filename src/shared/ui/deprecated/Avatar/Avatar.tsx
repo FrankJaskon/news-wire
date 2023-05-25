@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react'
 import defaultUser from '@/shared/assets/icons/default-user.png'
 import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
-import { AppImage } from '../../deprecated/AppImage'
+import { AppImage } from '../../redesigned/AppImage'
 import { Skeleton } from '../Skeleton'
 import cls from './Avatar.module.scss'
 

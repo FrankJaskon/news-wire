@@ -5,7 +5,7 @@ import ExpandIcon from '@/shared/assets/icons/expand.svg'
 import { typedMemo } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon, AppIconSize, AppIconVariant } from '@/shared/ui/deprecated/AppIcon'
-import { HStack } from '@/shared/ui/deprecated/HStack'
+import { HStack } from '@/shared/ui/redesigned/HStack'
 import {
 	AlignType,
 	DirectionType,

@@ -2,7 +2,7 @@ import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { AppLabel } from '@/shared/ui/deprecated/Label'
 import { Select, SelectOption } from '@/shared/ui/deprecated/Popups'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { Country } from '../../model/consts/country'
 import { CountryType } from '../../model/types/CountryScheme'
 

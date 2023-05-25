@@ -9,7 +9,7 @@ import {
 import { AppButton, ButtonVariant } from '@/shared/ui/deprecated/AppButton'
 import { AppCard } from '@/shared/ui/deprecated/AppCard'
 import { AppTextArea } from '@/shared/ui/deprecated/AppTextArea'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { useNewCommentText } from '../model/selectors/newCommentSelectors'
 import { addNewCommentActions, addNewCommentReducer } from '../model/slices/addNewCommentSlice'
 import cls from './AddNewComment.module.scss'

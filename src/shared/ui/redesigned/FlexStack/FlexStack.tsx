@@ -2,11 +2,6 @@ import { DetailedHTMLProps, FC, ReactNode } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
 import cls from './FlexStack.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export interface FlexStackProps
 	extends DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	direction: DirectionType

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { getArticlesRoute, getEditArticleDetailsRoute } from '@/shared/const/RoutPaths'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppLink, AppLinkVariant } from '@/shared/ui/deprecated/AppLink/AppLink'
-import { HStack } from '@/shared/ui/deprecated/HStack'
+import { HStack } from '@/shared/ui/redesigned/HStack'
 import { getIfCanEdit } from '../../model/selectors/article'
 import cls from './ArticleDetailsPageHeader.module.scss'
 

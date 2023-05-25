@@ -4,7 +4,7 @@ import { useIsUserAuthorized } from '@/entities/User'
 import { LatestArticlesList } from '@/features/LatestArticlesList'
 import { TextColor } from '@/shared/const/consts'
 import { Text, TextWeight } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { PageWrapper } from '@/widgets/PageWrapper'
 
 const MainPage: FC = memo(() => {

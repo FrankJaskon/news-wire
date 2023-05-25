@@ -8,7 +8,7 @@ import {
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
 import { Text, TextWeight } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { PageLoader } from '@/widgets/PageLoader'
 import { PageWrapper } from '@/widgets/PageWrapper'
 

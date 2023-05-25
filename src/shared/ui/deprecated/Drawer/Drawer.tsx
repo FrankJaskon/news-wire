@@ -3,8 +3,8 @@ import useTheme from '@/shared/config/theme/useTheme'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider'
 import { ToggleFeatures } from '@/shared/lib/features'
-import { Overlay } from '../Overlay/Overlay'
-import { Portal } from '../Portal'
+import { Overlay } from '../../redesigned/Overlay/Overlay'
+import { Portal } from '../../redesigned/Portal'
 import cls from './Drawer.module.scss'
 
 /**

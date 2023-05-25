@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { AppCard } from '@/shared/ui/deprecated/AppCard'
-import { HStack } from '@/shared/ui/deprecated/HStack'
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
-import { VStack } from '@/shared/ui/deprecated/VStack'
+import { HStack } from '@/shared/ui/redesigned/HStack'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { ViewVariantType } from '../../model/types/Article'
 
