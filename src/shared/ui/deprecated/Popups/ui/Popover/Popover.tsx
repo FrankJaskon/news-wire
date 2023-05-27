@@ -5,11 +5,6 @@ import { DirectionType, DirectionVariant } from '../../styles/consts'
 import popupCls from '../../styles/Popups.module.scss'
 import cls from './Popover.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export interface PopoverProps {
 	className?: string
 	children: ReactNode
@@ -17,6 +12,11 @@ export interface PopoverProps {
 	direction?: DirectionType
 	unmount?: boolean
 }
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const Popover: FC<PopoverProps> = memo((props: PopoverProps) => {
 	const { className, trigger, direction = 'bottom right', children, unmount = true } = props

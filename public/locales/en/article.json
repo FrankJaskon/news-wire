@@ -19,6 +19,7 @@
 	"edit-article-btn": "Edit",
 	"search-input-placeholder": "Search...",
 	"sort-by": {
+		"header": "Sort by:",
 		"views": "Views",
 		"createdAt": "Date",
 		"title": "Title"
@@ -28,7 +29,7 @@
 		"desc": "Descending"
 	},
 	"filter": {
-		"ALL": "All",
+		"ALL": "All articles",
 		"IT": "Information Technology",
 		"SCIENCE": "Science",
 		"ECONOMIC": "Economic"

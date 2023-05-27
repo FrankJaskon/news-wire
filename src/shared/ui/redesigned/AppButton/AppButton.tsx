@@ -4,7 +4,7 @@ import cls from './AppButton.module.scss'
 
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string
-	variant?: 'primary' | 'custom' | 'outline'
+	variant?: 'primary' | 'custom' | 'outline' | 'filled'
 	size?: 's' | 'm' | 'l' | 'xl'
 	shape?: 'square'
 	fullWidth?: boolean

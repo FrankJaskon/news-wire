@@ -8,12 +8,14 @@ export const svgLoader = (): webpack.RuleSetRule => ({
 			options: {
 				svgoConfig: {
 					icon: true,
-					plugins: {
-						name: 'convertColors',
-						params: {
-							currentColor: true,
+					plugins: [
+						{
+							name: 'convertColors',
+							params: {
+								currentColor: true,
+							},
 						},
-					},
+					],
 				},
 			},
 		},

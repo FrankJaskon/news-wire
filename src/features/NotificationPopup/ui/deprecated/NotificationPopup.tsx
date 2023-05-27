@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { NotificationList } from '@/entities/Notification'
-import NotificationIcon from '@/shared/assets/icons/notification.svg'
+import NotificationIcon from '@/shared/assets/icons/notifications.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon, AppIconVariant } from '@/shared/ui/deprecated/AppIcon'
 import { Popover } from '@/shared/ui/deprecated/Popups'

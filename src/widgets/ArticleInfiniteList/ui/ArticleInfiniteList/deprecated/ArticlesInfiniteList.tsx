@@ -1,4 +1,4 @@
-import { FC, ReactNode, memo, useEffect, useMemo } from 'react'
+import { FC, memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { ArticleList, ViewVariant } from '@/entities/Article'
@@ -9,12 +9,12 @@ import {
 	useArticleInfiniteListIsLoading,
 	useArticleInfiniteListLimit,
 	useArticleInfiniteListView,
-} from '../../model/selectors/articleInfiniteListSelector'
+} from '../../../model/selectors/articleInfiniteListSelector'
 import {
 	articlesInfiniteListActions,
 	getArticles,
-} from '../../model/slice/articlesInfiniteListSlice'
-import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
+} from '../../../model/slice/articlesInfiniteListSlice'
+import { ArticlesPageFilters } from '../../ArticlesPageFilters/ArticlesPageFilters'
 
 export interface ArticleInfiniteListProps {
 	isReducerMounted?: boolean
@@ -37,15 +37,8 @@ export const ArticleInfiniteList: FC<ArticleInfiniteListProps> = memo(
 			dispatch(articlesInfiniteListActions.setLimit(limit))
 		}, [view, dispatch])
 
-		let content: ReactNode = useMemo(
-			() => (
-				<ArticleList articles={articles} view={view} isLoading={isLoading} limit={limit} />
-			),
-			[articles, view, isLoading, limit]
-		)
-
 		if (error) {
-			content = (
+			return (
 				<Text
 					variant={TextVariant.ERROR}
 					size={TextSize.L}
@@ -55,13 +48,13 @@ export const ArticleInfiniteList: FC<ArticleInfiniteListProps> = memo(
 		}
 
 		if (!isLoading && !articles.length && !error) {
-			content = <Text size={TextSize.L} content={t('empty-articles-list')} />
+			return <Text size={TextSize.L} content={t('empty-articles-list')} />
 		}
 
 		return (
 			<>
 				<ArticlesPageFilters isReducerMounted={isReducerMounted} />
-				{content}
+				<ArticleList articles={articles} view={view} isLoading={isLoading} limit={limit} />
 			</>
 		)
 	}

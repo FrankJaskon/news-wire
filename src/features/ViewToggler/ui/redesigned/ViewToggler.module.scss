@@ -1,0 +1,21 @@
+.ViewToggler {
+	display: flex;
+	border: solid 2px var(--dark-bg-redesigned);
+	overflow: hidden;
+}
+
+.btn {
+	padding: 9px;
+}
+
+.icon {
+	display: block;
+	color: var(--light-bg-redesigned);
+}
+
+.active {
+	background-color: var(--bg-redesigned);
+	.icon {
+		color: var(--icon-redesigned);
+	}
+}

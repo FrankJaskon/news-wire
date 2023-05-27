@@ -3,11 +3,6 @@ import classNames, { Mods } from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import cls from './AppCard.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export const CardVariant = {
 	PRIMARY: 'primary',
 	LIGHT: 'light',
@@ -25,6 +20,11 @@ export interface AppCardProps extends HTMLAttributes<HTMLDivElement> {
 	'data-testid'?: string
 	max?: boolean
 }
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const AppCard: FC<AppCardProps> = props => {
 	const {

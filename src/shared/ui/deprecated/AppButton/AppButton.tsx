@@ -4,11 +4,6 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import cls from './AppButton.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string
 	variant?: ButtonVariantType
@@ -40,6 +35,11 @@ export const ButtonShape = {
 export type ButtonVariantType = ValueOf<typeof ButtonVariant>
 export type ButtonSizeType = ValueOf<typeof ButtonSize>
 export type ButtonShapeType = ValueOf<typeof ButtonShape>
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 	const {

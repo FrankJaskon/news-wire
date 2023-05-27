@@ -4,6 +4,7 @@ import cls from './AppCard.module.scss'
 
 export type CardVariant = 'normal' | 'outlined' | 'light'
 export type CardPadding = '0' | '8' | '16' | '24'
+export type CardBorder = 'small' | 'big' | 'bigger'
 
 interface AppCardProps extends HTMLAttributes<HTMLDivElement> {
 	className?: string
@@ -11,6 +12,7 @@ interface AppCardProps extends HTMLAttributes<HTMLDivElement> {
 	variant?: CardVariant
 	max?: boolean
 	padding?: CardPadding
+	radius?: CardBorder
 }
 
 const mapPaddingToClass: Record<CardPadding, string> = {
@@ -21,7 +23,15 @@ const mapPaddingToClass: Record<CardPadding, string> = {
 }
 
 export const AppCard = memo((props: AppCardProps) => {
-	const { className, children, variant = 'normal', max, padding = '8', ...otherProps } = props
+	const {
+		className,
+		children,
+		variant = 'normal',
+		max,
+		padding = '8',
+		radius = 'small',
+		...otherProps
+	} = props
 
 	const paddingClass = mapPaddingToClass[padding]
 
@@ -31,6 +41,7 @@ export const AppCard = memo((props: AppCardProps) => {
 				className,
 				cls[variant],
 				cls[paddingClass],
+				cls[radius],
 			])}
 			{...otherProps}
 		>

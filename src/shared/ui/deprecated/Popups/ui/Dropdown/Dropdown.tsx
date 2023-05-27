@@ -11,11 +11,6 @@ import {
 import popupCls from '../../styles/Popups.module.scss'
 import cls from './Dropdown.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export interface DropdownItem {
 	disabled?: boolean
 	component?: ReactNode
@@ -30,6 +25,11 @@ export interface DropdownProps {
 	direction?: DirectionType
 	align?: AlignType
 }
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 	const { className, trigger, items, direction = 'bottom right', align = 'start' } = props

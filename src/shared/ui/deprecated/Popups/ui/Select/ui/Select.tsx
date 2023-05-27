@@ -15,11 +15,6 @@ import {
 import popupCls from '../../../styles/Popups.module.scss'
 import cls from './Select.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export interface SelectOption<T extends string> {
 	value: T
 	label: T
@@ -37,6 +32,11 @@ export interface SelectProps<T extends string> {
 	placeholder?: string
 	'data-testid'?: string
 }
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
 	const {
