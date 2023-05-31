@@ -2,9 +2,11 @@ import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ArticleTypeTabs, ArticlesTypesType } from '@/entities/ArticleTypeTabs'
 import { SortSelector, SortVariantType } from '@/entities/SortSelector'
+import SearchIcon from '@/shared/assets/icons/search.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { SortOrderType } from '@/shared/types/types'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
+import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
 import { AppInput } from '@/shared/ui/redesigned/AppInput'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import cls from './ArticlesFilters.module.scss'
@@ -48,8 +50,10 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = memo((props: ArticlesFi
 				<AppInput
 					placeholder={t('search-input-placeholder')}
 					value={search}
+					size='small'
 					onChange={changeSearch}
 					data-testid={`${dataTestId}-search`}
+					addonLeft={<AppIcon Svg={SearchIcon} />}
 				/>
 				<ArticleTypeTabs filter={filter} onTabClick={changeFilter} />
 				<SortSelector

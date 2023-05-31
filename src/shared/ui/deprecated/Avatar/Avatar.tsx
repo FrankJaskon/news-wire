@@ -6,11 +6,6 @@ import { AppImage } from '../../redesigned/AppImage'
 import { Skeleton } from '../Skeleton'
 import cls from './Avatar.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export interface AvatarProps {
 	className?: string
 	variant?: AvatarVariantType
@@ -26,6 +21,11 @@ export const AvatarVariant = {
 } as const
 
 export type AvatarVariantType = ValueOf<typeof AvatarVariant>
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const Avatar: FC<AvatarProps> = props => {
 	const { className, variant = AvatarVariant.SQUARE, src, alt = 'user', size = 100 } = props

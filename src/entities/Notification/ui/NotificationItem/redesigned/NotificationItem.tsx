@@ -21,7 +21,7 @@ export const NotificationItem: FC<NotificationItemProps> = props => {
 		() => (
 			<AppCard className={classNames(cls.NotificationItem, {}, [className])}>
 				<VStack gap='8'>
-					<AppText title={title} />
+					<AppText title={title} size='l' />
 					<AppText text={description} />
 				</VStack>
 			</AppCard>

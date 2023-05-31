@@ -1,5 +1,5 @@
 import { StoryFn, Meta } from '@storybook/react'
-import { ViewVariant } from '../../model/consts/articleDetailsConsts'
+import { ViewVariant } from '../../../model/consts/articleDetailsConsts'
 import { ArticleListItemSkeleton, ArticleListItemSkeletonProps } from './ArticleListItemSkeleton'
 
 export default {

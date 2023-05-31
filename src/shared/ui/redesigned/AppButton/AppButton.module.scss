@@ -1,12 +1,66 @@
 .AppButton {
 	cursor: pointer;
-	color: var(--text-redesigned);
+	display: flex;
+	align-items: center;
 	padding: 6px 15px;
-
+	color: var(--text-redesigned);
+	transition: color .2s;
+	.addonLeft svg,
+	.addonRight svg {
+		color: var(--hint-redesigned);
+		transition: color .2s;
+	}
 	&:hover {
 		color: var(--accent-redesigned);
+		.addonLeft svg, .addonRight svg {
+			color: var(--accent-redesigned);
+		}
+	}
+	&.withAddonLeft,
+	&.withAddonRight {
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 }
+
+.outline {
+	border: solid 1px var(--icon-redesigned);
+	border-radius: 1rem;
+}
+
+.normal {
+	border-color: var(--icon-redesigned);
+	&:hover {
+		color: var(--icon-redesigned);
+	}
+}
+
+.save {
+	border-color: var(--save-redesigned);
+	&:hover {
+		color: var(--save-redesigned);
+	}
+}
+
+.cancel {
+	border-color: var(--cancel-redesigned);
+	&:hover {
+		color: var(--cancel-redesigned);
+	}
+}
+
+.addonLeft, .addonRight {
+	display: flex;
+}
+
+.withAddonLeft {
+	padding: 0 8px;
+}
+
+.withAddonRight {
+	padding: 0 8px;
+}
+
 
 .filled {
 	padding: 5px 1rem;

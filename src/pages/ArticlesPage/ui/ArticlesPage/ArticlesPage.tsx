@@ -3,7 +3,7 @@ import { ToggleFeatures } from '@/shared/lib/features'
 import { ArticlesPage as ArticlesPageDeprecated } from './deprecated/ArticlesPage'
 import { ArticlesPage as ArticlesPageRedesigned } from './redesigned/ArticlesPage'
 
-const ArticlesPage: FC = () => {
+const ArticlesPage: FC = memo(() => {
 	return (
 		<ToggleFeatures
 			feature='isAppRedesigned'
@@ -11,6 +11,6 @@ const ArticlesPage: FC = () => {
 			off={<ArticlesPageDeprecated />}
 		/>
 	)
-}
+})
 
 export default memo(ArticlesPage)

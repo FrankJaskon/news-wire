@@ -6,6 +6,7 @@ export const getArticleDetailsRoute = (id: number | string) => '/articles/' + id
 export const getEditArticleDetailsRoute = (id: number | string) => `/articles/${id}/edit`
 export const getNewArticleDetailsRoute = () => '/articles/new'
 export const getAdminRoute = () => '/admin'
+export const getUsersSettingsRoute = () => '/settings'
 export const getForbiddenRoute = () => '/forbidden'
 export const getNotFoundRoute = () => '*'
 

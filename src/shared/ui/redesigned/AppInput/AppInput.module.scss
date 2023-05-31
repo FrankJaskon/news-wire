@@ -1,31 +1,46 @@
-.AppInput {
-	width: 100%;
-	box-sizing: border-box;
-	font-size: 16px;
-	border-radius: var(--border-radius);
-	background-color: var(--light-color);
+.InputWrapper {
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    border: 1px solid var(--icon-redesigned);
+    width: 100%;
 }
+
+.small {
+    height: 32px;
+    padding: 0 8px;
+}
+
+.normal {
+    height: 38px;
+    padding: 8px 16px;
+}
+
+.addonLeft, .addonRight {
+    display: flex;
+}
+
+.focused {
+    border: 2px solid var(--accent-redesigned);
+
+    .addonLeft svg, .addonRight svg {
+        color: var(--accent-redesigned);
+    }
+}
+
+.input {
+    border: none;
+    outline: none;
+    width: 100%;
+    color: var(--text-redesigned);
+    background: none;
+
+    &::placeholder {
+        color: var(--hint-redesigned);
+    }
+}
+
 
 .readonly {
-	opacity: .9;
-}
-
-.primary {
-	padding: 4px 8px;
-	border: 1px solid #ccc;
-}
-
-.clear {
-	margin: 0;
-	border: none;
-	background: none;
-	outline: none;
-}
-
-.primary-color {
-	color: var(--primary-color);
-}
-
-.secondary-color {
-	color: var(--dark-color);
+    opacity: 0.8;
 }

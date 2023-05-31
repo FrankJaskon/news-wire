@@ -10,6 +10,7 @@ import { ForbiddenPage } from '@/pages/ForbiddenPage'
 import { MainPage } from '@/pages/MainPage'
 import { NotFound } from '@/pages/NotFound'
 import { ProfilePage } from '@/pages/ProfilePage'
+import { UserSettings } from '@/pages/UserSettings'
 import {
 	getAboutRoute,
 	getAdminRoute,
@@ -21,6 +22,7 @@ import {
 	getNewArticleDetailsRoute,
 	getNotFoundRoute,
 	getProfileRoute,
+	getUsersSettingsRoute,
 } from '@/shared/const/RoutPaths'
 
 export type AuthRouteProps = RouteProps & {
@@ -67,6 +69,11 @@ export const routerConfig: AuthRouteProps[] = [
 		element: <AdminPanel />,
 		authOnly: true,
 		roles: [UserRole.ADMIN, UserRole.MANAGER],
+	},
+	{
+		path: getUsersSettingsRoute(),
+		element: <UserSettings />,
+		authOnly: true,
 	},
 
 	// forbidden

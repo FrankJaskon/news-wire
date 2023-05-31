@@ -1,5 +1,6 @@
 import { FC, HTMLAttributeAnchorTarget, memo, useCallback } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
+import { toggleFeatures } from '@/shared/lib/features'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { ArticleType, ViewVariantType } from '../../model/types/Article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
@@ -49,7 +50,11 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 	return (
 		<div
 			className={classNames(
-				cls.ArticleList,
+				toggleFeatures({
+					name: 'isAppRedesigned',
+					on: () => cls.ArticleList,
+					off: () => cls.ArticleListDeprecated,
+				}),
 				{
 					[cls.oneLine]: isOneLine,
 				},

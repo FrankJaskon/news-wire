@@ -1,20 +1,20 @@
 import { Meta, StoryFn } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
-import { Currency } from '../../model/types/CurrencyScheme'
-import { CurrencySelect } from './CurrencySelect'
+import { Country } from '../../../model/consts/country'
+import { CountrySelect } from './CountrySelect'
 
 export default {
-	title: 'entities/CurrencySelect',
-	component: CurrencySelect,
+	title: 'entities/CountrySelect',
+	component: CountrySelect,
 	argTypes: {},
 	args: {
-		value: Currency.UAH,
+		value: Country.UKRAINE,
 	},
 	decorators: [],
-} as Meta<typeof CurrencySelect>
+} as Meta<typeof CountrySelect>
 
-const Template: StoryFn<typeof CurrencySelect> = args => <CurrencySelect {...args} />
+const Template: StoryFn<typeof CountrySelect> = args => <CountrySelect {...args} />
 
 export const Basic: StoryFn = Template.bind({})
 Basic.args = {}

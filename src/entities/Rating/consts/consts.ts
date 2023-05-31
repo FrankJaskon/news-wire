@@ -1,9 +1,10 @@
 import { ValueOf } from '@/shared/types/types'
 
-export const RatingVariant = {
+export const RatingVariantDeprecated = {
 	SMALL: 'small',
 	MEDIUM: 'medium',
 	LARGE: 'large',
 } as const
 
-export type RatingVariantType = ValueOf<typeof RatingVariant>
+export type RatingVariantDeprecatedType = ValueOf<typeof RatingVariantDeprecated>
+export type RatingVariantType = 'small' | 'medium' | 'large'

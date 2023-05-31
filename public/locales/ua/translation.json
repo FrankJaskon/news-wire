@@ -65,5 +65,7 @@
     "Ukraine": "Україна",
     "USA": "США"
   },
-  "leave-feedback": "Текст відгука"
+  "leave-feedback": "Текст відгука",
+  "user-settings-title": "Налаштування користувача",
+  "ui-design-toggler": "Ввімкнути новий дезайн проекту"
 }

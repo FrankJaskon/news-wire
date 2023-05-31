@@ -11,6 +11,10 @@ export {
 	getJsonSettingsByKey,
 } from './model/selectors/jsonSettings'
 
+export { useUserFeatureByKey } from './model/selectors/features'
+
+export { updateFeatures } from './model/services/updateFeatures/updateFeatures'
+
 export { initUserData } from './model/services/initUserData/initUserData'
 
 export {

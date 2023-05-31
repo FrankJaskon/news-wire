@@ -4,9 +4,9 @@
     "card": {
         "header": {
             "title": "Profile",
-            "edit-btn": "Edit",
+            "edit-btn": "Edit profile",
             "close-btn": "Cancel",
-            "save-btn": "Save"
+            "save-btn": "Save changes"
         },
         "input": {
             "firstname": "First name",
@@ -14,7 +14,7 @@
             "age": "Age",
             "city": "City",
             "username": "Username",
-            "avatar": "Avatar"
+            "avatar": "Link to avatar"
         }
     },
     "error": {

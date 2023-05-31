@@ -10,6 +10,7 @@ const latestArticleListsApi = rtkApi.injectEndpoints({
 			query: (limit: number) => ({
 				url: getArticlesRoute(),
 				params: {
+					_expand: 'profile',
 					_limit: limit,
 					_sort: SortVariant.DATE,
 					_order: SortOrder.UP_DOWN,

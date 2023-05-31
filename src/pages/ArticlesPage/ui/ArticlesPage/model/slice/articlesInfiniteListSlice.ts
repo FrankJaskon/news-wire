@@ -56,7 +56,7 @@ const articlesInfiniteListSlice = createSlice({
 		},
 		setInitializedValues: (state: ArticleInfiniteListScheme) => {
 			const initialView =
-				(localStorage.getItem(VIEW_ARTICLES_LOCAL_STORAGE_KEY) as ViewVariantType) ||
+				(localStorage.getItem(VIEW_ARTICLES_LOCAL_STORAGE_KEY) as ViewVariantType) ??
 				ViewVariant.GRID
 			const initialLimit = initialView === ViewVariant.GRID ? 9 : 5
 			state.view = initialView

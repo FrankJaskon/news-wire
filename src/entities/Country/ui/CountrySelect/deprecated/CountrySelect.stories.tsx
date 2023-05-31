@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
-import { Country } from '../../model/consts/country'
+import { Country } from '../../../model/consts/country'
 import { CountrySelect } from './CountrySelect'
 
 export default {

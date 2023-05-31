@@ -1,1 +1,1 @@
-export { AppInput, InputVariant, InputColor } from './AppInput'
+export { AppInput } from './AppInput'

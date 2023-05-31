@@ -74,4 +74,3 @@ export const Flex = (props: FlexProps) => {
 		</div>
 	)
 }
-

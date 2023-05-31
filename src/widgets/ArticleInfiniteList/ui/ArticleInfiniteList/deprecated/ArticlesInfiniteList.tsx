@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { ArticleList, ViewVariant } from '@/entities/Article'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { Text, TextSize, TextVariant } from '@/shared/ui/deprecated/Text'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import {
 	useArticleInfiniteListError,
 	useArticleInfiniteListIsLoading,
@@ -52,10 +53,10 @@ export const ArticleInfiniteList: FC<ArticleInfiniteListProps> = memo(
 		}
 
 		return (
-			<>
+			<VStack gap='16'>
 				<ArticlesPageFilters isReducerMounted={isReducerMounted} />
 				<ArticleList articles={articles} view={view} isLoading={isLoading} limit={limit} />
-			</>
+			</VStack>
 		)
 	}
 )

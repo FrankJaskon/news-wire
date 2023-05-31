@@ -20,4 +20,3 @@ export const StickyContentLayout = memo((props: StickyContentLayoutProps) => {
 		</div>
 	)
 })
-

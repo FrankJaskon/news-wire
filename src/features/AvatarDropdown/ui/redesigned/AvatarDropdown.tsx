@@ -3,7 +3,12 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getIsUserAdmin, getIsUserManager, useUserAuthData, userActions } from '@/entities/User'
-import { getAdminRoute, getMainRoute, getProfileRoute } from '@/shared/const/RoutPaths'
+import {
+	getAdminRoute,
+	getMainRoute,
+	getProfileRoute,
+	getUsersSettingsRoute,
+} from '@/shared/const/RoutPaths'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { Avatar } from '@/shared/ui/redesigned/Avatar'
 import { Dropdown } from '@/shared/ui/redesigned/Popups'
@@ -44,6 +49,10 @@ export const AvatarDropdown: FC<AvatarDropdownProps> = props => {
 		{
 			content: t('navbar.links.profile'),
 			href: getProfileRoute(authData.id),
+		},
+		{
+			content: t('user-settings-title'),
+			href: getUsersSettingsRoute(),
 		},
 		{
 			content: t('navbar.logout'),

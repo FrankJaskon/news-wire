@@ -65,6 +65,8 @@
     "Ukraine": "Ukraine",
     "USA": "USA"
   },
-  "leave-feedback": "Some text"
+  "leave-feedback": "Some text",
+  "user-settings-title": "User's settings",
+  "ui-design-toggler": "Turn on the redesigned project"
 }
 

@@ -1,0 +1,81 @@
+.list {
+	.articleTitle {
+		max-height: calc(38px * 2);
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}
+	.articleSubtitle {
+		max-height: calc(28px * 1);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+	}
+
+	.img {
+		object-fit: cover;
+	}
+
+	.textContent {
+		max-height: calc(22px * 3);
+		text-overflow: ellipsis;
+		overflow-y: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+}
+
+.grid {
+	&.ArticleListItem {
+		width: 250px;
+		height: 350px;
+		opacity: 1;
+		transition: opacity .2s;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.title {
+		height: calc(22px * 4);
+		max-height: calc(22px * 4);
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 4;
+	}
+
+	.imgWrapper {
+		display: flex;
+	}
+
+	.img {
+		border-top-left-radius: 19px;
+		border-top-right-radius: 19px;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.infoWrapper {
+		padding: 0 8px;
+	}
+
+	.footer {
+		position: absolute;
+		left: 16px;
+		bottom: 16px;
+	}
+}
+
+.views {
+	margin-right: 5px;
+}
+
+.wrapperWithPaddings {
+	padding: 4px;
+}

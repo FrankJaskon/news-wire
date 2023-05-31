@@ -3,11 +3,6 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import cls from './AppLabel.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export const LabelVariant = {
 	PRIMARY: 'primary',
 	SR_ONLY: 'srOnly',
@@ -21,6 +16,11 @@ export interface AppLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 	children: ReactNode
 	variant?: LabelVariantType
 }
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const AppLabel: FC<AppLabelProps> = memo((props: AppLabelProps) => {
 	const { className, htmlFor, children, variant = LabelVariant.PRIMARY, ...extraProps } = props

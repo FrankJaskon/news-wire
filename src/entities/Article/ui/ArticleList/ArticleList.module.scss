@@ -1,5 +1,7 @@
+/* stylelint-disable no-duplicate-selectors */
+
 .grid {
-	&.ArticleList {
+	&.ArticleListDeprecated {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
 		gap: 15px;
@@ -7,10 +9,34 @@
 }
 
 .list {
-	&.ArticleList {
+	&.ArticleListDeprecated {
 		display: flex;
 		flex-direction: column;
 		gap: 30px;
+	}
+}
+
+.oneLine {
+	&.ArticleListDeprecated {
+		padding-bottom: 8px;
+		overflow-x: auto;
+		grid-auto-flow: column;
+	}
+}
+
+.grid {
+	&.ArticleList {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		gap: 24px;
+	}
+}
+
+.list {
+	&.ArticleList {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
 	}
 }
 

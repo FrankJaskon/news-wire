@@ -111,8 +111,31 @@ export const useInitSearchParams = () => {
 
 	useInitialEffect(() => {
 		dispatch(initArticlesPage(searchParams))
-	})
+	}, [dispatch])
 }
+
+// export const useInitSearchParams = (isMounted?: boolean) => {
+// 	const dispatch = useAppDispatch()
+// 	const [searchParams] = useSearchParams()
+
+// 	useInitialEffect(() => {
+// 		if (isMounted) {
+// 			dispatch(initArticlesPage(searchParams))
+// 		}
+// 	}, [isMounted])
+// }
+
+// export const useUpdateLimitOnChangeView = (isMounted?: boolean) => {
+// 	const dispatch = useAppDispatch()
+// 	const view = useArticleInfiniteListView()
+
+// 	useEffect(() => {
+// 		if (isMounted) {
+// 			const limit = view === ViewVariant.GRID ? 9 : 3
+// 			dispatch(articlesInfiniteListActions.setLimit(limit))
+// 		}
+// 	}, [view, dispatch, isMounted])
+// }
 
 export const useUpdateLimitOnChangeView = () => {
 	const dispatch = useAppDispatch()

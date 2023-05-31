@@ -4,11 +4,6 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import cls from './Text.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 interface TextProps {
 	className?: string
 	title?: string
@@ -64,6 +59,11 @@ export type TextAlignType = ValueOf<typeof TextAlign>
 export type TextStyleType = ValueOf<typeof TextStyle>
 export type TextWeightType = ValueOf<typeof TextWeight>
 export type ElementType = 'h1' | 'h2' | 'h3' | 'h4' | 'h6' | 'span' | 'div' | 'p'
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const Text: FC<TextProps> = memo((props: TextProps) => {
 	const {

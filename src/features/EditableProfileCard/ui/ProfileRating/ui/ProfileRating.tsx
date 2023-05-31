@@ -9,7 +9,7 @@ export interface ProfileRatingProps {
 	profileId?: number
 }
 
-const ProfileRating: FC<ProfileRatingProps> = props => {
+const ProfileRating: FC<ProfileRatingProps> = (props: ProfileRatingProps) => {
 	const { className, profileId } = props
 
 	const authData = useUserAuthData()

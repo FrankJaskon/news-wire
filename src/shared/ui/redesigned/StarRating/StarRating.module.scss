@@ -1,0 +1,13 @@
+.starIcon {
+	cursor: pointer;
+	fill: transparent;
+	transition: fill .2s;
+}
+
+.hovered {
+	fill: var(--icon-redesigned);
+}
+
+.selected {
+	cursor: auto;
+}

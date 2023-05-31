@@ -12,8 +12,8 @@ import {
 	RenderWithMocks,
 } from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
 import { ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
-import { profileReducer } from '../model/slice/profileSlice'
-import { ValidateProfileError } from '../model/types/ProfileScheme'
+import { profileReducer } from '../../model/slice/profileSlice'
+import { ValidateProfileError } from '../../model/types/ProfileScheme'
 import { EditableProfileCard } from './EditableProfileCard'
 
 const mockPut = jest.spyOn($api, 'put')

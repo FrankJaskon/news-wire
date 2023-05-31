@@ -53,4 +53,3 @@ export const Tabs = memo((props: TabsProps) => {
 		</Flex>
 	)
 })
-

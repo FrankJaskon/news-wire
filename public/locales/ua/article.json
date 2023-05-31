@@ -20,9 +20,9 @@
 	"search-input-placeholder": "Шукати...",
 	"sort-by": {
 		"header": "Сортувати за:",
-		"views": "За переглядами",
-		"createdAt": "По даті завантаження",
-		"title": "За назвою"
+		"views": "Переглядами",
+		"createdAt": "Датою",
+		"title": "Назвою"
 	},
 	"order": {
 		"asc": "За зростанням",

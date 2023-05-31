@@ -39,11 +39,13 @@ export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkApi
 					)
 
 				thunkAPI.dispatch(articlesInfiniteListActions.setInitializedValues())
+
 				const response = await thunkAPI.dispatch(
 					fetchArticlesList({
 						replace: true,
 					})
 				)
+
 				if (response.meta.requestStatus === 'rejected') {
 					return rejectWithValue('error')
 				}
