@@ -6,5 +6,7 @@ export const getIfCanEdit = createSelector(
 	getUserAuthData,
 	getArticleDetailsData,
 	(authData, articleData) =>
-		authData?.id && articleData?.profile?.id && authData?.id === articleData?.profile.id
+		Boolean(
+			authData?.id && articleData?.profile?.id && authData?.id === articleData?.profile.id
+		)
 )

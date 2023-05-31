@@ -2,7 +2,7 @@
 import { Meta, StoryFn } from '@storybook/react'
 import { ArticleType } from '@/entities/Article'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
-import ArticleDetailsPage from './ArticleDetailsPage'
+import { ArticleDetailsPage } from './ArticleDetailsPage'
 import type { ArticleDetailsPageProps } from './ArticleDetailsPage'
 
 const data: ArticleType = {
