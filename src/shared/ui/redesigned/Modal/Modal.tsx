@@ -2,8 +2,8 @@ import { FC, ReactNode } from 'react'
 import { useModal } from '@/shared/hooks/useModal/useModal'
 import classNames from '@/shared/lib/classNames/classNames'
 import { ToggleFeatures } from '@/shared/lib/features'
-import { Overlay } from '../../redesigned/Overlay/Overlay'
-import { Portal } from '../../redesigned/Portal'
+import { Overlay } from '../Overlay/Overlay'
+import { Portal } from '../Portal'
 import cls from './Modal.module.scss'
 import type { Mods } from '@/shared/lib/classNames/classNames'
 
@@ -45,7 +45,7 @@ export const Modal: FC<ModalProps> = props => {
 			feature='isAppRedesigned'
 			off={
 				<Portal>
-					<div className={classNames(cls.Modal, mods, [className, 'App'])}>
+					<div className={classNames(cls.Modal, mods, [className])}>
 						<Overlay onClick={close} />
 						<div className={cls.content}>{children}</div>
 					</div>
@@ -53,7 +53,7 @@ export const Modal: FC<ModalProps> = props => {
 			}
 			on={
 				<Portal>
-					<div className={classNames(cls.Modal, mods, [className, 'App-redesign'])}>
+					<div className={classNames(cls.Modal, mods, [className])}>
 						<Overlay onClick={close} />
 						<div className={cls.content}>{children}</div>
 					</div>

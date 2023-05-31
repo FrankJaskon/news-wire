@@ -23,7 +23,7 @@ const App: FC = () => {
 		<ToggleFeatures
 			feature='isAppRedesigned'
 			off={
-				<div className={'App'}>
+				<div className={'App'} id='app'>
 					<Suspense fallback=''>
 						<Navbar />
 						<div className='content-wrapper'>
@@ -34,7 +34,7 @@ const App: FC = () => {
 				</div>
 			}
 			on={
-				<div className={'App-redesign'}>
+				<div className={'App-redesign'} id='app'>
 					<MainLayout
 						header={<Navbar />}
 						content={<AppRouter />}

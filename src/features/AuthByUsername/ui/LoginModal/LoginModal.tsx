@@ -2,7 +2,7 @@ import { FC, memo, Suspense } from 'react'
 import { useUserAuthData } from '@/entities/User'
 import classNames from '@/shared/lib/classNames/classNames'
 import { Loader } from '@/shared/ui/deprecated/Loader'
-import { Modal } from '@/shared/ui/deprecated/Modal'
+import { Modal } from '@/shared/ui/redesigned/Modal'
 import { LazyLoginForm as LoginForm } from '../LoginForm/LoginForm.lazy'
 import cls from './LoginModal.module.scss'
 

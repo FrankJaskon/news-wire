@@ -1,4 +1,11 @@
 .Overlay {
+	background-color: var(--light-bg-redesigned);
+	height: 100%;
+	width: 100%;
+	transition: background-color .2s linear;
+}
+
+.OverlayDeprecated {
 	background-color: var(--overlay-bg-color);
 	height: 100%;
 	width: 100%;

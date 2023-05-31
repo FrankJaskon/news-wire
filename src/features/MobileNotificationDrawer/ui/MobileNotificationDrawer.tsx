@@ -4,7 +4,7 @@ import NotificationIcon from '@/shared/assets/icons/notifications.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton, ButtonVariant } from '@/shared/ui/deprecated/AppButton'
 import { AppIcon, AppIconVariant } from '@/shared/ui/deprecated/AppIcon'
-import { Drawer } from '@/shared/ui/deprecated/Drawer/Drawer'
+import { Drawer } from '@/shared/ui/redesigned/Drawer/Drawer'
 import cls from './MobileNotificationDrawer.module.scss'
 
 interface MobileNotificationDrawerProps {
