@@ -10,7 +10,9 @@ import {
 	LazyReducerLoader,
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { ToggleFeatures } from '@/shared/lib/features'
 import { Text } from '@/shared/ui/deprecated/Text'
+import { AppText } from '@/shared/ui/redesigned/AppText'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import {
 	useArticleDetailsCommentsError,
@@ -48,16 +50,36 @@ export const ArticleComments: FC<ArticleCommentsProps> = props => {
 	})
 
 	if (!id) {
-		return <Text title={t('article.error.server-error')} />
+		return (
+			<ToggleFeatures
+				feature='isAppRedesigned'
+				on={<AppText text={t('article.error.server-error')} variant='error' />}
+				off={<Text title={t('article.error.server-error')} />}
+			/>
+		)
 	}
 
 	return (
 		<LazyReducerLoader reducers={reducers}>
 			<VStack gap='16' className={classNames('', {}, [className])} data-testid={dataTestId}>
-				<Text
-					title={t('comment-title', {
-						ns: 'article',
-					})}
+				<ToggleFeatures
+					feature='isAppRedesigned'
+					on={
+						<AppText
+							title={t('comment-title', {
+								ns: 'article',
+							})}
+							size='xl'
+							weight='bolder'
+						/>
+					}
+					off={
+						<Text
+							title={t('comment-title', {
+								ns: 'article',
+							})}
+						/>
+					}
 				/>
 				<AddArticleComment articleId={Number(id)} />
 				<CommentsList

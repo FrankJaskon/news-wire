@@ -41,6 +41,8 @@
 		"rate-article-title-has-response": "You've already rated this article"
 	},
 	"editable-article": {
+		"views_one": "{{count}} view",
+		"views_other": "{{count}} views",
 		"titles": {
 			"edit": "Editing the article",
 			"create": "Create new article"

@@ -41,6 +41,11 @@
 		"rate-article-title-has-response": "Ви вже залишили свою оцінку"
 	},
 	"editable-article": {
+		"views_zero": "{{count}} переглядів",
+		"views_one": "{{count}} перегляд",
+		"views_few": "{{count}} перегляда",
+		"views_many": "{{count}} переглядів",
+		"views_other": "{{count}} переглядів",
 		"titles": {
 			"edit": "Редагувння статті",
 			"create": "Створення нової статті"

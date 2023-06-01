@@ -2,11 +2,6 @@ import { ChangeEvent, FC, memo, TextareaHTMLAttributes, useEffect, useRef } from
 import classNames from '@/shared/lib/classNames/classNames'
 import cls from './AppTextArea.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export interface AppTextAreaProps
 	extends Omit<
 		TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -18,6 +13,11 @@ export interface AppTextAreaProps
 	placeholder?: string
 	variant?: 'primary' | 'contrast'
 }
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const AppTextArea: FC<AppTextAreaProps> = memo((props: AppTextAreaProps) => {
 	const {

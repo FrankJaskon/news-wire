@@ -2,7 +2,7 @@ import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
-import AddNewComment, { AddNewCommentProps } from './AddNewComment'
+import { AddNewComment, AddNewCommentProps } from './AddNewComment'
 
 export default {
 	title: 'features/AddNewComment',

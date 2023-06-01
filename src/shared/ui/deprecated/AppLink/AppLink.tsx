@@ -1,14 +1,8 @@
 import { FC, memo } from 'react'
 import { Link, LinkProps } from 'react-router-dom'
-
 import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import cls from './AppLink.module.scss'
-
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
 
 export const AppLinkVariant = {
 	PRIMARY: 'primary',
@@ -27,6 +21,11 @@ export type AppLinkProps = Omit<LinkProps, 'to'> & {
 	to?: string
 	hover?: boolean
 }
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
 	const {

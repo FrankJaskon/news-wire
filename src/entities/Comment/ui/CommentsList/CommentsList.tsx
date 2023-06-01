@@ -1,6 +1,8 @@
 import { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { ToggleFeatures } from '@/shared/lib/features'
 import { Text } from '@/shared/ui/deprecated/Text'
+import { AppText } from '@/shared/ui/redesigned/AppText'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { CommentType } from '../../model/types/comment'
 import { CommentCard } from '../CommentCard/CommentCard'
@@ -32,9 +34,11 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 
 	if (error) {
 		return (
-			<VStack justify='center' align='center'>
-				<Text content={t('error')} />
-			</VStack>
+			<ToggleFeatures
+				feature='isAppRedesigned'
+				on={<AppText variant='error' text={t('error')} />}
+				off={<Text content={t('error')} />}
+			/>
 		)
 	}
 
@@ -50,7 +54,15 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 
 	return (
 		<VStack gap='16' data-testid={dataTestId}>
-			{comments?.length ? renderComments : <Text content={t('empty-list')} />}
+			{comments?.length ? (
+				renderComments
+			) : (
+				<ToggleFeatures
+					feature='isAppRedesigned'
+					on={<AppText text={t('empty-list')} />}
+					off={<Text content={t('empty-list')} />}
+				/>
+			)}
 		</VStack>
 	)
 })

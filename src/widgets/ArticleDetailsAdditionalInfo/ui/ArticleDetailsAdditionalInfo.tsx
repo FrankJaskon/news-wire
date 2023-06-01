@@ -12,7 +12,7 @@ import { VStack } from '@/shared/ui/redesigned/VStack'
 export interface ArticleDetailsAdditionalInfoProps {
 	className?: string
 	articleId?: number
-	views?: number
+	views?: string
 	createdAd?: string
 	avatar?: string
 	username?: string
@@ -34,14 +34,18 @@ export const ArticleDetailsAdditionalInfo: FC<ArticleDetailsAdditionalInfoProps>
 					<HStack gap='8' align='center'>
 						<Avatar size={32} src={avatar} />
 						<AppText text={username} weight='bold' />
-						<AppText text={createdAd} />
 					</HStack>
 					{ifCanEdit && (
 						<AppLink to={getEditArticleDetailsRoute(articleId)}>
 							<AppButton variant='filled'>{t('edit-article-btn')}</AppButton>
 						</AppLink>
 					)}
-					<AppText text={views + ''} />
+					<HStack gap='8' align='center' justify='between'>
+						<AppText
+							text={t('editable-article.views', { count: Number(views) ?? 0 })}
+						/>
+						<AppText text={createdAd} />
+					</HStack>
 				</VStack>
 			</AppCard>
 		)
