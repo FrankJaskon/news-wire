@@ -29,11 +29,7 @@ export const ArticlesPage: FC = memo(() => {
 
 	return (
 		<LazyReducerLoader reducers={reducers} setIsReducerMounted={setIsReducerMounted}>
-			<PageWrapper
-				onScrollEnd={onLoadNextPart}
-				watchedScroll={true}
-				data-testid='articles-page'
-			>
+			<PageWrapper onScrollEnd={onLoadNextPart} data-testid='articles-page'>
 				<ArticleInfiniteList isReducerMounted={isReducerMounted} />
 			</PageWrapper>
 		</LazyReducerLoader>

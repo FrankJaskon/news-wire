@@ -6,4 +6,5 @@ export {
 	useArticleDetailsData,
 	getArticleDetailsData,
 	useArticleDetailsIsLoading,
+	useArticleDetailsError,
 } from './model/selectors/articleDetailsSelectors'

@@ -3,6 +3,7 @@ import { initUserData, useInitializedUser } from '@/entities/User'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { MainLayout } from '@/shared/layouts/MainLayout'
 import { ToggleFeatures } from '@/shared/lib/features'
+import { HStack } from '@/shared/ui/redesigned/HStack'
 import { PageLoader } from '@/widgets/PageLoader'
 import { AppRouter } from './providers/router'
 import { Navbar, Sidebar } from './ui'
@@ -35,12 +36,18 @@ const App: FC = () => {
 			}
 			on={
 				<div className={'App-redesign'} id='app'>
-					<MainLayout
-						header={<Navbar />}
-						content={<AppRouter />}
-						sidebar={<Sidebar />}
-						toolbar={<div>123</div>}
-					/>
+					<Suspense fallback=''>
+						<MainLayout
+							header={<Navbar />}
+							content={<AppRouter />}
+							sidebar={<Sidebar />}
+							toolbar={
+								<HStack align='center' justify='center' style={{ height: '100%' }}>
+									123
+								</HStack>
+							}
+						/>
+					</Suspense>
 				</div>
 			}
 		/>

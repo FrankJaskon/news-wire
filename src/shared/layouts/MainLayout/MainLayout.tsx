@@ -28,8 +28,10 @@ export const MainLayout: FC<MainLayoutProps> = props => {
 			<div ref={contentRef} className={cls.content} id='main_layout_content_container'>
 				{content}
 			</div>
-			<div ref={rightbarRef} className={cls.rightbar}>
-				<div className={cls.header}>{header}</div>
+			<div className={cls.rightbar}>
+				<div className={cls.header} ref={rightbarRef}>
+					{header}
+				</div>
 				<div className={cls.toolbar}>{toolbar}</div>
 			</div>
 		</div>

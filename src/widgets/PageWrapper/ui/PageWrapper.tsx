@@ -43,6 +43,10 @@ export const PageWrapper: FC<PageWrapperProps> = props => {
 		}
 	}, [watchedScroll, scrollPosition])
 
+	useEffect(() => {
+		window.scrollTo({ top: 0 })
+	}, [])
+
 	const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
 		if (watchedScroll) {
 			dispatch(

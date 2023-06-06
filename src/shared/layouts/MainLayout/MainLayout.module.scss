@@ -6,6 +6,9 @@
 	grid-template-columns: min-content 1fr 100px;
 }
 
+.header {
+	position: fixed;
+}
 
 .sidebar {
 	grid-area: sidebar;

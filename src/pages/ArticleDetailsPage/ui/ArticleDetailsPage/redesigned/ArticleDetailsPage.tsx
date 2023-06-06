@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { ArticleComments } from '@/features/ArticleComments'
-import { ArticleDetails } from '@/features/ArticleDetails'
+import { ArticleDetails, useArticleDetailsError } from '@/features/ArticleDetails'
 import { ArticleRating } from '@/features/ArticleRating'
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList'
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout'
@@ -21,7 +21,7 @@ export interface ArticleDetailsPageProps {
 export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = memo(
 	(props: ArticleDetailsPageProps) => {
 		const { className } = props
-
+		const error = useArticleDetailsError()
 		const { t } = useTranslation('article')
 		const id = Number(useParams().id)
 
@@ -43,9 +43,9 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = memo(
 						<AppCard padding='24' radius='big'>
 							<VStack gap='24'>
 								<ArticleDetails id={id} />
-								<ArticleRating articleId={id} />
-								<ArticleRecommendationsList />
-								<ArticleComments />
+								{!error && <ArticleRating articleId={id} />}
+								{!error && <ArticleRecommendationsList />}
+								{!error && <ArticleComments />}
 							</VStack>
 						</AppCard>
 					}

@@ -162,7 +162,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(
 						saveForm={onSave}
 						canEdit={canEdit}
 					/>
-					{!isLoading && !loadingError && isNotProfileOwner && (
+					{authData && !isLoading && !loadingError && isNotProfileOwner && (
 						<ProfileRating profileId={id} />
 					)}
 				</VStack>

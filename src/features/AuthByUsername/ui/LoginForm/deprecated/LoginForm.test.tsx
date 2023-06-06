@@ -6,7 +6,7 @@ import {
 	MockFunction,
 	RenderWithMocks,
 } from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
-import LoginForm from './LoginForm'
+import { LoginForm } from './LoginForm'
 
 describe('LoginForm', () => {
 	const mocks: MockFunction[] = [MockTranslation, MockBrowserRouter(), MockStore()]

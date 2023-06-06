@@ -42,17 +42,14 @@ export const routerConfig: AuthRouteProps[] = [
 	{
 		path: getProfileRoute(':id'),
 		element: <ProfilePage />,
-		authOnly: true,
 	},
 	{
 		path: getArticlesRoute(),
 		element: <ArticlesPage />,
-		authOnly: true,
 	},
 	{
 		path: getArticleDetailsRoute(':id'),
 		element: <ArticleDetailsPage />,
-		authOnly: true,
 	},
 	{
 		path: getEditArticleDetailsRoute(':id'),
