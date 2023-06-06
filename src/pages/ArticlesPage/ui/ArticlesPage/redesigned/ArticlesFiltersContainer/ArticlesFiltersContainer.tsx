@@ -4,36 +4,44 @@ import { SortOrderType } from '@/shared/types/types'
 import { ArticlesFilters } from '@/widgets/ArticlesFilters'
 import { useArticlesFilters, useInitSearchParams } from '../../hooks/useArticlesFilters'
 
-export const ArticlesFiltersContainer: FC = memo(() => {
-	const { filter, order, search, sort, changeSort, changeOrder, changeSearch, changeFilter } =
-		useArticlesFilters()
+interface ArticlesFiltersContainerProps {
+	isLoading?: boolean
+}
 
-	useInitSearchParams()
+export const ArticlesFiltersContainer: FC<ArticlesFiltersContainerProps> = memo(
+	(props: ArticlesFiltersContainerProps) => {
+		const { isLoading } = props
+		const { filter, order, search, sort, changeSort, changeOrder, changeSearch, changeFilter } =
+			useArticlesFilters()
 
-	const onChangeSort = useCallback(
-		(value: string) => {
-			changeSort(value as SortVariantType)
-		},
-		[changeSort]
-	)
+		useInitSearchParams()
 
-	const onChangeOrder = useCallback(
-		(value: string) => {
-			changeOrder(value as SortOrderType)
-		},
-		[changeOrder]
-	)
+		const onChangeSort = useCallback(
+			(value: string) => {
+				changeSort(value as SortVariantType)
+			},
+			[changeSort]
+		)
 
-	return (
-		<ArticlesFilters
-			filter={filter}
-			order={order}
-			search={search}
-			sort={sort}
-			changeSort={onChangeSort}
-			changeOrder={onChangeOrder}
-			changeSearch={changeSearch}
-			changeFilter={changeFilter}
-		/>
-	)
-})
+		const onChangeOrder = useCallback(
+			(value: string) => {
+				changeOrder(value as SortOrderType)
+			},
+			[changeOrder]
+		)
+
+		return (
+			<ArticlesFilters
+				filter={filter}
+				order={order}
+				search={search}
+				sort={sort}
+				changeSort={onChangeSort}
+				changeOrder={onChangeOrder}
+				changeSearch={changeSearch}
+				changeFilter={changeFilter}
+				isLoading={isLoading}
+			/>
+		)
+	}
+)

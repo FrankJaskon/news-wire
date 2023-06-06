@@ -7,25 +7,46 @@ import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink'
 import { AppText } from '@/shared/ui/redesigned/AppText'
 import { Avatar } from '@/shared/ui/redesigned/Avatar'
 import { HStack } from '@/shared/ui/redesigned/HStack'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 
 export interface ArticleDetailsAdditionalInfoProps {
 	className?: string
 	articleId?: number
-	views?: string
+	views?: string | number
 	createdAd?: string
 	avatar?: string
 	username?: string
 	ifCanEdit?: boolean
+	isLoading?: boolean
 }
 
 export const ArticleDetailsAdditionalInfo: FC<ArticleDetailsAdditionalInfoProps> = memo(
 	(props: ArticleDetailsAdditionalInfoProps) => {
-		const { className, articleId, views, createdAd, avatar, username, ifCanEdit } = props
+		const { className, articleId, views, createdAd, avatar, username, ifCanEdit, isLoading } =
+			props
 		const { t } = useTranslation('article')
 
 		if (!articleId) {
 			return null
+		}
+
+		if (isLoading) {
+			return (
+				<AppCard className={className} padding='24' radius='big'>
+					<VStack gap='16'>
+						<HStack gap='8' align='center'>
+							<Skeleton width={32} height={32} border='50%' />
+							<Skeleton width={'40%'} height={24} />
+						</HStack>
+						<Skeleton width={'80%'} height={24} />
+						<HStack gap='8' align='center' justify='between'>
+							<Skeleton width={'30%'} height={20} />
+							<Skeleton width={'50%'} height={20} />
+						</HStack>
+					</VStack>
+				</AppCard>
+			)
 		}
 
 		return (

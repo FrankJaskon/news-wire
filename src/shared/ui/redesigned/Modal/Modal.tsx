@@ -2,15 +2,11 @@ import { FC, ReactNode } from 'react'
 import { useModal } from '@/shared/hooks/useModal/useModal'
 import classNames from '@/shared/lib/classNames/classNames'
 import { ToggleFeatures } from '@/shared/lib/features'
+import { AppCard } from '../AppCard'
 import { Overlay } from '../Overlay/Overlay'
 import { Portal } from '../Portal'
 import cls from './Modal.module.scss'
 import type { Mods } from '@/shared/lib/classNames/classNames'
-
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
 
 interface ModalProps {
 	className?: string
@@ -47,7 +43,7 @@ export const Modal: FC<ModalProps> = props => {
 				<Portal>
 					<div className={classNames(cls.Modal, mods, [className])}>
 						<Overlay onClick={close} />
-						<div className={cls.content}>{children}</div>
+						<div className={cls.contentDeprecated}>{children}</div>
 					</div>
 				</Portal>
 			}
@@ -55,7 +51,11 @@ export const Modal: FC<ModalProps> = props => {
 				<Portal>
 					<div className={classNames(cls.Modal, mods, [className])}>
 						<Overlay onClick={close} />
-						<div className={cls.content}>{children}</div>
+						<div className={cls.content}>
+							<AppCard padding='24' radius='big'>
+								{children}
+							</AppCard>
+						</div>
 					</div>
 				</Portal>
 			}

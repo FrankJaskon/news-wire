@@ -34,7 +34,7 @@ export const AppIcon: FC<AppIconProps> = memo((props: AppIconProps) => {
 
 	const icon = (
 		<Svg
-			className={classNames(cls.AppIcon, {}, [clickable ? '' : className])}
+			className={classNames(cls.AppIcon, {}, [className])}
 			data-testid={dataTestId}
 			height={height}
 			width={width}
@@ -48,7 +48,7 @@ export const AppIcon: FC<AppIconProps> = memo((props: AppIconProps) => {
 			<button
 				onClick={props.onClick}
 				type='button'
-				className={classNames(cls.button, {}, [className])}
+				className={classNames(cls.button)}
 				style={{ height, width }}
 			>
 				{icon}

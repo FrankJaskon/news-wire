@@ -5,4 +5,5 @@ export type { ArticleDetailsScheme } from './model/types/ArticleDetailsScheme'
 export {
 	useArticleDetailsData,
 	getArticleDetailsData,
+	useArticleDetailsIsLoading,
 } from './model/selectors/articleDetailsSelectors'

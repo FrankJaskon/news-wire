@@ -17,7 +17,9 @@ export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = m
 		const { isLoading, isError, data: articles } = useArticleRecommendationsList(5)
 
 		let content: ReactNode = useMemo(
-			() => <ArticleList articles={articles} isLoading={isLoading} isOneLine />,
+			() => (
+				<ArticleList articles={articles} isLoading={isLoading} isOneLine target='_blank' />
+			),
 			[articles, isLoading]
 		)
 

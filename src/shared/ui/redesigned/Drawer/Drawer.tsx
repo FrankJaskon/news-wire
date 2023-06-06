@@ -3,14 +3,10 @@ import useTheme from '@/shared/config/theme/useTheme'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider'
 import { ToggleFeatures } from '@/shared/lib/features'
+import { AppCard } from '../AppCard'
 import { Overlay } from '../Overlay/Overlay'
 import { Portal } from '../Portal'
 import cls from './Drawer.module.scss'
-
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
 
 interface DrawerProps {
 	className?: string
@@ -85,7 +81,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
 						>
 							<Overlay onClick={() => close()} />
 							<Spring.a.div
-								className={cls.sheet}
+								className={cls.contentWrapper}
 								style={{
 									display,
 									bottom: `calc(-100vh + ${height - 100}px)`,
@@ -93,7 +89,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
 								}}
 								{...bind()}
 							>
-								{children}
+								{<AppCard>{children}</AppCard>}
 							</Spring.a.div>
 						</div>
 					</Spring.a.div>
@@ -107,7 +103,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
 						>
 							<Overlay onClick={() => close()} />
 							<Spring.a.div
-								className={cls.sheet}
+								className={cls.sheetDeprecated}
 								style={{
 									display,
 									bottom: `calc(-100vh + ${height - 100}px)`,

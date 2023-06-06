@@ -2,9 +2,16 @@ import { FC, memo } from 'react'
 import { ViewToggler } from '@/features/ViewToggler'
 import { useArticlesFilters, useUpdateLimitOnChangeView } from '../../hooks/useArticlesFilters'
 
-export const ArticleViewTogglerContainer: FC = memo(() => {
-	const { view, changeView } = useArticlesFilters()
-	useUpdateLimitOnChangeView()
+interface ArticleViewTogglerContainerProps {
+	isLoading?: boolean
+}
 
-	return <ViewToggler activeView={view} onToggle={changeView} />
-})
+export const ArticleViewTogglerContainer: FC<ArticleViewTogglerContainerProps> = memo(
+	(props: ArticleViewTogglerContainerProps) => {
+		const { isLoading } = props
+		const { view, changeView } = useArticlesFilters()
+		useUpdateLimitOnChangeView()
+
+		return <ViewToggler activeView={view} onToggle={changeView} isLoading={isLoading} />
+	}
+)

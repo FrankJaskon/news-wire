@@ -33,13 +33,10 @@ export const useModal = ({ onClose, isOpen, animationDelay }: UseModalProps) => 
 
 	useEffect(() => {
 		if (isOpen) {
-			setIsMounted(true)
-		}
-	}, [isOpen])
-
-	useEffect(() => {
-		if (isOpen) {
 			window.addEventListener('keydown', onPressEscape)
+			setIsMounted(true)
+		} else {
+			document.body.classList.remove('modal-open')
 		}
 
 		return () => {

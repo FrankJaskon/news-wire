@@ -19,7 +19,9 @@ export const LatestArticlesList: FC<LatestArticlesListProps> = memo(
 		const { isLoading, isError, data: articles } = useLatestArticlesList(10)
 
 		let content: ReactNode = useMemo(
-			() => <ArticleList articles={articles} isLoading={isLoading} isOneLine />,
+			() => (
+				<ArticleList articles={articles} isLoading={isLoading} isOneLine target='_blank' />
+			),
 			[articles, isLoading]
 		)
 

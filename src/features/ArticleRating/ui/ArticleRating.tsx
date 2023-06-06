@@ -48,8 +48,6 @@ const ArticleRating: FC<ArticleRatingProps> = props => {
 		[sendFeedback]
 	)
 
-	if (isLoading) return null
-
 	const title = rating
 		? t('rating.rate-article-title-has-response')
 		: t('rating.rate-article-title')

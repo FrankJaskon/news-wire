@@ -8,6 +8,7 @@ import { SortOrderType } from '@/shared/types/types'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
 import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
 import { AppInput } from '@/shared/ui/redesigned/AppInput'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import cls from './ArticlesFilters.module.scss'
 
@@ -22,6 +23,7 @@ export interface ArticlesFiltersProps {
 	changeSearch?: (value: string) => void
 	changeFilter: (value: string) => void
 	'data-testid'?: string
+	isLoading?: boolean
 }
 
 export const ArticlesFilters: FC<ArticlesFiltersProps> = memo((props: ArticlesFiltersProps) => {
@@ -36,9 +38,34 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = memo((props: ArticlesFi
 		changeSearch,
 		changeFilter,
 		'data-testid': dataTestId = 'articles-filter',
+		isLoading,
 	} = props
 
 	const { t } = useTranslation('article')
+
+	if (isLoading) {
+		return (
+			<AppCard
+				className={classNames(cls.ArticlesFilters, {}, [className])}
+				radius='big'
+				padding='24'
+			>
+				<VStack gap='40'>
+					<Skeleton height={32} border='48px' />
+					<VStack gap='8'>
+						<Skeleton height={36} width={'50%'} border='32px' />
+						<Skeleton height={36} width={'50%'} border='32px' />
+						<Skeleton height={36} width={'50%'} border='32px' />
+					</VStack>
+					<VStack gap='8'>
+						<Skeleton height={36} width={'50%'} border='32px' />
+						<Skeleton height={36} width={'50%'} border='32px' />
+						<Skeleton height={36} width={'50%'} border='32px' />
+					</VStack>
+				</VStack>
+			</AppCard>
+		)
+	}
 
 	return (
 		<AppCard

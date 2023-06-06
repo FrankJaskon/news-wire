@@ -90,6 +90,7 @@ export const StarRating: FC<StarRatingProps> = memo((props: StarRatingProps) => 
 						onMouseEnter={onHover(starNumber)}
 						onMouseLeave={onLeave}
 						onClick={onClick(starNumber)}
+						clickable
 						data-testid={datTestId + starNumber}
 						data-selected={isSelected}
 					/>

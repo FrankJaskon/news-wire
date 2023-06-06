@@ -58,13 +58,13 @@ export const ArticlesPage: FC = memo(() => {
 		<LazyReducerLoader reducers={reducers}>
 			<PageWrapper
 				onScrollEnd={onLoadNextPart}
-				watchedScroll={true}
+				watchedScroll={false}
 				data-testid='articles-page'
 			>
 				<StickyContentLayout
 					content={content}
-					left={<ArticleViewTogglerContainer />}
-					right={<ArticlesFiltersContainer />}
+					left={<ArticleViewTogglerContainer isLoading={isLoading} />}
+					right={<ArticlesFiltersContainer isLoading={isLoading} />}
 				/>
 			</PageWrapper>
 		</LazyReducerLoader>

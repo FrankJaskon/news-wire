@@ -5,6 +5,7 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton } from '@/shared/ui/redesigned/AppButton'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
 import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import cls from './ViewToggler.module.scss'
 
 type ViewType = 'grid' | 'list'
@@ -13,6 +14,7 @@ export interface ViewTogglerProps {
 	className?: string
 	activeView?: ViewType
 	onToggle?: (view: ViewType) => void
+	isLoading?: boolean
 }
 
 interface ViewProps {
@@ -32,7 +34,7 @@ const views: ViewProps[] = [
 ]
 
 export const ViewToggler: FC<ViewTogglerProps> = props => {
-	const { className, activeView, onToggle } = props
+	const { className, activeView, onToggle, isLoading } = props
 
 	const handleToggle = useCallback(
 		(view: ViewType) => () => {
@@ -61,6 +63,10 @@ export const ViewToggler: FC<ViewTogglerProps> = props => {
 			),
 		[onToggle, activeView, handleToggle]
 	)
+
+	if (isLoading) {
+		return <Skeleton height={53} width={103} border='43px' />
+	}
 
 	return (
 		<AppCard

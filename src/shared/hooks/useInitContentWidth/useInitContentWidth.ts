@@ -7,6 +7,8 @@ interface UseInitContentWidthProps {
 	container?: HTMLElement
 }
 
+const padding = 32
+
 export const useInitContentWidth = ({
 	left,
 	content,
@@ -24,13 +26,13 @@ export const useInitContentWidth = ({
 	)
 
 	const [availableMaxWidth, setAvailableMaxWidth] = useState(
-		container ? container?.offsetWidth : initialMaxWidth
+		container ? container?.getBoundingClientRect().width - 2 * padding : initialMaxWidth
 	)
 
 	useEffect(() => {
 		if (container) {
 			const handleResize = () => {
-				const availableMaxWidth = container.getBoundingClientRect().width
+				const availableMaxWidth = container.getBoundingClientRect().width - 2 * padding
 				setAvailableMaxWidth(availableMaxWidth)
 			}
 
@@ -61,11 +63,18 @@ export const useInitContentWidth = ({
 
 	useEffect(() => {
 		const handleResize = () => {
-			const availableWidth =
+			const hasScrollbar = document.documentElement.scrollHeight > window.innerHeight
+
+			let availableWidth =
 				availableMaxWidth -
 				(left?.current?.getBoundingClientRect().width ?? 0) -
 				(right?.current?.getBoundingClientRect().width ?? 0) -
 				1
+
+			if (hasScrollbar) {
+				const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+				availableWidth -= scrollbarWidth
+			}
 			if (availableWidth > 0) {
 				if (content.current) {
 					content.current.style.maxWidth = `${availableWidth}px`

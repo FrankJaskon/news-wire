@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 import { useSelector } from 'react-redux'
-import { useArticleDetailsData } from '@/features/ArticleDetails'
+import { useArticleDetailsIsLoading, useArticleDetailsData } from '@/features/ArticleDetails'
 import classNames from '@/shared/lib/classNames/classNames'
 import { ArticleDetailsAdditionalInfo } from '@/widgets/ArticleDetailsAdditionalInfo'
 import { getIfCanEdit } from '../../model/selectors/article'
@@ -16,6 +16,7 @@ export const ArticleDetailsAdditionalInfoContainer: FC<ArticleDetailsAdditionalI
 
 		const article = useArticleDetailsData()
 		const ifCanEdit = useSelector(getIfCanEdit)
+		const isLoading = useArticleDetailsIsLoading()
 
 		return (
 			<div className={classNames(cls.ArticleDetailsAdditionalInfoContainer, {}, [className])}>
@@ -26,6 +27,7 @@ export const ArticleDetailsAdditionalInfoContainer: FC<ArticleDetailsAdditionalI
 					avatar={article?.profile?.avatar}
 					username={article?.profile?.username}
 					ifCanEdit={ifCanEdit}
+					isLoading={isLoading}
 				/>
 			</div>
 		)

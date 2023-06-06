@@ -1,13 +1,15 @@
 import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import CommentIcon from '@/shared/assets/icons/comment.svg'
 import { useDetectMobile } from '@/shared/hooks/useDetectMobile/useDetectMobile'
-import { AppTextArea } from '@/shared/ui/deprecated/AppTextArea'
-import { Drawer } from '@/shared/ui/redesigned/Drawer/Drawer'
-import { Modal } from '@/shared/ui/redesigned/Modal'
 import { AppButton } from '@/shared/ui/redesigned/AppButton'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
+import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
+import { AppInput } from '@/shared/ui/redesigned/AppInput'
 import { AppText } from '@/shared/ui/redesigned/AppText'
+import { Drawer } from '@/shared/ui/redesigned/Drawer/Drawer'
 import { HStack } from '@/shared/ui/redesigned/HStack'
+import { Modal } from '@/shared/ui/redesigned/Modal'
 import { StarRating } from '@/shared/ui/redesigned/StarRating/StarRating'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import cls from './RatingCard.module.scss'
@@ -21,10 +23,6 @@ export interface RatingCardProps {
 	rating?: number
 	isLoading?: boolean
 }
-
-/**
- *This component uses deprecated components. It should be fixed
- */
 
 export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => {
 	const { className, title, feedbackTitle, onCancel, onAccept, rating, isLoading } = props
@@ -65,12 +63,14 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 	const modalContent = useMemo(
 		() => (
 			<>
-				{feedbackTitle && <AppText title={feedbackTitle} />}
+				{feedbackTitle && <AppText title={feedbackTitle} size='l' weight='bold' />}
 				<AppCard padding='0'>
-					<AppTextArea
+					<AppInput
 						placeholder={t('leave-feedback')}
+						className={cls.input}
 						value={feedback}
 						onChange={setFeedback}
+						addonLeft={<AppIcon Svg={CommentIcon} height={24} width={24} />}
 					/>
 				</AppCard>
 			</>
@@ -104,6 +104,7 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 							<HStack gap='8' justify='end'>
 								<AppButton
 									variant='outline'
+									borderVariant='cancel'
 									onClick={onFeedbackCancel}
 									data-testid={'rating-card-cancel'}
 								>
@@ -111,6 +112,8 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 								</AppButton>
 								<AppButton
 									onClick={onFeedbackSubmit}
+									variant='outline'
+									borderVariant='save'
 									data-testid={'rating-card-submit'}
 								>
 									{t('btn.submit')}

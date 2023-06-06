@@ -15,10 +15,6 @@ export interface RatingCardProps {
 	variant?: RatingVariantDeprecatedType
 }
 
-/**
- *This component uses deprecated components. It should be fixed
- */
-
 export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => {
 	return (
 		<ToggleFeatures

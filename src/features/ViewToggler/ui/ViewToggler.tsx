@@ -9,6 +9,7 @@ export interface ViewTogglerProps {
 	className?: string
 	activeView?: ViewType
 	onToggle?: (view: ViewType) => void
+	isLoading?: boolean
 }
 
 export const ViewToggler: FC<ViewTogglerProps> = memo((props: ViewTogglerProps) => {
