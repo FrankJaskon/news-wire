@@ -35,6 +35,7 @@ export const useModal = ({ onClose, isOpen, animationDelay }: UseModalProps) => 
 		if (isOpen) {
 			window.addEventListener('keydown', onPressEscape)
 			setIsMounted(true)
+			document.body.classList.add('modal-open')
 		} else {
 			document.body.classList.remove('modal-open')
 		}

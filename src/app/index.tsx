@@ -1,23 +1,30 @@
 import { FC, Suspense, useEffect } from 'react'
 import { initUserData, useInitializedUser } from '@/entities/User'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
+import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout'
 import { MainLayout } from '@/shared/layouts/MainLayout'
 import { ToggleFeatures } from '@/shared/lib/features'
-import { HStack } from '@/shared/ui/redesigned/HStack'
 import { PageLoader } from '@/widgets/PageLoader'
+import { useSelectToolbarItem } from './lib/useSelectToolbarItem'
 import { AppRouter } from './providers/router'
 import { Navbar, Sidebar } from './ui'
 
 const App: FC = () => {
 	const dispatch = useAppDispatch()
 	const isInitialized = useInitializedUser()
-
+	const toolbarItem = useSelectToolbarItem()
 	useEffect(() => {
 		dispatch(initUserData())
 	}, [dispatch])
 
 	if (!isInitialized) {
-		return <PageLoader fullHeight />
+		return (
+			<ToggleFeatures
+				feature='isAppRedesigned'
+				off={<PageLoader fullHeight />}
+				on={<AppLoaderLayout />}
+			/>
+		)
 	}
 
 	return (
@@ -25,7 +32,7 @@ const App: FC = () => {
 			feature='isAppRedesigned'
 			off={
 				<div className={'App'} id='app'>
-					<Suspense fallback=''>
+					<Suspense fallback={''}>
 						<Navbar />
 						<div className='content-wrapper'>
 							<Sidebar />
@@ -36,16 +43,12 @@ const App: FC = () => {
 			}
 			on={
 				<div className={'App-redesign'} id='app'>
-					<Suspense fallback=''>
+					<Suspense fallback={<AppLoaderLayout />}>
 						<MainLayout
 							header={<Navbar />}
 							content={<AppRouter />}
 							sidebar={<Sidebar />}
-							toolbar={
-								<HStack align='center' justify='center' style={{ height: '100%' }}>
-									123
-								</HStack>
-							}
+							toolbar={toolbarItem}
 						/>
 					</Suspense>
 				</div>

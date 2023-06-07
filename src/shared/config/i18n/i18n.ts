@@ -8,8 +8,11 @@ i18n.use(Backend)
 	.use(initReactI18next)
 	.init({
 		fallbackLng: 'en',
+		fallbackNS: 'translation',
+		detection: {
+			order: ['localStorage'],
+		},
 		debug: false,
-		// debug: __iS_DEV__,
 		interpolation: {
 			escapeValue: false,
 		},

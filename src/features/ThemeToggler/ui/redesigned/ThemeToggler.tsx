@@ -2,6 +2,7 @@ import { FC, memo, useCallback } from 'react'
 import { saveJsonSettings, useUserAuthData } from '@/entities/User'
 import ThemeIcon from '@/shared/assets/icons/theme.svg'
 import useTheme from '@/shared/config/theme/useTheme'
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
@@ -19,8 +20,10 @@ export const ThemeToggler: FC<ThemeTogglerProps> = memo((props: ThemeTogglerProp
 
 	const onToggleTheme = useCallback(() => {
 		toggleTheme(theme => {
-			if (!userData) return
-			dispatch(saveJsonSettings({ theme }))
+			if (userData) {
+				dispatch(saveJsonSettings({ theme }))
+			}
+			localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme)
 		})
 	}, [dispatch, toggleTheme, userData])
 

@@ -84,6 +84,7 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		if (result.meta.requestStatus === 'fulfilled') {
 			onSuccess()
 			navigate(getMainRoute())
+			location.reload()
 		}
 	}, [dispatch, username, password, onSuccess, navigate, isLogin])
 

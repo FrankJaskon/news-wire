@@ -16,7 +16,7 @@ export interface NonClickableAppIconProps extends AppIconBaseProps {
 
 export interface ClickableAppIconProps extends AppIconBaseProps {
 	clickable: true
-	onClick: () => void
+	onClick?: () => void
 }
 
 type AppIconProps = NonClickableAppIconProps | ClickableAppIconProps

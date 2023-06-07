@@ -37,15 +37,6 @@ export const getSidebarItem = createSelector(getUserAuthData, authData => {
 				off: () => AboutIconDeprecated,
 			}),
 		},
-		{
-			path: getArticlesRoute(),
-			text: 'sidebar.link.articles',
-			Icon: toggleFeatures({
-				name: 'isAppRedesigned',
-				on: () => ArticleIcon,
-				off: () => ArticlesIconDeprecated,
-			}),
-		},
 	]
 	if (authData) {
 		sidebarLinks.push({
@@ -59,6 +50,15 @@ export const getSidebarItem = createSelector(getUserAuthData, authData => {
 			authOnly: true,
 		})
 	}
+	sidebarLinks.push({
+		path: getArticlesRoute(),
+		text: 'sidebar.link.articles',
+		Icon: toggleFeatures({
+			name: 'isAppRedesigned',
+			on: () => ArticleIcon,
+			off: () => ArticlesIconDeprecated,
+		}),
+	})
 
 	return sidebarLinks
 })

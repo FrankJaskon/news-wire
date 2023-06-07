@@ -33,6 +33,7 @@ export const AvatarDropdown: FC<AvatarDropdownProps> = props => {
 	const onLogout = useCallback(() => {
 		dispatch(userActions.removeAuthData())
 		navigate(getMainRoute())
+		location.reload()
 	}, [dispatch, navigate])
 
 	if (!authData) {

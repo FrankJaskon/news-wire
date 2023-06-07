@@ -5,15 +5,18 @@ import ThemeContext, {
 	Theme,
 	ThemeContextProps,
 } from '@/shared/config/theme/ThemeContext'
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage'
 
 interface ThemeProviderProps {
 	children: ReactNode
 	initialTheme?: Theme
 }
 
+const savedTheme: Theme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme
+
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
 	const userData = useUserAuthData()
-	const [theme, setTheme] = useState<Theme>(initialTheme ?? AppThemes.LIGHT)
+	const [theme, setTheme] = useState<Theme>(initialTheme ?? savedTheme ?? AppThemes.LIGHT)
 	const [isThemeInitialized, setIsThemeInitialized] = useState<boolean>(false)
 
 	document.body.className = theme ?? AppThemes.LIGHT
@@ -23,6 +26,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }
 		if (isThemeInitialized) return
 		if (!userData?.jsonSettings?.theme) return
 		setTheme(userData.jsonSettings.theme)
+		localStorage.setItem(LOCAL_STORAGE_THEME_KEY, userData.jsonSettings.theme)
 		setIsThemeInitialized(true)
 	}, [isThemeInitialized, userData])
 
