@@ -1,10 +1,9 @@
-import { FC } from 'react'
-import AddIcon from '@/shared/assets/icons/add.svg'
-import classNames from '@/shared/lib/classNames/classNames'
-import { DirectionType, Dropdown, DropdownItem } from '@/shared/ui/deprecated/Popups'
+import { FC, memo } from 'react'
+import { ToggleFeatures } from '@/shared/lib/features'
+import { DirectionType, DropdownItem } from '@/shared/ui/deprecated/Popups'
 import { EditableArticleType } from '../../../model/types/editableArticleScheme'
-import { OptionIcon } from '../OptionIcon/OptionIcon'
-import cls from './OptionsDropdown.module.scss'
+import { OptionsDropdown as OptionsDropdownDeprecated } from './deprecated/OptionsDropdown'
+import { OptionsDropdown as OptionsDropdownRedesigned } from './redesigned/OptionsDropdown'
 
 export interface OptionsDropdownProps {
 	className?: string
@@ -17,26 +16,16 @@ export interface ArticleOptionDropdownItem extends DropdownItem {
 	name?: keyof EditableArticleType
 }
 
-export const OptionsDropdown: FC<OptionsDropdownProps> = props => {
-	const { className, options, absolute = false, direction = 'bottom left' } = props
+export const OptionsDropdown: FC<OptionsDropdownProps> = memo((props: OptionsDropdownProps) => {
+	const { options, ...otherProps } = props
+
+	const redesignedOptions = options.flat()
 
 	return (
-		<div
-			className={classNames(
-				cls.OptionsDropdown,
-				{
-					[cls.absolute]: absolute,
-				},
-				[className]
-			)}
-		>
-			<Dropdown
-				items={options}
-				trigger={<OptionIcon icon={AddIcon} className={cls.iconWrapper} />}
-				direction={direction}
-				className={cls.trigger}
-				align='start'
-			/>
-		</div>
+		<ToggleFeatures
+			feature='isAppRedesigned'
+			on={<OptionsDropdownRedesigned {...otherProps} options={redesignedOptions} />}
+			off={<OptionsDropdownDeprecated {...otherProps} options={options} />}
+		/>
 	)
-}
+})

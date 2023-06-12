@@ -1,5 +1,5 @@
 import { FC, ReactNode, useEffect, useMemo, useState } from 'react'
-import { useUserAuthData } from '@/entities/User'
+import { useJsonSettings } from '@/entities/User'
 import ThemeContext, {
 	AppThemes,
 	Theme,
@@ -15,20 +15,20 @@ interface ThemeProviderProps {
 const savedTheme: Theme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
-	const userData = useUserAuthData()
+	const jsonSettings = useJsonSettings()
+
 	const [theme, setTheme] = useState<Theme>(initialTheme ?? savedTheme ?? AppThemes.LIGHT)
 	const [isThemeInitialized, setIsThemeInitialized] = useState<boolean>(false)
 
 	document.body.className = theme ?? AppThemes.LIGHT
 
 	useEffect(() => {
-		if (__PROJECT__ === 'storybook') return
-		if (isThemeInitialized) return
-		if (!userData?.jsonSettings?.theme) return
-		setTheme(userData.jsonSettings.theme)
-		localStorage.setItem(LOCAL_STORAGE_THEME_KEY, userData.jsonSettings.theme)
+		if (__PROJECT__ === 'storybook' || isThemeInitialized || !jsonSettings?.theme) return
+
+		setTheme(jsonSettings.theme)
+		localStorage.setItem(LOCAL_STORAGE_THEME_KEY, jsonSettings.theme)
 		setIsThemeInitialized(true)
-	}, [isThemeInitialized, userData])
+	}, [isThemeInitialized, jsonSettings])
 
 	const defaultProps: ThemeContextProps = useMemo(
 		() => ({

@@ -3,7 +3,7 @@ import { MockBrowserRouter } from '@/shared/config/tests/MockBrowserRouter/testi
 import { MockStore } from '@/shared/config/tests/MockStore/MockStore'
 import { MockTranslation } from '@/shared/config/tests/MockTranslation/MockTranslation'
 import { RenderWithMocks } from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
-import { getAboutRoute, getAdminRoute, getProfileRoute } from '@/shared/const/RoutPaths'
+import { getAboutRoute, getAdminRoute, getUsersSettingsRoute } from '@/shared/const/RoutPaths'
 import { AppRouter } from './AppRouter'
 
 describe('AppRouter', () => {
@@ -19,7 +19,7 @@ describe('AppRouter', () => {
 	})
 	test('Should redirect to MainPage', async () => {
 		RenderWithMocks(<AppRouter />, [
-			MockBrowserRouter(getProfileRoute(1)),
+			MockBrowserRouter(getUsersSettingsRoute()),
 			MockStore({}),
 			MockTranslation,
 		])
@@ -27,9 +27,9 @@ describe('AppRouter', () => {
 		const page = await screen.findByTestId('main-page')
 		expect(page).toBeInTheDocument()
 	})
-	test('ProfilePage should be rendered', async () => {
+	test('Users settings page should be rendered', async () => {
 		RenderWithMocks(<AppRouter />, [
-			MockBrowserRouter(getProfileRoute(1)),
+			MockBrowserRouter(getUsersSettingsRoute()),
 			MockStore({
 				user: {
 					_initialized: true,
@@ -40,8 +40,8 @@ describe('AppRouter', () => {
 			}),
 			MockTranslation,
 		])
-		const profilePage = await screen.findByTestId('profile-page')
-		expect(profilePage).toBeInTheDocument()
+		const settingsPage = await screen.findByTestId('user-settings-page')
+		expect(settingsPage).toBeInTheDocument()
 	})
 	test('NotFound page should be rendered', async () => {
 		RenderWithMocks(<AppRouter />, [MockBrowserRouter('/test'), MockStore({}), MockTranslation])

@@ -13,6 +13,10 @@ export {
 	getIfCanEdit,
 	useIsLoadingArticleData,
 	getIsLoadingArticleData,
+	useIsFinishedArticleData,
+	useEditableArticleIsEdited,
+	useEditableArticleIsPreview,
+	useEditableArticleIsReducerMounted,
 } from './model/selectors/editableArticleSelector'
 
 export { initEditableArticle } from './model/services/initEditableArticle'

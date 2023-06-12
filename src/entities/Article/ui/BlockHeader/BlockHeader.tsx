@@ -16,11 +16,7 @@ export const BlockHeader: FC<BlockHeaderProps> = props => {
 		<ToggleFeatures
 			feature='isAppRedesigned'
 			on={
-				<AppCard
-					padding='8'
-					radius='bigger'
-					className={classNames(cls.BlockHeader, {}, [className])}
-				>
+				<AppCard radius='bigger' className={classNames(cls.BlockHeader, {}, [className])}>
 					{children}
 				</AppCard>
 			}

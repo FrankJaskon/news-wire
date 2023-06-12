@@ -67,7 +67,7 @@ describe('EditableProfileCard', () => {
 			RenderWithMocks(<EditableProfileCard id={1} />, mocks)
 		})
 
-		const error = screen.getByTestId('Text.content')
+		const error = screen.getByTestId('Text.Paragraph')
 		expect(error).toBeInTheDocument()
 	})
 	test('Should return initial state if cancel is pressed', async () => {
@@ -125,7 +125,7 @@ describe('EditableProfileCard', () => {
 		await act(async () => {
 			await userEvent.click(closeBtn)
 		})
-		expect(avatarInput).not.toBeInTheDocument()
+		expect(avatarInput).toHaveValue(mockOptions.profile.form.avatar)
 		expect(usernameInput).toHaveValue(mockOptions.profile.form.username)
 		expect(firstnameInput).toHaveValue(mockOptions.profile.form.firstname)
 		expect(lastnameInput).toHaveValue(mockOptions.profile.form.lastname)
@@ -180,7 +180,7 @@ describe('EditableProfileCard', () => {
 		await act(async () => {
 			fireEvent.click(saveBtn)
 		})
-		const errors = screen.getAllByTestId('Text.content')
+		const errors = screen.getAllByTestId('Text.Paragraph')
 		expect(errors.length).toBe(4)
 	})
 

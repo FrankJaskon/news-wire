@@ -142,7 +142,8 @@
         "react/jsx-max-props-per-line": [
             "error",
             {
-                "maximum": 4
+                "maximum": 4,
+                "when": "multiline"
             }
         ]
     }

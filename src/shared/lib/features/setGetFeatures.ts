@@ -9,7 +9,10 @@ export const setFeatureFlags = (newFeatureFlags?: FeatureFlags) => {
 }
 
 export const getFeatureFlag = (flag: keyof FeatureFlags) => {
-	return featureFlags[flag] ?? true
+	if (flag === 'isAppRedesigned') {
+		return featureFlags[flag] ?? true
+	}
+	return featureFlags[flag]
 }
 
 export const getAllFeatureFlags = () => featureFlags

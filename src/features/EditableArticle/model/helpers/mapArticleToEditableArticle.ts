@@ -13,6 +13,13 @@ export const mapArticleToEditableArticle = (article: ArticleType): EditableArtic
 					value: paragraph,
 					id: randomInteger(),
 				})),
+				hasTitle: Boolean(block.title),
+			}
+		}
+		if (block.type === BlockType.IMAGE) {
+			return {
+				...block,
+				hasTitle: Boolean(block.title),
 			}
 		}
 		return block

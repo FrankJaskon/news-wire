@@ -17,6 +17,8 @@ import { EditableArticleScheme, EditableArticleType } from '../types/editableArt
 const initialState: EditableArticleScheme = {
 	error: undefined,
 	isLoading: false,
+	isEditMode: undefined,
+	isPreview: false,
 	data: {},
 	form: {
 		id: undefined,
@@ -28,6 +30,7 @@ const initialState: EditableArticleScheme = {
 		views: undefined,
 		blocks: [],
 	},
+	isReducerMounted: true,
 }
 
 export interface SetTextBlockParagraphProps {
@@ -40,6 +43,12 @@ const editableArticleSlice = createSlice({
 	name: 'editableArticleSlice',
 	initialState,
 	reducers: {
+		setEditMode: (state, action: PayloadAction<boolean>) => {
+			state.isEditMode = action.payload
+		},
+		setPreview: (state, action: PayloadAction<boolean>) => {
+			state.isPreview = action.payload
+		},
 		setArticleData: (state, action: PayloadAction<EditableArticleType>) => {
 			state.form = {
 				...state.form,
@@ -53,8 +62,8 @@ const editableArticleSlice = createSlice({
 			if (!state.form.type) {
 				state.form.type = []
 			}
-			const isAlreadyExisted = state.form.type.includes(action.payload)
-			if (isAlreadyExisted) {
+			const isAlreadyActive = state.form.type.includes(action.payload)
+			if (isAlreadyActive) {
 				state.form.type = state.form.type.filter(type => type !== action.payload)
 			} else {
 				state.form.type = [...state.form.type, action.payload]
@@ -180,6 +189,7 @@ const editableArticleSlice = createSlice({
 		builder.addCase(initEditableArticle.pending, state => {
 			state.error = undefined
 			state.isLoading = true
+			state.isEditMode = true
 		})
 		builder.addCase(initEditableArticle.fulfilled, (state, { payload }) => {
 			state.isLoading = false

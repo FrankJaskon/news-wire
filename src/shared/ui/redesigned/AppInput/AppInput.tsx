@@ -16,6 +16,7 @@ interface AppInputProps extends HTMLInputProps {
 	addonLeft?: ReactNode
 	addonRight?: ReactNode
 	size?: 'small' | 'normal'
+	variant?: 'primary' | 'custom'
 }
 
 export const AppInput = memo((props: AppInputProps) => {
@@ -30,6 +31,7 @@ export const AppInput = memo((props: AppInputProps) => {
 		addonLeft,
 		addonRight,
 		size = 'normal',
+		variant = 'primary',
 		...otherProps
 	} = props
 	const ref = useRef<HTMLInputElement>(null)
@@ -61,8 +63,10 @@ export const AppInput = memo((props: AppInputProps) => {
 		[cls.withAddonRight]: Boolean(addonRight),
 	}
 
+	const extra: (string | undefined)[] = [className, cls[size], cls[variant]]
+
 	return (
-		<div className={classNames(cls.InputWrapper, mods, [className, cls[size]])}>
+		<div className={classNames(cls.InputWrapper, mods, extra)}>
 			{addonLeft && <div className={cls.addonLeft}>{addonLeft}</div>}
 			<input
 				ref={ref}

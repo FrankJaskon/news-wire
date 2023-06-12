@@ -40,7 +40,7 @@ export const ArticleTypeTabs: FC<ArticleTypeTabsProps> = memo((props: ArticleTyp
 		<Tabs
 			className={className}
 			tabs={tabs}
-			value={filter as ArticlesTypesType}
+			value={Array.isArray(filter) ? filter : [filter]}
 			onTabClick={handleOnTabClick}
 			direction='column'
 		/>

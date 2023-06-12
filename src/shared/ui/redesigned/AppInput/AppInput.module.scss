@@ -2,9 +2,12 @@
     display: flex;
     gap: 8px;
     align-items: center;
+    width: 100%;
+}
+
+.primary {
     border-radius: 48px;
     border: 1px solid var(--icon-redesigned);
-    width: 100%;
 }
 
 .small {
@@ -41,7 +44,11 @@
     }
 }
 
-
 .readonly {
     opacity: 0.8;
+}
+
+.custom {
+    border: none;
+    padding: 0;
 }

@@ -1,6 +1,8 @@
 import { FC, memo } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
-import { Loader } from '@/shared/ui/deprecated/Loader'
+import { ToggleFeatures } from '@/shared/lib/features'
+import { Loader as LoaderDeprecated } from '@/shared/ui/deprecated/Loader'
+import { Loader as LoaderRedesigned } from '@/shared/ui/redesigned/Loader'
 import cls from './PageLoader.module.scss'
 
 interface PageLoaderProps {
@@ -21,7 +23,11 @@ export const PageLoader: FC<PageLoaderProps> = memo((props: PageLoaderProps) => 
 				[className]
 			)}
 		>
-			<Loader className={cls.loader} />
+			<ToggleFeatures
+				feature='isAppRedesigned'
+				on={<LoaderRedesigned className={cls.loader} />}
+				off={<LoaderDeprecated className={cls.loader} />}
+			/>
 		</div>
 	)
 })

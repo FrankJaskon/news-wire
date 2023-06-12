@@ -13,7 +13,7 @@ const buildPlugins = ({
 	isDev,
 	apiUrl,
 	analyzed,
-	project
+	project,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
 	const isProd = !isDev
 
@@ -25,8 +25,8 @@ const buildPlugins = ({
 		new webpack.DefinePlugin({
 			__iS_DEV__: JSON.stringify(isDev),
 			__API_URL__: JSON.stringify(apiUrl),
-			__PROJECT__: JSON.stringify(project)
-		})
+			__PROJECT__: JSON.stringify(project),
+		}),
 	]
 
 	if (isDev) {
@@ -43,26 +43,28 @@ const buildPlugins = ({
 			}),
 			new CircularDependencyPlugin({
 				exclude: /a\.js|node_modules/,
-				failOnError: true
+				failOnError: true,
 			})
 		)
 	}
 
 	if (isProd) {
-		plugins.push(new CopyPlugin({
-			patterns: [
-				{ from: paths.locales, to: paths.buildLocales },
-			],
-		}),
-		new MiniCssExtractPlugin({
-			filename: 'css/[name].[contenthash:8].css',
-		}))
+		plugins.push(
+			new CopyPlugin({
+				patterns: [{ from: paths.locales, to: paths.buildLocales }],
+			}),
+			new MiniCssExtractPlugin({
+				filename: 'css/[name].[contenthash:8].css',
+			})
+		)
 	}
 
 	if (analyzed) {
-		plugins.push(new BundleAnalyzerPlugin({
-			openAnalyzer: true
-		}))
+		plugins.push(
+			new BundleAnalyzerPlugin({
+				openAnalyzer: true,
+			})
+		)
 	}
 
 	return plugins

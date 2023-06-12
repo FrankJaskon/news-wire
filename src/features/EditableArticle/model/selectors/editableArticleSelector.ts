@@ -9,6 +9,17 @@ export const [useEditableArticleForm, getEditableArticleForm] = buildSelector(
 	(state: StateSchema) => state.editableArticle?.form ?? ({} as EditableArticleType)
 )
 
+export const [useEditableArticleIsReducerMounted, getEditableArticleIsReducerMounted] =
+	buildSelector((state: StateSchema) => state.editableArticle?.isReducerMounted)
+
+export const [useEditableArticleIsEdited, getEditableArticleIsEdited] = buildSelector(
+	(state: StateSchema) => state.editableArticle?.isEditMode
+)
+
+export const [useEditableArticleIsPreview, getEditableArticleIsPreview] = buildSelector(
+	(state: StateSchema) => state.editableArticle?.isPreview
+)
+
 export const [useEditableArticleData, getEditableArticleData] = buildSelector(
 	(state: StateSchema) => state.editableArticle?.data ?? ({} as ArticleType)
 )

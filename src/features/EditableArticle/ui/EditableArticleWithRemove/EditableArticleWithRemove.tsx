@@ -1,6 +1,13 @@
 import { FC, ReactNode } from 'react'
-import RemoveIcon from '@/shared/assets/icons/clear.svg'
-import { AppButton, ButtonShape, ButtonVariant } from '@/shared/ui/deprecated/AppButton'
+import RemoveIconDeprecated from '@/shared/assets/icons/clear.svg'
+import RemoveIcon from '@/shared/assets/icons/remove.svg'
+import { ToggleFeatures } from '@/shared/lib/features'
+import {
+	AppButton as AppButtonDeprecated,
+	ButtonShape,
+	ButtonVariant,
+} from '@/shared/ui/deprecated/AppButton'
+import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
 import { HStack } from '@/shared/ui/redesigned/HStack'
 import { OptionIcon } from '../EditableArticleOptions/OptionIcon/OptionIcon'
 
@@ -14,11 +21,26 @@ export const EditableArticleWithRemove: FC<EditableArticleWithRemoveProps> = pro
 	const { className, children, onRemove } = props
 
 	return (
-		<HStack gap='4' className={className}>
-			{children}
-			<AppButton variant={ButtonVariant.CUSTOM} shape={ButtonShape.SQUARE} onClick={onRemove}>
-				<OptionIcon icon={RemoveIcon} />
-			</AppButton>
-		</HStack>
+		<ToggleFeatures
+			feature='isAppRedesigned'
+			on={
+				<HStack gap='4' className={className}>
+					{children}
+					<AppIcon Svg={RemoveIcon} height={24} width={24} clickable onClick={onRemove} />
+				</HStack>
+			}
+			off={
+				<HStack gap='4' className={className}>
+					{children}
+					<AppButtonDeprecated
+						variant={ButtonVariant.CUSTOM}
+						shape={ButtonShape.SQUARE}
+						onClick={onRemove}
+					>
+						<OptionIcon icon={RemoveIconDeprecated} />
+					</AppButtonDeprecated>
+				</HStack>
+			}
+		/>
 	)
 }

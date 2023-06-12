@@ -1,0 +1,52 @@
+.Loader {
+	width: 150px;
+	height: 105px;
+	background: var(--light-bg-redesigned);
+	box-sizing: border-box;
+	position: relative;
+	border-radius: 8px;
+	perspective: 1000px;
+}
+
+.Loader::before {
+	content: '';
+	position: absolute;
+	inset: 10px;
+	border-radius: 8px;
+	background: var(--dark-bg-redesigned) no-repeat;
+	background-size: 45px 8px;
+	background-image: linear-gradient(var(--light-bg-redesigned) 100px, transparent 0),
+		linear-gradient(var(--light-bg-redesigned) 100px, transparent 0),
+		linear-gradient(var(--light-bg-redesigned) 100px, transparent 0),
+		linear-gradient(var(--light-bg-redesigned) 100px, transparent 0),
+		linear-gradient(var(--light-bg-redesigned) 100px, transparent 0),
+		linear-gradient(var(--light-bg-redesigned) 100px, transparent 0);
+	background-position: 10px 20px, 10px 40px, 10px 60px,
+		75px 20px, 75px 40px, 75px 60px;
+	box-shadow: 0 0 10px #0006;
+}
+
+.Loader::after {
+	content: '';
+	position: absolute;
+	width: calc(50% - 10px);
+	height: calc(100% - 20px);
+	right: 10px;
+	top: 10px;
+	border-radius: 8px;
+	background: var(--dark-bg-redesigned) no-repeat;
+	background-size: 45px 8px;
+	background-image: linear-gradient(var(--light-bg-redesigned) 100px, transparent 0),
+		linear-gradient(var(--light-bg-redesigned) 100px, transparent 0),
+		linear-gradient(var(--light-bg-redesigned) 100px, transparent 0);
+	background-position: 50% 20px, 50% 40px, 50% 60px;
+	transform: rotateY(0deg);
+	transform-origin: left center;
+	animation: paging 1s linear infinite;
+}
+
+@keyframes paging {
+	to {
+		transform: rotateY(-180deg);
+	}
+}

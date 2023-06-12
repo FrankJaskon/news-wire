@@ -12,7 +12,7 @@ export interface TabItem {
 interface TabsProps {
 	className?: string
 	tabs: TabItem[]
-	value: string
+	value: string[]
 	onTabClick: (tab: TabItem) => void
 	direction?: FlexDirection
 }
@@ -35,7 +35,7 @@ export const Tabs = memo((props: TabsProps) => {
 			className={classNames(cls.Tabs, {}, [className])}
 		>
 			{tabs.map(tab => {
-				const isSelected = tab.value === value
+				const isSelected = value.includes(tab.value)
 				return (
 					<AppCard
 						variant={isSelected ? 'light' : 'normal'}

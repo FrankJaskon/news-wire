@@ -12,6 +12,7 @@ import {
 	RenderWithMocks,
 } from '@/shared/config/tests/RenderWithMocks/RenderWithMocks'
 import { ReducerList } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { setFeatureFlags } from '@/shared/lib/features'
 import { profileReducer } from '../../model/slice/profileSlice'
 import { ValidateProfileError } from '../../model/types/ProfileScheme'
 import { EditableProfileCard } from './EditableProfileCard'
@@ -48,6 +49,9 @@ const mockReducers: DeepPartial<ReducerList> = {
 }
 
 describe('EditableProfileCard', () => {
+	beforeAll(() => {
+		setFeatureFlags({ isAppRedesigned: false })
+	})
 	test('Should display an error', async () => {
 		const mocks: MockFunction[] = [
 			MockTranslation,

@@ -3,11 +3,6 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { ValueOf } from '@/shared/types/types'
 import cls from './Loader.module.scss'
 
-/**
- * This component was deprecated. It is recommended to use component from the redesigned folder
- * @deprecated
- */
-
 export const LoaderSize = {
 	SMALL: 'small',
 	MEDIUM: 'medium',
@@ -20,6 +15,11 @@ export interface LoaderProps {
 	className?: string
 	size?: LoaderSizeType
 }
+
+/**
+ * This component was deprecated. It is recommended to use component from the redesigned folder
+ * @deprecated
+ */
 
 export const Loader: FC<LoaderProps> = memo((props: LoaderProps) => {
 	const { className, size = LoaderSize.MEDIUM } = props

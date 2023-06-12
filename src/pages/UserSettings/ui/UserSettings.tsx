@@ -11,7 +11,7 @@ import { PageWrapper } from '@/widgets/PageWrapper'
 export const UserSettings: FC = memo(() => {
 	const { t } = useTranslation()
 	return (
-		<PageWrapper>
+		<PageWrapper data-testid='user-settings-page'>
 			<VStack gap='16'>
 				<ToggleFeatures
 					feature='isAppRedesigned'
