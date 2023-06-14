@@ -79,6 +79,8 @@
 			"on-save-success": "Article has been created successfully"
 		},
 		"options": {
+			"start": "At the begining",
+			"end": "At the end",
 			"add-subtitle": "Add subtitle",
 			"add-img": "Add main image",
 			"add-text-block": "Add text block",

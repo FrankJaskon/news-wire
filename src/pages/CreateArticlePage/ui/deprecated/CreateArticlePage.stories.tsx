@@ -2,7 +2,7 @@ import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
-import CreateArticlePage from './CreateArticlePage'
+import { CreateArticlePage } from './CreateArticlePage'
 
 export default {
 	title: 'pages/CreateArticlePage',

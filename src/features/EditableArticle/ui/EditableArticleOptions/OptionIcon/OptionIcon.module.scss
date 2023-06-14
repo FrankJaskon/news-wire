@@ -1,0 +1,11 @@
+.OptionIcon {
+	padding: 6px;
+	border-radius: 50%;
+	background: var(--icon-redesigned);
+	&:hover {
+		background: var(--accent-redesigned);
+	}
+	svg {
+		color: var(--dark-bg-redesigned);
+	}
+}

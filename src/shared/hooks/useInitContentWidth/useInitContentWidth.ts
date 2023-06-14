@@ -59,22 +59,27 @@ export const useInitContentWidth = ({
 				window.removeEventListener('resize', handleResize)
 			}
 		}
-	}, [container])
+	}, [container, left, right])
 
 	useEffect(() => {
 		const handleResize = () => {
 			const hasScrollbar = document.documentElement.scrollHeight > window.innerHeight
 
-			let availableWidth =
-				availableMaxWidth -
-				(left?.current?.getBoundingClientRect().width ?? 0) -
-				(right?.current?.getBoundingClientRect().width ?? 0) -
-				1
+			let availableWidth = availableMaxWidth
+
+			if (left && left.current) {
+				availableWidth -= left.current.getBoundingClientRect().width
+			}
+
+			if (right && right.current) {
+				availableWidth -= right.current.getBoundingClientRect().width
+			}
 
 			if (hasScrollbar) {
 				const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
 				availableWidth -= scrollbarWidth
 			}
+
 			if (availableWidth > 0) {
 				if (content.current) {
 					content.current.style.maxWidth = `${availableWidth}px`

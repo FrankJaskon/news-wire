@@ -1,21 +1,40 @@
-import { FC, FunctionComponent, SVGAttributes } from 'react'
-import { AppCard, CardVariant } from '@/shared/ui/deprecated/AppCard'
-import { AppIcon, AppIconVariant } from '@/shared/ui/deprecated/AppIcon'
+import { FC } from 'react'
+import AddIcon from '@/shared/assets/icons/add.svg'
+import classNames from '@/shared/lib/classNames/classNames'
+import { ToggleFeatures } from '@/shared/lib/features'
+import { AppCard as AppCardDeprecated, CardVariant } from '@/shared/ui/deprecated/AppCard'
+import { AppIcon as AppIconDeprecated, AppIconVariant } from '@/shared/ui/deprecated/AppIcon'
+import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
 import { HStack } from '@/shared/ui/redesigned/HStack'
+import cls from './OptionIcon.module.scss'
 
 export interface OptionIconProps {
 	className?: string
-	icon: FunctionComponent<SVGAttributes<SVGElement>>
+	size?: number
 }
 
 export const OptionIcon: FC<OptionIconProps> = props => {
-	const { className, icon } = props
+	const { className, size = 24 } = props
 
 	return (
-		<AppCard variant={CardVariant.PRIMARY} noPaddings className={className}>
-			<HStack justify='center' align='center'>
-				<AppIcon Svg={icon} variant={AppIconVariant.CONTRAST} />
-			</HStack>
-		</AppCard>
+		<ToggleFeatures
+			feature='isAppRedesigned'
+			on={
+				<HStack
+					justify='center'
+					align='center'
+					className={classNames(cls.OptionIcon, {}, [className])}
+				>
+					<AppIcon Svg={AddIcon} height={size} width={size} />
+				</HStack>
+			}
+			off={
+				<AppCardDeprecated variant={CardVariant.PRIMARY} noPaddings className={className}>
+					<HStack justify='center' align='center'>
+						<AppIconDeprecated Svg={AddIcon} variant={AppIconVariant.CONTRAST} />
+					</HStack>
+				</AppCardDeprecated>
+			}
+		/>
 	)
 }

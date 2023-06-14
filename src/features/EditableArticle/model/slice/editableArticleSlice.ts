@@ -12,13 +12,17 @@ import { createNewArticle } from '../services/createNewArticle'
 import { initEditableArticle } from '../services/initEditableArticle'
 import { removeArticle } from '../services/removeArticle'
 import { updateArticle } from '../services/updateArticle'
-import { EditableArticleScheme, EditableArticleType } from '../types/editableArticleScheme'
+import {
+	EditableArticleScheme,
+	EditableArticleType,
+	InsertDirectionType,
+	ViewMode,
+} from '../types/editableArticleScheme'
 
 const initialState: EditableArticleScheme = {
 	error: undefined,
 	isLoading: false,
-	isEditMode: undefined,
-	isPreview: false,
+	mode: 'edit',
 	data: {},
 	form: {
 		id: undefined,
@@ -29,8 +33,11 @@ const initialState: EditableArticleScheme = {
 		type: undefined,
 		views: undefined,
 		blocks: [],
+		isSubtitle: false,
+		isImg: false,
 	},
 	isReducerMounted: true,
+	isEdit: false,
 }
 
 export interface SetTextBlockParagraphProps {
@@ -43,11 +50,8 @@ const editableArticleSlice = createSlice({
 	name: 'editableArticleSlice',
 	initialState,
 	reducers: {
-		setEditMode: (state, action: PayloadAction<boolean>) => {
-			state.isEditMode = action.payload
-		},
-		setPreview: (state, action: PayloadAction<boolean>) => {
-			state.isPreview = action.payload
+		setMode: (state, action: PayloadAction<ViewMode>) => {
+			state.mode = action.payload
 		},
 		setArticleData: (state, action: PayloadAction<EditableArticleType>) => {
 			state.form = {
@@ -72,19 +76,28 @@ const editableArticleSlice = createSlice({
 		removeBlock: (state, action: PayloadAction<number>) => {
 			state.form.blocks = state.form.blocks!.filter(block => block.id !== action.payload)
 		},
-		addNewTextBlock: state => {
-			state.form.blocks = [
-				...state.form.blocks!,
-				{
-					id: randomInteger(),
-					type: BlockType.TEXT,
-					paragraphs: [
-						{
-							id: randomInteger(),
-						},
-					],
-				},
-			]
+		addNewTextBlock: (
+			state,
+			action: PayloadAction<{ to: InsertDirectionType; id?: number }>
+		) => {
+			const newBlock = {
+				id: randomInteger(),
+				type: BlockType.TEXT,
+				paragraphs: [
+					{
+						id: randomInteger(),
+					},
+				],
+			}
+			if (!action.payload.id) {
+				if (action.payload.to === 'start') {
+					state.form.blocks = [newBlock, ...state.form.blocks!]
+					return
+				}
+				if (action.payload.to === 'end') {
+					state.form.blocks = [...state.form.blocks!, newBlock]
+				}
+			}
 		},
 		setTextBlock: (state, action: PayloadAction<EditableTextBlockType>) => {
 			state.form.blocks = state.form.blocks!.map(block => {
@@ -140,15 +153,24 @@ const editableArticleSlice = createSlice({
 			})
 			state.form.blocks = newFormBlocks
 		},
-		addNewCodeBlock: state => {
-			state.form.blocks = [
-				...state.form.blocks!,
-				{
-					id: randomInteger(),
-					type: BlockType.CODE,
-					code: '',
-				},
-			]
+		addNewCodeBlock: (
+			state,
+			action: PayloadAction<{ to: InsertDirectionType; id?: number }>
+		) => {
+			const newBlock = {
+				id: randomInteger(),
+				type: BlockType.CODE,
+				code: '',
+			}
+			if (!action.payload.id) {
+				if (action.payload.to === 'start') {
+					state.form.blocks = [newBlock, ...state.form.blocks!]
+					return
+				}
+				if (action.payload.to === 'end') {
+					state.form.blocks = [...state.form.blocks!, newBlock]
+				}
+			}
 		},
 		setCodeBlock: (state, action: PayloadAction<CodeBlockType>) => {
 			state.form.blocks = state.form.blocks!.map(block => {
@@ -161,16 +183,25 @@ const editableArticleSlice = createSlice({
 				return block
 			})
 		},
-		addNewImageBlock: state => {
-			state.form.blocks = [
-				...state.form.blocks!,
-				{
-					id: randomInteger(),
-					type: BlockType.IMAGE,
-					src: '',
-					title: '',
-				},
-			]
+		addNewImageBlock: (
+			state,
+			action: PayloadAction<{ to: InsertDirectionType; id?: number }>
+		) => {
+			const newBlock = {
+				id: randomInteger(),
+				type: BlockType.IMAGE,
+				src: '',
+				title: '',
+			}
+			if (!action.payload.id) {
+				if (action.payload.to === 'start') {
+					state.form.blocks = [newBlock, ...state.form.blocks!]
+					return
+				}
+				if (action.payload.to === 'end') {
+					state.form.blocks = [...state.form.blocks!, newBlock]
+				}
+			}
 		},
 		setImageBlock: (state, action: PayloadAction<EditableImageBlockType>) => {
 			state.form.blocks = state.form.blocks!.map(block => {
@@ -189,7 +220,7 @@ const editableArticleSlice = createSlice({
 		builder.addCase(initEditableArticle.pending, state => {
 			state.error = undefined
 			state.isLoading = true
-			state.isEditMode = true
+			state.isEdit = true
 		})
 		builder.addCase(initEditableArticle.fulfilled, (state, { payload }) => {
 			state.isLoading = false

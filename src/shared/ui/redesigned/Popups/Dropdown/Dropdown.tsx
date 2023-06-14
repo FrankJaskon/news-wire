@@ -38,6 +38,7 @@ export function Dropdown(props: DropdownProps) {
 							onClick={item.onClick}
 							className={classNames(cls.item, {
 								[popupCls.active]: active,
+								[cls.disabled]: item.disabled,
 							})}
 						>
 							{item.content}
@@ -51,6 +52,7 @@ export function Dropdown(props: DropdownProps) {
 								to={item.href}
 								disabled={item.disabled}
 								key={`dropdown-key-${index}`}
+								className={classNames('', { [cls.disabled]: item.disabled })}
 							>
 								{content}
 							</Menu.Item>

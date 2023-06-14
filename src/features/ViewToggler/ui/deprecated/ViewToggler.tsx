@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import GridIcon from '@/shared/assets/icons/grid.svg'
 import ListIcon from '@/shared/assets/icons/list.svg'
 import classNames from '@/shared/lib/classNames/classNames'
@@ -8,34 +8,46 @@ import cls from './ViewToggler.module.scss'
 
 type ViewType = 'grid' | 'list'
 
-export interface ViewTogglerProps {
-	className?: string
-	activeView?: ViewType
-	onToggle?: (view: ViewType) => void
-}
-
-interface ViewProps {
-	view: ViewType
-	Icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>
-}
-
-const views: ViewProps[] = [
+const views: ViewPropsWithIcon<ViewType>[] = [
 	{
 		view: 'grid',
-		Icon: GridIcon,
+		content: GridIcon,
 	},
 	{
 		view: 'list',
-		Icon: ListIcon,
+		content: ListIcon,
 	},
 ]
 
-export const ViewToggler: FC<ViewTogglerProps> = props => {
+export interface ViewTogglerProps<T extends string> {
+	className?: string
+	activeView?: T
+	onToggle?: (view: T) => void
+	isLoading?: boolean
+}
+
+interface ViewProps<T> {
+	view: T
+}
+
+export interface ViewPropsWithIcon<T extends string> extends ViewProps<T> {
+	content: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+}
+
+export interface ViewPropsWithText<T extends string> extends ViewProps<T> {
+	content: string
+}
+
+export const ViewToggler: <T extends string>(props: ViewTogglerProps<T>) => JSX.Element = <
+	T extends string
+>(
+	props: ViewTogglerProps<T>
+) => {
 	const { className, activeView, onToggle } = props
 
 	const handleToggle = useCallback(
 		(view: ViewType) => () => {
-			onToggle?.(view)
+			onToggle?.(view as T)
 		},
 		[onToggle]
 	)
@@ -43,7 +55,7 @@ export const ViewToggler: FC<ViewTogglerProps> = props => {
 	const viewsComponent = useMemo(
 		() =>
 			views.map(
-				({ view, Icon }) => (
+				({ view, content }) => (
 					<AppButton
 						className={classNames(cls.btn, {
 							[cls.active]: activeView === view,
@@ -53,7 +65,7 @@ export const ViewToggler: FC<ViewTogglerProps> = props => {
 						key={view}
 						data-testid={`view-${view === 'grid' ? 'grid' : 'list'}`}
 					>
-						<AppIcon className={cls.icon} Svg={Icon} />
+						<AppIcon className={cls.icon} Svg={content} />
 					</AppButton>
 				),
 				[onToggle]

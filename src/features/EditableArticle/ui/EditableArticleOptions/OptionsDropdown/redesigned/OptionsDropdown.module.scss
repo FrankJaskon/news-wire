@@ -7,12 +7,3 @@
 .trigger {
 	border-radius: var(--border-radius);
 }
-
-.iconWrapper {
-	padding: 6px;
-	border-radius: 50%;
-	background: var(--icon-redesigned);
-	&:hover {
-		background: var(--accent-redesigned);
-	}
-}

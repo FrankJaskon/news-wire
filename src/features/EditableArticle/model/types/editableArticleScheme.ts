@@ -20,7 +20,10 @@ export interface EditableArticleScheme {
 	data: ArticleType
 	form: EditableArticleType
 	isFinished?: boolean
-	isEditMode?: boolean
-	isPreview?: boolean
+	mode?: ViewMode
+	isEdit?: boolean
 	isReducerMounted?: boolean
 }
+
+export type ViewMode = 'edit' | 'preview'
+export type InsertDirectionType = 'start' | 'end'

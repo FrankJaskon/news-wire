@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import AddIcon from '@/shared/assets/icons/add.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { DropdownDirection } from '@/shared/types/ui'
 import { Dropdown } from '@/shared/ui/redesigned/Popups'
@@ -34,7 +33,7 @@ export const OptionsDropdown: FC<OptionsDropdownProps> = props => {
 		>
 			<Dropdown
 				items={options}
-				trigger={<OptionIcon icon={AddIcon} className={cls.iconWrapper} />}
+				trigger={<OptionIcon />}
 				direction={direction}
 				className={cls.trigger}
 			/>

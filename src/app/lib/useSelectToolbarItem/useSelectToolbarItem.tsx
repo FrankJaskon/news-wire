@@ -1,5 +1,10 @@
 import { useRoutes } from 'react-router-dom'
-import { getArticleDetailsRoute, getArticlesRoute } from '@/shared/const/RoutPaths'
+import {
+	getArticleDetailsRoute,
+	getArticlesRoute,
+	getEditArticleDetailsRoute,
+	getNewArticleDetailsRoute,
+} from '@/shared/const/RoutPaths'
 import { ScrollToolbar } from '@/widgets/ScrollToolbar'
 
 export const useSelectToolbarItem = () => {
@@ -10,6 +15,14 @@ export const useSelectToolbarItem = () => {
 		},
 		{
 			path: getArticleDetailsRoute(':id'),
+			element: <ScrollToolbar />,
+		},
+		{
+			path: getNewArticleDetailsRoute(),
+			element: <ScrollToolbar />,
+		},
+		{
+			path: getEditArticleDetailsRoute(':id'),
 			element: <ScrollToolbar />,
 		},
 

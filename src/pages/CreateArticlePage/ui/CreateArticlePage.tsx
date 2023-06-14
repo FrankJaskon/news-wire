@@ -1,30 +1,19 @@
 import { FC, memo } from 'react'
-import { useTranslation } from 'react-i18next'
-import { TextColor } from '@/shared/const/consts'
-import { Text, TextWeight } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/redesigned/VStack'
-import { ArticleEditing } from '@/widgets/ArticleEditing'
-import { PageWrapper } from '@/widgets/PageWrapper'
+import { EditArticlePage } from '@/pages/EditArticlePage'
+import { ToggleFeatures } from '@/shared/lib/features'
+import { CreateArticlePage as CreateArticlePageDeprecated } from './deprecated/CreateArticlePage'
 
 export interface CreateArticlePageProps {
 	className?: string
 }
 
 const CreateArticlePage: FC<CreateArticlePageProps> = (props: CreateArticlePageProps) => {
-	const { className } = props
-	const { t } = useTranslation('article')
-
 	return (
-		<PageWrapper data-testid='edit-article-page' className={className}>
-			<VStack gap='16'>
-				<Text
-					title={t('editable-article.titles.create')}
-					titleHue={TextColor.SECONDARY}
-					weight={TextWeight.BOLD}
-				/>
-				<ArticleEditing />
-			</VStack>
-		</PageWrapper>
+		<ToggleFeatures
+			feature='isAppRedesigned'
+			on={<EditArticlePage {...props} />}
+			off={<CreateArticlePageDeprecated {...props} />}
+		/>
 	)
 }
 

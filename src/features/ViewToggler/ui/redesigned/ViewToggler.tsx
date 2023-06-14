@@ -1,6 +1,4 @@
-import { FC, useCallback, useMemo } from 'react'
-import ListIcon from '@/shared/assets/icons/burger.svg'
-import GridIcon from '@/shared/assets/icons/tile.svg'
+import { useCallback, useMemo } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton } from '@/shared/ui/redesigned/AppButton'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
@@ -8,36 +6,38 @@ import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import cls from './ViewToggler.module.scss'
 
-type ViewType = 'grid' | 'list'
+type VariantType = 'articleView' | 'editView'
 
-export interface ViewTogglerProps {
+export interface ViewTogglerProps<T extends string> {
 	className?: string
-	activeView?: ViewType
-	onToggle?: (view: ViewType) => void
+	activeView?: T
+	onToggle?: (view: T) => void
 	isLoading?: boolean
+	viewsList?: (ViewPropsWithIcon<T> | ViewPropsWithText<T>)[]
+	variant?: VariantType
 }
 
-interface ViewProps {
-	view: ViewType
-	Icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+interface ViewProps<T> {
+	view: T
 }
 
-const views: ViewProps[] = [
-	{
-		view: 'list',
-		Icon: ListIcon,
-	},
-	{
-		view: 'grid',
-		Icon: GridIcon,
-	},
-]
+export interface ViewPropsWithIcon<T extends string> extends ViewProps<T> {
+	content: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+}
 
-export const ViewToggler: FC<ViewTogglerProps> = props => {
-	const { className, activeView, onToggle, isLoading } = props
+export interface ViewPropsWithText<T extends string> extends ViewProps<T> {
+	content: string
+}
+
+export const ViewToggler: <T extends string>(props: ViewTogglerProps<T>) => JSX.Element = <
+	T extends string
+>(
+	props: ViewTogglerProps<T>
+) => {
+	const { className, activeView, onToggle, isLoading, viewsList, variant = 'articleView' } = props
 
 	const handleToggle = useCallback(
-		(view: ViewType) => () => {
+		(view: T) => () => {
 			onToggle?.(view)
 		},
 		[onToggle]
@@ -45,23 +45,36 @@ export const ViewToggler: FC<ViewTogglerProps> = props => {
 
 	const viewsComponent = useMemo(
 		() =>
-			views.map(
-				({ view, Icon }) => (
+			viewsList?.map(
+				view => (
 					<AppButton
 						className={classNames(cls.btn, {
-							[cls.active]: activeView === view,
+							[cls.active]: activeView === view.view,
 						})}
 						variant='custom'
-						onClick={handleToggle(view)}
-						key={view}
-						data-testid={`view-${view === 'grid' ? 'grid' : 'list'}`}
+						onClick={handleToggle(view.view)}
+						key={view.view}
+						data-testid={`view-${view.view}`}
 					>
-						<AppIcon className={cls.icon} Svg={Icon} width={32} height={32} />
+						{variant == 'articleView' ? (
+							<AppIcon
+								className={cls.icon}
+								Svg={
+									view.content as React.FunctionComponent<
+										React.SVGAttributes<SVGElement>
+									>
+								}
+								width={32}
+								height={32}
+							/>
+						) : (
+							(view.content as string)
+						)}
 					</AppButton>
 				),
 				[onToggle]
 			),
-		[onToggle, activeView, handleToggle]
+		[viewsList, onToggle, activeView, handleToggle, variant]
 	)
 
 	if (isLoading) {

@@ -6,6 +6,7 @@ import { ArticleEditing as ArticleEditingRedesigned } from './redesigned/Article
 export interface ArticleEditingProps {
 	className?: string
 	articleId?: number
+	ifCanEdit?: boolean
 }
 
 export const ArticleEditing: FC<ArticleEditingProps> = memo((props: ArticleEditingProps) => {

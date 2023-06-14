@@ -1,6 +1,12 @@
 export { EditableArticle } from './ui/EditableArticle/EditableArticle'
 
-export type { EditableArticleScheme } from './model/types/editableArticleScheme'
+export { OptionIcon } from './ui/EditableArticleOptions/OptionIcon/OptionIcon'
+
+export type {
+	EditableArticleScheme,
+	ViewMode,
+	InsertDirectionType,
+} from './model/types/editableArticleScheme'
 
 export { editableArticleActions, editableArticleReducer } from './model/slice/editableArticleSlice'
 
@@ -15,8 +21,12 @@ export {
 	getIsLoadingArticleData,
 	useIsFinishedArticleData,
 	useEditableArticleIsEdited,
-	useEditableArticleIsPreview,
+	useEditableArticleMode,
 	useEditableArticleIsReducerMounted,
 } from './model/selectors/editableArticleSelector'
 
 export { initEditableArticle } from './model/services/initEditableArticle'
+
+export { updateArticle } from './model/services/updateArticle'
+export { createNewArticle } from './model/services/createNewArticle'
+export { removeArticle } from './model/services/removeArticle'

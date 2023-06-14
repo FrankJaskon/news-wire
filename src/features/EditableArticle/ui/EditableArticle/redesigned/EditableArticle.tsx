@@ -8,9 +8,6 @@ import { AppInput } from '@/shared/ui/redesigned/AppInput'
 import { AppLabel } from '@/shared/ui/redesigned/AppLabel'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { useEditableArticleForm } from '../../../model/selectors/editableArticleSelector'
-import { createNewArticle } from '../../../model/services/createNewArticle'
-import { removeArticle } from '../../../model/services/removeArticle'
-import { updateArticle } from '../../../model/services/updateArticle'
 import {
 	SetTextBlockParagraphProps,
 	editableArticleActions,
@@ -18,21 +15,17 @@ import {
 import { EditableArticleType } from '../../../model/types/editableArticleScheme'
 import { EditableArticleCodeBlock } from '../../EditableArticleCodeBlock/EditableArticleCodeBlock'
 import { EditableArticleImageBlock } from '../../EditableArticleImageBlock/EditableArticleImageBlock'
-import {
-	ArticleOptionDropdownItem,
-	OptionsDropdown,
-} from '../../EditableArticleOptions/OptionsDropdown/OptionsDropdown'
+
 import { EditableArticleTextBlock } from '../../EditableArticleTextBlock/EditableArticleTextBlock'
 import { EditableArticleWithRemove } from '../../EditableArticleWithRemove/EditableArticleWithRemove'
 import cls from './EditableArticle.module.scss'
 
 export interface EditableArticleProps {
 	className?: string
-	editMode?: boolean
 }
 
 export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableArticleProps) => {
-	const { className, editMode } = props
+	const { className } = props
 	const { t } = useTranslation('article')
 	const dispatch = useAppDispatch()
 	const articleForm = useEditableArticleForm()
@@ -200,81 +193,6 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 		}
 	}
 
-	const options: ArticleOptionDropdownItem[][] = useMemo(
-		() => [
-			[
-				{
-					name: 'subtitle',
-					component: t('editable-article.options.add-subtitle'),
-					onClick: () => {
-						dispatch(
-							editableArticleActions.setArticleData({
-								isSubtitle: true,
-							})
-						)
-					},
-					disabled: articleForm.isSubtitle,
-				},
-				{
-					name: 'img',
-					component: t('editable-article.options.add-img'),
-					onClick: () => {
-						dispatch(
-							editableArticleActions.setArticleData({
-								isImg: true,
-							})
-						)
-					},
-					disabled: Boolean(articleForm.img),
-				},
-				{
-					component: t('editable-article.options.add-text-block'),
-					onClick: () => {
-						dispatch(editableArticleActions.addNewTextBlock())
-					},
-				},
-				{
-					component: t('editable-article.options.add-code-block'),
-					onClick: () => {
-						dispatch(editableArticleActions.addNewCodeBlock())
-					},
-				},
-				{
-					component: t('editable-article.options.add-img-block'),
-					onClick: () => {
-						dispatch(editableArticleActions.addNewImageBlock())
-					},
-				},
-			],
-			[
-				{
-					component: editMode ? t('save-article') : t('create-article'),
-					onClick: () => {
-						if (editMode) {
-							dispatch(updateArticle())
-						} else {
-							dispatch(createNewArticle())
-						}
-					},
-				},
-				{
-					component: t('editable-article.options.reset-article'),
-					onClick: () => {
-						dispatch(editableArticleActions.resetChanges())
-					},
-				},
-				{
-					component: t('editable-article.options.remove-article'),
-					onClick: () => {
-						dispatch(removeArticle())
-					},
-					disabled: !editMode,
-				},
-			],
-		],
-		[articleForm.img, articleForm.isSubtitle, dispatch, editMode, t]
-	)
-
 	return (
 		<VStack gap='24' className={className}>
 			<VStack gap='8'>
@@ -289,13 +207,11 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 					placeholder={t('editable-article.placeholders.title')}
 				/>
 			</VStack>
-			<VStack gap='8'>
-				{isSubtitle && (
+			{isSubtitle && (
+				<VStack gap='8'>
 					<AppLabel variant='primary' htmlFor='article-subtitle'>
 						{t('editable-article.labels.subtitle')}
 					</AppLabel>
-				)}
-				{isSubtitle && (
 					<EditableArticleWithRemove onRemove={handleOnRemoveSubtitle}>
 						<AppInput
 							id='article-subtitle'
@@ -304,15 +220,13 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 							placeholder={t('editable-article.placeholders.subtitle')}
 						/>
 					</EditableArticleWithRemove>
-				)}
-			</VStack>
-			<VStack gap='8'>
-				{isImg && (
+				</VStack>
+			)}
+			{isImg && (
+				<VStack gap='8'>
 					<AppLabel variant='primary' htmlFor='article-img'>
 						{t('editable-article.labels.img')}
 					</AppLabel>
-				)}
-				{isImg && (
 					<EditableArticleWithRemove onRemove={handleOnRemoveImg}>
 						<AppInput
 							id='article-img'
@@ -321,8 +235,8 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 							placeholder={t('editable-article.placeholders.img')}
 						/>
 					</EditableArticleWithRemove>
-				)}
-			</VStack>
+				</VStack>
+			)}
 			<VStack gap='8'>
 				<AppLabel variant='primary'>{t('editable-article.labels.type')}</AppLabel>
 				<ArticleTypeTabs
@@ -332,7 +246,6 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 				/>
 			</VStack>
 			{articleForm.blocks && articleForm.blocks.map(item => renderEditableBlockContent(item))}
-			<OptionsDropdown options={options} direction='top left' absolute />
 		</VStack>
 	)
 })

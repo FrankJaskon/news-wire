@@ -13,11 +13,11 @@ export const [useEditableArticleIsReducerMounted, getEditableArticleIsReducerMou
 	buildSelector((state: StateSchema) => state.editableArticle?.isReducerMounted)
 
 export const [useEditableArticleIsEdited, getEditableArticleIsEdited] = buildSelector(
-	(state: StateSchema) => state.editableArticle?.isEditMode
+	(state: StateSchema) => state.editableArticle?.isEdit
 )
 
-export const [useEditableArticleIsPreview, getEditableArticleIsPreview] = buildSelector(
-	(state: StateSchema) => state.editableArticle?.isPreview
+export const [useEditableArticleMode, getEditableArticleMode] = buildSelector(
+	(state: StateSchema) => state.editableArticle?.mode
 )
 
 export const [useEditableArticleData, getEditableArticleData] = buildSelector(
@@ -69,10 +69,14 @@ export const getEditableFormArticle = createSelector(
 )
 
 export const getIfCanEdit = createSelector(
+	getEditableArticleIsEdited,
 	getUserAuthData,
 	(state: StateSchema) => state.editableArticle?.data,
-	(authData, articleData) =>
+	(isEdit, authData, articleData) =>
 		Boolean(
-			authData?.id && articleData?.profile?.id && authData?.id === articleData?.profile.id
+			(isEdit !== undefined && !isEdit) ||
+				(authData?.id &&
+					articleData?.profile?.id &&
+					authData?.id === articleData?.profile.id)
 		)
 )

@@ -7,12 +7,12 @@ import {
 	EditableArticle,
 	editableArticleActions,
 	getEditableFormArticle,
-	getIfCanEdit,
 	initEditableArticle,
 	useIsLoadingArticleData,
 	useIsFinishedArticleData,
-	useEditableArticleIsEdited,
+	useEditableArticleMode,
 	useEditableArticleIsReducerMounted,
+	useEditableArticleIsEdited,
 } from '@/features/EditableArticle'
 import { getArticleDetailsRoute, getArticlesRoute } from '@/shared/const/RoutPaths'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
@@ -27,18 +27,19 @@ import cls from './ArticleEditing.module.scss'
 
 export interface ArticleEditingProps {
 	className?: string
+	ifCanEdit?: boolean
 }
 
 export const ArticleEditing: FC<ArticleEditingProps> = memo((props: ArticleEditingProps) => {
-	const { className } = props
+	const { className, ifCanEdit } = props
 	const { id: articleId } = useParams()
 	const { t } = useTranslation('article')
 	const articleData = useSelector(getEditableFormArticle)
-	const ifCanEdit = useSelector(getIfCanEdit)
 	const isLoading = useIsLoadingArticleData()
 	const isFinished = useIsFinishedArticleData()
-	const isEditMode = useEditableArticleIsEdited()
+	const isPreview = useEditableArticleMode() === 'preview'
 	const isReducerMounted = useEditableArticleIsReducerMounted()
+	const isEdit = useEditableArticleIsEdited()
 	const dispatch = useAppDispatch()
 
 	useInitialEffect(() => {
@@ -56,13 +57,9 @@ export const ArticleEditing: FC<ArticleEditingProps> = memo((props: ArticleEditi
 		}
 	}, isReducerMounted)
 
-	let content = isEditMode ? (
-		<EditableArticle editMode={isEditMode} />
-	) : (
-		<Article article={articleData} />
-	)
+	let content = isPreview ? <Article article={articleData} /> : <EditableArticle />
 
-	if (!isLoading && !ifCanEdit && isEditMode) {
+	if (!isLoading && !ifCanEdit && isEdit) {
 		content = (
 			<AppText variant='error' title='Access is forbidden. You can edit only your articles' />
 		)
@@ -74,7 +71,7 @@ export const ArticleEditing: FC<ArticleEditingProps> = memo((props: ArticleEditi
 				<VStack gap='24'>
 					<AppText
 						title={
-							isEditMode
+							isEdit
 								? t('editable-article.edit.on-save-success')
 								: t('editable-article.create.on-save-success')
 						}

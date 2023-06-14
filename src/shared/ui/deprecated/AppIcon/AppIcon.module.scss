@@ -14,13 +14,16 @@
 }
 
 .primary-color {
+	color: var(--primary-color);
 	fill: var(--primary-color);
 }
 
 .secondary-color {
+	color: var(--secondary-color);
 	fill: var(--secondary-color);
 }
 
 .contrast-color {
+	color: var(--block-secondary-color);
 	fill: var(--block-secondary-color);
 }

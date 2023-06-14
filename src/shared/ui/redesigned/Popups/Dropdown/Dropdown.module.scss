@@ -17,3 +17,8 @@
     cursor: pointer;
     white-space: nowrap;
 }
+
+.disabled {
+    color: var(--hint-redesigned);
+    background-color: var(--light-bg-redesigned);
+}
