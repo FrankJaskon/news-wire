@@ -1,9 +1,9 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ArticleTopicType, EditableArticleBlockType } from '@/entities/Article'
+import { EditableArticleBlockType } from '@/entities/Article'
+import { ArticleCategoriesType } from '@/entities/ArticleCategory'
 import { ArticleTypeTabs } from '@/entities/ArticleTypeTabs'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
-
 import { AppCard } from '@/shared/ui/deprecated/AppCard'
 import { AppInput } from '@/shared/ui/deprecated/AppInput'
 import { AppLabel, LabelVariant } from '@/shared/ui/deprecated/Label'
@@ -12,10 +12,8 @@ import { useEditableArticleForm } from '../../../model/selectors/editableArticle
 import { createNewArticle } from '../../../model/services/createNewArticle'
 import { removeArticle } from '../../../model/services/removeArticle'
 import { updateArticle } from '../../../model/services/updateArticle'
-import {
-	SetTextBlockParagraphProps,
-	editableArticleActions,
-} from '../../../model/slice/editableArticleSlice'
+
+import { editableArticleActions } from '../../../model/slice/editableArticleSlice'
 import { EditableArticleType } from '../../../model/types/editableArticleScheme'
 import { EditableArticleCodeBlock } from '../../EditableArticleCodeBlock/EditableArticleCodeBlock'
 import { EditableArticleImageBlock } from '../../EditableArticleImageBlock/EditableArticleImageBlock'
@@ -26,6 +24,7 @@ import {
 import { EditableArticleTextBlock } from '../../EditableArticleTextBlock/EditableArticleTextBlock'
 import { EditableArticleWithRemove } from '../../EditableArticleWithRemove/EditableArticleWithRemove'
 import cls from './EditableArticle.module.scss'
+import type { SetTextBlockParagraphProps } from '../../../model/slice/editableArticleSlice'
 
 export interface EditableArticleProps {
 	className?: string
@@ -162,7 +161,7 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 
 	const handleClickType = useCallback(
 		() => (type: string) => {
-			dispatch(editableArticleActions.setArticleType(type as ArticleTopicType))
+			dispatch(editableArticleActions.setArticleType(type as ArticleCategoriesType))
 		},
 		[dispatch]
 	)
@@ -231,19 +230,19 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 				{
 					component: t('editable-article.options.add-text-block'),
 					onClick: () => {
-						dispatch(editableArticleActions.addNewTextBlock())
+						dispatch(editableArticleActions.addNewTextBlock({ to: 'start' }))
 					},
 				},
 				{
 					component: t('editable-article.options.add-code-block'),
 					onClick: () => {
-						dispatch(editableArticleActions.addNewCodeBlock())
+						dispatch(editableArticleActions.addNewCodeBlock({ to: 'start' }))
 					},
 				},
 				{
 					component: t('editable-article.options.add-img-block'),
 					onClick: () => {
-						dispatch(editableArticleActions.addNewImageBlock())
+						dispatch(editableArticleActions.addNewImageBlock({ to: 'start' }))
 					},
 				},
 			],

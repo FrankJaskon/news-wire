@@ -11,7 +11,6 @@ export type {
 	ImageBlockType,
 	ArticleBlockType,
 	ViewVariantType,
-	ArticleTopicType,
 	ValidateArticleDetailsErrorType,
 	EditableParagraph,
 	EditableTextBlockType,

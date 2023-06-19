@@ -1,4 +1,5 @@
-import { ArticleTopicType, ArticleType, EditableArticleBlockType } from '@/entities/Article'
+import { ArticleType, EditableArticleBlockType } from '@/entities/Article'
+import { ArticleCategoriesType } from '@/entities/ArticleCategory'
 
 export interface EditableArticleType {
 	id?: number
@@ -8,7 +9,7 @@ export interface EditableArticleType {
 	img?: string
 	views?: number
 	createdAt?: string
-	type?: ArticleTopicType[]
+	type?: ArticleCategoriesType[]
 	blocks?: EditableArticleBlockType[]
 	isSubtitle?: boolean
 	isImg?: boolean

@@ -1,6 +1,7 @@
 import { FC, memo } from 'react'
 import { useSelector } from 'react-redux'
 import { useArticleDetailsIsLoading, useArticleDetailsData } from '@/features/ArticleDetails'
+import { convertDate } from '@/shared/helpers/convertDate'
 import classNames from '@/shared/lib/classNames/classNames'
 import { ArticleDetailsAdditionalInfo } from '@/widgets/ArticleDetailsAdditionalInfo'
 import { getIfCanEdit } from '../../model/selectors/article'
@@ -23,7 +24,7 @@ export const ArticleDetailsAdditionalInfoContainer: FC<ArticleDetailsAdditionalI
 				<ArticleDetailsAdditionalInfo
 					articleId={article?.id}
 					views={article?.views}
-					createdAd={article?.createdAt}
+					createdAt={convertDate(article?.createdAt)}
 					avatar={article?.profile?.avatar}
 					username={article?.profile?.username}
 					ifCanEdit={ifCanEdit}

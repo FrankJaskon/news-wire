@@ -1,13 +1,8 @@
+import { ArticleCategoriesType } from '@/entities/ArticleCategory'
 import { ProfileType } from '@/entities/Profile'
 import { ValueOf } from '@/shared/types/types'
-import {
-	ArticleTopic,
-	BlockType,
-	ValidateArticleDetailsError,
-	ViewVariant,
-} from '../consts/articleDetailsConsts'
+import { BlockType, ValidateArticleDetailsError, ViewVariant } from '../consts/articleDetailsConsts'
 
-export type ArticleTopicType = ValueOf<typeof ArticleTopic>
 export type BlockTypeType = ValueOf<typeof BlockType>
 export type ValidateArticleDetailsErrorType = ValueOf<typeof ValidateArticleDetailsError>
 
@@ -67,6 +62,6 @@ export interface ArticleType {
 	img?: string
 	views?: number
 	createdAt?: string
-	type?: ArticleTopicType[]
+	type?: ArticleCategoriesType[]
 	blocks?: ArticleBlockType[]
 }

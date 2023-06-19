@@ -1,4 +1,10 @@
 {
   "page-title": "About us",
-  "page-subtitle": "Some text"
+  "page-subtitle": "Some text",
+  "main-title": "Welcome to our news feed!",
+  "paragraphs": {
+      "first": "This project provides the opportunity to publish and edit articles, as well as interact with other authors. Here, you can test all the features and capabilities of our website.",
+      "second": "I am the developer behind this project and have over two years of experience in frontend development. My key skills include working with technologies such as React, Redux Toolkit, Redux jQuery, i18n, Storybook, jest, RTL, Cypress, TypeScript, and more. I strive to create quality interfaces and ensure user-friendliness for our users.",
+      "third": "I invite you to test the functionality of our website and explore its capabilities. Here, you can create your own articles, edit them, leave comments, and rate the works of other authors. Thank you for paying attention to my project."
+  }
 }

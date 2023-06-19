@@ -3,12 +3,6 @@ export const ValidateArticleDetailsError = {
 	NO_DATA: 'NO_DATA',
 } as const
 
-export const ArticleTopic = {
-	IT: 'IT',
-	SCIENCE: 'SCIENCE',
-	ECONOMIC: 'ECONOMIC',
-} as const
-
 export const BlockType = {
 	TEXT: 'TEXT',
 	CODE: 'CODE',

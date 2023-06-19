@@ -4,9 +4,11 @@ import { useUserAuthData } from '@/entities/User'
 import { LoginButton } from '@/features/AuthByUsername'
 import { LatestArticlesList } from '@/features/LatestArticlesList'
 import BannerImg from '@/shared/assets/banner.png'
+import { AppCard } from '@/shared/ui/redesigned/AppCard'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { AppText } from '@/shared/ui/redesigned/AppText'
 import { VStack } from '@/shared/ui/redesigned/VStack'
+import { ArticleTypeCategories } from '@/widgets/ArticleTypeCategories'
 import { PageWrapper } from '@/widgets/PageWrapper'
 import cls from './MainPage.module.scss'
 
@@ -18,30 +20,37 @@ export const MainPage: FC = memo(() => {
 		<PageWrapper data-testid='main-page'>
 			<VStack gap='24'>
 				<AppImage src={BannerImg} height={250} className={cls.banner} />
-				<AppText title={t('main-title')} size='xl' weight='bold' />
-				<AppText text={t('introduction.paragraphs.first')} />
-				<AppText title={t('introduction.subtitles.first')} size='l' />
-				<AppText text={t('introduction.paragraphs.second')} />
-				{!isAuthorized && (
-					<>
-						<AppText title={t('introduction.subtitles.second')} size='l' />
-						<AppText
-							text={
+				<AppCard padding='24'>
+					<VStack gap='40'>
+						<VStack gap='24'>
+							<AppText title={t('main-title')} size='xl' weight='bold' />
+							<AppText text={t('introduction.paragraphs.first')} />
+							<AppText title={t('introduction.subtitles.first')} size='l' />
+							<AppText text={t('introduction.paragraphs.second')} />
+							{!isAuthorized && (
 								<>
-									{t('introduction.paragraphs.third')}
-									<LoginButton
-										type='registration'
-										content={t('buttons.registration') + ':)'}
-										as='span'
-										variant='custom'
-										className={cls.loginButton}
+									<AppText title={t('introduction.subtitles.second')} size='l' />
+									<AppText
+										text={
+											<>
+												{t('introduction.paragraphs.third')}
+												<LoginButton
+													type='registration'
+													content={t('buttons.registration') + ':)'}
+													as='span'
+													variant='custom'
+													className={cls.loginButton}
+												/>
+											</>
+										}
 									/>
 								</>
-							}
-						/>
-					</>
-				)}
-				<LatestArticlesList />
+							)}
+						</VStack>
+						<ArticleTypeCategories />
+						<LatestArticlesList />
+					</VStack>
+				</AppCard>
 			</VStack>
 		</PageWrapper>
 	)

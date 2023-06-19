@@ -1,10 +1,12 @@
 import { FC, memo, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { AuthorArticleTextList } from '@/features/AuthorArticleTextList'
 import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard'
 import {
 	LazyReducerLoader,
 	ReducerList,
 } from '@/shared/lib/components/LazyReducerLoader/LazyReducerLoader'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { PageLoader } from '@/widgets/PageLoader'
 import { PageWrapper } from '@/widgets/PageWrapper'
 
@@ -21,7 +23,10 @@ export const ProfilePage: FC = memo(() => {
 	if (isMounted || __PROJECT__ === 'storybook') {
 		content = (
 			<PageWrapper data-testid='profile-page'>
-				<EditableProfileCard id={Number(id)} />
+				<VStack gap='24'>
+					<EditableProfileCard id={Number(id)} />
+					<AuthorArticleTextList />
+				</VStack>
 			</PageWrapper>
 		)
 	}

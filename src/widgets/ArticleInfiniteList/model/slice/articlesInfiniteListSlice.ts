@@ -21,7 +21,7 @@ const articlesInfiniteListSlice = createSlice({
 		ids: [],
 		error: undefined,
 		isLoading: true,
-		view: ViewVariant.GRID,
+		view: ViewVariant.LIST,
 		limit: 10,
 		page: 1,
 		hasMore: true,

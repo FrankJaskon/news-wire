@@ -14,7 +14,7 @@ export interface ArticleDetailsAdditionalInfoProps {
 	className?: string
 	articleId?: number
 	views?: string | number
-	createdAd?: string
+	createdAt?: string
 	avatar?: string
 	username?: string
 	ifCanEdit?: boolean
@@ -23,7 +23,7 @@ export interface ArticleDetailsAdditionalInfoProps {
 
 export const ArticleDetailsAdditionalInfo: FC<ArticleDetailsAdditionalInfoProps> = memo(
 	(props: ArticleDetailsAdditionalInfoProps) => {
-		const { className, articleId, views, createdAd, avatar, username, ifCanEdit, isLoading } =
+		const { className, articleId, views, createdAt, avatar, username, ifCanEdit, isLoading } =
 			props
 		const { t } = useTranslation('article')
 
@@ -65,7 +65,7 @@ export const ArticleDetailsAdditionalInfo: FC<ArticleDetailsAdditionalInfoProps>
 						<AppText
 							text={t('editable-article.views', { count: Number(views) ?? 0 })}
 						/>
-						<AppText text={createdAd} />
+						<AppText text={createdAt} />
 					</HStack>
 				</VStack>
 			</AppCard>

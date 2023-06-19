@@ -2,10 +2,16 @@ import { FeatureFlags } from '@/shared/types/featureFlags'
 
 const LOCAL_STORAGE_IS_REDESIGNED_KEY = 'isRedesigned'
 
-let featureFlags: FeatureFlags = {
-	isAppRedesigned: Boolean(
-		JSON.parse(localStorage.getItem(LOCAL_STORAGE_IS_REDESIGNED_KEY) ?? '')
-	),
+let featureFlags: FeatureFlags = {}
+
+{
+	try {
+		featureFlags['isAppRedesigned'] = Boolean(
+			JSON.parse(localStorage.getItem(LOCAL_STORAGE_IS_REDESIGNED_KEY) ?? '')
+		)
+	} catch (e) {
+		console.log(e)
+	}
 }
 
 export const setFeatureFlags = (newFeatureFlags?: FeatureFlags) => {

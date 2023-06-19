@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { ViewVariantType } from '@/entities/Article'
 import { ViewPropsWithIcon, ViewToggler } from '@/features/ViewToggler'
 import ListIcon from '@/shared/assets/icons/burger.svg'
 import GridIcon from '@/shared/assets/icons/tile.svg'
@@ -8,7 +9,7 @@ interface ArticleViewTogglerContainerProps {
 	isLoading?: boolean
 }
 
-const views: ViewPropsWithIcon[] = [
+const views: ViewPropsWithIcon<ViewVariantType>[] = [
 	{
 		view: 'list',
 		content: ListIcon,

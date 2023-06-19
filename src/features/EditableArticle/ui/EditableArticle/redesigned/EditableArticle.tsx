@@ -1,6 +1,7 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ArticleTopicType, EditableArticleBlockType } from '@/entities/Article'
+import { EditableArticleBlockType } from '@/entities/Article'
+import { ArticleCategoriesType } from '@/entities/ArticleCategory'
 import { ArticleTypeTabs } from '@/entities/ArticleTypeTabs'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 
@@ -154,7 +155,7 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 
 	const handleClickType = useCallback(
 		() => (type: string) => {
-			dispatch(editableArticleActions.setArticleType(type as ArticleTopicType))
+			dispatch(editableArticleActions.setArticleType(type as ArticleCategoriesType))
 		},
 		[dispatch]
 	)

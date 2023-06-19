@@ -16,6 +16,12 @@
       "admin": "Admin panel"
     }
   },
+  "admin-page": {
+    "title": "Admin page",
+    "paragraphs": {
+      "first": "This page serves as an example of user authorization. Only users with admin or manager privileges have access to this page."
+    }
+  },
   "sidebar": {
     "link": {
       "about": "About us",

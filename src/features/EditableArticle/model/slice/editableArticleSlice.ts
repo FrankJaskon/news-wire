@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {
-	ArticleTopicType,
 	BlockType,
 	CodeBlockType,
 	EditableTextBlockType,
 	EditableImageBlockType,
 } from '@/entities/Article'
+import { ArticleCategoriesType } from '@/entities/ArticleCategory'
 import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
 import { mapArticleToEditableArticle } from '../helpers/mapArticleToEditableArticle'
 import { createNewArticle } from '../services/createNewArticle'
@@ -23,9 +23,10 @@ import {
 	moveBlock,
 	removeParagraph,
 	setParagraph,
-	SetTextBlockParagraphProps,
 	setTypeToArticle,
 } from './reducerFunctions'
+
+import type { SetTextBlockParagraphProps } from './reducerFunctions'
 
 const initialState: EditableArticleScheme = {
 	error: undefined,
@@ -64,7 +65,7 @@ const editableArticleSlice = createSlice({
 		resetChanges: state => {
 			state.form = mapArticleToEditableArticle(state.data)
 		},
-		setArticleType: (state, action: PayloadAction<ArticleTopicType>) => {
+		setArticleType: (state, action: PayloadAction<ArticleCategoriesType>) => {
 			setTypeToArticle(state, action)
 		},
 		removeBlock: (state, action: PayloadAction<number | undefined>) => {

@@ -14,6 +14,8 @@
 	"create-title": "Створення нової статті",
 	"recommendations-title": "Рекомендовані статті",
 	"latest-articles-title": "Нещодавно опубліковані статті",
+	"author-article-title": "Автор статей",
+	"article-categories-title": "Оберіть категорію статей",
 	"read-more-btn": "Читати далі",
 	"back-to-list-btn": "Назад до перечню",
 	"edit-article-btn": "Редагувати статтю",
@@ -111,6 +113,6 @@
 			"remove-text-block": "Видалити текстовий блок"
 		},
 		"on-save-link-to-article": "Перейти до створенної статті",
-		"on-remove-link-to-articles": "Повернутись до списку статтей"
+		"on-remove-link-to-articles": "Повернутись до списку статей"
 	}
 }

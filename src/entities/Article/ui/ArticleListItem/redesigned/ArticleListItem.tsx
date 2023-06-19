@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import ViewsIcon from '@/shared/assets/icons/eye.svg'
 import { getArticleDetailsRoute, getProfileRoute } from '@/shared/const/RoutPaths'
+import { convertDate } from '@/shared/helpers/convertDate'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton } from '@/shared/ui/redesigned/AppButton'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
@@ -37,6 +38,8 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 
 	const navigate = useNavigate()
 	const { t } = useTranslation('article')
+
+	const date = useCallback(() => convertDate(article?.createdAt), [article?.createdAt])
 
 	const handleClick = useCallback(() => {
 		navigate(String(article?.id))
@@ -73,7 +76,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 							<AppText className={cls.title} title={article?.title} />
 						</AppLink>
 						<HStack justify='between' align='center'>
-							<AppText className={cls.date} text={article?.createdAt} />
+							<AppText className={cls.date} text={date()} />
 							<HStack align='center' justify='center' max={false}>
 								<AppText text={String(article?.views)} />
 								<AppIcon Svg={ViewsIcon} />
@@ -120,7 +123,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 							<AppText text={article?.profile?.username} weight='bold' />
 						</HStack>
 					</AppLink>
-					<AppText text={article?.createdAt} />
+					<AppText text={date()} />
 				</HStack>
 				<VStack gap='16'>
 					<AppLink className={cls.link} to={String(article?.id)}>

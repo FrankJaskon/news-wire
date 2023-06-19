@@ -1,6 +1,10 @@
 import { FC, HTMLAttributeAnchorTarget, memo, useCallback } from 'react'
+import { getArticleDetailsRoute } from '@/shared/const/RoutPaths'
 import classNames from '@/shared/lib/classNames/classNames'
 import { toggleFeatures } from '@/shared/lib/features'
+import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
 import { ArticleType, ViewVariantType } from '../../model/types/Article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
@@ -17,6 +21,7 @@ export interface ArticleListProps {
 	error?: string
 	isOneLine?: boolean
 	'data-testid'?: string
+	textOnly?: boolean
 }
 
 export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) => {
@@ -29,6 +34,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 		isOneLine = false,
 		target,
 		'data-testid': datTestId = 'articles-list',
+		textOnly = false,
 	} = props
 
 	const renderArticle = useCallback(
@@ -39,13 +45,39 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 	)
 
 	const getSkeletons = useCallback(
-		(view: ViewVariantType) => {
-			return new Array(limit)
-				.fill(0)
-				.map((_, index) => <ArticleListItemSkeleton key={index} view={view} />)
+		(view?: ViewVariantType) => {
+			if (view) {
+				return new Array(limit)
+					.fill(0)
+					.map((_, index) => <ArticleListItemSkeleton key={index} view={view} />)
+			}
+			return <Skeleton height={32} />
 		},
 		[limit]
 	)
+
+	if (textOnly) {
+		return (
+			<VStack gap='8' className={cls.ArticleTextList} data-testid={datTestId}>
+				{articles && articles.length > 0
+					? articles.map(article => {
+							if (article.id) {
+								return (
+									<AppLink
+										key={article.id}
+										to={getArticleDetailsRoute(article.id)}
+									>
+										{article.title}
+									</AppLink>
+								)
+							}
+							return null
+					  })
+					: null}
+				{isLoading && getSkeletons()}
+			</VStack>
+		)
+	}
 
 	return (
 		<div

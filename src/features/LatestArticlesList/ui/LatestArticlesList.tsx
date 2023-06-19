@@ -26,7 +26,7 @@ export const LatestArticlesList: FC<LatestArticlesListProps> = memo(
 		if (isError) {
 			content = toggleFeatures({
 				name: 'isAppRedesigned',
-				on: () => <AppText title={t('error.common.some-error')} variant='error' />,
+				on: () => <AppText text={t('error.common.some-error')} variant='error' />,
 				off: () => (
 					<Text
 						content={t('error.common.some-error')}

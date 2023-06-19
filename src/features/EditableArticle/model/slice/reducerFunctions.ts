@@ -1,5 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { BlockType, EditableArticleBlockType, ArticleTopicType } from '@/entities/Article'
+import { BlockType, EditableArticleBlockType } from '@/entities/Article'
+import { ArticleCategoriesType } from '@/entities/ArticleCategory'
 import { EditableArticleScheme, InsertDirectionType } from '../types/editableArticleScheme'
 
 type AddNewBlockType = (
@@ -93,7 +94,7 @@ export const removeParagraph: ParagraphType = (state, action) => {
 
 type SetTypeToArticleType = (
 	state: EditableArticleScheme,
-	action: PayloadAction<ArticleTopicType>
+	action: PayloadAction<ArticleCategoriesType>
 ) => void
 
 export const setTypeToArticle: SetTypeToArticleType = (state, action) => {
