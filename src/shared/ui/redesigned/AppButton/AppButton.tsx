@@ -4,7 +4,9 @@ import cls from './AppButton.module.scss'
 
 export type BorderVariantType = 'normal' | 'save' | 'cancel'
 
-interface ComponentProps {
+export type ButtonElementType = 'button' | 'div' | 'span'
+
+export interface ButtonComponentProps {
 	className?: string
 	variant?: 'primary' | 'custom' | 'outline' | 'filled'
 	borderVariant?: BorderVariantType
@@ -17,15 +19,19 @@ interface ComponentProps {
 	type?: 'button' | 'submit' | 'reset'
 }
 
-interface ButtonProps extends ComponentProps, ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonComponentProps, ButtonHTMLAttributes<HTMLButtonElement> {
 	as?: 'button'
 }
 
-interface DivProps extends ComponentProps, HTMLAttributes<HTMLDivElement> {
+interface DivProps extends ButtonComponentProps, HTMLAttributes<HTMLDivElement> {
 	as: 'div'
 }
 
-type AppButtonProps = ButtonProps | DivProps
+interface SpanProps extends ButtonComponentProps, HTMLAttributes<HTMLSpanElement> {
+	as: 'span'
+}
+
+export type AppButtonProps = ButtonProps | DivProps | SpanProps
 
 export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 	const {
@@ -65,6 +71,21 @@ export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 				{children}
 				{addonRight && <div className={cls.addonRight}>{addonRight}</div>}
 			</button>
+		)
+	}
+
+	if (as === 'span') {
+		return (
+			<span
+				data-testid='btn'
+				type={type}
+				className={classNames(cls.AppButton, mods, extra)}
+				{...(otherProps as ButtonHTMLAttributes<HTMLButtonElement>)}
+			>
+				{addonLeft && <div className={cls.addonLeft}>{addonLeft}</div>}
+				{children}
+				{addonRight && <div className={cls.addonRight}>{addonRight}</div>}
+			</span>
 		)
 	}
 

@@ -43,7 +43,9 @@
 	color: var(--primary-color);
 	transition: background-color .4s;
 	min-height: 100vh;
-	:focus {
+	*:focus,
+	*::after:focus,
+	*::before:focus{
 		outline: none;
 		box-shadow: var(--focus-shadow);
 	}
@@ -55,6 +57,12 @@
 	color: var(--text-redesigned);
 	transition: background-color .4s;
 	min-height: 100vh;
+	*:focus,
+	*::after:focus,
+	*::before:focus{
+		outline: none;
+		box-shadow: none;
+	}
 }
 
 .content-wrapper {

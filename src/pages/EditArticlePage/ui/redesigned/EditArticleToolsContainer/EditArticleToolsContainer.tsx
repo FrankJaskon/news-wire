@@ -58,58 +58,70 @@ export const EditArticleToolsContainer: FC<EditArticleToolsContainerProps> = mem
 					{
 						content: t('editable-article.options.add-text-block'),
 						options: [
-							{
-								content: t('editable-article.options.start'),
-								onClick: () => {
-									dispatch(
-										editableArticleActions.addNewTextBlock({ to: 'start' })
-									)
+							[
+								{
+									content: t('editable-article.options.start'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewTextBlock({ to: 'start' })
+										)
+									},
 								},
-							},
-							{
-								content: t('editable-article.options.end'),
-								onClick: () => {
-									dispatch(editableArticleActions.addNewTextBlock({ to: 'end' }))
+								{
+									content: t('editable-article.options.end'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewTextBlock({ to: 'end' })
+										)
+									},
 								},
-							},
+							],
 						],
 					},
 					{
 						content: t('editable-article.options.add-code-block'),
 						options: [
-							{
-								content: t('editable-article.options.start'),
-								onClick: () => {
-									dispatch(
-										editableArticleActions.addNewCodeBlock({ to: 'start' })
-									)
+							[
+								{
+									content: t('editable-article.options.start'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewCodeBlock({ to: 'start' })
+										)
+									},
 								},
-							},
-							{
-								content: t('editable-article.options.end'),
-								onClick: () => {
-									dispatch(editableArticleActions.addNewCodeBlock({ to: 'end' }))
+								{
+									content: t('editable-article.options.end'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewCodeBlock({ to: 'end' })
+										)
+									},
 								},
-							},
+							],
 						],
 					},
 					{
 						content: t('editable-article.options.add-img-block'),
 						options: [
-							{
-								content: t('editable-article.options.start'),
-								onClick: () => {
-									dispatch(
-										editableArticleActions.addNewImageBlock({ to: 'start' })
-									)
+							[
+								{
+									content: t('editable-article.options.start'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewImageBlock({ to: 'start' })
+										)
+									},
 								},
-							},
-							{
-								content: t('editable-article.options.end'),
-								onClick: () => {
-									dispatch(editableArticleActions.addNewImageBlock({ to: 'end' }))
+								{
+									content: t('editable-article.options.end'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewImageBlock({ to: 'end' })
+										)
+									},
 								},
-							},
+							],
 						],
 					},
 				],

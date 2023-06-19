@@ -21,7 +21,7 @@ export interface DropdownItem {
 export interface DropdownProps {
 	className?: string
 	trigger: ReactNode
-	items: DropdownItem[][]
+	items?: DropdownItem[][]
 	direction?: DirectionType
 	align?: AlignType
 }
@@ -40,7 +40,7 @@ export const Dropdown: FC<DropdownProps> = memo((props: DropdownProps) => {
 				as='div'
 				className={classNames(cls.items, {}, [DirectionVariant[direction]])}
 			>
-				{items.map((optionGroup, index, array) => (
+				{items?.map((optionGroup, index, array) => (
 					<Fragment key={`option-${index}`}>
 						{optionGroup?.map((item, index) => {
 							const content = ({ active }: { active: boolean }) => (

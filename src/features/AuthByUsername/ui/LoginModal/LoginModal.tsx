@@ -11,10 +11,12 @@ import cls from './LoginModal.module.scss'
 export interface LoginModalProps {
 	isOpen: boolean
 	onClose: () => void
+	isLogin?: boolean
+	setIsLogin?: (callback: (value: boolean) => boolean) => void
 }
 
 export const LoginModal: FC<LoginModalProps> = memo((props: LoginModalProps) => {
-	const { isOpen, onClose } = props
+	const { isOpen, onClose, isLogin = true, setIsLogin } = props
 
 	const authData = useUserAuthData()
 
@@ -33,7 +35,7 @@ export const LoginModal: FC<LoginModalProps> = memo((props: LoginModalProps) => 
 					/>
 				}
 			>
-				<LoginForm onSuccess={onClose} />
+				<LoginForm onSuccess={onClose} isLogin={isLogin} setIsLogin={setIsLogin} />
 			</Suspense>
 		</Modal>
 	)

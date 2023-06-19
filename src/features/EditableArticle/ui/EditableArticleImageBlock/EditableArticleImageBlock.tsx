@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { EditableImageBlockType } from '@/entities/Article/model/types/Article'
+import { EditableImageBlockType } from '@/entities/Article'
 
 import { ToggleFeatures } from '@/shared/lib/features'
 import { EditableArticleImageBlock as EditableArticleImageBlockDeprecated } from './deprecated/EditableArticleImageBlock'

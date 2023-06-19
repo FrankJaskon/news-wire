@@ -1,0 +1,11 @@
+.banner {
+	object-fit: cover;
+}
+
+.loginButton {
+	margin-left: 4px;
+	color: var(--icon-redesigned);
+	&:hover {
+		color: var(--accent-redesigned);
+	}
+}

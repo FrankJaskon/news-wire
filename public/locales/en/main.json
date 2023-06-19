@@ -1,4 +1,18 @@
 {
     "page-title": "Main page",
-    "page-subtitle": "Some text"
+    "main-title": "Welcome to our website dedicated to articles and knowledge exchange!",
+    "introduction": {
+        "subtitles": {
+            "first": "We value your opinions and thoughts",
+            "second": "Join us today and embark on a journey into the world of knowledge, inspiration, and idea exchange"
+        },
+        "paragraphs": {
+            "first": "Here you will find a variety of engaging articles on various topics, written by our active and inspired community of users. The homepage is a place where your thoughts, ideas, and knowledge blend in a magical fountain of information. You can read captivating articles written by experts in their fields and share your own discoveries. Our articles cover a wide range of topics, including science, technology, art, culture, health, travel, and much more. Regardless of your level of knowledge, there is something interesting and useful for you here.",
+            "second": "After reading the articles, you can express your impressions by rating and commenting. Your voice matters, and you can help other readers make the right choice and find the most interesting and useful articles. Don't limit your participation to just reading and commenting. If you have something to share, feel free to contribute your knowledge, research, or interesting stories. We always welcome new authors who are ready to contribute to the development of our community.",
+            "third": "Together, we create a unique community where everyone can find something valuable and share their contributions. Welcome to the fascinating world of articles and research!"
+        }
+    },
+    "buttons": {
+      "registration": "Join us"
+    }
 }

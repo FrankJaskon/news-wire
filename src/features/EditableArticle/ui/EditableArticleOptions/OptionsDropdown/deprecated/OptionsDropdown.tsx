@@ -7,7 +7,7 @@ import cls from './OptionsDropdown.module.scss'
 
 export interface OptionsDropdownProps {
 	className?: string
-	options: ArticleOptionDropdownItem[][]
+	options?: ArticleOptionDropdownItem[][]
 	absolute?: boolean
 	direction?: DirectionType
 }

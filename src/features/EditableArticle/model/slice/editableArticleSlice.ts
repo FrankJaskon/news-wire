@@ -4,8 +4,8 @@ import {
 	BlockType,
 	CodeBlockType,
 	EditableTextBlockType,
+	EditableImageBlockType,
 } from '@/entities/Article'
-import { EditableImageBlockType } from '@/entities/Article/model/types/Article'
 import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
 import { mapArticleToEditableArticle } from '../helpers/mapArticleToEditableArticle'
 import { createNewArticle } from '../services/createNewArticle'
@@ -18,6 +18,14 @@ import {
 	InsertDirectionType,
 	ViewMode,
 } from '../types/editableArticleScheme'
+import {
+	addNewBlock,
+	moveBlock,
+	removeParagraph,
+	setParagraph,
+	SetTextBlockParagraphProps,
+	setTypeToArticle,
+} from './reducerFunctions'
 
 const initialState: EditableArticleScheme = {
 	error: undefined,
@@ -40,12 +48,6 @@ const initialState: EditableArticleScheme = {
 	isEdit: false,
 }
 
-export interface SetTextBlockParagraphProps {
-	blockId: number
-	paragraphId: number
-	value?: string
-}
-
 const editableArticleSlice = createSlice({
 	name: 'editableArticleSlice',
 	initialState,
@@ -63,24 +65,24 @@ const editableArticleSlice = createSlice({
 			state.form = mapArticleToEditableArticle(state.data)
 		},
 		setArticleType: (state, action: PayloadAction<ArticleTopicType>) => {
-			if (!state.form.type) {
-				state.form.type = []
-			}
-			const isAlreadyActive = state.form.type.includes(action.payload)
-			if (isAlreadyActive) {
-				state.form.type = state.form.type.filter(type => type !== action.payload)
-			} else {
-				state.form.type = [...state.form.type, action.payload]
-			}
+			setTypeToArticle(state, action)
 		},
-		removeBlock: (state, action: PayloadAction<number>) => {
+		removeBlock: (state, action: PayloadAction<number | undefined>) => {
+			if (!action.payload) return
 			state.form.blocks = state.form.blocks!.filter(block => block.id !== action.payload)
+		},
+		moveEditableBlock: (
+			state,
+			action: PayloadAction<{ to: InsertDirectionType; id?: number }>
+		) => {
+			if (!action.payload) return
+			moveBlock(state, action)
 		},
 		addNewTextBlock: (
 			state,
 			action: PayloadAction<{ to: InsertDirectionType; id?: number }>
 		) => {
-			const newBlock = {
+			const newTextBlock = {
 				id: randomInteger(),
 				type: BlockType.TEXT,
 				paragraphs: [
@@ -89,15 +91,7 @@ const editableArticleSlice = createSlice({
 					},
 				],
 			}
-			if (!action.payload.id) {
-				if (action.payload.to === 'start') {
-					state.form.blocks = [newBlock, ...state.form.blocks!]
-					return
-				}
-				if (action.payload.to === 'end') {
-					state.form.blocks = [...state.form.blocks!, newBlock]
-				}
-			}
+			addNewBlock(state, action, newTextBlock)
 		},
 		setTextBlock: (state, action: PayloadAction<EditableTextBlockType>) => {
 			state.form.blocks = state.form.blocks!.map(block => {
@@ -111,66 +105,21 @@ const editableArticleSlice = createSlice({
 			})
 		},
 		setTextBlockParagraph: (state, action: PayloadAction<SetTextBlockParagraphProps>) => {
-			let isExisted = false
-			const newFormBlocks = state.form.blocks!.map(block => {
-				if (block.id === action.payload.blockId && block.type === BlockType.TEXT) {
-					const newParagraphs = block.paragraphs!.map(paragraph => {
-						if (paragraph.id === action.payload.paragraphId) {
-							isExisted = true
-							return {
-								...paragraph,
-								value: action.payload.value,
-							}
-						}
-						return paragraph
-					})
-					return {
-						...block,
-						paragraphs: isExisted
-							? newParagraphs
-							: [
-									...newParagraphs,
-									{ id: action.payload.paragraphId, value: action.payload.value },
-							  ],
-					}
-				}
-				return block
-			})
-			state.form.blocks = newFormBlocks
+			setParagraph(state, action)
 		},
 		removeTextBlockParagraph: (state, action: PayloadAction<SetTextBlockParagraphProps>) => {
-			const newFormBlocks = state.form.blocks!.map(block => {
-				if (block.id === action.payload.blockId && block.type === BlockType.TEXT) {
-					const newParagraphs = block.paragraphs!.filter(
-						paragraph => paragraph.id !== action.payload.paragraphId
-					)
-					return {
-						...block,
-						paragraphs: newParagraphs,
-					}
-				}
-				return block
-			})
-			state.form.blocks = newFormBlocks
+			removeParagraph(state, action)
 		},
 		addNewCodeBlock: (
 			state,
 			action: PayloadAction<{ to: InsertDirectionType; id?: number }>
 		) => {
-			const newBlock = {
+			const newCodeBlock = {
 				id: randomInteger(),
 				type: BlockType.CODE,
 				code: '',
 			}
-			if (!action.payload.id) {
-				if (action.payload.to === 'start') {
-					state.form.blocks = [newBlock, ...state.form.blocks!]
-					return
-				}
-				if (action.payload.to === 'end') {
-					state.form.blocks = [...state.form.blocks!, newBlock]
-				}
-			}
+			addNewBlock(state, action, newCodeBlock)
 		},
 		setCodeBlock: (state, action: PayloadAction<CodeBlockType>) => {
 			state.form.blocks = state.form.blocks!.map(block => {
@@ -187,21 +136,13 @@ const editableArticleSlice = createSlice({
 			state,
 			action: PayloadAction<{ to: InsertDirectionType; id?: number }>
 		) => {
-			const newBlock = {
+			const newImageBlock = {
 				id: randomInteger(),
 				type: BlockType.IMAGE,
 				src: '',
 				title: '',
 			}
-			if (!action.payload.id) {
-				if (action.payload.to === 'start') {
-					state.form.blocks = [newBlock, ...state.form.blocks!]
-					return
-				}
-				if (action.payload.to === 'end') {
-					state.form.blocks = [...state.form.blocks!, newBlock]
-				}
-			}
+			addNewBlock(state, action, newImageBlock)
 		},
 		setImageBlock: (state, action: PayloadAction<EditableImageBlockType>) => {
 			state.form.blocks = state.form.blocks!.map(block => {

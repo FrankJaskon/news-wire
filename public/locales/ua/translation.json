@@ -37,8 +37,13 @@
     "login": "Логін",
     "password": "Пароль",
     "log-in": "Увійти",
+    "sing-up": "Зареєструватись",
     "new-account": "Створити аккаунт",
-    "existed-account": "Вже маєшь аккаунт?"
+    "existed-account": "Вже маєшь аккаунт?",
+    "titles": {
+      "login": "Вхід до аккаунту",
+      "registration": "Створення нового аккаунту"
+    }
   },
   "error": {
     "login": {
@@ -66,6 +71,6 @@
     "USA": "США"
   },
   "leave-feedback": "Текст відгука",
-  "user-settings-title": "Налаштування користувача",
+  "user-settings-title": "Налаштування",
   "ui-design-toggler": "Ввімкнути новий дезайн проекту"
 }

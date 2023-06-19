@@ -1,6 +1,6 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { EditableImageBlockType } from '@/entities/Article/model/types/Article'
+import { EditableImageBlockType } from '@/entities/Article'
 import { TextColor } from '@/shared/const/consts'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'

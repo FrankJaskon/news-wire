@@ -1,26 +1,16 @@
 import { FC, memo } from 'react'
-import { useTranslation } from 'react-i18next'
-import { LatestArticlesList } from '@/features/LatestArticlesList'
-import { TextColor } from '@/shared/const/consts'
-import { Text, TextWeight } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/redesigned/VStack'
-import { PageWrapper } from '@/widgets/PageWrapper'
+import { ToggleFeatures } from '@/shared/lib/features'
+import { MainPage as MainPageDeprecated } from './deprecated/MainPage'
+import { MainPage as MainPageRedesigned } from './redesigned/MainPage'
 
-const MainPage: FC = memo(() => {
-	const { t } = useTranslation('main')
-
+const MainPage: FC = () => {
 	return (
-		<PageWrapper data-testid='main-page'>
-			<VStack gap='16'>
-				<Text
-					title={t('page-title')}
-					titleHue={TextColor.SECONDARY}
-					weight={TextWeight.BOLD}
-				/>
-				<LatestArticlesList />
-			</VStack>
-		</PageWrapper>
+		<ToggleFeatures
+			feature='isAppRedesigned'
+			on={<MainPageRedesigned />}
+			off={<MainPageDeprecated />}
+		/>
 	)
-})
+}
 
-export default MainPage
+export default memo(MainPage)

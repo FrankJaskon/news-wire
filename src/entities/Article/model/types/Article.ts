@@ -13,11 +13,10 @@ export type ValidateArticleDetailsErrorType = ValueOf<typeof ValidateArticleDeta
 
 export interface Block {
 	id: number
-	type?: BlockTypeType
 }
 
 export interface TextBlockType extends Block {
-	type: typeof BlockType.TEXT
+	type?: typeof BlockType.TEXT
 	title: string
 	paragraphs: string[]
 }

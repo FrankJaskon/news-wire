@@ -6,14 +6,17 @@ import { LoginForm as LoginFormRedesigned } from './redesigned/LoginForm'
 export interface LoginFormProps {
 	className?: string
 	onSuccess: () => void
+	isLogin?: boolean
+	setIsLogin?: (callback: (value: boolean) => boolean) => void
 }
 
 const LoginForm: FC<LoginFormProps> = props => {
+	const { isLogin, setIsLogin, ...otherProps } = props
 	return (
 		<ToggleFeatures
 			feature='isAppRedesigned'
-			on={<LoginFormRedesigned {...props} />}
-			off={<LoginFormDeprecated {...props} />}
+			on={<LoginFormRedesigned {...otherProps} isLogin={isLogin} setIsLogin={setIsLogin} />}
+			off={<LoginFormDeprecated {...otherProps} />}
 		/>
 	)
 }

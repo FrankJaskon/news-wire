@@ -20,7 +20,6 @@ export const userSlice = createSlice({
 		},
 		removeAuthData: state => {
 			state.authData = initialState.authData
-			setFeatureFlags({})
 			localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY)
 		},
 	},

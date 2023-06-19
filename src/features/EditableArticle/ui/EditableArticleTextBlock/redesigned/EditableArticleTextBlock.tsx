@@ -2,20 +2,15 @@ import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { EditableTextBlockType } from '@/entities/Article'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
-import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
 import { AppInput } from '@/shared/ui/redesigned/AppInput'
 import { AppText } from '@/shared/ui/redesigned/AppText'
 import { AppTextArea } from '@/shared/ui/redesigned/AppTextArea'
 import { HStack } from '@/shared/ui/redesigned/HStack'
 import { VStack } from '@/shared/ui/redesigned/VStack'
-import {
-	SetTextBlockParagraphProps,
-	editableArticleActions,
-} from '../../../model/slice/editableArticleSlice'
-import {
-	ArticleOptionDropdownItem,
-	OptionsDropdown,
-} from '../../EditableArticleOptions/OptionsDropdown/OptionsDropdown'
+import { useGetEditableTextBlockDropdownOptions } from '../../../model/helpers/hooks/useGetEditableTextBlockDropdownOptions'
+import { editableArticleActions } from '../../../model/slice/editableArticleSlice'
+import { SetTextBlockParagraphProps } from '../../../model/slice/reducerFunctions'
+import { OptionsDropdown } from '../../EditableArticleOptions/OptionsDropdown/OptionsDropdown'
 import { EditableArticleWithRemove } from '../../EditableArticleWithRemove/EditableArticleWithRemove'
 import { EditableBlock } from '../../EditableBlock/EditableBlock'
 import cls from './EditableArticleTextBlock.module.scss'
@@ -37,6 +32,8 @@ export const EditableArticleTextBlock: FC<EditableArticleTextBlockProps> = memo(
 			() => block.hasTitle || Boolean(block.title),
 			[block.hasTitle, block.title]
 		)
+
+		const options = useGetEditableTextBlockDropdownOptions(block.id, isTitle)
 
 		const handleOnChangeParagraph = useCallback(
 			(paragraphId: number) => (value: string) => {
@@ -78,60 +75,6 @@ export const EditableArticleTextBlock: FC<EditableArticleTextBlockProps> = memo(
 				})
 			)
 		}, [block.id, dispatch])
-
-		const options: ArticleOptionDropdownItem[][] = useMemo(
-			() => [
-				[
-					{
-						content: t('editable-article.options.add-text-title'),
-						onClick: () => {
-							dispatch(
-								editableArticleActions.setTextBlock({
-									id: block.id,
-									hasTitle: true,
-									title: '',
-								})
-							)
-						},
-						disabled: isTitle,
-					},
-					{
-						content: t('editable-article.options.add-text-paragraph'),
-						onClick: () => {
-							dispatch(
-								editableArticleActions.setTextBlockParagraph({
-									blockId: block.id,
-									paragraphId: randomInteger(),
-									value: '',
-								})
-							)
-						},
-					},
-				],
-				[
-					{
-						content: t('editable-article.options.remove-text-title'),
-						onClick: () => {
-							dispatch(
-								editableArticleActions.setTextBlock({
-									id: block.id,
-									hasTitle: false,
-									title: '',
-								})
-							)
-						},
-						disabled: !isTitle,
-					},
-					{
-						content: t('editable-article.options.remove-text-block'),
-						onClick: () => {
-							dispatch(editableArticleActions.removeBlock(block.id))
-						},
-					},
-				],
-			],
-			[block.id, dispatch, isTitle, t]
-		)
 
 		return (
 			<EditableBlock

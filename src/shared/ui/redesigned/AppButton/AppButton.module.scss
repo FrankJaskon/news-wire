@@ -23,6 +23,12 @@
 	}
 }
 
+span {
+	&.AppButton {
+		display: inline;
+	}
+}
+
 .outline {
 	border: solid 1px var(--icon-redesigned);
 	border-radius: 1rem;

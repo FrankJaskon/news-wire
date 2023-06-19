@@ -1,22 +1,16 @@
 import { Menu } from '@headlessui/react'
 import { Fragment, ReactNode } from 'react'
-import { NavLink } from 'react-router-dom'
 import classNames from '@/shared/lib/classNames/classNames'
 import { DropdownDirection } from '@/shared/types/ui'
 import { mapDirectionClass } from '../styles/consts'
 import popupCls from '../styles/popup.module.scss'
 import cls from './Dropdown.module.scss'
-
-export interface DropdownItem {
-	disabled?: boolean
-	content?: ReactNode
-	onClick?: () => void
-	href?: string
-}
+import { DropdownItem } from './DropdownItem/DropdownItem'
+import { NestedDropdownItem, NestedItem } from './NestedDropdownItem/NestedDropdownItem'
 
 interface DropdownProps {
 	className?: string
-	items: DropdownItem[]
+	items?: (DropdownItem | NestedItem)[][]
 	direction?: DropdownDirection
 	trigger: ReactNode
 }
@@ -30,45 +24,34 @@ export function Dropdown(props: DropdownProps) {
 		<Menu as='div' className={classNames(cls.Dropdown, {}, [className, popupCls.popup])}>
 			<Menu.Button className={popupCls.trigger}>{trigger}</Menu.Button>
 			<Menu.Items className={classNames(cls.menu, {}, extra)}>
-				{items.map((item, index) => {
-					const content = ({ active }: { active: boolean }) => (
-						<button
-							type='button'
-							disabled={item.disabled}
-							onClick={item.onClick}
-							className={classNames(cls.item, {
-								[popupCls.active]: active,
-								[cls.disabled]: item.disabled,
-							})}
-						>
-							{item.content}
-						</button>
-					)
-
-					if (item.href) {
-						return (
-							<Menu.Item
-								as={NavLink}
-								to={item.href}
-								disabled={item.disabled}
-								key={`dropdown-key-${index}`}
-								className={classNames('', { [cls.disabled]: item.disabled })}
-							>
-								{content}
-							</Menu.Item>
-						)
-					}
-
-					return (
-						<Menu.Item
-							key={`dropdown-key-${index}`}
-							as={Fragment}
-							disabled={item.disabled}
-						>
-							{content}
-						</Menu.Item>
-					)
-				})}
+				{items?.map((optionGroup, index, array) => (
+					<Fragment key={`option-${index}`}>
+						{optionGroup?.map?.((item, index) => {
+							if (item?.trigger) {
+								return (
+									<NestedDropdownItem
+										key={`${item.trigger.content}${index}`}
+										itemClass={cls.item}
+										activeClass={popupCls.active}
+										disabledClass={cls.disabled}
+										nestedItem={item}
+									/>
+								)
+							}
+							return (
+								<DropdownItem
+									key={`dropdown-key-${index}`}
+									item={item}
+									activeClass={popupCls.active}
+									itemClass={cls.item}
+									disabledClass={cls.disabled}
+								/>
+							)
+						})}
+						{index !== array.length - 1 && <div className={cls.divider} />}
+					</Fragment>
+				))}
+				<div className={cls.divider} />
 			</Menu.Items>
 		</Menu>
 	)

@@ -79,8 +79,16 @@
 			"on-save-success": "Article has been created successfully"
 		},
 		"options": {
+			"add-option": "Add",
+			"remove-option": "Remove",
+			"move-option": "Move",
+			"block-option": "New block",
+			"move-up": "Up",
+			"move-down": "Down",
 			"start": "At the begining",
 			"end": "At the end",
+			"before": "Before block",
+			"after": "After block",
 			"add-subtitle": "Add subtitle",
 			"add-img": "Add main image",
 			"add-text-block": "Add text block",

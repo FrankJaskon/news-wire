@@ -1,5 +1,6 @@
-import { memo } from 'react'
+import { ReactNode, memo } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
+import { VStack } from '../VStack'
 import cls from './AppText.module.scss'
 
 export type TextVariant = 'primary' | 'error' | 'accent'
@@ -12,8 +13,8 @@ export type TextWeight = 'normal' | 'bold' | 'bolder'
 
 interface TextProps {
 	className?: string
-	title?: string
-	text?: string
+	title?: ReactNode
+	text?: ReactNode
 	variant?: TextVariant
 	align?: TextAlign
 	size?: TextSize
@@ -54,8 +55,34 @@ export const AppText = memo((props: TextProps) => {
 
 	const additionalClasses = [className, cls[variant], cls[align], cls[sizeClass], cls[weight]]
 
+	if (title && !text) {
+		return (
+			<HeaderTag
+				className={classNames(cls.title, {}, [cls.AppText, ...additionalClasses])}
+				data-testid={`${dataTestId}.Header`}
+			>
+				{title}
+			</HeaderTag>
+		)
+	}
+
+	if (text && !title) {
+		return (
+			<p
+				className={classNames(cls.text, {}, [cls.AppText, ...additionalClasses])}
+				data-testid={`${dataTestId}.Paragraph`}
+			>
+				{text}
+			</p>
+		)
+	}
+
+	if (!title && !text) {
+		return <></>
+	}
+
 	return (
-		<div className={classNames(cls.AppText, {}, additionalClasses)}>
+		<VStack gap='8' className={classNames(cls.AppText, {}, additionalClasses)}>
 			{title && (
 				<HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>
 					{title}
@@ -66,6 +93,6 @@ export const AppText = memo((props: TextProps) => {
 					{text}
 				</p>
 			)}
-		</div>
+		</VStack>
 	)
 })

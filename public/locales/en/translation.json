@@ -37,8 +37,13 @@
     "login": "Login",
     "password": "Password",
     "log-in": "Log in",
-    "new-account": "Create new account",
-    "existed-account": "Already have an account? Log in"
+    "sing-up": "Sign up",
+    "new-account": "New user? Sign up here",
+    "existed-account": "Already a member? Log in here",
+    "titles": {
+      "login": "Log into your account",
+      "registration": "Create an account"
+    }
   },
   "error": {
     "login": {

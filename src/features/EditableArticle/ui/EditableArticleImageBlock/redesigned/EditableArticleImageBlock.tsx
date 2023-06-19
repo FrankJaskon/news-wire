@@ -1,17 +1,15 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { EditableImageBlockType } from '@/entities/Article/model/types/Article'
+import { EditableImageBlockType } from '@/entities/Article'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppInput } from '@/shared/ui/redesigned/AppInput'
 import { AppText } from '@/shared/ui/redesigned/AppText'
 import { HStack } from '@/shared/ui/redesigned/HStack'
 import { VStack } from '@/shared/ui/redesigned/VStack'
+import { useGetEditableImageBlockDropdownOptions } from '../../../model/helpers/hooks/useGetEditableImageBlockDropdownOptions'
 import { editableArticleActions } from '../../../model/slice/editableArticleSlice'
-import {
-	ArticleOptionDropdownItem,
-	OptionsDropdown,
-} from '../../EditableArticleOptions/OptionsDropdown/OptionsDropdown'
+import { OptionsDropdown } from '../../EditableArticleOptions/OptionsDropdown/OptionsDropdown'
 import { EditableArticleWithRemove } from '../../EditableArticleWithRemove/EditableArticleWithRemove'
 import { EditableBlock } from '../../EditableBlock/EditableBlock'
 
@@ -31,6 +29,7 @@ export const EditableArticleImageBlock: FC<EditableArticleImageBlockProps> = mem
 			() => block.hasTitle || Boolean(block.title),
 			[block.hasTitle, block.title]
 		)
+		const options = useGetEditableImageBlockDropdownOptions(block.id, isTitle)
 
 		const handleOnChangeTitle = useCallback(
 			(value: string) => {
@@ -61,48 +60,6 @@ export const EditableArticleImageBlock: FC<EditableArticleImageBlockProps> = mem
 				})
 			)
 		}, [block.id, dispatch])
-
-		const options: ArticleOptionDropdownItem[][] = useMemo(
-			() => [
-				[
-					{
-						content: t('editable-article.options.add-img-title'),
-						onClick: () => {
-							dispatch(
-								editableArticleActions.setImageBlock({
-									id: block.id,
-									hasTitle: true,
-									title: '',
-								})
-							)
-						},
-						disabled: isTitle,
-					},
-				].filter(Boolean),
-				[
-					{
-						content: t('editable-article.options.remove-img-title'),
-						onClick: () => {
-							dispatch(
-								editableArticleActions.setImageBlock({
-									id: block.id,
-									hasTitle: false,
-									title: '',
-								})
-							)
-						},
-						disabled: !isTitle,
-					},
-					{
-						content: t('editable-article.options.remove-img-block'),
-						onClick: () => {
-							dispatch(editableArticleActions.removeBlock(block.id))
-						},
-					},
-				].filter(Boolean),
-			],
-			[block.id, dispatch, isTitle, t]
-		)
 
 		return (
 			<EditableBlock

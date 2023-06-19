@@ -3,7 +3,7 @@ import { RatingVariantDeprecated } from '../../../consts/consts'
 import { RatingCard, RatingCardProps } from './RatingCard'
 
 export default {
-	title: 'entities/RatingCard',
+	title: 'entities/RatingCard/deprecated',
 	component: RatingCard,
 	argTypes: {},
 	args: {},

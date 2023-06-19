@@ -1,15 +1,14 @@
 import { FC } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
 import { DropdownDirection } from '@/shared/types/ui'
-import { Dropdown } from '@/shared/ui/redesigned/Popups'
-import { DropdownItem } from '@/shared/ui/redesigned/Popups/Dropdown/Dropdown'
+import { DropdownItem, Dropdown } from '@/shared/ui/redesigned/Popups'
 import { EditableArticleType } from '../../../../model/types/editableArticleScheme'
 import { OptionIcon } from '../../OptionIcon/OptionIcon'
 import cls from './OptionsDropdown.module.scss'
 
 export interface OptionsDropdownProps {
 	className?: string
-	options: ArticleOptionDropdownItem[]
+	options?: ArticleOptionDropdownItem[][]
 	absolute?: boolean
 	direction?: DropdownDirection
 }
@@ -36,6 +35,7 @@ export const OptionsDropdown: FC<OptionsDropdownProps> = props => {
 				trigger={<OptionIcon />}
 				direction={direction}
 				className={cls.trigger}
+				options={options}
 			/>
 		</div>
 	)

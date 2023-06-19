@@ -39,26 +39,28 @@ export const AvatarDropdown: FC<AvatarDropdownProps> = props => {
 	}
 
 	const items = [
-		...(isAdminPageAvailable
-			? [
-					{
-						content: t('navbar.links.admin'),
-						href: getAdminRoute(),
-					},
-			  ]
-			: []),
-		{
-			content: t('navbar.links.profile'),
-			href: getProfileRoute(authData.id),
-		},
-		{
-			content: t('user-settings-title'),
-			href: getUsersSettingsRoute(),
-		},
-		{
-			content: t('navbar.logout'),
-			onClick: onLogout,
-		},
+		[
+			...(isAdminPageAvailable
+				? [
+						{
+							content: t('navbar.links.admin'),
+							href: getAdminRoute(),
+						},
+				  ]
+				: []),
+			{
+				content: t('navbar.links.profile'),
+				href: getProfileRoute(authData.id),
+			},
+			{
+				content: t('user-settings-title'),
+				href: getUsersSettingsRoute(),
+			},
+			{
+				content: t('navbar.logout'),
+				onClick: onLogout,
+			},
+		],
 	]
 
 	return (

@@ -22,7 +22,7 @@ export interface EditArticleToolType {
 	onClick?: () => void
 	disabled?: boolean
 	type?: BorderVariantType
-	options?: OptionsProps[]
+	options?: OptionsProps[][]
 }
 
 export interface EditArticleToolsProps {

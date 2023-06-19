@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useMemo, useState } from 'react'
+import { FC, memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { translateErrorOrFalse } from '@/shared/config/errorResponse/errorResponse'
@@ -27,6 +27,8 @@ import cls from './LoginForm.module.scss'
 export interface LoginFormProps {
 	className?: string
 	onSuccess: () => void
+	isLogin?: boolean
+	setIsLogin?: (callback: (value: boolean) => boolean) => void
 }
 
 const reducers: ReducerList = {
@@ -34,7 +36,7 @@ const reducers: ReducerList = {
 }
 
 export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
-	const { className, onSuccess } = props
+	const { className, onSuccess, isLogin = true, setIsLogin } = props
 	const dispatch = useAppDispatch()
 	const { t } = useTranslation()
 	const loginError = useAuthByUsernameError()
@@ -42,7 +44,6 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 	const password = useAuthByUsernamePassword()
 	const loginIsLoading = useAuthByUsernameIsLoading()
 	const navigate = useNavigate()
-	const [isLogin, setIsLogin] = useState<boolean>(true)
 	const isRegistration = useMemo(() => !isLogin, [isLogin])
 
 	const loginErrorWithTranslation = translateErrorOrFalse(loginError)
@@ -62,10 +63,10 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 	)
 
 	const onToggleLoginModal = useCallback(() => {
-		setIsLogin(prev => !prev)
+		setIsLogin?.((prev: boolean) => !prev)
 		dispatch(loginActions.setLogin(''))
 		dispatch(loginActions.setPassword(''))
-	}, [dispatch])
+	}, [dispatch, setIsLogin])
 
 	const onSubmitForm = useCallback(async () => {
 		const result = isLogin
@@ -99,7 +100,7 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 				<VStack gap='16' align='center'>
 					<AppText
 						className={cls.title}
-						title={t('login.header')}
+						title={isLogin ? t('login.titles.login') : t('login.titles.registration')}
 						size='l'
 						weight='bold'
 					/>
@@ -152,7 +153,8 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 							data-testid='submit-button'
 							onClick={onSubmitForm}
 						>
-							{t('login.log-in')}
+							{isLogin && t('login.log-in')}
+							{isRegistration && t('login.sing-up')}
 						</AppButton>
 					</HStack>
 					<AppButton

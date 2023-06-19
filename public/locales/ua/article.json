@@ -51,8 +51,8 @@
 			"create": "Створення нової статті"
 		},
 		"places": {
-			"workplace": "Робоча зона",
-			"preview": "Попередній огляд"
+			"workplace": "Редаг.",
+			"preview": "Огляд"
 		},
 		"labels": {
 			"title": "Заголовок статті",
@@ -82,16 +82,24 @@
 			"on-save-success": "Ваша стаття була успішно створена!"
 		},
 		"options": {
+			"add-option": "Додати",
+			"remove-option": "Видалити",
+			"move-option": "Рухати",
+			"block-option": "Новий блок",
+			"move-up": "Вгору",
+			"move-down": "Вниз",
 			"start": "На початок",
 			"end": "В кінець",
-			"add-subtitle": "Додати підзаголовок",
-			"add-img": "Додати головне зображення",
-			"add-text-block": "Додати текстовий блок",
-			"add-code-block": "Додати блок з кодом",
-			"add-img-block": "Додати блок з зображенням",
+			"before": "Перед блоком",
+			"after": "Після блоку",
+			"add-subtitle": "Підзаголовок",
+			"add-img": "Банер",
+			"add-text-block": "Текст",
+			"add-code-block": "Код",
+			"add-img-block": "Зображення",
 			"save-article": "Зберегти зміни",
 			"create-article": "Створити статтю",
-			"reset-article": "Скинути зміни",
+			"reset-article": "Скасувати зміни",
 			"remove-article": "Видалити статтю",
 			"remove-code-block": "Вадилити блок з кодом",
 			"add-img-title": "Додати підпис до зображення",

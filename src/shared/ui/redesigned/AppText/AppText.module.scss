@@ -1,4 +1,12 @@
 .AppText {
+    &.title {
+        color: var(--text-redesigned);
+    }
+
+    &.text {
+        color: var(--text-redesigned);
+    }
+
     .title {
         color: var(--text-redesigned);
     }
@@ -8,6 +16,13 @@
     }
 
     &.size_s {
+        &.title {
+            font: var(--title-s-redesign);
+        }
+
+        &.text {
+            font: var(--font-s-redesign);
+        }
         .title {
             font: var(--title-s-redesign);
         }
@@ -18,6 +33,13 @@
     }
 
     &.size_m {
+        &.title {
+            font: var(--title-m-redesign);
+        }
+
+        &.text {
+            font: var(--font-m-redesign);
+        }
         .title {
             font: var(--title-m-redesign);
         }
@@ -28,6 +50,13 @@
     }
 
     &.size_l {
+        &.title {
+            font: var(--title-l-redesign);
+        }
+
+        &.text {
+            font: var(--font-l-redesign);
+        }
         .title {
             font: var(--title-l-redesign);
         }
@@ -38,6 +67,13 @@
     }
 
     &.size_xl {
+        &.title {
+            font: var(--title-xl-redesign);
+        }
+
+        &.text {
+            font: var(--font-xl-redesign);
+        }
         .title {
             font: var(--title-xl-redesign);
         }
@@ -48,6 +84,13 @@
     }
 
     &.error {
+        &.title {
+            color: var(--cancel-redesign);
+        }
+
+        &.text {
+            color: var(--cancel-redesign);
+        }
         .title {
             color: var(--cancel-redesign);
         }
@@ -58,6 +101,13 @@
     }
 
     &.accent {
+        &.title {
+            color: var(--accent-redesign);
+        }
+
+        &.text {
+            color: var(--accent-redesign);
+        }
         .title {
             color: var(--accent-redesign);
         }
@@ -68,6 +118,13 @@
     }
 
     &.normal {
+        &.title {
+            font-weight: 400;
+        }
+
+        &.text {
+            font-weight: 400;
+        }
         .title {
             font-weight: 400;
         }
@@ -78,6 +135,13 @@
     }
 
     &.bold {
+        &.title {
+            font-weight: 700;
+        }
+
+        &.text {
+            font-weight: 700;
+        }
         .title {
             font-weight: 700;
         }
@@ -88,6 +152,13 @@
     }
 
     &.bolder {
+        &.title {
+            font-weight: 900;
+        }
+
+        &.text {
+            font-weight: 900;
+        }
         .title {
             font-weight: 900;
         }

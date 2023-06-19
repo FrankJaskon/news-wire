@@ -9,7 +9,8 @@ import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { HStack } from '@/shared/ui/redesigned/HStack'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { ArticleType } from '../../../model/types/Article'
-import { renderBlockContent } from '../Article'
+
+import { renderBlockContent } from '../renderComponentBlock'
 import cls from './Article.module.scss'
 
 export interface ArticleDetailsProps {

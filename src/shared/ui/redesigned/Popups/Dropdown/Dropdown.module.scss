@@ -12,6 +12,7 @@
     padding: 10px 25px;
     width: 100%;
     border: none;
+    text-align: start;
     outline: none;
     color: var(--text-redesigned);
     cursor: pointer;
@@ -22,3 +23,9 @@
     color: var(--hint-redesigned);
     background-color: var(--light-bg-redesigned);
 }
+
+.divider {
+    height: 1px;
+    background-color: var(--light-bg-redesigned);
+}
+
