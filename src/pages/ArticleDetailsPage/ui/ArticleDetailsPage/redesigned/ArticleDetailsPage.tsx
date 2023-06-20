@@ -1,6 +1,7 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
+import { useUserAuthData } from '@/entities/User'
 import { ArticleComments } from '@/features/ArticleComments'
 import {
 	ArticleDetails,
@@ -28,7 +29,7 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = memo(
 		const error = useArticleDetailsError()
 		const { t } = useTranslation('article')
 		const id = Number(useParams().id)
-		const isAuthor = useArticleDetailsData().id === id
+		const isAuthor = useArticleDetailsData().profile?.id === useUserAuthData()?.id
 
 		if (!id && __PROJECT__ !== 'storybook') {
 			return (

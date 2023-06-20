@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, FormEvent, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import CommentIcon from '@/shared/assets/icons/comment.svg'
 import SendIcon from '@/shared/assets/icons/send.svg'
@@ -42,28 +42,34 @@ export const AddNewComment: FC<AddNewCommentProps> = memo((props: AddNewCommentP
 		dispatch(addNewCommentActions.setCommentText(undefined))
 	}, [dispatch])
 
-	const handleSubmitNewComment = useCallback(() => {
-		handleSubmit(text)
-		handleCancel()
-	}, [handleSubmit, handleCancel, text])
+	const handleSubmitNewComment = useCallback(
+		(e: FormEvent<HTMLFormElement>) => {
+			e.preventDefault()
+			handleSubmit(text)
+			handleCancel()
+		},
+		[handleSubmit, handleCancel, text]
+	)
 
 	return (
 		<LazyReducerLoader reducers={reducers}>
-			<HStack
-				align='center'
-				gap='16'
-				className={classNames(cls.AddNewComment, {}, [className])}
-			>
-				<AppInput
-					placeholder={t('new-comment.label')}
-					className={cls.input}
-					value={text}
-					onChange={handleChange}
-					data-testid={dataTestId}
-					addonLeft={<AppIcon Svg={CommentIcon} height={24} width={24} />}
-				/>
-				<AppIcon Svg={SendIcon} clickable onClick={handleSubmitNewComment} />
-			</HStack>
+			<form onSubmit={handleSubmitNewComment}>
+				<HStack
+					align='center'
+					gap='16'
+					className={classNames(cls.AddNewComment, {}, [className])}
+				>
+					<AppInput
+						placeholder={t('new-comment.label')}
+						className={cls.input}
+						value={text}
+						onChange={handleChange}
+						data-testid={dataTestId}
+						addonLeft={<AppIcon Svg={CommentIcon} height={24} width={24} />}
+					/>
+					<AppIcon Svg={SendIcon} clickable btnType='button' />
+				</HStack>
+			</form>
 		</LazyReducerLoader>
 	)
 })

@@ -16,6 +16,9 @@ export const fetchProfileData = createAsyncThunk<
 
 		return response.data
 	} catch (error: any) {
+		if (error.response && error.response.status === 404) {
+			return rejectWithValue(ValidateProfileError.NO_PROFILE)
+		}
 		return rejectWithValue(ValidateProfileError.SERVER_ERROR)
 	}
 })

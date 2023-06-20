@@ -1,12 +1,10 @@
 import { FC, memo } from 'react'
+import { ClickableAvatar } from '@/entities/ClickableAvatar'
 import AddIcon from '@/shared/assets/icons/add.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton, BorderVariantType } from '@/shared/ui/redesigned/AppButton'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
 import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
-import { AppText } from '@/shared/ui/redesigned/AppText'
-import { Avatar } from '@/shared/ui/redesigned/Avatar'
-import { HStack } from '@/shared/ui/redesigned/HStack'
 import { Dropdown } from '@/shared/ui/redesigned/Popups'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import cls from './EditArticleTools.module.scss'
@@ -28,12 +26,13 @@ export interface EditArticleToolType {
 export interface EditArticleToolsProps {
 	className?: string
 	items: EditArticleToolType[][]
+	userId?: number
 	avatar?: string
 	username?: string
 }
 
 export const EditArticleTools: FC<EditArticleToolsProps> = memo((props: EditArticleToolsProps) => {
-	const { className, items, avatar, username } = props
+	const { className, items, userId, avatar, username } = props
 
 	return (
 		<VStack gap='24'>
@@ -46,10 +45,7 @@ export const EditArticleTools: FC<EditArticleToolsProps> = memo((props: EditArti
 				>
 					<VStack gap='24' align='start'>
 						{index === 0 && (
-							<HStack gap='8' align='center'>
-								<Avatar size={32} src={avatar} />
-								<AppText text={username} weight='bold' />
-							</HStack>
+							<ClickableAvatar id={userId!} avatar={avatar} username={username} />
 						)}
 						{itemsList.map((item, index) => {
 							if (item.disabled) return null

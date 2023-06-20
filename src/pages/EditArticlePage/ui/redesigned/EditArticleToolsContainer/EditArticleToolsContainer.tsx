@@ -169,6 +169,7 @@ export const EditArticleToolsContainer: FC<EditArticleToolsContainerProps> = mem
 				items={options}
 				avatar={userData?.avatar}
 				username={userData?.username}
+				userId={userData?.id}
 			/>
 		)
 	}

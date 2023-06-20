@@ -25,8 +25,7 @@ export const ArticleDetailsAdditionalInfoContainer: FC<ArticleDetailsAdditionalI
 					articleId={article?.id}
 					views={article?.views}
 					createdAt={convertDate(article?.createdAt)}
-					avatar={article?.profile?.avatar}
-					username={article?.profile?.username}
+					profile={article?.profile}
 					ifCanEdit={ifCanEdit}
 					isLoading={isLoading}
 				/>

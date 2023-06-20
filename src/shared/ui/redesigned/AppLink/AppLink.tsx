@@ -9,6 +9,7 @@ export type AppLinkProps = Omit<LinkProps, 'to'> & {
 	to?: string
 	hover?: boolean
 	activeClassName?: string
+	flex?: boolean
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
@@ -19,6 +20,7 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
 		variant = 'primary',
 		hover = true,
 		activeClassName = '',
+		flex = false,
 		...otherProps
 	} = props
 
@@ -31,6 +33,7 @@ export const AppLink: FC<AppLinkProps> = memo((props: AppLinkProps) => {
 					{
 						[cls.hover]: hover,
 						[activeClassName]: isActive,
+						[cls.flex]: flex,
 					},
 					[className, cls[variant]]
 				)

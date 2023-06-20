@@ -55,6 +55,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(
 				[ValidateProfileError.INCORRECT_CITY]: t('error.city'),
 				[ValidateProfileError.NO_DATA]: t('error.empty'),
 				[ValidateProfileError.SERVER_ERROR]: t('error.server-error'),
+				[ValidateProfileError.NO_PROFILE]: t('error.server-error'),
 			}),
 			[t]
 		)

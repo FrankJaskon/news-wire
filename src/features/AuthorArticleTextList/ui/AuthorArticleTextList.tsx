@@ -1,7 +1,6 @@
 import { FC, ReactNode, memo, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ArticleList } from '@/entities/Article'
-import { useUserAuthData } from '@/entities/User'
 import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features'
 import { Text, TextSize, TextVariant } from '@/shared/ui/deprecated/Text'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
@@ -11,12 +10,12 @@ import { useAuthorArticleList } from '../api/authorArticleListApi'
 
 export interface AuthorArticleTextListProps {
 	className?: string
+	id?: number
 }
 
 export const AuthorArticleTextList: FC<AuthorArticleTextListProps> = memo(
 	(props: AuthorArticleTextListProps) => {
-		const { className } = props
-		const useData = useUserAuthData()
+		const { className, id } = props
 		const { t } = useTranslation(['translation', 'article'])
 		const {
 			isLoading,
@@ -24,7 +23,7 @@ export const AuthorArticleTextList: FC<AuthorArticleTextListProps> = memo(
 			data: articles,
 			refetch,
 		} = useAuthorArticleList({
-			authorId: useData?.id,
+			authorId: id,
 			limit: 10,
 		})
 

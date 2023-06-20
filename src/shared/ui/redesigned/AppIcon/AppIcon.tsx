@@ -16,6 +16,7 @@ export interface NonClickableAppIconProps extends AppIconBaseProps {
 
 export interface ClickableAppIconProps extends AppIconBaseProps {
 	clickable: true
+	btnType?: 'button' | 'submit' | 'reset'
 	onClick?: () => void
 }
 
@@ -48,7 +49,7 @@ export const AppIcon: FC<AppIconProps> = memo((props: AppIconProps) => {
 			<button
 				data-testid={dataTestId}
 				onClick={props.onClick}
-				type='button'
+				type={props.btnType ?? 'button'}
 				className={classNames(cls.button)}
 				style={{ height, width }}
 			>

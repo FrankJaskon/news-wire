@@ -28,7 +28,8 @@
         "username": "User name must be less then length 25 characters",
         "city": "City can only contain letters and spaces",
         "empty": "Form must not be empty",
-        "server-error": "Something went wrong. Try later please"
+        "server-error": "Something went wrong. Try later please",
+        "no-profile": "Profile has not been found"
     },
     "rating": {
 		"rate-profile-title": "Do you want to rate this user?",

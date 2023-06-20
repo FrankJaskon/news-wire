@@ -1,7 +1,11 @@
 import { FC, memo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AuthorArticleTextList } from '@/features/AuthorArticleTextList'
-import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard'
+import {
+	EditableProfileCard,
+	profileReducer,
+	useEditableProfileCardLoadingError,
+} from '@/features/EditableProfileCard'
 import {
 	LazyReducerLoader,
 	ReducerList,
@@ -19,13 +23,14 @@ let content = <PageLoader />
 export const ProfilePage: FC = memo(() => {
 	const { id } = useParams()
 	const [isMounted, setIsMounted] = useState<boolean>(false)
+	const loadingError = useEditableProfileCardLoadingError()
 
 	if (isMounted || __PROJECT__ === 'storybook') {
 		content = (
 			<PageWrapper data-testid='profile-page'>
 				<VStack gap='24'>
 					<EditableProfileCard id={Number(id)} />
-					<AuthorArticleTextList />
+					{!loadingError && <AuthorArticleTextList id={Number(id)} />}
 				</VStack>
 			</PageWrapper>
 		)

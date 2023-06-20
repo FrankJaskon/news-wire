@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect } from 'react'
+import { FC, KeyboardEvent as ReactKeyboardEvent, useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CountrySelect, CountryType } from '@/entities/Country'
 import { CurrencySelect, CurrencyType } from '@/entities/Currency'
@@ -66,6 +66,15 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 		[cancelEdit]
 	)
 
+	const onPressEnter = useCallback(
+		(e: ReactKeyboardEvent<HTMLButtonElement>) => {
+			if (e.key === 'Enter') {
+				saveForm?.()
+			}
+		},
+		[saveForm]
+	)
+
 	useEffect(() => {
 		if (!readonly) {
 			window.addEventListener('keydown', onPressEscape)
@@ -111,18 +120,19 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 						{canEdit &&
 							(readonly ? (
 								<AppButton
-									onClick={editForm}
 									variant='outline'
 									data-testid='profile-card-edit-btn'
+									onClick={editForm}
 								>
 									{t('card.header.edit-btn')}
 								</AppButton>
 							) : (
 								<AppButton
-									onClick={saveForm}
 									variant='outline'
 									borderVariant='save'
 									data-testid='profile-card-save-btn'
+									onClick={saveForm}
+									onKeyDown={onPressEnter}
 								>
 									{t('card.header.save-btn')}
 								</AppButton>

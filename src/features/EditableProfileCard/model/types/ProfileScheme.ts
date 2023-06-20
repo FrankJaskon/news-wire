@@ -11,6 +11,7 @@ export const ValidateProfileError = {
 	SERVER_ERROR: 'SERVER_ERROR',
 	INCORRECT_DATA: 'INCORRECT_DATA',
 	NO_DATA: 'NO_DATA',
+	NO_PROFILE: 'NO_PROFILE',
 } as const
 
 export type ValidateProfileErrorType = ValueOf<typeof ValidateProfileError>
