@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useMemo, useState } from 'react'
+import { FC, FormEvent, memo, useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { translateErrorOrFalse } from '@/shared/config/errorResponse/errorResponse'
@@ -64,25 +64,30 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		setIsLogin(prev => !prev)
 	}, [setIsLogin])
 
-	const onSubmitForm = useCallback(async () => {
-		const result = isLogin
-			? await dispatch(
-					loginByUsername({
-						username: username,
-						password: password,
-					})
-			  )
-			: await dispatch(
-					registration({
-						username: username,
-						password: password,
-					})
-			  )
-		if (result.meta.requestStatus === 'fulfilled') {
-			onSuccess()
-			navigate(getMainRoute())
-		}
-	}, [dispatch, username, password, onSuccess, navigate, isLogin])
+	const onSubmitForm = useCallback(
+		async (e: FormEvent<HTMLFormElement>) => {
+			e.preventDefault()
+			const result = isLogin
+				? await dispatch(
+						loginByUsername({
+							username: username,
+							password: password,
+						})
+				  )
+				: await dispatch(
+						registration({
+							username: username,
+							password: password,
+						})
+				  )
+			if (result.meta.requestStatus === 'fulfilled') {
+				navigate(getMainRoute())
+				onSuccess()
+				location.reload()
+			}
+		},
+		[dispatch, username, password, onSuccess, navigate, isLogin]
+	)
 
 	return (
 		<LazyReducerLoader reducers={reducers}>
@@ -90,6 +95,7 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 				className={classNames(cls.LoginForm, {}, [className])}
 				action='/login'
 				method='POST'
+				onSubmit={onSubmitForm}
 				data-testid='login-form'
 			>
 				<VStack gap='16'>
@@ -138,7 +144,7 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 						className={cls.btn}
 						disabled={loginIsLoading}
 						data-testid='submit-button'
-						onClick={onSubmitForm}
+						type='submit'
 					>
 						{t('login.log-in')}
 					</AppButton>

@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkApiConfigType } from '@/app/providers/StoreProvider'
 import { ProfileType } from '@/entities/Profile'
 import { User, userActions } from '@/entities/User'
-import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/const/localStorage'
 import { getProfileRoute } from '@/shared/const/RoutPaths'
 import { getEditableProfileCardProfileForm } from '../../selectors/getEditableProfileCardProfileForm/getEditableProfileCardProfileForm'
 import { ValidateProfileError, ValidateProfileErrorType } from '../../types/ProfileScheme'
@@ -37,7 +36,6 @@ export const updateProfileData = createAsyncThunk<
 			avatar: response.data.user.avatar,
 		}
 		thunkAPI.dispatch(userActions.setAuthData(savedUserData))
-		localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(savedUserData))
 
 		return response.data.profile
 	} catch (error: any) {

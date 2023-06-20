@@ -32,10 +32,18 @@ export const AuthorArticleTextList: FC<AuthorArticleTextListProps> = memo(
 			refetch()
 		}, [refetch])
 
-		let content: ReactNode = useMemo(
-			() => <ArticleList articles={articles} isLoading={isLoading} textOnly />,
-			[articles, isLoading]
-		)
+		let content: ReactNode = useMemo(() => {
+			if (articles?.length) {
+				return <ArticleList articles={articles} isLoading={isLoading} textOnly />
+			}
+			return (
+				<AppText
+					text={t('empty-articles-list', {
+						ns: 'article',
+					})}
+				/>
+			)
+		}, [articles, isLoading, t])
 
 		if (isError) {
 			content = toggleFeatures({

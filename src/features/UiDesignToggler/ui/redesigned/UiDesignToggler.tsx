@@ -15,7 +15,7 @@ export const UiDesignToggler: FC = memo(() => {
 	const [isLoading, setIsLoading] = useState(false)
 
 	useEffect(() => {
-		setIsChecked(isNewDesignActive ?? false)
+		setIsChecked(isNewDesignActive ?? true)
 	}, [isNewDesignActive])
 
 	const handleOnChange = useCallback(async () => {
