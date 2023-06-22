@@ -1,4 +1,6 @@
 import { FC, memo } from 'react'
+import { QueryParamsKeys } from '@/shared/const/queryParams'
+import { useMoveToElementByQuery } from '@/shared/hooks/useMoveToElementByQuery'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { AppText } from '@/shared/ui/redesigned/AppText'
 import { HStack } from '@/shared/ui/redesigned/HStack'
@@ -17,6 +19,8 @@ export interface ArticleDetailsProps {
 
 export const Article: FC<ArticleDetailsProps> = memo((props: ArticleDetailsProps) => {
 	const { className, article, isLoading, error } = props
+
+	useMoveToElementByQuery(QueryParamsKeys.COMMENT, isLoading)
 
 	if (isLoading) {
 		return (

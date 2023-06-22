@@ -9,15 +9,14 @@ import { AppInput } from '@/shared/ui/redesigned/AppInput'
 import { AppLabel } from '@/shared/ui/redesigned/AppLabel'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { useEditableArticleForm } from '../../../model/selectors/editableArticleSelector'
-import {
-	SetTextBlockParagraphProps,
-	editableArticleActions,
-} from '../../../model/slice/editableArticleSlice'
+import { editableArticleActions } from '../../../model/slice/editableArticleSlice'
+import { SetTextBlockParagraphProps } from '../../../model/slice/reducerFunctions'
 import { EditableArticleType } from '../../../model/types/editableArticleScheme'
 import { EditableArticleCodeBlock } from '../../EditableArticleCodeBlock/EditableArticleCodeBlock'
 import { EditableArticleImageBlock } from '../../EditableArticleImageBlock/EditableArticleImageBlock'
 
 import { EditableArticleTextBlock } from '../../EditableArticleTextBlock/EditableArticleTextBlock'
+import { EditableArticleVideoBlock } from '../../EditableArticleVideoBlock/EditableArticleVideoBlock'
 import { EditableArticleWithRemove } from '../../EditableArticleWithRemove/EditableArticleWithRemove'
 import cls from './EditableArticle.module.scss'
 
@@ -129,6 +128,18 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 		[dispatch]
 	)
 
+	const handleOnChangeVideo = useCallback(
+		({ blockId, value }: { blockId: number; value: string }) => {
+			dispatch(
+				editableArticleActions.setVideoBlock({
+					id: blockId,
+					src: value,
+				})
+			)
+		},
+		[dispatch]
+	)
+
 	const handleOnChangeImageTitle = useCallback(
 		({ blockId, value }: { blockId: number; value: string }) => {
 			dispatch(
@@ -187,6 +198,14 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 						onChangeTitle={handleOnChangeTextTitle}
 						onChangeParagraph={handleOnChangeParagraph}
 						onRemoveParagraph={handleOnRemoveParagraph}
+					/>
+				)
+			case 'VIDEO':
+				return (
+					<EditableArticleVideoBlock
+						key={`editable-article-block-${block.id}`}
+						block={block}
+						onChangeVideo={handleOnChangeVideo}
 					/>
 				)
 			default:

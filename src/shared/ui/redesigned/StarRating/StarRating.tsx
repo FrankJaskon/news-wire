@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useState } from 'react'
+import { FC, memo, useCallback, useEffect, useState } from 'react'
 import StarIcon from '@/shared/assets/icons/star.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { HStack } from '../../redesigned/HStack'
@@ -29,6 +29,13 @@ export const StarRating: FC<StarRatingProps> = memo((props: StarRatingProps) => 
 
 	const [currentStarsCount, setCurrentStartsCount] = useState<number>(selectedStar ?? 0)
 	const [isSelected, setIsSelected] = useState<boolean>(Boolean(selectedStar))
+
+	useEffect(() => {
+		if (selectedStar) {
+			setCurrentStartsCount(selectedStar)
+			setIsSelected(true)
+		}
+	}, [selectedStar])
 
 	const onHover = useCallback(
 		(starsCount: number) => () => {

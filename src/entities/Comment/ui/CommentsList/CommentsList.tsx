@@ -1,4 +1,4 @@
-import { FC, memo, useMemo } from 'react'
+import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ToggleFeatures } from '@/shared/lib/features'
 import { Text } from '@/shared/ui/deprecated/Text'
@@ -6,31 +6,26 @@ import { AppText } from '@/shared/ui/redesigned/AppText'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { CommentType } from '../../model/types/comment'
 import { CommentCard } from '../CommentCard/CommentCard'
+import { CommentVariant } from '../CommentCard/redesigned/CommentCard'
 
 export interface CommentsListProps {
 	comments?: CommentType[]
 	isLoading?: boolean
 	error?: string
 	'data-testid'?: string
+	variant?: CommentVariant
 }
 
 export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProps) => {
-	const { comments, isLoading, error, 'data-testid': dataTestId = 'comments-list' } = props
+	const {
+		comments,
+		isLoading,
+		error,
+		'data-testid': dataTestId = 'comments-list',
+		variant = 'user',
+	} = props
 
-	const { t } = useTranslation('comment')
-
-	const renderComments = useMemo(
-		() =>
-			comments?.map(c => (
-				<CommentCard
-					key={c.id}
-					isLoading={isLoading}
-					comment={c}
-					data-testid={`${dataTestId}-item`}
-				/>
-			)),
-		[comments, isLoading, dataTestId]
-	)
+	const { t } = useTranslation()
 
 	if (error) {
 		return (
@@ -45,9 +40,9 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 	if (isLoading) {
 		return (
 			<VStack gap='16'>
-				<CommentCard isLoading />
-				<CommentCard isLoading />
-				<CommentCard isLoading />
+				<CommentCard isLoading variant={variant} />
+				<CommentCard isLoading variant={variant} />
+				<CommentCard isLoading variant={variant} />
 			</VStack>
 		)
 	}
@@ -55,12 +50,20 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 	return (
 		<VStack gap='16' data-testid={dataTestId}>
 			{comments?.length ? (
-				renderComments
+				comments?.map(comment => (
+					<CommentCard
+						key={comment.id}
+						isLoading={isLoading}
+						comment={comment}
+						data-testid={`${dataTestId}-item`}
+						variant={variant}
+					/>
+				))
 			) : (
 				<ToggleFeatures
 					feature='isAppRedesigned'
-					on={<AppText text={t('empty-list')} />}
-					off={<Text content={t('empty-list')} />}
+					on={<AppText text={t('empty-comments-list')} />}
+					off={<Text content={t('empty-comments-list')} />}
 				/>
 			)}
 		</VStack>

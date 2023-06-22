@@ -17,6 +17,7 @@ export type {
 	EditableArticleBlockType,
 	EditableImageBlockType,
 	BlockTypeType,
+	VideoBlockType,
 } from './model/types/Article'
 
 export { BlockHeader } from './ui/BlockHeader/BlockHeader'

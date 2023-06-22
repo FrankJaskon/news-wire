@@ -2,6 +2,7 @@ import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import CommentIcon from '@/shared/assets/icons/comment.svg'
 import { useDetectMobile } from '@/shared/hooks/useDetectMobile/useDetectMobile'
+import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton } from '@/shared/ui/redesigned/AppButton'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
 import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
@@ -67,7 +68,6 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 				<AppCard padding='0'>
 					<AppInput
 						placeholder={t('leave-feedback')}
-						className={cls.input}
 						value={feedback}
 						onChange={setFeedback}
 						addonLeft={<AppIcon Svg={CommentIcon} height={24} width={24} />}
@@ -79,7 +79,10 @@ export const RatingCard: FC<RatingCardProps> = memo((props: RatingCardProps) => 
 	)
 
 	return (
-		<AppCard className={cls.wrapper} data-testid='rating-card'>
+		<AppCard
+			className={classNames(cls.wrapper, { [cls.pt10]: Boolean(title) })}
+			data-testid='rating-card'
+		>
 			<VStack className={className} gap='8' align='center'>
 				{title && <AppText title={title} size='l' />}
 				<StarRating

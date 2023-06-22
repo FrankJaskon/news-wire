@@ -40,23 +40,26 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 		)
 	}
 
-	if (!comment) {
-		return null
+	if (comment?.profile) {
+		return (
+			<AppCard data-testid={dataTestId}>
+				<HStack className={classNames('', {}, [className])} gap='12'>
+					<AppLink
+						className={cls.avatarWrapper}
+						to={getProfileRoute(comment?.profile.id)}
+					>
+						<Avatar size={50} src={comment?.profile?.avatar} />
+					</AppLink>
+					<VStack align='start' justify='between'>
+						<AppLink to={getProfileRoute(comment?.profile.id)}>
+							<Text title={comment?.profile.username} size={TextSize.S} />
+						</AppLink>
+						<Text content={comment?.text} />
+					</VStack>
+				</HStack>
+			</AppCard>
+		)
 	}
 
-	return (
-		<AppCard data-testid={dataTestId}>
-			<HStack className={classNames('', {}, [className])} gap='12'>
-				<AppLink className={cls.avatarWrapper} to={getProfileRoute(comment?.profile.id)}>
-					<Avatar size={50} src={comment?.profile?.avatar} />
-				</AppLink>
-				<VStack align='start' justify='between'>
-					<AppLink to={getProfileRoute(comment?.profile.id)}>
-						<Text title={comment?.profile.username} size={TextSize.S} />
-					</AppLink>
-					<Text content={comment?.text} />
-				</VStack>
-			</HStack>
-		</AppCard>
-	)
+	return null
 })

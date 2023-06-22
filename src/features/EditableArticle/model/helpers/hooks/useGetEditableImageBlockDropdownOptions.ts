@@ -154,6 +154,35 @@ export const useGetEditableImageBlockDropdownOptions: UseGetEditableImageBlockDr
 										},
 									],
 								},
+								{
+									trigger: {
+										content: t('editable-article.options.add-video-block'),
+									},
+									options: [
+										{
+											content: t('editable-article.options.before'),
+											onClick: () => {
+												dispatch(
+													editableArticleActions.addNewVideoBlock(
+														startArguments
+													)
+												)
+											},
+											disabled: false,
+										},
+										{
+											content: t('editable-article.options.after'),
+											onClick: () => {
+												dispatch(
+													editableArticleActions.addNewVideoBlock(
+														endArguments
+													)
+												)
+											},
+											disabled: false,
+										},
+									],
+								},
 							],
 						},
 					],

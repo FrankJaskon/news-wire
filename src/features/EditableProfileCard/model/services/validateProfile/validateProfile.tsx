@@ -14,13 +14,13 @@ export const validateProfile = (profile?: ProfileType) => {
 		error.push(ValidateProfileError.INCORRECT_AGE)
 	}
 	{
-		const nameRegex = /^[a-zA-Z\s]+$/
+		const nameRegex = /^[\p{L}\s]+$/u
 		if (firstname && (firstname.length > 25 || !nameRegex.test(firstname))) {
 			error.push(ValidateProfileError.INCORRECT_FIRSTNAME)
 		}
 	}
 	{
-		const nameRegex = /^[a-zA-Z\s]+$/
+		const nameRegex = /^[\p{L}\s]+$/u
 		if (lastname && (lastname.length > 25 || !nameRegex.test(lastname))) {
 			error.push(ValidateProfileError.INCORRECT_LASTNAME)
 		}
@@ -35,7 +35,7 @@ export const validateProfile = (profile?: ProfileType) => {
 		}
 	}
 	{
-		const nameRegex = /^[a-zA-Z\s]+$/
+		const nameRegex = /^[\p{L}\s]+$/u
 		if (city && !nameRegex.test(city)) {
 			error.push(ValidateProfileError.INCORRECT_CITY)
 		}

@@ -1,3 +1,4 @@
+import { YouTubeVideo } from '@/shared/ui/redesigned/YouTubeVideo/YouTubeVideo'
 import { ArticleBlockType } from '../../model/types/Article'
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
@@ -23,6 +24,8 @@ export const renderBlockContent = (block: ArticleBlockType) => {
 					title={block.title}
 				/>
 			)
+		case 'VIDEO':
+			return <YouTubeVideo key={`article-block-${block.id}`} src={block.src} />
 		default:
 			return null
 	}

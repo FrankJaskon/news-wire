@@ -33,21 +33,22 @@ export const useArticlesFilters = () => {
 		dispatch(articlesInfiniteListActions.setPage(1))
 	}, [dispatch])
 
+	const fetchArticles = useCallback(() => {
+		dispatch(fetchArticlesList({ replace: true }))
+	}, [dispatch])
+
 	const changeView = useCallback(
 		(value: string) => {
 			if (view !== value) {
 				dispatch(articlesInfiniteListActions.setView(value as ViewVariantType))
 				setFirstPage()
+				fetchArticles()
 			}
 		},
-		[dispatch, view, setFirstPage]
+		[dispatch, view, setFirstPage, fetchArticles]
 	)
 
-	const fetchArticles = useCallback(() => {
-		dispatch(fetchArticlesList({ replace: true }))
-	}, [dispatch])
-
-	const debouncedFetchArticles = useDebounce(fetchArticles, 500)
+	const debouncedFetchArticles = useDebounce(fetchArticles, 1500)
 
 	const changeSort = useCallback(
 		(value: SortVariantType) => {

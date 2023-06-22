@@ -78,6 +78,8 @@
   },
   "leave-feedback": "Some text",
   "user-settings-title": "User's settings",
-  "ui-design-toggler": "Turn on the redesigned project"
+  "ui-design-toggler": "Turn on the redesigned project",
+	"empty-comments-list": "Comments have not been found",
+	"empty-ratings-list": "Ratings have not been found"
 }
 

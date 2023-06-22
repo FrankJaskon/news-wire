@@ -8,6 +8,7 @@ export interface AppIconBaseProps extends svgProps {
 	className?: string
 	Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
 	'data-testid'?: string
+	btnType?: 'button' | 'submit' | 'reset'
 }
 
 export interface NonClickableAppIconProps extends AppIconBaseProps {
@@ -16,7 +17,6 @@ export interface NonClickableAppIconProps extends AppIconBaseProps {
 
 export interface ClickableAppIconProps extends AppIconBaseProps {
 	clickable: true
-	btnType?: 'button' | 'submit' | 'reset'
 	onClick?: () => void
 }
 
@@ -30,6 +30,7 @@ export const AppIcon: FC<AppIconProps> = memo((props: AppIconProps) => {
 		height = 32,
 		width = 32,
 		clickable,
+		btnType = 'button',
 		...otherProps
 	} = props
 
@@ -49,7 +50,7 @@ export const AppIcon: FC<AppIconProps> = memo((props: AppIconProps) => {
 			<button
 				data-testid={dataTestId}
 				onClick={props.onClick}
-				type={props.btnType ?? 'button'}
+				type={btnType ?? 'button'}
 				className={classNames(cls.button)}
 				style={{ height, width }}
 			>

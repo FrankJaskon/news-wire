@@ -7,6 +7,7 @@ export const QueryParamsKeys = {
 	ORDER: '_order',
 	SEARCH: '_q',
 	TYPE: 'type',
+	COMMENT: 'commentId',
 } as const
 
 export type QueryParamsKeysType = ValueOf<typeof QueryParamsKeys>

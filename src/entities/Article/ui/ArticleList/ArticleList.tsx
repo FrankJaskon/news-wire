@@ -46,12 +46,12 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 
 	const getSkeletons = useCallback(
 		(view?: ViewVariantType) => {
-			if (view) {
-				return new Array(limit)
-					.fill(0)
-					.map((_, index) => <ArticleListItemSkeleton key={index} view={view} />)
-			}
-			return <Skeleton height={32} />
+			return new Array(limit).fill(0).map((_, index) => {
+				if (view) {
+					return <ArticleListItemSkeleton key={index} view={view} />
+				}
+				return <Skeleton height={32} key={index} />
+			})
 		},
 		[limit]
 	)

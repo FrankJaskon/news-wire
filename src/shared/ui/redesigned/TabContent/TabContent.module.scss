@@ -1,0 +1,27 @@
+.title {
+	padding: 12px 24px;
+	width: 100%;
+	background-color: var(--light-bg-redesigned);
+	font: var(--title-m-redesigned);
+	font-weight: 700;
+	&:first-child {
+		border-top-left-radius: 19px;
+	}
+	&:last-child {
+		border-top-right-radius: 19px;
+	}
+}
+
+.active {
+	color: var(--text-redesigned);
+	background-color: var(--dark-bg-redesigned);
+}
+
+.noActive {
+	color: var(--hint-redesigned);
+}
+
+.contentWrapper {
+	padding: 24px;
+	padding-top: 0;
+}

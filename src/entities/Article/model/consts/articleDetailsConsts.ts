@@ -7,6 +7,7 @@ export const BlockType = {
 	TEXT: 'TEXT',
 	CODE: 'CODE',
 	IMAGE: 'IMAGE',
+	VIDEO: 'VIDEO',
 } as const
 
 export const ViewVariant = {

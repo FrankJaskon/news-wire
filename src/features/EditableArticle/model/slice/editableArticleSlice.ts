@@ -4,6 +4,7 @@ import {
 	CodeBlockType,
 	EditableTextBlockType,
 	EditableImageBlockType,
+	VideoBlockType,
 } from '@/entities/Article'
 import { ArticleCategoriesType } from '@/entities/ArticleCategory'
 import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
@@ -111,6 +112,17 @@ const editableArticleSlice = createSlice({
 		removeTextBlockParagraph: (state, action: PayloadAction<SetTextBlockParagraphProps>) => {
 			removeParagraph(state, action)
 		},
+		addNewVideoBlock: (
+			state,
+			action: PayloadAction<{ to: InsertDirectionType; id?: number }>
+		) => {
+			const newCodeBlock = {
+				id: randomInteger(),
+				type: BlockType.VIDEO,
+				src: '',
+			}
+			addNewBlock(state, action, newCodeBlock)
+		},
 		addNewCodeBlock: (
 			state,
 			action: PayloadAction<{ to: InsertDirectionType; id?: number }>
@@ -125,6 +137,17 @@ const editableArticleSlice = createSlice({
 		setCodeBlock: (state, action: PayloadAction<CodeBlockType>) => {
 			state.form.blocks = state.form.blocks!.map(block => {
 				if (block.id === action.payload.id && block.type === BlockType.CODE) {
+					return {
+						...block,
+						...action.payload,
+					}
+				}
+				return block
+			})
+		},
+		setVideoBlock: (state, action: PayloadAction<VideoBlockType>) => {
+			state.form.blocks = state.form.blocks!.map(block => {
+				if (block.id === action.payload.id && block.type === BlockType.VIDEO) {
 					return {
 						...block,
 						...action.payload,

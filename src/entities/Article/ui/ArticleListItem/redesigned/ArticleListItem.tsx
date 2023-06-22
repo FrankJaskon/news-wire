@@ -56,7 +56,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					<AppLink
 						className={classNames(cls.imgWrapper, {})}
 						hover={false}
-						to={(article?.id && getArticleDetailsRoute(article?.id)) || undefined}
+						to={article?.id && getArticleDetailsRoute(article?.id)}
 						target={target}
 					>
 						<AppImage
@@ -151,10 +151,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 							alt={article?.title}
 						/>
 					</AppLink>
-					<AppText
-						className={cls.textContent}
-						text={textBlockProps.paragraphs.slice(0, 2).join(' ')}
-					/>
+					{textBlockProps?.paragraphs && (
+						<AppText
+							className={cls.textContent}
+							text={textBlockProps.paragraphs.slice(0, 2).join(' ')}
+						/>
+					)}
 					<HStack justify='between' align='end'>
 						<AppButton variant='outline' onClick={handleClick}>
 							{t('read-more-btn')}

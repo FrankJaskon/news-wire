@@ -18,6 +18,7 @@ export const getLoginRoute = () => '/login'
 export const getUsersRoute = () => '/users'
 export const getOneUserRoute = (id: number | string) => '/users/' + id
 export const getCommentsRoute = () => '/comments'
+export const getArticleRatingsRoute = () => '/article-ratings'
 
 export const AppRoutes = {
 	MAIN: getMainRoute(),

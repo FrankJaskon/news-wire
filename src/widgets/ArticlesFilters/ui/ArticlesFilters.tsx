@@ -1,7 +1,8 @@
-import { FC, memo } from 'react'
+import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ArticleTypeTabs, ArticlesTypesType } from '@/entities/ArticleTypeTabs'
 import { SortSelector, SortVariantType } from '@/entities/SortSelector'
+import RemoveIcon from '@/shared/assets/icons/remove.svg'
 import SearchIcon from '@/shared/assets/icons/search.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { SortOrderType } from '@/shared/types/types'
@@ -43,6 +44,10 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = memo((props: ArticlesFi
 
 	const { t } = useTranslation('article')
 
+	const removeSearchInput = useCallback(() => {
+		changeSearch?.('')
+	}, [changeSearch])
+
 	if (isLoading) {
 		return (
 			<AppCard
@@ -81,6 +86,16 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = memo((props: ArticlesFi
 					onChange={changeSearch}
 					data-testid={`${dataTestId}-search`}
 					addonLeft={<AppIcon Svg={SearchIcon} />}
+					addonRight={
+						<AppIcon
+							className={cls.removeIcon}
+							Svg={RemoveIcon}
+							clickable
+							onClick={removeSearchInput}
+							height={16}
+							width={16}
+						/>
+					}
 				/>
 				<ArticleTypeTabs filter={filter} onTabClick={changeFilter} />
 				<SortSelector

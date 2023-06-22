@@ -27,6 +27,13 @@ export interface ImageBlockType extends Block {
 	title?: string
 }
 
+export interface VideoBlockType extends Block {
+	type?: typeof BlockType.VIDEO
+	src?: string
+}
+
+export type ArticleBlockType = TextBlockType | CodeBlockType | ImageBlockType | VideoBlockType
+
 export interface EditableParagraph {
 	id: number
 	value?: string
@@ -48,11 +55,11 @@ export interface EditableImageBlockType extends Block {
 
 export type ViewVariantType = ValueOf<typeof ViewVariant>
 
-export type ArticleBlockType = TextBlockType | CodeBlockType | ImageBlockType
 export type EditableArticleBlockType =
 	| EditableTextBlockType
 	| CodeBlockType
 	| EditableImageBlockType
+	| VideoBlockType
 
 export interface ArticleType {
 	id?: number

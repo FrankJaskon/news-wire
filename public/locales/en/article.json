@@ -14,7 +14,9 @@
 	"create-title": "Creating new article",
 	"recommendations-title": "Recommendations",
 	"latest-articles-title": "Recently published articles",
-	"author-article-title": "Author of articles",
+	"author-article-title": "Your articles",
+	"author-comments-title": "Your comments",
+	"author-ratings-title": "Your ratings",
 	"article-categories-title": "Choose a category of articles",
 	"read-more-btn": "Read more",
 	"back-to-list-btn": "Back to list",
@@ -34,7 +36,14 @@
 		"ALL": "All articles",
 		"IT": "Information Technology",
 		"SCIENCE": "Science",
-		"ECONOMIC": "Economics"
+		"ECONOMIC": "Economics",
+		"ART": "Art",
+		"SPORT": "Sport",
+		"TRAVEL": "Travel",
+		"HEALTH": "Health",
+		"short": {
+			"IT": "IT"
+		}
 	},
 	"empty-articles-list": "Articles have not been found",
 	"rating": {
@@ -66,12 +75,14 @@
 			"subtitle": "Some subtitle",
 			"img": "Put some link of image",
 			"text-block-paragraph": "Enter text for the paragraph",
-			"code": "Enter some code"
+			"code": "Enter some code",
+			"video": "Put some link of youtube video"
 		},
 		"blocks": {
 			"text": "Text block",
 			"code": "Code block",
-			"img": "Image block"
+			"img": "Image block",
+			"video": "Video block"
 		},
 		"edit": {
 			"on-save-success": "Article has been updated successfully",
@@ -96,6 +107,7 @@
 			"add-text-block": "Add text block",
 			"add-code-block": "Add code block",
 			"add-img-block": "Add image block",
+			"add-video-block": "Add video block",
 			"save-article": "Save changes",
 			"create-article": "Create article",
 			"reset-article": "Reset changes",
@@ -104,6 +116,7 @@
 			"add-img-title": "Add image title",
 			"remove-img-title": "Remove title",
 			"remove-img-block": "Remove image block",
+			"remove-video-block": "Remove video block",
 			"add-text-title": "Add title",
 			"add-text-paragraph": "Add new text paragraph",
 			"remove-text-title": "Remove title",

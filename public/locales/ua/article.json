@@ -14,7 +14,9 @@
 	"create-title": "Створення нової статті",
 	"recommendations-title": "Рекомендовані статті",
 	"latest-articles-title": "Нещодавно опубліковані статті",
-	"author-article-title": "Автор статей",
+	"author-article-title": "Ваші статті",
+	"author-comments-title": "Ваші коментарі",
+	"author-ratings-title": "Ваші оцінки",
 	"article-categories-title": "Оберіть категорію статей",
 	"read-more-btn": "Читати далі",
 	"back-to-list-btn": "Назад до перечню",
@@ -34,7 +36,14 @@
 		"ALL": "Усі статті",
 		"IT": "Інформаційні технології",
 		"SCIENCE": "Наука",
-		"ECONOMIC": "Економіка"
+		"ECONOMIC": "Економіка",
+		"ART": "Творчість",
+		"SPORT": "Спорт",
+		"TRAVEL": "Подорожі",
+		"HEALTH": "Здоров'я",
+		"short": {
+			"IT": "IT"
+		}
 	},
 	"empty-articles-list": "Статті не знайдено",
 	"rating": {
@@ -67,14 +76,16 @@
 		"placeholders": {
 			"title": "Ваш заголовок",
 			"subtitle": "Ваш підзаголовок",
-			"img": "Вкажись посилання на зображення",
+			"img": "Вкажіть посилання на зображення",
 			"text-block-paragraph": "Введіть текст параграфу",
-			"code": "Введіть ваш код"
+			"code": "Введіть ваш код",
+			"video": "Вкажіть посилання на youtube відео"
 		},
 		"blocks": {
 			"text": "Текстовий блок",
 			"code": "Блок з кодом",
-			"img": "Блок з зображенням"
+			"img": "Блок з зображенням",
+			"video": "Відео блок"
 		},
 		"edit": {
 			"on-save-success": "Ваша стаття була успішно оновлена!",
@@ -99,6 +110,7 @@
 			"add-text-block": "Текст",
 			"add-code-block": "Код",
 			"add-img-block": "Зображення",
+			"add-video-block": "Відео",
 			"save-article": "Зберегти зміни",
 			"create-article": "Створити статтю",
 			"reset-article": "Скасувати зміни",
@@ -107,6 +119,7 @@
 			"add-img-title": "Додати підпис до зображення",
 			"remove-img-title": "Видалити підпис до зображення",
 			"remove-img-block": "Видалити блок з зображенням",
+			"remove-video-block": "Видалити відео блок",
 			"add-text-title": "Додати заголовок",
 			"add-text-paragraph": "Додати новий параграф",
 			"remove-text-title": "Видатили заголовок",

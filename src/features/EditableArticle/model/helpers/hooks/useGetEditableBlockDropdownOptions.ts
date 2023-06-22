@@ -5,11 +5,11 @@ import { ArticleOptionDropdownItem } from '../../../ui/EditableArticleOptions/Op
 import { editableArticleActions } from '../../slice/editableArticleSlice'
 import { InsertDirectionType } from '../../types/editableArticleScheme'
 
-export type UseGetEditableCodeBlockDropdownOptionsType = (
+export type UseGetEditableBlockDropdownOptionsType = (
 	id: number
 ) => (ArticleOptionDropdownItem | NestedItem)[][]
 
-export const useGetEditableCodeBlockDropdownOptions: UseGetEditableCodeBlockDropdownOptionsType =
+export const useGetEditableBlockDropdownOptions: UseGetEditableBlockDropdownOptionsType =
 	targetId => {
 		const { t } = useTranslation('article')
 		const dispatch = useAppDispatch()
@@ -18,6 +18,7 @@ export const useGetEditableCodeBlockDropdownOptions: UseGetEditableCodeBlockDrop
 			to: 'start',
 			id: targetId,
 		}
+
 		const endArguments: { to: InsertDirectionType; id?: number } = { to: 'end', id: targetId }
 
 		return [
@@ -125,6 +126,31 @@ export const useGetEditableCodeBlockDropdownOptions: UseGetEditableCodeBlockDrop
 								},
 							],
 						},
+						{
+							trigger: {
+								content: t('editable-article.options.add-video-block'),
+							},
+							options: [
+								{
+									content: t('editable-article.options.before'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewVideoBlock(startArguments)
+										)
+									},
+									disabled: false,
+								},
+								{
+									content: t('editable-article.options.after'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewVideoBlock(endArguments)
+										)
+									},
+									disabled: false,
+								},
+							],
+						},
 					],
 				},
 			],
@@ -135,7 +161,7 @@ export const useGetEditableCodeBlockDropdownOptions: UseGetEditableCodeBlockDrop
 					},
 					options: [
 						{
-							content: t('editable-article.options.remove-code-block'),
+							content: t('editable-article.options.remove-video-block'),
 							onClick: () => {
 								dispatch(editableArticleActions.removeBlock(targetId))
 							},

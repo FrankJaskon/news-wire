@@ -1,6 +1,5 @@
 import { FC, memo, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { AuthorArticleTextList } from '@/features/AuthorArticleTextList'
 import {
 	EditableProfileCard,
 	profileReducer,
@@ -13,6 +12,7 @@ import {
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { PageLoader } from '@/widgets/PageLoader'
 import { PageWrapper } from '@/widgets/PageWrapper'
+import { UserActivity } from '@/widgets/UserActivity'
 
 const reducers: ReducerList = {
 	profile: profileReducer,
@@ -30,7 +30,7 @@ export const ProfilePage: FC = memo(() => {
 			<PageWrapper data-testid='profile-page'>
 				<VStack gap='24'>
 					<EditableProfileCard id={Number(id)} />
-					{!loadingError && <AuthorArticleTextList id={Number(id)} />}
+					{!loadingError && <UserActivity id={Number(id)} />}
 				</VStack>
 			</PageWrapper>
 		)

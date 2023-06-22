@@ -3,10 +3,9 @@ import { LinkProps, NavLink } from 'react-router-dom'
 import classNames from '@/shared/lib/classNames/classNames'
 import cls from './AppLink.module.scss'
 
-export type AppLinkProps = Omit<LinkProps, 'to'> & {
+export type AppLinkProps = LinkProps & {
 	className?: string
 	variant?: 'primary' | 'secondary' | 'red'
-	to?: string
 	hover?: boolean
 	activeClassName?: string
 	flex?: boolean

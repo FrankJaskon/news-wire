@@ -67,7 +67,7 @@ export const AddNewComment: FC<AddNewCommentProps> = memo((props: AddNewCommentP
 						data-testid={dataTestId}
 						addonLeft={<AppIcon Svg={CommentIcon} height={24} width={24} />}
 					/>
-					<AppIcon Svg={SendIcon} clickable btnType='button' />
+					<AppIcon Svg={SendIcon} clickable btnType='submit' />
 				</HStack>
 			</form>
 		</LazyReducerLoader>

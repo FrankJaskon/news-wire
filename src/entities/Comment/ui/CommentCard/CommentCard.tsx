@@ -9,6 +9,7 @@ export interface CommentCardProps {
 	comment?: CommentType
 	isLoading?: boolean
 	'data-testid'?: string
+	variant?: 'user' | 'article'
 }
 
 export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) => {

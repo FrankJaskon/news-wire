@@ -4,7 +4,7 @@ import { CodeBlockType } from '@/entities/Article'
 import { AppText } from '@/shared/ui/redesigned/AppText'
 import { AppTextArea } from '@/shared/ui/redesigned/AppTextArea'
 import { HStack } from '@/shared/ui/redesigned/HStack'
-import { useGetEditableCodeBlockDropdownOptions } from '../../../model/helpers/hooks/useGetEditableCodeBlockDropdownOptions'
+import { useGetEditableBlockDropdownOptions } from '../../../model/helpers/hooks/useGetEditableBlockDropdownOptions'
 import { OptionsDropdown } from '../../EditableArticleOptions/OptionsDropdown/OptionsDropdown'
 import { EditableBlock } from '../../EditableBlock/EditableBlock'
 
@@ -18,7 +18,7 @@ export const EditableArticleCodeBlock: FC<EditableArticleCodeBlockProps> = memo(
 	(props: EditableArticleCodeBlockProps) => {
 		const { className, block, onChangeCode } = props
 		const { t } = useTranslation('article')
-		const options = useGetEditableCodeBlockDropdownOptions(block.id)
+		const options = useGetEditableBlockDropdownOptions(block.id)
 
 		const handleOnChangeCode = useCallback(
 			(value: string) => {

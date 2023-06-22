@@ -6,7 +6,7 @@ import { SortOrder } from '@/shared/types/types'
 
 interface GetAuthorArticleListProps {
 	authorId?: number
-	limit: number
+	limit?: number
 }
 
 const authorArticleListApi = rtkApi.injectEndpoints({
@@ -15,7 +15,7 @@ const authorArticleListApi = rtkApi.injectEndpoints({
 			query: ({ authorId, limit }) => ({
 				url: getArticlesRoute(),
 				params: {
-					// _limit: limit,
+					_limit: limit,
 					_sort: SortVariant.DATE,
 					_order: SortOrder.UP_DOWN,
 					profileId: authorId ?? '',

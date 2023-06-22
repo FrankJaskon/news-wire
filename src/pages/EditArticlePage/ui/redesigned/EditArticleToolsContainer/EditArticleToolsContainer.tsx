@@ -124,6 +124,29 @@ export const EditArticleToolsContainer: FC<EditArticleToolsContainerProps> = mem
 							],
 						],
 					},
+					{
+						content: t('editable-article.options.add-video-block'),
+						options: [
+							[
+								{
+									content: t('editable-article.options.start'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewVideoBlock({ to: 'start' })
+										)
+									},
+								},
+								{
+									content: t('editable-article.options.end'),
+									onClick: () => {
+										dispatch(
+											editableArticleActions.addNewVideoBlock({ to: 'end' })
+										)
+									},
+								},
+							],
+						],
+					},
 				],
 				[
 					{
