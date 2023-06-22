@@ -4,7 +4,7 @@ import { useArticleDetailsIsLoading, useArticleDetailsData } from '@/features/Ar
 import { convertDate } from '@/shared/helpers/convertDate'
 import classNames from '@/shared/lib/classNames/classNames'
 import { ArticleDetailsAdditionalInfo } from '@/widgets/ArticleDetailsAdditionalInfo'
-import { getIfCanEdit } from '../../model/selectors/article'
+import { getIfCanEditArticle } from '../../model/selectors/article'
 import cls from './ArticleDetailsAdditionalInfoContainer.module.scss'
 
 export interface ArticleDetailsAdditionalInfoContainerProps {
@@ -16,7 +16,7 @@ export const ArticleDetailsAdditionalInfoContainer: FC<ArticleDetailsAdditionalI
 		const { className } = props
 
 		const article = useArticleDetailsData()
-		const ifCanEdit = useSelector(getIfCanEdit)
+		const ifCanEdit = useSelector(getIfCanEditArticle)
 		const isLoading = useArticleDetailsIsLoading()
 
 		return (

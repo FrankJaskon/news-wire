@@ -30,8 +30,12 @@ const articlesInfiniteListSlice = createSlice({
 		order: SortOrder.UP_DOWN,
 		sort: SortVariant.DATE,
 		filter: ArticlesTypes.ALL,
+		_mounted: false,
 	}),
 	reducers: {
+		setMounted: (state: ArticleInfiniteListScheme) => {
+			state._mounted = true
+		},
 		setView: (state: ArticleInfiniteListScheme, action: PayloadAction<ViewVariantType>) => {
 			state.view = action.payload
 			localStorage.setItem(VIEW_ARTICLES_LOCAL_STORAGE_KEY, action.payload)

@@ -7,8 +7,9 @@ import { ArticleDetailsScheme } from '@/features/ArticleDetails'
 import { LoginScheme } from '@/features/AuthByUsername'
 import { EditableArticleScheme } from '@/features/EditableArticle'
 import { ProfileScheme } from '@/features/EditableProfileCard'
+import { ArticleInfiniteListScheme } from '@/pages/ArticlesPage'
 import { rtkApi } from '@/shared/api/rtkApi'
-import { ArticleInfiniteListScheme } from '@/widgets/ArticleInfiniteList'
+import { ArticleInfiniteListScheme as ArticleInfiniteListSchemeDeprecated } from '@/widgets/ArticleInfiniteList'
 import { PageScrollScheme } from '@/widgets/PageWrapper'
 
 export interface StateSchema {
@@ -21,7 +22,7 @@ export interface StateSchema {
 	login?: LoginScheme
 	articleDetails?: ArticleDetailsScheme
 	addNewComment?: AddNewCommentScheme
-	articlesInfiniteList?: ArticleInfiniteListScheme
+	articlesInfiniteList?: ArticleInfiniteListSchemeDeprecated | ArticleInfiniteListScheme
 	articleDetailsComments?: ArticleDetailsCommentsScheme
 	editableArticle?: EditableArticleScheme
 }

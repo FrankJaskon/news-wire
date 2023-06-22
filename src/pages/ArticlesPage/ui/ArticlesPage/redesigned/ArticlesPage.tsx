@@ -17,7 +17,11 @@ import {
 	useArticleInfiniteListView,
 } from '../model/selectors/articleInfiniteListSelector'
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
-import { articlesInfiniteListReducer, getArticles } from '../model/slice/articlesInfiniteListSlice'
+import {
+	articlesInfiniteListReducer,
+	getArticles,
+	articlesInfiniteListActions,
+} from '../model/slice/articlesInfiniteListSlice'
 import { ArticlesFiltersContainer } from './ArticlesFiltersContainer/ArticlesFiltersContainer'
 import { ArticleViewTogglerContainer } from './ArticleViewTogglerContainer/ArticleViewTogglerContainer'
 
@@ -54,8 +58,15 @@ export const ArticlesPage: FC = memo(() => {
 		content = <AppText text={t('empty-articles-list')} />
 	}
 
+	const setIsMounted = useCallback(
+		(_: boolean) => {
+			dispatch(articlesInfiniteListActions.setMounted())
+		},
+		[dispatch]
+	)
+
 	return (
-		<LazyReducerLoader reducers={reducers}>
+		<LazyReducerLoader reducers={reducers} setIsReducerMounted={setIsMounted}>
 			<PageWrapper onScrollEnd={onLoadNextPart} data-testid='articles-page'>
 				<StickyContentLayout
 					content={content}

@@ -3,7 +3,7 @@ import { ViewVariantType } from '@/entities/Article'
 import { ViewPropsWithIcon, ViewToggler } from '@/features/ViewToggler'
 import ListIcon from '@/shared/assets/icons/burger.svg'
 import GridIcon from '@/shared/assets/icons/tile.svg'
-import { useArticlesFilters, useUpdateLimitOnChangeView } from '../../hooks/useArticlesFilters'
+import { useArticlesFilters } from '../../hooks/useArticlesFilters'
 
 interface ArticleViewTogglerContainerProps {
 	isLoading?: boolean
@@ -24,7 +24,6 @@ export const ArticleViewTogglerContainer: FC<ArticleViewTogglerContainerProps> =
 	(props: ArticleViewTogglerContainerProps) => {
 		const { isLoading } = props
 		const { view, changeView } = useArticlesFilters()
-		useUpdateLimitOnChangeView()
 
 		return (
 			<ViewToggler

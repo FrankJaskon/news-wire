@@ -80,5 +80,8 @@
   "user-settings-title": "Налаштування",
   "ui-design-toggler": "Ввімкнути новий дезайн проекту",
 	"empty-comments-list": "Коментарів не знайдено",
-	"empty-ratings-list": "Оцінок не знайдено"
+	"empty-ratings-list": "Оцінок не знайдено",
+  "author-article-title": "Автор статей",
+	"author-comments-title": "Ваші коментарі",
+	"author-ratings-title": "Ваші оцінки"
 }

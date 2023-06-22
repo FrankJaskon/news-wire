@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { ViewVariant, ViewVariantType } from '@/entities/Article'
 import { ArticlesTypesType } from '@/entities/ArticleTypeTabs'
@@ -11,6 +11,7 @@ import { setQueryParams } from '@/shared/lib/setQueryParams/setQueryParams'
 import { SortOrderType } from '@/shared/types/types'
 import {
 	useArticleInfiniteListFilter,
+	useArticleInfiniteListMounted,
 	useArticleInfiniteListOrder,
 	useArticleInfiniteListSearch,
 	useArticleInfiniteListSort,
@@ -40,6 +41,8 @@ export const useArticlesFilters = () => {
 	const changeView = useCallback(
 		(value: string) => {
 			if (view !== value) {
+				const limit = value === ViewVariant.GRID ? 9 : 3
+				dispatch(articlesInfiniteListActions.setLimit(limit))
 				dispatch(articlesInfiniteListActions.setView(value as ViewVariantType))
 				setFirstPage()
 				fetchArticles()
@@ -109,18 +112,10 @@ export const useArticlesFilters = () => {
 export const useInitSearchParams = () => {
 	const dispatch = useAppDispatch()
 	const [searchParams] = useSearchParams()
-
+	const mounted = useArticleInfiniteListMounted()
 	useInitialEffect(() => {
-		dispatch(initArticlesPage(searchParams))
-	}, [dispatch])
-}
-
-export const useUpdateLimitOnChangeView = () => {
-	const dispatch = useAppDispatch()
-	const view = useArticleInfiniteListView()
-
-	useEffect(() => {
-		const limit = view === ViewVariant.GRID ? 9 : 3
-		dispatch(articlesInfiniteListActions.setLimit(limit))
-	}, [view, dispatch])
+		if (mounted) {
+			dispatch(initArticlesPage(searchParams))
+		}
+	}, mounted)
 }

@@ -9,6 +9,7 @@ import cls from './TabContent.module.scss'
 interface TabContent {
 	title: string
 	content: ReactNode
+	visible?: boolean
 }
 
 export interface TabContentProps {
@@ -20,6 +21,8 @@ export interface TabContentProps {
 export const TabContent: FC<TabContentProps> = memo((props: TabContentProps) => {
 	const { className, items, initialTabIndex } = props
 	const [activeTab, setActiveTab] = useState(0)
+
+	console.log(items)
 
 	const selectTab = useCallback(
 		(index: number) => () => {
@@ -40,19 +43,22 @@ export const TabContent: FC<TabContentProps> = memo((props: TabContentProps) => 
 		<AppCard padding='0' className={classNames(cls.TabContent, {}, [className])}>
 			<VStack gap='24'>
 				<HStack className={cls.header} justify='evenly'>
-					{items.map((item, index) => (
-						<AppButton
-							key={item.title}
-							onClick={selectTab(index)}
-							variant='custom'
-							className={classNames(cls.title, {
-								[cls.active]: activeTab === index,
-								[cls.noActive]: activeTab !== index,
-							})}
-						>
-							{item.title}
-						</AppButton>
-					))}
+					{items.map(
+						(item, index) =>
+							item?.visible && (
+								<AppButton
+									key={item.title}
+									onClick={selectTab(index)}
+									variant='custom'
+									className={classNames(cls.title, {
+										[cls.active]: activeTab === index,
+										[cls.noActive]: activeTab !== index,
+									})}
+								>
+									{item.title}
+								</AppButton>
+							)
+					)}
 				</HStack>
 				<div className={cls.contentWrapper}>{items[activeTab].content}</div>
 			</VStack>

@@ -80,6 +80,9 @@
   "user-settings-title": "User's settings",
   "ui-design-toggler": "Turn on the redesigned project",
 	"empty-comments-list": "Comments have not been found",
-	"empty-ratings-list": "Ratings have not been found"
+	"empty-ratings-list": "Ratings have not been found",
+  "author-article-title": "Author of articles",
+	"author-comments-title": "Your comments",
+	"author-ratings-title": "Your ratings"
 }
 

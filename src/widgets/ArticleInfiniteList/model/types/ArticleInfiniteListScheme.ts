@@ -8,6 +8,7 @@ export interface ArticleInfiniteListScheme extends EntityState<ArticleType> {
 	isLoading: boolean
 	error?: string
 	_initialized: boolean
+	_mounted?: boolean
 	// pagination
 	page: number
 	limit: number

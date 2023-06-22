@@ -26,6 +26,9 @@ export const [useArticleInfiniteListError, getArticleInfiniteListError] = buildS
 export const [useArticleInfiniteListInitialized, getArticleInfiniteListInitialized] = buildSelector(
 	(state: StateSchema) => state?.articlesInfiniteList?._initialized ?? false
 )
+export const [useArticleInfiniteListMounted, getArticleInfiniteListMounted] = buildSelector(
+	(state: StateSchema) => state?.articlesInfiniteList?._mounted ?? false
+)
 export const [useArticleInfiniteListSearch, getArticleInfiniteListSearch] = buildSelector(
 	(state: StateSchema) => state?.articlesInfiniteList?.search ?? ''
 )

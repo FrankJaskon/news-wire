@@ -5,7 +5,7 @@ import { getArticlesRoute, getEditArticleDetailsRoute } from '@/shared/const/Rou
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppLink, AppLinkVariant } from '@/shared/ui/deprecated/AppLink/AppLink'
 import { HStack } from '@/shared/ui/redesigned/HStack'
-import { getIfCanEdit } from '../../model/selectors/article'
+import { getIfCanEditArticle } from '../../model/selectors/article'
 import cls from './ArticleDetailsPageHeader.module.scss'
 
 export interface ArticleDetailsPageHeaderProps {
@@ -18,7 +18,7 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 		const { className, articleId } = props
 
 		const { t } = useTranslation('article')
-		const ifCanEdit = useSelector(getIfCanEdit)
+		const ifCanEdit = useSelector(getIfCanEditArticle)
 
 		return (
 			<HStack className={classNames('', {}, [className])}>
