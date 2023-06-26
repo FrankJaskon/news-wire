@@ -106,6 +106,7 @@
 			"add-img-block": "Add image block",
 			"add-video-block": "Add video block",
 			"save-article": "Save changes",
+			"create-article-label": "Do you want to create new one?",
 			"create-article": "Create article",
 			"reset-article": "Reset changes",
 			"remove-article": "Remove the article",

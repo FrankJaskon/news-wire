@@ -42,7 +42,7 @@
 			"IT": "IT"
 		}
 	},
-	"empty-articles-list": "Статті не знайдено",
+	"empty-articles-list": "Статей не знайдено",
 	"rating": {
 		"rate-article-title": "Вам сподобалась ця стаття?",
 		"rate-article-feedback-title": "Залиште свій відгук до статті",
@@ -109,6 +109,7 @@
 			"add-img-block": "Зображення",
 			"add-video-block": "Відео",
 			"save-article": "Зберегти зміни",
+			"create-article-label": "Бажаете створити нову статтю?",
 			"create-article": "Створити статтю",
 			"reset-article": "Скасувати зміни",
 			"remove-article": "Видалити статтю",

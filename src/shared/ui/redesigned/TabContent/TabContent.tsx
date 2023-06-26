@@ -22,8 +22,6 @@ export const TabContent: FC<TabContentProps> = memo((props: TabContentProps) => 
 	const { className, items, initialTabIndex } = props
 	const [activeTab, setActiveTab] = useState(0)
 
-	console.log(items)
-
 	const selectTab = useCallback(
 		(index: number) => () => {
 			setActiveTab(index)

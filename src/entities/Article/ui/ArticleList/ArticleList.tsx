@@ -1,8 +1,10 @@
 import { FC, HTMLAttributeAnchorTarget, memo, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import { getArticleDetailsRoute } from '@/shared/const/RoutPaths'
 import classNames from '@/shared/lib/classNames/classNames'
 import { toggleFeatures } from '@/shared/lib/features'
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink'
+import { AppText } from '@/shared/ui/redesigned/AppText'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { ViewVariant } from '../../model/consts/articleDetailsConsts'
@@ -37,6 +39,8 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 		textOnly = false,
 	} = props
 
+	const { t } = useTranslation('article')
+
 	const renderArticle = useCallback(
 		(article: ArticleType) => (
 			<ArticleListItem key={article.id} article={article} view={view} target={target} />
@@ -59,21 +63,20 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 	if (textOnly) {
 		return (
 			<VStack gap='8' className={cls.ArticleTextList} data-testid={datTestId}>
-				{articles && articles.length > 0
-					? articles.map(article => {
-							if (article.id) {
-								return (
-									<AppLink
-										key={article.id}
-										to={getArticleDetailsRoute(article.id)}
-									>
-										{article.title}
-									</AppLink>
-								)
-							}
-							return null
-					  })
-					: null}
+				{articles && articles.length ? (
+					articles.map(article => {
+						if (article.id) {
+							return (
+								<AppLink key={article.id} to={getArticleDetailsRoute(article.id)}>
+									{article.title}
+								</AppLink>
+							)
+						}
+						return null
+					})
+				) : (
+					<AppText text={t('empty-articles-list')} />
+				)}
 				{isLoading && getSkeletons()}
 			</VStack>
 		)
@@ -94,7 +97,11 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 			)}
 			data-testid={datTestId}
 		>
-			{articles && articles.length > 0 ? articles.map(renderArticle) : null}
+			{articles && articles.length ? (
+				articles.map(renderArticle)
+			) : (
+				<AppText text={t('empty-articles-list')} />
+			)}
 			{isLoading && getSkeletons(view)}
 		</div>
 	)

@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react'
+import { FC, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -34,34 +34,37 @@ export const AvatarDropdown: FC<AvatarDropdownProps> = props => {
 		location.reload()
 	}, [dispatch, navigate])
 
+	const items = useMemo(
+		() => [
+			[
+				...(isAdminPageAvailable
+					? [
+							{
+								content: t('navbar.links.admin'),
+								href: getAdminRoute(),
+							},
+					  ]
+					: []),
+				{
+					content: t('navbar.links.profile'),
+					href: getProfileRoute(authData!.id),
+				},
+				{
+					content: t('user-settings-title'),
+					href: getUsersSettingsRoute(),
+				},
+				{
+					content: t('navbar.logout'),
+					onClick: onLogout,
+				},
+			],
+		],
+		[authData, isAdminPageAvailable, onLogout, t]
+	)
+
 	if (!authData) {
 		return null
 	}
-
-	const items = [
-		[
-			...(isAdminPageAvailable
-				? [
-						{
-							content: t('navbar.links.admin'),
-							href: getAdminRoute(),
-						},
-				  ]
-				: []),
-			{
-				content: t('navbar.links.profile'),
-				href: getProfileRoute(authData.id),
-			},
-			{
-				content: t('user-settings-title'),
-				href: getUsersSettingsRoute(),
-			},
-			{
-				content: t('navbar.logout'),
-				onClick: onLogout,
-			},
-		],
-	]
 
 	return (
 		<Dropdown

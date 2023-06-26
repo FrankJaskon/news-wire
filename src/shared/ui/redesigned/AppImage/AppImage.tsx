@@ -14,9 +14,10 @@ export const AppImage: FC<AppImageProps> = memo((props: AppImageProps) => {
 	const [hasError, setHasError] = useState<boolean>(false)
 
 	useLayoutEffect(() => {
+		setHasError(false)
 		const image = new Image()
 
-		image.src = src || ''
+		image.src = src ?? ''
 		image.onload = () => {
 			setIsLoading(false)
 		}

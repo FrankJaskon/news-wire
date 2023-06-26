@@ -57,9 +57,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 		return (
 			<HStack className={className} gap='16' data-testid={dataTestId} id={String(comment.id)}>
 				<AppLink to={getProfileRoute(comment?.profile.id)}>
-					{comment?.profile?.avatar && (
-						<Avatar size={32} src={comment?.profile?.avatar} />
-					)}
+					<Avatar size={32} src={comment?.profile?.avatar} />
 				</AppLink>
 				<VStack gap='8'>
 					<AppLink to={getProfileRoute(comment?.profile.id)}>
