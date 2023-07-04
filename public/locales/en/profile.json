@@ -1,38 +1,49 @@
 {
-    "page-title": "Profile page",
-    "page-subtitle": "Some text",
-    "card": {
-        "header": {
-            "title": "Profile",
-            "edit-btn": "Edit profile",
-            "close-btn": "Cancel",
-            "save-btn": "Save changes"
-        },
-        "input": {
-            "firstname": "First name",
-            "secondname": "Second name",
-            "age": "Age",
-            "city": "City",
-            "username": "Username",
-            "avatar": "Link to avatar"
-        }
-    },
-    "error": {
-        "name": "There is some error",
-        "refresh-page": "Try to refresh page please",
-        "age": "Please indicate your current age",
-        "avatar": "Avatar must contain url",
-        "incorrect-data": "Data is incorrect",
-        "firstname": "First name can only contain letters and spaces, max length 25",
-        "lastname": "Last name can only contain letters and spaces, max length 25",
-        "username": "User name must be less then length 25 characters",
-        "city": "City can only contain letters and spaces",
-        "empty": "Form must not be empty",
-        "server-error": "Something went wrong. Try later please",
-        "no-profile": "Profile has not been found"
-    },
-    "rating": {
+	"page-title": "Profile page",
+	"page-subtitle": "Some text",
+	"empty-input-placeholder": "not indicated",
+	"card": {
+		"header": {
+			"title": "Profile",
+			"edit-btn": "Edit profile",
+			"close-btn": "Cancel",
+			"save-btn": "Save changes"
+		},
+		"input": {
+			"firstname": "First name",
+			"secondname": "Second name",
+			"age": "Age",
+			"city": "City",
+			"username": "Username",
+			"avatar": "Link to avatar"
+		}
+	},
+	"error": {
+		"name": "There is some error",
+		"refresh-page": "Try to refresh page please",
+		"age": "Please indicate your current age",
+		"avatar": "Avatar must contain url",
+		"incorrect-data": "Data is incorrect",
+		"firstname": "First name can only contain letters and spaces, max length 25",
+		"lastname": "Last name can only contain letters and spaces, max length 25",
+		"username": "User name must be less then length 25 characters",
+		"city": "City can only contain letters and spaces",
+		"empty": "Form must not be empty",
+		"server-error": "Something went wrong. Try later please",
+		"no-profile": "Profile has not been found"
+	},
+	"rating": {
 		"rate-profile-title": "Do you want to rate this user?",
 		"rate-profile-title-has-response": "You've already rated this profile"
+	},
+	"profile-card": {
+		"placeholders": {
+			"firstname": "Enter your first name",
+			"lastname": "Enter your last name",
+			"age": "Enter your age",
+			"username": "Enter your username",
+			"city": "Enter your city",
+            "avatar": "Put some link to the image"
+		}
 	}
 }

@@ -43,6 +43,7 @@
 		}
 	},
 	"empty-articles-list": "Статей не знайдено",
+	"empty-article": "Немає що відобразити. Будь ласка, додайте більше інформації до статті",
 	"rating": {
 		"rate-article-title": "Вам сподобалась ця стаття?",
 		"rate-article-feedback-title": "Залиште свій відгук до статті",
@@ -125,5 +126,10 @@
 		},
 		"on-save-link-to-article": "Перейти до створенної статті",
 		"on-remove-link-to-articles": "Повернутись до списку статей"
+	},
+	"tooltips": {
+		"block-options": "Меню блоку",
+		"remove-field": "Видалити поле",
+		"required-field": "Це поле є обов'язковим"
 	}
 }

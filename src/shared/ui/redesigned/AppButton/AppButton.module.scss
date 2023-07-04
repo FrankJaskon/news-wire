@@ -21,6 +21,9 @@
 		padding-top: 0;
 		padding-bottom: 0;
 	}
+	&:focus-visible {
+		outline: var(--focused-outline);
+	}
 }
 
 span {
@@ -120,4 +123,10 @@ span {
 
 .fullWidth {
 	width: 100%;
+}
+
+.withFocus {
+	&:focus-visible {
+		outline: 2px solid var(--text-redesigned);
+	}
 }

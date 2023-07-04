@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -57,7 +57,10 @@ export const ArticleEditing: FC<ArticleEditingProps> = memo((props: ArticleEditi
 		}
 	}, isReducerMounted)
 
-	let content = isPreview ? <Article article={articleData} /> : <EditableArticle />
+	let content = useMemo(
+		() => (isPreview ? <Article article={articleData} /> : <EditableArticle />),
+		[articleData, isPreview]
+	)
 
 	if (!isLoading && !ifCanEdit && isEdit) {
 		content = (

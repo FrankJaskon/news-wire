@@ -1,5 +1,6 @@
 .AppIcon {
 	color: var(--icon-redesigned);
+	pointer-events: none;
 }
 
 .button {
@@ -13,4 +14,10 @@
 
 .button:hover .AppIcon {
 	color: var(--accent-redesigned);
+}
+
+.withFocus {
+	&:focus-visible {
+		outline: 2px solid var(--text-redesigned);
+	}
 }

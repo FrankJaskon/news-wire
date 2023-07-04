@@ -69,10 +69,12 @@
     "label": "Enter your comment"
   },
   "currency": {
+    "placeholder": "Сurrency is not chosen",
     "UAH": "UAH",
     "USD": "USD"
   },
   "country": {
+    "placeholder": "Country is not chosen",
     "Ukraine": "Ukraine",
     "USA": "USA"
   },
@@ -83,6 +85,24 @@
 	"empty-ratings-list": "Ratings have not been found",
   "author-article-title": "Author of articles",
 	"author-comments-title": "Your comments",
-	"author-ratings-title": "Your ratings"
+	"author-ratings-title": "Your ratings",
+  "tooltips": {
+    "navbar": {
+      "create": "Create new article",
+      "notifications": "Notification list",
+      "login": "Log in into your account or create new one",
+      "menu": "Menu"
+    },
+    "sidebar": {
+      "theme-toggler": "Change theme",
+      "language-toggler": "Change language"
+    },
+    "view-toggler": {
+      "list": "Big items",
+      "grid": "Small items",
+      "workplace": "Article editing",
+      "preview": "Article preview"
+    }
+  }
 }
 

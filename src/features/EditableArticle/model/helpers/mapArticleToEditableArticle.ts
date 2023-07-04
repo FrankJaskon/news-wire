@@ -1,4 +1,9 @@
-import { ArticleType, BlockType, EditableArticleBlockType } from '@/entities/Article'
+import {
+	ArticleType,
+	BlockType,
+	EditableArticleBlockType,
+	EditableParagraph,
+} from '@/entities/Article'
 import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
 import { EditableArticleType } from '../types/editableArticleScheme'
 
@@ -14,7 +19,7 @@ export const mapArticleToEditableArticle = (article: ArticleType): EditableArtic
 					id: randomInteger(),
 				})),
 				hasTitle: Boolean(block.title),
-			}
+			} as EditableParagraph
 		}
 		if (block.type === BlockType.IMAGE) {
 			return {
@@ -23,7 +28,7 @@ export const mapArticleToEditableArticle = (article: ArticleType): EditableArtic
 			}
 		}
 		return block
-	})
+	}) as EditableArticleBlockType[]
 
 	return {
 		...article,

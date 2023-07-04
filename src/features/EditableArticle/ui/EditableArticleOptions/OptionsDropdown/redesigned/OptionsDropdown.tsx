@@ -1,42 +1,32 @@
-import { FC } from 'react'
-import classNames from '@/shared/lib/classNames/classNames'
-import { DropdownDirection } from '@/shared/types/ui'
-import { DropdownItem, Dropdown } from '@/shared/ui/redesigned/Popups'
+import { FC, memo } from 'react'
+import { useTranslation } from 'react-i18next'
+import {
+	FloatDropdown,
+	FloatDropdownItemType,
+} from '@/shared/ui/redesigned/Popups/FloatDropdown/FloatDropdown'
+import { AppTooltip } from '@/shared/ui/redesigned/Tooltip/AppTooltip'
 import { EditableArticleType } from '../../../../model/types/editableArticleScheme'
 import { OptionIcon } from '../../OptionIcon/OptionIcon'
-import cls from './OptionsDropdown.module.scss'
 
 export interface OptionsDropdownProps {
 	className?: string
-	options?: ArticleOptionDropdownItem[][]
-	absolute?: boolean
-	direction?: DropdownDirection
+	options?: OptionDropdownItems
 }
 
-export interface ArticleOptionDropdownItem extends DropdownItem {
+export interface ArticleOptionDropdownItem {
 	name?: keyof EditableArticleType
 }
 
-export const OptionsDropdown: FC<OptionsDropdownProps> = props => {
-	const { className, options, absolute = false, direction = 'bottom left' } = props
+export type OptionDropdownItems = (ArticleOptionDropdownItem & FloatDropdownItemType)[]
+
+export const OptionsDropdown: FC<OptionsDropdownProps> = memo((props: OptionsDropdownProps) => {
+	const { options } = props
+
+	const { t } = useTranslation('article')
 
 	return (
-		<div
-			className={classNames(
-				cls.OptionsDropdown,
-				{
-					[cls.absolute]: absolute,
-				},
-				[className]
-			)}
-		>
-			<Dropdown
-				items={options}
-				trigger={<OptionIcon />}
-				direction={direction}
-				className={cls.trigger}
-				options={options}
-			/>
-		</div>
+		<AppTooltip tooltip={t('tooltips.block-options')} as='div'>
+			<FloatDropdown items={options} trigger={<OptionIcon />} />
+		</AppTooltip>
 	)
-}
+})

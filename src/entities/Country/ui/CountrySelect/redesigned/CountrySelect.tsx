@@ -47,6 +47,7 @@ export const CountrySelect: FC<CountrySelectProps> = memo((props: CountrySelectP
 				value={selected?.value}
 				items={countryOptionList}
 				readonly={readonly}
+				defaultValue={t('country.placeholder')}
 			/>
 		</HStack>
 	)

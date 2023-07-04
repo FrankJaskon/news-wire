@@ -47,6 +47,8 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@floating-ui/dom": "^1.4.2",
+    "@floating-ui/react": "^0.24.3",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
     "@storybook/addon-actions": "^7.0.9",
     "@storybook/addon-essentials": "^7.0.9",

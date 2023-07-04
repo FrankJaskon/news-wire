@@ -5,6 +5,7 @@ interface UseInitContentWidthProps {
 	content: RefObject<HTMLDivElement>
 	right?: RefObject<HTMLDivElement>
 	container?: HTMLElement
+	main?: boolean
 }
 
 const padding = 32

@@ -46,6 +46,7 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo((props: CurrencySele
 				items={currencyOptionList}
 				readonly={readonly}
 				data-testid={dataTestId}
+				defaultValue={t('currency.placeholder')}
 			/>
 		</HStack>
 	)

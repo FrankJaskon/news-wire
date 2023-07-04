@@ -64,7 +64,12 @@ const editableArticleSlice = createSlice({
 			}
 		},
 		resetChanges: state => {
-			state.form = mapArticleToEditableArticle(state.data)
+			if (state.data.id) {
+				state.form = mapArticleToEditableArticle(state.data)
+			}
+			if (!state.data.id) {
+				state.form = { ...initialState.form, id: state.form.id }
+			}
 		},
 		setArticleType: (state, action: PayloadAction<ArticleCategoriesType>) => {
 			setTypeToArticle(state, action)

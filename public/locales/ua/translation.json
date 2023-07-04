@@ -1,87 +1,108 @@
 {
-  "btn": {
-    "submit": "Відправити",
-    "cancel": "Відмінити"
-  },
-  "language-toggler": {
-    "language": "Українська",
-    "language-short": "Укр"
-  },
-  "navbar": {
-    "login": "Увійти",
-    "logout": "Вийти",
-    "create-article": "Створити статтю",
-    "links": {
-      "profile": "Профіль",
-      "admin": "Адмін панель"
-    }
-  },
-  "admin-page": {
-    "title": "Admin page",
-    "paragraphs": {
-      "first": "This page serves as an example of user authorization. Only users with admin or manager privileges have access to this page."
-    }
-  },
-  "sidebar": {
-    "link": {
-      "about": "Про нас",
-      "main": "Головна",
-      "profile": "Профіль",
-      "articles": "Статті"
-    }
-  },
-  "copy-code": "Копіювати код",
-  "copy-successful": "Скопійовано!",
-  "copy-error": "Помилка",
-  "not-found": "Сторінку не знайдено",
-  "error-page": {
-    "reload": "Оновити сторінку",
-    "something-went-wrong": "Щось трапилось. Непередбачена помилка."
-  },
-  "login": {
-    "header": "Production project",
-    "login": "Логін",
-    "password": "Пароль",
-    "log-in": "Увійти",
-    "sing-up": "Зареєструватись",
-    "new-account": "Створити аккаунт",
-    "existed-account": "Вже маєшь аккаунт?",
-    "titles": {
-      "login": "Вхід до аккаунту",
-      "registration": "Створення нового аккаунту"
-    }
-  },
-  "error": {
-    "login": {
-      "incorrect-data": "Невірний логін або пароль",
-      "unexpected-error": "Трапилась помилка",
-      "gateway": "Упс. Сервер не відповідає",
-      "bad-request": "Невірний запрос",
-      "existed-user": "Користувач з таким логіном вже існує"
-    },
-    "common": {
-      "some-error": "Трапилась помилка"
-    }
-  },
-  "choose-currency": "Валюта",
-  "choose-country": "Країна",
-  "new-comment": {
-    "label": "Введить свій коментар"
-  },
-  "currency": {
-    "UAH": "Гривні",
-    "USD": "Долари"
-  },
-  "country": {
-    "Ukraine": "Україна",
-    "USA": "США"
-  },
-  "leave-feedback": "Текст відгука",
-  "user-settings-title": "Налаштування",
-  "ui-design-toggler": "Ввімкнути новий дезайн проекту",
+	"btn": {
+		"submit": "Відправити",
+		"cancel": "Відмінити"
+	},
+	"language-toggler": {
+		"language": "Українська",
+		"language-short": "Укр"
+	},
+	"navbar": {
+		"login": "Увійти",
+		"logout": "Вийти",
+		"create-article": "Створити статтю",
+		"links": {
+			"profile": "Профіль",
+			"admin": "Адмін панель"
+		}
+	},
+	"admin-page": {
+		"title": "Admin page",
+		"paragraphs": {
+			"first": "This page serves as an example of user authorization. Only users with admin or manager privileges have access to this page."
+		}
+	},
+	"sidebar": {
+		"link": {
+			"about": "Про нас",
+			"main": "Головна",
+			"profile": "Профіль",
+			"articles": "Статті"
+		}
+	},
+	"copy-code": "Копіювати код",
+	"copy-successful": "Скопійовано!",
+	"copy-error": "Помилка",
+	"not-found": "Сторінку не знайдено",
+	"error-page": {
+		"reload": "Оновити сторінку",
+		"something-went-wrong": "Щось трапилось. Непередбачена помилка."
+	},
+	"login": {
+		"header": "Production project",
+		"login": "Логін",
+		"password": "Пароль",
+		"log-in": "Увійти",
+		"sing-up": "Зареєструватись",
+		"new-account": "Створити аккаунт",
+		"existed-account": "Вже маєшь аккаунт?",
+		"titles": {
+			"login": "Вхід до аккаунту",
+			"registration": "Створення нового аккаунту"
+		}
+	},
+	"error": {
+		"login": {
+			"incorrect-data": "Невірний логін або пароль",
+			"unexpected-error": "Трапилась помилка",
+			"gateway": "Упс. Сервер не відповідає",
+			"bad-request": "Невірний запрос",
+			"existed-user": "Користувач з таким логіном вже існує"
+		},
+		"common": {
+			"some-error": "Трапилась помилка"
+		}
+	},
+	"choose-currency": "Валюта",
+	"choose-country": "Країна",
+	"new-comment": {
+		"label": "Введить свій коментар"
+	},
+	"currency": {
+		"placeholder": "Валюта не вказана",
+		"UAH": "Гривні",
+		"USD": "Долари"
+	},
+	"country": {
+ 		"placeholder": "Країна не вказана",
+		"Ukraine": "Україна",
+		"USA": "США"
+	},
+	"leave-feedback": "Текст відгука",
+	"user-settings-title": "Налаштування",
+	"ui-design-toggler": "Ввімкнути новий дезайн проекту",
 	"empty-comments-list": "Коментарів не знайдено",
 	"empty-ratings-list": "Оцінок не знайдено",
-  "author-article-title": "Автор статей",
+	"author-article-title": "Автор статей",
 	"author-comments-title": "Ваші коментарі",
-	"author-ratings-title": "Ваші оцінки"
+	"author-ratings-title": "Ваші оцінки",
+	"tooltips": {
+		"navbar": {
+			"create": "Створити нову статтю",
+			"notifications": "Список повідомлень",
+			"login": "Увійти до акаунту, або створити новий",
+			"menu": "Меню"
+		},
+		"sidebar": {
+			"theme-toggler": "Змінити тему",
+			"language-toggler": "Змінити мову"
+		},
+		"view-toggler": {
+			"list": "Великі блоки",
+			"grid": "Маленькі блоки",
+			"workplace": "Редагування статті",
+			"preview": "Попередній огляд статті"
+		}
+	}
 }
+

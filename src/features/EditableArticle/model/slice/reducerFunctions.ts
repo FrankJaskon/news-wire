@@ -23,7 +23,7 @@ export const addNewBlock: AddNewBlockType = (state, action, newBlock) => {
 	if (action.payload.id) {
 		const targetIndex = state.form.blocks!.findIndex(item => item.id === action.payload.id)
 		if (targetIndex === -1) return
-		const newArr = [...state.form.blocks!]
+		const newArr = state.form.blocks ? [...state.form.blocks] : []
 		if (action.payload.to === 'start') {
 			newArr.splice(targetIndex, 0, newBlock)
 			state.form.blocks = newArr

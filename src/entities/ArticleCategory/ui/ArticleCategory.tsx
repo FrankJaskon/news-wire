@@ -17,7 +17,7 @@ export const ArticleCategory: FC<ArticleCategoryProps> = props => {
 		<VStack gap='16' className={className} align='center' justify='center' max={false}>
 			{category.content && <AppText title={category.content} size='l' />}
 			<AppLink to={category.href}>
-				<AppIcon Svg={category.Icon} height={100} width={100} clickable />
+				<AppIcon Svg={category.Icon} height={100} width={100} clickable btnAs='div' />
 			</AppLink>
 		</VStack>
 	)

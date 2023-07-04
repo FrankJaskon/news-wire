@@ -28,8 +28,8 @@ export const EditArticlePage: FC<EditArticlePageProps> = memo((props: EditArticl
 			<PageWrapper data-testid='edit-article-page' className={className}>
 				<StickyContentLayout
 					content={<ArticleEditing ifCanEdit={ifCanEdit} />}
-					left={<EditArticleViewTogglerContainer ifCanEdit={ifCanEdit} />}
-					right={<EditArticleToolsContainer ifCanEdit={ifCanEdit} />}
+					left={<EditArticleViewTogglerContainer />}
+					right={<EditArticleToolsContainer />}
 				/>
 			</PageWrapper>
 		</LazyReducerLoader>

@@ -1,0 +1,11 @@
+.Tooltip {
+	box-sizing: border-box;
+	width: max-content;
+	max-width: 250px;
+	background-color: var(--text-redesigned);
+	color: var(--dark-bg-redesigned);
+	font: var(--font-m-redesigned);
+	font-size: 90%;
+	padding: 8px 16px;
+	border-radius: 19px;
+}

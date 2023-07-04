@@ -1,6 +1,7 @@
 {
 	"page-title": "Сторінка користувача",
 	"page-subtitle": "Деякий текст",
+    "empty-input-placeholder": "не вказано",
     "card": {
         "header": {
             "title": "Профіль",
@@ -34,5 +35,15 @@
     "rating": {
 		"rate-profile-title": "Оцініть користувача",
 		"rate-profile-title-has-response": "Ви вже залишили свою оцінку"
+	},
+	"profile-card": {
+		"placeholders": {
+			"firstname": "Вкажіть ваше ім'я",
+			"lastname": "Вкажіть вашу фамілію",
+			"age": "Вкажіть вік",
+			"username": "Введіть ім'я користувача",
+			"city": "Вкажіть місто",
+			"avatar": "Вставте посилання на зображення"
+		}
 	}
 }

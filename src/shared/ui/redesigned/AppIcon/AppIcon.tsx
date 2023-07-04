@@ -9,6 +9,8 @@ export interface AppIconBaseProps extends svgProps {
 	Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
 	'data-testid'?: string
 	btnType?: 'button' | 'submit' | 'reset'
+	btnAs?: 'button' | 'div'
+	withFocus?: boolean
 }
 
 export interface NonClickableAppIconProps extends AppIconBaseProps {
@@ -31,12 +33,14 @@ export const AppIcon: FC<AppIconProps> = memo((props: AppIconProps) => {
 		width = 32,
 		clickable,
 		btnType = 'button',
+		btnAs = 'button',
+		withFocus = true,
 		...otherProps
 	} = props
 
 	const icon = (
 		<Svg
-			className={classNames(cls.AppIcon, {}, [className])}
+			className={classNames(cls.AppIcon, {}, [className && clickable ? '' : className])}
 			data-testid={clickable ? dataTestId : undefined}
 			height={height}
 			width={width}
@@ -46,12 +50,24 @@ export const AppIcon: FC<AppIconProps> = memo((props: AppIconProps) => {
 	)
 
 	if (clickable) {
+		if (btnAs === 'div') {
+			return (
+				<div
+					data-testid={dataTestId}
+					onClick={props.onClick}
+					className={classNames(cls.button, {}, [className])}
+					style={{ height, width }}
+				>
+					{icon}
+				</div>
+			)
+		}
 		return (
 			<button
 				data-testid={dataTestId}
 				onClick={props.onClick}
 				type={btnType ?? 'button'}
-				className={classNames(cls.button)}
+				className={classNames(cls.button, { [cls.withFocus]: withFocus }, [className])}
 				style={{ height, width }}
 			>
 				{icon}

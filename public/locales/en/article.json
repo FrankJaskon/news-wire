@@ -43,6 +43,7 @@
 		}
 	},
 	"empty-articles-list": "Articles have not been found",
+	"empty-article": "There is not any content. Please add some information to the article",
 	"rating": {
 		"rate-article-title": "How do you feel about this article?",
 		"rate-article-feedback-title": "Leave your feedback about this article",
@@ -95,7 +96,7 @@
 			"block-option": "New block",
 			"move-up": "Up",
 			"move-down": "Down",
-			"start": "At the begining",
+			"start": "At the beginning",
 			"end": "At the end",
 			"before": "Before block",
 			"after": "After block",
@@ -122,5 +123,10 @@
 		},
 		"on-save-link-to-article": "Visit your article",
 		"on-remove-link-to-articles": "Back to articles"
+	},
+	"tooltips": {
+		"block-options": "Menu of the block",
+		"remove-field": "Remove field",
+		"required-field": "This field is required"
 	}
 }

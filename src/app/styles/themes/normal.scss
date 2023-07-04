@@ -28,6 +28,11 @@
 	--focus-shadow: 0 0 3px 2px rgba(0 0 0 / 60%);
 
     // REDESIGN
+
+	/* FOCUS */
+	--focused-outline: 2px solid var(--text-redesigned);
+
+	/* COLORS */
     --dark-bg-redesigned: #FFF;
     --bg-redesigned: #EFF5F6;
     --light-bg-redesigned: #E2EEF1;

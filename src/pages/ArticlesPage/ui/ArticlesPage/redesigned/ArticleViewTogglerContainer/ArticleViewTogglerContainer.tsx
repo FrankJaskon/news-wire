@@ -1,4 +1,5 @@
-import { FC, memo } from 'react'
+import { FC, memo, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ViewVariantType } from '@/entities/Article'
 import { ViewPropsWithIcon, ViewToggler } from '@/features/ViewToggler'
 import ListIcon from '@/shared/assets/icons/burger.svg'
@@ -9,21 +10,27 @@ interface ArticleViewTogglerContainerProps {
 	isLoading?: boolean
 }
 
-const views: ViewPropsWithIcon<ViewVariantType>[] = [
-	{
-		view: 'list',
-		content: ListIcon,
-	},
-	{
-		view: 'grid',
-		content: GridIcon,
-	},
-]
-
 export const ArticleViewTogglerContainer: FC<ArticleViewTogglerContainerProps> = memo(
 	(props: ArticleViewTogglerContainerProps) => {
 		const { isLoading } = props
 		const { view, changeView } = useArticlesFilters()
+		const { t } = useTranslation()
+
+		const views: ViewPropsWithIcon<ViewVariantType>[] = useMemo(
+			() => [
+				{
+					view: 'list',
+					content: ListIcon,
+					tooltip: t('tooltips.view-toggler.list'),
+				},
+				{
+					view: 'grid',
+					content: GridIcon,
+					tooltip: t('tooltips.view-toggler.grid'),
+				},
+			],
+			[t]
+		)
 
 		return (
 			<ViewToggler

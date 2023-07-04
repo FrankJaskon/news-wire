@@ -17,6 +17,7 @@ export interface ButtonComponentProps {
 	addonRight?: ReactNode
 	disabled?: boolean
 	type?: 'button' | 'submit' | 'reset'
+	withFocus?: boolean
 }
 
 interface ButtonProps extends ButtonComponentProps, ButtonHTMLAttributes<HTMLButtonElement> {
@@ -47,6 +48,7 @@ export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 		addonRight,
 		type = 'button',
 		as = 'button',
+		withFocus = true,
 		...otherProps
 	} = props
 
@@ -55,6 +57,7 @@ export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 		[cls.fullWidth]: fullWidth,
 		[cls.withAddonLeft]: Boolean(addonLeft),
 		[cls.withAddonRight]: Boolean(addonRight),
+		[cls.withFocus]: withFocus,
 	}
 
 	const extra = [className, cls[variant], cls[size], shape && cls[shape], cls[borderVariant]]

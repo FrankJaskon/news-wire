@@ -13,7 +13,7 @@ export const AvatarDropdown: FC<AvatarDropdownProps> = props => {
 	return (
 		<ToggleFeatures
 			feature='isAppRedesigned'
-			on={<AvatarDropdownRedesigned className={className} />}
+			on={<AvatarDropdownRedesigned />}
 			off={<AvatarDropdownDeprecated className={className} />}
 		/>
 	)

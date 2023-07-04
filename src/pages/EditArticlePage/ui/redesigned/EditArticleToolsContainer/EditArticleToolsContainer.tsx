@@ -11,16 +11,16 @@ import {
 	useEditableArticleMode,
 } from '@/features/EditableArticle'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
+import { VStack } from '@/shared/ui/redesigned/VStack'
 import { EditArticleToolType, EditArticleTools } from '@/widgets/EditArticleTools'
 
 export interface EditArticleToolsContainerProps {
 	className?: string
-	ifCanEdit?: boolean
 }
 
 export const EditArticleToolsContainer: FC<EditArticleToolsContainerProps> = memo(
 	(props: EditArticleToolsContainerProps) => {
-		const { className, ifCanEdit } = props
+		const { className } = props
 		const { t } = useTranslation('article')
 		const dispatch = useAppDispatch()
 		const articleForm = useEditableArticleForm()
@@ -28,172 +28,153 @@ export const EditArticleToolsContainer: FC<EditArticleToolsContainerProps> = mem
 		const isPreview = useEditableArticleMode() === 'preview'
 		const userData = useUserAuthData()
 
-		const options: EditArticleToolType[][] = useMemo(
+		const addOptions: EditArticleToolType[] = useMemo(
 			() => [
-				[
-					{
-						name: 'subtitle',
-						content: t('editable-article.options.add-subtitle'),
-						onClick: () => {
-							dispatch(
-								editableArticleActions.setArticleData({
-									isSubtitle: true,
-								})
-							)
+				{
+					name: 'subtitle',
+					label: t('editable-article.options.add-subtitle'),
+					onClick: () => {
+						dispatch(
+							editableArticleActions.setArticleData({
+								isSubtitle: true,
+							})
+						)
+					},
+					disabled: articleForm.isSubtitle,
+				},
+				{
+					name: 'img',
+					label: t('editable-article.options.add-img'),
+					onClick: () => {
+						dispatch(
+							editableArticleActions.setArticleData({
+								isImg: true,
+							})
+						)
+					},
+					disabled: articleForm.isImg,
+				},
+				{
+					trigger: t('editable-article.options.add-text-block'),
+					items: [
+						{
+							label: t('editable-article.options.start'),
+							onClick: () => {
+								dispatch(editableArticleActions.addNewTextBlock({ to: 'start' }))
+							},
 						},
-						disabled: articleForm.isSubtitle,
-					},
-					{
-						name: 'img',
-						content: t('editable-article.options.add-img'),
-						onClick: () => {
-							dispatch(
-								editableArticleActions.setArticleData({
-									isImg: true,
-								})
-							)
+						{
+							label: t('editable-article.options.end'),
+							onClick: () => {
+								dispatch(editableArticleActions.addNewTextBlock({ to: 'end' }))
+							},
 						},
-						disabled: articleForm.isImg,
-					},
-					{
-						content: t('editable-article.options.add-text-block'),
-						options: [
-							[
-								{
-									content: t('editable-article.options.start'),
-									onClick: () => {
-										dispatch(
-											editableArticleActions.addNewTextBlock({ to: 'start' })
-										)
-									},
-								},
-								{
-									content: t('editable-article.options.end'),
-									onClick: () => {
-										dispatch(
-											editableArticleActions.addNewTextBlock({ to: 'end' })
-										)
-									},
-								},
-							],
-						],
-					},
-					{
-						content: t('editable-article.options.add-code-block'),
-						options: [
-							[
-								{
-									content: t('editable-article.options.start'),
-									onClick: () => {
-										dispatch(
-											editableArticleActions.addNewCodeBlock({ to: 'start' })
-										)
-									},
-								},
-								{
-									content: t('editable-article.options.end'),
-									onClick: () => {
-										dispatch(
-											editableArticleActions.addNewCodeBlock({ to: 'end' })
-										)
-									},
-								},
-							],
-						],
-					},
-					{
-						content: t('editable-article.options.add-img-block'),
-						options: [
-							[
-								{
-									content: t('editable-article.options.start'),
-									onClick: () => {
-										dispatch(
-											editableArticleActions.addNewImageBlock({ to: 'start' })
-										)
-									},
-								},
-								{
-									content: t('editable-article.options.end'),
-									onClick: () => {
-										dispatch(
-											editableArticleActions.addNewImageBlock({ to: 'end' })
-										)
-									},
-								},
-							],
-						],
-					},
-					{
-						content: t('editable-article.options.add-video-block'),
-						options: [
-							[
-								{
-									content: t('editable-article.options.start'),
-									onClick: () => {
-										dispatch(
-											editableArticleActions.addNewVideoBlock({ to: 'start' })
-										)
-									},
-								},
-								{
-									content: t('editable-article.options.end'),
-									onClick: () => {
-										dispatch(
-											editableArticleActions.addNewVideoBlock({ to: 'end' })
-										)
-									},
-								},
-							],
-						],
-					},
-				],
-				[
-					{
-						content: isEdit
-							? t('editable-article.options.save-article')
-							: t('editable-article.options.create-article'),
-						onClick: () => {
-							if (isEdit) {
-								dispatch(updateArticle())
-							} else {
-								dispatch(createNewArticle())
-							}
+					],
+				},
+				{
+					trigger: t('editable-article.options.add-code-block'),
+					items: [
+						{
+							label: t('editable-article.options.start'),
+							onClick: () => {
+								dispatch(editableArticleActions.addNewCodeBlock({ to: 'start' }))
+							},
 						},
-						type: 'save',
-					},
-					{
-						content: t('editable-article.options.reset-article'),
-						onClick: () => {
-							dispatch(editableArticleActions.resetChanges())
+						{
+							label: t('editable-article.options.end'),
+							onClick: () => {
+								dispatch(editableArticleActions.addNewCodeBlock({ to: 'end' }))
+							},
 						},
-						type: 'normal',
-					},
-					{
-						content: t('editable-article.options.remove-article'),
-						onClick: () => {
-							dispatch(removeArticle())
+					],
+				},
+				{
+					trigger: t('editable-article.options.add-img-block'),
+					items: [
+						{
+							label: t('editable-article.options.start'),
+							onClick: () => {
+								dispatch(editableArticleActions.addNewImageBlock({ to: 'start' }))
+							},
 						},
-						disabled: !isEdit,
-						type: 'cancel',
-					},
-				],
+						{
+							label: t('editable-article.options.end'),
+							onClick: () => {
+								dispatch(editableArticleActions.addNewImageBlock({ to: 'end' }))
+							},
+						},
+					],
+				},
+				{
+					trigger: t('editable-article.options.add-video-block'),
+					items: [
+						{
+							label: t('editable-article.options.start'),
+							onClick: () => {
+								dispatch(editableArticleActions.addNewVideoBlock({ to: 'start' }))
+							},
+						},
+						{
+							label: t('editable-article.options.end'),
+							onClick: () => {
+								dispatch(editableArticleActions.addNewVideoBlock({ to: 'end' }))
+							},
+						},
+					],
+				},
 			],
-			[articleForm.isImg, articleForm.isSubtitle, dispatch, isEdit, t]
+			[articleForm.isImg, articleForm.isSubtitle, dispatch, t]
 		)
 
-		if (!ifCanEdit || isPreview) {
+		const generalOptions: EditArticleToolType[] = useMemo(
+			() => [
+				{
+					label: isEdit
+						? t('editable-article.options.save-article')
+						: t('editable-article.options.create-article'),
+					onClick: () => {
+						if (isEdit) {
+							dispatch(updateArticle())
+						} else {
+							dispatch(createNewArticle())
+						}
+					},
+					type: 'save',
+				},
+				{
+					label: t('editable-article.options.reset-article'),
+					onClick: () => {
+						dispatch(editableArticleActions.resetChanges())
+					},
+					type: 'normal',
+				},
+				{
+					label: t('editable-article.options.remove-article'),
+					onClick: () => {
+						dispatch(removeArticle())
+					},
+					disabled: !isEdit,
+					type: 'cancel',
+				},
+			],
+			[dispatch, isEdit, t]
+		)
+
+		if (isPreview) {
 			return null
 		}
 
 		return (
-			<EditArticleTools
-				className={className}
-				items={options}
-				avatar={userData?.avatar}
-				username={userData?.username}
-				userId={userData?.id}
-			/>
+			<VStack gap='16'>
+				<EditArticleTools
+					className={className}
+					items={addOptions}
+					avatar={userData?.avatar}
+					username={userData?.username}
+					userId={userData?.id}
+				/>
+				<EditArticleTools className={className} items={generalOptions} />
+			</VStack>
 		)
 	}
 )

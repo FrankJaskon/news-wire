@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import RemoveIconDeprecated from '@/shared/assets/icons/clear.svg'
+import { useTranslation } from 'react-i18next'
 import RemoveIcon from '@/shared/assets/icons/remove.svg'
 import { ToggleFeatures } from '@/shared/lib/features'
 import {
@@ -9,6 +9,7 @@ import {
 } from '@/shared/ui/deprecated/AppButton'
 import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
 import { HStack } from '@/shared/ui/redesigned/HStack'
+import { AppTooltip } from '@/shared/ui/redesigned/Tooltip/AppTooltip'
 import { OptionIcon } from '../EditableArticleOptions/OptionIcon/OptionIcon'
 
 export interface EditableArticleWithRemoveProps {
@@ -20,13 +21,23 @@ export interface EditableArticleWithRemoveProps {
 export const EditableArticleWithRemove: FC<EditableArticleWithRemoveProps> = props => {
 	const { className, children, onRemove } = props
 
+	const { t } = useTranslation('article')
+
 	return (
 		<ToggleFeatures
 			feature='isAppRedesigned'
 			on={
 				<HStack gap='4' className={className}>
 					{children}
-					<AppIcon Svg={RemoveIcon} height={24} width={24} clickable onClick={onRemove} />
+					<AppTooltip tooltip={t('tooltips.remove-field')} as='div'>
+						<AppIcon
+							Svg={RemoveIcon}
+							height={24}
+							width={24}
+							clickable
+							onClick={onRemove}
+						/>
+					</AppTooltip>
 				</HStack>
 			}
 			off={
@@ -37,7 +48,7 @@ export const EditableArticleWithRemove: FC<EditableArticleWithRemoveProps> = pro
 						shape={ButtonShape.SQUARE}
 						onClick={onRemove}
 					>
-						<OptionIcon icon={RemoveIconDeprecated} />
+						<OptionIcon />
 					</AppButtonDeprecated>
 				</HStack>
 			}

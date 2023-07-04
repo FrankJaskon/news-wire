@@ -18,7 +18,7 @@ export const EditableArticleVideoBlock: FC<EditableArticleVideoBlockProps> = mem
 	(props: EditableArticleVideoBlockProps) => {
 		const { className, block, onChangeVideo } = props
 		const { t } = useTranslation('article')
-		const options = useGetEditableBlockDropdownOptions(block.id)
+		const options = useGetEditableBlockDropdownOptions(block.id, 'video')
 
 		const handleOnChangeVideo = useCallback(
 			(value: string) => {

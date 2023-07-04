@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import AddIcon from '@/shared/assets/icons/add.svg'
+import RemoveIconDeprecated from '@/shared/assets/icons/clear.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { ToggleFeatures } from '@/shared/lib/features'
 import { AppCard as AppCardDeprecated, CardVariant } from '@/shared/ui/deprecated/AppCard'
@@ -31,7 +32,10 @@ export const OptionIcon: FC<OptionIconProps> = props => {
 			off={
 				<AppCardDeprecated variant={CardVariant.PRIMARY} noPaddings className={className}>
 					<HStack justify='center' align='center'>
-						<AppIconDeprecated Svg={AddIcon} variant={AppIconVariant.CONTRAST} />
+						<AppIconDeprecated
+							Svg={RemoveIconDeprecated}
+							variant={AppIconVariant.CONTRAST}
+						/>
 					</HStack>
 				</AppCardDeprecated>
 			}

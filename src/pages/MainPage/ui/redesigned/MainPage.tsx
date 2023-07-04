@@ -7,6 +7,7 @@ import BannerImg from '@/shared/assets/banner.png'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { AppText } from '@/shared/ui/redesigned/AppText'
+
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { ArticleTypeCategories } from '@/widgets/ArticleTypeCategories'
 import { PageWrapper } from '@/widgets/PageWrapper'

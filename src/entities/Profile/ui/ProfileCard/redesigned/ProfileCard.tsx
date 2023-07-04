@@ -1,3 +1,4 @@
+import { TFunction } from 'i18next'
 import { FC, KeyboardEvent as ReactKeyboardEvent, useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CountrySelect, CountryType } from '@/entities/Country'
@@ -11,6 +12,15 @@ import { HStack } from '@/shared/ui/redesigned/HStack'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { ProfileType } from '../../../model/types/profile'
 import { ProfileCardSkeleton } from '../../ProfileCardSkeleton/ProfileCardSkeleton'
+
+const getDefaultValue = (
+	readonly: boolean,
+	t: TFunction<'profile', undefined, 'profile'>,
+	value?: string
+) => {
+	if (value) return value
+	return readonly ? t('empty-input-placeholder') : ''
+}
 
 export interface ProfileCardProps {
 	className?: string
@@ -146,7 +156,8 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 							<AppInput
 								id='firstname'
 								onChange={updateFirstname}
-								value={data?.firstname || ''}
+								value={getDefaultValue(readonly, t, data?.firstname)}
+								placeholder={t('profile-card.placeholders.firstname')}
 								readonly={readonly}
 								data-testid='profile-card-firstname-input'
 							/>
@@ -156,28 +167,35 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 							<AppInput
 								id='lastname'
 								onChange={updateLastname}
-								value={data?.lastname || ''}
+								value={getDefaultValue(readonly, t, data?.lastname)}
+								placeholder={t('profile-card.placeholders.lastname')}
 								readonly={readonly}
 								data-testid='profile-card-lastname-input'
 							/>
 						</HStack>
 						<HStack gap='8' align='center'>
 							<AppLabel htmlFor='user-age'>{t('card.input.age')}</AppLabel>
-							<AppInput
-								id='user-age'
-								onChange={updateAge}
-								value={data?.age}
-								readonly={readonly}
-								type='number'
-								data-testid='profile-card-age-input'
-							/>
+							{!data?.age && !readonly ? (
+								<AppInput
+									id='user-age'
+									onChange={updateAge}
+									value={data?.age}
+									placeholder={t('profile-card.placeholders.age')}
+									readonly={readonly}
+									type='number'
+									data-testid='profile-card-age-input'
+								/>
+							) : (
+								<AppInput value={t('empty-input-placeholder')} readonly />
+							)}
 						</HStack>
 						<HStack gap='8' align='center'>
 							<AppLabel htmlFor='city'>{t('card.input.city')}</AppLabel>
 							<AppInput
 								id='city'
 								onChange={updateCity}
-								value={data?.city || ''}
+								value={getDefaultValue(readonly, t, data?.city)}
+								placeholder={t('profile-card.placeholders.city')}
 								readonly={readonly}
 								data-testid='profile-card-city-input'
 							/>
@@ -189,7 +207,8 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 							<AppInput
 								id='user-username'
 								onChange={updateUsername}
-								value={data?.username ?? ''}
+								value={getDefaultValue(readonly, t, data?.username)}
+								placeholder={t('profile-card.placeholders.username')}
 								readonly={readonly}
 								data-testid='profile-card-username-input'
 							/>
@@ -199,7 +218,8 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 							<AppInput
 								id='user-avatar'
 								onChange={updateAvatar}
-								value={data?.avatar || ''}
+								value={getDefaultValue(readonly, t, data?.avatar)}
+								placeholder={t('profile-card.placeholders.avatar')}
 								readonly={readonly}
 								data-testid='profile-card-avatar-input'
 							/>

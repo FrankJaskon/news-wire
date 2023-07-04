@@ -1,31 +1,30 @@
-import { FC, memo } from 'react'
+import { FC, ReactNode, memo } from 'react'
 import { ClickableAvatar } from '@/entities/ClickableAvatar'
 import AddIcon from '@/shared/assets/icons/add.svg'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton, BorderVariantType } from '@/shared/ui/redesigned/AppButton'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
 import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
-import { Dropdown } from '@/shared/ui/redesigned/Popups'
+import {
+	FloatDropdown,
+	FloatDropdownItemType,
+} from '@/shared/ui/redesigned/Popups/FloatDropdown/FloatDropdown'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import cls from './EditArticleTools.module.scss'
 
-interface OptionsProps {
-	content: string
-	onClick: () => void
-}
-
 export interface EditArticleToolType {
 	name?: string
-	content?: string
+	trigger?: ReactNode
 	onClick?: () => void
 	disabled?: boolean
+	items?: FloatDropdownItemType[]
+	label?: string
 	type?: BorderVariantType
-	options?: OptionsProps[][]
 }
 
 export interface EditArticleToolsProps {
 	className?: string
-	items: EditArticleToolType[][]
+	items: EditArticleToolType[]
 	userId?: number
 	avatar?: string
 	username?: string
@@ -35,68 +34,56 @@ export const EditArticleTools: FC<EditArticleToolsProps> = memo((props: EditArti
 	const { className, items, userId, avatar, username } = props
 
 	return (
-		<VStack gap='24'>
-			{items.map((itemsList, index) => (
-				<AppCard
-					key={index}
-					className={classNames(cls.EditArticleTools, {}, [className])}
-					radius='big'
-					padding='24'
-				>
-					<VStack gap='24' align='start'>
-						{index === 0 && (
-							<ClickableAvatar id={userId!} avatar={avatar} username={username} />
-						)}
-						{itemsList.map((item, index) => {
-							if (item.disabled) return null
-							if (item.options) {
-								return (
-									<Dropdown
-										key={`${item.content}${index}`}
-										trigger={
-											<AppButton
-												key={`${item.content}${index}`}
-												variant='outline'
-												borderVariant={item.type}
-												disabled={item.disabled}
-												as='div'
-												addonLeft={
-													item.type ? undefined : (
-														<AppIcon
-															Svg={AddIcon}
-															height={28}
-															width={28}
-														/>
-													)
-												}
-											>
-												{item.content}
-											</AppButton>
+		<AppCard
+			className={classNames(cls.EditArticleTools, {}, [className])}
+			radius='big'
+			padding='24'
+		>
+			<VStack gap='24'>
+				{avatar && <ClickableAvatar id={userId!} avatar={avatar} username={username} />}
+				{items.map((item, index) => {
+					if (item?.disabled) return null
+					if (item?.trigger) {
+						return (
+							<FloatDropdown
+								key={`${item?.trigger}${index}`}
+								trigger={
+									<AppButton
+										key={`${item?.trigger}${index}`}
+										variant='outline'
+										disabled={item?.disabled}
+										as='div'
+										addonLeft={
+											item?.type ? undefined : (
+												<AppIcon Svg={AddIcon} height={28} width={28} />
+											)
 										}
-										items={item.options}
-									/>
+									>
+										{item?.trigger}
+									</AppButton>
+								}
+								items={item?.items}
+							/>
+						)
+					}
+					return (
+						<AppButton
+							key={`${item?.label}${index}`}
+							variant='outline'
+							borderVariant={item?.type}
+							onClick={item?.onClick}
+							disabled={item?.disabled}
+							addonLeft={
+								item?.type ? undefined : (
+									<AppIcon Svg={AddIcon} height={28} width={28} />
 								)
 							}
-							return (
-								<AppButton
-									key={`${item.content}${index}`}
-									variant='outline'
-									borderVariant={item.type}
-									onClick={item.onClick}
-									disabled={item.disabled}
-									addonLeft={
-										item.type ? undefined : (
-											<AppIcon Svg={AddIcon} height={28} width={28} />
-										)
-									}
-								>
-									{item.content}
-								</AppButton>
-							)
-						})}
-					</VStack>
-				</AppCard>
-			))}
-		</VStack>
+						>
+							{item?.label}
+						</AppButton>
+					)
+				})}
+			</VStack>
+		</AppCard>
 	)
 })

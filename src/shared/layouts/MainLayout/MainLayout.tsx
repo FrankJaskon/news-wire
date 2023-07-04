@@ -22,18 +22,24 @@ export const MainLayout: FC<MainLayoutProps> = props => {
 
 	return (
 		<div className={classNames(cls.MainLayout, {}, [className])}>
-			<div ref={sidebarRef} className={cls.sidebar}>
-				{sidebar}
-			</div>
+			{sidebar && (
+				<div ref={sidebarRef} className={cls.sidebar}>
+					{sidebar}
+				</div>
+			)}
 			<div ref={contentRef} className={cls.content} id='main_layout_content_container'>
 				{content}
 			</div>
-			<div className={cls.rightbar}>
-				<div className={cls.header} ref={rightbarRef}>
-					{header}
+			{(header || toolbar) && (
+				<div className={cls.rightbar}>
+					{header && (
+						<div className={cls.header} ref={rightbarRef}>
+							{header}
+						</div>
+					)}
+					{toolbar && <div className={cls.toolbar}>{toolbar}</div>}
 				</div>
-				<div className={cls.toolbar}>{toolbar}</div>
-			</div>
+			)}
 		</div>
 	)
 }

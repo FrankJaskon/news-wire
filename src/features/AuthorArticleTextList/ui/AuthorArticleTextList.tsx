@@ -8,6 +8,7 @@ import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink'
 import { AppText } from '@/shared/ui/redesigned/AppText'
 import { HStack } from '@/shared/ui/redesigned/HStack'
 import { useAuthorArticleList } from '../api/authorArticleListApi'
+import cls from './AuthorArticleTextList.module.scss'
 
 export interface AuthorArticleTextListProps {
 	id?: number
@@ -59,7 +60,7 @@ export const AuthorArticleTextList: FC<AuthorArticleTextListProps> = memo(
 								ns: 'article',
 							})}
 						/>
-						<AppLink to={getNewArticleDetailsRoute()}>
+						<AppLink to={getNewArticleDetailsRoute()} className={cls.accentColor}>
 							{'> ' + t('editable-article.options.create-article', { ns: 'article' })}
 						</AppLink>
 					</HStack>

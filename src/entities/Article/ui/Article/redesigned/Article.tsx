@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { QueryParamsKeys } from '@/shared/const/queryParams'
 import { useMoveToElementByQuery } from '@/shared/hooks/useMoveToElementByQuery'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
@@ -17,10 +18,26 @@ export interface ArticleDetailsProps {
 	error?: string
 }
 
+const checkIfArticleNotEmpty = (article: ArticleType) => {
+	const { id, ...articleWithNoId } = article
+
+	return Object.values(articleWithNoId).some(value => {
+		if (Array.isArray(value)) {
+			return value.length ? true : false
+		}
+		return value ? true : false
+	})
+}
+
 export const Article: FC<ArticleDetailsProps> = memo((props: ArticleDetailsProps) => {
 	const { className, article, isLoading, error } = props
+	const { t } = useTranslation('article')
 
 	useMoveToElementByQuery(QueryParamsKeys.COMMENT, isLoading)
+
+	if (!checkIfArticleNotEmpty(article)) {
+		return <AppText text={t('empty-article')} />
+	}
 
 	if (isLoading) {
 		return (
@@ -39,9 +56,11 @@ export const Article: FC<ArticleDetailsProps> = memo((props: ArticleDetailsProps
 			</VStack>
 		)
 	}
+
 	if (error) {
 		return <AppText variant='error' text={error} />
 	}
+
 	return (
 		<VStack gap='16' className={className}>
 			<AppText title={article?.title} size='xl' weight='bolder' />

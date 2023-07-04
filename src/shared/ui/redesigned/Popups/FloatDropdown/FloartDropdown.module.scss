@@ -1,0 +1,43 @@
+.RootMenu[data-open],
+.RootMenu:hover {
+	color: var(--accent-redesigned);
+}
+
+.Menu {
+	background-color: var(--dark-bg-redesigned);
+	backdrop-filter: blur(10px);
+	border-radius: var(--border-radius-redesigned-small);
+	border: 1px solid var(--accent-redesigned);
+	outline: 0;
+	overflow: hidden;
+}
+
+.MenuItem {
+	font: var(--font-m-redesigned);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: none;
+	width: 100%;
+	border: none;
+	text-align: left;
+	min-width: 110px;
+	margin: 0;
+	padding: 10px 25px;
+	outline: 0;
+}
+
+.MenuItem:focus {
+	background-color: var(--light-bg-redesigned);
+	color: var(--accent-redesigned);
+}
+
+.MenuItem[data-nested][data-open]:not([data-focus-inside]) {
+	background-color: var(--light-bg-redesigned);
+	color: var(--accent-redesigned);
+}
+
+.MenuItem[data-focus-inside][data-open] {
+	color: var(--accent-redesigned);
+	background-color: var(--light-bg-redesigned);
+}

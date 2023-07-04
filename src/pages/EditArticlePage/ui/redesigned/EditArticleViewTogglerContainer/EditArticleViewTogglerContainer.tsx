@@ -10,13 +10,12 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 
 interface EditArticleViewTogglerContainerProps {
 	isLoading?: boolean
-	ifCanEdit?: boolean
 }
 
 export const EditArticleViewTogglerContainer: FC<EditArticleViewTogglerContainerProps> = memo(
 	(props: EditArticleViewTogglerContainerProps) => {
-		const { isLoading, ifCanEdit } = props
-		const { t } = useTranslation('article')
+		const { isLoading } = props
+		const { t } = useTranslation(['translation', 'article'])
 		const mode = useEditableArticleMode()
 		const dispatch = useAppDispatch()
 
@@ -24,11 +23,13 @@ export const EditArticleViewTogglerContainer: FC<EditArticleViewTogglerContainer
 			() => [
 				{
 					view: 'edit',
-					content: t('editable-article.places.workplace'),
+					content: t('editable-article.places.workplace', { ns: 'article' }),
+					tooltip: t('tooltips.view-toggler.workplace'),
 				},
 				{
 					view: 'preview',
-					content: t('editable-article.places.preview'),
+					content: t('editable-article.places.preview', { ns: 'article' }),
+					tooltip: t('tooltips.view-toggler.preview'),
 				},
 			],
 			[t]
@@ -40,10 +41,6 @@ export const EditArticleViewTogglerContainer: FC<EditArticleViewTogglerContainer
 			},
 			[dispatch]
 		)
-
-		if (!ifCanEdit) {
-			return null
-		}
 
 		return (
 			<ViewToggler

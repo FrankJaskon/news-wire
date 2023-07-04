@@ -13,3 +13,5 @@ export const TextColor = {
 export type TextColorType = ValueOf<typeof TextColor>
 
 export const typedMemo: <T>(c: T) => T = memo
+
+export const TooltipDelay = 200
