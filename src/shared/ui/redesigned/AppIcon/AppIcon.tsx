@@ -4,12 +4,14 @@ import cls from './AppIcon.module.scss'
 
 type svgProps = Omit<React.SVGAttributes<SVGElement>, 'onClick'>
 
+type BtnAsType = 'button' | 'div'
+
 export interface AppIconBaseProps extends svgProps {
 	className?: string
 	Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>
 	'data-testid'?: string
 	btnType?: 'button' | 'submit' | 'reset'
-	btnAs?: 'button' | 'div'
+	btnAs?: BtnAsType
 	withFocus?: boolean
 }
 
@@ -20,6 +22,8 @@ export interface NonClickableAppIconProps extends AppIconBaseProps {
 export interface ClickableAppIconProps extends AppIconBaseProps {
 	clickable: true
 	onClick?: () => void
+	onMouseEnter?: () => void
+	onMouseLeave?: () => void
 }
 
 type AppIconProps = NonClickableAppIconProps | ClickableAppIconProps
@@ -55,6 +59,8 @@ export const AppIcon: FC<AppIconProps> = memo((props: AppIconProps) => {
 				<div
 					data-testid={dataTestId}
 					onClick={props.onClick}
+					onMouseEnter={props?.onMouseEnter}
+					onMouseLeave={props?.onMouseLeave}
 					className={classNames(cls.button, {}, [className])}
 					style={{ height, width }}
 				>
@@ -66,6 +72,8 @@ export const AppIcon: FC<AppIconProps> = memo((props: AppIconProps) => {
 			<button
 				data-testid={dataTestId}
 				onClick={props.onClick}
+				onMouseEnter={props?.onMouseEnter}
+				onMouseLeave={props?.onMouseLeave}
 				type={btnType ?? 'button'}
 				className={classNames(cls.button, { [cls.withFocus]: withFocus }, [className])}
 				style={{ height, width }}

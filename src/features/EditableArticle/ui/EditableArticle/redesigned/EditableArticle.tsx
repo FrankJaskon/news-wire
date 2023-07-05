@@ -5,10 +5,9 @@ import { ArticleCategoriesType } from '@/entities/ArticleCategory'
 import { ArticleTypeTabs } from '@/entities/ArticleTypeTabs'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 
-import { AppButton } from '@/shared/ui/redesigned/AppButton'
 import { AppInput } from '@/shared/ui/redesigned/AppInput'
 import { AppLabel } from '@/shared/ui/redesigned/AppLabel'
-import { AppTooltip } from '@/shared/ui/redesigned/Tooltip/AppTooltip'
+import { AppPrompt } from '@/shared/ui/redesigned/Tooltip/AppPrompt'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { useEditableArticleForm } from '../../../model/selectors/editableArticleSelector'
 import { editableArticleActions } from '../../../model/slice/editableArticleSlice'
@@ -221,11 +220,7 @@ export const EditableArticle: FC<EditableArticleProps> = memo((props: EditableAr
 				<AppLabel variant='primary' htmlFor='article-title'>
 					{t('editable-article.labels.title')}
 					<span className={cls.red}>*</span>
-					<AppTooltip tooltip={t('tooltips.required-field')}>
-						<AppButton variant='custom' as='span'>
-							(?)
-						</AppButton>
-					</AppTooltip>
+					<AppPrompt prompt={t('tooltips.required-field')} />
 				</AppLabel>
 				<AppInput
 					id='article-title'

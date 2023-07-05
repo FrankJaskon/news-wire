@@ -5,6 +5,7 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton, BorderVariantType } from '@/shared/ui/redesigned/AppButton'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
 import { AppIcon } from '@/shared/ui/redesigned/AppIcon'
+import { HStack } from '@/shared/ui/redesigned/HStack'
 import {
 	FloatDropdown,
 	FloatDropdownItemType,
@@ -30,6 +31,12 @@ export interface EditArticleToolsProps {
 	username?: string
 }
 
+const addonLeft = (
+	<HStack justify='center' align='center' className={cls.addIcon}>
+		<AppIcon Svg={AddIcon} height={22} width={22} />
+	</HStack>
+)
+
 export const EditArticleTools: FC<EditArticleToolsProps> = memo((props: EditArticleToolsProps) => {
 	const { className, items, userId, avatar, username } = props
 
@@ -53,11 +60,7 @@ export const EditArticleTools: FC<EditArticleToolsProps> = memo((props: EditArti
 										variant='outline'
 										disabled={item?.disabled}
 										as='div'
-										addonLeft={
-											item?.type ? undefined : (
-												<AppIcon Svg={AddIcon} height={28} width={28} />
-											)
-										}
+										addonLeft={item?.type ? undefined : addonLeft}
 									>
 										{item?.trigger}
 									</AppButton>
@@ -73,11 +76,7 @@ export const EditArticleTools: FC<EditArticleToolsProps> = memo((props: EditArti
 							borderVariant={item?.type}
 							onClick={item?.onClick}
 							disabled={item?.disabled}
-							addonLeft={
-								item?.type ? undefined : (
-									<AppIcon Svg={AddIcon} height={28} width={28} />
-								)
-							}
+							addonLeft={item?.type ? undefined : addonLeft}
 						>
 							{item?.label}
 						</AppButton>

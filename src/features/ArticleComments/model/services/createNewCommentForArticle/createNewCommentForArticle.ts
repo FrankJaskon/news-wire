@@ -29,7 +29,9 @@ export const createNewCommentForArticle = createAsyncThunk<
 			text: comment,
 		})
 
-		thunkAPI.dispatch(fetchCommentsByArticleId(articleId))
+		setTimeout(() => {
+			thunkAPI.dispatch(fetchCommentsByArticleId(articleId))
+		}, 1000)
 
 		return response.data
 	} catch (error: any) {

@@ -27,6 +27,9 @@ const buildPlugins = ({
 			__API_URL__: JSON.stringify(apiUrl),
 			__PROJECT__: JSON.stringify(project),
 		}),
+		new CopyPlugin({
+			patterns: [{ from: paths.assets.favicon, to: 'favicon.ico' }],
+		}),
 	]
 
 	if (isDev) {

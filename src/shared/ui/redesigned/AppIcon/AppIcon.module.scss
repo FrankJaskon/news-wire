@@ -1,6 +1,7 @@
 .AppIcon {
 	color: var(--icon-redesigned);
 	pointer-events: none;
+	fill: inherit;
 }
 
 .button {
@@ -10,6 +11,7 @@
 	outline: none;
 	background: none;
 	cursor: pointer;
+	pointer-events: all;
 }
 
 .button:hover .AppIcon {

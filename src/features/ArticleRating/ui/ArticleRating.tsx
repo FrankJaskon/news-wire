@@ -14,7 +14,7 @@ const ArticleRating: FC<ArticleRatingProps> = props => {
 
 	const authData = useUserAuthData()
 	const { t } = useTranslation('article')
-	const { data, isLoading } = useArticleRating({
+	const { data, isLoading, refetch } = useArticleRating({
 		userId: authData?.id,
 		articleId,
 	})
@@ -30,8 +30,9 @@ const ArticleRating: FC<ArticleRatingProps> = props => {
 				rating,
 				feedback,
 			})
+			refetch()
 		},
-		[articleId, authData?.id, rateArticleMutation]
+		[articleId, authData?.id, rateArticleMutation, refetch]
 	)
 
 	const onAccept = useCallback(

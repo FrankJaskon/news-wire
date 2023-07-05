@@ -14,4 +14,6 @@ export const useMoveToElementByQuery = (queryParam: QueryParamsKeysType, isLoadi
 			navigate({ search: searchParams.toString() })
 		}
 	}, [elementId, isLoading, navigate, queryParam, searchParams])
+
+	return elementId
 }

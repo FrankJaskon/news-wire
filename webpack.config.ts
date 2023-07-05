@@ -12,6 +12,7 @@ export default (env: BuildEnv) => {
 		assets: {
 			svg: path.join('icons', '[name].[contenthash][ext]'),
 			images: path.join('images', '[name].[contenthash][ext]'),
+			favicon: path.resolve(__dirname, 'src', 'shared', 'assets', 'icons', 'favicon.ico'),
 		},
 		locales: path.resolve(__dirname, 'public', 'locales'),
 		buildLocales: path.resolve(__dirname, 'dist', 'locales'),

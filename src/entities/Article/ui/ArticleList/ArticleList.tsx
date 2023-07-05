@@ -97,11 +97,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props: ArticleListProps) 
 			)}
 			data-testid={datTestId}
 		>
-			{articles && articles.length ? (
-				articles.map(renderArticle)
-			) : (
-				<AppText text={t('empty-articles-list')} />
-			)}
+			{articles && articles.length ? articles.map(renderArticle) : null}
 			{isLoading && getSkeletons(view)}
 		</div>
 	)

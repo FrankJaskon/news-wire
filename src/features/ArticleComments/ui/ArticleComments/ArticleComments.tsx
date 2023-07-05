@@ -3,8 +3,10 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { CommentsList } from '@/entities/Comment'
+import { QueryParamsKeys } from '@/shared/const/queryParams'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect'
+import { useMoveToElementByQuery } from '@/shared/hooks/useMoveToElementByQuery'
 import classNames from '@/shared/lib/classNames/classNames'
 import {
 	LazyReducerLoader,
@@ -44,6 +46,8 @@ export const ArticleComments: FC<ArticleCommentsProps> = props => {
 	const comments = useSelector(getArticleDetailsComments.selectAll)
 	const isLoading = useArticleDetailsCommentsIsLoading()
 	const error = useArticleDetailsCommentsError()
+
+	const highlightedItemId = useMoveToElementByQuery(QueryParamsKeys.COMMENT, isLoading)
 
 	useInitialEffect(() => {
 		dispatch(fetchCommentsByArticleId(Number(id)))
@@ -87,6 +91,7 @@ export const ArticleComments: FC<ArticleCommentsProps> = props => {
 					isLoading={isLoading}
 					error={error}
 					data-testid={`${dataTestId}-list`}
+					highlightedItemId={highlightedItemId ?? undefined}
 				/>
 			</VStack>
 		</LazyReducerLoader>

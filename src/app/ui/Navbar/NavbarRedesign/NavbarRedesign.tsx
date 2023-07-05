@@ -42,7 +42,7 @@ export const NavbarRedesign: FC<NavbarRedesignProps> = memo((props: NavbarRedesi
 					</HStack>
 				</FloatingDelayGroup>
 			) : (
-				<AppTooltip tooltip={t('tooltips.navbar.login')}>
+				<AppTooltip tooltip={t('tooltips.navbar.login')} as='div'>
 					<LoginButton />
 				</AppTooltip>
 			)}

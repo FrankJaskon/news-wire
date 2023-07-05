@@ -1,7 +1,5 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { QueryParamsKeys } from '@/shared/const/queryParams'
-import { useMoveToElementByQuery } from '@/shared/hooks/useMoveToElementByQuery'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { AppText } from '@/shared/ui/redesigned/AppText'
 import { HStack } from '@/shared/ui/redesigned/HStack'
@@ -33,9 +31,7 @@ export const Article: FC<ArticleDetailsProps> = memo((props: ArticleDetailsProps
 	const { className, article, isLoading, error } = props
 	const { t } = useTranslation('article')
 
-	useMoveToElementByQuery(QueryParamsKeys.COMMENT, isLoading)
-
-	if (!checkIfArticleNotEmpty(article)) {
+	if (!isLoading && !checkIfArticleNotEmpty(article)) {
 		return <AppText text={t('empty-article')} />
 	}
 

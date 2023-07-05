@@ -7,6 +7,7 @@ import {
 	ArticleDetails,
 	useArticleDetailsData,
 	useArticleDetailsError,
+	useArticleDetailsIsLoading,
 } from '@/features/ArticleDetails'
 import { ArticleRating } from '@/features/ArticleRating'
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList'
@@ -27,9 +28,12 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = memo(
 	(props: ArticleDetailsPageProps) => {
 		const { className } = props
 		const error = useArticleDetailsError()
+		const isLoading = useArticleDetailsIsLoading()
 		const { t } = useTranslation('article')
 		const id = Number(useParams().id)
-		const isAuthor = useArticleDetailsData().profile?.id === useUserAuthData()?.id
+		const userId = useUserAuthData()?.id
+		const articleAuthorId = useArticleDetailsData().profile?.id
+		const isAuthor = userId && articleAuthorId && articleAuthorId === userId
 
 		if (!id && __PROJECT__ !== 'storybook') {
 			return (
@@ -49,9 +53,11 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = memo(
 						<AppCard padding='24' radius='big'>
 							<VStack gap='24'>
 								<ArticleDetails id={id} />
-								{!error && !isAuthor && <ArticleRating articleId={id} />}
-								{!error && <ArticleRecommendationsList />}
-								{!error && <ArticleComments />}
+								{!error && !isLoading && !isAuthor && userId && (
+									<ArticleRating articleId={id} />
+								)}
+								{!error && !isLoading && <ArticleRecommendationsList />}
+								{!error && !isLoading && <ArticleComments />}
 							</VStack>
 						</AppCard>
 					}

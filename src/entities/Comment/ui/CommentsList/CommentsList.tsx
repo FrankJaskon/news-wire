@@ -14,6 +14,7 @@ export interface CommentsListProps {
 	error?: string
 	'data-testid'?: string
 	variant?: CommentVariant
+	highlightedItemId?: string
 }
 
 export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProps) => {
@@ -23,6 +24,7 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 		error,
 		'data-testid': dataTestId = 'comments-list',
 		variant = 'user',
+		highlightedItemId,
 	} = props
 
 	const { t } = useTranslation()
@@ -57,6 +59,9 @@ export const CommentsList: FC<CommentsListProps> = memo((props: CommentsListProp
 						comment={comment}
 						data-testid={`${dataTestId}-item`}
 						variant={variant}
+						highlighted={
+							(highlightedItemId && Number(highlightedItemId)) === comment.id
+						}
 					/>
 				))
 			) : (

@@ -10,6 +10,7 @@ export interface CommentCardProps {
 	isLoading?: boolean
 	'data-testid'?: string
 	variant?: 'user' | 'article'
+	highlighted?: boolean
 }
 
 export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) => {

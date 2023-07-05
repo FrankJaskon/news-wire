@@ -1,5 +1,6 @@
-import { FC, memo } from 'react'
+import { FC, memo, useCallback, useEffect, useState } from 'react'
 import { getArticleDetailsRoute, getProfileRoute } from '@/shared/const/RoutPaths'
+import classNames from '@/shared/lib/classNames/classNames'
 import { AppCard } from '@/shared/ui/redesigned/AppCard'
 import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink'
 import { AppText } from '@/shared/ui/redesigned/AppText'
@@ -9,6 +10,7 @@ import { LinkAvatarListItem } from '@/shared/ui/redesigned/LinkAvatarListItem/Li
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { CommentType } from '../../../model/types/comment'
+import cls from './CommentCard.module.scss'
 
 export type CommentVariant = 'user' | 'article'
 
@@ -18,6 +20,7 @@ export interface CommentCardProps {
 	isLoading?: boolean
 	'data-testid'?: string
 	variant?: CommentVariant
+	highlighted?: boolean
 }
 
 export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) => {
@@ -25,9 +28,23 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 		className,
 		comment,
 		isLoading,
+		highlighted = false,
 		'data-testid': dataTestId = 'comments-list-item',
 		variant = 'user',
 	} = props
+	const [highlightedComment, setHighlightedComment] = useState(highlighted ?? false)
+
+	const handleOnBlur = useCallback(() => {
+		setHighlightedComment(false)
+	}, [])
+
+	useEffect(() => {
+		document.addEventListener('click', handleOnBlur)
+
+		return () => {
+			document.removeEventListener('click', handleOnBlur)
+		}
+	}, [handleOnBlur])
 
 	if (isLoading) {
 		if (variant === 'user') {
@@ -63,7 +80,11 @@ export const CommentCard: FC<CommentCardProps> = memo((props: CommentCardProps) 
 					<AppLink to={getProfileRoute(comment?.profile.id)}>
 						<AppText text={comment?.profile?.username} weight='bold' />
 					</AppLink>
-					<AppText text={comment?.text} />
+					<AppText
+						text={comment?.text}
+						className={classNames('', { [cls.highlighted]: highlightedComment })}
+						onBlur={handleOnBlur}
+					/>
 				</VStack>
 			</HStack>
 		)

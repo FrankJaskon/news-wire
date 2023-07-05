@@ -28,7 +28,10 @@ export const updateFeatures = createAsyncThunk<
 				},
 			})
 		).unwrap()
-		window.location.reload()
+
+		setTimeout(() => {
+			window.location.reload()
+		}, 1000)
 	} catch (error: any) {
 		return rejectWithValue('Error')
 	}

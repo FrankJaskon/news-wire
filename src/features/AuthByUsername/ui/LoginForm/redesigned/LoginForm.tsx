@@ -14,6 +14,7 @@ import { AppInput } from '@/shared/ui/redesigned/AppInput'
 import { AppLabel } from '@/shared/ui/redesigned/AppLabel'
 import { AppText } from '@/shared/ui/redesigned/AppText'
 import { HStack } from '@/shared/ui/redesigned/HStack'
+import { AppPrompt } from '@/shared/ui/redesigned/Tooltip/AppPrompt'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { useAuthByUsernameError } from '../../../model/selectors/getAuthByUsernameError/getAuthByUsernameError'
 import { useAuthByUsernameIsLoading } from '../../../model/selectors/getAuthByUsernameIsLoading/getAuthByUsernameIsLoading'
@@ -85,9 +86,11 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 						})
 				  )
 			if (result.meta.requestStatus === 'fulfilled') {
-				navigate(getMainRoute())
 				onSuccess()
-				location.reload()
+				navigate(getMainRoute())
+				setTimeout(() => {
+					location.reload()
+				}, 1000)
 			}
 		},
 		[dispatch, username, password, onSuccess, navigate, isLogin]
@@ -97,8 +100,6 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		<LazyReducerLoader reducers={reducers}>
 			<form
 				className={classNames(cls.LoginForm, {}, [className])}
-				action='/login'
-				method='POST'
 				onSubmit={onSubmitForm}
 				data-testid='login-form'
 			>
@@ -123,6 +124,9 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 						name='login-email'
 						placeholder={t('login.login')}
 						required
+						addonRight={
+							<AppPrompt prompt={t('login.login-prompt')} className={cls.prompt} />
+						}
 					/>
 
 					<AppLabel variant='srOnly' htmlFor='login-password'>
@@ -138,7 +142,11 @@ export const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 						name='login-password'
 						placeholder={t('login.password')}
 						required
+						addonRight={
+							<AppPrompt prompt={t('login.password-prompt')} className={cls.prompt} />
+						}
 					/>
+
 					{loginError && (
 						<AppText
 							variant='error'

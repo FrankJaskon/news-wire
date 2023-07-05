@@ -35,6 +35,7 @@ export const LoginButton: FC<LoginButtonProps> = memo((props: LoginButtonProps) 
 				onClick={openModal}
 				variant='outline'
 				as={as}
+				withFocus={false}
 				{...otherProps}
 			>
 				{content ?? t('navbar.login')}

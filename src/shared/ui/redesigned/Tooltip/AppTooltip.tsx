@@ -120,7 +120,7 @@ export function Tooltip({ children, ...options }: { children: React.ReactNode } 
 	return <TooltipContext.Provider value={tooltip}>{children}</TooltipContext.Provider>
 }
 
-export type TriggerElementType = 'button' | 'div'
+export type TriggerElementType = 'button' | 'div' | 'span'
 
 interface CommonTriggerProps {
 	closeOnClick?: boolean
@@ -134,7 +134,11 @@ interface DivProps extends React.HTMLAttributes<HTMLDivElement>, CommonTriggerPr
 	as: 'div'
 }
 
-type TriggerProps = ButtonProps | DivProps
+interface SpanProps extends React.HTMLAttributes<HTMLSpanElement>, CommonTriggerProps {
+	as: 'span'
+}
+
+type TriggerProps = ButtonProps | DivProps | SpanProps
 
 export const TooltipTrigger = React.forwardRef<HTMLElement, TriggerProps & { asChild?: boolean }>(
 	function TooltipTrigger(
@@ -146,8 +150,8 @@ export const TooltipTrigger = React.forwardRef<HTMLElement, TriggerProps & { asC
 		const ref = useMergeRefs([state.refs.setReference, propRef, childrenRef])
 
 		const closeTooltip = React.useCallback(() => {
-			closeOnClick && state.setOpen(false)
-		}, [closeOnClick, state])
+			state.setOpen(false)
+		}, [state])
 
 		// `asChild` allows the user to pass any element as the anchor
 		if (asChild && React.isValidElement(children)) {
@@ -169,10 +173,24 @@ export const TooltipTrigger = React.forwardRef<HTMLElement, TriggerProps & { asC
 					// The user can style the trigger based on the state
 					data-state={state.open ? 'open' : 'closed'}
 					{...state.getReferenceProps(props)}
-					onClick={closeTooltip}
+					onClick={closeOnClick ? closeTooltip : undefined}
 				>
 					{children}
 				</div>
+			)
+		}
+
+		if (as === 'span') {
+			return (
+				<span
+					ref={ref}
+					// The user can style the trigger based on the state
+					data-state={state.open ? 'open' : 'closed'}
+					{...state.getReferenceProps(props)}
+					onClick={closeOnClick ? closeTooltip : undefined}
+				>
+					{children}
+				</span>
 			)
 		}
 
@@ -182,7 +200,7 @@ export const TooltipTrigger = React.forwardRef<HTMLElement, TriggerProps & { asC
 				// The user can style the trigger based on the state
 				data-state={state.open ? 'open' : 'closed'}
 				{...state.getReferenceProps(props)}
-				onClick={closeTooltip}
+				onClick={closeOnClick ? closeTooltip : undefined}
 			>
 				{children}
 			</button>
@@ -255,7 +273,7 @@ export const AppTooltip: React.FC<AppTooltipProps> = React.memo((props: AppToolt
 
 	return (
 		<Tooltip open={open} onOpenChange={setOpen}>
-			<TooltipTrigger as={as} closeOnClick={closeOnClick}>
+			<TooltipTrigger as={as} closeOnClick={open !== undefined ? false : closeOnClick}>
 				{children}
 			</TooltipTrigger>
 			<TooltipContent className={cls.Tooltip}>{tooltip}</TooltipContent>

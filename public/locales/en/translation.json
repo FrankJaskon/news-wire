@@ -41,6 +41,8 @@
   "login": {
     "header": "Production project",
     "login": "Login",
+    "login-prompt": "You can create a new account or use one of existing accounts (admin, user)",
+    "password-prompt": "If you've decided to create a new account, don't use your real data. You can use any password. If you want to log in into some existing account just use '123'",
     "password": "Password",
     "log-in": "Log in",
     "sing-up": "Sign up",

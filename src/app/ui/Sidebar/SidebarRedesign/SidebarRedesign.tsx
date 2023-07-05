@@ -49,7 +49,7 @@ export const SidebarRedesign: FC<SidebarRedesignProps> = memo((props: SidebarRed
 				className={cls.menu}
 				innerWidth={isCollapsed ? undefined : 'full'}
 			>
-				<AppLogo className={cls.appLogo} size={isCollapsed ? 30 : 50} />
+				<AppLogo className={cls.appLogo} size={isCollapsed ? 30 : 70} />
 				{renderLinks}
 			</VStack>
 			{isCollapsed ? (

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC, HTMLAttributes, ReactNode, memo } from 'react'
+import { ButtonHTMLAttributes, FC, HTMLAttributes, ReactNode, memo, useMemo } from 'react'
 import classNames from '@/shared/lib/classNames/classNames'
 import cls from './AppButton.module.scss'
 
@@ -52,13 +52,16 @@ export const AppButton: FC<AppButtonProps> = memo((props: AppButtonProps) => {
 		...otherProps
 	} = props
 
-	const mods = {
-		[cls.disabled]: disabled,
-		[cls.fullWidth]: fullWidth,
-		[cls.withAddonLeft]: Boolean(addonLeft),
-		[cls.withAddonRight]: Boolean(addonRight),
-		[cls.withFocus]: withFocus,
-	}
+	const mods = useMemo(
+		() => ({
+			[cls.disabled]: disabled,
+			[cls.fullWidth]: fullWidth,
+			[cls.withAddonLeft]: Boolean(addonLeft),
+			[cls.withAddonRight]: Boolean(addonRight),
+			[cls.withFocus]: withFocus,
+		}),
+		[addonLeft, addonRight, disabled, fullWidth, withFocus]
+	)
 
 	const extra = [className, cls[variant], cls[size], shape && cls[shape], cls[borderVariant]]
 
