@@ -66,7 +66,7 @@ export const ArticleTypeCategories: FC<ArticleTypeCategoriesProps> = memo(
 			<VStack gap='16'>
 				<AppText title={t('article-categories-title')} size='xl' weight='bold' />
 				<HStack
-					gap='40'
+					gap='24'
 					className={classNames(cls.container, {}, [className])}
 					wrap='wrap'
 					justify='start'

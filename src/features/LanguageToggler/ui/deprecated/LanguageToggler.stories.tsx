@@ -4,7 +4,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { LanguageToggler } from './LanguageToggler'
 
 export default {
-	title: 'features/LanguageToggler',
+	title: 'deprecated/features/LanguageToggler',
 	component: LanguageToggler,
 	argTypes: {},
 	args: {},

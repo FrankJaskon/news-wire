@@ -5,7 +5,7 @@ import { Country } from '../../../model/consts/country'
 import { CountrySelect } from './CountrySelect'
 
 export default {
-	title: 'entities/CountrySelect',
+	title: 'deprecated/entities/CountrySelect',
 	component: CountrySelect,
 	argTypes: {},
 	args: {

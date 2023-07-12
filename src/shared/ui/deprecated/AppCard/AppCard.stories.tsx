@@ -3,7 +3,7 @@ import { AppCard } from './AppCard'
 import type { AppCardProps } from './AppCard'
 
 export default {
-	title: 'shared/AppCard',
+	title: 'deprecated/shared/AppCard',
 	component: AppCard,
 	argTypes: {},
 } as Meta<typeof AppCard>

@@ -84,7 +84,7 @@ const articleDetailsState: ArticleDetailsScheme = {
 }
 
 export default {
-	title: 'entities/Article/ArticleDetails',
+	title: 'deprecated/entities/Article/ArticleDetails',
 	component: ArticleDetails,
 	argTypes: {},
 } as Meta<typeof ArticleDetails>

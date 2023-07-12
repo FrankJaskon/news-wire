@@ -4,7 +4,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { AppLabel, AppLabelProps } from './AppLabel'
 
 export default {
-	title: 'shared/Form/AppLabel',
+	title: 'deprecated/shared/Form/AppLabel',
 	component: AppLabel,
 	args: {
 		children: 'Test',

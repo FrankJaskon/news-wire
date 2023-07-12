@@ -10,7 +10,7 @@ import {
 } from './EditableArticleImageBlock'
 
 export default {
-	title: 'entities/Article/EditableArticleImageBlock',
+	title: 'deprecated/entities/Article/EditableArticleImageBlock',
 	component: EditableArticleImageBlock,
 	argTypes: {},
 	args: {

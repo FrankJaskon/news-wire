@@ -2,13 +2,17 @@ import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
+import { MainLayout } from '@/shared/layouts/MainLayout'
 import { Navbar } from './Navbar'
 
 export default {
-	title: 'widgets/Navbar',
+	title: 'app/Navbar',
 	component: Navbar,
 	argTypes: {},
-	decorators: [StoreDecorator({})],
+	decorators: [
+		StoreDecorator({}),
+		(Story: StoryFn) => <MainLayout sidebar={<div />} header={<Story />} content={<div />} />,
+	],
 } as Meta<typeof Navbar>
 
 const Template: StoryFn<typeof Navbar> = args => <Navbar {...args} />

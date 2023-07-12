@@ -5,7 +5,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { EditArticlePage } from './EditArticlePage'
 
 export default {
-	title: 'pages/EditArticlePage',
+	title: 'deprecated/pages/EditArticlePage',
 	component: EditArticlePage,
 	argTypes: {},
 	args: {},

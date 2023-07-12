@@ -3,7 +3,7 @@ import { ArticleTypeTabs } from './ArticleTypeTabs'
 import type { ArticleTypeTabsProps } from './ArticleTypeTabs'
 
 export default {
-	title: 'features/ArticleTypeTabs',
+	title: 'deprecated/features/ArticleTypeTabs',
 	component: ArticleTypeTabs,
 	argTypes: {},
 } as Meta<typeof ArticleTypeTabs>

@@ -80,7 +80,7 @@ const data: ArticleType = {
 }
 
 export default {
-	title: 'pages/ArticleDetailsPage',
+	title: 'deprecated/pages/ArticleDetailsPage',
 	component: ArticleDetailsPage,
 	argTypes: {},
 } as Meta<typeof ArticleDetailsPage>

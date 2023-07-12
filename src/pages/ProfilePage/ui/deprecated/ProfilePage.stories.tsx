@@ -18,7 +18,7 @@ const data = {
 }
 
 export default {
-	title: 'pages/ProfilePage/deprecated',
+	title: 'deprecated/pages/ProfilePage',
 	component: ProfilePage,
 	argTypes: {},
 	decorators: [

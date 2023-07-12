@@ -30,7 +30,7 @@ const article: ArticleType = {
 }
 
 export default {
-	title: 'features/ArticleRecommendationsList',
+	title: 'deprecated/features/ArticleRecommendationsList',
 	component: ArticleRecommendationsList,
 	argTypes: {},
 	decorators: [StoreDecorator({})],

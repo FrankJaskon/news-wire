@@ -80,7 +80,7 @@ const article: ArticleType = {
 }
 
 export default {
-	title: 'entities/Article/ArticleListItem',
+	title: 'deprecated/entities/Article/ArticleListItem',
 	component: ArticleListItem,
 	argTypes: {},
 	args: {

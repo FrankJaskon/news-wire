@@ -5,7 +5,7 @@ import { ProfileType } from '../../../model/types/profile'
 import { ProfileCard, ProfileCardProps } from './ProfileCard'
 
 export default {
-	title: 'entities/ProfileCard',
+	title: 'deprecated/entities/ProfileCard',
 	component: ProfileCard,
 	argTypes: {},
 	args: {},

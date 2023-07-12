@@ -19,7 +19,7 @@ const data = {
 }
 
 export default {
-	title: 'features/EditableProfileCard',
+	title: 'deprecated/features/EditableProfileCard',
 	component: EditableProfileCard,
 	argTypes: {},
 	decorators: [

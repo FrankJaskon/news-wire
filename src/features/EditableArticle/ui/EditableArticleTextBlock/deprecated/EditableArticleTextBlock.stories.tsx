@@ -11,7 +11,7 @@ const paragraphs = [
 ]
 
 export default {
-	title: 'entities/Article/EditableArticleTextBlock',
+	title: 'deprecated/entities/Article/EditableArticleTextBlock',
 	component: EditableArticleTextBlock,
 	argTypes: {},
 	args: {

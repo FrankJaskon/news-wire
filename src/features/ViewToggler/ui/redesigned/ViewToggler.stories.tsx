@@ -1,8 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { ViewToggler } from './ViewToggler'
-import type { ViewTogglerProps } from './ViewToggler'
 
 export default {
 	title: 'features/ViewToggler',
@@ -12,13 +9,15 @@ export default {
 
 const Template: StoryFn<typeof ViewToggler> = args => <ViewToggler {...args} />
 
-export const Basic: StoryFn<ViewTogglerProps> = Template.bind({})
-Basic.args = {}
-
-export const DarkTheme: StoryFn<ViewTogglerProps> = Template.bind({})
-DarkTheme.args = {}
-DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
-
-export const PurpleTheme: StoryFn<ViewTogglerProps> = Template.bind({})
-PurpleTheme.args = {}
-PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]
+export const Basic: StoryFn = Template.bind({})
+Basic.args = {
+	activeView: 'grid',
+	variant: 'articleView',
+	viewsList: [
+		{ view: 'grid', content: 'grid' },
+		{ view: 'list', content: 'list' },
+	],
+	onToggle: () => {
+		// blank
+	},
+}

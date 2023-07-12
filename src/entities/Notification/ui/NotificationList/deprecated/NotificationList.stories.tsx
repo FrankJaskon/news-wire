@@ -3,7 +3,7 @@ import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecora
 import { NotificationList, NotificationListProps } from './NotificationList'
 
 export default {
-	title: 'entities/NotificationList',
+	title: 'deprecated/entities/NotificationList',
 	component: NotificationList,
 	argTypes: {},
 	args: {},

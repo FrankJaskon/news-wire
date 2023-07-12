@@ -4,7 +4,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { StarRating, StarRatingProps } from './StarRating'
 
 export default {
-	title: 'shared/StarRating',
+	title: 'deprecated/shared/StarRating',
 	component: StarRating,
 	args: {},
 } as Meta<typeof StarRating>

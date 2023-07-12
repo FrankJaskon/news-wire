@@ -1,5 +1,6 @@
 import { ArticleType, EditableArticleBlockType } from '@/entities/Article'
 import { ArticleCategoriesType } from '@/entities/ArticleCategory'
+import { ValidationErrorType } from '../consts/validationError'
 
 export interface EditableArticleType {
 	id?: number
@@ -24,6 +25,7 @@ export interface EditableArticleScheme {
 	mode?: ViewMode
 	isEdit?: boolean
 	isReducerMounted?: boolean
+	validationErrors?: ValidationErrorType[]
 }
 
 export type ViewMode = 'edit' | 'preview'

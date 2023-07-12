@@ -88,7 +88,7 @@ articles.forEach(article => {
 })
 
 export default {
-	title: 'pages/ArticlesPage',
+	title: 'deprecated/pages/ArticlesPage',
 	component: ArticlesPage,
 	argTypes: {},
 } as Meta<typeof ArticlesPage>

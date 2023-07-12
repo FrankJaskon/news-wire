@@ -5,7 +5,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { AddNewComment, AddNewCommentProps } from './AddNewComment'
 
 export default {
-	title: 'features/AddNewComment',
+	title: 'deprecated/features/AddNewComment',
 	component: AddNewComment,
 	argTypes: {},
 	args: {},

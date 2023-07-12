@@ -10,10 +10,8 @@ import { AppLabel, LabelVariant } from '@/shared/ui/deprecated/Label'
 import { Text } from '@/shared/ui/deprecated/Text'
 import { HStack } from '@/shared/ui/redesigned/HStack'
 import { VStack } from '@/shared/ui/redesigned/VStack'
-import {
-	SetTextBlockParagraphProps,
-	editableArticleActions,
-} from '../../../model/slice/editableArticleSlice'
+import { editableArticleActions } from '../../../model/slice/editableArticleSlice'
+import { SetTextBlockParagraphProps } from '../../../model/slice/reducerFunctions'
 import {
 	ArticleOptionDropdownItem,
 	OptionsDropdown,

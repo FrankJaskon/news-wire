@@ -4,7 +4,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { Loader } from './Loader'
 
 export default {
-	title: 'shared/Loader',
+	title: 'deprecated/shared/Loader',
 	component: Loader,
 	argTypes: {},
 	args: {},

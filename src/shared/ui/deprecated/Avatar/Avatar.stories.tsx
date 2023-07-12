@@ -3,7 +3,7 @@ import { Avatar, AvatarProps, AvatarVariant } from './Avatar'
 import avatarImage from './storybook.jpg'
 
 export default {
-	title: 'shared/Avatar',
+	title: 'deprecated/shared/Avatar',
 	component: Avatar,
 	args: {},
 } as Meta<typeof Avatar>

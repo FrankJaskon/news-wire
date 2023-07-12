@@ -5,7 +5,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { LoginForm, LoginFormProps } from './LoginForm'
 
 export default {
-	title: 'features/Login/LoginForm',
+	title: 'deprecated/features/Login/LoginForm',
 	component: LoginForm,
 	argTypes: {},
 	args: {

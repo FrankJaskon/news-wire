@@ -3,4 +3,4 @@ export { ListBox } from './ListBox/ListBox'
 export { Popover } from './Popover/Popover'
 
 export type { ListBoxItem } from './ListBox/ListBox'
-export type { DropdownItem } from './Dropdown/DropdownItem/DropdownItem'
+export type { DropdownItemType as DropdownItem } from './Dropdown/DropdownItem/DropdownItem'

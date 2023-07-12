@@ -10,6 +10,7 @@ import {
 	useEditableArticleIsEdited,
 	useEditableArticleMode,
 } from '@/features/EditableArticle'
+import { validateArticle } from '@/features/EditableArticle/model/helpers/validateArticle'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { VStack } from '@/shared/ui/redesigned/VStack'
 import { EditArticleToolType, EditArticleTools } from '@/widgets/EditArticleTools'
@@ -133,10 +134,14 @@ export const EditArticleToolsContainer: FC<EditArticleToolsContainerProps> = mem
 						? t('editable-article.options.save-article')
 						: t('editable-article.options.create-article'),
 					onClick: () => {
-						if (isEdit) {
-							dispatch(updateArticle())
-						} else {
-							dispatch(createNewArticle())
+						const newErrors = validateArticle(articleForm)
+						dispatch(editableArticleActions.setValidationErrors(newErrors))
+						if (!newErrors.length) {
+							if (isEdit) {
+								dispatch(updateArticle())
+							} else {
+								dispatch(createNewArticle())
+							}
 						}
 					},
 					type: 'save',
@@ -157,7 +162,7 @@ export const EditArticleToolsContainer: FC<EditArticleToolsContainerProps> = mem
 					type: 'cancel',
 				},
 			],
-			[dispatch, isEdit, t]
+			[articleForm, dispatch, isEdit, t]
 		)
 
 		if (isPreview) {

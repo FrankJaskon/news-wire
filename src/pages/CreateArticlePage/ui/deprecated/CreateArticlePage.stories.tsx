@@ -5,7 +5,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { CreateArticlePage } from './CreateArticlePage'
 
 export default {
-	title: 'pages/CreateArticlePage',
+	title: 'deprecated/pages/CreateArticlePage',
 	component: CreateArticlePage,
 	argTypes: {},
 	args: {},

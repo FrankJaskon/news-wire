@@ -4,7 +4,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { Text, TextAlign, TextVariant } from './Text'
 
 export default {
-	title: 'shared/Text',
+	title: 'deprecated/shared/Text',
 	component: Text,
 	argTypes: {},
 } as Meta<typeof Text>

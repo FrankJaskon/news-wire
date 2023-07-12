@@ -8,6 +8,7 @@ import {
 } from '@/entities/Article'
 import { ArticleCategoriesType } from '@/entities/ArticleCategory'
 import { randomInteger } from '@/shared/lib/randomInteger/randomInteger'
+import { ValidationErrorType } from '../consts/validationError'
 import { mapArticleToEditableArticle } from '../helpers/mapArticleToEditableArticle'
 import { createNewArticle } from '../services/createNewArticle'
 import { initEditableArticle } from '../services/initEditableArticle'
@@ -57,6 +58,9 @@ const editableArticleSlice = createSlice({
 		setMode: (state, action: PayloadAction<ViewMode>) => {
 			state.mode = action.payload
 		},
+		setValidationErrors: (state, action: PayloadAction<ValidationErrorType[]>) => {
+			state.validationErrors = action.payload
+		},
 		setArticleData: (state, action: PayloadAction<EditableArticleType>) => {
 			state.form = {
 				...state.form,
@@ -64,6 +68,7 @@ const editableArticleSlice = createSlice({
 			}
 		},
 		resetChanges: state => {
+			state.validationErrors = []
 			if (state.data.id) {
 				state.form = mapArticleToEditableArticle(state.data)
 			}

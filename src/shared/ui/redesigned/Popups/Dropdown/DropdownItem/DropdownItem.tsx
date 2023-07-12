@@ -3,7 +3,7 @@ import { FC, Fragment, MouseEvent, ReactNode, memo } from 'react'
 import { NavLink } from 'react-router-dom'
 import classNames from '@/shared/lib/classNames/classNames'
 
-export interface DropdownItem {
+export interface DropdownItemType {
 	disabled?: boolean
 	content?: ReactNode
 	onClick?: (e?: MouseEvent) => void
@@ -11,7 +11,7 @@ export interface DropdownItem {
 }
 
 export interface DropdownItemProps {
-	item: DropdownItem
+	item: DropdownItemType
 	itemClass: string
 	disabledClass: string
 	activeClass: string

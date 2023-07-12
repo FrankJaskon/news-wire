@@ -3,7 +3,7 @@ import { Avatar } from '../../../Avatar'
 import { Dropdown, DropdownProps } from './Dropdown'
 
 export default {
-	title: 'shared/Dropdown',
+	title: 'deprecated/shared/Dropdown',
 	component: Dropdown,
 	args: {},
 } as Meta<typeof Dropdown>

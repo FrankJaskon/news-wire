@@ -122,7 +122,11 @@
 			"remove-text-block": "Remove text block"
 		},
 		"on-save-link-to-article": "Visit your article",
-		"on-remove-link-to-articles": "Back to articles"
+		"on-remove-link-to-articles": "Back to articles",
+		"validation": {
+			"basic": "Validation error",
+			"title": "Title cannot be empty"
+		}
 	},
 	"tooltips": {
 		"block-options": "Menu of the block",

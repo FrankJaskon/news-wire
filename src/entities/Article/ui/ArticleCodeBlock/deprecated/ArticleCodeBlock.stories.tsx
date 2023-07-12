@@ -6,7 +6,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { ArticleCodeBlock, ArticleCodeBlockProps } from './ArticleCodeBlock'
 
 export default {
-	title: 'entities/Article/ArticleCodeBlock',
+	title: 'deprecated/entities/Article/ArticleCodeBlock',
 	component: ArticleCodeBlock,
 	argTypes: {},
 	args: {

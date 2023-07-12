@@ -9,6 +9,9 @@ export const [useEditableArticleForm, getEditableArticleForm] = buildSelector(
 	(state: StateSchema) => state.editableArticle?.form ?? ({} as EditableArticleType)
 )
 
+export const [useEditableArticleValidationErrors, getEditableArticleValidationErrors] =
+	buildSelector((state: StateSchema) => state.editableArticle?.validationErrors)
+
 export const [useEditableArticleIsReducerMounted, getEditableArticleIsReducerMounted] =
 	buildSelector((state: StateSchema) => state.editableArticle?.isReducerMounted)
 

@@ -14,6 +14,8 @@ import {
 	useEditableArticleIsReducerMounted,
 	useEditableArticleIsEdited,
 } from '@/features/EditableArticle'
+import { errorMapper } from '@/features/EditableArticle/model/helpers/validateArticle'
+import { useEditableArticleValidationErrors } from '@/features/EditableArticle/model/selectors/editableArticleSelector'
 import { getArticleDetailsRoute, getArticlesRoute } from '@/shared/const/RoutPaths'
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect'
@@ -40,6 +42,7 @@ export const ArticleEditing: FC<ArticleEditingProps> = memo((props: ArticleEditi
 	const isPreview = useEditableArticleMode() === 'preview'
 	const isReducerMounted = useEditableArticleIsReducerMounted()
 	const isEdit = useEditableArticleIsEdited()
+	const validationErrors = useEditableArticleValidationErrors()
 	const dispatch = useAppDispatch()
 
 	useInitialEffect(() => {
@@ -105,7 +108,13 @@ export const ArticleEditing: FC<ArticleEditingProps> = memo((props: ArticleEditi
 
 	return (
 		<AppCard padding='24' radius='big' className={className}>
-			{content}
+			<VStack gap='24'>
+				{validationErrors?.length !== 0 &&
+					validationErrors?.map(item => (
+						<AppText key={item} variant='error' text={errorMapper(item, t)} />
+					))}
+				{content}
+			</VStack>
 		</AppCard>
 	)
 })

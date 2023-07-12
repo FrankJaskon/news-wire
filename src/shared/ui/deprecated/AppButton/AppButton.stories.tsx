@@ -4,7 +4,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { AppButton, ButtonShape, ButtonSize, ButtonVariant } from './AppButton'
 
 export default {
-	title: 'shared/AppButton',
+	title: 'deprecated/shared/AppButton',
 	component: AppButton,
 	argTypes: {},
 } as Meta<typeof AppButton>

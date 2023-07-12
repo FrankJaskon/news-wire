@@ -5,7 +5,7 @@ import { CommentCard } from './CommentCard'
 import type { CommentCardProps } from './CommentCard'
 
 export default {
-	title: 'entities/Comment/CommentCard',
+	title: 'deprecated/entities/Comment/CommentCard',
 	component: CommentCard,
 	argTypes: {},
 	args: {

@@ -5,7 +5,7 @@ import { Skeleton } from './Skeleton'
 import type { SkeletonProps } from './Skeleton'
 
 export default {
-	title: 'shared/Skeleton',
+	title: 'deprecated/shared/Skeleton',
 	component: Skeleton,
 	argTypes: {},
 } as Meta<typeof Skeleton>

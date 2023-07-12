@@ -5,7 +5,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { MainPage } from './MainPage'
 
 export default {
-	title: 'pages/MainPage',
+	title: 'deprecated/pages/MainPage',
 	component: MainPage,
 	argTypes: {
 		backgroundColor: { control: 'color' },

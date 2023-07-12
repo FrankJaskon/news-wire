@@ -1,6 +1,5 @@
 import { FloatingDelayGroup } from '@floating-ui/react'
 import { useCallback, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { TooltipDelay } from '@/shared/const/consts'
 import classNames from '@/shared/lib/classNames/classNames'
 import { AppButton } from '@/shared/ui/redesigned/AppButton'
@@ -40,7 +39,6 @@ export const ViewToggler: <T extends string>(props: ViewTogglerProps<T>) => JSX.
 	props: ViewTogglerProps<T>
 ) => {
 	const { className, activeView, onToggle, isLoading, viewsList, variant = 'articleView' } = props
-	const { t } = useTranslation()
 
 	const handleToggle = useCallback(
 		(view: T) => () => {

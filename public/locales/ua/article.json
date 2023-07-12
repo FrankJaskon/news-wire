@@ -125,7 +125,11 @@
 			"remove-text-block": "Видалити текстовий блок"
 		},
 		"on-save-link-to-article": "Перейти до створенної статті",
-		"on-remove-link-to-articles": "Повернутись до списку статей"
+		"on-remove-link-to-articles": "Повернутись до списку статей",
+		"validation": {
+			"basic": "Валідаційна помилка",
+			"title": "Вкажить заголовок статті. Це поле не може бути пустим"
+		}
 	},
 	"tooltips": {
 		"block-options": "Меню блоку",

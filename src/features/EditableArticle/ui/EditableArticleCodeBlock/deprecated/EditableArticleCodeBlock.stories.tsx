@@ -6,7 +6,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { EditableArticleCodeBlock, EditableArticleCodeBlockProps } from './EditableArticleCodeBlock'
 
 export default {
-	title: 'entities/Article/EditableArticleCodeBlock',
+	title: 'deprecated/entities/Article/EditableArticleCodeBlock',
 	component: EditableArticleCodeBlock,
 	argTypes: {},
 	args: {

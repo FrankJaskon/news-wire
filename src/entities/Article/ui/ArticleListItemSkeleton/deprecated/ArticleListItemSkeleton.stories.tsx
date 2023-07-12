@@ -3,7 +3,7 @@ import { ViewVariant } from '../../../model/consts/articleDetailsConsts'
 import { ArticleListItemSkeleton, ArticleListItemSkeletonProps } from './ArticleListItemSkeleton'
 
 export default {
-	title: 'entities/Article/ArticleListItemSkeleton',
+	title: 'deprecated/entities/Article/ArticleListItemSkeleton',
 	component: ArticleListItemSkeleton,
 	argTypes: {},
 	args: {},

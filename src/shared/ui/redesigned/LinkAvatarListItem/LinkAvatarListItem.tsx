@@ -8,7 +8,7 @@ import cls from './LinkAvatarListItem.module.scss'
 
 export interface LinkAvatarListItemProps {
 	className?: string
-	to: LinkProps['to']
+	to?: LinkProps['to']
 	avatar?: string
 	content?: ReactNode
 }

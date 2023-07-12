@@ -4,7 +4,7 @@ import { Currency } from '@/entities/Currency'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
-import ProfilePage from './ProfilePage'
+import { ProfilePage } from './ProfilePage'
 
 const data = {
 	age: '1',

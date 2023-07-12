@@ -5,7 +5,7 @@ import { AppLink, AppLinkVariant } from './AppLink'
 import type { AppLinkProps } from './AppLink'
 
 export default {
-	title: 'shared/AppLink',
+	title: 'deprecated/shared/AppLink',
 	component: AppLink,
 	args: {
 		to: '/',

@@ -2,7 +2,7 @@ import { Meta, StoryFn } from '@storybook/react'
 import { Tabs, TabsProps } from './Tabs'
 
 export default {
-	title: 'shared/Tab',
+	title: 'deprecated/shared/Tab',
 	component: Tabs,
 	args: {
 		tabs: [

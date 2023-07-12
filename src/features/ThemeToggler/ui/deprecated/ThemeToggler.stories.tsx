@@ -4,7 +4,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { ThemeToggler } from './ThemeToggler'
 
 export default {
-	title: 'features/ThemeToggler',
+	title: 'deprecated/features/ThemeToggler',
 	component: ThemeToggler,
 	argTypes: {
 		backgroundColor: { control: 'color' },

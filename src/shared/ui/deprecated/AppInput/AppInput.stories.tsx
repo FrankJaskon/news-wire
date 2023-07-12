@@ -4,7 +4,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { AppInput, AppInputProps, InputColor, InputVariant } from './AppInput'
 
 export default {
-	title: 'shared/Form/AppInput',
+	title: 'deprecated/shared/Form/AppInput',
 	component: AppInput,
 	args: {
 		value: 'Test',

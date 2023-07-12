@@ -4,12 +4,12 @@ import classNames from '@/shared/lib/classNames/classNames'
 import { DropdownDirection } from '@/shared/types/ui'
 import popupCls from '../styles/popup.module.scss'
 import cls from './Dropdown.module.scss'
-import { DropdownItem } from './DropdownItem/DropdownItem'
+import { DropdownItemType, DropdownItem } from './DropdownItem/DropdownItem'
 import { NestedDropdownItem, NestedItem } from './NestedDropdownItem/NestedDropdownItem'
 
 interface DropdownProps {
 	className?: string
-	items?: (DropdownItem | NestedItem)[][]
+	items?: (DropdownItemType | NestedItem)[][]
 	direction?: DropdownDirection
 	trigger: ReactNode
 }
@@ -26,7 +26,7 @@ export function Dropdown(props: DropdownProps) {
 				{items?.map((optionGroup, index, array) => (
 					<Fragment key={`option-${index}`}>
 						{optionGroup?.map?.((item, index) => {
-							if (item?.trigger) {
+							if ('trigger' in item) {
 								return (
 									<NestedDropdownItem
 										key={`${item.trigger.content}${index}`}

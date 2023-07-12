@@ -56,7 +56,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props: ArticleLis
 					<AppLink
 						className={classNames(cls.imgWrapper, {})}
 						hover={false}
-						to={article?.id && getArticleDetailsRoute(article?.id)}
+						to={article?.id ? getArticleDetailsRoute(article?.id) : undefined}
 						target={target}
 					>
 						<AppImage

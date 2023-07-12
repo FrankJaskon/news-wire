@@ -4,22 +4,22 @@ import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecora
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import {
-	EditableArticleCodeBlock,
+	EditableArticleVideoBlock,
 	EditableArticleVideoBlockProps,
 } from './EditableArticleVideoBlock'
 
 export default {
 	title: 'entities/Article/EditableArticleVideoBlock',
-	component: EditableArticleCodeBlock,
+	component: EditableArticleVideoBlock,
 	argTypes: {},
 	args: {
 		code: "<!DOCTYPE html>\n<html>\n  <body>\n    <p id='hello'></p>\n\n    <script>\n      document.getElementById('hello').innerHTML = 'Hello, world!';\n    </script>\n  </body>\n</html>;",
 	},
 	decorators: [StoreDecorator({})],
-} as Meta<typeof EditableArticleCodeBlock>
+} as Meta<typeof EditableArticleVideoBlock>
 
-const Template: StoryFn<typeof EditableArticleCodeBlock> = args => (
-	<EditableArticleCodeBlock {...args} />
+const Template: StoryFn<typeof EditableArticleVideoBlock> = args => (
+	<EditableArticleVideoBlock {...args} />
 )
 
 export const Basic: StoryFn<EditableArticleVideoBlockProps> = Template.bind({})

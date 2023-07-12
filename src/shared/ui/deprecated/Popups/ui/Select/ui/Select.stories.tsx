@@ -5,7 +5,7 @@ import { AppLabel } from '@/shared/ui/deprecated/Label'
 import { Select, SelectProps } from './Select'
 
 export default {
-	title: 'shared/Select',
+	title: 'deprecated/shared/Select',
 	component: Select,
 	args: {
 		Label: <AppLabel htmlFor='name'>Choose currency</AppLabel>,

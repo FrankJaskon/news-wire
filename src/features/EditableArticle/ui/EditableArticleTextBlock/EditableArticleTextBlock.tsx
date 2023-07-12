@@ -1,8 +1,7 @@
 import { FC, memo } from 'react'
 import { EditableTextBlockType } from '@/entities/Article'
 import { ToggleFeatures } from '@/shared/lib/features'
-import { SetTextBlockParagraphProps } from '../../model/slice/editableArticleSlice'
-
+import { SetTextBlockParagraphProps } from '../../model/slice/reducerFunctions'
 import { EditableArticleTextBlock as EditableArticleTextBlockDeprecated } from './deprecated/EditableArticleTextBlock'
 import { EditableArticleTextBlock as EditableArticleTextBlockRedesigned } from './redesigned/EditableArticleTextBlock'
 

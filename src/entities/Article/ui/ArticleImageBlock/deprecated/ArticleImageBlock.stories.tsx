@@ -6,7 +6,7 @@ import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { ArticleImageBlock, ArticleImageBlockProps } from './ArticleImageBlock'
 
 export default {
-	title: 'entities/Article/ArticleImageBlock',
+	title: 'deprecated/entities/Article/ArticleImageBlock',
 	component: ArticleImageBlock,
 	argTypes: {},
 	args: {

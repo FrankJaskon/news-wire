@@ -5,7 +5,7 @@ import { Currency } from '../../../model/types/CurrencyScheme'
 import { CurrencySelect } from './CurrencySelect'
 
 export default {
-	title: 'entities/CurrencySelect',
+	title: 'deprecated/entities/CurrencySelect',
 	component: CurrencySelect,
 	argTypes: {},
 	args: {

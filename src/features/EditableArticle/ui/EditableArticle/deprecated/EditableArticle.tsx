@@ -24,7 +24,7 @@ import {
 import { EditableArticleTextBlock } from '../../EditableArticleTextBlock/EditableArticleTextBlock'
 import { EditableArticleWithRemove } from '../../EditableArticleWithRemove/EditableArticleWithRemove'
 import cls from './EditableArticle.module.scss'
-import type { SetTextBlockParagraphProps } from '../../../model/slice/editableArticleSlice'
+import type { SetTextBlockParagraphProps } from '../../../model/slice/reducerFunctions'
 
 export interface EditableArticleProps {
 	className?: string
