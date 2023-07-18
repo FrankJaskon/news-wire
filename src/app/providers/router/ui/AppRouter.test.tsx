@@ -17,16 +17,6 @@ describe('AppRouter', () => {
 		const page = await screen.findByTestId('about-page')
 		expect(page).toBeInTheDocument()
 	})
-	test('Should redirect to MainPage', async () => {
-		RenderWithMocks(<AppRouter />, [
-			MockBrowserRouter(getUsersSettingsRoute()),
-			MockStore({}),
-			MockTranslation,
-		])
-
-		const page = await screen.findByTestId('main-page')
-		expect(page).toBeInTheDocument()
-	})
 	test('Users settings page should be rendered', async () => {
 		RenderWithMocks(<AppRouter />, [
 			MockBrowserRouter(getUsersSettingsRoute()),

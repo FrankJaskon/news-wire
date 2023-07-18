@@ -13,6 +13,11 @@ export interface ArticleDetailsPageHeaderProps {
 	articleId: number
 }
 
+/**
+ * This component was deprecated
+ * @deprecated
+ */
+
 export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 	(props: ArticleDetailsPageHeaderProps) => {
 		const { className, articleId } = props

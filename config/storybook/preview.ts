@@ -2,7 +2,6 @@ import { RouteDecorator } from '../../src/shared/config/storybook/decorators/Rou
 import { StoreDecorator } from '../../src/shared/config/storybook/decorators/StoreDecorator'
 import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator'
 import { SuspenseDecorator } from '../../src/shared/config/storybook/decorators/SuspenseDecorator'
-import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecorator'
 import { AppThemes } from '../../src/shared/config/theme/ThemeContext'
 
 import i18n from './i18next'
@@ -32,10 +31,4 @@ export const parameters = {
 	},
 }
 
-export const decorators = [
-	StyleDecorator,
-	RouteDecorator,
-	ThemeDecorator(AppThemes.LIGHT),
-	SuspenseDecorator,
-	StoreDecorator({}),
-]
+export const decorators = [RouteDecorator, SuspenseDecorator, StoreDecorator({}), StyleDecorator]

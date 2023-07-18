@@ -2,8 +2,6 @@ import { Meta, StoryFn } from '@storybook/react'
 import { Country } from '@/entities/Country'
 import { Currency } from '@/entities/Currency'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
-import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { EditableProfileCard } from './EditableProfileCard'
 import type { EditableProfileCardProps } from './EditableProfileCard'
 
@@ -41,9 +39,3 @@ export default {
 const Template: StoryFn<typeof EditableProfileCard> = args => <EditableProfileCard {...args} />
 
 export const Basic: StoryFn<EditableProfileCardProps> = Template.bind({})
-
-export const Dark: StoryFn<EditableProfileCardProps> = Template.bind({})
-Dark.decorators = [ThemeDecorator(AppThemes.DARK)]
-
-export const Purple: StoryFn<EditableProfileCardProps> = Template.bind({})
-Purple.decorators = [ThemeDecorator(AppThemes.PURPLE)]

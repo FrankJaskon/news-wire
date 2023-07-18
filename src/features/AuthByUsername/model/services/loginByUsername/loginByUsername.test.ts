@@ -1,6 +1,7 @@
-import { userActions, UserRole } from '@/entities/User'
+import { UserRole } from '@/entities/User'
 import { LoginErrors } from '@/shared/config/errorResponse/errorResponse'
 import { TestAsyncThunk } from '@/shared/config/tests/TestAsyncThunk/TestAsyncThunk'
+import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/const/localStorage'
 import { loginByUsername } from './loginByUsername'
 
 describe('loginByUsername', () => {
@@ -22,9 +23,9 @@ describe('loginByUsername', () => {
 		})
 
 		expect(thunk.api.post).toHaveBeenCalled()
-		expect(thunk.dispatch).toHaveBeenCalledTimes(3)
-		expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(responseData))
+		expect(thunk.dispatch).toHaveBeenCalledTimes(2)
 		expect(result.meta.requestStatus).toBe('fulfilled')
+		expect(Number(localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY))).toBe(responseData.id)
 		expect(result.payload).toEqual(responseData)
 	})
 	test('Incorrect request', async () => {

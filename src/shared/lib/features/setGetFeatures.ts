@@ -6,9 +6,8 @@ let featureFlags: FeatureFlags = {}
 
 {
 	try {
-		featureFlags['isAppRedesigned'] = Boolean(
-			JSON.parse(localStorage.getItem(LOCAL_STORAGE_IS_REDESIGNED_KEY) ?? '')
-		)
+		const storageValue = localStorage.getItem(LOCAL_STORAGE_IS_REDESIGNED_KEY)
+		featureFlags['isAppRedesigned'] = storageValue === 'true' || storageValue === null
 	} catch (e) {
 		console.log(e)
 	}

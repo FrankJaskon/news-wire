@@ -9,12 +9,14 @@ export interface ArticleRecommendationsListProps {
 	className?: string
 }
 
+export const articlesNumber = 5
+
 export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = memo(
 	(props: ArticleRecommendationsListProps) => {
 		const { className } = props
 
 		const { t } = useTranslation(['translation', 'article'])
-		const { isLoading, isError, data: articles } = useArticleRecommendationsList(5)
+		const { isLoading, isError, data: articles } = useArticleRecommendationsList(articlesNumber)
 
 		let content: ReactNode = useMemo(
 			() => (

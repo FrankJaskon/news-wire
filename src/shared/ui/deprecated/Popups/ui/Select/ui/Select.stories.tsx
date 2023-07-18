@@ -1,6 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { AppLabel } from '@/shared/ui/deprecated/Label'
 import { Select, SelectProps } from './Select'
 
@@ -22,11 +20,3 @@ const Template: StoryFn<typeof Select> = args => <Select {...args} />
 
 export const Basic: StoryFn<SelectProps<string>> = Template.bind({})
 Basic.args = {}
-
-export const DarkTheme: StoryFn<SelectProps<string>> = Template.bind({})
-DarkTheme.args = {}
-DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
-
-export const PurpleTheme: StoryFn<SelectProps<string>> = Template.bind({})
-PurpleTheme.args = {}
-PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

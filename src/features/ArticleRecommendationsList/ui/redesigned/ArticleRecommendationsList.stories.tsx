@@ -1,10 +1,10 @@
 import { Meta, StoryFn } from '@storybook/react'
 import { ArticleType } from '@/entities/Article'
-import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
 import { getArticlesRoute } from '@/shared/const/RoutPaths'
 import {
 	ArticleRecommendationsList,
 	ArticleRecommendationsListProps,
+	articlesNumber,
 } from './ArticleRecommendationsList'
 
 const article: ArticleType = {
@@ -33,7 +33,7 @@ export default {
 	title: 'features/ArticleRecommendationsList',
 	component: ArticleRecommendationsList,
 	argTypes: {},
-	decorators: [StoreDecorator({})],
+	decorators: [],
 } as Meta<typeof ArticleRecommendationsList>
 
 const Template: StoryFn<typeof ArticleRecommendationsList> = args => (
@@ -44,7 +44,7 @@ export const Basic: StoryFn<ArticleRecommendationsListProps> = Template.bind({})
 Basic.parameters = {
 	mockData: [
 		{
-			url: `${__API_URL__}${getArticlesRoute()}?_limit=3`,
+			url: `${__API_URL__}${getArticlesRoute()}?_limit=${articlesNumber}&_expand=profile`,
 			method: 'GET',
 			status: 200,
 			response: [
@@ -52,6 +52,7 @@ Basic.parameters = {
 				{ ...article, id: 2 },
 				{ ...article, id: 3 },
 				{ ...article, id: 4 },
+				{ ...article, id: 5 },
 			],
 		},
 	],

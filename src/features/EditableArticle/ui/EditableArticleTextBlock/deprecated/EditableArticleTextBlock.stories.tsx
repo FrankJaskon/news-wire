@@ -1,8 +1,6 @@
 /* eslint-disable max-len */
 import { Meta, StoryFn } from '@storybook/react'
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator'
-import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { EditableArticleTextBlock, EditableArticleTextBlockProps } from './EditableArticleTextBlock'
 
 const paragraphs = [
@@ -26,11 +24,3 @@ const Template: StoryFn<typeof EditableArticleTextBlock> = args => (
 
 export const Basic: StoryFn<EditableArticleTextBlockProps> = Template.bind({})
 Basic.args = {}
-
-export const DarkTheme: StoryFn<EditableArticleTextBlockProps> = Template.bind({})
-DarkTheme.args = {}
-DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
-
-export const PurpleTheme: StoryFn<EditableArticleTextBlockProps> = Template.bind({})
-PurpleTheme.args = {}
-PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

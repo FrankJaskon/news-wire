@@ -53,12 +53,12 @@ export const ArticleComments: FC<ArticleCommentsProps> = props => {
 		dispatch(fetchCommentsByArticleId(Number(id)))
 	})
 
-	if (!id) {
+	if (!id && __PROJECT__ !== 'storybook') {
 		return (
 			<ToggleFeatures
 				feature='isAppRedesigned'
-				on={<AppText text={t('article.error.server-error')} variant='error' />}
-				off={<Text title={t('article.error.server-error')} />}
+				on={<AppText text={t('error.server-error', { ns: 'article' })} variant='error' />}
+				off={<Text title={t('error.server-error', { ns: 'article' })} />}
 			/>
 		)
 	}

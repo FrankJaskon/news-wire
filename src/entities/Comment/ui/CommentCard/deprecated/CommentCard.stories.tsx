@@ -1,6 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { CommentCard } from './CommentCard'
 import type { CommentCardProps } from './CommentCard'
 
@@ -30,11 +28,3 @@ export const Loading: StoryFn<CommentCardProps> = Template.bind({})
 Loading.args = {
 	isLoading: true,
 }
-
-export const DarkTheme: StoryFn<CommentCardProps> = Template.bind({})
-DarkTheme.args = {}
-DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
-
-export const PurpleTheme: StoryFn<CommentCardProps> = Template.bind({})
-PurpleTheme.args = {}
-PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]

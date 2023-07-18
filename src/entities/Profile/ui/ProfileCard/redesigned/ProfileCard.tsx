@@ -175,7 +175,7 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 						</HStack>
 						<HStack gap='8' align='center'>
 							<AppLabel htmlFor='user-age'>{t('card.input.age')}</AppLabel>
-							{!data?.age && !readonly ? (
+							{(data?.age || !readonly) && (
 								<AppInput
 									id='user-age'
 									onChange={updateAge}
@@ -185,8 +185,13 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 									type='number'
 									data-testid='profile-card-age-input'
 								/>
-							) : (
-								<AppInput value={t('empty-input-placeholder')} readonly />
+							)}
+							{!data?.age && readonly && (
+								<AppInput
+									value={t('empty-input-placeholder')}
+									readonly
+									data-testid='profile-card-age-blank'
+								/>
 							)}
 						</HStack>
 						<HStack gap='8' align='center'>

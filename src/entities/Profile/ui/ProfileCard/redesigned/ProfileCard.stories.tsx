@@ -1,6 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator'
-import { AppThemes } from '@/shared/config/theme/ThemeContext'
 import { ProfileType } from '../../../model/types/profile'
 import { ProfileCard, ProfileCardProps } from './ProfileCard'
 
@@ -29,18 +27,6 @@ export const Basic: StoryFn<ProfileCardProps> = Template.bind({})
 Basic.args = {
 	data: profileData,
 }
-
-export const DarkTheme: StoryFn<ProfileCardProps> = Template.bind({})
-DarkTheme.args = {
-	data: profileData,
-}
-DarkTheme.decorators = [ThemeDecorator(AppThemes.DARK)]
-
-export const PurpleTheme: StoryFn<ProfileCardProps> = Template.bind({})
-PurpleTheme.args = {
-	data: profileData,
-}
-PurpleTheme.decorators = [ThemeDecorator(AppThemes.PURPLE)]
 
 export const Error: StoryFn<ProfileCardProps> = Template.bind({})
 Error.args = {

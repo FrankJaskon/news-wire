@@ -4,10 +4,10 @@ import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader'
 import type { ArticleDetailsPageHeaderProps } from './ArticleDetailsPageHeader'
 
 export default {
-	title: 'pages/ArticleDetailsPage/ArticleDetailsPageHeader',
+	title: 'deprecated/pages/ArticleDetailsPage/ArticleDetailsPageHeader',
 	component: ArticleDetailsPageHeader,
 	argTypes: {},
-	decorators: [StoreDecorator({})],
+	decorators: [],
 } as Meta<typeof ArticleDetailsPageHeader>
 
 const Template: StoryFn<typeof ArticleDetailsPageHeader> = args => (
@@ -16,5 +16,11 @@ const Template: StoryFn<typeof ArticleDetailsPageHeader> = args => (
 
 export const Basic: StoryFn<ArticleDetailsPageHeaderProps> = Template.bind({})
 Basic.args = {
-	articleId: 0,
+	articleId: 1,
 }
+Basic.decorators = [
+	StoreDecorator({
+		user: { authData: { id: 1 } },
+		articleDetails: { data: { profile: { id: 1 } } },
+	}),
+]
