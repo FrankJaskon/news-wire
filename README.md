@@ -168,7 +168,7 @@ For asynchronous connection of reducers (so as not to pull them into a common bu
 
 ## Project components
 
-## Pages
+### Pages
 
 -   `AboutPage`
 -   `MainPage`
@@ -185,7 +185,7 @@ For asynchronous connection of reducers (so as not to pull them into a common bu
 
 ---
 
-## Widgets
+### Widgets
 
 -   `ArticleDetailsAdditionalInfo`
 -   `ArticleEditing`
@@ -200,7 +200,7 @@ For asynchronous connection of reducers (so as not to pull them into a common bu
 
 ---
 
-## Entities
+### Entities
 
 -   `User`
 -   `Profile`
@@ -218,7 +218,7 @@ For asynchronous connection of reducers (so as not to pull them into a common bu
 
 ---
 
-## Features
+### Features
 
 -   `ArticleComments`
 -   `ArticleDetails`
@@ -242,9 +242,7 @@ For asynchronous connection of reducers (so as not to pull them into a common bu
 
 ---
 
-## Shared
+### Shared
 
 -   `deprecated components`
 -   `redesigned components`
-
----
