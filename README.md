@@ -11,34 +11,6 @@ It is recommended to use node version >=v18.16.0
 
 ---
 
-## Scripts
-
--   `npm run start` - Start the frontend of the project on the webpack development server
--   `npm run start:vite` - Start project frontend on vite
--   `npm run start:dev` - Start project frontend on webpack development server + storybook
--   `npm run build:dev` - Build in dev mode (not minified)
--   `npm run build:analyzed` - Build in dev mode with the analyzer
--   `npm run build:prod` - Build in prod mode
--   `npm run eslint` - Check ts files with linter
--   `npm run eslint:fix` - Fix ts files with linter
--   `npm run prettier` - Fix ts files with prettier
--   `npm run lint:scss` - Checking scss file styles with linter
--   `npm run lint:scss:fix` - Fixing scss file styles with linter
--   `lint-staged` - Quick check staged files by eslint & prettier & stylelint
--   `npm run test:unit` - Start unit tests with jest
--   `npm run test:ui` - Start screenshot tests from loki
--   `npm run test:ui:approve` - Confirm new screenshots
--   `npm run test:ui:ci` - Run screenshot tests in CI
--   `npm run test:ui:json` - Generate json's report for screenshot tests
--   `npm run test:ui:html` - Generate HTML's report for screenshot tests
--   `npm run test:ui:report` - Generate full report for screenshot tests
--   `npm run storybook` - run Storybook
--   `storybook:build` - build Storybook
--   `npm run fix:absolute:imports` - Adding alias to absolute imports
--   `npm run postinstall` - Removes .cache's directory from node_modules every time we install some package
-
----
-
 ## Project architecture
 
 The project is written in accordance with the methodology Sliced design features
